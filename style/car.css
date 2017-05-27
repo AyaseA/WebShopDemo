@@ -70,7 +70,7 @@ body{
 #car .banner .bd li img {
     width: 100%;
     height: 32vw;/* 有待实际验证 */
-    background: url(../images/common/loading.gif) no-repeat;
+    background: url(./images/common/loading.gif) no-repeat;
     background-size: contain; 
 }
 #car .banner .bd li a {

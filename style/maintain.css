@@ -1,0 +1,183 @@
+@charset 'utf-8';
+#maintain {
+	background-color: #fff;
+}
+#maintain >h4 {
+	border-bottom: 1px solid #E5E5E5;
+	margin: 0;
+	height: 36px;
+	line-height: 34px;
+	padding: 0 14px 1px;
+}
+#maintain h4:before {
+	content: '';
+	display: inline-block;
+	background: url(../images/common/recommend_maintain.png) no-repeat;
+	background-size: contain;
+    position: relative;
+    margin-right: 6px;
+    width: 24px;
+    height: 24px;
+    top: 6px;
+}
+#maintain div.item:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#maintain div.item {
+    border-radius: 6px;
+    max-height: 160px;
+    background-color: #fff;
+    margin: 10px auto;
+    position: relative;
+}
+#maintain div.item img {
+	max-height: 130px;
+	float: left;
+    margin-left: 6px;
+}
+#maintain div.item >div {
+	float: left;
+	text-align: left;
+}
+#maintain div.item h3 {
+    margin: 0;
+    color: #EA5514;
+}
+#maintain div.item h6 {
+	color: #EA5514;
+    margin: 3px 0 0 0;
+    font-weight: normal;
+}
+#maintain div.item ul {
+	font-size: 14px;
+	padding: 0;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+#maintain div.item li:before {
+	content: '·';
+	padding-right: 5px;
+}
+#maintain div.item p {
+	margin: 10px 0 15px 0;
+    font-size: 14px;
+}
+#maintain div.item span {
+	font-size: 16px;
+	color: #EA5514;
+	font-weight: bold;
+}
+#maintain div.item >div a {
+    background-color: #EA5514;
+    border-radius: 100px;
+    color: #fff;
+    display: block;
+    width: 20%;
+    height: 26px;
+    line-height: 25px;
+    font-size: 12px;
+    position: absolute;
+    right: 4.5%;
+    bottom: 12px;
+    font-size: 12px;
+    text-align: center;
+}
+@media screen and (min-width: 410px) {
+	#maintain div.item img {
+	    margin-left: 10px;
+        max-height: 130px;
+	}
+	#maintain div.item a {
+	    font-size: 14px;
+	    width: 22%;
+	    max-width: 120px;
+	    height: 28px;
+	    line-height: 28px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#maintain div.item img {
+	    max-width: 100px;
+	    margin-top: 12px;
+	}
+	#maintain div.item a {
+		height: 20px;
+		line-height: 20px;
+		bottom: 9%;
+	}
+}
+#changeCar {
+	width: 100%;
+	background-color: #EFEFF4;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 11;
+	display: none;
+}
+#changeCar h5 {
+	height: 38px;
+	border-bottom: 1px solid #F8F8F8;
+	background-color: #fff;
+	margin: 0;
+}
+#changeCar h5 span {
+	width: 50%;
+	height: 38px;
+	line-height: 38px;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+#changeCar h5 button {
+	position: absolute;
+	float: left;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: contain;
+	width: 22px;
+	height: 22px;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	top: 8px;
+	left: 12px;
+}
+#changeCar div.cars {
+	overflow-y: auto;
+    padding: 0 10px;
+}
+#changeCar div.car {
+	border: 1px solid #fff;
+	background-color: #fff;
+	position: relative;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+#changeCar div.car:first-child {
+	margin-top: 10px;
+}
+#changeCar div.car:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#changeCar div.car >div {
+	width: 100%;
+	text-align: center;
+	padding-bottom: 12px;
+}
+#changeCar div.car img {
+	width: 70px;
+}
+#changeCar div.car h4 {
+	margin: 0;
+}
+#changeCar div.car p {
+	margin: 8px 0;
+	padding: 0 5px;
+	color: #A9A9A9;
+	font-size: 14px;
+}

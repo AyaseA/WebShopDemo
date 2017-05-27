@@ -1,0 +1,55 @@
+@charset "utf-8";
+#invite >img {
+	width: 100%;
+}
+#invite >div {
+	margin-top: -10px;
+}
+#invite >div div.row {
+    padding: 0 5% 25px;
+}
+#invite div.row >div {
+    text-align: center;
+    display: inline-block;
+    width: 32%;
+}
+#invite div.row img {
+	max-width: 50%;
+}
+/* 模态框 start */
+#qrCodeModal {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .5);
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#qrCodeModal div.body {
+	width: 200px;
+	height: 200px;
+	background-color: #fff;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+#qrCodeModal i.close {
+	background: url(../images/common/close.png) no-repeat;
+	background-size: contain;
+	display: block;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	right: -20px;
+	top: -20px;
+}
+#qrCodeModal div.content {
+	width: 200px;
+	height: 200px;
+	padding: 5px;
+}
+/* 模态框 end */

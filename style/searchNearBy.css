@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+
+#searchNearBy{
+	height:100%;
+	width:100%;
+}
+
+#searchNearBy .header{
+	background:#EA5514;
+	width:100%;
+	height:6.4%;
+	text-align:center;
+	position:relative;
+}
+
+#searchNearBy .header img{
+	width:100%;
+}
+
+#searchNearBy .header a{
+	position:absolute;
+	top:23%;
+	left:5%;
+	width:6%;
+}
+
+
+#searchNearBy .header p{
+	color:#FFF;
+	position:absolute;
+	left:42%;
+	top:24%;
+}
+
+#searchNearBy #map{
+	width:100%;
+	height:93.6%;
+}
+
+#searchNearBy .info {
+	border-radius:10px;
+	border:#FFF 1px solid;
+	box-shadow:0 5px 10px #999;
+	width:250px;
+	background:#FFF;
+	overflow:hidden;
+}
+#searchNearBy div.info-top {
+	position: relative;
+	background: #fff;
+	border-radius: 5px 5px 0 0;
+}
+#searchNearBy div.info-top div {
+	display: inline-block;
+	color: #000;
+	font-size: 16px;
+	line-height: 31px;
+	margin: 0 10px;
+}
+#searchNearBy div.info-top img {
+	position: absolute;W
+	top: 10px;
+	right: 10px;
+	transition-duration: 0.25s;
+}
+#searchNearBy .info h4{
+   height:23px;
+
+}
+#searchNearBy .info p{
+	font-size:10px;
+	height:0;
+	color:#999;
+}
+
+#searchNearBy .lead{
+	position:absolute;
+	top:0;
+	right:5%;
+	width:15%;
+	height:100%;
+}

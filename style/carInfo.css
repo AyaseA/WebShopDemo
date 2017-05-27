@@ -1,0 +1,257 @@
+@charset "utf-8";
+#carInfo >div.info {
+	height: 34px;
+	background-color: #FFEED0;
+	border: 1px solid #D6D6DB;
+	margin-top: -1px;
+}
+#carInfo >div.info i {
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-top: 5px;
+	background-image: url(../images/common/info.png);
+	margin-left: 14px;
+}
+#carInfo >div.info span {
+	color: #7F8389;
+	position: relative;
+    font-size: 14px;
+	top: -6px;
+    left: 10px;
+}
+@media screen and (max-width: 350px) {
+	#carInfo >div.info i {
+		margin-left: 12px;
+	}
+}
+#carInfo div.carDetail >div {
+	background-color: #fff;
+	margin-bottom: 6px;
+}
+#carInfo div.carDetail >div >div {
+	padding: 8px 0;
+    border-bottom: 1px solid #F6F6F6;
+}
+#carInfo div.carDetail >div >div:last-child {
+	border-bottom: none;
+}
+#carInfo div.carDetail label {
+    display: block;
+    width: 100%;
+}
+#carInfo div.carDetail span {
+	color: #646872;
+	width: 26%;
+	display: inline-block;
+	text-align: center;
+}
+#carInfo div.carDetail input {
+    display: inline-block;
+	border: none;
+	outline: none;
+	font-size: 14px;
+	padding: 5px;
+    width: 48%;
+}
+#carInfo div.carDetail i {
+	background: url(../images/common/right.png) no-repeat;
+    background-size: contain;
+    display: inline-block;
+    float: right;
+    width: 14px;
+    height: 14px;
+    margin-right: 15px;
+    margin-top: 6px;
+}
+#carInfo div.carDetail small {
+	float: right;
+    margin-right: 24px;
+    margin-top: 3px;
+    font-size: 16px;
+}
+#carInfo div.carDetail button {
+    display: block;
+    margin: 0 auto;
+    background-color: #EA5514;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    margin-top: 15px;
+    padding: 10px 0;
+    width: 90%;
+    font-size: 16px;
+}
+@media screen and (max-width: 350px) {
+	#carInfo div.carDetail, #carInfo div.carDetail button, #carInfo div.carDetail small {
+		font-size: 14px;
+	}
+	#carInfo div.carDetail span {
+		width: 30%;
+	}
+}
+#selectModal {
+	width: 100%;
+	background-color: #EFEFF4;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 11;
+}
+#selectModal h5 {
+	height: 38px;
+	border-bottom: 1px solid #F8F8F8;
+	background-color: #fff;
+	margin: 0;
+}
+#selectModal h5 span {
+	width: 50%;
+	height: 38px;
+	line-height: 38px;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+#selectModal h5 button {
+	position: absolute;
+	float: left;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: contain;
+	width: 22px;
+	height: 22px;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	top: 8px;
+	left: 12px;
+}
+#selectModal >div.type {
+	padding: 0 15px;
+	background-color: #fff;
+	display: none;
+    overflow-y: auto;
+}
+#selectModal >div.type div.item {
+	font-size: 14px;
+	padding: 10px 0;
+	border-bottom: 1px solid #F8F8F8;
+}
+#selectModal >div.brand {
+    overflow-y: auto;
+    display: none;
+}
+#selectModal >div.brand h3 {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    color: #666;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+#selectModal >div.brand ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+#selectModal >div.brand li {
+	list-style: none;
+}
+#selectModal >div.brand .brandgroup li {
+    display: block;
+    color: #444;
+    overflow: hidden;
+    background-color: #fff;
+}
+#selectModal >div.brand .brandgroup li:visited {
+    color: #444443;
+}
+#selectModal >div.brand .brandgroup img {
+    float: left;
+    width: 3.125rem;
+    height: 3.125rem;
+    margin: 0.125rem 0.625rem;
+}
+#selectModal >div.brand .brandgroup strong {
+    display: block;
+    margin-left: 4.375rem;
+    padding: 1.1875rem 0;
+    border-bottom: solid #e9e9e9 1px;
+    font-size: 14px;
+    font-weight: normal;
+}
+#selectModal >div.brand .brandgroup li:last-child strong {
+    border-bottom: 0;
+}
+#selectModal >div.brand .jump-tag {
+    display: none;
+}
+#selectModal >div.brand .show-jump-tag ~ .jump-tag {
+    display: block;
+}
+.jump-tag {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    z-index: 100;
+    width: 40px;
+    height: 80%;
+    font-size: 0.75rem;
+    text-align: center;
+}
+#selectModal >div.brand .jump-ul {
+    height: 100%
+}
+#selectModal >div.brand .jump-li {
+    height: 4.6%;
+    margin-bottom: 0px;
+    font-size: 15px;
+    display: inline-block;
+    padding: 0 20px;
+}
+#selectModal >div.brand .jump-tips {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    display: none;
+    width: 4.25rem;
+    margin: -2.125rem 0 0 -2.125rem;
+    padding: 0.5625rem 0;
+    font-size: 3.125rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2 / 3) {
+    #selectModal >div.brand .jump-tips {
+        line-height: 1;
+    }
+}
+#carModels {
+    height: 100%;
+    width: 66%;
+    background-color: #fff;
+    overflow-y: auto;
+    z-index: 102;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+#carModelMask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    display: none;
+}

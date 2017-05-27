@@ -1,7 +1,7 @@
 !(function(win, $, undefined) {
 	var $body = $('body'),
+        $footer = $('body >footer'),
 		bodyHeight = $body.height(),
-		
 		App = $.extend(win.App || {}, {
 			// 存储各个标题
 			constants: {
@@ -12,23 +12,8 @@
 				"titleCarInfo": '车辆信息',
                 "titleOrderRecord": '订单记录'
 			},
-			location: {
-				// 地区代码
-				adcode: '370102',
-				// 省
-                province: '山东省',
-                // 市
-                city: '济南市',
-                // 区
-                district: '历下区',
-                // 储存经纬度
-				position: {
-					"startLng": '117.109162',
-					"startLat": '36.682266'
-                }
-			},
 			request: {
-				serverAddr: 'http://192.168.43.45:8000/'
+				serverAddr: 'http://192.168.1.148:8000/'
 			},
 		    index: {
 				// 弹出城市列表
@@ -41,10 +26,44 @@
 		});
 
 	// 获取城市列表
-    //getCitiesList();
+    getCitiesList();
     // 定位
-    //getLocation();
+    getLocation();
 	
+    // 页面加载完毕
+    $(function() {
+        /*
+            // 地区代码
+            adcode: '370102',
+            // 省
+            province: '山东省',
+            // 市
+            city: '济南市',
+            // 区
+            district: '历下区',
+            // 储存经纬度
+            startLng: '117.109162',
+            startLat: '36.682266'
+        */
+        App.location = localStorage.getItems(['adcode', 'province', 'city', 'district', 'startLng', 'startLat']);
+        $footer.find('nav >li').click(function() {
+            var $this = $(this);
+            if ($this.hasClass('active')) {
+                return false;
+            }
+            var dataTab = $this.attr('data-tab');
+            $this.addClass('active');
+            $this.siblings().removeClass("active");
+            // tab页跳转
+            if (dataTab != 'center') {
+                location.hash = "#headerSearch/#" + dataTab + '/' + (dataTab.indexOf("center") != -1 ? 0 : 1) + '/1/';
+            } else {
+                location.hash = "#headerTitle/titleOrderRecord#orderRecord/1/0/";
+                //window.open('../../center/center.html', '_self');
+            }
+        });
+    });
+
     /**** 城市选择弹框相关 start ****/
     var $cityModal = $('#citySelectModal');
     $cityModal.height(bodyHeight);
@@ -196,32 +215,47 @@
                     // 经度
                 var longitude = data.position.getLng(),
                     // 纬度
-                    latitude = data.position.getLat();
-				var posObj = data.addressComponent;
-				App.location = {
-					// 地区代码
-					adcode: posObj.adcode,
-					// 省
-		            province: posObj.province,
-		            // 市
-		            city: posObj.city,
-		            // 区
-		            district: posObj.district,
-		            // 储存经纬度
-					position: {
-						"startLng": longitude,
-						"startLat": latitude
-		            }
-		    	};
+                    latitude = data.position.getLat(),
+                    posObj = data.addressComponent;
+
 		    	//console.log(posObj);
+
+                var adcode = localStorage.getItem("adcode");
+                if (!adcode) {
+                    setLocationData(posObj, longitude, latitude);
+                    win.localStorage.setItems(App.location);
+                } else if (adcode != posObj.adcode) {
+                    // 位置有变化，切换位置
+                    App.common.confirm('', '是否切换到' + posObj.city + '-' + posObj.district, function() {
+                        setLocationData(posObj, longitude, latitude);
+                        win.localStorage.setItems(App.location);
+                        App.headerSearch.setLocation(localStorage.getItem("district"));
+                    });
+                }
 		    	// 设置定位城市
-		    	App.headerSearch.setLocation(posObj.city);
+		    	App.headerSearch.setLocation(localStorage.getItem("district"));
             });
             AMap.event.addListener(geolocation, 'error', function() {
                 // 返回定位出错信息
                 alert('定位失败');
             });
         });
+    }
+    // 设置位置信息
+    function setLocationData(posObj, longitude, latitude) {
+        App.location = {
+            // 地区代码
+            adcode: posObj.adcode,
+            // 省
+            province: posObj.province,
+            // 市
+            city: posObj.city,
+            // 区
+            district: posObj.district,
+            // 储存经纬度
+            startLng: longitude,
+            startLat: latitude
+        };
     }
     /**** 定位相关 end ****/
 	win.App = App;

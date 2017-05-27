@@ -27,22 +27,6 @@
     });
     // 页面加载完毕解析hash地址
     $(function() {
-        $footer.find('nav >li').click(function() {
-            var $this = $(this);
-            if ($this.hasClass('active')) {
-                return false;
-            }
-            var dataTab = $this.attr('data-tab');
-            $this.addClass('active');
-            $this.siblings().removeClass("active");
-            // tab页跳转
-            if (dataTab != 'center') {
-                location.hash = "#headerSearch/#" + dataTab + '/' + (dataTab.indexOf("center") != -1 ? 0 : 1) + '/1/';
-            } else {
-                location.hash = "#headerTitle/titleOrderRecord#orderRecord/1/0/";
-                //window.open('../../center/center.html', '_self');
-            }
-        });
         hashAnalyze(location.hash);
     });
     // hash地址解析
@@ -141,7 +125,24 @@
         });
     }
     /******** 路由相关 end ********/
-
+    // localStorage写入多个key-value
+    win.localStorage.__proto__.setItems = function(items) {
+        if (items instanceof Object) {
+            $.each(items, function(key, val) {
+                win.localStorage.setItem(key, val);
+            });
+        }
+    };
+    // localStorage读取多个，输入key的数组
+    win.localStorage.__proto__.getItems = function(names) {
+        var obj = {};
+        if (names instanceof Array) {
+            $.each(names, function(index, val) {
+                obj[val] = win.localStorage.getItem(val);
+            });
+        }
+        return obj;
+    };
     // 对外暴露对象
     var common = $.extend(win.App.common || {}, {
         confirm: function(title, content, calback) {
@@ -154,6 +155,28 @@
                 }
                 $confirm.fadeOut(200);
             });
+        },
+        setCookie: function(name, value, exp) {
+            var now = new Date();
+            exp = exp || now.setTime(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        },
+        getCookie: function(name) {
+            var arr,
+                reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg)) {
+                return unescape(arr[2]);
+            } else {
+                return null;
+            }
+        },
+        delCookie: function(name) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            if (cval != null) {
+                document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+            }
         }
     });
     win.App.common = common;

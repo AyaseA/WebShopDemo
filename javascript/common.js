@@ -125,24 +125,6 @@
         });
     }
     /******** 路由相关 end ********/
-    // localStorage写入多个key-value
-    win.localStorage.__proto__.setItems = function(items) {
-        if (items instanceof Object) {
-            $.each(items, function(key, val) {
-                win.localStorage.setItem(key, val);
-            });
-        }
-    };
-    // localStorage读取多个，输入key的数组
-    win.localStorage.__proto__.getItems = function(names) {
-        var obj = {};
-        if (names instanceof Array) {
-            $.each(names, function(index, val) {
-                obj[val] = win.localStorage.getItem(val);
-            });
-        }
-        return obj;
-    };
     // 对外暴露对象
     var common = $.extend(win.App.common || {}, {
         confirm: function(title, content, calback) {

@@ -44,8 +44,10 @@
             // 储存经纬度
             startLng: '117.109162',
             startLat: '36.682266'
+
+            ['adcode', 'province', 'city', 'district', 'startLng', 'startLat']
         */
-        App.location = localStorage.getItems(['adcode', 'province', 'city', 'district', 'startLng', 'startLat']);
+        App.location = JSON.parse(win.localStorage.getItem('location'));
         $footer.find('nav >li').click(function() {
             var $this = $(this);
             if ($this.hasClass('active')) {
@@ -220,20 +222,19 @@
 
 		    	//console.log(posObj);
 
-                var adcode = localStorage.getItem("adcode");
-                if (!adcode) {
+                if (!App.location) {
                     setLocationData(posObj, longitude, latitude);
-                    win.localStorage.setItems(App.location);
-                } else if (adcode != posObj.adcode) {
+                    win.localStorage.setItem("location", JSON.stringify(App.location));
+                } else if (App.location.adcode != posObj.adcode) {
                     // 位置有变化，切换位置
                     App.common.confirm('', '是否切换到' + posObj.city + '-' + posObj.district, function() {
                         setLocationData(posObj, longitude, latitude);
-                        win.localStorage.setItems(App.location);
-                        App.headerSearch.setLocation(localStorage.getItem("district"));
+                        win.localStorage.setItem("location", JSON.stringify(App.location));
+                        App.headerSearch.setLocation(App.location.district);
                     });
                 }
 		    	// 设置定位城市
-		    	App.headerSearch.setLocation(localStorage.getItem("district"));
+		    	App.headerSearch.setLocation(App.location.district);
             });
             AMap.event.addListener(geolocation, 'error', function() {
                 // 返回定位出错信息

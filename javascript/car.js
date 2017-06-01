@@ -70,7 +70,7 @@
 						  beforeSend: function(){
 										  msg=document.createElement("div");
 										  msg.className="msg";
-										  msg.innerHTML="<img src='./images/home/loading.gif'>";
+										  msg.innerHTML="<img src='./images/car/loading.gif'>";
 										  shopList.append(msg);
 										  },
 						  success: function(txt){
@@ -114,7 +114,7 @@
 									  url:"http://192.168.43.45:8000/Store/StoreView/GetStoreList",
 									  data:{N:n,Rows:10},
 									  beforeSend: function(){
-										  msg.innerHTML="<img src='./images/home/loading.gif'>";
+										  msg.innerHTML="<img src='./images/car/loading.gif'>";
 										  shopList.append(msg);
 										  },
 									  success: function(txt){

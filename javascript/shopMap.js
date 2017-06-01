@@ -15,9 +15,9 @@
 }(window, jQuery));
 
 function getMapMsg(id){
-	/*var url=window.location.hash;
-    Sid=url.substring(31,url.length);
-	id=parseInt(Sid);	*/
+	var url=window.location.hash;
+    Sid=url.substring(27,url.length);
+	id=parseInt(Sid);	
 	$.ajax({
 	  type:"POST",
 	  url:"http://192.168.43.45:8000/Store/StoreView/GetStoreDetail",
@@ -39,7 +39,7 @@ function getMapMsg(id){
 
 	
 function showMap(){
-	map = new AMap.Map("map", {
+	var map = new AMap.Map("map", {
 			resizeEnable: true,
 			center: [stopIng,stopIat],//地图中心点
 			zoom: 15 //地图显示的缩放级别

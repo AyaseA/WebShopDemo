@@ -13,7 +13,7 @@
                 "titleOrderRecord": '订单记录'
 			},
 			request: {
-				serverAddr: 'http://192.168.1.148:8000/'
+				serverAddr: 'http://192.168.1.102:8000/'
 			},
 		    index: {
 				// 弹出城市列表
@@ -28,7 +28,7 @@
 	// 获取城市列表
     getCitiesList();
     // 定位
-    getLocation();
+    //getLocation();
 	
     // 页面加载完毕
     $(function() {
@@ -44,8 +44,6 @@
             // 储存经纬度
             startLng: '117.109162',
             startLat: '36.682266'
-
-            ['adcode', 'province', 'city', 'district', 'startLng', 'startLat']
         */
         App.location = JSON.parse(win.localStorage.getItem('location'));
         $footer.find('nav >li').click(function() {
@@ -146,7 +144,7 @@
     function getCitiesList() {
     	var cityBox = $('#citySelectModal >div.citiesList').empty();
     	$.ajax({
-    		url: App.request.serverAddr + 'CSL/Location/TriLinkAll',
+    		url: App.request.serverAddr + 'Product/Info/TriLinkAll',
     		type: 'GET',
     		crossDomain: true,
     		dataType: 'json'
@@ -208,7 +206,7 @@
                 // 是否使用高精度定位，默认:true
                 enableHighAccuracy: true,
                 // 超过10秒后停止定位，默认：无穷大
-                timeout: 10000
+                timeout: 1
             });
             map.addControl(geolocation);
             geolocation.getCurrentPosition();
@@ -220,7 +218,7 @@
                     latitude = data.position.getLat(),
                     posObj = data.addressComponent;
 
-		    	//console.log(posObj);
+		    	console.log(posObj);
 
                 if (!App.location) {
                     setLocationData(posObj, longitude, latitude);

@@ -83,7 +83,10 @@
 
         // 点击选择车型
         modal.find('>div.type').off('click', 'div.item').on('click', 'div.item', function() {
-            $carDetail.find('input[name=carType]').val($(this).text());
+            var typeId = $(this).attr('data-type');
+            $carDetail.find('input[name=carType]')
+                .val($(this).text())
+                .attr("typeid", typeId);
             hideSelectModal(modal, bodyHeight);
         });
 
@@ -94,8 +97,11 @@
             /*
             // 弹出车系子类，再选择子类（暂未实现）
             */
+            var typeId = $(this).attr('data_type');
             // 选中汽车品牌
-            $carDetail.find('input[name=carBrand]').val($(this).find('strong').text());
+            $carDetail.find('input[name=carBrand]')
+                .val($(this).find('strong').text())
+                .attr("carid", typeId);
             hideSelectModal(modal, bodyHeight);
         });
         // 车系子类蒙板点击隐藏车系子类

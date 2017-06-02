@@ -32,8 +32,16 @@
                 var scrollTop = $(this).parent().parent().offset().top;
                 $('#main').scrollTop(scrollTop);
             });
+            // 行驶里程去掉前面的0
+            $carDetail.find('input[name="dirveRange"]').focus(function() {
+                var scrollTop = $(this).parent().parent().offset().top;
+                $('#main').scrollTop(scrollTop);
+            });
             // 点击保存事件
             $carDetail.find('>button').click(function() {
+                if (!validation()) {
+                    return false;
+                }
                 location.hash = '#headerModify/#maintain/1/0/';
             });
             // 选择日期
@@ -47,6 +55,56 @@
             initSelectModal($carDetail, modal);
         }
     });
+    // 获取车辆信息对象
+    function getCarInfo() {
+        var $carDetail = $('#carInfo >div.carDetail'),
+            car = {};
+        car.CarID = $carDetail.find('input[name="carBrand"]').attr('carid');
+        
+    }
+    // 验证
+    function validation() {
+        var $carDetail = $('#carInfo >div.carDetail');
+        if (!$carDetail.find('input[name="carBrand"]').val()) {
+            App.common.tip("品牌车系不能为空！");
+            return false;
+        }
+        if (!$carDetail.find('input[name="carType"]').val()) {
+            App.common.tip("车型不能为空！");
+            return false;
+        }
+        if (!$carDetail.find('input[name="timeBuy"]').val()) {
+            App.common.tip("购买时间不能为空！");
+            return false;
+        }
+        if (!$carDetail.find('input[name="dirveRange"]').val()) {
+            App.common.tip("行驶里程不能为空！");
+            return false;
+        } else if (!/^[0-9]+.?[0-9]*$/.test($carDetail.find('input[name="dirveRange"]').val())) {
+            App.common.tip("请输入有效的行驶里程！");
+            $carDetail.find('input[name="dirveRange"]').focus();
+            return false;
+        }
+        if ($carDetail.find('input[name="plateNumber"]').val() && 
+            !/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/.test($carDetail.find('input[name="plateNumber"]').val())) {
+            App.common.tip("车牌号格式错误！");
+            $carDetail.find('input[name="plateNumber"]').focus();
+            return false;
+        }
+        if ($carDetail.find('input[name="frameNumber"]').val() && 
+            !/[a-zA-Z0-9]{17}/.test($carDetail.find('input[name="frameNumber"]').val())) {
+            App.common.tip("车架号格式错误！");
+            $carDetail.find('input[name="frameNumber"]').focus();
+            return false;
+        }
+        if ($carDetail.find('input[name="engineNumber"]').val() && 
+            !/[a-zA-Z0-9]+/.test($carDetail.find('input[name="engineNumber"]').val())) {
+            App.common.tip("发动机号格式错误！");
+            $carDetail.find('input[name="engineNumber"]').focus();
+            return false;
+        }
+        return true;
+    }
     // 显示并设置选择弹框标题
     function showSelectModal(modal, isBrand) {
         if (isBrand) {

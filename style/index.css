@@ -297,3 +297,21 @@ footer nav >li:nth-child(3).active:before {
 	margin-right: 10px;
 }
 /* 选择城市弹框 end */
+/* tip 提示 start */
+#tipTool {
+	position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 20%;
+    text-align: center;
+    display: none;
+}
+#tipTool >span {
+	background-color: #000;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+}
+/* tip 提示 end */

@@ -62,16 +62,18 @@
 					i = 0,
 					cnt = '<div class="row">';
 				for (i = 0; i < d.length; i++) {
-					cnt += '<div>';
-						cnt += '<div class="item" data-id="' + d[i].ID + '">';
-							cnt += '<img src="./images/products/product_' + d[i].Price.split('.')[0] + '.png">';
-							cnt += '<p>' + d[i].Name + '</p>';
-							cnt += '<a href="#headerTitle/titlePay#payCenter/1/0/' + d[i].ID + '">立即购买</a>';
+					if (d[i].Price > 1) {
+						cnt += '<div>';
+							cnt += '<div class="item" data-id="' + d[i].ID + '">';
+								cnt += '<img src="./images/products/product_' + d[i].Price.split('.')[0] + '.png">';
+								cnt += '<p>' + d[i].Name + '</p>';
+								cnt += '<a href="#headerTitle/titlePay#payCenter/1/0/' + d[i].ID + '">立即购买</a>';
+							cnt += '</div>';
 						cnt += '</div>';
-					cnt += '</div>';
-					if ((i != d.length - 1) && ((i + 1) % 3 == 0)) {
-						cnt += '</div>';
-						cnt += '<div class="row">';
+						if ((i != d.length - 1) && ((i + 1) % 3 == 0)) {
+							cnt += '</div>';
+							cnt += '<div class="row">';
+						}
 					}
 				}
 				cnt += '</div>';

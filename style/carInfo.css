@@ -72,6 +72,14 @@
     margin-top: 3px;
     font-size: 16px;
 }
+#carInfo div.carDetail div.setDefault i {
+    background-image: url(../images/common/check.png);
+    margin: 6px 22px;
+    display: none;
+}
+#carInfo div.carDetail div.setDefault.default i {
+    display: block;
+}
 #carInfo div.carDetail button {
     display: block;
     margin: 0 auto;

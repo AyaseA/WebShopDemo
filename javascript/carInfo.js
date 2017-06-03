@@ -1,7 +1,4 @@
 !(function(win, $, undefined) {
-    // jquery.jsonp 2.4.0 (c)2012 Julian Aubourg | MIT License
-// https://github.com/jaubourg/jquery-jsonp
-(function(e){function t(){}function n(e){C=[e]}function r(e,t,n){return e&&e.apply&&e.apply(t.context||t,n)}function i(e){return/\?/.test(e)?"&":"?"}function O(c){function Y(e){z++||(W(),j&&(T[I]={s:[e]}),D&&(e=D.apply(c,[e])),r(O,c,[e,b,c]),r(_,c,[c,b]))}function Z(e){z++||(W(),j&&e!=w&&(T[I]=e),r(M,c,[c,e]),r(_,c,[c,e]))}c=e.extend({},k,c);var O=c.success,M=c.error,_=c.complete,D=c.dataFilter,P=c.callbackParameter,H=c.callback,B=c.cache,j=c.pageCache,F=c.charset,I=c.url,q=c.data,R=c.timeout,U,z=0,W=t,X,V,J,K,Q,G;return S&&S(function(e){e.done(O).fail(M),O=e.resolve,M=e.reject}).promise(c),c.abort=function(){!(z++)&&W()},r(c.beforeSend,c,[c])===!1||z?c:(I=I||u,q=q?typeof q=="string"?q:e.param(q,c.traditional):u,I+=q?i(I)+q:u,P&&(I+=i(I)+encodeURIComponent(P)+"=?"),!B&&!j&&(I+=i(I)+"_"+(new Date).getTime()+"="),I=I.replace(/=\?(&|$)/,"="+H+"$1"),j&&(U=T[I])?U.s?Y(U.s[0]):Z(U):(E[H]=n,K=e(y)[0],K.id=l+N++,F&&(K[o]=F),L&&L.version()<11.6?(Q=e(y)[0]).text="document.getElementById('"+K.id+"')."+p+"()":K[s]=s,A&&(K.htmlFor=K.id,K.event=h),K[d]=K[p]=K[v]=function(e){if(!K[m]||!/i/.test(K[m])){try{K[h]&&K[h]()}catch(t){}e=C,C=0,e?Y(e[0]):Z(a)}},K.src=I,W=function(e){G&&clearTimeout(G),K[v]=K[d]=K[p]=null,x[g](K),Q&&x[g](Q)},x[f](K,J=x.firstChild),Q&&x[f](Q,J),G=R>0&&setTimeout(function(){Z(w)},R)),c)}var s="async",o="charset",u="",a="error",f="insertBefore",l="_jqjsp",c="on",h=c+"click",p=c+a,d=c+"load",v=c+"readystatechange",m="readyState",g="removeChild",y="<script>",b="success",w="timeout",E=window,S=e.Deferred,x=e("head")[0]||document.documentElement,T={},N=0,C,k={callback:l,url:location.href},L=E.opera,A=!!e("<div>").html("<!--[if IE]><i><![endif]-->").find("i").length;O.setup=function(t){e.extend(k,t)},e.jsonp=O})(jQuery)
     var carInfo = $.extend(win.App.carInfo || {}, {
         init: function(param) {
             var $carDetail = $('#carInfo >div.carDetail'),
@@ -13,18 +10,20 @@
             });
             // 选择车型点击事件
             $carDetail.find("input[name=carType]").click(function() {
+                if (!$carDetail.find('input[name="carBrand"]').val()) {
+                    win.App.common.tip("请先选择品牌车系！");
+                    return false;
+                }
                 // 弹出车型
                 showSelectModal(modal, false);
             });
             // 设置默认点击事件
             $carDetail.find('div.setDefault').click(function() {
                 var $this = $(this);
-                if ($this.find('i').is(':hidden')) {
-                    $this.find('i').show();
-                    $this.attr('data-type', 'default');
+                if ($this.hasClass('default')) {
+                    $this.removeClass('default');
                 } else {
-                    $this.find('i').hide();
-                    $this.attr('data-type', '');
+                    $this.addClass('default');
                 }
             });
             // 车牌号，发动机号，车架号失去焦点自动将内容转大写
@@ -45,7 +44,10 @@
                 if (!validation()) {
                     return false;
                 }
-                location.hash = '#headerModify/#maintain/1/0/';
+                // 保存车辆信息，跳到推荐保养
+                saveCarInfo(function(cid) {
+                    location.hash = '#headerModify/titleModify#maintain/1/0/' + cid;
+                });                
             });
             // 选择日期
             (new datePicker()).init({
@@ -56,53 +58,103 @@
             });
             // 初始化选择弹框
             initSelectModal($carDetail, modal);
+            // 如果存在汽车id，修改车辆信息
+            if (param) {
+                // 获取车辆信息
+                getCarDetail(param);
+            }
         }
     });
+    // 获取车辆信息
+    function getCarDetail(cid) {
+
+    }
+    // 保存汽车信息
+    function saveCarInfo(callback) {
+        var info = getCarInfo();
+        $.ajax({
+            url: win.App.request.serverAddr + 'CSL/UserInfo/AddCar',
+            type: 'POST',
+            data: info,
+            dataType: 'json'
+        }).success(function(res) {
+            if (res.Status == 0 && res.Data && res.Data.ID) {
+                console.log('保存成功！');
+                win.App.constants.titleModify = info.CarBrand + ' ' + info.CarType;
+                localStorage.setItem('titleModify', win.App.constants.titleModify);
+                if (info.IsDefault == 1) {
+                    win.localStorage.setItem('UserCarID', res.Data.ID);
+                }
+                if (callback) {
+                    callback(res.Data.ID);
+                }
+            }
+        });
+    }
     // 获取车辆信息对象
     function getCarInfo() {
         var $carDetail = $('#carInfo >div.carDetail'),
-            car = {};
-        car.CarID = $carDetail.find('input[name="carBrand"]').attr('carid');
+            car = {},
+            plate = $carDetail.find('input[name="plateNumber"]').val();
+        // CarID为选择品牌车系后再选择的车型id
+        car.Token = win.App.token();
         
+        car.CarID = $carDetail.find('input[name="carType"]').attr('data-type');
+        car.BuyTime = win.App.common.get10Time($carDetail.find('input[name="timeBuy"]').val());
+        car.DrivingNum = parseFloat($carDetail.find('input[name="dirveRange"]').val());
+        car.PlatePro = plate ? plate.substring(0, 1) : '';
+        car.PlateCity = plate ? plate.substring(1, 2) : '';
+        car.PlateNum = plate ? plate.substring(2, plate.length) : '';
+        car.VINNO = $carDetail.find('input[name="frameNumber"]').val();
+        car.EngineNO = $carDetail.find('input[name="engineNumber"]').val();
+        car.IsDefault = $carDetail.find('div.setDefault').hasClass('default') ? 1 : 0;
+
+        var Data = {
+            CarBrandId: $carDetail.find('input[name="carBrand"]').attr('data-brand'),
+            CarBrandName: $carDetail.find('input[name="carBrand"]').val(),
+            CarTypeName: $carDetail.find('input[name="carType"]').val()
+        };
+        car.Data = JSON.stringify(Data);
+        return car;
     }
     // 验证
     function validation() {
         var $carDetail = $('#carInfo >div.carDetail');
         if (!$carDetail.find('input[name="carBrand"]').val()) {
-            App.common.tip("品牌车系不能为空！");
+            win.App.common.tip("品牌车系不能为空！");
             return false;
         }
         if (!$carDetail.find('input[name="carType"]').val()) {
-            App.common.tip("车型不能为空！");
+            win.App.common.tip("车型不能为空！");
             return false;
         }
         if (!$carDetail.find('input[name="timeBuy"]').val()) {
-            App.common.tip("购买时间不能为空！");
+            win.App.common.tip("购买时间不能为空！");
             return false;
         }
         if (!$carDetail.find('input[name="dirveRange"]').val()) {
-            App.common.tip("行驶里程不能为空！");
+            win.App.common.tip("行驶里程不能为空！");
             return false;
         } else if (!/^[0-9]+.?[0-9]*$/.test($carDetail.find('input[name="dirveRange"]').val())) {
-            App.common.tip("请输入有效的行驶里程！");
+            win.App.common.tip("请输入有效的行驶里程！");
             $carDetail.find('input[name="dirveRange"]').focus();
             return false;
         }
         if ($carDetail.find('input[name="plateNumber"]').val() && 
             !/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/.test($carDetail.find('input[name="plateNumber"]').val())) {
-            App.common.tip("车牌号格式错误！");
+            win.App.common.tip("车牌号格式错误！");
             $carDetail.find('input[name="plateNumber"]').focus();
             return false;
         }
         if ($carDetail.find('input[name="frameNumber"]').val() && 
             !/[a-zA-Z0-9]{17}/.test($carDetail.find('input[name="frameNumber"]').val())) {
-            App.common.tip("车架号格式错误！");
+            win.App.common.tip("车架号格式错误！");
             $carDetail.find('input[name="frameNumber"]').focus();
             return false;
         }
         if ($carDetail.find('input[name="engineNumber"]').val() && 
             !/[a-zA-Z0-9]+/.test($carDetail.find('input[name="engineNumber"]').val())) {
-            App.common.tip("发动机号格式错误！");
+            win.App.common.tip("发动机号格式错误！");
             $carDetail.find('input[name="engineNumber"]').focus();
             return false;
         }
@@ -142,37 +194,39 @@
             }, 200);
         });
 
-        // 点击选择车型
-        modal.find('>div.type').off('click', 'div.item').on('click', 'div.item', function() {
-            var typeId = $(this).attr('data-type');
-            $carDetail.find('input[name=carType]')
-                .val($(this).text())
-                .attr("typeid", typeId);
-            hideSelectModal(modal, bodyHeight);
-        });
-
         var $carModels = $('#carModels').css('right', -bodyWidth-10),
             $carModelMask = $('#carModelMask');
         // 选择汽车品牌
         $('#div_ListBrand').on('click', 'li', function() {
             /*
             // 弹出车系子类，再选择子类（暂未实现）
+                品牌车系输入框中应显示  奥迪A6L 2015款
             */
             var typeId = $(this).attr('data_type');
             // 选中汽车品牌
-            /*$carDetail.find('input[name=carBrand]')
+            $carDetail.find('input[name=carBrand]')
                 .val($(this).find('strong').text())
-                .attr("carid", typeId);
-            hideSelectModal(modal, bodyHeight);*/
+                .attr("data-brand", typeId);
+            hideSelectModal(modal, bodyHeight);
 
-            $.jsonp({
+            /*$.jsonp({
                 url: 'http://car.m.autohome.com.cn/ashx/GetSeriesByBrandId.ashx?b=' + typeId,
                 callbackParameter: "callback",
                 success: function(res) {
                     //console.log(res);
                 }
-            });
+            });*/
         });
+
+        // 点击选择车型
+        modal.find('>div.type').off('click', 'div.item').on('click', 'div.item', function() {
+            var typeId = $(this).attr('data-type');
+            $carDetail.find('input[name=carType]')
+                .val($(this).text())
+                .attr("data-type", typeId);
+            hideSelectModal(modal, bodyHeight);
+        });
+
         // 车系子类蒙板点击隐藏车系子类
         $carModelMask.click(function(e) {
             $(this).fadeOut(200);

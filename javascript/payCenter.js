@@ -2,6 +2,10 @@
     var payCenter = $.extend(win.App.payCenter || {}, {
         init: function(param) {
             var $payCenter = $('#payCenter');
+
+            //a:产品id1|产品id2|产品id3,b:产品数量1|产品数量2|产品数量3,c:车牌
+
+
             // 获取商品详细
             getProductDetail($payCenter, param);
             // 默认
@@ -21,13 +25,15 @@
     });
     function getOrder(item) {
         var pid = item.attr('pid'),
-            count = 1;
+            count = 1,
+            carNo = sessionStorage.getItem('carNo');
         $.ajax({
-            url: App.request.serverAddr + 'CSL/Order/AddOrder',
+            url: win.App.request.serverAddr + 'CSL/Order/AddOrder',
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify({
-                Token: App.token,
+                Token: win.App.token(),
+                Comment: carNo || '',
                 ProdList: pid + '_' + count
             })
         }).success(function(res) {
@@ -43,10 +49,10 @@
             desc = $payCenter.find('div.productInfo p.desc').text(),
             price = $payCenter.find('div.payMoney p').attr('price');
         $.ajax({
-            url: App.request.serverAddr + 'Product/Info/GetWeChatPay?OrderID=' + oid +
+            url: win.App.request.serverAddr + 'Product/Info/GetWeChatPay?OrderID=' + oid +
                                           '&OrderDesc=' + desc +
                                           '&Total=' + price +
-                                          '&Token=' + App.token,
+                                          '&Token=' + win.App.token(),
             type: 'GET'
         }).success(function(res) {
             if (res) {
@@ -60,7 +66,7 @@
     function getProductDetail($payCenter, proId) {
         $payCenter.find('div.productInfo p, div.payMoney p').empty();
         $.ajax({
-            url: App.request.serverAddr + 'Product/Prod/QueryDetail?ID=' + proId,
+            url: win.App.request.serverAddr + 'Product/Prod/QueryDetail?ID=' + proId,
             type: 'GET',
             dataType: 'json'
         }).success(function(res) {

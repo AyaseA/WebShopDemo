@@ -10,7 +10,8 @@
 				"titleInvite": '邀请有礼',
 				"titleMyCars": '我的车辆',
 				"titleCarInfo": '车辆信息',
-                "titleOrderRecord": '订单记录'
+                "titleOrderRecord": '订单记录',
+                "titleModify": '奥迪 2016款 6.0L Coupe'
 			},
 			request: {
 				serverAddr: 'http://192.168.1.102:8000/'
@@ -23,9 +24,11 @@
 			        }, 300);
 			    }
 			},
-            token: 'eyJVc2VySUQiOiIxNCIsIk5pY2tOYW1lIjpudWxsLCJHcm91dGhWYWx1ZSI6bnVsbCwiVXNlckFkZHJlc3NJRCI6bnVsbCwiQWRkVGltZSI6IjE0OTYzMDQwMTIiLCJVc2VyQ2FySUQiOm51bGwsIkltZyI6bnVsbCwiTW9iaWxlIjoiMTU2IiwiU2Vzc2lvbklEIjoiMSIsIlR5cGUiOiJVc2VyIiwiVUlEIjoiOThlZWU2ODFiN2M0NDI4NmE1OWJlZmQ3MTNiZmUxNjAifQ%3D%3D'
+            // 获取Token
+            token: function() {
+                return getToken();
+            }
 		});
-
 	// 获取城市列表
     getCitiesList();
     // 定位
@@ -63,6 +66,11 @@
                 //window.open('../../center/center.html', '_self');
             }
         });
+        // 解析token存到localStorage
+        var uInfo = Base64.decode(getToken());
+        uInfo = uInfo.substring(0, uInfo.length - 1);
+        var uObj = JSON.parse(uInfo);
+        localStorage.setItem('UserCarID', uObj.UserCarID);
     });
 
     /**** 城市选择弹框相关 start ****/
@@ -240,6 +248,14 @@
                 alert('定位失败');
             });
         });
+    }
+    // 获取登录Token，没有提示登录
+    function getToken() {
+        var t = App.common.getCookie('Token');
+        if (t) {
+            return t;
+        }
+        alert("请登录");
     }
     // 设置位置信息
     function setLocationData(posObj, longitude, latitude) {

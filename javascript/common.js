@@ -180,10 +180,17 @@
                 $tip.fadeOut(500);
             }, time || 2000);
         },
-        setCookie: function(name, value, exp) {
-            var now = new Date();
-            exp = exp || now.setTime(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        get10Time: function(time) {
+            var date = time ? new Date(time) : new Date();
+            return Math.round(date.getTime() / 1000);
+        },
+        timeToStr: function(time, fmt) {
+            return new Date(time * 1000).pattern(fmt || 'yyyy-MM-dd');
+        },
+        setCookie: function (name, value, expiredays) {
+            var exdate = new Date();
+            exdate.setDate(exdate.getDate() + (expiredays || 30));
+            document.cookie = name + "=" + escape(value) + ";expires=" + exdate.toGMTString();
         },
         getCookie: function(name) {
             var arr,

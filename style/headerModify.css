@@ -19,18 +19,10 @@ header >span.edit {
     bottom: 0;
     height: 30px;
     line-height: 30px;
-    width: 60%;
-}
-header >span.edit:after {
-	content: '';
-	display: inline-block;
-	background: url(../images/common/edit.png) no-repeat;
-	background-size: contain;
-    width: 13px;
-    height: 13px;
-    position: absolute;
-    top: 9px;
-    margin-left: 10px;
+    max-width: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 header >a.modify {
 	color: #fff;
@@ -38,6 +30,18 @@ header >a.modify {
 	font-size: 12px;
 	padding: 6px;
 	margin: 8px;
+	position: relative;
+}
+header >a.modify:before {
+	content: '';
+	display: inline-block;
+	background: url(../images/common/edit.png) no-repeat;
+	background-size: contain;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 7px;
+    left: -8px
 }
 @media screen and (min-width: 410px) {
 	header >a.goBack {
@@ -48,9 +52,6 @@ header >a.modify {
 	header >span.edit {
 		height: 32px;
 		line-height: 32px;
-	}
-	header >span.edit:after {
-		top: 10px;
 	}
 	header >a.modify {
 		margin: 10px;
@@ -65,9 +66,6 @@ header >a.modify {
 	header >span.edit {
 		height: 26px;
 		line-height: 26px;
-	}
-	header >span.edit:after {
-		top: 7px;
 	}
 	header >a.modify {
 		margin: 6px;

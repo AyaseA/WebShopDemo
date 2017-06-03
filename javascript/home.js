@@ -9,7 +9,7 @@
 				var type = $(this).attr('data-type');
 				switch(type) {
 					case 'carWash': {
-
+						window.location.href = '../center/html/cleaningCar.html';
 					} break;
 					case 'maintain': {
 						// 已有车辆信息

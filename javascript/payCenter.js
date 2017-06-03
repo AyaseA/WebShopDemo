@@ -33,7 +33,9 @@
             dataType: 'json',
             data: JSON.stringify({
                 Token: win.App.token(),
-                Comment: carNo || '',
+                Data: JSON.stringify({
+                    carNo: carNo || ''
+                }),
                 ProdList: pid + '_' + count
             })
         }).success(function(res) {

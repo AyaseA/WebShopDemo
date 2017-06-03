@@ -98,6 +98,8 @@ footer nav >li:before {
     background-position-y: 5px;
     width: 100%;
     height: 60%;
+    position: absolute;
+    left: 0;
 }
 footer span {
 	position: absolute;
@@ -133,11 +135,18 @@ footer nav >li:nth-child(1):before {
 footer nav >li:nth-child(1).active:before {
 	background-image: url(../images/common/homeOn.png);
 }
-footer nav >li:nth-child(2):before {
+/* footer nav >li:nth-child(2):before {
 	background-image: url(../images/common/carOff.png);
 }
 footer nav >li:nth-child(2).active:before {
 	background-image: url(../images/common/carOn.png);
+} */
+footer nav >li:nth-child(2):before {
+	background-image: url(../images/common/luckyDraw.png);
+	background-position: center;
+    position: absolute;
+    height: 110%;
+    top: -10%;
 }
 footer nav >li:nth-child(3):before {
 	background-image: url(../images/common/centerOff.png);

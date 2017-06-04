@@ -67,10 +67,12 @@
             }
         });
         // 解析token存到localStorage
-        var uInfo = Base64.decode(getToken());
-        uInfo = uInfo.substring(0, uInfo.length - 1);
-        var uObj = JSON.parse(uInfo);
-        localStorage.setItem('UserCarID', uObj.UserCarID);
+        /*if (getToken()) {
+            var uInfo = Base64.decode(getToken());
+            uInfo = uInfo.substring(0, uInfo.length - 1);
+            var uObj = JSON.parse(uInfo);
+            localStorage.setItem('UserCarID', uObj.UserCarID);
+        }*/
     });
 
     /**** 城市选择弹框相关 start ****/

@@ -2,6 +2,7 @@
     var paySucc = $.extend(win.App.paySucc || {}, {
         init: function(param) {
             var $paySucc = $('#paySucc');
+            var pArr = param.split(',');
             // 右上角完成
             $paySucc.find('>h5 >a').click(function() {
             	

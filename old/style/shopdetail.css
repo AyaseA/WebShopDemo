@@ -1,0 +1,291 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*banner图*/
+#shopdetail .banner{
+	width:100%;
+	height:30%;
+	overflow:hidden;
+}
+
+
+#shopdetail .shopImg{
+	width:100%;
+}
+
+#shopdetail .banner a img{
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:25px;
+}
+
+/*门店标题信息*/
+#shopdetail .container{
+	padding:10px 30px;
+	height:100%;
+	height:96px;
+}
+
+#shopdetail .shop{
+	background:#fff;
+	width:100%;
+	height:17%;
+}
+
+#shopdetail .shopTitle{
+	border-bottom:1px #F3F3F4 solid;
+}
+
+#shopdetail .shopTitle h3{
+	font-size:16px;
+	color:#535762;
+}
+
+#shopdetail .shopTitle p{
+	font-size:10px;
+	color:#BFBFBF;
+	margin:10px 0;
+}
+
+#shopdetail .shopInfo{
+	position:relative;
+	width:100%;
+	height:33%;
+}
+
+#shopdetail .shopInfo img{
+	width:20px;
+}
+
+#shopdetail .map{
+	position:absolute;
+	top:9px;
+	left:0;
+}
+
+#shopdetail .phone{
+	position:absolute;
+	top:12px;
+	right:0;
+}
+
+#shopdetail .place{
+	font-size:10px;
+	position:absolute;
+	top:14px;
+	left:23px;
+}
+
+
+/*门店服务选项*/
+#shopdetail .shopService{
+	background:#fff;
+	width:100%;
+	height:53%;
+	margin-top:3%;
+}
+
+#shopdetail .title{
+	width:33%;
+	background:#D6D6DB;
+	display:inline-table;
+	height:100%;
+}
+
+#shopdetail .title ul{
+	height:100%;
+	text-align:center;
+	
+}
+
+#shopdetail .title ul li{
+	height:10%;
+	display:block;
+	background:#fff;
+	height:10%;
+    line-height:250%;
+	font-size:13px;
+	color:#F60;
+}
+
+#shopdetail .list{
+	width:65%;
+	display:inline-table;
+	height:100%;
+}
+
+#shopdetail .list ul{
+	list-style:none;
+	height:100%;
+}
+
+#shopdetail .list ul li{
+	display:block;
+	margin-left:10px;
+	height:10%;
+	font-size:13px;
+	border-bottom:1px solid #CCC;
+	line-height:250%;
+	position:relative;
+}
+
+#shopdetail .price{
+	color:#F60;
+	font-size:13px;
+	float:right;
+	margin-right:30px;
+}
+
+#shopdetail .enter{
+	position:absolute;
+	right:5px;
+	top:0px;
+}
+
+
+#shopdetail .enter img{
+	width:7px;
+}
+
+/*汽车服务标题标签*/
+/*#shopdetailT{
+	width:100%;
+	height:
+}
+
+#shopdetail .carNav{
+	width:33%;
+	background:#D6D6DB;
+	display:inline-block;
+}
+
+#shopdetail .carNav ul{
+	width:100%;
+	text-align:center;
+}
+
+#shopdetail .carNav ul li{ 
+	width:100%;
+	padding:10px 0;
+	font-size:14px;
+}*/
+
+/*选择汽车服务选项*/
+/*#serviceList{
+	width:65%;
+	display:inline-block;
+}
+
+#serviceList ul{
+	width:100%;
+	list-style:none;
+}
+
+#serviceList ul li{
+	width:100%;
+	padding:10px;
+	font-size:14px;
+	border-bottom:1px solid #d6d6db;
+	background:#fff;
+}
+
+#shopdetail .ctOn{
+	background:#fff;
+	color:#F60;
+}
+
+#shopdetail .ccOn{
+	display:block;
+}
+
+#shopdetail .ccOff{
+	display:none;
+}
+
+#shopdetail .cccOn{
+	color:#F60;
+}
+
+#orderBy ul li{
+	border-bottom:1px solid #d6d6db;
+	padding:10px;
+	font-size:14px;
+}
+
+#shopdetail .orderOn{
+	color:#f60;
+}*/
+@media screen and (min-width: 410px) {
+	#shopdetail .shopTitle h3{
+		font-size:18px;
+		}
+	#shopdetail .shopTitle p{
+		font-size:12px;
+	}
+	
+	#shopdetail .container{
+		padding:10px 30px;
+		height:100%;
+		height:87px;
+	}
+	
+	#shopdetail .title ul li{
+		font-size:14px;
+	}
+	
+	#shopdetail .list ul li{
+		font-size:14px;
+	}
+	
+	#shopdetail .price{
+		font-size:14px;
+	}
+}
+
+@media screen and (max-width: 350px) {
+	#shopdetail .shopTitle h3{
+		font-size:14px;
+		}
+	#shopdetail .shopTitle p{
+		font-size:10x;
+	}
+	
+	#shopdetail .container{
+		padding:8px 24px;
+	}
+	
+	#shopdetail .map{
+		position:absolute;
+		top:3px;
+		left:0;
+	}
+	
+	#shopdetail .phone{
+		position:absolute;
+		top:5px;
+		right:0;
+	}
+	
+	#shopdetail .place{
+		font-size:10px;
+		position:absolute;
+		top:8px;
+		left:23px;
+	}
+
+	
+	
+	#shopdetail .title ul li{
+		font-size:10px;
+	}
+	
+	#shopdetail .list ul li{
+		font-size:10px;
+	}
+	
+	#shopdetail .price{
+		font-size:10px;
+	}
+}
+	

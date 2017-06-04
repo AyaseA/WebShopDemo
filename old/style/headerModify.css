@@ -1,0 +1,73 @@
+@charset "utf-8";
+header >a.goBack {
+	background: url(../images/common/round_left.png) no-repeat;
+	background-size: contain;
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 9px 0 0 12px;
+}
+header >span.edit {
+	color: #fff;
+    text-align: center;
+    margin: auto;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    max-width: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+header >a.modify {
+	color: #fff;
+	float: right;
+	font-size: 12px;
+	padding: 6px;
+	margin: 8px;
+	position: relative;
+}
+header >a.modify:before {
+	content: '';
+	display: inline-block;
+	background: url(../images/common/edit.png) no-repeat;
+	background-size: contain;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 7px;
+    left: -8px
+}
+@media screen and (min-width: 410px) {
+	header >a.goBack {
+	    width: 30px;
+	    height: 30px;
+	    margin: 9px 0 0 12px;
+	}
+	header >span.edit {
+		height: 32px;
+		line-height: 32px;
+	}
+	header >a.modify {
+		margin: 10px;
+	}
+}
+@media screen and (max-width: 350px) {
+	header >a.goBack {
+	    width: 24px;
+	    height: 24px;
+	    margin: 9px 0 0 12px;
+	}
+	header >span.edit {
+		height: 26px;
+		line-height: 26px;
+	}
+	header >a.modify {
+		margin: 6px;
+	}
+}

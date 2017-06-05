@@ -2,22 +2,21 @@
 	该文件最外层只包含<div></div>
 	图片引用路径src="./images/图片名"
 	例：<img src="./images/图片名">
+
+	跟div里面的元素尽量使用class，不要定义id以免和其他页面冲突
  -->
 <div>
 	<p>index page</p>
-	<div></div>
-	<div>
-		<div></div>
-
-		<div></div>
-		<div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-		<div></div>
-	</div>
-	<div></div>
-	<div></div>
-	<div></div>
+	<div><a href="index/index.html?aa=1" data-tran="slideUp">index</a></div>
+	<div><a href="test/test.html?aa=1" data-tran="slideUp">test</a></div>
+	<!-- 模版id 文件夹名_文件名_自定义名 -->
+	<script id="index_index_list" type="text/html">
+		<h1>{{title}}</h1>
+		<ul>
+		    {{each list as value i}}
+		        <li>索引 {{i + 1}} ：{{value}}</li>
+		    {{/each}}
+		</ul>
+	</script>
+	<div class="list"></div>
 </div>

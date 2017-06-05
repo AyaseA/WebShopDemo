@@ -6,7 +6,7 @@
 	例：background-image: url(./images/图片名);
 
  */
-#index_index .reds{
-	color:red;
-
+#index_index {
+	background-color: red;
+	height: 500px;
 }

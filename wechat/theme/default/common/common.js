@@ -5,18 +5,22 @@
 
     // 对外暴露对象
     var $$ = $.extend({}, {
+        // 时间转10位时间戳
         get10Time: function(time) {
             var date = time ? new Date(time) : new Date();
             return Math.round(date.getTime() / 1000);
         },
+        // 10位时间戳转时间
         timeToStr: function(time, fmt) {
             return new Date(time * 1000).pattern(fmt || 'yyyy-MM-dd');
         },
+        // 设置cookie，expiredays传 为30天
         setCookie: function(name, value, expiredays) {
             var exdate = new Date();
             exdate.setDate(exdate.getDate() + (expiredays || 30));
             document.cookie = name + "=" + escape(value) + ";expires=" + exdate.toGMTString();
         },
+        // 获取cookie
         getCookie: function(name) {
             var arr,
                 reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
@@ -26,6 +30,7 @@
                 return null;
             }
         },
+        // 删除cookie
         delCookie: function(name) {
             var exp = new Date();
             exp.setTime(exp.getTime() - 1);
@@ -34,14 +39,7 @@
                 document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
             }
         },
-        loadJs: function(file, id) {
-            $('#' + id).remove();
-            $("<scri" + "pt>" + "</scr" + "ipt>").attr({ src: file, type: 'text/javascript', id: id }).appendTo('body');
-        },
-        loadCss: function(file, id) {
-            $('#' + id).remove();
-            $("<link />").attr({ href: file, type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
-        },
+        // 页面跳转 核心方法
         redirect: function(url, trans) {
             var load = function(url, newid, trans) {
                 var url_arr = url.split('?');
@@ -57,58 +55,68 @@
                     },
                     success: function(data) {
                         var result = $(data);
-                        console.log(result);
                         $("#div_list").children().css({
                             "display": "none"
                         });
-                        $("#div_list").append($(result).attr({ id: newid }));
+                        $("#div_list").append($(result).attr({ id: newid }).hide());
                         var filedata = dir + '_data.js';
                         var fileview = dir + '_view.js';
-                        $$.loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
-                        $$.loadJs(fileview, dir.replace(/\//g, "_") + "_view");
-                        $$.loadJs(filedata, dir.replace(/\//g, "_") + "_data");
+                        loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
+                        loadJs(fileview, dir.replace(/\//g, "_") + "_view");
+                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                         transition(trans, newid);
                     }
                 });
             };
+            // 页面已加载，加载数据
             var loadData = function() {
                 var url_arr = url.split('?');
                 var dir = url_arr[0].substring(0, url_arr[0].length - 5);
                 var filedata = dir + '_data.js';
-                $$.loadJs(filedata, dir.replace(/\//g, "_") + "_data");
+                loadJs(filedata, dir.replace(/\//g, "_") + "_data");
             };
+            // 页面切换动画
             var transition = function(trans, newid) {
                 $$.setCookie("__NEWDIV__", newid);
                 if (typeof(trans) === "undefined") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide(0);
-                    $("div#div_list>div#" + newid).show(0);
+                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide();
+                    $("div#div_list>div#" + newid).show();
                 }
-                if (trans == "slideup") {
-                    //TODO
+                if (trans == "slideUp") {
+                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).slideUp(500);
+                    $("div#div_list>div#" + newid).slideDown(500);
                 }
                 if (trans == "fadeIn") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).fadeOut(1000);
-                    $("div#div_list>div#" + newid).fadeIn(1000);
+                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide(0);
+                    $("div#div_list>div#" + newid).fadeIn(500);
                 }
                 if (typeof(trans) === "function") {
                     trans($$.getCookie("__OLDDIV__"), newid);
                 }
             };
+            // 将当前页面存储到cookie
             $$.setCookie("__URL__", url);
+            // 存储页面加载前显示的div id
             $$.setCookie("__OLDDIV__", $("div#div_list>div:visible").attr("id"));
             var url_arr = url.split('?');
             var dir = url_arr[0].substring(0, url_arr[0].length - 5);
             var newid = dir.replace(/\//g, "_");
+            // 判断要显示的页面是否存在
             if ($("div#div_list>div#" + newid).length == 0) {
+                // 不存在，加载页面，css, js 
                 load(url, newid, trans);
             } else {
+                // 存在，直加载数据*_data.js
                 loadData();
+                // 显示
                 transition(trans, newid);
             }
         },
+        // 获取当前显示的div id
         getNowDiv: function() {
             return $$.getCookie("__NEWDIV__");
         },
+        // 查询当前url中的参数的值
         getQueryString: function(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
             var q = $$.getUrl().split("?");
@@ -138,6 +146,7 @@
             }
             return s;
         },
+        // 加载js
         loadJavascript: function(url, done, fail) {
             $.getScript(url)
                 .done(done)
@@ -153,10 +162,11 @@
             $("#" + formId + " input[type='hidden'][notNull!='notNull']").val("");
             $$.clearFormValid(formId);
         },
-        /* 清除表单的校验样式 */
+        // 清除表单的校验样式
         clearFormValid: function(formId) {
             //TODO
         },
+        // ajax get
         get: function(url, succfunc, errfunc) {
             $.ajax({
                 url: url,
@@ -166,6 +176,7 @@
                 error: errfunc
             });
         },
+        // ajax post
         post: function(url, data, succfunc, errfunc) {
             // 获取Token
             var token = $$.getToken();
@@ -187,17 +198,24 @@
             if (!token) {
                 // 没有登录跳转到登录页面
                 // TODO
-                return false;
+                //return false;
             }
             return token;
         },
         // 获取用户信息（默认车辆、默认收货地址。。。。）
         getUserInfo: function() {
-            // TODO
+            var token = $$.getToken();
+            if (!token) {
+                return false;
+            }
+            var uInfo = Base64.decode(token);
+            uInfo = uInfo.substring(0, uInfo.length - 1);
+            var uObj = JSON.parse(uInfo);
+            return uObj;
         },
         // 获取用户id
         getUserId: function() {
-            return $$.getUserInfo().ID;
+            return $$.getUserInfo().UserID;
         },
         // 获取用户手机号
         getUserMobile: function() {
@@ -209,12 +227,13 @@
             //getToken();
         },
         // 在当前请求的url后拼接返回的参数
-        // 例：$$.redirect('test/test.html?a=1' + $$.goBackUrl());
+        // 例：$$.redirect('test/test.html?a=1&' + $$.goBackUrl());
+        // 例：$$.redirect('test/test.html?' + $$.goBackUrl());
         goBackUrl: function(url) {
             if (!url) {
                 url = $$.getUrl();
             }
-            return escape('&goBack=' + url);
+            return 'goBack=' + escape(url);
         },
         // 设置Token到cookies
         addToken: function(token) {
@@ -224,10 +243,25 @@
 
         }
     });
+    // 加载js
+    function loadJs(file, id) {
+        $('#' + id).remove();
+        $("<scri" + "pt>" + "</scr" + "ipt>").attr({ src: file, type: 'text/javascript', id: id }).appendTo('body');
+    }
+    // 加载css
+    function loadCss(file, id) {
+        $('#' + id).remove();
+        $("<link />").attr({ href: file, type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
+    }
     // 处理刷新后显示当前页面
     if ($$.getUrl()) {
         $$.redirect($$.getUrl());
     }
+    // 使a标签默认的调转事件转为$$.redirect
+    $('#div_list').on('click', 'a', function(e) {
+        e.preventDefault();
+        $$.redirect($(this).attr('href'), $(this).attr('data-tran'));
+    });
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

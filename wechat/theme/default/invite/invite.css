@@ -1,12 +1,91 @@
-/* 
-    每条样式前增加 #文件夹名_文件名 以区分模块
-    例：#test_test .reds
-
-	图片引用路径url(./images/图片名)
-	例：background-image: url(./images/图片名);
-
- */
-#test_test{
-	background-color: gray;
-	height: 500px;
+#invite_invite {
+	position: relative;
+	overflow: hidden;
+    width: 100%;
+}
+#invite_invite >div.header {
+	background-color: #EA5514;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 44px;
+}
+@media screen and (min-width: 410px) {
+	#invite_invite >div.header {
+		height: 48px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#invite_invite >div.header {
+		height: 40px;
+	}
+}
+#invite_invite >div.header >a.goBack {
+	background: url(../images/common/round_left.png) no-repeat;
+	background-size: contain;
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 9px 0 0 12px;
+}
+#invite_invite >div.header >span.title {
+	color: #fff;
+    text-align: center;
+    margin: auto;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    width: 60%;
+    font-size: 16px;
+}
+@media screen and (min-width: 410px) {
+	#invite_invite >div.header >a.goBack {
+	    width: 30px;
+	    height: 30px;
+	    margin: 9px 0 0 12px;
+	}
+	#invite_invite >div.header >span.title {
+		height: 32px;
+		line-height: 32px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#invite_invite >div.header >a.goBack {
+	    width: 24px;
+	    height: 24px;
+	    margin: 9px 0 0 12px;
+	}
+	#invite_invite >div.header >span.title {
+		height: 26px;
+		line-height: 26px;
+	}
+}
+#invite_invite div.main {
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+    width: 100%;
+}
+#invite_invite div.main >img {
+	width: 100%;
+}
+#invite_invite div.main >div {
+	margin-top: -10px;
+}
+#invite_invite div.main >div div.row {
+    padding: 0 5% 25px;
+}
+#invite_invite div.main div.row >div {
+    text-align: center;
+    display: inline-block;
+    width: 32%;
+}
+#invite_invite div.main div.row img {
+	max-width: 50%;
 }

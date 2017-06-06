@@ -1,22 +1,54 @@
 $(function() {
-	var $page = $('#test_test'),
-    pageStr = 'test_test';
-	/*
-		选择器要加上 #文件夹名_文件名
-		例：$('#文件夹名_文件名 button.button')
-
-		所有事件绑定到 $('#文件夹名_文件名')下
-		例子如下
-	*/
-	$page.on('click', 'button.button', function() {
-		layer.open({
-		    type: 1, //Page层类型
-		    area: ['80%', '300px'],
-		    title: '你好，layer。',
-		    shade: 0.6, //遮罩透明度
-		    maxmin: true, //允许全屏最小化
-		    anim: 1, //0-6的动画形式，-1不开启
-		    content: '<div style="padding:50px;">这是一个非常普通的页面层，传入了自定义的html</div>'
-		});
+	var $page = $('#invite_invite'),
+    pageStr = 'invite_invite';
+	
+	$page.find('div.main').css({
+		'top': $page.find('div.header').height()
 	});
+
+	$page.on('click', 'div.entry', function() {
+    	inviteEntry($(this).attr('data-type'));
+    });
+	// 分享入口
+	function inviteEntry(type) {
+		switch(type) {
+			case 'wechat': {
+				
+			} break;
+			case 'friendscircle': {
+				
+			} break;
+			case 'qrcode': {
+				showModal();
+				createQRCode('http://192.168.1.176:8080/#headerTitle/titleInvite#invite/1/0/');
+			} break;
+			case 'qq': {
+				
+			} break;
+			case 'qqzone': {
+
+			} break;
+    	}
+	}
+	function showModal() {
+		layer.open({
+	        type: 1,
+	        title: false, //不显示标题栏
+	        closeBtn: true,
+	        area: ['210px', '210px'],
+	        shade: 0.5,
+	        moveType: 1, //拖拽模式，0或者1
+	        content: '<div id="invite_invite_qrcode" style="padding: 10px 0 0 10px;"></div>'
+	    });
+	}
+	// 根据url创建二维码
+	function createQRCode(url) {
+		url = $.trim(url);
+		if (url) {
+			new QRCode($('#invite_invite_qrcode')[0], {
+				width : 190,
+				height : 190
+			}).makeCode(url);
+		}
+	}
 });

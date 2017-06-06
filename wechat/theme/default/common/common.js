@@ -6,7 +6,7 @@
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
-        serverAddr: 'http://192.168.1.102:8000/',
+        serverAddr: 'http://192.168.1.110:8000/',
 
         // 时间转10位时间戳
         get10Time: function(time) {
@@ -175,8 +175,16 @@
                 url: url,
                 type: 'GET',
                 dataType: 'json',
-                success: succfunc,
-                error: errfunc
+                success: function(data) {
+                    if (succfunc) {
+                        succfunc(data);
+                    }
+                },
+                error: function(error) {
+                    if (errfunc) {
+                        errfunc(error);
+                    }
+                }
             });
         },
         // ajax post
@@ -190,8 +198,16 @@
                 }),
                 type: 'POST',
                 dataType: 'json',
-                success: succfunc,
-                error: errfunc
+                success: function(data) {
+                    if (succfunc) {
+                        succfunc(data);
+                    }
+                },
+                error: function(error) {
+                    if (errfunc) {
+                        errfunc(error);
+                    }
+                }
             });
         },
         // 获取token

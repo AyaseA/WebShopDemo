@@ -321,9 +321,6 @@
 #index_index >div.footer nav >li:nth-child(1):before {
 	background-image: url(../images/index/homeOff.png);
 }
-#index_index >div.footer nav >li:nth-child(1).active:before {
-	background-image: url(../images/index/homeOn.png);
-}
 #index_index >div.footer nav >li:nth-child(2):before {
 	background-image: url(../images/index/luckyDraw.png);
 	background-position: center;
@@ -333,7 +330,4 @@
 }
 #index_index >div.footer nav >li:nth-child(3):before {
 	background-image: url(../images/index/centerOff.png);
-}
-#index_index >div.footer nav >li:nth-child(3).active:before {
-	background-image: url(../images/index/centerOn.png);
 }

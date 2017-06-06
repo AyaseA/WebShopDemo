@@ -1,0 +1,12 @@
+/* 
+    每条样式前增加 #文件夹名_文件名 以区分模块
+    例：#test_test .reds
+
+	图片引用路径url(./images/图片名)
+	例：background-image: url(./images/图片名);
+
+ */
+#test_test{
+	background-color: gray;
+	height: 500px;
+}

@@ -282,7 +282,10 @@
     // 使a标签默认的调转事件转为$$.redirect
     $('#div_list').on('click', 'a', function(e) {
         e.preventDefault();
-        $$.redirect($(this).attr('href'), $(this).attr('data-tran'));
+        var url = $(this).attr('href');
+        if (url.indexOf('.html') != -1) {
+            $$.redirect(url, $(this).attr('data-tran'));
+        }
     });
     
     win.$$ = $$;

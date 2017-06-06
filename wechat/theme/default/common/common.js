@@ -275,14 +275,15 @@
     // 处理刷新后显示当前页面
     if ($$.getUrl()) {
         $$.redirect($$.getUrl());
+    } else {
+        // 默认加载首页
+        $$.redirect('index/index.html');
     }
     // 使a标签默认的调转事件转为$$.redirect
     $('#div_list').on('click', 'a', function(e) {
         e.preventDefault();
         $$.redirect($(this).attr('href'), $(this).attr('data-tran'));
     });
-    // 默认加载首页
-    $$.redirect('index/index.html');
     
     win.$$ = $$;
 }(window, jQuery));

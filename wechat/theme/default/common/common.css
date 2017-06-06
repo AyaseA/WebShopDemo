@@ -68,3 +68,6 @@ a:hover {
 body >div.common-none {
     display: none;
 }
+#div_list {
+    height: 100%;
+}

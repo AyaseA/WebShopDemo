@@ -1,15 +1,36 @@
-<!-- 
-	该文件最外层只包含<div></div>
-	图片引用路径src="./images/图片名"
-	例：<img src="./images/图片名">
-
-	跟div里面的元素尽量使用class，不要定义id以免和其他页面冲突
- -->
 <div>
-	<p>test page</p>
-	<div><a href="index/index.html?aa=1" data-tran="fadeIn">index</a></div>
-	<div><a href="test/test.html?aa=1" data-tran="fadeIn">test</a></div>
-	<div>
-		<button class="button">layer</button>
+	<div class="header">
+		<a href="javascript:void(0)" class="goBack"></a>
+		<span class="title">邀请有礼</span>
+	</div>
+	<div class="stance"></div>
+	<div class="main">
+		<div class="info">
+	        <i></i>
+	        <span>添加爱车信息，匹配机油保养方案</span>
+	        <i></i>
+	    </div>
+	    <img src="./images/activity/content1.png">
+	    <div class="content">
+	        <img src="./images/activity/content2.png">
+	        <script id="activity_activity_products" type="text/html">
+	        {{each list as val i}}
+	        	<div class="item" data-id="{{val.ID}}">
+					<img src="{{serverAddr}}Img/{{val.Img}}">
+	                <div>
+	                    <h3>壳牌正品黄壳喜力</h3>
+	                    <h6>HX5 矿物汽车润滑机油</h6>
+	                    <ul>
+	                        <li>动力清洁 抑制有害油泥</li>
+	                        <li>更好低温保护 启动更顺畅</li>
+	                    </ul>
+	                    <p>抢购价：<span>￥{{val.Price}}</span></p>
+	                    <a href="fillOrder/fillOrder.html?pid={{val.ID}}">立即购买</a>
+	                </div>
+				</div>
+			{{/each}}
+	        </script>
+	        <div class="products"></div>
+	    </div>
 	</div>
 </div>

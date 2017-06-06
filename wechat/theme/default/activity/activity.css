@@ -1,12 +1,221 @@
-/* 
-    每条样式前增加 #文件夹名_文件名 以区分模块
-    例：#test_test .reds
-
-	图片引用路径url(./images/图片名)
-	例：background-image: url(./images/图片名);
-
- */
-#test_test{
-	background-color: gray;
-	height: 500px;
+#activity_activity {
+	overflow: hidden;
+    width: 100%;
+}
+#activity_activity >div.header {
+	background-color: #EA5514;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 44px;
+}
+@media screen and (min-width: 410px) {
+	#activity_activity >div.header {
+		height: 48px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#activity_activity >div.header {
+		height: 40px;
+	}
+}
+#activity_activity >div.header >a.goBack {
+	background: url(../images/common/round_left.png) no-repeat;
+	background-size: contain;
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 9px 0 0 12px;
+}
+#activity_activity >div.header >span.title {
+	color: #fff;
+    text-align: center;
+    margin: auto;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    width: 60%;
+    font-size: 16px;
+}
+@media screen and (min-width: 410px) {
+	#activity_activity >div.header >a.goBack {
+	    width: 30px;
+	    height: 30px;
+	    margin: 9px 0 0 12px;
+	}
+	#activity_activity >div.header >span.title {
+		height: 32px;
+		line-height: 32px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#activity_activity >div.header >a.goBack {
+	    width: 24px;
+	    height: 24px;
+	    margin: 9px 0 0 12px;
+	}
+	#activity_activity >div.header >span.title {
+		height: 26px;
+		line-height: 26px;
+	}
+}
+#activity_activity >div.main {
+	overflow-x: hidden;
+	overflow-y: auto;
+    width: 100%;
+}
+#activity_activity >div.main >div.info {
+	height: 34px;
+	background-color: #FFEED0;
+	border: 1px solid #D6D6DB;
+	margin-top: -1px;
+}
+#activity_activity >div.main >div.info i {
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-top: 5px;
+}
+#activity_activity >div.main >div.info i:first-child {
+	background-image: url(../images/common/info.png);
+	margin-left: 14px;
+}
+#activity_activity >div.main >div.info i:last-child {
+	background-image: url(../images/common/right.png);
+	float: right;
+	width: 16px;
+	height: 16px;
+	margin-top: 9px;
+	margin-right: 10px;
+}
+#activity_activity >div.main >div.info span {
+	color: #7F8389;
+	position: relative;
+    font-size: 14px;
+	top: -6px;
+    left: 10px;
+}
+@media screen and (max-width: 350px) {
+	#activity_activity >div.main >div.info i:first-child {
+		margin-left: 12px;
+	}
+}
+#activity_activity >div.main >img {
+	width: 100%;
+	margin-top: 10px;
+}
+#activity_activity >div.main >div.content {
+	background: #E00020; /* 一些不支持背景渐变的浏览器 */
+    background: -moz-linear-gradient(top, #E00020, #EA5514);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#E00020), to(#EA5514));
+    background: -o-linear-gradient(top, #E00020, #EA5514);
+    text-align: center;
+    padding: 10px 0;
+    margin-top: -4px;
+}
+#activity_activity >div.main >div.content >img {
+	max-width: 90%;
+}
+#activity_activity >div.main div.item:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#activity_activity >div.main div.item {
+    border-radius: 6px;
+    max-width: 94%;
+    min-width: 340px;
+    max-height: 160px;
+    background-color: #fff;
+    margin: 10px auto;
+    position: relative;
+}
+#activity_activity >div.main div.item img {
+	max-height: 130px;
+	float: left;
+	margin-top: 10px;
+    margin-left: 6px;
+}
+#activity_activity >div.main div.item >div {
+	float: left;
+	text-align: left;
+}
+#activity_activity >div.main div.item h3 {
+    margin: 10px 0 0 0;
+    color: #EA5514;
+}
+#activity_activity >div.main div.item h6 {
+	color: #EA5514;
+    margin: 3px 0 0 0;
+    font-weight: normal;
+}
+#activity_activity >div.main div.item ul {
+	font-size: 14px;
+	padding: 0;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+#activity_activity >div.main div.item li:before {
+	content: '·';
+	padding-right: 5px;
+}
+#activity_activity >div.main div.item p {
+	margin: 10px 0 15px 0;
+    font-size: 14px;
+}
+#activity_activity >div.main div.item span {
+	font-size: 16px;
+	color: #EA5514;
+	font-weight: bold;
+}
+#activity_activity >div.main div.item >div a {
+    background-color: #EA5514;
+    border-radius: 100px;
+    color: #fff;
+    display: block;
+    width: 20%;
+    height: 26px;
+    line-height: 25px;
+    font-size: 12px;
+    position: absolute;
+    right: 4.5%;
+    bottom: 12px;
+    font-size: 12px;
+    text-align: center;
+}
+@media screen and (min-width: 410px) {
+	#activity_activity >div.main div.item img {
+	    margin-top: 10px;
+	    margin-left: 10px;
+        max-height: 130px;
+	}
+	#activity_activity >div.main div.item a {
+	    font-size: 14px;
+	    width: 22%;
+	    max-width: 120px;
+	    height: 28px;
+	    line-height: 28px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#activity_activity >div.main div.item {
+		min-width: 300px;
+	}
+	#activity_activity >div.main div.item img {
+	    max-width: 100px;
+	    margin-top: 25px;
+	}
+	#activity_activity >div.main div.item a {
+		height: 20px;
+		line-height: 20px;
+		bottom: 9%;
+	}
 }

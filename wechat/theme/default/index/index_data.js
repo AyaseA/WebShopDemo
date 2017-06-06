@@ -1,6 +1,6 @@
 $(function(){
     var $page = $('#index_index'),
-    pageStr = 'index_index';
+        pageStr = 'index_index';
 
     // banner
     getBanners(function() {
@@ -25,9 +25,8 @@ $(function(){
             $$.serverAddr + 'Product/Banner/QueryBannerList?BannerID=1',
             function(res) {
                 if (res.Status == 0 && res.Data && res.Data.Rows) {
-                    var d = res.Data.Rows;
                     $banner.html(template(pageStr + '_banner_list', {
-                        list: d,
+                        list: res.Data.Rows,
                         serverAddr: $$.serverAddr
                     }));
 

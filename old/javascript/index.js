@@ -14,7 +14,7 @@
                 "titleModify": '奥迪 2016款 6.0L Coupe'
 			},
 			request: {
-				serverAddr: 'http://192.168.1.102:8000/'
+				serverAddr: 'http://192.168.1.110:8000/'
 			},
 		    index: {
 				// 弹出城市列表

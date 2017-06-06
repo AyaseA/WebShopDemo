@@ -1,5 +1,4 @@
 #index_index {
-	position: relative;
 	overflow: hidden;
     width: 100%;
 }
@@ -102,7 +101,6 @@
 }
 /* banner start */
 #index_index >div.main {
-	position: absolute;
 	overflow-x: hidden;
 	overflow-y: auto;
     width: 100%;

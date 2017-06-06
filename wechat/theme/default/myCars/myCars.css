@@ -1,12 +1,154 @@
-/* 
-    每条样式前增加 #文件夹名_文件名 以区分模块
-    例：#test_test .reds
-
-	图片引用路径url(./images/图片名)
-	例：background-image: url(./images/图片名);
-
- */
-#test_test{
-	background-color: gray;
-	height: 500px;
+#myCars_myCars {
+	overflow: hidden;
+    width: 100%;
+}
+#myCars_myCars >div.header >a.goBack {
+	background: url(../images/common/round_left.png) no-repeat;
+	background-size: contain;
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 9px 0 0 12px;
+}
+#myCars_myCars >div.header >span.title {
+	color: #fff;
+    text-align: center;
+    margin: auto;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    width: 60%;
+}
+#myCars_myCars >div.header >a.addNew {
+	color: #fff;
+	float: right;
+	font-size: 12px;
+	padding: 6px;
+	margin: 8px;
+}
+@media screen and (min-width: 410px) {
+	#myCars_myCars >div.header >a.goBack {
+	    width: 30px;
+	    height: 30px;
+	    margin: 9px 0 0 12px;
+	}
+	#myCars_myCars >div.header >span.title {
+		height: 32px;
+		line-height: 32px;
+	}
+	#myCars_myCars >div.header >a.addNew {
+		margin: 10px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#myCars_myCars >div.header >a.goBack {
+	    width: 24px;
+	    height: 24px;
+	    margin: 9px 0 0 12px;
+	}
+	#myCars_myCars >div.header >span.title {
+		height: 26px;
+		line-height: 26px;
+	}
+	#myCars_myCars >div.header >a.addNew {
+		margin: 6px;
+	}
+}
+#myCars_myCars >div.main {
+    padding: 15px 15px 0px;
+}
+#myCars_myCars >div.main >div.car {
+	border: 1px solid #fff;
+	background-color: #fff;
+	position: relative;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+#myCars_myCars >div.main >div.car:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#myCars_myCars >div.main >div.car.default {
+	border-color: #EA5514;
+}
+#myCars_myCars >div.main >div.car >i {
+    position: absolute;
+    font-style: normal;
+    left: 0;
+    bottom: 0;
+    font-size: 14px;
+    line-height: 15px;
+    color: #A9A9A9;
+    display: block;
+    height: 36px;
+    width: 70px;
+    line-height: 36px;
+    text-indent: 10px;
+}
+#myCars_myCars >div.main >div.car >span {
+	position: absolute;
+	right: 12px;
+	bottom: 0;
+}
+#myCars_myCars >div.main >div.car.default:before {
+	content: "";
+	display: inline-block;
+	background: url(../images/common/default.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	height: 36px;
+	width: 36px;
+    left: 8px;
+}
+#myCars_myCars >div.main >div.car.default >i {
+	display: none;
+}
+#myCars_myCars >div.main >div.car >span a {
+	display: inline-block;
+	font-size: 14px;
+	color: #A9A9A9;
+    height: 36px;
+    width: 50px;
+    line-height: 36px;
+}
+#myCars_myCars >div.main >div.car >span a:before {
+	content: "";
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 16px;
+	height: 14px;
+    position: relative;
+    top: 1px;
+}
+#myCars_myCars >div.main >div.car >span a.modify:before {
+	background-image: url(../images/common/edit_1.png);
+}
+#myCars_myCars >div.main >div.car >span a.delete:before {
+	background-image: url(../images/common/delete.png);
+}
+#myCars_myCars >div.main >div.car >div {
+	width: 100%;
+	text-align: center;
+	border-bottom: 1px solid #eaeaea;
+	padding-bottom: 12px;
+    margin-bottom: 36px;
+}
+#myCars_myCars >div.main >div.car img {
+	width: 70px;
+}
+#myCars_myCars >div.main >div.car h4 {
+	margin: 0;
+}
+#myCars_myCars >div.main >div.car p {
+	margin: 8px 0;
+	padding: 0 5px;
+	color: #A9A9A9;
+	font-size: 14px;
 }

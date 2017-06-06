@@ -16,7 +16,7 @@ $(function(){
     };
 
     // 主页模块快捷入口按钮点击事件（洗车、做保养、邀请有礼）
-    $page.find('div.entrance >div').on('click', function() {
+    $page.on('click', 'div.entrance >div', function() {
         var type = $(this).attr('data-type');
         switch(type) {
             case 'carWash': {
@@ -25,7 +25,7 @@ $(function(){
             } break;
             case 'maintain': {
                 // 车辆信息
-                $$.redirect();
+                $$.redirect('myCars/myCars.html');
             } break;
             case 'friendAdd': {
                 // 邀请有礼
@@ -33,16 +33,34 @@ $(function(){
             } break;
         }
     });
+    // footer 事件
+    $page.on('click', 'div.footer li', function() {
+        var type = $(this).attr('data-type');
+        switch(type) {
+            case 'index': {
+                // 首页
+                $$.redirect('index/index.html');
+            } break;
+            case 'luckyDraw': {
+                // 幸运抽奖
+                $$.redirect();
+            } break;
+            case 'center': {
+                // 个人中心
+                $$.redirect();
+            } break;
+        }
+    });
     // 活动点击事件
-    $page.find('div.activity').on('click', function() {
-        
+    $page.on('click', 'div.activity', function() {
+        $$.redirect('activity/activity.html?' + $$.goBackUrl());
     });
 
     // 重设窗口高度
     function resetWindowSize() {
         $page.find('>div.main').css({
-            'height': bodyHeight - headerHeight - footerHeight + 'px',
-            'top': headerHeight + 'px'
+            'height': bodyHeight - headerHeight - footerHeight + 'px'
         });
+        $page.find('>div.stance').height(headerHeight);
     }
 });

@@ -281,6 +281,9 @@
         e.preventDefault();
         $$.redirect($(this).attr('href'), $(this).attr('data-tran'));
     });
+    // 默认加载首页
+    $$.redirect('index/index.html');
+    
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

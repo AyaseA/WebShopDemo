@@ -7,6 +7,333 @@
 
  */
 #index_index {
-	background-color: red;
-	height: 500px;
+	position: relative;
+	overflow: hidden;
+    width: 100%;
+}
+#index_index >div.header {
+	background-color: #EA5514;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 44px;
+}
+@media screen and (min-width: 410px) {
+	#index_index >div.header {
+		height: 48px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#index_index >div.header {
+		height: 40px;
+	}
+}
+#index_index >div.header >a.location {
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    height: 100%;
+    line-height: 44px;
+    margin-left: 4px;
+    width: 22%;
+}
+#index_index >div.header >a.location span {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 86%;
+    display: inline-block;
+    padding-left: 4px;
+}
+#index_index >div.header >a.location >span:before {
+	content: '';
+	background-image: url(../images/index/location.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+    display: inline-block;
+	height: 19px;
+    width: 14px;
+    position: relative;
+    top: 5px;
+    left: -2px;
+}
+#index_index >div.header >a.search {
+    background: url(../images/index/search.png) no-repeat;
+    background-size: contain;
+    background-position-y: center;
+    display: inline-block;
+    position: absolute;
+    margin: 0 auto 0;
+    left: 10px;
+    right: 0;
+    width: 208px;
+    height: 100%;
+    top: 0;
+}
+#index_index >div.header >a.map {
+    background-image: url(../images/index/map.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    display: inline-block;
+    height: 100%;
+    width: 40px;
+    position: absolute;
+    top: 0;
+    right: 1%;
+}
+@media screen and (min-width: 410px) {
+	#index_index >div.header >a.location {
+	    width: 25%;
+	    line-height: 48px;
+	}
+	#index_index >div.header >a.search {
+	    width: 234px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#index_index >div.header >a.location {
+		line-height: 40px;
+	    width: 20%;
+	    font-size: 12px;
+	}
+	#index_index >div.header >a.location >span:before {
+	    width: 12px;
+	    height: 16px;
+	    top: 3px;
+	}
+	#index_index >div.header >a.search {
+		width: 175px;
+	}
+}
+/* banner start */
+#index_index >div.main {
+	position: absolute;
+	overflow-x: hidden;
+	overflow-y: auto;
+    width: 100%;
+}
+#index_index >div.main .banner {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+#index_index >div.main .banner .hd {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    bottom: 5px;
+    text-align: center;
+}
+#index_index >div.main .banner .hd ul {
+    height: 7px;
+    padding: 3px 5px;
+    font-size: 0;
+    vertical-align: top;
+}
+#index_index >div.main .banner .hd ul li {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background: rgba(255,255,255,.6);
+    margin: 0 5px;
+    vertical-align: top;
+    overflow: hidden;
+}
+#index_index >div.main .banner .hd ul .on {
+    background: #fff;
+}
+#index_index >div.main .banner .bd {
+    position: relative;
+    z-index: 0;
+}
+#index_index >div.main .banner .bd ul li {
+    float: left;
+    list-style: none;
+}
+#index_index >div.main .banner .bd li img {
+    width: 100%;
+    height: 32vw;/* 有待实际验证 */
+    background: url(../images/index/loading.gif) no-repeat;
+    background-size: contain; 
+}
+#index_index >div.main .banner .bd li a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+/* banner end */
+/* entrance start */
+#index_index >div.main .entrance {
+    width: 100%;
+    margin-top: 5px;
+    background-color: #fff;
+    text-align: center;
+}
+#index_index >div.main .entrance >div {
+    display: inline-block;
+    width: 31%;
+    margin: 8px 0 6px;
+}
+#index_index >div.main .entrance >div img {
+    max-width: 50%;
+}
+/* entrance end */
+/* activity start */
+#index_index >div.main .activity {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    border-top: 1px solid #E1E1E5;
+}
+#index_index >div.main .activity img {
+    margin: 10px 0 0;
+    max-width: 90%;
+}
+/* activity end */
+/* products start */
+#index_index >div.main .products {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    padding-bottom: 5px;
+}
+#index_index >div.main .products div.row {
+    text-align: left;
+    padding: 5px 0 8px 1.6%;
+}
+#index_index >div.main .products div.row >div {
+    text-align: center;
+    display: inline-block;
+    width: 32%;
+}
+#index_index >div.main .products div.item {
+    width: 94%;
+    display: inline-block;
+    border: 1px solid #E0E0E4;
+    margin: 0 -1px;
+    padding: 8px 0 8px;
+}
+#index_index >div.main .products div.item img {
+    max-width: 80%;
+}
+#index_index >div.main .products div.item p {
+    margin: 0 0 5px;
+    font-size: 14px;
+    padding: 0 5px;
+}
+#index_index >div.main .products div.item a {
+    background-color: #EA5514;
+    border-radius: 100px;
+    color: #fff;
+    display: inline-block;
+    margin-top: 2px;
+    width: 70%;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+}
+@media screen and (max-width: 350px) {
+    #index_index >div.main .products div.row {
+        padding-left: 1.3%;
+    }
+    #index_index >div.main .products div.item p {
+        font-size: 12px;
+    }
+    #index_index >div.main .products div.item a {
+        width: 78%;
+        height: 24px;
+        line-height: 24px;
+    }
+}
+@media screen and (min-width: 410px) {
+    #index_index >div.main .products div.row {
+        padding-left: 1.7%;
+    }
+}
+/* products end */
+
+#index_index >div.footer {
+	background-color: #FFFFFF;
+	border-top: 1px solid #D5D5D8;
+	position: fixed;
+	bottom: 0;
+	z-index: 10;
+	width: 100%;
+	height: 56px;
+}
+#index_index >div.footer nav {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+#index_index >div.footer nav >li {
+	position: relative;
+	display: inline-block;
+	color: #81858B;
+	height: 100%;
+	width: 30%;
+}
+#index_index >div.footer nav >li:before {
+    content: '';
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: 5px;
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    left: 0;
+}
+#index_index >div.footer span {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	bottom: 8%;
+	font-size: 14px;
+}
+@media screen and (min-width: 410px) {
+	#index_index >div.footer {
+		height: 60px;
+		bottom: -1px;
+	}
+	#index_index >div.footer span {
+		bottom: 6%;
+	}
+}
+@media screen and (max-width: 350px) {
+	#index_index >div.footer {
+		height: 44px;
+	}
+	#index_index >div.footer span {
+		font-size: 12px;
+		bottom: 6%;
+	}
+}
+#index_index >div.footer nav >li.active {
+	color: #EA5514;
+}
+#index_index >div.footer nav >li:nth-child(1):before {
+	background-image: url(../images/index/homeOff.png);
+}
+#index_index >div.footer nav >li:nth-child(1).active:before {
+	background-image: url(../images/index/homeOn.png);
+}
+#index_index >div.footer nav >li:nth-child(2):before {
+	background-image: url(../images/index/luckyDraw.png);
+	background-position: center;
+    position: absolute;
+    height: 110%;
+    top: -10%;
+}
+#index_index >div.footer nav >li:nth-child(3):before {
+	background-image: url(../images/index/centerOff.png);
+}
+#index_index >div.footer nav >li:nth-child(3).active:before {
+	background-image: url(../images/index/centerOn.png);
 }

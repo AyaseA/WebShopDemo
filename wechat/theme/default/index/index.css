@@ -1,6 +1,8 @@
 #index_index {
 	overflow: hidden;
     width: 100%;
+    height: 100%;
+    background-color: #EFEFF4;
 }
 #index_index >div.header {
 	background-color: #EA5514;
@@ -63,18 +65,6 @@
     height: 100%;
     top: 0;
 }
-#index_index >div.header >a.map {
-    background-image: url(../images/common/map.png);
-    background-repeat: no-repeat;
-    background-size: 50%;
-    background-position: center;
-    display: inline-block;
-    height: 100%;
-    width: 40px;
-    position: absolute;
-    top: 0;
-    right: 1%;
-}
 @media screen and (min-width: 410px) {
 	#index_index >div.header >a.location {
 	    width: 25%;
@@ -105,26 +95,26 @@
 	overflow-y: auto;
     width: 100%;
 }
-#index_index >div.main .banner {
+#index_index >div.main >div.content .banner {
     width: 100%;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
 }
-#index_index >div.main .banner .hd {
+#index_index >div.main >div.content .banner .hd {
     width: 100%;
     position: absolute;
     z-index: 1;
     bottom: 5px;
     text-align: center;
 }
-#index_index >div.main .banner .hd ul {
+#index_index >div.main >div.content .banner .hd ul {
     height: 7px;
     padding: 3px 5px;
     font-size: 0;
     vertical-align: top;
 }
-#index_index >div.main .banner .hd ul li {
+#index_index >div.main >div.content .banner .hd ul li {
     display: inline-block;
     width: 7px;
     height: 7px;
@@ -136,87 +126,87 @@
     vertical-align: top;
     overflow: hidden;
 }
-#index_index >div.main .banner .hd ul .on {
+#index_index >div.main >div.content .banner .hd ul .on {
     background: #fff;
 }
-#index_index >div.main .banner .bd {
+#index_index >div.main >div.content .banner .bd {
     position: relative;
     z-index: 0;
 }
-#index_index >div.main .banner .bd ul li {
+#index_index >div.main >div.content .banner .bd ul li {
     float: left;
     list-style: none;
 }
-#index_index >div.main .banner .bd li img {
+#index_index >div.main >div.content .banner .bd li img {
     width: 100%;
     height: 32vw;/* 有待实际验证 */
     background: url(../images/common/loading.gif) no-repeat;
     background-size: contain; 
 }
-#index_index >div.main .banner .bd li a {
+#index_index >div.main >div.content .banner .bd li a {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 /* banner end */
 /* entrance start */
-#index_index >div.main .entrance {
+#index_index >div.main >div.content .entrance {
     width: 100%;
     margin-top: 5px;
     background-color: #fff;
     text-align: center;
 }
-#index_index >div.main .entrance >div {
+#index_index >div.main >div.content .entrance >div {
     display: inline-block;
     width: 31%;
     margin: 8px 0 6px;
 }
-#index_index >div.main .entrance >div img {
+#index_index >div.main >div.content .entrance >div img {
     max-width: 50%;
 }
 /* entrance end */
 /* activity start */
-#index_index >div.main .activity {
+#index_index >div.main >div.content .activity {
     width: 100%;
     background-color: #fff;
     text-align: center;
     border-top: 1px solid #E1E1E5;
 }
-#index_index >div.main .activity img {
+#index_index >div.main >div.content .activity img {
     margin: 10px 0 0;
     max-width: 90%;
 }
 /* activity end */
 /* products start */
-#index_index >div.main .products {
+#index_index >div.main >div.content .products {
     width: 100%;
     background-color: #fff;
     text-align: center;
     padding-bottom: 5px;
 }
-#index_index >div.main .products div.row {
+#index_index >div.main >div.content .products div.row {
     text-align: left;
     padding: 5px 0 8px 1.6%;
 }
-#index_index >div.main .products div.row >div {
+#index_index >div.main >div.content .products div.row >div {
     text-align: center;
     display: inline-block;
     width: 32%;
 }
-#index_index >div.main .products div.item {
+#index_index >div.main >div.content .products div.item {
     width: 94%;
     display: inline-block;
     border: 1px solid #E0E0E4;
     margin: 0 -1px;
     padding: 8px 0 8px;
 }
-#index_index >div.main .products div.item img {
+#index_index >div.main >div.content .products div.item img {
     max-width: 80%;
 }
-#index_index >div.main .products div.item p {
+#index_index >div.main >div.content .products div.item p {
     margin: 0 0 5px;
     font-size: 14px;
     padding: 0 5px;
 }
-#index_index >div.main .products div.item a {
+#index_index >div.main >div.content .products div.item a {
     background-color: #EA5514;
     border-radius: 100px;
     color: #fff;
@@ -228,20 +218,20 @@
     font-size: 12px;
 }
 @media screen and (max-width: 350px) {
-    #index_index >div.main .products div.row {
+    #index_index >div.main >div.content .products div.row {
         padding-left: 1.3%;
     }
-    #index_index >div.main .products div.item p {
+    #index_index >div.main >div.content .products div.item p {
         font-size: 12px;
     }
-    #index_index >div.main .products div.item a {
+    #index_index >div.main >div.content .products div.item a {
         width: 78%;
         height: 24px;
         line-height: 24px;
     }
 }
 @media screen and (min-width: 410px) {
-    #index_index >div.main .products div.row {
+    #index_index >div.main >div.content .products div.row {
         padding-left: 1.7%;
     }
 }

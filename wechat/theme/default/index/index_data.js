@@ -39,7 +39,7 @@ $(function(){
     }
     // 加载商品列表
     function getProductsList() {
-        var $proBox = $page.find('>div.main >div.products').empty();
+        var $proBox = $page.find('>div.main >div.content >div.products').empty();
         $$.get(
             $$.serverAddr + 'Product/Prod/QueryList',
             function(res) {

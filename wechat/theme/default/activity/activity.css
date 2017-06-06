@@ -1,6 +1,8 @@
 #activity_activity {
 	overflow: hidden;
     width: 100%;
+    height: 100%;
+    background-color: #EFEFF4;
 }
 #activity_activity >div.header {
 	background-color: #EA5514;

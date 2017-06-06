@@ -64,3 +64,7 @@ a:hover {
 
 
 /* css reset end */
+
+body >div.common-none {
+    display: none;
+}

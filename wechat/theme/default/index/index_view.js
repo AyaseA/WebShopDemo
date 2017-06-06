@@ -1,4 +1,6 @@
 $(function(){
+    var $page = $('#index_index'),
+        pageStr = 'index_index';
     /*
         选择器要加上 #文件夹名_文件名
         例：$('#index_index button.button')
@@ -15,6 +17,6 @@ $(function(){
         list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
     };
     // 模版id 文件夹名_文件名_自定义名
-    var html = template('index_index_list', data);
-    $('#index_index .list').html(html);
+    var html = template(pageStr + '_list', data);
+    $page.find('.list').html(html);
 });

@@ -254,6 +254,13 @@
             }
             return 'goBack=' + escape(url);
         },
+        // 设置返回
+        setGoBack: function(selector) {
+            var url = $$.getQueryString('goBack');
+            if (url) {
+                selector.attr('href', url);
+            }
+        },
         // 设置Token到cookies
         addToken: function(token) {
             $$.setCookie('__TOKEN__', token);

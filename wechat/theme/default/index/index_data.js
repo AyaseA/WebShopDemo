@@ -6,4 +6,5 @@ $(function(){
         例：$('#index_index button.button')
 
     */
+    alert('fjskadhflksh');
 });

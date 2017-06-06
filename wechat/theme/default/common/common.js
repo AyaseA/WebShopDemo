@@ -2,9 +2,12 @@
 !(function(win, $, undefined) {
     //js 默认记载数值
     win.GLOBAL_includejs = Array();
-
+    
     // 对外暴露对象
     var $$ = $.extend({}, {
+        // 接口地址--各种请求地址
+        serverAddr: 'http://192.168.1.102:8000/',
+
         // 时间转10位时间戳
         get10Time: function(time) {
             var date = time ? new Date(time) : new Date();
@@ -45,7 +48,7 @@
                 var url_arr = url.split('?');
                 var dir = url_arr[0].substring(0, url_arr[0].length - 5);
                 $.ajax({
-                    url: url_arr[0], // 这里是静态页的地址
+                    url: url_arr[0] + '?v=' + Math.random(), // 这里是静态页的地址
                     type: "get", // 静态页用get方法，否则服务器会抛出405错误
                     cache: false,
                     dataType: 'text',
@@ -105,7 +108,7 @@
             if ($("div#div_list>div#" + newid).length == 0) {
                 // 不存在，加载页面，css, js 
                 load(url, newid, trans);
-            } else {
+            } else{
                 // 存在，直加载数据*_data.js
                 loadData();
                 // 显示
@@ -246,12 +249,12 @@
     // 加载js
     function loadJs(file, id) {
         $('#' + id).remove();
-        $("<scri" + "pt>" + "</scr" + "ipt>").attr({ src: file, type: 'text/javascript', id: id }).appendTo('body');
+        $("<scri" + "pt>" + "</scr" + "ipt>").attr({ src: file + '?v=' + Math.random(), type: 'text/javascript', id: id }).appendTo('body');
     }
     // 加载css
     function loadCss(file, id) {
         $('#' + id).remove();
-        $("<link />").attr({ href: file, type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
+        $("<link />").attr({ href: file + '?v=' + Math.random(), type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
     }
     // 处理刷新后显示当前页面
     if ($$.getUrl()) {

@@ -284,39 +284,6 @@
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */
-// 获取数组最大值
-Array.prototype.max = function() {
-    var max = parseInt(this[0]);
-    var len = this.length;
-    for (var i = 1; i < len; i++) {
-        if (parseInt(this[i]) > max) {
-            max = parseInt(this[i]);
-        }
-    }
-    return max;
-};
-//获取数组最小值
-Array.prototype.min = function() {
-    var max = parseInt(this[0]);
-    var len = this.length;
-    for (var i = 1; i < len; i++) {
-        if (parseInt(this[i]) < max) {
-            max = parseInt(this[i]);
-        }
-    }
-    return max;
-};
-//数组求和
-Array.prototype.sum = function() {
-    var result = 0;
-    var len = this.length;
-    for (var i = 0; i < len; i++) {
-        if (this[i]) {
-            result += parseInt(this[i]);
-        }
-    }
-    return result;
-};
 //日期
 Date.prototype.pattern = function(fmt) {
     var o = {

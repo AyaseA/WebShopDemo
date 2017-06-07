@@ -8,49 +8,7 @@
 	{{each list as val}}
 		<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
 	        <div data-id="' + d[i].ID + '">
-	            <img src="{{tmpImg}}" unselectable="true">
-	            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
-	            <p></p>
-	        </div>
-	        <i>设为默认</i>
-	        <span>
-	            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
-	            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
-	        </span>
-	    </div>
-    {{/each}}
-	{{each list as val}}
-		<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
-	        <div data-id="' + d[i].ID + '">
-	            <img src="{{tmpImg}}" unselectable="true">
-	            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
-	            <p></p>
-	        </div>
-	        <i>设为默认</i>
-	        <span>
-	            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
-	            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
-	        </span>
-	    </div>
-    {{/each}}
-	{{each list as val}}
-		<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
-	        <div data-id="' + d[i].ID + '">
-	            <img src="{{tmpImg}}" unselectable="true">
-	            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
-	            <p></p>
-	        </div>
-	        <i>设为默认</i>
-	        <span>
-	            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
-	            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
-	        </span>
-	    </div>
-    {{/each}}
-	{{each list as val}}
-		<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
-	        <div data-id="' + d[i].ID + '">
-	            <img src="{{tmpImg}}" unselectable="true">
+	            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}" unselectable="true">
 	            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
 	            <p></p>
 	        </div>

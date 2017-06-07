@@ -133,6 +133,6 @@ $(function() {
                 break;
         }
     }
-
+    $$.setGoBack($page.find('a.goBack'));
 
 });

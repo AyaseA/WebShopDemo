@@ -1,6 +1,26 @@
 #myCars_myCars {
 	overflow: hidden;
     width: 100%;
+    height: 100%;
+    background-color: #EFEFF4;
+}
+#myCars_myCars >div.header {
+	background-color: #EA5514;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 44px;
+}
+@media screen and (min-width: 410px) {
+	#myCars_myCars >div.header {
+		height: 48px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#myCars_myCars >div.header {
+		height: 40px;
+	}
 }
 #myCars_myCars >div.header >a.goBack {
 	background: url(../images/common/round_left.png) no-repeat;
@@ -60,24 +80,28 @@
 	}
 }
 #myCars_myCars >div.main {
-    padding: 15px 15px 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
-#myCars_myCars >div.main >div.car {
+#myCars_myCars >div.main >div.cars {
+	padding: 15px 15px 0;
+}
+#myCars_myCars >div.main >div.cars >div.car {
 	border: 1px solid #fff;
 	background-color: #fff;
 	position: relative;
 	border-radius: 5px;
 	margin-bottom: 15px;
 }
-#myCars_myCars >div.main >div.car:after {
+#myCars_myCars >div.main >div.cars >div.car:after {
 	content: "";
 	display: block;
 	clear: both;
 }
-#myCars_myCars >div.main >div.car.default {
+#myCars_myCars >div.main >div.cars >div.car.default {
 	border-color: #EA5514;
 }
-#myCars_myCars >div.main >div.car >i {
+#myCars_myCars >div.main >div.cars >div.car >i {
     position: absolute;
     font-style: normal;
     left: 0;
@@ -91,12 +115,12 @@
     line-height: 36px;
     text-indent: 10px;
 }
-#myCars_myCars >div.main >div.car >span {
+#myCars_myCars >div.main >div.cars >div.car >span {
 	position: absolute;
 	right: 12px;
 	bottom: 0;
 }
-#myCars_myCars >div.main >div.car.default:before {
+#myCars_myCars >div.main >div.cars >div.car.default:before {
 	content: "";
 	display: inline-block;
 	background: url(../images/common/default.png) no-repeat;
@@ -106,10 +130,10 @@
 	width: 36px;
     left: 8px;
 }
-#myCars_myCars >div.main >div.car.default >i {
+#myCars_myCars >div.main >div.cars >div.car.default >i {
 	display: none;
 }
-#myCars_myCars >div.main >div.car >span a {
+#myCars_myCars >div.main >div.cars >div.car >span a {
 	display: inline-block;
 	font-size: 14px;
 	color: #A9A9A9;
@@ -117,7 +141,7 @@
     width: 50px;
     line-height: 36px;
 }
-#myCars_myCars >div.main >div.car >span a:before {
+#myCars_myCars >div.main >div.cars >div.car >span a:before {
 	content: "";
 	display: inline-block;
 	background-repeat: no-repeat;
@@ -127,26 +151,26 @@
     position: relative;
     top: 1px;
 }
-#myCars_myCars >div.main >div.car >span a.modify:before {
+#myCars_myCars >div.main >div.cars >div.car >span a.modify:before {
 	background-image: url(../images/common/edit_1.png);
 }
-#myCars_myCars >div.main >div.car >span a.delete:before {
+#myCars_myCars >div.main >div.cars >div.car >span a.delete:before {
 	background-image: url(../images/common/delete.png);
 }
-#myCars_myCars >div.main >div.car >div {
+#myCars_myCars >div.main >div.cars >div.car >div {
 	width: 100%;
 	text-align: center;
 	border-bottom: 1px solid #eaeaea;
 	padding-bottom: 12px;
     margin-bottom: 36px;
 }
-#myCars_myCars >div.main >div.car img {
+#myCars_myCars >div.main >div.cars >div.car img {
 	width: 70px;
 }
-#myCars_myCars >div.main >div.car h4 {
+#myCars_myCars >div.main >div.cars >div.car h4 {
 	margin: 0;
 }
-#myCars_myCars >div.main >div.car p {
+#myCars_myCars >div.main >div.cars >div.car p {
 	margin: 8px 0;
 	padding: 0 5px;
 	color: #A9A9A9;

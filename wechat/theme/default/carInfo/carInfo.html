@@ -1,15 +1,65 @@
-<!-- 
-	该文件最外层只包含<div></div>
-	图片引用路径src="./images/图片名"
-	例：<img src="./images/图片名">
-
-	跟div里面的元素尽量使用class，不要定义id以免和其他页面冲突
- -->
 <div>
-	<p>test page</p>
-	<div><a href="index/index.html?aa=1" data-tran="fadeIn">index</a></div>
-	<div><a href="test/test.html?aa=1" data-tran="fadeIn">test</a></div>
-	<div>
-		<button class="button">layer</button>
+	<div class="header">
+		<a href="javascript:void(0)" class="goBack"></a>
+		<span class="title">车辆信息</span>
+	</div>
+	<div class="main">
+		<div class="info">
+			<i></i>
+			<span>添加爱车信息，匹配机油保养方案</span>
+		</div>
+		<div class="carDetail">
+			<div>
+				<div>
+					<label>
+						<span>品牌车系</span>
+						<input type="text" name="carBrand" placeholder="请选择车辆品牌" readonly="readonly" unselectable="true">
+						<i></i>
+					</label>
+				</div>
+				<div>
+					<label>
+						<span>车&nbsp;&nbsp;型</span>
+						<input type="text" name="carType" placeholder="请选择车型" readonly="readonly" unselectable="true">
+						<i></i>
+					</label>
+				</div>
+			</div>
+			<div>
+				<div>
+					<label>
+						<span>购买时间</span>
+						<input type="text" name="timeBuy" placeholder="请选择购买时间" readonly="readonly" unselectable="true">
+						<i></i>
+					</label>
+				</div>
+				<div>
+					<span>行驶里程</span>
+					<input type="text" name="dirveRange" placeholder="请输入里程数">
+					<small>公里</small>
+				</div>
+			</div>
+			<div>
+				<div>
+					<span>车牌号</span>
+					<input type="text" name="plateNumber" placeholder="请输入车牌号">
+				</div>
+				<div>
+					<span>车架号</span>
+					<input type="text" name="frameNumber" placeholder="请输入17位车架号">
+				</div>
+				<div>
+					<span>发动机号</span>
+					<input type="text" name="engineNumber" placeholder="请输入发动机号">
+				</div>
+			</div>
+			<div>
+				<div class="setDefault" data-type="">
+					<span style="margin-left: 15px;">设为默认车辆</span>
+					<i></i>
+				</div>
+			</div>
+			<button>保存并查看保养项目</button>
+		</div>
 	</div>
 </div>

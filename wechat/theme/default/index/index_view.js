@@ -25,13 +25,22 @@ $(function(){
             } break;
             case 'maintain': {
                 // 车辆信息
-                $$.redirect('myCars/myCars.html');
+                $$.redirect('myCars/myCars.html?' + $$.goBackUrl());
             } break;
             case 'friendAdd': {
                 // 邀请有礼
                 $$.redirect('invite/invite.html');
             } break;
         }
+    });
+    // 活动点击事件
+    $page.on('click', 'div.activity', function() {
+        $$.redirect('activity/activity.html?' + $$.goBackUrl());
+    });
+    // 点击商品查看详情
+    $page.on('click', 'div.products img', function() {
+        var pid = $(this).parent().attr('data-id');
+        $$.redirect('product/product.html?pid=' + pid + '&' + $$.goBackUrl());
     });
     // footer 事件
     $page.on('click', 'div.footer li', function() {
@@ -51,16 +60,12 @@ $(function(){
             } break;
         }
     });
-    // 活动点击事件
-    $page.on('click', 'div.activity', function() {
-        $$.redirect('activity/activity.html?' + $$.goBackUrl());
-    });
 
     // 重设窗口高度
     function resetWindowSize() {
         $page.find('>div.main').css({
-            'height': bodyHeight - headerHeight - footerHeight + 'px'
+            'height': bodyHeight - headerHeight - footerHeight + 'px',
+            'margin-top': headerHeight + 'px'
         });
-        $page.find('>div.stance').height(headerHeight);
     }
 });

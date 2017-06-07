@@ -2,16 +2,15 @@
 	<div class="header">
 		<a href="javascript:void(0)" class="goBack"></a>
 		<span class="title">我的车辆</span>
-		<a href="carInfo/carInfo.html" class="addNew">添加新车辆</a>
+		<a href="javascript:void(0)" class="addNew">添加新车辆</a>
 	</div>
 	<script id="myCars_myCars_list" type="text/html">
 	{{each list as val}}
 		<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
 	        <div data-id="' + d[i].ID + '">
-	            <img src="{{serverAddr}}Img/{{val.Img}}" unselectable="true">
+	            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}" unselectable="true">
 	            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
-	            <p>
-	            </p>
+	            <p></p>
 	        </div>
 	        <i>设为默认</i>
 	        <span>
@@ -22,6 +21,6 @@
     {{/each}}
 	</script>
 	<div class="main">
-		
+		<div class="cars"></div>
 	</div>
 </div>

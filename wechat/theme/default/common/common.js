@@ -267,6 +267,13 @@
         },
         reloadData: function() {
 
+        },
+        imgFilter: function(img) {
+            if (img) {
+                return img;
+            } else {
+                return 'NoImg/' + Math.random() + '.jpg';
+            }
         }
     });
     // 加载js
@@ -294,7 +301,13 @@
             $$.redirect(url, $(this).attr('data-tran'));
         }
     });
-    
+    template.defaults.imports.imgFilter = function(img){
+        if (img) {
+            return img;
+        } else {
+            return 'NoImg/' + Math.random() + '.jpg';
+        }
+    };
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

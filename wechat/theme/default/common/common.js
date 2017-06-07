@@ -259,6 +259,7 @@
             if (!url) {
                 url = $$.getUrl();
             }
+            url = url.substring(0, url.indexOf('goBack=') - 1);
             return 'goBack=' + escape(url);
         },
         // 设置返回
@@ -309,7 +310,11 @@
         e.preventDefault();
         var url = $(this).attr('href');
         if (url.indexOf('.html') != -1) {
-            $$.redirect(url, $(this).attr('data-tran'));
+            $$.redirect(url + (
+                url.indexOf('?') != -1 ?
+                    ('&' + $$.goBackUrl()) :
+                    ('?' + $$.goBackUrl())
+            ), $(this).attr('data-tran'));
         }
     });
     template.defaults.imports.imgFilter = function(img){

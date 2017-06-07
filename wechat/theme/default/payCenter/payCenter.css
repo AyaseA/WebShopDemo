@@ -1,6 +1,7 @@
 #payCenter_payCenter {
 	height: 100%;
 	background-color: #EFEFF4;
+	position: relative;
 }
 #payCenter_payCenter >div.header {
 	background-color: #EA5514;
@@ -31,4 +32,92 @@
     height: 30px;
     line-height: 30px;
     width: 60%;
+    font-size: 16px;
+}
+#payCenter_payCenter >div.main {
+	position: absolute;
+	width: 100%;
+	top: 44px;
+}
+#payCenter_payCenter >div.main >div:not(.payMode) {
+	background-color: #fff;
+    display: table;
+    width: 100%;
+}
+#payCenter_payCenter >div.main >div:not(.payMode) >div {
+    display: table-row;
+    width: 100%;
+}
+#payCenter_payCenter >div.main >div:not(.payMode) span {
+    display: table-cell;
+    width: 80px;
+    padding: 12px 0 12px 16px;
+}
+#payCenter_payCenter >div.main >div:not(.payMode) p {
+    text-align: right;
+    margin: 0;
+    display: table-cell;
+    padding: 12px 16px 12px 0;
+}
+#payCenter_payCenter >div.main >div:not(.payMode) >div:last-child p {
+	color: #EA5514;
+}
+#payCenter_payCenter >div.main >div.payMoney {
+	margin: 10px 0;
+}
+#payCenter_payCenter >div.main >h5 {
+	color: #888;
+    margin: 10px 16px;
+}
+#payCenter_payCenter >div.main >div.payMode {
+	padding-left: 16px;
+	background-color: #fff;
+}
+#payCenter_payCenter >div.main >div.payMode >div {
+	padding: 5px 0;
+	position: relative;
+}
+#payCenter_payCenter >div.main >div.payMode img {
+	float: left;
+	width: 34px;
+	height: 34px;
+	margin: 6px 16px 0 0;
+}
+#payCenter_payCenter >div.main >div.payMode >div:after {
+	content: '';
+	display: inline-block;
+	clear: both;
+	position: absolute;
+}
+#payCenter_payCenter >div.main >div.payMode >div.selected:after {
+	background: url(../images/common/check.png) no-repeat;
+	background-size: contain;
+	height: 14px;
+	width: 14px;
+    top: 26px;
+    right: 16px;
+}
+#payCenter_payCenter >div.main >div.payMode >div:first-child {
+	border-bottom: 1px solid #E5E5E5;
+}
+#payCenter_payCenter >div.main >div.payMode p {
+	margin: 3px 0;
+}
+#payCenter_payCenter >div.main >div.payMode p:last-child {
+	color: #9C9C9C;
+	font-size: 14px;
+}
+#payCenter_payCenter >div.main button {
+    display: block;
+    margin: 0 auto;
+    background-color: #EA5514;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    margin-top: 20px;
+    padding: 10px 0;
+    width: 90%;
+    font-size: 16px;
+    margin-bottom: 20px;
 }

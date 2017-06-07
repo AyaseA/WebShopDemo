@@ -57,6 +57,8 @@ $(function() {
 			'top': bodyHeight
 		}, 300).fadeOut(400);
 	});
+	// 设置返回页面
+	$$.setGoBack($page.find('>div.header >a.goBack'));
 	// 优惠券tab切换
 	function changeTab(item) {
 		$(item).addClass('active').siblings().removeClass('active');

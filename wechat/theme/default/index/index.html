@@ -9,7 +9,7 @@
 		    {{each list as val}}
 				<li>
 	                <a href="{{val.Link}}">
-	                    <img _src="{{serverAddr}}Img/{{val.Img}}" src="./images/common/blank.png" />
+	                    <img _src="{{serverAddr}}Img/{{val.Img | imgFilter}}" src="./images/common/blank.png" />
 	                </a>
 	            </li>
 	        {{/each}}
@@ -41,7 +41,7 @@
 				{{each list as val i}}
 					<div>
 						<div class="item" data-id="{{val.ID}}">
-							<img src="{{serverAddr}}Img/{{val.Img}}">
+							<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
 							<p>{{val.Name}}</p>
 							<a href="fillOrder/fillOrder.html?pid={{val.ID}}">立即购买</a>
 						</div>

@@ -126,6 +126,13 @@
             var r = q[1].match(reg);
             if (r != null) return unescape(r[2]);
         },
+        getUrlQueryStr: function(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = location.search.substr(1).match(reg);
+            if (r != null) 
+                return unescape(decodeURI(r[2]));
+            return null;
+        },
         // 当前url
         getUrl: function() {
             return $$.getCookie("__URL__");
@@ -287,7 +294,11 @@
         $("<link />").attr({ href: file + '?v=' + Math.random(), type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
     }
     // 处理刷新后显示当前页面
-    if ($$.getUrl()) {
+    if ($$.getUrlQueryStr('__RDTURL__')) {
+        // 跳到指定页面
+        $$.redirect(unescape($$.getUrlQueryStr('__RDTURL__')));
+        history.pushState({}, '', location.href.split('?')[0]);
+    } else if ($$.getUrl()) {
         $$.redirect($$.getUrl());
     } else {
         // 默认加载首页

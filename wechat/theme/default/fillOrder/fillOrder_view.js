@@ -1,22 +1,32 @@
 $(function() {
-	var $page = $('#test_test'),
-    pageStr = 'test_test';
-	/*
-		选择器要加上 #文件夹名_文件名
-		例：$('#文件夹名_文件名 button.button')
-
-		所有事件绑定到 $('#文件夹名_文件名')下
-		例子如下
-	*/
-	$page.on('click', 'button.button', function() {
-		layer.open({
-		    type: 1, //Page层类型
-		    area: ['80%', '300px'],
-		    title: '你好，layer。',
-		    shade: 0.6, //遮罩透明度
-		    maxmin: true, //允许全屏最小化
-		    anim: 1, //0-6的动画形式，-1不开启
-		    content: '<div style="padding:50px;">这是一个非常普通的页面层，传入了自定义的html</div>'
-		});
+	var bodyHeight = window.innerHeight || document.body.clientHeight,
+		$page = $('#fillOrder_fillOrder'),
+    	pageStr = 'fillOrder_fillOrder',
+	    headerHeight = $page.find('>div.header').height(),
+	    footerHeight = $page.find('>div.footer').height(),
+	    boxWidht = $page.find('>div.header').width();
+	// 设置各种高度
+	$page.find('>div.main').css({
+		'height': bodyHeight - headerHeight - footerHeight - 10,
+		'top': headerHeight
+	});
+	$page.find('>div.couponModal').css({
+		'top': 0//bodyHeight
+		,'display':'block'
+	}).find('>div.content').css({
+		'height': bodyHeight - headerHeight * 2 - 1,
+		'width': boxWidht
+	});
+	// 点击优惠券按钮弹出优惠券框
+	$page.on('click', 'div.coupon button', function() {
+		$page.find('>div.couponModal').show().animate({
+			'top': 0
+		}, 300);
+	});
+	// 关闭弹框
+	$page.on('click', '>div.couponModal a.closeModal', function() {
+		$page.find('>div.couponModal').animate({
+			'top': bodyHeight
+		}, 300).fadeOut(400);
 	});
 });

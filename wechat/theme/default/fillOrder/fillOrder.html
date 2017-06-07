@@ -1,15 +1,53 @@
-<!-- 
-	该文件最外层只包含<div></div>
-	图片引用路径src="./images/图片名"
-	例：<img src="./images/图片名">
-
-	跟div里面的元素尽量使用class，不要定义id以免和其他页面冲突
- -->
 <div>
-	<p>test page</p>
-	<div><a href="index/index.html?aa=1" data-tran="fadeIn">index</a></div>
-	<div><a href="test/test.html?aa=1" data-tran="fadeIn">test</a></div>
-	<div>
-		<button class="button">layer</button>
+	<div class="header">
+		<a href="javascript:void(0)" class="goBack"></a>
+		<span>填写订单</span>
+	</div>
+	<div class="main">
+		<div class="productInfo">
+			<p><i></i>车势力</p>
+			<div class="clear">
+				<img src="./images/product/comment.png">
+				<p>499汽车全年机油养护<span>￥499</span></p>
+				<p>机油养护<span>x1</span></p>
+			</div>
+			<p>共1件商品</p>
+		</div>
+		<div class="coupon">
+			<label>优惠券
+				<button class="selected">-￥100</button>
+			</label>
+			<p>
+				积分
+				<span>共6积分，满1000积分可用</span>
+			</p>
+		</div>
+		<div class="proMoney">
+			<p>
+				商品金额
+				<span>￥499.00</span>
+			</p>
+			<p>
+				优惠
+				<span>-￥100.00</span>
+			</p>
+		</div>
+	</div>
+	<div class="footer">
+		实付：￥399.00
+		<a href="payCenter/payCenter.html?oid=1" class="order">提交订单</a>
+	</div>
+	<div class="couponModal">
+		<div class="title">
+			<a href="javascript:void(0)" class="closeModal"></a>
+			<span>使用优惠券</span>
+		</div>
+		<ul class="clear">
+			<li class="active">可使用</li>
+			<li>不可用</li>
+		</ul>
+		<div class="content">
+
+		</div>
 	</div>
 </div>

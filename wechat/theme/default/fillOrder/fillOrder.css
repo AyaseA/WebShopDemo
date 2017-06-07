@@ -1,12 +1,220 @@
-/* 
-    每条样式前增加 #文件夹名_文件名 以区分模块
-    例：#test_test .reds
-
-	图片引用路径url(./images/图片名)
-	例：background-image: url(./images/图片名);
-
- */
-#test_test{
-	background-color: gray;
-	height: 500px;
+#fillOrder_fillOrder {
+	height: 100%;
+	background-color: #EFEFF4;
+	position: relative;
+}
+#fillOrder_fillOrder >div.header {
+	height: 44px;
+	background-color: #fff;
+	position: fixed;
+	width: 100%;
+	top: 0;
+    z-index: 99;
+}
+#fillOrder_fillOrder >div.header a.goBack {
+	display: block;
+	float: left;
+	height: 44px;
+	width: 44px;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#fillOrder_fillOrder >div.header >span {
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    width: 60%;
+}
+#fillOrder_fillOrder >div.main {
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-top: 10px;
+	position: absolute;
+	width: 100%;
+}
+#fillOrder_fillOrder >div.main >div {
+	background-color: #fff;
+	margin-bottom: 10px;
+	padding: 15px;
+}
+#fillOrder_fillOrder div.productInfo >p:first-child {
+	height: 20px;
+	line-height: 20px;
+}
+#fillOrder_fillOrder div.productInfo >p:first-child >i {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    margin-right: 10px;
+    background: url(../images/icon.png) no-repeat;
+    background-size: contain;
+    float: left;
+}
+#fillOrder_fillOrder div.productInfo >div {
+    padding: 10px 15px;
+    background-color: #FAFAFA;
+    margin: 10px -15px 0;
+}
+#fillOrder_fillOrder div.productInfo >div >img {
+	height: 70px;
+	width: 70px;
+	float: left;
+    margin-right: 10px;
+}
+#fillOrder_fillOrder div.productInfo >div span {
+	float: right;
+}
+#fillOrder_fillOrder div.productInfo >div >p:nth-child(2) span {
+	color: #EA5514;
+}
+#fillOrder_fillOrder div.productInfo >div >p:nth-child(3) {
+	color: #A9A9A9;
+	font-size: 12px;
+	margin-top: 5px;
+}
+#fillOrder_fillOrder div.productInfo >p:last-child {
+	text-align: right;
+	color: #A9A9A9;
+	margin-top: 10px;
+}
+#fillOrder_fillOrder div.coupon label {
+    margin-top: 5px;
+    font-size: 16px;
+    display: block;
+}
+#fillOrder_fillOrder div.coupon button {
+	border: none;
+	outline: none;
+	background: none;
+	float: right;
+	font-size: 16px;
+}
+#fillOrder_fillOrder div.coupon button.selected {
+	color: #EA5514;
+}
+#fillOrder_fillOrder div.coupon button:after {
+	content: '';
+	display: block;
+	float: right;
+	background: url(../images/common/right.png) no-repeat;
+	height: 14px;
+	width: 8px;
+	background-size: contain;
+	margin-top: 5px;
+	margin-left: 15px;
+}
+#fillOrder_fillOrder div.coupon >p {
+	font-size: 16px;
+	border-top: 1px solid #E5E5E5;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+#fillOrder_fillOrder div.coupon >p >span {
+	float: right;
+	color: #A9A9A9;
+}
+#fillOrder_fillOrder div.proMoney >p {
+	font-size: 16px;
+}
+#fillOrder_fillOrder div.proMoney >p:last-child {
+	margin-top: 15px;
+	padding-top: 15px;
+	border-top: 1px solid #E5E5E5;
+}
+#fillOrder_fillOrder div.proMoney >p >span {
+	float: right;
+	color: #EA5514;
+}
+#fillOrder_fillOrder >div.footer {
+	position: fixed;
+	bottom: 0;
+	height: 50px;
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+}
+#fillOrder_fillOrder >div.footer {
+	text-align: right;
+	font-size: 16px;
+	line-height: 50px;
+	color: #EA5514;
+}
+#fillOrder_fillOrder >div.footer >a.order {
+	float: right;
+	display: block;
+	width: 120px;
+	background-color: #EA5514;
+	text-align: center;
+	color: #fff;
+	margin-left: 10px;
+}
+#fillOrder_fillOrder >div.couponModal {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	display: none;
+}
+#fillOrder_fillOrder >div.couponModal >div.title {
+	height: 44px;
+	background-color: #fff;
+	border-bottom: 1px solid #F6F6F7;
+	position: absolute;
+	width: 100%;
+	top: 0;
+    z-index: 99;
+}
+#fillOrder_fillOrder >div.couponModal a.closeModal {
+	display: block;
+	float: left;
+	height: 44px;
+	width: 44px;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#fillOrder_fillOrder >div.couponModal >div.title >span {
+	margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    width: 60%;
+}
+#fillOrder_fillOrder >div.couponModal >ul {
+	position: absolute;
+    top: 45px;
+    width: 100%;
+    background-color: #fff;
+}
+#fillOrder_fillOrder >div.couponModal >ul >li {
+	float: left;
+	width: 50%;
+	display: block;
+	height: 42px;
+	border-bottom: 2px solid #fff;
+	line-height: 44px;
+	font-size: 14px;
+	text-align: center;
+}
+#fillOrder_fillOrder >div.couponModal >ul >li.active {
+	border-color: #EA5514;
+	color: #EA5514;
+}
+#fillOrder_fillOrder >div.couponModal >div.content {
+	position: absolute;
+	top: 89px;
+	background-color: #EFEFF4;
+	overflow: hidden;
 }

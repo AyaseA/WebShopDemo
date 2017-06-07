@@ -1,12 +1,171 @@
-/* 
-    每条样式前增加 #文件夹名_文件名 以区分模块
-    例：#test_test .reds
-
-	图片引用路径url(./images/图片名)
-	例：background-image: url(./images/图片名);
-
- */
-#test_test{
-	background-color: gray;
-	height: 500px;
+#carInfo_carInfo {
+	overflow: hidden;
+    width: 100%;
+    background-color: #EFEFF4;
+    height: 100%;
+}
+#carInfo_carInfo >div.header {
+	background-color: #EA5514;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 44px;
+	font-size: 16px;
+}
+@media screen and (min-width: 410px) {
+	#carInfo_carInfo >div.header {
+		height: 48px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#carInfo_carInfo >div.header {
+		height: 40px;
+	}
+}
+#carInfo_carInfo >div.header >a.goBack {
+	background: url(../images/common/round_left.png) no-repeat;
+	background-size: contain;
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 9px 0 0 12px;
+}
+#carInfo_carInfo >div.header >span.title {
+	color: #fff;
+    text-align: center;
+    margin: auto;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    width: 60%;
+}
+@media screen and (min-width: 410px) {
+	#carInfo_carInfo >div.header >a.goBack {
+	    width: 30px;
+	    height: 30px;
+	    margin: 9px 0 0 12px;
+	}
+	#carInfo_carInfo >div.header >span.title {
+		height: 32px;
+		line-height: 32px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#carInfo_carInfo >div.header >a.goBack {
+	    width: 24px;
+	    height: 24px;
+	    margin: 9px 0 0 12px;
+	}
+	#carInfo_carInfo >div.header >span.title {
+		height: 26px;
+		line-height: 26px;
+	}
+}
+#carInfo_carInfo >div.main >div.info {
+	height: 34px;
+	background-color: #FFEED0;
+	border: 1px solid #D6D6DB;
+	margin-top: -1px;
+}
+#carInfo_carInfo >div.main >div.info i {
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-top: 5px;
+	background-image: url(../images/common/info.png);
+	margin-left: 14px;
+}
+#carInfo_carInfo >div.main >div.info span {
+	color: #7F8389;
+	position: relative;
+    font-size: 14px;
+	top: -6px;
+    left: 10px;
+}
+@media screen and (max-width: 350px) {
+	#carInfo_carInfo >div.main >div.info i {
+		margin-left: 12px;
+	}
+}
+#carInfo_carInfo >div.main div.carDetail >div {
+	background-color: #fff;
+	margin-bottom: 6px;
+}
+#carInfo_carInfo >div.main div.carDetail >div >div {
+	padding: 8px 0;
+    border-bottom: 1px solid #F6F6F6;
+}
+#carInfo_carInfo >div.main div.carDetail >div >div:last-child {
+	border-bottom: none;
+}
+#carInfo_carInfo >div.main div.carDetail label {
+    display: block;
+    width: 100%;
+}
+#carInfo_carInfo >div.main div.carDetail span {
+	color: #646872;
+	width: 26%;
+	display: inline-block;
+	text-align: center;
+}
+#carInfo_carInfo >div.main div.carDetail input {
+    display: inline-block;
+	border: none;
+	outline: none;
+	font-size: 14px;
+	padding: 5px;
+    width: 48%;
+}
+#carInfo_carInfo >div.main div.carDetail i {
+	background: url(../images/common/right.png) no-repeat;
+    background-size: contain;
+    display: inline-block;
+    float: right;
+    width: 14px;
+    height: 14px;
+    margin-right: 15px;
+    margin-top: 6px;
+}
+#carInfo_carInfo >div.main div.carDetail small {
+	float: right;
+    margin-right: 24px;
+    margin-top: 3px;
+    font-size: 16px;
+}
+#carInfo_carInfo >div.main div.carDetail div.setDefault i {
+    background-image: url(../images/common/check.png);
+    margin: 6px 22px;
+    display: none;
+}
+#carInfo_carInfo >div.main div.carDetail div.setDefault.default i {
+    display: block;
+}
+#carInfo_carInfo >div.main div.carDetail button {
+    display: block;
+    margin: 0 auto;
+    background-color: #EA5514;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    margin-top: 15px;
+    padding: 10px 0;
+    width: 90%;
+    font-size: 16px;
+}
+@media screen and (max-width: 350px) {
+	#carInfo_carInfo >div.main div.carDetail, #carInfo_carInfo >div.main div.carDetail button, #carInfo_carInfo >div.main div.carDetail small {
+		font-size: 14px;
+	}
+	#carInfo_carInfo >div.main div.carDetail span {
+		width: 30%;
+	}
 }

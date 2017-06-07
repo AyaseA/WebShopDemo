@@ -1,6 +1,6 @@
 $(function() {
-    // var $page = $('#invite_invite'),
-    //    pageStr = 'invite_invite';
+    var $page = $('#invite_invite'),
+       pageStr = 'invite_invite';
 
     var shareLink = "http://www.baidu.com"; // 分享链接
     var shareTitle = ""; // 分享标题

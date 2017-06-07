@@ -1,3 +1,69 @@
+
+
+#share_share >div.header {
+	background-color: #EA5514;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 44px;
+}
+@media screen and (min-width: 410px) {
+	#share_share >div.header {
+		height: 48px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#share_share >div.header {
+		height: 40px;
+	}
+}
+#share_share >div.header >a.goBack {
+	background: url(../images/common/round_left.png) no-repeat;
+	background-size: contain;
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 9px 0 0 12px;
+}
+#share_share >div.header >span.title {
+	color: #fff;
+    text-align: center;
+    margin: auto;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    width: 60%;
+    font-size: 16px;
+}
+@media screen and (min-width: 410px) {
+	#share_share >div.header >a.goBack {
+	    width: 30px;
+	    height: 30px;
+	    margin: 9px 0 0 12px;
+	}
+	#share_share >div.header >span.title {
+		height: 32px;
+		line-height: 32px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#share_share >div.header >a.goBack {
+	    width: 24px;
+	    height: 24px;
+	    margin: 9px 0 0 12px;
+	}
+	#share_share >div.header >span.title {
+		height: 26px;
+		line-height: 26px;
+	}
+}
+
 #share_share {
 	position: relative;
 	overflow: hidden;
@@ -76,28 +142,3 @@ body .share-btn>img{
 	height: 100%;
 	width: 100%;
 }
-/* <script type="text/html" id="share_share_alert">
-        <div class="share-alert">
-            <div class="share-top">
-                <div class="share-btn" data-type="wechat">
-                    <img src="./images/invite/wechat.png">
-                </div>
-                <div class="share-btn" data-type="friendscircle">
-                    <img src="./images/invite/friendscircle.png">
-                </div>
-                <div class="share-btn" data-type="qrcode">
-                    <img src="./images/invite/qq.png">
-                </div>
-                <div class="share-btn" data-type="qrcode">
-                    <img src="./images/invite/qqzone.png">
-                </div>
-            </div>
-            <div class="share-bottom">
-                <button class="share-cancle">取消</button>
-            </div>
-        </div>
-    </script>*/
-/*body .demo-class .layui-layer-content{}*/
-/*body .demo-class .layui-layer-btn{border-top:1px solid #E9E7E7}
-body .demo-class .layui-layer-btn a{background:#333;}
-body .demo-class .layui-layer-btn .layui-layer-btn1{background:#999;}*/

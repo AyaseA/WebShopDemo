@@ -120,18 +120,17 @@
             return $$.getCookie("__NEWDIV__");
         },
         // 查询当前url中的参数的值
-        getQueryString: function(name) {
+        getQueryString: function(name, url) {
+            if (url === undefined) {
+                url = $$.getUrl();
+            }
+            if (url.indexOf('?') == -1) {
+                return undefined;
+            }
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-            var q = $$.getUrl().split("?");
+            var q = url.split("?");
             var r = q[1].match(reg);
             if (r != null) return unescape(r[2]);
-        },
-        getUrlQueryStr: function(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-            var r = location.search.substr(1).match(reg);
-            if (r != null) 
-                return unescape(decodeURI(r[2]));
-            return null;
         },
         // 当前url
         getUrl: function() {
@@ -178,6 +177,18 @@
         },
         // ajax get
         get: function(url, succfunc, errfunc) {
+            var urlToken = $$.getQueryString('Token', url),
+                token = $$.getCookie('__TOKEN__');
+            if (!urlToken && token) {
+                if (url.indexOf('?') != -1) {
+                    url += '&Token=' + token;
+                } else {
+                    url += '?Token=' + token;
+                }
+            }
+            if (!url.startsWith($$.serverAddr)) {
+                url = $$.serverAddr + url;
+            }
             $.ajax({
                 url: url,
                 type: 'GET',
@@ -198,6 +209,9 @@
         post: function(url, data, succfunc, errfunc) {
             // 获取Token
             var token = $$.getToken();
+            if (!url.startsWith($$.serverAddr)) {
+                url = $$.serverAddr + url;
+            }
             $.ajax({
                 url: url,
                 data: $.extend(data, {
@@ -303,13 +317,12 @@
         $("<link />").attr({ href: file + '?v=' + Math.random(), type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
     }
     // 处理刷新后显示当前页面
-    $$.setCookie('__URLBL__', true);
-    if ($$.getUrlQueryStr('__RDTURL__') && $$.getCookie('__URLBL__')) {
-        $$.setCookie('__URLBL__', false);
+    var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
+    if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
+        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl));
         // 跳到指定页面
-        $$.redirect(unescape($$.getUrlQueryStr('__RDTURL__')));
-        //history.pushState({}, '', location.href.split('?')[0]);
-    } else if ($$.getUrl() && !$$.getCookie('__URLBL__')) {
+        $$.redirect(rdtUrl);
+    } else if ($$.getUrl()) {
         $$.redirect($$.getUrl());
     } else {
         // 默认加载首页

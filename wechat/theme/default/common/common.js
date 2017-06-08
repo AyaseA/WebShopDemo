@@ -217,6 +217,10 @@
                 }
             });
         },
+        // 设置Token到cookies
+        setToken: function(token) {
+            $$.setCookie('__TOKEN__', token);
+        },
         // 获取token
         getToken: function() {
             // 判断cookies
@@ -277,10 +281,6 @@
                 selector.attr('href', url);
             }
         },
-        // 设置Token到cookies
-        addToken: function(token) {
-            $$.setCookie('__TOKEN__', token);
-        },
         reloadData: function() {
 
         },
@@ -303,11 +303,13 @@
         $("<link />").attr({ href: file + '?v=' + Math.random(), type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
     }
     // 处理刷新后显示当前页面
-    if ($$.getUrlQueryStr('__RDTURL__')) {
+    $$.setCookie('__URLBL__', true);
+    if ($$.getUrlQueryStr('__RDTURL__') && $$.getCookie('__URLBL__')) {
+        $$.setCookie('__URLBL__', false);
         // 跳到指定页面
         $$.redirect(unescape($$.getUrlQueryStr('__RDTURL__')));
-        history.pushState({}, '', location.href.split('?')[0]);
-    } else if ($$.getUrl()) {
+        //history.pushState({}, '', location.href.split('?')[0]);
+    } else if ($$.getUrl() && !$$.getCookie('__URLBL__')) {
         $$.redirect($$.getUrl());
     } else {
         // 默认加载首页

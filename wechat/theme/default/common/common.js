@@ -350,6 +350,13 @@
     template.defaults.imports.timeFilter = function(time){
         return new Date(time*1000).pattern('yyyy-MM-dd hh:mm:ss');
     };
+    template.defaults.imports.splitFilter = function(str, sign){
+        if (str) {
+            return str.split(sign || ',');
+        } else {
+            return [];
+        }
+    };
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

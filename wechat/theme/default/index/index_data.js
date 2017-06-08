@@ -22,7 +22,7 @@ $(function(){
     function getBanners(calback) {
         var $banner = $('#index_index_banner >div.bd >ul');
         $$.get(
-            $$.serverAddr + 'Product/Banner/QueryBannerList?BannerID=1',
+            'Product/Banner/QueryBannerList?BannerID=1',
             function(res) {
                 if (res.Status == 0 && res.Data && res.Data.Rows) {
                     $banner.html(template(pageStr + '_banner_list', {
@@ -41,7 +41,7 @@ $(function(){
     function getProductsList() {
         var $proBox = $page.find('>div.main >div.content >div.products').empty();
         $$.get(
-            $$.serverAddr + 'Product/Prod/QueryList',
+            'Product/Prod/QueryList',
             function(res) {
                 if (res.Status != 0) {
                     console.log('获取商品信息失败');

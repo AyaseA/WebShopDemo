@@ -9,7 +9,7 @@ $(function() {
 	function getProductsList() {
 		var $proBox = $('#activity_activity div.products').empty();
 		$$.get(
-			$$.serverAddr + 'Product/Prod/QueryList',
+			'Product/Prod/QueryList',
 			function(res) {
 				if (res.Status != 0) {
 					console.log('获取商品信息失败');

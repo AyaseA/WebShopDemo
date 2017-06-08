@@ -9,7 +9,7 @@ $(function() {
     function getMyCars() {
         var carsBox = $page.find('>div.main >div.cars');
         $$.post(
-        	$$.serverAddr + 'CSL/UserInfo/QueryCarList',
+        	'CSL/UserInfo/QueryCarList',
         	{
         		Token: $$.getToken()
         	},

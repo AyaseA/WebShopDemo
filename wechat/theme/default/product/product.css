@@ -100,8 +100,7 @@
 #product_product_banner .bd li img {
     width: 100%;
     height: 62.5vw;
-    background: url(../images/common/loading.gif) no-repeat;
-    background-size: contain; 
+    background-color: #fff; 
 }
 #product_product_banner .bd li a {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -132,6 +131,9 @@
 	line-height: 40px;
 	padding: 0 15px;
 	border-bottom: 1px solid #E7E7E7;
+}
+#product_product div.product div.comments >p >i {
+	font-style: normal;
 }
 #product_product div.product div.comments p a {
 	float: right;
@@ -212,7 +214,7 @@
 	float: right;
 	font-size: 14px;
 }
-#product_product div.detail >img {
+#product_product div.proDetail >img {
 	width: 100%;
 }
 #product_product div.evaluate >ul {
@@ -237,7 +239,6 @@
 	color: #EA5514;
 }
 #product_product div.reviews {
-	height: 100px;
 	background-color: #fff;
 	padding-top: 45px;
 }

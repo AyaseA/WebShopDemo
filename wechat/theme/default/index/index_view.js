@@ -14,7 +14,6 @@ $(function(){
         footerHeight = $page.find('>div.footer').height();
         resetWindowSize();
     };
-
     // 主页模块快捷入口按钮点击事件（洗车、做保养、邀请有礼）
     $page.on('click', 'div.entrance >div', function() {
         var type = $(this).attr('data-type');

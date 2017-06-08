@@ -46,7 +46,7 @@ $(function() {
 	function changeTab(item) {
 		$(item).addClass('active').siblings().removeClass('active');
 		$page.find('div.evaluate >ul').css({
-			'position': ($(item).attr('data-type') == 'evaluate' ? 'fixed' : 'absolute')
+			//'position': ($(item).attr('data-type') == 'evaluate' ? 'fixed' : 'absolute')
 		});
 		$page.find('div.content').animate({
 			'margin-left': - boxWidth * $(item).attr('data-index')

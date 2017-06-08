@@ -188,7 +188,7 @@
     line-height: 25px;
     font-size: 12px;
     position: absolute;
-    right: 4.5%;
+    right: 3.5%;
     bottom: 12px;
     font-size: 12px;
     text-align: center;
@@ -211,6 +211,9 @@
 	#activity_activity >div.main div.item {
 		min-width: 300px;
 	}
+	#activity_activity >div.main div.item div {
+		margin-left: -5px;
+	}
 	#activity_activity >div.main div.item img {
 	    max-width: 100px;
 	    margin-top: 25px;
@@ -219,5 +222,8 @@
 		height: 20px;
 		line-height: 20px;
 		bottom: 9%;
+	}
+	#activity_activity >div.main div.item span {
+		font-size: 14px;
 	}
 }

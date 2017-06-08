@@ -326,6 +326,9 @@
             return 'NoImg/' + Math.random() + '.jpg';
         }
     };
+    template.defaults.imports.timeFilter = function(time){
+        return new Date(time*1000).pattern('yyyy-MM-dd hh:mm:ss');
+    };
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

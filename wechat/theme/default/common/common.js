@@ -260,7 +260,13 @@
                 url = $$.getUrl();
             }
             if (url.indexOf('__GOBACK__=') != -1) {
-                url = url.substring(0, url.indexOf('__GOBACK__=') - 1);
+                var goBackStartIndex = url.indexOf('__GOBACK__='),
+                    goBackEndIndex = url.indexOf('&', goBackStartIndex);
+                if (goBackEndIndex != -1) {
+                    url = url.substring(goBackStartIndex, goBackEndIndex);
+                } else {
+                    url = url.substring(0, url.indexOf('__GOBACK__=') - 1);
+                }
             }
             return '__GOBACK__=' + escape(url);
         },

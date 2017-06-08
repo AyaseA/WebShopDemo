@@ -15,7 +15,7 @@
 	        <script id="activity_activity_products" type="text/html">
 	        {{each list as val i}}
 	        	<div class="item" data-id="{{val.ID}}">
-					<img src="{{serverAddr}}Img/{{val.Img}}">
+					<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
 	                <div>
 	                    <h3>壳牌正品黄壳喜力</h3>
 	                    <h6>HX5 矿物汽车润滑机油</h6>

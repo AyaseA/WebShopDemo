@@ -6,5 +6,5 @@ $(function() {
     	'margin-top': $page.find('div.header').height()
     });
 
-    $$.setGoBack($page.find('a.goBack'));
+    $$.setGoBack($page.find('>div.header >a.goBack'));
 });

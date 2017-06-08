@@ -120,9 +120,15 @@
             return $$.getCookie("__NEWDIV__");
         },
         // 查询当前url中的参数的值
-        getQueryString: function(name) {
+        getQueryString: function(name, url) {
+            if (url === undefined) {
+                url = $$.getUrl();
+            }
+            if (url.indexOf('?') == -1) {
+                return undefined;
+            }
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-            var q = $$.getUrl().split("?");
+            var q = url.split("?");
             var r = q[1].match(reg);
             if (r != null) return unescape(r[2]);
         },
@@ -171,6 +177,18 @@
         },
         // ajax get
         get: function(url, succfunc, errfunc) {
+            var urlToken = $$.getQueryString('Token', url),
+                token = $$.getCookie('__TOKEN__');
+            if (!urlToken && token) {
+                if (url.indexOf('?') != -1) {
+                    url += '&Token=' + token;
+                } else {
+                    url += '?Token=' + token;
+                }
+            }
+            if (!url.startsWith($$.serverAddr)) {
+                url = $$.serverAddr + url;
+            }
             $.ajax({
                 url: url,
                 type: 'GET',
@@ -191,6 +209,9 @@
         post: function(url, data, succfunc, errfunc) {
             // 获取Token
             var token = $$.getToken();
+            if (!url.startsWith($$.serverAddr)) {
+                url = $$.serverAddr + url;
+            }
             $.ajax({
                 url: url,
                 data: $.extend(data, {
@@ -209,6 +230,10 @@
                     }
                 }
             });
+        },
+        // 设置Token到cookies
+        setToken: function(token) {
+            $$.setCookie('__TOKEN__', token);
         },
         // 获取token
         getToken: function() {
@@ -252,18 +277,23 @@
             if (!url) {
                 url = $$.getUrl();
             }
-            return 'goBack=' + escape(url);
+            if (url.indexOf('__GOBACK__=') != -1) {
+                var goBackStartIndex = url.indexOf('__GOBACK__='),
+                    goBackEndIndex = url.indexOf('&', goBackStartIndex);
+                if (goBackEndIndex != -1) {
+                    url = url.substring(goBackStartIndex, goBackEndIndex);
+                } else {
+                    url = url.substring(0, url.indexOf('__GOBACK__=') - 1);
+                }
+            }
+            return '__GOBACK__=' + escape(url);
         },
         // 设置返回
         setGoBack: function(selector) {
-            var url = $$.getQueryString('goBack');
+            var url = $$.getQueryString('__GOBACK__');
             if (url) {
                 selector.attr('href', url);
             }
-        },
-        // 设置Token到cookies
-        addToken: function(token) {
-            $$.setCookie('__TOKEN__', token);
         },
         reloadData: function() {
 
@@ -287,7 +317,12 @@
         $("<link />").attr({ href: file + '?v=' + Math.random(), type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
     }
     // 处理刷新后显示当前页面
-    if ($$.getUrl()) {
+    var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
+    if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
+        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl));
+        // 跳到指定页面
+        $$.redirect(rdtUrl);
+    } else if ($$.getUrl()) {
         $$.redirect($$.getUrl());
     } else {
         // 默认加载首页
@@ -298,7 +333,11 @@
         e.preventDefault();
         var url = $(this).attr('href');
         if (url.indexOf('.html') != -1) {
-            $$.redirect(url, $(this).attr('data-tran'));
+            $$.redirect(url + (
+                url.indexOf('?') != -1 ?
+                    ('&' + $$.goBackUrl()) :
+                    ('?' + $$.goBackUrl())
+            ), $(this).attr('data-tran'));
         }
     });
     template.defaults.imports.imgFilter = function(img){
@@ -306,6 +345,16 @@
             return img;
         } else {
             return 'NoImg/' + Math.random() + '.jpg';
+        }
+    };
+    template.defaults.imports.timeFilter = function(time){
+        return new Date(time*1000).pattern('yyyy-MM-dd hh:mm:ss');
+    };
+    template.defaults.imports.splitFilter = function(str, sign){
+        if (str) {
+            return str.split(sign || ',');
+        } else {
+            return [];
         }
     };
     win.$$ = $$;

@@ -107,7 +107,8 @@ input:-ms-input-placeholder {
 }
 
 #showShare_showShare .bg .detail {
-    padding: 30px 20px 0;
+    /*padding:0;*/
+    /*margin-bottom: 20px;*/
 }
 
 #showShare_showShare .bg .detail .l_line {
@@ -125,6 +126,9 @@ input:-ms-input-placeholder {
     float: left;
     font-size: 14px;
 }
+#showShare_showShare .bg .detail .clr {
+    clear: both;
+}
 
 #showShare_showShare .bg .detail .r_line {
     border-top: 1px solid #bfbfbf;
@@ -139,7 +143,7 @@ input:-ms-input-placeholder {
 
 #showShare_showShare .bg ul.in li {
     font-size: 14px;
-    margin: 0 0 20px 0;
+    margin: 0px 0 10px 0;
 }
 
 #showShare_showShare .bg .red_op {
@@ -299,7 +303,7 @@ input:-ms-input-placeholder {
         font-size: 18px;
     }
     #showShare_showShare .bg .title {
-        font-size: 36px;
+        font-size: 28px;
         letter-spacing: 10px;
     }
     #showShare_showShare .bg .red,
@@ -342,8 +346,8 @@ input:-ms-input-placeholder {
         padding: 10px 20px 0;
     }
     #showShare_showShare .bg ul.in li {
-        font-size: 18px;
-        margin: 0 0 20px 0;
+        font-size: 14px;
+        margin: 0 0 10px 0;
     }
     #showShare_showShare .bg .red_op .money {
         font-size: 18px;
@@ -427,7 +431,7 @@ input:-ms-input-placeholder {
         height: 410px;
     }
     #showShare_showShare .bg .title {
-        font-size: 36px;
+        font-size: 28px;
         letter-spacing: 4px;
     }
     #showShare_showShare .bg .red .text {
@@ -454,8 +458,8 @@ input:-ms-input-placeholder {
         width: 152px;
     }
     #showShare_showShare .bg ul.in li {
-        font-size: 18px;
-        margin: 0 0 20px 0;
+        font-size: 14px;
+        margin: 0 0 10px 0;
     }
     #showShare_showShare .bg .red_op .detail_op {
         width: 340px;
@@ -520,8 +524,8 @@ input:-ms-input-placeholder {
         padding: 5px 20px 0;
     }
     #showShare_showShare .bg ul.in li {
-        font-size: 18px;
-        margin: 0 0 20px 0;
+        font-size: 14px;
+        margin: 0 0 10px 0;
     }
     #showShare_showShare .bg .me {
         margin: 30px 20px 0;
@@ -548,7 +552,7 @@ input:-ms-input-placeholder {
         font-size: 16px;
     }
     #showShare_showShare .bg .title {
-        font-size: 30px;
+        font-size: 26px;
         letter-spacing: 8px;
     }
     #showShare_showShare .bg .red,
@@ -587,8 +591,8 @@ input:-ms-input-placeholder {
         width: 145px;
     }
     #showShare_showShare .bg ul.in li {
-        font-size: 16px;
-        margin: 0 0 20px 0;
+        font-size: 14px;
+        margin: 0 0 10px 0;
     }
     #showShare_showShare .bg .red_op .money {
         font-size: 16px;
@@ -664,7 +668,7 @@ input:-ms-input-placeholder {
 
 @media screen and (max-width: 384px) {
     #showShare_showShare .bg .title {
-        font-size: 30px;
+        font-size: 26px;
         letter-spacing: 6px;
     }
     #showShare_showShare .bg .red,
@@ -705,7 +709,7 @@ input:-ms-input-placeholder {
 
 @media screen and (max-width: 375px) {
     #showShare_showShare .bg .title {
-        font-size: 30px;
+        font-size: 26px;
         letter-spacing: 5px;
     }
     #showShare_showShare .bg .red,
@@ -805,7 +809,7 @@ input:-ms-input-placeholder {
     }
     #showShare_showShare .bg ul.in li {
         font-size: 14px;
-        margin: 0 0 15px 0;
+        margin: 0 0 10px 0;
     }
     #showShare_showShare .bg .red_op .money {
         font-size: 16px;

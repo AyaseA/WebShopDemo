@@ -259,12 +259,14 @@
             if (!url) {
                 url = $$.getUrl();
             }
-            url = url.substring(0, url.indexOf('goBack=') - 1);
-            return 'goBack=' + escape(url);
+            if (url.indexOf('__GOBACK__=') != -1) {
+                url = url.substring(0, url.indexOf('__GOBACK__=') - 1);
+            }
+            return '__GOBACK__=' + escape(url);
         },
         // 设置返回
         setGoBack: function(selector) {
-            var url = $$.getQueryString('goBack');
+            var url = $$.getQueryString('__GOBACK__');
             if (url) {
                 selector.attr('href', url);
             }

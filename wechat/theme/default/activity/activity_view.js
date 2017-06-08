@@ -9,7 +9,7 @@ $(function() {
         'margin-top': headerHeight + 'px'
     });
 
-    $$.setGoBack($page.find('a.goBack'));
+    $$.setGoBack($page.find('>div.header >a.goBack'));
 
     $page.on('click', 'div.main div.info', function() {
     	$$.redirect('myCars/myCars.html?' + $$.goBackUrl());

@@ -1,6 +1,7 @@
 #payCenter_payCenter {
 	height: 100%;
 	background-color: #EFEFF4;
+	position: relative;
 }
 #payCenter_payCenter >div.header {
 	background-color: #EA5514;
@@ -31,4 +32,143 @@
     height: 30px;
     line-height: 30px;
     width: 60%;
+    font-size: 16px;
+}
+#payCenter_payCenter >div.main {
+	position: absolute;
+	width: 100%;
+	top: 44px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#payCenter_payCenter >div.main >div.warp >div:not(.payMode) {
+	background-color: #fff;
+    display: table;
+    width: 100%;
+}
+#payCenter_payCenter >div.main >div.warp >div:not(.payMode) >div {
+    display: table-row;
+    width: 100%;
+}
+#payCenter_payCenter >div.main >div.warp >div:not(.payMode) span {
+    display: table-cell;
+    width: 80px;
+    padding: 12px 0 12px 16px;
+}
+#payCenter_payCenter >div.main >div.warp >div:not(.payMode) p {
+    text-align: right;
+    margin: 0;
+    display: table-cell;
+    padding: 12px 16px 12px 0;
+}
+#payCenter_payCenter >div.main >div.warp >div:not(.payMode) >div:last-child p {
+	color: #EA5514;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMoney {
+	margin: 10px 0;
+}
+#payCenter_payCenter >div.main >div.warp >h5 {
+	color: #888;
+    margin: 10px 16px;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMode {
+	padding-left: 16px;
+	background-color: #fff;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMode >div {
+	padding: 5px 0;
+	position: relative;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMode img {
+	float: left;
+	width: 34px;
+	height: 34px;
+	margin: 6px 16px 0 0;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMode >div:after {
+	content: '';
+	display: inline-block;
+	clear: both;
+	position: absolute;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMode >div.selected:after {
+	background: url(../images/common/check.png) no-repeat;
+	background-size: contain;
+	height: 14px;
+	width: 14px;
+    top: 26px;
+    right: 16px;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMode >div:first-child {
+	border-bottom: 1px solid #E5E5E5;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMode p {
+	margin: 3px 0;
+}
+#payCenter_payCenter >div.main >div.warp >div.payMode p:last-child {
+	color: #9C9C9C;
+	font-size: 14px;
+}
+#payCenter_payCenter >div.main >div.warp button {
+    display: block;
+    margin: 0 auto;
+    background-color: #EA5514;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    margin-top: 20px;
+    padding: 10px 0;
+    width: 90%;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+#payCenter_payCenter >div.main >div.confirm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+#payCenter_payCenter >div.main >div.confirm h4 {
+    height: 50px;
+    margin: 0;
+    line-height: 51px;
+    text-align: center;
+}
+#payCenter_payCenter >div.main >div.confirm p {
+    color: #999;
+    border-bottom: 1px solid #D6D6DB;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    line-height: 30px;
+    text-align: center;
+}
+#payCenter_payCenter >div.main >div.confirm >div {
+    height: 140px;
+    width: 260px;
+    position: absolute;
+    background-color: #fff;
+    top: -70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+#payCenter_payCenter >div.main >div.confirm >div:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#payCenter_payCenter >div.main >div.confirm button {
+    width: 47%;
+    height: 39px;
+    font-size: 16px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
 }

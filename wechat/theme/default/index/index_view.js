@@ -29,7 +29,7 @@ $(function(){
             } break;
             case 'friendAdd': {
                 // 邀请有礼
-                $$.redirect('invite/invite.html');
+                $$.redirect('invite/invite.html?' + $$.goBackUrl());
             } break;
         }
     });

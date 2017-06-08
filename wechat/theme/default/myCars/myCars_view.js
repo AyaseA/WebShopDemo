@@ -9,7 +9,7 @@ $(function() {
     	'margin-top': headerHeight
     });
 
-    $$.setGoBack($page.find('a.goBack'));
+    $$.setGoBack($page.find('>div.header >a.goBack'));
 
     $page.find('a.addNew').attr('href', 'carInfo/carInfo.html?' + $$.goBackUrl());
 });

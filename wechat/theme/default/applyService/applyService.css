@@ -1,0 +1,142 @@
+#applyService_applyService {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+#applyService_applyService > div.header {
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  height: 1.4rem;
+}
+#applyService_applyService > div.header > a.goBack {
+  background: url(../images/common/back.png) no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 0.58666667rem;
+  height: 0.58666667rem;
+  margin: 0.45333333rem 0 0 0.4rem;
+}
+#applyService_applyService > div.header > span.title {
+  color: #4a4f59;
+  text-align: center;
+  margin: auto;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  width: 60%;
+  font-size: 0.48rem;
+}
+#applyService_applyService > div.main {
+  width: 100%;
+  margin-top: 1.4rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#applyService_applyService > div.main .content {
+  width: 100%;
+  background: #efeff4;
+}
+#applyService_applyService > div .detail {
+  width: 100%;
+  height: 2.33333333rem;
+  background: #fafafa;
+}
+#applyService_applyService > div .wrap {
+  margin: 0 0.26666667rem;
+  height: 2.33333333rem;
+}
+#applyService_applyService > div .wrap .left {
+  float: left;
+}
+#applyService_applyService > div .wrap .left img {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-top: 0.26666667rem;
+}
+#applyService_applyService > div .wrap .right {
+  float: left;
+  margin-top: 0.26666667rem;
+  font-size: 0.37333333rem;
+  padding-left: 0.26666667rem;
+}
+#applyService_applyService > div .wrap .right b {
+  color: #ea5718;
+  padding-left: 2.53333333rem;
+}
+#applyService_applyService > div .wrap .right p:nth-child(2) {
+  font-size: 0.32rem;
+  color: #a9a9a9;
+  padding-top: 0.26666667rem;
+  position: relative;
+}
+#applyService_applyService > div .wrap .right p:nth-child(2) span {
+  position: absolute;
+  right: 0;
+}
+#applyService_applyService > div .content .desc {
+  width: 100%;
+  font-size: 0.45333333rem;
+  color: #484d59;
+  background: #FFFFFF;
+  padding: 0.4rem;
+  margin-top: 0.4rem;
+}
+#applyService_applyService > div .content .dexTxtCont {
+  width: 100%;
+}
+#applyService_applyService > div .content .dexTxt {
+  height: 3.6rem;
+  background: #efeff4;
+  width: 100%;
+  border: none;
+  font-size: 0.32rem;
+  color: #a9a9a9;
+  padding: .3rem;
+  word-break: break-all;
+}
+#applyService_applyService > div .content .imgCont {
+  width: 100%;
+  padding-left: 0.4rem;
+  background: white;
+  padding-top: 0.26666667rem;
+  margin-bottom: 0.26666667rem;
+}
+#applyService_applyService > div .content .imgCont ul {
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+#applyService_applyService > div .content .imgCont ul .imgCenter {
+  margin-left: .7rem;
+}
+#applyService_applyService > div .content .imgCont ul > li {
+  float: left;
+  list-style: none;
+}
+#applyService_applyService > div .content .imgCont ul > li img {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+#applyService_applyService > div .content .imgCont p img {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.4rem 0;
+}
+#applyService_applyService > div .content .userinfo {
+  width: 100%;
+  background: #FFFFFF;
+}
+#applyService_applyService > div .content .userinfo p {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}

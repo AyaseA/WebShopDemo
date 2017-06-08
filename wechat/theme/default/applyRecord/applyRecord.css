@@ -1,0 +1,141 @@
+#applyRecord_applyRecord {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+#applyRecord_applyRecord > div.header {
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  height: 1.4rem;
+}
+#applyRecord_applyRecord > div.header > a.goBack {
+  background: url(../images/common/back.png) no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 0.58666667rem;
+  height: 0.58666667rem;
+  margin: 0.45333333rem 0 0 0.4rem;
+}
+#applyRecord_applyRecord > div.header > span.title {
+  color: #4a4f59;
+  text-align: center;
+  margin: auto;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  width: 60%;
+  font-size: 0.48rem;
+}
+#applyRecord_applyRecord > div.main {
+  width: 100%;
+  height: 14.89333333rem;
+  margin-top: 1.4rem;
+}
+#applyRecord_applyRecord > div.main .content {
+  width: 100%;
+  height: 16.4rem;
+  background: #efeff4;
+}
+#applyRecord_applyRecord > div .list {
+  width: 100%;
+  height: 1.16rem;
+  list-style: none;
+  border-top: 1px solid #D6D6DB;
+  border-bottom: 1px solid #D6D6DB;
+  font-size: 0.46666667rem;
+  background: #FFFFFF;
+  padding-right: 0.4rem;
+  border-bottom: 1px solid #d6d6db;
+}
+#applyRecord_applyRecord > div .list li {
+  float: left;
+  display: block;
+  border-bottom: 2px solid #fff;
+  width: 25%;
+  height: 1.16rem;
+  line-height: 1.16rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.37333333rem;
+  margin-left: 1.46666667rem;
+}
+#applyRecord_applyRecord > div .list li.active {
+  border-color: #EA5514;
+}
+#applyRecord_applyRecord > div .order {
+  margin-top: 0.26666667rem;
+}
+#applyRecord_applyRecord > div .order h5 {
+  margin-top: 0.26666667rem;
+  padding-left: 0.4rem;
+  width: 100%;
+  height: 1.33333333rem;
+  line-height: 1.33333333rem;
+  background: #FFFFFF;
+  font-size: 0.32rem;
+  overflow: hidden;
+  color: #484d59;
+}
+#applyRecord_applyRecord > div .order h5 img {
+  display: inline-block;
+  width: 0.42666667rem;
+  height: 0.42666667rem;
+  padding: 0 0.4rem 0 0.26666667rem;
+}
+#applyRecord_applyRecord > div .detail {
+  width: 100%;
+  height: 2.33333333rem;
+  background: #fafafa;
+}
+#applyRecord_applyRecord > div .wrap {
+  margin: 0 0.26666667rem;
+  height: 2.33333333rem;
+}
+#applyRecord_applyRecord > div .wrap .left {
+  float: left;
+}
+#applyRecord_applyRecord > div .wrap .left img {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-top: 0.26666667rem;
+}
+#applyRecord_applyRecord > div .wrap .right {
+  float: left;
+  margin-top: 0.26666667rem;
+  font-size: 0.37333333rem;
+  padding-left: 0.26666667rem;
+  width: 7.33333333rem;
+}
+#applyRecord_applyRecord > div .wrap .right p:nth-child(2) {
+  font-size: 0.32rem;
+  color: #a9a9a9;
+  padding-top: 0.26666667rem;
+  position: relative;
+}
+#applyRecord_applyRecord > div .wrap .right p:nth-child(2) span {
+  position: absolute;
+  right: 0.4rem;
+}
+#applyRecord_applyRecord > div .order > p span {
+  color: #ea5718;
+}
+#applyRecord_applyRecord > div .order .state {
+  width: 100%;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  background: #FFFFFF;
+  font-size: 0.32rem;
+  position: relative;
+  padding-left: 0.4rem;
+  color: #ea5514;
+}

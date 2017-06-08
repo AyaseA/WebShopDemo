@@ -130,6 +130,7 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, .5);
+    display: none;
 }
 #payCenter_payCenter >div.main >div.confirm h4 {
     height: 50px;

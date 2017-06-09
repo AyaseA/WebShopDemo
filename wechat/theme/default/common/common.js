@@ -82,8 +82,10 @@
             var transition = function(trans, newid) {
                 $$.setCookie("__NEWDIV__", newid);
                 if (typeof(trans) === "undefined") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide();
-                    $("div#div_list>div#" + newid).show();
+                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide(0);
+                    $("div#div_list>div#" + newid).fadeIn(500);
+                    /*$("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide();
+                    $("div#div_list>div#" + newid).show();*/
                 }
                 if (trans == "slideUp") {
                     $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).slideUp(500);
@@ -234,6 +236,7 @@
         // 设置Token到cookies
         setToken: function(token) {
             $$.setCookie('__TOKEN__', token);
+            $$.setCookie('__DFTCAR__', analyzeToken(token).UserCarID);
         },
         // 获取token
         getToken: function() {
@@ -252,10 +255,7 @@
             if (!token) {
                 return false;
             }
-            var uInfo = Base64.decode(token);
-            uInfo = uInfo.substring(0, uInfo.length - 1);
-            var uObj = JSON.parse(uInfo);
-            return uObj;
+            return analyzeToken(token);
         },
         // 获取用户id
         getUserId: function() {
@@ -306,6 +306,13 @@
             }
         }
     });
+    // 解析Token
+    function analyzeToken(token) {
+        var uInfo = Base64.decode(token);
+        uInfo = uInfo.substring(0, uInfo.length - 1);
+        var uObj = JSON.parse(uInfo);
+        return uObj;
+    }
     // 加载js
     function loadJs(file, id) {
         $('#' + id).remove();

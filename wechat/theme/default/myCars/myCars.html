@@ -2,23 +2,31 @@
 	<div class="header">
 		<a href="javascript:void(0)" class="goBack"></a>
 		<span class="title">我的车辆</span>
-		<a href="javascript:void(0)" class="addNew">添加新车辆</a>
+		<a href="carInfo/carInfo.html" class="addNew">添加新车辆</a>
 	</div>
 	<script id="myCars_myCars_list" type="text/html">
+	{{if list.length > 0}}
 	{{each list as val}}
 		<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
-	        <div data-id="' + d[i].ID + '">
+	        <div data-id="{{val.ID}}">
 	            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}" unselectable="true">
 	            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
 	            <p></p>
 	        </div>
-	        <i>设为默认</i>
+	        <i data-id="{{val.ID}}">设为默认</i>
 	        <span>
 	            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
 	            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
 	        </span>
 	    </div>
     {{/each}}
+    {{else}}
+		<div class="noCar">
+			<img src="./images/myCars/noCar.png" alt="">
+			<p>您还没有添加车辆信息哟</p>
+			<a href="carInfo/carInfo.html">添加新车辆</a>
+		</div>
+    {{/if}}
 	</script>
 	<div class="main">
 		<div class="cars"></div>

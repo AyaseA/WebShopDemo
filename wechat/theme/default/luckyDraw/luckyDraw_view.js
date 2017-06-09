@@ -66,7 +66,6 @@ $(function() {
                 function() {
                     $page.find(".wardImg").removeAttr("src");
                     $page.on("click", ".pcjImg", function() {
-                    	alert(1);
                     	console.dir(this);
                     	console.log($page.wardFlag);
                         if ($(this).children("img").attr("src") != "images/lcukyDraw/cqImg.png") {

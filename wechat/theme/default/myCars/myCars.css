@@ -43,11 +43,12 @@
     height: 30px;
     line-height: 30px;
     width: 60%;
+    font-size: 16px;
 }
 #myCars_myCars >div.header >a.addNew {
 	color: #fff;
 	float: right;
-	font-size: 12px;
+    font-size: 14px;
 	padding: 6px;
 	margin: 8px;
 }
@@ -166,6 +167,7 @@
 }
 #myCars_myCars >div.main >div.cars >div.car img {
 	width: 70px;
+	margin-top: 5px;
 }
 #myCars_myCars >div.main >div.cars >div.car h4 {
 	margin: 0;
@@ -175,4 +177,25 @@
 	padding: 0 5px;
 	color: #A9A9A9;
 	font-size: 14px;
+}
+#myCars_myCars >div.main >div.cars >div.noCar {
+	text-align: center;
+}
+#myCars_myCars >div.main >div.cars >div.noCar img {
+	width: 60%;
+	margin: 20px 0 10px;
+}
+#myCars_myCars >div.main >div.cars >div.noCar p {
+	color: #929293;
+}
+#myCars_myCars >div.main >div.cars >div.noCar a {
+	display: inline-block;
+	margin-top: 5px;
+	width: 120px;
+	height: 36px;
+	line-height: 36px;
+	border-radius: 20px;
+	color: #EA5514;
+	border: 1px dashed #EA5514;
+	font-size: 16px;
 }

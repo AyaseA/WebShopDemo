@@ -6,7 +6,7 @@
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
-        serverAddr: 'http://192.168.1.110:8000/',
+        serverAddr: 'http://192.168.43.45:8000/',
 
         // 时间转10位时间戳
         get10Time: function(time) {
@@ -82,8 +82,10 @@
             var transition = function(trans, newid) {
                 $$.setCookie("__NEWDIV__", newid);
                 if (typeof(trans) === "undefined") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide();
-                    $("div#div_list>div#" + newid).show();
+                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide(0);
+                    $("div#div_list>div#" + newid).fadeIn(500);
+                    /*$("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide();
+                    $("div#div_list>div#" + newid).show();*/
                 }
                 if (trans == "slideUp") {
                     $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).slideUp(500);
@@ -118,6 +120,15 @@
         // 获取当前显示的div id
         getNowDiv: function() {
             return $$.getCookie("__NEWDIV__");
+        },
+        // 删除div
+        removeDiv: function(div) {
+            if (div) {
+                $('#' + div).remove();
+                $('#' + div + '_css').remove();
+                $('#' + div + '_view').remove();
+                $('#' + div + '_data').remove();
+            }
         },
         // 查询当前url中的参数的值
         getQueryString: function(name, url) {
@@ -234,6 +245,7 @@
         // 设置Token到cookies
         setToken: function(token) {
             $$.setCookie('__TOKEN__', token);
+            $$.setCookie('__DFTCAR__', analyzeToken(token).UserCarID);
         },
         // 获取token
         getToken: function() {
@@ -252,10 +264,7 @@
             if (!token) {
                 return false;
             }
-            var uInfo = Base64.decode(token);
-            uInfo = uInfo.substring(0, uInfo.length - 1);
-            var uObj = JSON.parse(uInfo);
-            return uObj;
+            return analyzeToken(token);
         },
         // 获取用户id
         getUserId: function() {
@@ -306,6 +315,13 @@
             }
         }
     });
+    // 解析Token
+    function analyzeToken(token) {
+        var uInfo = Base64.decode(token);
+        uInfo = uInfo.substring(0, uInfo.length - 1);
+        var uObj = JSON.parse(uInfo);
+        return uObj;
+    }
     // 加载js
     function loadJs(file, id) {
         $('#' + id).remove();
@@ -357,6 +373,41 @@
             return [];
         }
     };
+    template.defaults.imports.getFirstLetter = function(str) {
+        return str.substring(0, 1).toUpperCase();
+    };
+
+    // 配置微信
+    !(function() {
+        $$.get(
+            'Product/WeChat/GetSign?url=' + escape(location.href),
+            function(res) {
+                console.log(res);
+                if (wx) {
+                    wx.config({
+                         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                         appId: 'wx2c53034422e377cc', // 必填，公众号的唯一标识
+                         timestamp: res.timestamp, // 必填，生成签名的时间戳
+                         nonceStr: res.noncestr, // 必填，生成签名的随机串
+                         signature: res.sign, // 必填，签名，见附录1
+                         jsApiList: ['chooseImage','getLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    });
+                    
+                    wx.getLocation({
+                        type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                        success: function (res) {
+                            var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                            var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                            alert(latitude + '-' + longitude);
+                            var speed = res.speed; // 速度，以米/每秒计
+                            var accuracy = res.accuracy; // 位置精度
+                        }
+                    });
+                }
+            }
+        );
+    }());
+    
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

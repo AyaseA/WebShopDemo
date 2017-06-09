@@ -43,7 +43,7 @@ $(function(){
     });
     // footer 事件
     $page.on('click', 'div.footer li', function() {
-        var type = $(this).attr('data-type');
+        var type = $(this).attr('data-tab');
         switch(type) {
             case 'index': {
                 // 首页
@@ -51,7 +51,7 @@ $(function(){
             } break;
             case 'luckyDraw': {
                 // 幸运抽奖
-                $$.redirect();
+                $$.redirect('luckyDraw/luckyDraw.html');
             } break;
             case 'center': {
                 // 个人中心

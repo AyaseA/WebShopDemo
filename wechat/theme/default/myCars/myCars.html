@@ -6,20 +6,20 @@
 	</div>
 	<script id="myCars_myCars_list" type="text/html">
 	{{if list.length > 0}}
-	{{each list as val}}
-		<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
-	        <div data-id="{{val.ID}}">
-	            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}" unselectable="true">
-	            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
-	            <p></p>
-	        </div>
-	        <i data-id="{{val.ID}}">设为默认</i>
-	        <span>
-	            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
-	            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
-	        </span>
-	    </div>
-    {{/each}}
+		{{each list as val}}
+			<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
+		        <div data-id="{{val.ID}}">
+		            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}" unselectable="true">
+		            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
+		            <p></p>
+		        </div>
+		        <i data-id="{{val.ID}}">设为默认</i>
+		        <span>
+		            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
+		            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
+		        </span>
+		    </div>
+	    {{/each}}
     {{else}}
 		<div class="noCar">
 			<img src="./images/myCars/noCar.png" alt="">

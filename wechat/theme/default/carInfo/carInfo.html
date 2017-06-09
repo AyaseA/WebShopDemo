@@ -62,4 +62,34 @@
 			<button>保存并查看保养项目</button>
 		</div>
 	</div>
+	<div class="brandsModal">
+		<div class="title">
+			<a href="javascript:void(0)" class="closeModal"></a>
+			<span>品牌车系</span>
+		</div>
+		<div class="brands">
+			
+		</div>
+		<div class="letter">
+			
+		</div>
+	</div>
+	<script id="carInfo_carInfo_brands_list" type="text/html">
+	{{set letter = brands[0].Alpha}}
+	<h5 data-letter="{{letter}}">{{letter}}</h5>
+	{{each brands as brand i}}
+		{{set lter = brand.Alpha}}
+		{{if letter != lter}}
+			<h5 data-letter="{{lter}}">{{letter = lter}}</h5>
+		{{/if}}
+		<div class="brand" data-id="{{brand.ID}}" data-level="{{brand.Level}}">
+			<div class="img">
+				<img src="{{serverAddr}}Img/{{brand.Img | imgFilter}}" />
+			</div>
+			<div class="bName">
+				{{brand.Name}}
+			</div>
+		</div>
+	{{/each}}
+	</script>
 </div>

@@ -3,6 +3,7 @@
     width: 100%;
     background-color: #EFEFF4;
     height: 100%;
+    position: relative;
 }
 #carInfo_carInfo >div.header {
 	background-color: #EA5514;
@@ -168,4 +169,79 @@
 	#carInfo_carInfo >div.main div.carDetail span {
 		width: 30%;
 	}
+}
+#carInfo_carInfo >div.brandsModal {
+	height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: gray;
+    z-index: 11;
+}
+#carInfo_carInfo >div.brandsModal >div.title {
+	height: 44px;
+	background-color: #fff;
+	border-bottom: 1px solid #F6F6F7;
+	position: absolute;
+	width: 100%;
+	top: 0;
+    z-index: 12;
+}
+#carInfo_carInfo >div.brandsModal >div.title >a.closeModal {
+	display: block;
+	float: left;
+	height: 44px;
+	width: 44px;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#carInfo_carInfo >div.brandsModal >div.title >span {
+	margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    width: 60%;
+}
+#carInfo_carInfo >div.brandsModal >div.brands {
+	position: absolute;
+	top: 44px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#carInfo_carInfo >div.brandsModal >div.brands >h5 {
+
+}
+#carInfo_carInfo >div.brandsModal >div.brands >div.brand {
+    background-color: #fff;
+    height: 60px;
+}
+#carInfo_carInfo >div.brandsModal >div.brands >div.brand div.img {
+    width: 25%;
+    height: 60px;
+    text-align: center;
+    float: left;
+}
+#carInfo_carInfo >div.brandsModal >div.brands >div.brand img {
+	height: 50px;
+	width: 50px;
+	margin: 5px auto;
+}
+#carInfo_carInfo >div.brandsModal >div.brands >div.brand div.bName {
+	width: 75%;
+	height: 59px;
+	line-height: 60px;
+	border-bottom: 1px solid #ECECEC;
+	float: left;
+}
+#carInfo_carInfo >div.brandsModal >div.brands >h5 {
+	background-color: #ECECEC;
+	margin-top: -1px;
+    text-indent: 5%
 }

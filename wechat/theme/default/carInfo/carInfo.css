@@ -178,6 +178,7 @@
     left: 0;
     z-index: 11;
     display: none;
+    background-color: #EFEFF4;
 }
 #carInfo_carInfo >div.brandsModal >div.title {
 	height: 44px;
@@ -359,7 +360,7 @@
 	top: 44px;
 	left: 0;
 	width: 100%;
-	overflow-x: hidden;;
+	overflow-x: hidden;
 	overflow-y: auto;
 }
 #carInfo_carInfo >div.carsModal >div.carsBox >p.car {

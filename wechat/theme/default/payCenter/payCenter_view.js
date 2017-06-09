@@ -15,7 +15,7 @@ $(function() {
         $this.siblings().removeClass('selected');
 	});
 	$page.on('click', '>div.header >a.goBack', function() {
-		if ($('#payCenter_payCenter').find('div.confirm').is(':visible')) {
+		if ($page.find('div.confirm').is(':visible')) {
 			return false;
 		}
 		$page.find('div.confirm').show();

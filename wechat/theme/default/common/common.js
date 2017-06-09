@@ -37,7 +37,7 @@
         delCookie: function(name) {
             var exp = new Date();
             exp.setTime(exp.getTime() - 1);
-            var cval = getCookie(name);
+            var cval = $$.getCookie(name);
             if (cval != null) {
                 document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
             }
@@ -373,8 +373,10 @@
             return [];
         }
     };
-    template.defaults.imports.getFirstLetter = function(str) {
-        return str.substring(0, 1).toUpperCase();
+    template.defaults.imports.jsonParseFilter = function(str) {
+        if (str) {
+            return JSON.parse(str);
+        }
     };
 
     // 配置微信
@@ -390,15 +392,7 @@
                          timestamp: res.timestamp, // 必填，生成签名的时间戳
                          nonceStr: res.noncestr, // 必填，生成签名的随机串
                          signature: res.sign, // 必填，签名，见附录1
-                         jsApiList: ['openLocation','getLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-                    });
-                    wx.openLocation({
-                        latitude: 0, // 纬度，浮点数，范围为90 ~ -90
-                        longitude: 0, // 经度，浮点数，范围为180 ~ -180。
-                        name: '', // 位置名
-                        address: '', // 地址详情说明
-                        scale: 1, // 地图缩放级别,整形值,范围从1~28。默认为最大
-                        infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+                         jsApiList: ['getLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                     });
                     wx.getLocation({
                         type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'

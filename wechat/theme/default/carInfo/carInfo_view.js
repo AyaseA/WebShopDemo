@@ -1,7 +1,8 @@
 $(function() {
 	var bodyHeight = window.innerHeight || document.body.clientHeight,
         $page = $('#carInfo_carInfo'),
-    	pageStr = 'carInfo_carInfo';
+    	pageStr = 'carInfo_carInfo',
+        carId = $$.getQueryString('cid');
 
     // 设置高度
     $page.find('>div.main').css({
@@ -51,15 +52,29 @@ $(function() {
             pName = $page.find('>div.seriesModal >h5').text();
         $page.find('div.carDetail input[name="carBrand"]')
             .val(pName + ' ' + sName)
-            .attr('data-pid', pid)
+            .attr('data-bid', pid)
             .attr('data-sid', sid)
             .attr('data-sname', sName)
-            .attr('data-pname', pName);
+            .attr('data-bname', pName);
 
         $page.find('div.carDetail input[name="carType"]')
              .val('')
              .attr('data-cid', '');
         closeBrands();
+    });
+    // 点击保存
+    $page.on('click', 'div.carDetail >button', function() {
+        if (!validation()) {
+            return false;
+        }
+        saveCar(function(cid, isdft) {
+            console.log(carId);
+            console.log(cid);
+            console.log(carId || cid);
+            if (isdft == 1) {
+                $$.setCookie('__DFTCAR__', carId || cid);
+            }
+        });
     });
     // 点击Car事件
     $page.on('click', '>div.carsModal >div.carsBox >p.car', function() {
@@ -180,6 +195,30 @@ $(function() {
             }
         );
     }
+    // 保存车辆信息
+    function saveCar(calback) {
+        var url = 'CSL/UserInfo/AddCar';
+        if (carId) {
+            url = 'CSL/UserInfo/UpdateCar';
+        }
+        var carInfo = getCarInfo();
+        $$.post(
+            url,
+            carInfo,
+            function(res) {
+                if (res.Status != 0 && res.Data) {
+                    tip('保存车辆信息失败！');
+                    return false;
+                }
+                if (calback) {
+                    calback(res.Data.ID, carInfo.IsDefault);
+                }
+            },
+            function(e) {
+                tip('保存车辆信息失败！');
+            }
+        );
+    }
     // tip
     function tip(cnt, time) {
         var $tip = $('#carInfo_carInfo_tip');
@@ -226,5 +265,70 @@ $(function() {
         $page.find('>div.carsModal').animate({
             'top': bodyHeight
         }, 300).fadeOut(400);
+    }
+    // 获取车辆信息对象
+    function getCarInfo() {
+        var $carDetail = $page.find('>div.main >div.carDetail'),
+            car = {},
+            plate = $carDetail.find('input[name="plateNumber"]').val();
+        car.ID = carId;
+        car.CarID = $carDetail.find('input[name="carType"]').attr('data-cid');
+        car.BuyTime = $$.get10Time($carDetail.find('input[name="timeBuy"]').val());
+        car.DrivingNum = parseFloat($carDetail.find('input[name="dirveRange"]').val());
+        car.PlatePro = plate ? plate.substring(0, 1) : '';
+        car.PlateCity = plate ? plate.substring(1, 2) : '';
+        car.PlateNum = plate ? plate.substring(2, plate.length) : '';
+        car.VINNO = $carDetail.find('input[name="frameNumber"]').val();
+        car.EngineNO = $carDetail.find('input[name="engineNumber"]').val();
+        car.IsDefault = $carDetail.find('div.setDefault').hasClass('default') ? 1 : 0;
+
+        var Data = {
+            CarBrandId: $carDetail.find('input[name="carBrand"]').attr('data-bid'),
+            CarBrandName: $carDetail.find('input[name="carBrand"]').attr('data-bname'),
+            CarSeriesId: $carDetail.find('input[name="carBrand"]').attr('data-sid'),
+            CarSeriesName: $carDetail.find('input[name="carBrand"]').attr('data-sname'),
+            CarCarName: $carDetail.find('input[name="carType"]').val()
+        };
+        car.Data = JSON.stringify(Data);
+        return car;
+    }
+    // 验证
+    function validation() {
+        var $carDetail = $page.find('>div.main >div.carDetail');
+        if (!$carDetail.find('input[name="carType"]').val()) {
+            win.App.common.tip("车型不能为空！");
+            return false;
+        }
+        if (!$carDetail.find('input[name="timeBuy"]').val()) {
+            win.App.common.tip("购买时间不能为空！");
+            return false;
+        }
+        if (!$carDetail.find('input[name="dirveRange"]').val()) {
+            win.App.common.tip("行驶里程不能为空！");
+            return false;
+        } else if (!/^[0-9]+.?[0-9]*$/.test($carDetail.find('input[name="dirveRange"]').val())) {
+            win.App.common.tip("请输入有效的行驶里程！");
+            $carDetail.find('input[name="dirveRange"]').focus();
+            return false;
+        }
+        if ($carDetail.find('input[name="plateNumber"]').val() && 
+            !/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/.test($carDetail.find('input[name="plateNumber"]').val())) {
+            win.App.common.tip("车牌号格式错误！");
+            $carDetail.find('input[name="plateNumber"]').focus();
+            return false;
+        }
+        if ($carDetail.find('input[name="frameNumber"]').val() && 
+            !/[a-zA-Z0-9]{17}/.test($carDetail.find('input[name="frameNumber"]').val())) {
+            win.App.common.tip("车架号格式错误！");
+            $carDetail.find('input[name="frameNumber"]').focus();
+            return false;
+        }
+        if ($carDetail.find('input[name="engineNumber"]').val() && 
+            !/[a-zA-Z0-9]+/.test($carDetail.find('input[name="engineNumber"]').val())) {
+            win.App.common.tip("发动机号格式错误！");
+            $carDetail.find('input[name="engineNumber"]').focus();
+            return false;
+        }
+        return true;
     }
 });

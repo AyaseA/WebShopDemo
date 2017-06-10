@@ -103,7 +103,12 @@ var login = {
                 	if(data.Data.Token) {
             			$$.setToken(data.Data.Token);
                 	}
-    	    		$$.redirect('index/index.html?' + $$.goBackUrl());
+    	    		var url = $$.getQueryString('__GOBACK__');
+	    	    	if (url) {
+	    	    		$$.redirect(url);
+	    	    	} else {
+		    	    	$$.redirect('index/index.html');
+	    	    	}
                     console.log('发送成功');        
                 }
             });
@@ -193,7 +198,12 @@ $('#login_pass').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	}
-    	    	$$.redirect('index/index.html?' + $$.goBackUrl());
+    	    	var url = $$.getQueryString('__GOBACK__');
+    	    	if (url) {
+    	    		$$.redirect(url);
+    	    	} else {
+	    	    	$$.redirect('index/index.html');
+    	    	}
                 console.log('登陆信息发送成功');        
             }
         });

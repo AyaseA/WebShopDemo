@@ -219,7 +219,12 @@ $('#login_redit').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	};
-    	    	$$.redirect('index/index.html?' + $$.goBackUrl());
+    	    	var url = $$.getQueryString('__GOBACK__');
+    	    	if (url) {
+    	    		$$.redirect(url);
+    	    	} else {
+	    	    	$$.redirect('index/index.html');
+    	    	}
                 console.log('修改密码并登陆成功');        
             }
         });

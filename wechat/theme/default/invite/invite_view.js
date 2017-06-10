@@ -1,6 +1,8 @@
 $(function() {
-    var $page = $('#invite_invite'),
-       pageStr = 'invite_invite';
+    var bodyHeight = window.innerHeight || document.body.clientHeight,
+        $page = $('#invite_invite'),
+        pageStr = 'invite_invite',
+        headerHeight = $page.find('div.header').height();
 
     var shareLink = "http://www.baidu.com"; // 分享链接
     var shareTitle = ""; // 分享标题
@@ -8,7 +10,8 @@ $(function() {
     var shareDesc = ""; // 分享描述
 
     $page.find('div.main').css({
-        'top': $page.find('div.header').height()
+        'height': bodyHeight - headerHeight,
+        'top': headerHeight
     });
 
     $page.on('click', 'div.entry', function() {

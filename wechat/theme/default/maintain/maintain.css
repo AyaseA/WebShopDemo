@@ -1,0 +1,191 @@
+#maintain_maintain {
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFF4;
+	overflow: hidden;
+    position: relative;
+}
+#maintain_maintain >div.header {
+	background-color: #EA5514;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 44px;
+	font-size: 16px;
+}
+#maintain_maintain >div.header >a.goBack {
+	background: url(../images/common/round_left.png) no-repeat;
+	background-size: contain;
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 9px 0 0 12px;
+}
+#maintain_maintain >div.header >span.edit {
+	color: #fff;
+    text-align: center;
+    margin: auto;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    max-width: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#maintain_maintain >div.header >a.modify {
+	color: #fff;
+	float: right;
+	font-size: 12px;
+	padding: 6px;
+	margin: 8px;
+	position: relative;
+}
+#maintain_maintain >div.header >a.modify:before {
+	content: '';
+	display: inline-block;
+	background: url(../images/common/edit.png) no-repeat;
+	background-size: contain;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 7px;
+    left: -8px
+}
+#maintain_maintain >div.main {
+	position: absolute;
+	top: 44px;
+	width: 100%;
+	overflow: hidden;
+}
+#maintain_maintain >div.main >h4 {
+	margin: 0;
+	height: 36px;
+	line-height: 34px;
+	padding: 0 14px 1px;
+	background-color: #fff;
+}
+#maintain_maintain >div.main h4:before {
+	content: '';
+	display: inline-block;
+	background: url(../images/common/recommend_maintain.png) no-repeat;
+	background-size: contain;
+    position: relative;
+    margin-right: 6px;
+    width: 24px;
+    height: 24px;
+    top: 6px;
+}
+#maintain_maintain >div.main >div.products {
+	top: 37px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#maintain_maintain >div.main div.item:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#maintain_maintain >div.main div.item {
+    border-radius: 6px;
+    max-width: 94%;
+    min-width: 340px;
+    max-height: 160px;
+    background-color: #fff;
+    margin: 10px auto;
+    position: relative;
+}
+#maintain_maintain >div.main div.item img {
+	max-height: 130px;
+	float: left;
+	margin-top: 10px;
+    margin-left: 6px;
+}
+#maintain_maintain >div.main div.item >div {
+	float: left;
+	text-align: left;
+}
+#maintain_maintain >div.main div.item h3 {
+    margin: 10px 0 0 0;
+    color: #EA5514;
+}
+#maintain_maintain >div.main div.item h6 {
+	color: #EA5514;
+    margin: 3px 0 0 0;
+    font-weight: normal;
+}
+#maintain_maintain >div.main div.item ul {
+	font-size: 14px;
+	padding: 0;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+#maintain_maintain >div.main div.item li:before {
+	content: '·';
+	padding-right: 5px;
+}
+#maintain_maintain >div.main div.item p {
+	margin: 10px 0 15px 0;
+    font-size: 14px;
+}
+#maintain_maintain >div.main div.item span {
+	font-size: 16px;
+	color: #EA5514;
+	font-weight: bold;
+}
+#maintain_maintain >div.main div.item >div a {
+    background-color: #EA5514;
+    border-radius: 100px;
+    color: #fff;
+    display: block;
+    width: 20%;
+    height: 26px;
+    line-height: 25px;
+    font-size: 12px;
+    position: absolute;
+    right: 3.5%;
+    bottom: 12px;
+    font-size: 12px;
+    text-align: center;
+}
+@media screen and (min-width: 410px) {
+	#maintain_maintain >div.main div.item img {
+	    margin-top: 10px;
+	    margin-left: 10px;
+        max-height: 130px;
+	}
+	#maintain_maintain >div.main div.item a {
+	    font-size: 14px;
+	    width: 22%;
+	    max-width: 120px;
+	    height: 28px;
+	    line-height: 28px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#maintain_maintain >div.main div.item {
+		min-width: 300px;
+	}
+	#maintain_maintain >div.main div.item div {
+		margin-left: -5px;
+	}
+	#maintain_maintain >div.main div.item img {
+	    max-width: 100px;
+	    margin-top: 25px;
+	}
+	#maintain_maintain >div.main div.item a {
+		height: 20px;
+		line-height: 20px;
+		bottom: 9%;
+	}
+	#maintain_maintain >div.main div.item span {
+		font-size: 14px;
+	}
+}

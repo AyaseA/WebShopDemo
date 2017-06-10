@@ -2,7 +2,8 @@ $(function() {
     var bodyHeight = window.innerHeight || document.body.clientHeight,
     	$page = $('#carInfo_carInfo'),
     	pageStr = 'carInfo_carInfo',
-    	carId = $$.getQueryString('cid');
+    	carId = $$.getQueryString('cid'),
+        $carDetail = $page.find('>div.main >div.carDetail');
 
     // 初始化弹框
     $page.find('>div.brandsModal').css({
@@ -45,7 +46,6 @@ $(function() {
     }
     // 设置车辆信息
     function setCarInfo(car) {
-    	var $carDetail = $page.find('>div.main >div.carDetail');
     	if (car.Data) {
 	    	var carData = JSON.parse(car.Data);
 	    	$carDetail.find('input[name="carBrand"]').attr('data-bid', carData.CarBrandId || '');
@@ -62,7 +62,7 @@ $(function() {
     	$carDetail.find('input[name="frameNumber"]').val(car.VINNO || '');
         $carDetail.find('input[name="engineNumber"]').val(car.EngineNO || '');
         $carDetail.find('div.setDefault').addClass(
-        	car.IsDefault == 1 ? 'default' : ''
+        	car.ID == $$.getCookie('__DFTCAR__') ? 'default' : ''
         );
     }
     // 重置车辆信息

@@ -1,0 +1,28 @@
+<div>
+	<div class="header">
+		<a href="javascript:history.go(-1);" class="goBack"></a>
+		<span class="edit"></span>
+		<a href="myCars/myCars.html" class="modify">更换</a>
+	</div>
+	<div class="main">
+		<h4>推荐保养</h4>
+		<div class="products"></div>
+	</div>
+	<script id="maintain_maintain_products" type="text/html">
+    {{each maintainProList as mpl i}}
+    	<div class="item" data-id="{{mpl.ID}}">
+			<img src="{{serverAddr}}Img/{{mpl.Img | imgFilter}}">
+            <div>
+                <h3>壳牌正品黄壳喜力</h3>
+                <h6>HX5 矿物汽车润滑机油</h6>
+                <ul>
+                    <li>动力清洁 抑制有害油泥</li>
+                    <li>更好低温保护 启动更顺畅</li>
+                </ul>
+                <p>抢购价：<span>￥{{mpl.Price}}</span></p>
+                <a href="fillOrder/fillOrder.html?pid={{mpl.ID}}">立即购买</a>
+            </div>
+		</div>
+	{{/each}}
+    </script>
+</div>

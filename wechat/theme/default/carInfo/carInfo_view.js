@@ -5,22 +5,12 @@ $(function() {
         headerHeight = $page.find('div.header').height();
 
     // 设置高度
-    $page.find('>div.main').css({
-        'margin-top': headerHeight
-    }).find('>div.carDetail').height(
-        bodyHeight - headerHeight - 35
-    );
-    $page.find('>div.brandsModal >div.brands').height(
-        bodyHeight - 44
-    );
-    $page.find('>div.seriesModal').height(
-        bodyHeight - 44
-    ).find('>div.seriesBox').height(
-        bodyHeight - 75
-    );
-    $page.find('>div.carsModal >div.carsBox').height(
-        bodyHeight - 45
-    );
+    setSize();
+    window.onresize = function() {
+        bodyHeight = window.innerHeight || document.body.clientHeight;
+        headerHeight = $page.find('div.header').height();
+        setSize();
+    };
     // 设置返回
     $$.setGoBack($page.find('>div.header >a.goBack'));
     // 选择日期
@@ -69,10 +59,11 @@ $(function() {
         if (!validation()) {
             return false;
         }
-        saveCar(function(cid, isdft) {
+        saveCar(function(cid, cname, isdft) {
             if (isdft == 1) {
                 $$.setCookie('__DFTCAR__', cid);
             }
+            $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname + '&' + $$.goBackUrl('myCars/myCars.html'));
         });
     });
     // 点击Car事件
@@ -123,6 +114,19 @@ $(function() {
     // 关闭弹出框Cars
     $page.on('click', '>div.carsModal a.closeModal', function() {
         closeCars();
+    });
+    // 车牌号，发动机号，车架号失去焦点自动将内容转大写
+    $page.on('blur', 'div.carDetail input[name$=Number]', function() {
+        var $this = $(this);
+        $this.val($.trim($this.val()).toUpperCase());
+    }).on('focus', 'div.carDetail input[name$=Number]', function() {
+        var scrollTop = $(this).parent().parent().offset().top;
+        $page.find('div.carDetail').scrollTop(scrollTop);
+    });
+    // 行驶里程去掉前面的0
+    $page.on('focus', 'div.carDetail input[name="dirveRange"]', function() {
+        var scrollTop = $(this).parent().parent().offset().top;
+        $page.find('div.carDetail').scrollTop(scrollTop);
     });
 
     getBrands();
@@ -196,11 +200,12 @@ $(function() {
     // 保存车辆信息
     function saveCar(calback) {
         var url = 'CSL/UserInfo/AddCar',
-            carId = $$.getQueryString('cid');
+            carId = $$.getQueryString('cid'),
+            carInfo = getCarInfo();
         if (carId) {
             url = 'CSL/UserInfo/UpdateCar';
+            carInfo.ID = carId;
         }
-        var carInfo = getCarInfo();
         $$.post(
             url,
             carInfo,
@@ -210,12 +215,35 @@ $(function() {
                     return false;
                 }
                 if (calback) {
-                    calback(carId || res.Data.ID, carInfo.IsDefault);
+                    calback(
+                        carId || res.Data.ID,
+                        carInfo.CarBrandName + ' ' + carInfo.CarSeriesName + ' ' + carInfo.CarCarName,
+                        carInfo.IsDefault
+                    );
                 }
             },
             function(e) {
                 tip('保存车辆信息失败！');
             }
+        );
+    }
+    // 设置高度
+    function setSize() {
+        $page.find('>div.main').css({
+            'margin-top': headerHeight
+        }).find('>div.carDetail').height(
+            bodyHeight - headerHeight - 35
+        );
+        $page.find('>div.brandsModal >div.brands').height(
+            bodyHeight - 44
+        );
+        $page.find('>div.seriesModal').height(
+            bodyHeight - 44
+        ).find('>div.seriesBox').height(
+            bodyHeight - 75
+        );
+        $page.find('>div.carsModal >div.carsBox').height(
+            bodyHeight - 45
         );
     }
     // tip
@@ -270,7 +298,7 @@ $(function() {
         var $carDetail = $page.find('>div.main >div.carDetail'),
             car = {},
             plate = $carDetail.find('input[name="plateNumber"]').val();
-        car.ID = carId;
+        
         car.CarID = $carDetail.find('input[name="carType"]').attr('data-cid');
         car.BuyTime = $$.get10Time($carDetail.find('input[name="timeBuy"]').val());
         car.DrivingNum = parseFloat($carDetail.find('input[name="dirveRange"]').val());
@@ -281,12 +309,18 @@ $(function() {
         car.EngineNO = $carDetail.find('input[name="engineNumber"]').val();
         car.IsDefault = $carDetail.find('div.setDefault').hasClass('default') ? 1 : 0;
 
+        car.CarBrandId = $carDetail.find('input[name="carBrand"]').attr('data-bid');
+        car.CarBrandName = $carDetail.find('input[name="carBrand"]').attr('data-bname');
+        car.CarSeriesId = $carDetail.find('input[name="carBrand"]').attr('data-sid');
+        car.CarSeriesName = $carDetail.find('input[name="carBrand"]').attr('data-sname');
+        car.CarCarName = $carDetail.find('input[name="carType"]').val();
+
         var Data = {
-            CarBrandId: $carDetail.find('input[name="carBrand"]').attr('data-bid'),
-            CarBrandName: $carDetail.find('input[name="carBrand"]').attr('data-bname'),
-            CarSeriesId: $carDetail.find('input[name="carBrand"]').attr('data-sid'),
-            CarSeriesName: $carDetail.find('input[name="carBrand"]').attr('data-sname'),
-            CarCarName: $carDetail.find('input[name="carType"]').val()
+            CarBrandId: car.CarBrandId,
+            CarBrandName: car.CarBrandName,
+            CarSeriesId: car.CarSeriesId,
+            CarSeriesName: car.CarSeriesName,
+            CarCarName: car.CarCarName
         };
         car.Data = JSON.stringify(Data);
         return car;

@@ -1,6 +1,10 @@
 $(function() {
-    var $page = $('#activity_activity'),
-    	pageStr = 'activity_activity';
+    var $page = $('#maintain_maintain'),
+	    pageStr = 'maintain_maintain',
+	    carId = $$.getQueryString('cid'),
+	    carName = $$.getQueryString('cname');
+	
+	$page.find('>div.header >span.edit').text(carName);
 	
 	// 加载商品列表
 	getProductsList();
@@ -18,7 +22,7 @@ $(function() {
 				if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {
 					var d = res.Data.Rows;
 					$proBox.html(template(pageStr + '_products', {
-						list: d,
+						maintainProList: d,
 						serverAddr: $$.serverAddr
 					}));
 				}

@@ -2,12 +2,14 @@ $(function() {
 	var bodyHeight = window.innerHeight || document.body.clientHeight,
         $page = $('#carInfo_carInfo'),
     	pageStr = 'carInfo_carInfo',
-        carId = $$.getQueryString('cid');
+        headerHeight = $page.find('div.header').height();
 
     // 设置高度
     $page.find('>div.main').css({
-    	'margin-top': $page.find('div.header').height()
-    });
+        'margin-top': headerHeight
+    }).find('>div.carDetail').height(
+        bodyHeight - headerHeight - 35
+    );
     $page.find('>div.brandsModal >div.brands').height(
         bodyHeight - 44
     );
@@ -68,11 +70,8 @@ $(function() {
             return false;
         }
         saveCar(function(cid, isdft) {
-            console.log(carId);
-            console.log(cid);
-            console.log(carId || cid);
             if (isdft == 1) {
-                $$.setCookie('__DFTCAR__', carId || cid);
+                $$.setCookie('__DFTCAR__', cid);
             }
         });
     });
@@ -186,7 +185,6 @@ $(function() {
                     return false;
                 }
                 if (res.Data && res.Data.Rows) {
-                    console.log(res.Data.Rows);
                     $page.find('>div.carsModal >div.carsBox').html(
                         template(pageStr + '_cars_list', {
                             cars: res.Data.Rows
@@ -197,7 +195,8 @@ $(function() {
     }
     // 保存车辆信息
     function saveCar(calback) {
-        var url = 'CSL/UserInfo/AddCar';
+        var url = 'CSL/UserInfo/AddCar',
+            carId = $$.getQueryString('cid');
         if (carId) {
             url = 'CSL/UserInfo/UpdateCar';
         }
@@ -211,7 +210,7 @@ $(function() {
                     return false;
                 }
                 if (calback) {
-                    calback(res.Data.ID, carInfo.IsDefault);
+                    calback(carId || res.Data.ID, carInfo.IsDefault);
                 }
             },
             function(e) {

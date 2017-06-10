@@ -71,7 +71,7 @@
 #carInfo_carInfo >div.main >div.info {
 	height: 34px;
 	background-color: #FFEED0;
-	border: 1px solid #D6D6DB;
+	border-bottom: 1px solid #D6D6DB;
 	margin-top: -1px;
 }
 #carInfo_carInfo >div.main >div.info i {
@@ -95,6 +95,10 @@
 	#carInfo_carInfo >div.main >div.info i {
 		margin-left: 12px;
 	}
+}
+#carInfo_carInfo >div.main div.carDetail {
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 #carInfo_carInfo >div.main div.carDetail >div {
 	background-color: #fff;
@@ -151,13 +155,12 @@
 }
 #carInfo_carInfo >div.main div.carDetail button {
     display: block;
-    margin: 0 auto;
     background-color: #EA5514;
     color: #fff;
     border: none;
     outline: none;
     border-radius: 100px;
-    margin-top: 15px;
+    margin: 15px auto;
     padding: 10px 0;
     width: 90%;
     font-size: 16px;

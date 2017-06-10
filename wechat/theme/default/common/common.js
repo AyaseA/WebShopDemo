@@ -6,7 +6,7 @@
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
-        serverAddr: 'http://192.168.43.45:8000/',
+        serverAddr: 'http://192.168.1.110:8000/',
 
         // 时间转10位时间戳
         get10Time: function(time) {

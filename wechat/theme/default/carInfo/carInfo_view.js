@@ -65,7 +65,9 @@ $(function() {
             if (isdft == 1) {
                 $$.setCookie('__DFTCAR__', cid);
             }
-            $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname + '&' + $$.goBackUrl('myCars/myCars.html'));
+            $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname, {
+                backUrl: 'myCars/myCars.html'
+            });
         });
     });
     // 点击Car事件

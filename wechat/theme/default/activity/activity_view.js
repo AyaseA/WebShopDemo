@@ -14,11 +14,11 @@ $(function() {
     });
     // 点击顶部的提示到我的车辆页面
     $page.on('click', 'div.main div.info', function() {
-    	$$.redirect('myCars/myCars.html?' + $$.goBackUrl());
+    	$$.redirect('myCars/myCars.html');
     });
     // 点击图片跳转到商品详情
     $page.on('click', 'div.products >div.item >img', function() {
         var pid = $(this).parent().attr('data-id');
-        $$.redirect('product/product.html?pid=' + pid + '&' + $$.goBackUrl());
+        $$.redirect('product/product.html?pid=' + pid);
     });
 });

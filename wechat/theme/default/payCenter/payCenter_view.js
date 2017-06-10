@@ -28,6 +28,6 @@ $(function() {
 		e.stopPropagation();
 	});
 	$page.on('click', 'div.confirm button.confirm', function() {
-		$$.redirect($$.getQueryString('__GOBACK__'));
+		$$.goBack();
 	});
 });

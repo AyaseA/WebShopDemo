@@ -11,7 +11,7 @@ $(function() {
 
     $$.setGoBack($page.find('>div.header >a.goBack'));
     
-    $page.find('a.addNew').attr('href', 'carInfo/carInfo.html?' + $$.goBackUrl());
+    $page.find('a.addNew').attr('href', 'carInfo/carInfo.html');
 
     // 设置默认车辆
     $page.on('click', '>div.main div.car >i', function() {
@@ -24,7 +24,7 @@ $(function() {
     $page.on('click', '>div.main div.car >div', function() {
         var cid = $(this).attr('data-id'),
             cname = $(this).attr('data-name');
-        $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname + '&' + $$.goBackUrl());
+        $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname);
     });
     // 删除车辆
     $page.on('click', '>div.main div.car a.delete', function() {

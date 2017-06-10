@@ -11,6 +11,7 @@
         config: {
             serverAddr: 'http://192.168.1.110:8000/'
         },
+        stack: [],
         // 时间转10位时间戳
         get10Time: function(time) {
             var date = time ? new Date(time) : new Date();
@@ -46,7 +47,14 @@
             }
         },
         // 页面跳转 核心方法
-        redirect: function(url, trans) {
+        redirect: function(url, option) {
+            var trans, backUrl, fromGoBack = false;
+            if (option) {
+                trans = option.trans;
+                backUrl = option.backUrl;
+                fromGoBack = option.fromGoBack;
+            }
+
             var load = function(url, newid, trans) {
                 var url_arr = url.split('?');
                 var dir = url_arr[0].substring(0, url_arr[0].length - 5);
@@ -102,6 +110,12 @@
                     trans($$.getCookie("__OLDDIV__"), newid);
                 }
             };
+            
+            if (url == 'index/index.html') {
+                $$.stack = [];
+            } else if ($.inArray(url, $$.stack) == -1 && !fromGoBack) {
+                $$.stack.push(backUrl || $$.getUrl());
+            }
             // 将当前页面存储到cookie
             $$.setCookie("__URL__", url);
             // 存储页面加载前显示的div id
@@ -255,9 +269,8 @@
             // 判断cookies
             var token = $$.getCookie('__TOKEN__');
             if (!token) {
-                console.log($$.goBackUrl());
                 // 没有登录跳转到登录页面
-                $$.redirect('login/login.html?' + $$.goBackUrl());
+                $$.redirect('login/login.html');
                 return false;
             }
             return token;
@@ -290,6 +303,9 @@
             if (!url) {
                 url = $$.getUrl();
             }
+            if (!url) {
+                return false;
+            }
             if (url.indexOf('__GOBACK__=') != -1) {
                 var goBackStartIndex = url.indexOf('__GOBACK__='),
                     goBackEndIndex = url.indexOf('&', goBackStartIndex);
@@ -301,12 +317,21 @@
             }
             return '__GOBACK__=' + escape(url);
         },
+        // 调用返回上次页面
+        goBack: function() {
+            if ($$.stack.length > 0) {
+                $$.redirect($$.stack.pop(), {
+                    'fromGoBack': true
+                });
+            } else {
+                $$.redirect('index/index.html', {
+                    'fromGoBack': true
+                });
+            }
+        },
         // 设置返回
         setGoBack: function(selector) {
-            var url = $$.getQueryString('__GOBACK__');
-            if (url) {
-                selector.attr('href', url);
-            }
+            selector.attr('href', 'javascript:$$.goBack();');
         },
         reloadData: function() {
 
@@ -339,7 +364,7 @@
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
     if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
-        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl));
+        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl),  30 / 60 / 60 / 24);
         // 跳到指定页面
         $$.redirect(rdtUrl);
     } else if ($$.getUrl()) {
@@ -350,14 +375,12 @@
     }
     // 使a标签默认的调转事件转为$$.redirect
     $('#div_list').on('click', 'a', function(e) {
-        e.preventDefault();
         var url = $(this).attr('href');
         if (url.indexOf('.html') != -1) {
-            $$.redirect(url + (
-                url.indexOf('?') != -1 ?
-                    ('&' + $$.goBackUrl()) :
-                    ('?' + $$.goBackUrl())
-            ), $(this).attr('data-tran'));
+            e.preventDefault();
+            $$.redirect(url, {
+                'trans': $(this).attr('data-tran')
+            });
         }
     });
     template.defaults.imports.imgFilter = function(img){

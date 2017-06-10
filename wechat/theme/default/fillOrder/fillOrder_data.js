@@ -3,7 +3,7 @@ $(function() {
     	$page = $('#fillOrder_fillOrder'),
     	pageStr = 'fillOrder_fillOrder',
     	productId = $$.getQueryString('pid'),
-    	productNum = $$.getQueryString('num'),
+    	productNum = $$.getQueryString('num') || 1,
     	total = 0,
     	coupon = 0;
 
@@ -23,7 +23,7 @@ $(function() {
 	// 立即支付
 	$page.off('click', '>div.footer >button.order').on('click', '>div.footer >button.order', function() {
 		addOrder(function(oid) {
-			$$.redirect('payCenter/payCenter.html?oid=' + oid + '&' + $$.goBackUrl());
+			$$.redirect('payCenter/payCenter.html?oid=' + oid);
 		});
 	});
 

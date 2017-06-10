@@ -10,7 +10,9 @@ $(function() {
 
         //点击返回按钮
         $page.on("click", "a .back", function() {
-                $$.redirect("index/index.html", "fadeIn");
+                $$.redirect("index/index.html", {
+                    'trans': "fadeIn"
+                });
                 $$.removeDiv(pageStr);
                 $page.off('click', '*');
             })
@@ -96,7 +98,9 @@ $(function() {
                                     $(".mirror").css("z-index", "140");
                                     $(".noWard").animate({ height: "82vw" }, 500);
                                     $page.on("click", ".backImg img", function() {
-                            			$$.redirect("index/index.html", "fadeIn");
+                            			$$.redirect("index/index.html", {
+                                            'trans': "fadeIn"
+                                        });
                             			$$.removeDiv(pageStr);
                             			//$page.off('click', '*');
                                     });

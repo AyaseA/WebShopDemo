@@ -44,7 +44,7 @@ $(function() {
 				}
 			$page.on("click",".PayBtn",function(){
 				var orderId=$(this).parent().parent().children(".pieceHeader").children(".orderID").html();
-				$$.redirect("payCenter/payCenter.html?oid="+orderId+"&"+$$.goBackUrl())
+				$$.redirect("payCenter/payCenter.html?oid="+orderId)
 				})
 			}
 			

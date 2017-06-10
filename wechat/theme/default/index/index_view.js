@@ -24,22 +24,22 @@ $(function(){
             } break;
             case 'maintain': {
                 // 车辆信息
-                $$.redirect('myCars/myCars.html?' + $$.goBackUrl());
+                $$.redirect('myCars/myCars.html');
             } break;
             case 'friendAdd': {
                 // 邀请有礼
-                $$.redirect('invite/invite.html?' + $$.goBackUrl());
+                $$.redirect('invite/invite.html');
             } break;
         }
     });
     // 活动点击事件
     $page.on('click', 'div.activity', function() {
-        $$.redirect('activity/activity.html?' + $$.goBackUrl());
+        $$.redirect('activity/activity.html');
     });
     // 点击商品查看详情
     $page.on('click', 'div.products img', function() {
         var pid = $(this).parent().attr('data-id');
-        $$.redirect('product/product.html?pid=' + pid + '&' + $$.goBackUrl());
+        $$.redirect('product/product.html?pid=' + pid);
     });
     // footer 事件
     $page.on('click', 'div.footer li', function() {

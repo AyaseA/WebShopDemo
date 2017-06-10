@@ -55,7 +55,7 @@ $(function(){
             } break;
             case 'center': {
                 // 个人中心
-                $$.redirect();
+                $$.redirect('pageHome/pageHome.html');
             } break;
         }
     });

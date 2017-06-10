@@ -287,6 +287,8 @@ $('.return_button').on('click', function(e){
 	$('.login_check_pc').css('display', 'none');
 	$('.login_check_pw').css('display', 'none');
 	$('.login_check_in').css('display', 'none');
+
+	$$.redirect('index/index.html');
 });
 
 //监听清除的display

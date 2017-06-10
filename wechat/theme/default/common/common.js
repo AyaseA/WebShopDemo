@@ -252,6 +252,7 @@
             // 判断cookies
             var token = $$.getCookie('__TOKEN__');
             if (!token) {
+                console.log($$.goBackUrl());
                 // 没有登录跳转到登录页面
                 $$.redirect('login/login.html?' + $$.goBackUrl());
                 return false;

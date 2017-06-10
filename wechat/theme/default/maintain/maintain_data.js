@@ -5,7 +5,7 @@ $(function() {
 	    carName = $$.getQueryString('cname');
 	
 	$page.find('>div.header >span.edit').text(carName);
-	
+    
 	// 加载商品列表
 	getProductsList();
 

@@ -19,6 +19,10 @@ $(function() {
 		'height': bodyHeight - headerHeight * 2 - 1,
 		'width': boxWidth * 2
 	}).find('>div').width(boxWidth - 30).height(bodyHeight - headerHeight * 2 - 20);
+
+	// 设置返回页面
+	$$.setGoBack($page.find('>div.header >a.goBack'));
+	
 	// 点击优惠券按钮弹出优惠券框
 	$page.on('click', 'div.coupon button', function() {
 		$page.find('>div.couponModal').show().animate({
@@ -66,8 +70,6 @@ $(function() {
 			'top': bodyHeight
 		}, 300).fadeOut(400);
 	});
-	// 设置返回页面
-	$$.setGoBack($page.find('>div.header >a.goBack'));
 	// 优惠券tab切换
 	function changeTab(item) {
 		$(item).addClass('active').siblings().removeClass('active');

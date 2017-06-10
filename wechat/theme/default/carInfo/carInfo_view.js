@@ -11,8 +11,10 @@ $(function() {
         headerHeight = $page.find('div.header').height();
         setSize();
     };
+    
     // 设置返回
     $$.setGoBack($page.find('>div.header >a.goBack'));
+    
     // 选择日期
     (new datePicker()).init({
         /* 按钮选择器，用于触发弹出插件 */

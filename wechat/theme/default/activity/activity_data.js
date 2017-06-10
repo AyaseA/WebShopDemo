@@ -1,7 +1,7 @@
 $(function() {
     var $page = $('#activity_activity'),
     	pageStr = 'activity_activity';
-	
+    
 	// 加载商品列表
 	getProductsList();
 

@@ -3,13 +3,15 @@ $(function() {
 		$page = $('#activity_activity'),
     	pageStr = 'activity_activity',
     	headerHeight = $page.find('>div.header').height();
+
+    // 设置返回按钮可用
+    $$.setGoBack($page.find('>div.header >a.goBack'));
+
     // 设置高度
     $page.find('div.main').css({
         'height': bodyHeight - headerHeight + 'px',
         'margin-top': headerHeight + 'px'
     });
-    // 设置返回按钮可用
-    $$.setGoBack($page.find('>div.header >a.goBack'));
     // 点击顶部的提示到我的车辆页面
     $page.on('click', 'div.main div.info', function() {
     	$$.redirect('myCars/myCars.html?' + $$.goBackUrl());

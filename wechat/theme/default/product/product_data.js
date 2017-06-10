@@ -15,7 +15,7 @@ $(function() {
     }).find('div.reviews >div.warp').css({
         'margin-left': 0
     });
-
+    
     // 修改立即购买按钮的商品id
     $page.find('>div.footer >a.buyNow').attr('href', function() {
         var href = $(this).attr('href');

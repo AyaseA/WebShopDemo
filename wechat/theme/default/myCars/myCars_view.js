@@ -10,7 +10,7 @@ $(function() {
     });
 
     $$.setGoBack($page.find('>div.header >a.goBack'));
-
+    
     $page.find('a.addNew').attr('href', 'carInfo/carInfo.html?' + $$.goBackUrl());
 
     // 设置默认车辆

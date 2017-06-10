@@ -3,6 +3,8 @@ $(function() {
         $page = $('#invite_invite'),
         pageStr = 'invite_invite',
         headerHeight = $page.find('div.header').height();
+    
+    $$.setGoBack($page.find('a.goBack')); 
 
     var shareLink = "http://www.baidu.com"; // 分享链接
     var shareTitle = ""; // 分享标题
@@ -17,7 +19,7 @@ $(function() {
     $page.on('click', 'div.entry', function() {
         inviteEntry($(this).attr('data-type'));
     });
-    $$.setGoBack($page.find('a.goBack')); 
+    
     // 分享入口
     function inviteEntry(type) {
         switch (type) {

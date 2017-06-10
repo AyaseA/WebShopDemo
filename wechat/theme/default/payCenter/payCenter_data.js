@@ -31,6 +31,9 @@ $(function() {
                 		allMoney: d.AllMoney
                 	}));
                 	orderDesc = $.trim($page.find('div.productInfo p.desc').text().replace(/[\r\n]/g, "").replace(/[\t]/g, ""));
+                	if (orderDesc.length > 50) {
+                		orderDesc.substring(0, 50);
+                	}
                 }
 			}
 		);

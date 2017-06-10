@@ -1,7 +1,7 @@
 $(function() {
     var $page = $('#share_share');
     pageStr = 'share_share';
-
+    $$.setGoBack($page.find('a.goBack'));
 
     // var tip = '1.点击分享按钮，分享给好友，即可获得车势力专属优惠。2.此活动最终解释权归车势力所有。';
     // $page.find('.sharetip').html(tip);
@@ -133,6 +133,6 @@ $(function() {
                 break;
         }
     }
-    $$.setGoBack($page.find('a.goBack'));
+    
 
 });

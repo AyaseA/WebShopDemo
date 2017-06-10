@@ -14,6 +14,10 @@ $(function() {
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight - footerHeight - 1);
 	$page.find('div.reviews >div.warp').width(boxWidth * 5)
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight * 2 - footerHeight - 2);
+	
+    // 返回按钮
+    $$.setGoBack($page.find('>div.header >a.goBack'));
+    
 	// tab页点击
 	$page.on('click', 'div.header li', function() {
 		if ($(this).hasClass('active')) {
@@ -32,8 +36,6 @@ $(function() {
 		}
 		changeCommentsTab($(this));
 	});
-	// 返回按钮
-	$$.setGoBack($page.find('>div.header >a.goBack'));
 	// 收藏
 	$page.on('click', '>div.footer >a.collect', function() {
 		if ($(this).hasClass('collected')) {

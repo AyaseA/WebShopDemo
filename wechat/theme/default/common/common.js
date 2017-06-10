@@ -253,8 +253,8 @@
             var token = $$.getCookie('__TOKEN__');
             if (!token) {
                 // 没有登录跳转到登录页面
-                // TODO
-                //return false;
+                $$.redirect('login/login.html?' + $$.goBackUrl());
+                return false;
             }
             return token;
         },
@@ -381,7 +381,7 @@
 
     // 配置微信
     !(function() {
-        $$.get(
+        /*$$.get(
             'Product/WeChat/GetSign?url=' + escape(location.href),
             function(res) {
                 console.log(res);
@@ -406,7 +406,7 @@
                     });
                 }
             }
-        );
+        );*/
     }());
     
     win.$$ = $$;

@@ -7,7 +7,10 @@
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
         serverAddr: 'http://192.168.1.110:8000/',
-
+        // 相关配置
+        config: {
+            serverAddr: 'http://192.168.1.110:8000/'
+        },
         // 时间转10位时间戳
         get10Time: function(time) {
             var date = time ? new Date(time) : new Date();

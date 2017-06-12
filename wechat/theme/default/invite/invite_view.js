@@ -1,11 +1,14 @@
 $(function() {
-    var $page = $('#invite_invite'),
-       pageStr = 'invite_invite';
 
-    var shareLink = "http://www.baidu.com"; // 分享链接
-    var shareTitle = ""; // 分享标题
+    $$.loadJavascript('http://res.wx.qq.com/open/js/jweixin-1.2.0.js');
+
+    var $page = $('#invite_invite'),
+        pageStr = 'invite_invite';
+
+    var shareLink = "http://192.168.2.2:8080/theme/default/?__RDTURL__=showShare/showShare.html"; // 分享链接http://127.0.0.1:8080/theme/default/?__RDTURL__=showShare/showShare.html
+    var shareTitle = "测试"; // 分享标题
     var shareImage = ""; // 分享图标
-    var shareDesc = ""; // 分享描述
+    var shareDesc = "测试测试测试测试测试测试测试测试测试测试测试测试测试测试"; // 分享描述
 
     $page.find('div.main').css({
         'top': $page.find('div.header').height()
@@ -14,7 +17,7 @@ $(function() {
     $page.on('click', 'div.entry', function() {
         inviteEntry($(this).attr('data-type'));
     });
-    $$.setGoBack($page.find('a.goBack')); 
+    $$.setGoBack($page.find('a.goBack'));
     // 分享入口
     function inviteEntry(type) {
         switch (type) {
@@ -22,10 +25,10 @@ $(function() {
                 {
                     // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
                     wx.onMenuShareAppMessage({
-                        title: '', // 分享标题
-                        desc: '', // 分享描述
-                        link: '', // 分享链接
-                        imgUrl: '', // 分享图标
+                        title: shareTitle, // 分享标题
+                        desc: shareDesc, // 分享描述
+                        link: shareLink, // 分享链接
+                        imgUrl: shareImage, // 分享图标
                         type: '', // 分享类型,music、video或link，不填默认为link
                         dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                         success: function() {
@@ -41,9 +44,10 @@ $(function() {
                 {
                     // 获取"分享"到朋友圈按钮点击状态及自定义分享内容接口
                     wx.onMenuShareTimeline({
-                        title: 'wqwqw', // 分享标题
-                        link: 'www.baidu.com', // 分享链接
-                        imgUrl: '', // 分享图标
+                        title: shareTitle, // 分享标题
+                        link: shareLink, // 分享链接
+                        imgUrl: shareImage, // 分享图标
+                        desc: shareDesc, // 分享描述
                         success: function() {
                             // 用户确认分享后执行的回调函数
                         },
@@ -63,10 +67,10 @@ $(function() {
                 {
                     // 获取“分享到QQ”按钮点击状态及自定义分享内容接口*
                     wx.onMenuShareQQ({
-                        title: '', // 分享标题
-                        desc: '', // 分享描述
-                        link: '', // 分享链接
-                        imgUrl: '', // 分享图标
+                        title: shareTitle, // 分享标题
+                        desc: shareDesc, // 分享描述
+                        link: shareLink, // 分享链接
+                        imgUrl: shareImage, // 分享图标
                         success: function() {
                             // 用户确认分享后执行的回调函数
                         },
@@ -80,10 +84,10 @@ $(function() {
                 {
                     // 获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
                     wx.onMenuShareQZone({
-                        title: '', // 分享标题
-                        desc: '', // 分享描述
-                        link: '', // 分享链接
-                        imgUrl: '', // 分享图标
+                        title: shareTitle, // 分享标题
+                        desc: shareDesc, // 分享描述
+                        link: shareLink, // 分享链接
+                        imgUrl: shareImage, // 分享图标
                         success: function() {
                             // 用户确认分享后执行的回调函数
                         },

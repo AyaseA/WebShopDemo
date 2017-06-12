@@ -7,6 +7,7 @@ $(function() {
 
     //var Token = "eyJVc2VySUQiOiIxMCIsIk5pY2tOYW1lIjpudWxsLCJHcm91dGhWYWx1ZSI6bnVsbCwiVXNlckFkZHJlc3NJRCI6bnVsbCwiQWRkVGltZSI6IjE0OTYyODA2NDUiLCJVc2VyQ2FySUQiOm51bGwsIkltZyI6bnVsbCwiRW5hYmxlIjoiMSIsIk1vYmlsZSI6IjE1MDY2NjcwMzIwIiwiU2Vzc2lvbklEIjoiMSIsIlR5cGUiOiJVc2VyIiwiVUlEIjoiNWEzYzY5YWYwOWU4ZDA1ODBlN2QwZTdjZTY1NjdlMWUifQ%3D%3D";
     var Token = $$.getToken();
+    console.log(Token);
 
     //$$.post("http://192.168.1.110:8000/CSL/Order/QueryOrderList",{},)
     	
@@ -272,7 +273,7 @@ $(function() {
 
     })
 
-    $$.setGoBack($page.find());
+    
 
     function showStatus(data) {
         if (data == 1) {

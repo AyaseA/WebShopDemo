@@ -375,7 +375,7 @@
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
     if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
-        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 30 / 60 / 60 / 24);
+        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 10 / 60 / 60 / 24);
         // 跳到指定页面
         $$.redirect(rdtUrl);
     } else if ($$.getUrl()) {

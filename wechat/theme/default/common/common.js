@@ -2,7 +2,7 @@
 !(function(win, $, undefined) {
     //js 默认记载数值
     win.GLOBAL_includejs = Array();
-    
+
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
@@ -77,8 +77,8 @@
                         var fileview = dir + '_view.js';
                         loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
                         loadJs(fileview, dir.replace(/\//g, "_") + "_view");
-                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                         transition(trans, newid);
+                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                     }
                 });
             };
@@ -93,45 +93,52 @@
             var transition = function(trans, newid) {
                 $$.setCookie("__NEWDIV__", newid);
                 if (typeof(trans) === "undefined") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide(0);
-                    $("div#div_list>div#" + newid).fadeIn(500);
-                    /*$("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide();
-                    $("div#div_list>div#" + newid).show();*/
-                }
-                if (trans == "slideUp") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).slideUp(500);
-                    $("div#div_list>div#" + newid).slideDown(500);
-                }
-                if (trans == "fadeIn") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide(0);
-                    $("div#div_list>div#" + newid).fadeIn(500);
-                }
-                if (typeof(trans) === "function") {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide(0);
+                    $("#div_list>#" + newid).fadeIn(500);
+                } else if (trans == "none") {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide();
+                    $("#div_list>#" + newid).show();
+                } else if (trans == "slideUp") {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).slideUp(500);
+                    $("#div_list>#" + newid).slideDown(500);
+                } else if (trans == "fadeIn") {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide(0);
+                    $("#div_list>#" + newid).fadeIn(500);
+                } else if (typeof(trans) === "function") {
                     trans($$.getCookie("__OLDDIV__"), newid);
+                } else {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide();
+                    $("#div_list>#" + newid).show();
                 }
             };
-            
+
+            // 将历史url存入栈
             if (url == 'index/index.html') {
                 $$.stack = [];
-            } else if ($.inArray(url, $$.stack) == -1 && !fromGoBack) {
+            } else if ($.inArray($$.getUrl(), $$.stack) == -1 &&
+                           $.inArray(backUrl, $$.stack) == -1 &&
+                           !fromGoBack) {
                 $$.stack.push(backUrl || $$.getUrl());
             }
+
             // 将当前页面存储到cookie
             $$.setCookie("__URL__", url);
             // 存储页面加载前显示的div id
             $$.setCookie("__OLDDIV__", $("div#div_list>div:visible").attr("id"));
-            var url_arr = url.split('?');
-            var dir = url_arr[0].substring(0, url_arr[0].length - 5);
-            var newid = dir.replace(/\//g, "_");
+
+            var url_arr = url.split('?'),
+                dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                newid = dir.replace(/\//g, "_");
+
             // 判断要显示的页面是否存在
             if ($("div#div_list>div#" + newid).length == 0) {
                 // 不存在，加载页面，css, js 
                 load(url, newid, trans);
-            } else{
-                // 存在，直加载数据*_data.js
-                loadData();
+            } else {
                 // 显示
                 transition(trans, newid);
+                // 存在，直加载数据*_data.js
+                loadData();
             }
         },
         // 获取当前显示的div id
@@ -269,13 +276,15 @@
             // 判断cookies
             var token = $$.getCookie('__TOKEN__');
             if (!token) {
-                if (!$('#login_login').is(':visible')) {
-                    // 没有登录并且没有显示登录界面跳转到登录页面
-                    $$.redirect('login/login.html');
-                }
-                return false;
+                //if (!$('#login_login').is(':visible')) {
+                // 没有登录并且没有显示登录界面跳转到登录页面
+                $$.redirect('login/login.html', {
+                    trans: 'none'
+                });
+                //}
+            } else {
+                return token;
             }
-            return token;
         },
         // 获取用户信息（默认车辆、默认收货地址。。。。）
         getUserInfo: function() {
@@ -366,7 +375,7 @@
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
     if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
-        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl),  30 / 60 / 60 / 24);
+        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 30 / 60 / 60 / 24);
         // 跳到指定页面
         $$.redirect(rdtUrl);
     } else if ($$.getUrl()) {
@@ -385,17 +394,17 @@
             });
         }
     });
-    template.defaults.imports.imgFilter = function(img){
+    template.defaults.imports.imgFilter = function(img) {
         if (img) {
             return img;
         } else {
             return 'NoImg/' + Math.random() + '.jpg';
         }
     };
-    template.defaults.imports.timeFilter = function(time){
-        return new Date(time*1000).pattern('yyyy-MM-dd hh:mm:ss');
+    template.defaults.imports.timeFilter = function(time) {
+        return new Date(time * 1000).pattern('yyyy-MM-dd hh:mm:ss');
     };
-    template.defaults.imports.splitFilter = function(str, sign){
+    template.defaults.imports.splitFilter = function(str, sign) {
         if (str) {
             return str.split(sign || ',');
         } else {
@@ -437,7 +446,7 @@
             }
         );*/
     }());
-    
+
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

@@ -12,7 +12,7 @@ $(function() {
     
     $$.setGoBack($page.find('a.goBack')); 
 
-    var shareLink = "http://192.168.2.2:8080/theme/default/?__RDTURL__=showShare/showShare.html"; // 分享链接http://127.0.0.1:8080/theme/default/?__RDTURL__=showShare/showShare.html
+    var shareLink = location.href +  "?__RDTURL__=showShare/showShare.html"; // 分享链接http://127.0.0.1:8080/theme/default/?__RDTURL__=showShare/showShare.html
     var shareTitle = "测试"; // 分享标题
     var shareImage = ""; // 分享图标
     var shareDesc = "测试测试测试测试测试测试测试测试测试测试测试测试测试测试"; // 分享描述

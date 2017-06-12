@@ -78,6 +78,7 @@ input:-ms-input-placeholder {
 #showShare_showShare .bg .red form,
 #showShare_showShare .bg .red_op form {
     margin: 15px 30px 0;
+    text-align: center;
 }
 
 #showShare_showShare .bg .red form input.phone {
@@ -93,8 +94,8 @@ input:-ms-input-placeholder {
 
 #showShare_showShare .bg .red form a.btn {
     width: 100%;
-    display: block;
-    margin: 15px 0 0;
+    display: inline-block;
+    /*margin: 15px 0 0;*/
     height: 48px;
     line-height: 48px;
     font-size: 14px;
@@ -325,7 +326,7 @@ input:-ms-input-placeholder {
     }
     #showShare_showShare .bg .red form a.btn {
         font-size: 18px;
-        margin: 25px 0 0;
+        margin: 25px 0 0 0;
     }
     #showShare_showShare .bg .detail {
         padding: 50px 20px 0;

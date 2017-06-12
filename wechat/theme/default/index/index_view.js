@@ -67,4 +67,78 @@ $(function(){
             'margin-top': headerHeight + 'px'
         });
     }
+    // 获取城市列表
+    getCitiesList();
+    function getCitiesList() {
+        $$.get(
+            'Product/Info/TriLinkAll',
+            function(res) {
+                if (res.Status) {
+                    return false;
+                }
+                if (res.Data) {
+                    $$.loadJavascript(
+                        '../../plug/Pinyin.min.js',
+                        function() {
+                            var cityList = getSortCities(res.Data).sort(function(a, b) {
+                                return a.alpha > b.alpha;
+                            });
+                            console.log(cityList);
+                        }
+                    );
+                }
+            }
+        );
+    }
+    function getSortCities(arr) {
+        var cityList = [],
+            provTmp,
+            cityTmp,
+            distTmp,
+            provChd,
+            cityChd,
+            pyTmp,
+            distArr;
+        for (var i = 0; i < arr.length; i++) {
+            provTmp = arr[i];
+            provChd = provTmp.children;
+            if (provTmp.Name.endsWith('市') || /[71|81|82]0000/.test(provTmp.ID)) {
+                pyTmp = Pinyin.getFullChars(provTmp.Name).toLowerCase();
+                cityList.push({
+                    name: provTmp.Name,
+                    id: provTmp.ID,
+                    pyName: pyTmp,
+                    alpha: pyTmp.substring(0,1),
+                    children: []
+                });
+            } else {
+                for (var j = 0; j < provChd.length; j++) {
+                    cityTmp = provChd[j];
+                    cityChd = cityTmp.children;
+                    distArr = [];
+                    for (var n = 0; n < cityChd.length; n++) {
+                        distTmp = cityChd[n];
+                        if (distTmp.Name != '市辖区') {
+                            pyTmp = Pinyin.getFullChars(distTmp.Name).toLowerCase();
+                            distArr.push({
+                                name: distTmp.Name,
+                                id: distTmp.ID,
+                                pyName: pyTmp,
+                                alpha: pyTmp.substring(0,1)
+                            });
+                        }
+                    }
+                    pyTmp = Pinyin.getFullChars(cityTmp.Name).toLowerCase();
+                    cityList.push({
+                        name: cityTmp.Name,
+                        id: cityTmp.ID,
+                        children: distArr,
+                        pyName: pyTmp,
+                        alpha: pyTmp.substring(0,1)
+                    });
+                }
+            }
+        }
+        return cityList;
+    }
 });

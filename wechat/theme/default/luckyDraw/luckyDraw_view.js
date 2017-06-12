@@ -2,7 +2,7 @@ $(function() {
     var $page = $('#luckyDraw_luckyDraw');
     pageStr = 'luckyDraw_luckyDraw';
 
-    
+
     function makeWard() {
         var flag = 0;
         $page.wardFlag = 0;
@@ -35,7 +35,7 @@ $(function() {
                 $page.find(".formMsg").html("请输入正确的手机号");
             } else {
                 flag = 1;
-            	$page.find(".form").animate({ height: "0vw" }, 1000);
+                $page.find(".form").animate({ height: "0vw" }, 1000);
                 startWard();
             }
         })
@@ -68,8 +68,8 @@ $(function() {
                 function() {
                     $page.find(".wardImg").removeAttr("src");
                     $page.on("click", ".pcjImg", function() {
-                    	console.dir(this);
-                    	console.log($page.wardFlag);
+                        console.dir(this);
+                        console.log($page.wardFlag);
                         if ($(this).children("img").attr("src") != "images/lcukyDraw/cqImg.png") {
                             if ($page.wardFlag == 0) {
                                 $(this).children("img").removeAttr("src");
@@ -83,7 +83,7 @@ $(function() {
                                 setTimeout(function() {
                                     var imgList = ["images/lcukyDraw/one.png", "images/lcukyDraw/two.png", "images/lcukyDraw/three.png", "images/lcukyDraw/four.png", "images/lcukyDraw/five.png", "images/lcukyDraw/six.png", "images/lcukyDraw/wardThank.png"];
                                     var imgList = randArray(imgList)
-          							var j = 0;
+                                    var j = 0;
                                     for (var i = 0; i < $(".pcjImg").length; i++) {
                                         if (i != 4 && i != imgIndex) {
                                             $(".pcjImg")[i].children[1].setAttribute("src", imgList[j]);
@@ -98,11 +98,11 @@ $(function() {
                                     $(".mirror").css("z-index", "140");
                                     $(".noWard").animate({ height: "82vw" }, 500);
                                     $page.on("click", ".backImg img", function() {
-                            			$$.redirect("index/index.html", {
+                                        $$.redirect("index/index.html", {
                                             'trans': "fadeIn"
                                         });
-                            			$$.removeDiv(pageStr);
-                            			//$page.off('click', '*');
+                                        $$.removeDiv(pageStr);
+                                        //$page.off('click', '*');
                                     });
                                 }, 3000);
                             }
@@ -133,8 +133,8 @@ $(function() {
         return try3;
     }
 
-    function isPhoneNum(num){
-    	return /^1[34578]\d{9}$/.test(num)
+    function isPhoneNum(num) {
+        return /^1[34578]\d{9}$/.test(num)
     }
 
 });

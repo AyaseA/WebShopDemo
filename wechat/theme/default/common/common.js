@@ -2,7 +2,7 @@
 !(function(win, $, undefined) {
     //js 默认记载数值
     win.GLOBAL_includejs = Array();
-    
+
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
@@ -77,8 +77,8 @@
                         var fileview = dir + '_view.js';
                         loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
                         loadJs(fileview, dir.replace(/\//g, "_") + "_view");
-                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                         transition(trans, newid);
+                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                     }
                 });
             };
@@ -93,45 +93,52 @@
             var transition = function(trans, newid) {
                 $$.setCookie("__NEWDIV__", newid);
                 if (typeof(trans) === "undefined") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide(0);
-                    $("div#div_list>div#" + newid).fadeIn(500);
-                    /*$("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide();
-                    $("div#div_list>div#" + newid).show();*/
-                }
-                if (trans == "slideUp") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).slideUp(500);
-                    $("div#div_list>div#" + newid).slideDown(500);
-                }
-                if (trans == "fadeIn") {
-                    $("div#div_list>div#" + $$.getCookie("__OLDDIV__")).hide(0);
-                    $("div#div_list>div#" + newid).fadeIn(500);
-                }
-                if (typeof(trans) === "function") {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide(0);
+                    $("#div_list>#" + newid).fadeIn(500);
+                } else if (trans == "none") {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide();
+                    $("#div_list>#" + newid).show();
+                } else if (trans == "slideUp") {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).slideUp(500);
+                    $("#div_list>#" + newid).slideDown(500);
+                } else if (trans == "fadeIn") {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide(0);
+                    $("#div_list>#" + newid).fadeIn(500);
+                } else if (typeof(trans) === "function") {
                     trans($$.getCookie("__OLDDIV__"), newid);
+                } else {
+                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide();
+                    $("#div_list>#" + newid).show();
                 }
             };
-            
+
+            // 将历史url存入栈
             if (url == 'index/index.html') {
                 $$.stack = [];
-            } else if ($.inArray(url, $$.stack) == -1 && !fromGoBack) {
+            } else if ($.inArray($$.getUrl(), $$.stack) == -1 &&
+                           $.inArray(backUrl, $$.stack) == -1 &&
+                           !fromGoBack) {
                 $$.stack.push(backUrl || $$.getUrl());
             }
+
             // 将当前页面存储到cookie
             $$.setCookie("__URL__", url);
             // 存储页面加载前显示的div id
             $$.setCookie("__OLDDIV__", $("div#div_list>div:visible").attr("id"));
-            var url_arr = url.split('?');
-            var dir = url_arr[0].substring(0, url_arr[0].length - 5);
-            var newid = dir.replace(/\//g, "_");
+
+            var url_arr = url.split('?'),
+                dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                newid = dir.replace(/\//g, "_");
+
             // 判断要显示的页面是否存在
             if ($("div#div_list>div#" + newid).length == 0) {
                 // 不存在，加载页面，css, js 
                 load(url, newid, trans);
-            } else{
-                // 存在，直加载数据*_data.js
-                loadData();
+            } else {
                 // 显示
                 transition(trans, newid);
+                // 存在，直加载数据*_data.js
+                loadData();
             }
         },
         // 获取当前显示的div id
@@ -223,7 +230,7 @@
                 dataType: 'json',
                 success: function(data) {
                     if (succfunc) {
-                        succfunc(data);
+                        succfunc($$.eval(data));
                     }
                 },
                 error: function(error) {
@@ -249,7 +256,7 @@
                 dataType: 'json',
                 success: function(data) {
                     if (succfunc) {
-                        succfunc(data);
+                        succfunc($$.eval(data));
                     }
                 },
                 error: function(error) {
@@ -269,11 +276,15 @@
             // 判断cookies
             var token = $$.getCookie('__TOKEN__');
             if (!token) {
-                // 没有登录跳转到登录页面
-                $$.redirect('login/login.html');
-                return false;
+                //if (!$('#login_login').is(':visible')) {
+                // 没有登录并且没有显示登录界面跳转到登录页面
+                $$.redirect('login/login.html', {
+                    trans: 'none'
+                });
+                //}
+            } else {
+                return token;
             }
-            return token;
         },
         // 获取用户信息（默认车辆、默认收货地址。。。。）
         getUserInfo: function() {
@@ -364,7 +375,7 @@
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
     if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
-        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl),  30 / 60 / 60 / 24);
+        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 30 / 60 / 60 / 24);
         // 跳到指定页面
         $$.redirect(rdtUrl);
     } else if ($$.getUrl()) {
@@ -383,17 +394,17 @@
             });
         }
     });
-    template.defaults.imports.imgFilter = function(img){
+    template.defaults.imports.imgFilter = function(img) {
         if (img) {
             return img;
         } else {
             return 'NoImg/' + Math.random() + '.jpg';
         }
     };
-    template.defaults.imports.timeFilter = function(time){
-        return new Date(time*1000).pattern('yyyy-MM-dd hh:mm:ss');
+    template.defaults.imports.timeFilter = function(time) {
+        return new Date(time * 1000).pattern('yyyy-MM-dd hh:mm:ss');
     };
-    template.defaults.imports.splitFilter = function(str, sign){
+    template.defaults.imports.splitFilter = function(str, sign) {
         if (str) {
             return str.split(sign || ',');
         } else {
@@ -408,34 +419,24 @@
 
     // 配置微信
     !(function() {
-        /*$$.get(
+        $$.get(
             'Product/WeChat/GetSign?url=' + escape(location.href),
             function(res) {
-                console.log(res);
                 if (wx) {
                     wx.config({
-                         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                         appId: 'wx2c53034422e377cc', // 必填，公众号的唯一标识
-                         timestamp: res.timestamp, // 必填，生成签名的时间戳
-                         nonceStr: res.noncestr, // 必填，生成签名的随机串
-                         signature: res.sign, // 必填，签名，见附录1
-                         jsApiList: ['getLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-                    });
-                    wx.getLocation({
-                        type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
-                        success: function (res) {
-                            var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-                            var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-                            alert(latitude + '-' + longitude);
-                            var speed = res.speed; // 速度，以米/每秒计
-                            var accuracy = res.accuracy; // 位置精度
-                        }
+                        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: 'wx2c53034422e377cc', // 必填，公众号的唯一标识
+                        timestamp: res.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: res.noncestr, // 必填，生成签名的随机串
+                        signature: res.sign, // 必填，签名，见附录1
+                        jsApiList: ['getLocation','onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone']
+ // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                     });
                 }
             }
-        );*/
+        );
     }());
-    
+
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

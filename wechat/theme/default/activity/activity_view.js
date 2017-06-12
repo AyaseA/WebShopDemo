@@ -4,9 +4,6 @@ $(function() {
     	pageStr = 'activity_activity',
     	headerHeight = $page.find('>div.header').height();
 
-    // 设置返回按钮可用
-    $$.setGoBack($page.find('>div.header >a.goBack'));
-
     // 设置高度
     $page.find('div.main').css({
         'height': bodyHeight - headerHeight + 'px',

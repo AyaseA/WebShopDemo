@@ -5,15 +5,6 @@
 	</div>
 	<div class="main">
 		<div class="content">
-			<script id="index_index_banner_list" type="text/html">
-		    {{each list as val}}
-				<li>
-	                <a href="{{val.Link}}">
-	                    <img _src="{{serverAddr}}Img/{{val.Img | imgFilter}}" src="./images/common/blank.png" />
-	                </a>
-	            </li>
-	        {{/each}}
-			</script>
 			<div class="banner" id="index_index_banner">
 				<div class="hd">
 					<ul></ul>
@@ -36,23 +27,6 @@
 			<div class="activity">
 				<img src="./images/activity/activity.png">
 			</div>
-			<script id="index_index_products" type="text/html">
-				<div class="row">
-				{{each list as val i}}
-					<div>
-						<div class="item" data-id="{{val.ID}}">
-							<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
-							<p>{{val.Name}}</p>
-							<a href="fillOrder/fillOrder.html?pid={{val.ID}}">立即购买</a>
-						</div>
-					</div>
-					{{if ((i != length - 1) && ((i + 1) % 3 == 0))}}
-					</div>
-					<div class="row">
-					{{/if}}
-				{{/each}}
-				</div>
-			</script>
 			<div class="products"></div>
 		</div>
 	</div>
@@ -63,4 +37,30 @@
 			<li data-tab="center"><span>个人中心</span></li>
 		</nav>
 	</div>
+	<script id="index_index_banner_list" type="text/html">
+    {{each list as val}}
+		<li>
+            <a href="{{val.Link}}">
+                <img _src="{{serverAddr}}Img/{{val.Img | imgFilter}}" src="./images/common/blank.png" />
+            </a>
+        </li>
+    {{/each}}
+	</script>
+	<script id="index_index_products" type="text/html">
+		<div class="row">
+		{{each list as val i}}
+			<div>
+				<div class="item" data-id="{{val.ID}}">
+					<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
+					<p>{{val.Name}}</p>
+					<a href="fillOrder/fillOrder.html?pid={{val.ID}}">立即购买</a>
+				</div>
+			</div>
+			{{if ((i != length - 1) && ((i + 1) % 3 == 0))}}
+			</div>
+			<div class="row">
+			{{/if}}
+		{{/each}}
+		</div>
+	</script>
 </div>

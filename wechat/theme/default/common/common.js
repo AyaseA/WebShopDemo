@@ -375,7 +375,7 @@
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
     if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
-        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 30 / 60 / 60 / 24);
+        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 10 / 60 / 60 / 24);
         // 跳到指定页面
         $$.redirect(rdtUrl);
     } else if ($$.getUrl()) {
@@ -424,7 +424,7 @@
             function(res) {
                 if (wx) {
                     wx.config({
-                        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                         appId: 'wx2c53034422e377cc', // 必填，公众号的唯一标识
                         timestamp: res.timestamp, // 必填，生成签名的时间戳
                         nonceStr: res.noncestr, // 必填，生成签名的随机串

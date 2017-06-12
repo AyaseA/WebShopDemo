@@ -16,9 +16,14 @@ $(function() {
     $page.on('click', 'div.main div.info', function() {
     	$$.redirect('myCars/myCars.html');
     });
-    // 点击图片跳转到商品详情
-    $page.on('click', 'div.products >div.item >img', function() {
-        var pid = $(this).parent().attr('data-id');
+    // 点击跳转到商品详情
+    $page.on('click', 'div.products >div.item', function() {
+        var pid = $(this).attr('data-id');
         $$.redirect('product/product.html?pid=' + pid);
+    });
+    $page.on('click', 'div.products >div.item >div >a', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $$.redirect($(this).attr('href'));
     });
 });

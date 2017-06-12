@@ -103,7 +103,7 @@
     position: relative;
 }
 #maintain_maintain >div.main div.item img {
-	max-height: 130px;
+	max-height: 120px;
 	float: left;
 	margin-top: 10px;
     margin-left: 6px;
@@ -150,7 +150,7 @@
     line-height: 25px;
     font-size: 12px;
     position: absolute;
-    right: 3.5%;
+    right: 3%;
     bottom: 12px;
     font-size: 12px;
     text-align: center;
@@ -159,7 +159,7 @@
 	#maintain_maintain >div.main div.item img {
 	    margin-top: 10px;
 	    margin-left: 10px;
-        max-height: 130px;
+        max-height: 124px;
 	}
 	#maintain_maintain >div.main div.item a {
 	    font-size: 14px;
@@ -178,12 +178,19 @@
 	}
 	#maintain_maintain >div.main div.item img {
 	    max-width: 100px;
-	    margin-top: 25px;
+	    margin-top: 16px;
+        margin-left: 4px;
+	}
+	#maintain_maintain >div.main div.item ul {
+		font-size: 12px;
 	}
 	#maintain_maintain >div.main div.item a {
 		height: 20px;
 		line-height: 20px;
 		bottom: 9%;
+	}
+	#activity_activity >div.main div.item p {
+		font-size: 12px;
 	}
 	#maintain_maintain >div.main div.item span {
 		font-size: 14px;

@@ -2,7 +2,7 @@ var hostUrl = 'http://192.168.1.110:8000';
 //登陆页面
 
 //获取验证码 >延时器
-$('#login_timeout').on('click', function(e){
+$('#login_timeout').off('click').on('click', function(e){
 	e.preventDefault();
 	$('#loginin_out').css('background-color', '#EA5513');
 	$('#loginin_out').removeAttr('disabled');
@@ -103,12 +103,7 @@ var login = {
                 	if(data.Data.Token) {
             			$$.setToken(data.Data.Token);
                 	}
-    	    		var url = $$.getQueryString('__GOBACK__');
-	    	    	if (url) {
-	    	    		$$.redirect(url);
-	    	    	} else {
-		    	    	$$.redirect('index/index.html');
-	    	    	}
+    	    		$$.goBack();
                     console.log('发送成功');        
                 }
             });
@@ -141,7 +136,7 @@ login.loginpassword.addEventListener('blur', function(e) {
     login.checkPassword(this.password);
 });
 //监听密码重置
-$('#login_input_3').on('blur', function(e){
+$('#login_input_3').off('click').on('blur', function(e){
 	e.preventDefault();
 	var reset = $('#login_input_3').val();
 	var passwordReg = /^[A-Za-z0-9]{6,20}$/;
@@ -155,7 +150,7 @@ $('#login_input_3').on('blur', function(e){
 	}
 })
 //监听验证码
-$('#login_input_4').on('blur', function(e) {
+$('#login_input_4').off('click').on('blur', function(e) {
 	e.preventDefault();
 	var vc = $('#login_input_4').val();
 	if(/^\d{6}$/.test(vc)) {
@@ -175,7 +170,7 @@ login.loginbtn.addEventListener('click', function(e){
 	
 });
 //登陆的监听提交
-$('#login_pass').on('click', function(e) {
+$('#login_pass').off('click').on('click', function(e) {
 	e.preventDefault();
 	if($('#login_input_2').val() === '') {
 		$('.login_check_pw').css('display', 'block');
@@ -198,12 +193,7 @@ $('#login_pass').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	}
-    	    	var url = $$.getQueryString('__GOBACK__');
-    	    	if (url) {
-    	    		$$.redirect(url);
-    	    	} else {
-	    	    	$$.redirect('index/index.html');
-    	    	}
+    	    	$$.goBack();
                 console.log('登陆信息发送成功');        
             }
         });
@@ -212,7 +202,7 @@ $('#login_pass').on('click', function(e) {
 	}		
 });
 //修改并登陆的监听提交
-$('#login_redit').on('click', function(e) {
+$('#login_redit').off('click').on('click', function(e) {
 	e.preventDefault();
 	var data = {
 		Mobile: phonenum,
@@ -229,95 +219,11 @@ $('#login_redit').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	};
-    	    	var url = $$.getQueryString('__GOBACK__');
-    	    	if (url) {
-    	    		$$.redirect(url);
-    	    	} else {
-	    	    	$$.redirect('index/index.html');
-    	    	}
-                console.log('修改密码并登陆成功');        
+    	    	$$.goBack();
+    	    	console.log('修改密码并登陆成功');        
             }
         });
 	} else {
 		console.log('这个bug找YangCunYa');
 	}		
 });
-$('.quick_login').on('click', function(e) {
-	e.preventDefault();
-	$('.quick_login').css('display', 'none');
-	$('.miss_password').css('display', 'none');
-	$('#input_control_4').css('display', 'block');
-	$('#input_control_5').css('display', 'block');
-	$('#loginin_out').css('display', 'block');
-	$('#login_redit').css('display', 'none');
-	$('#login_pass').css('display', 'none');
-	$('.login_check_pn').css('display', 'none');
-	$('.login_check_pc').css('display', 'none');
-	$('.login_check_pw').css('display', 'none');
-	$('.login_check_in').css('display', 'none');
-});
-//忘记密码
-$('.miss_password').on('click', function(e) {
-	e.preventDefault();
-	$('.quick_login').css('display', 'none');
-	$('.miss_password').css('display', 'none');
-	$('#input_control_2').css('display', 'none');
-	$('#input_control_3').css('display', 'block');
-	$('#input_control_4').css('display', 'block');
-	$('#loginin_out').css('display', 'none');
-	$('#login_redit').css('display', 'block');
-	$('#login_pass').css('display', 'none');
-	$('.login_check_pn').css('display', 'none');
-	$('.login_check_pc').css('display', 'none');
-	$('.login_check_pw').css('display', 'none');
-	$('.login_check_in').css('display', 'none');
-});
-//左上角返回
-$('.return_button').on('click', function(e){
-	e.preventDefault();
-	$('.quick_login').css('display', 'block');
-	$('.miss_password').css('display', 'block');
-	$('#input_control_1').css('display', 'block');
-	$('#input_control_2').css('display', 'block');
-	$('#input_control_3').css('display', 'none');
-	$('#input_control_4').css('display', 'none');
-	$('#input_control_5').css('display', 'none');
-	$('#login_pass').css('display', 'block');
-	$('.login_check_pn').css('display', 'none');
-	$('.login_check_pc').css('display', 'none');
-	$('.login_check_pw').css('display', 'none');
-	$('.login_check_in').css('display', 'none');
-
-	$$.redirect('index/index.html');
-});
-
-//监听清除的display
-$('#login_input_1').on('click', function(){
-	$('#round_clear_1').css('display', 'block');
-});
-$('#login_input_2').on('click', function(){
-	$('#round_clear_2').css('display', 'block');
-});
-$('#login_input_3').on('click', function(){
-	$('#round_clear_3').css('display', 'block');
-});
-$('#login_input_5').on('click', function(){
-	$('#round_clear_5').css('display', 'block');
-});
-//监听数据清除
-$('#round_clear_1').on('click', function(){
-	$('#login_input_1').val('');
-	$('#round_clear_1').toggle();
-});
-$('#round_clear_2').on('click', function(){
-	$('#login_input_2').val('');
-	$('#round_clear_2').toggle();
-});
-$('#round_clear_3').on('click', function(){
-	$('#login_input_3').val('');
-	$('#round_clear_3').toggle();
-});
-$('#round_clear_5').on('click', function(){
-	$('#login_input_5').val('');
-	$('#round_clear_5').toggle();
-});	

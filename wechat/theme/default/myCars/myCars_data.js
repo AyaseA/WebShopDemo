@@ -3,7 +3,7 @@ $(function() {
     	pageStr = 'myCars_myCars';
 
     $page.find('div.confirm').hide();
-    
+
     // 加载车辆信息
 	getMyCars();
     // 加载车辆信息

@@ -92,7 +92,7 @@ $(function() {
                     var commonTitle = $page.find('>div.main div.comments >p');
                     commonTitle.find('>i').text(d.length);
                     commonTitle.find('span').text(parseFloat(
-                        goodComments.length / d.length * 100
+                        (goodComments.length / d.length || 1) * 100
                     ).toFixed(0) + '%');
 
                     var allComments = template(pageStr + '_product_comment', {

@@ -223,7 +223,7 @@
                 dataType: 'json',
                 success: function(data) {
                     if (succfunc) {
-                        succfunc(data);
+                        succfunc($$.eval(data));
                     }
                 },
                 error: function(error) {
@@ -249,7 +249,7 @@
                 dataType: 'json',
                 success: function(data) {
                     if (succfunc) {
-                        succfunc(data);
+                        succfunc($$.eval(data));
                     }
                 },
                 error: function(error) {
@@ -269,8 +269,10 @@
             // 判断cookies
             var token = $$.getCookie('__TOKEN__');
             if (!token) {
-                // 没有登录跳转到登录页面
-                $$.redirect('login/login.html');
+                if (!$('#login_login').is(':visible')) {
+                    // 没有登录并且没有显示登录界面跳转到登录页面
+                    $$.redirect('login/login.html');
+                }
                 return false;
             }
             return token;

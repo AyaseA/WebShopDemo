@@ -62,4 +62,63 @@
 			<button>保存并查看保养项目</button>
 		</div>
 	</div>
+	<div class="brandsModal">
+		<div class="title">
+			<a href="javascript:void(0)" class="closeModal"></a>
+			<span>品牌车系</span>
+		</div>
+		<div class="brands"></div>
+	</div>
+	<div class="seriesModal">
+		<h5></h5>
+		<div class="seriesBox"></div>
+	</div>
+	<div class="carsModal">
+		<div class="title">
+			<a href="javascript:void(0)" class="closeModal"></a>
+			<span>车型</span>
+		</div>
+		<div class="carsBox"></div>
+	</div>
+	<div id="carInfo_carInfo_tip"><span></span></div>
+	<script id="carInfo_carInfo_brands_list" type="text/html">
+		{{set letter = brands[0].Alpha}}
+		<h5 data-letter="{{letter}}">{{letter}}</h5>
+		{{each brands as brand}}
+			{{set lter = brand.Alpha}}
+			{{if letter != lter}}
+				<h5 data-letter="{{lter}}">{{letter = lter}}</h5>
+			{{/if}}
+			<div class="brand" data-id="{{brand.ID}}" data-name="{{brand.Name}}">
+				<div class="img">
+					<img src="{{serverAddr}}Img/{{brand.Img | imgFilter}}" />
+				</div>
+				<div class="bName">
+					{{brand.Name}}
+				</div>
+			</div>
+		{{/each}}
+		<ul class="letter">
+		{{each letterArr as word}}
+			<li data-letter="{{word}}">{{word}}</li>
+		{{/each}}
+		</ul>
+	</script>
+	<script id="carInfo_carInfo_series_list" type="text/html">
+		{{each series as ses}}
+		<div class="series" data-id="{{ses.ID}}" data-pid="{{ses.BrandID}}" data-name="{{ses.Name}}">
+			<div class="img">
+				<img src="{{serverAddr}}Img/{{ses.Img | imgFilter}}" />
+			</div>
+			<div class="sName">
+				{{ses.Name}}
+			</div>
+		</div>
+		{{/each}}
+	</script>
+	<script id="carInfo_carInfo_cars_list" type="text/html">
+		{{each cars as car}}
+			<p class="car" data-id="{{car.ID}}">{{car.Name}}</p>
+		{{/each}}
+	</script>
 </div>

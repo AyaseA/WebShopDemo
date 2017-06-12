@@ -1,9 +1,16 @@
 $(function() {
 
+
     $$.loadJavascript('http://res.wx.qq.com/open/js/jweixin-1.2.0.js');
 
     var $page = $('#invite_invite'),
         pageStr = 'invite_invite';
+    var bodyHeight = window.innerHeight || document.body.clientHeight,
+        $page = $('#invite_invite'),
+        pageStr = 'invite_invite',
+        headerHeight = $page.find('div.header').height();
+    
+    $$.setGoBack($page.find('a.goBack')); 
 
     var shareLink = "http://192.168.2.2:8080/theme/default/?__RDTURL__=showShare/showShare.html"; // 分享链接http://127.0.0.1:8080/theme/default/?__RDTURL__=showShare/showShare.html
     var shareTitle = "测试"; // 分享标题
@@ -11,13 +18,14 @@ $(function() {
     var shareDesc = "测试测试测试测试测试测试测试测试测试测试测试测试测试测试"; // 分享描述
 
     $page.find('div.main').css({
-        'top': $page.find('div.header').height()
+        'height': bodyHeight - headerHeight,
+        'top': headerHeight
     });
 
     $page.on('click', 'div.entry', function() {
         inviteEntry($(this).attr('data-type'));
     });
-    $$.setGoBack($page.find('a.goBack'));
+
     // 分享入口
     function inviteEntry(type) {
         switch (type) {

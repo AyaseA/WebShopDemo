@@ -4,22 +4,34 @@
 		<span class="title">我的车辆</span>
 		<a href="carInfo/carInfo.html" class="addNew">添加新车辆</a>
 	</div>
+	<div class="main">
+		<div class="cars"></div>
+	</div>
+	<div class="confirm">
+		<div>
+			<h4>提示</h4>
+			<p></p>
+			<button class="confirm" style="color: #EA5514;border-right: 1px solid #D6D6DB;">确认</button>
+			<button class="cancel">取消</button>
+		</div>
+	</div>
 	<script id="myCars_myCars_list" type="text/html">
 	{{if list.length > 0}}
-	{{each list as val}}
-		<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
-	        <div data-id="{{val.ID}}">
-	            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}" unselectable="true">
-	            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
-	            <p></p>
-	        </div>
-	        <i data-id="{{val.ID}}">设为默认</i>
-	        <span>
-	            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
-	            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
-	        </span>
-	    </div>
-    {{/each}}
+		{{each list as val}}
+			{{set data = $imports.jsonParseFilter(val.Data)}}
+			<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
+		        <div data-id="{{val.ID}}" data-name="{{data.CarBrandName}} {{data.CarSeriesName}} {{data.CarCarName}}">
+		            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}" unselectable="true">
+		            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
+		            <p>{{data.CarBrandName}} {{data.CarSeriesName}} {{data.CarCarName}}</p>
+		        </div>
+		        <i data-id="{{val.ID}}">设为默认</i>
+		        <span>
+		            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
+		            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
+		        </span>
+		    </div>
+	    {{/each}}
     {{else}}
 		<div class="noCar">
 			<img src="./images/myCars/noCar.png" alt="">
@@ -28,7 +40,4 @@
 		</div>
     {{/if}}
 	</script>
-	<div class="main">
-		<div class="cars"></div>
-	</div>
 </div>

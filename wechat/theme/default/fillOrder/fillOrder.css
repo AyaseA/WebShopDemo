@@ -146,14 +146,19 @@
 	line-height: 50px;
 	color: #EA5514;
 }
-#fillOrder_fillOrder >div.footer >a.order {
+#fillOrder_fillOrder >div.footer >button.order {
 	float: right;
 	display: block;
 	width: 120px;
+	height: 50px;
+	line-height: 50px;
 	background-color: #EA5514;
 	text-align: center;
 	color: #fff;
+	font-size: 16px;
 	margin-left: 10px;
+	border: none;
+	outline: none;
 }
 #fillOrder_fillOrder >div.couponModal {
 	height: 100%;

@@ -1,13 +1,13 @@
 $(function() {
     var $page = $('#activity_activity'),
     	pageStr = 'activity_activity';
-	
+    
 	// 加载商品列表
 	getProductsList();
 
 	// 加载商品列表
 	function getProductsList() {
-		var $proBox = $('#activity_activity div.products').empty();
+		var $proBox = $page.find('div.products').empty();
 		$$.get(
 			'Product/Prod/QueryList',
 			function(res) {

@@ -7,7 +7,11 @@
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
         serverAddr: 'http://192.168.1.110:8000/',
-
+        // 相关配置
+        config: {
+            serverAddr: 'http://192.168.1.110:8000/'
+        },
+        stack: [],
         // 时间转10位时间戳
         get10Time: function(time) {
             var date = time ? new Date(time) : new Date();
@@ -37,13 +41,20 @@
         delCookie: function(name) {
             var exp = new Date();
             exp.setTime(exp.getTime() - 1);
-            var cval = getCookie(name);
+            var cval = $$.getCookie(name);
             if (cval != null) {
                 document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
             }
         },
         // 页面跳转 核心方法
-        redirect: function(url, trans) {
+        redirect: function(url, option) {
+            var trans, backUrl, fromGoBack = false;
+            if (option) {
+                trans = option.trans;
+                backUrl = option.backUrl;
+                fromGoBack = option.fromGoBack;
+            }
+
             var load = function(url, newid, trans) {
                 var url_arr = url.split('?');
                 var dir = url_arr[0].substring(0, url_arr[0].length - 5);
@@ -99,6 +110,12 @@
                     trans($$.getCookie("__OLDDIV__"), newid);
                 }
             };
+            
+            if (url == 'index/index.html') {
+                $$.stack = [];
+            } else if ($.inArray(url, $$.stack) == -1 && !fromGoBack) {
+                $$.stack.push(backUrl || $$.getUrl());
+            }
             // 将当前页面存储到cookie
             $$.setCookie("__URL__", url);
             // 存储页面加载前显示的div id
@@ -120,6 +137,15 @@
         // 获取当前显示的div id
         getNowDiv: function() {
             return $$.getCookie("__NEWDIV__");
+        },
+        // 删除div
+        removeDiv: function(div) {
+            if (div) {
+                $('#' + div).remove();
+                $('#' + div + '_css').remove();
+                $('#' + div + '_view').remove();
+                $('#' + div + '_data').remove();
+            }
         },
         // 查询当前url中的参数的值
         getQueryString: function(name, url) {
@@ -244,8 +270,8 @@
             var token = $$.getCookie('__TOKEN__');
             if (!token) {
                 // 没有登录跳转到登录页面
-                // TODO
-                //return false;
+                $$.redirect('login/login.html');
+                return false;
             }
             return token;
         },
@@ -277,6 +303,9 @@
             if (!url) {
                 url = $$.getUrl();
             }
+            if (!url) {
+                return false;
+            }
             if (url.indexOf('__GOBACK__=') != -1) {
                 var goBackStartIndex = url.indexOf('__GOBACK__='),
                     goBackEndIndex = url.indexOf('&', goBackStartIndex);
@@ -288,12 +317,21 @@
             }
             return '__GOBACK__=' + escape(url);
         },
+        // 调用返回上次页面
+        goBack: function() {
+            if ($$.stack.length > 0) {
+                $$.redirect($$.stack.pop(), {
+                    'fromGoBack': true
+                });
+            } else {
+                $$.redirect('index/index.html', {
+                    'fromGoBack': true
+                });
+            }
+        },
         // 设置返回
         setGoBack: function(selector) {
-            var url = $$.getQueryString('__GOBACK__');
-            if (url) {
-                selector.attr('href', url);
-            }
+            selector.attr('href', 'javascript:$$.goBack();');
         },
         reloadData: function() {
 
@@ -326,7 +364,7 @@
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
     if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
-        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl));
+        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl),  30 / 60 / 60 / 24);
         // 跳到指定页面
         $$.redirect(rdtUrl);
     } else if ($$.getUrl()) {
@@ -337,14 +375,12 @@
     }
     // 使a标签默认的调转事件转为$$.redirect
     $('#div_list').on('click', 'a', function(e) {
-        e.preventDefault();
         var url = $(this).attr('href');
         if (url.indexOf('.html') != -1) {
-            $$.redirect(url + (
-                url.indexOf('?') != -1 ?
-                    ('&' + $$.goBackUrl()) :
-                    ('?' + $$.goBackUrl())
-            ), $(this).attr('data-tran'));
+            e.preventDefault();
+            $$.redirect(url, {
+                'trans': $(this).attr('data-tran')
+            });
         }
     });
     template.defaults.imports.imgFilter = function(img){
@@ -364,6 +400,42 @@
             return [];
         }
     };
+    template.defaults.imports.jsonParseFilter = function(str) {
+        if (str) {
+            return JSON.parse(str);
+        }
+    };
+
+    // 配置微信
+    !(function() {
+        /*$$.get(
+            'Product/WeChat/GetSign?url=' + escape(location.href),
+            function(res) {
+                console.log(res);
+                if (wx) {
+                    wx.config({
+                         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                         appId: 'wx2c53034422e377cc', // 必填，公众号的唯一标识
+                         timestamp: res.timestamp, // 必填，生成签名的时间戳
+                         nonceStr: res.noncestr, // 必填，生成签名的随机串
+                         signature: res.sign, // 必填，签名，见附录1
+                         jsApiList: ['getLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    });
+                    wx.getLocation({
+                        type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                        success: function (res) {
+                            var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                            var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                            alert(latitude + '-' + longitude);
+                            var speed = res.speed; // 速度，以米/每秒计
+                            var accuracy = res.accuracy; // 位置精度
+                        }
+                    });
+                }
+            }
+        );*/
+    }());
+    
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

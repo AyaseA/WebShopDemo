@@ -43,23 +43,34 @@
 }
 #payCenter_payCenter >div.main >div.warp >div:not(.payMode) {
 	background-color: #fff;
-    display: table;
     width: 100%;
 }
 #payCenter_payCenter >div.main >div.warp >div:not(.payMode) >div {
-    display: table-row;
-    width: 100%;
+    padding: 0 15px;
+    border-bottom: 1px solid #F9F9F9;
+}
+#payCenter_payCenter >div.main >div.warp >div:not(.payMode) >div:last-child {
+    border: none;
+}
+#payCenter_payCenter >div.main >div.warp >div:not(.payMode) >div:after {
+    content: '';
+    display: block;
+    clear: both;
 }
 #payCenter_payCenter >div.main >div.warp >div:not(.payMode) span {
-    display: table-cell;
-    width: 80px;
-    padding: 12px 0 12px 16px;
+    min-width: 50px;
+    width: 23.5%;
+    padding: 12px 0;
+    display: block;
+    float: left;
 }
 #payCenter_payCenter >div.main >div.warp >div:not(.payMode) p {
+    float: right;
     text-align: right;
-    margin: 0;
-    display: table-cell;
-    padding: 12px 16px 12px 0;
+    width: 70%;
+    padding: 12px 0;
+    min-width: 190px;
+    word-break: break-all;
 }
 #payCenter_payCenter >div.main >div.warp >div:not(.payMode) >div:last-child p {
 	color: #EA5514;

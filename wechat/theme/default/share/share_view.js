@@ -5,7 +5,7 @@ $(function() {
 
     var $page = $('#share_share');
     pageStr = 'share_share';
-
+    $$.setGoBack($page.find('a.goBack'));
 
 
     var shareLink = "http://192.168.2.2:8080/theme/default/?__RDTURL__=showShare/showShare.html"; // 分享链接http://127.0.0.1:8080/theme/default/?__RDTURL__=showShare/showShare.html
@@ -143,6 +143,6 @@ $(function() {
                 break;
         }
     }
-    $$.setGoBack($page.find('a.goBack'));
+    
 
 });

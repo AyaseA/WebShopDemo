@@ -1,0 +1,123 @@
+#orderList_orderList{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+
+#orderList_orderList .header{
+	height:12vw;
+	width:100%;
+	border-bottom:1px solid #CCC;
+	line-height:12vw;
+	text-align:center;
+}
+
+#orderList_orderList .header img{
+	width:7vw;
+	position:absolute;
+	left:3vw;
+	top:2.5vw;
+}
+
+#orderList_orderList .header p{
+	font-size:4.5vw;
+	font-weight:bold;
+}
+
+#orderList_orderList .nav{
+	width:100%;
+	height:12vw;
+	line-height:12vw;
+	border-bottom:1px solid #CCC;
+}
+
+#orderList_orderList .nav ul{
+	width:100%;
+	text-align:center;
+}
+
+#orderList_orderList .nav ul li{
+	display:inline-block;
+	width:19%
+}
+
+#orderList_orderList .nav .on{
+	color:#F60;
+	border-bottom:2px solid #F60;
+}
+
+#orderList_orderList .content{
+	background:#EFEFF4;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+	
+#orderList_orderList .onePiece{
+	width:100%;
+	height:45vw;
+	background:#FFF;
+	margin-top:3vw;
+}
+
+#orderList_orderList .pieceHeader{
+	width:90vw;
+	height:10vw;
+	line-height:10vw;
+	padding:0 5vw 0 5vw;
+}
+
+#orderList_orderList .pieceHeader p{
+	float:right;
+	color:#F60;
+}
+
+#orderList_orderList .pieceContent{
+	width:90vw;
+	height:25vw;
+	background:#EFEFF4;
+	padding:0 5vw 0 5vw;
+	position:relative;
+}
+
+#orderList_orderList .pieceContent img{
+	margin-top:2vw;
+	width:20vw;
+	height:16vw;
+}
+
+#orderList_orderList .piecePay{
+	height:10vw;
+	width:90vw;
+	padding:0 5vw 0 5vw;
+}
+
+#orderList_orderList .piecePay button{
+	width:30vw;
+	border:1px solid #F60;
+	background:none;
+	outline:none;
+	height:8vw;
+	border-radius:6vw;
+	float:right;
+	margin-top:1vw;
+}
+
+#orderList_orderList .pInfo{
+	position: absolute;
+    top: 3vw;
+    left: 34vw;	
+}
+
+#orderList_orderList .pInfo p{
+	margin-bottom:3vw;
+	
+}
+
+#orderList_orderList .pInfo p span{
+	font-weight:bold;
+}
+
+#orderList_orderList .sum{
+	font-weight:bold;
+	color:#F00;
+}

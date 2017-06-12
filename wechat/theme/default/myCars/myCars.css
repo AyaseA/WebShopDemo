@@ -199,3 +199,53 @@
 	border: 1px dashed #EA5514;
 	font-size: 16px;
 }
+#myCars_myCars >div.confirm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+}
+#myCars_myCars >div.confirm h4 {
+    height: 50px;
+    margin: 0;
+    line-height: 51px;
+    text-align: center;
+}
+#myCars_myCars >div.confirm p {
+    color: #999;
+    border-bottom: 1px solid #D6D6DB;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    line-height: 30px;
+    text-align: center;
+}
+#myCars_myCars >div.confirm >div {
+    height: 140px;
+    width: 260px;
+    position: absolute;
+    background-color: #fff;
+    top: -70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+#myCars_myCars >div.confirm >div:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#myCars_myCars >div.confirm button {
+    width: 47%;
+    height: 39px;
+    font-size: 16px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}

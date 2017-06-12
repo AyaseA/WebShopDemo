@@ -4,15 +4,7 @@
 		<span>填写订单</span>
 	</div>
 	<div class="main">
-		<div class="productInfo">
-			<p><i></i>车势力</p>
-			<div class="clear">
-				<img src="./images/product/comment.png">
-				<p>499汽车全年机油养护<span>￥499</span></p>
-				<p>机油养护<span>x1</span></p>
-			</div>
-			<p>共1件商品</p>
-		</div>
+		<div class="productInfo"></div>
 		<div class="coupon">
 			<label>优惠券
 				<button class="selected">-￥100</button>
@@ -22,20 +14,11 @@
 				<span>共6积分，满1000积分可用</span>
 			</p>
 		</div>
-		<div class="proMoney">
-			<p>
-				商品金额
-				<span>￥499.00</span>
-			</p>
-			<p>
-				优惠
-				<span>-￥100.00</span>
-			</p>
-		</div>
+		<div class="proMoney"></div>
 	</div>
 	<div class="footer">
-		实付：￥399.00
-		<a href="payCenter/payCenter.html?oid=1" class="order">提交订单</a>
+		实付：￥<span>399.00</span>
+		<button class="order">提交订单</button>
 	</div>
 	<div class="couponModal">
 		<div class="title">
@@ -158,4 +141,23 @@
 			<button class="selectTicket">确定</button>
 		</div>
 	</div>
+	<script id="fillOrder_fillOrder_product_detail" type="text/html">
+		<p><i></i>车势力</p>
+		<div class="clear">
+			<img src="./images/product/comment.png">
+			<p>{{data.Name}}<span>￥{{data.Price}}</span></p>
+			<p>{{data.Descri}}<span>x{{count}}</span></p>
+		</div>
+		<p>共{{count}}件商品</p>
+	</script>
+	<script id="fillOrder_fillOrder_price_coupon" type="text/html">
+		<p>
+			商品金额
+			<span>￥{{total}}</span>
+		</p>
+		<p>
+			优惠
+			<span>-￥0</span>
+		</p>
+	</script>
 </div>

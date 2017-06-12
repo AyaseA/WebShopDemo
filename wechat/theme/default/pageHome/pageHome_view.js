@@ -21,7 +21,14 @@
             } break;
         }
     });
-	
+   //商品列表
+    $('#article_con_tent').on('click', function(){
+        $$.redirect('orderList/orderList.html');
+    });   
+    //设置
+    $('#login_set_out').on('click', function(){
+        $$.redirect('logout/logout.html');
+    });
 
 
 }());

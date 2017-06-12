@@ -23,7 +23,7 @@
 	margin-top: 2.7vw;
 }
 #login_login .input_control{
-	width: 90.93;
+	width: 90.93vw;
 	height: 11.73vw;
 	margin-left: 4vw;
 	display: inline-block;
@@ -75,7 +75,7 @@
 	background-color: #5F5D60; 
 	position: absolute;
 	left: 22.4vw;
-	bottom: 49.33vw;
+	top: 119.33vw;
 	display: none;
 }
 #login_login #login_timeout{
@@ -85,8 +85,8 @@
 	display: inline-block;
 	font-size: 4vw;
 	border-radius: 6.67vw;
-	position: relative;
-	left: 0px;
+    position: absolute;
+    left: 59vw;
     top: 1.13vw;
 	text-align: center;
 	vertical-align: center;
@@ -113,13 +113,13 @@
 	line-height: 9.33vw;
 	position: absolute;
 	left: 9.1vw;
-	bottom: 30.67vw;
+	top: 119.33vw;
 	display: none;
 }
 #login_login .quick_login{
 	display: block;
 	position: absolute;
-	bottom: 70.67vw;	
+    top: 101.67vw;	
 	left: 5.87vw;
 	font-size: 3.73vw;
 	color: #DF6233;
@@ -128,7 +128,7 @@
 #login_login .miss_password{
 	display: block;
 	position: absolute;
-	bottom: 70.67vw;	
+	top: 101.67vw;	
 	right: 5.87vw;
 	font-size: 3.73vw;
 	color: #A6A5A7;

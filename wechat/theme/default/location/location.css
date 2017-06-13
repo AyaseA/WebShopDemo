@@ -1,3 +1,134 @@
 #location_location {
-	
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFF4;
+	overflow: hidden;
+    position: relative;
+}
+#location_location >div.header {
+	width: 100%;
+	height: 44px;
+	border-bottom: 1px solid #D6D6DB;
+	position: absolute;
+	top: 0;
+    z-index: 12;
+}
+#location_location >div.header >a.goBack {
+	display: block;
+	float: left;
+	height: 44px;
+	width: 44px;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#location_location >div.header >div >input.search {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+#location_location >div.header >div {
+    height: 24px;
+    width: 66%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+#location_location >div.header >div >i {
+    display: none;
+    background-image: url(../images/common/round_close.png);
+    background-size: cover;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+}
+#location_location >div.main {
+	position: absolute;
+	top: 45px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#location_location >div.main div.there >h5 {
+    color: #888;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: normal;
+}
+#location_location >div.main div.there >p {
+    background-color: #fff;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+#location_location >div.main div.cities >h5 {
+    background-color: #E2E2E2;
+    padding: 8px 15px;
+    position: relative;
+    top: 1px;
+}
+#location_location >div.main div.cities >div.city {
+    padding: 0 15px;
+    background-color: #fff;
+}
+#location_location >div.main div.cities >div.city.open >p:after {
+    content: '';
+    display: block;
+    float: right;
+    height: 13px;
+    width: 8px;
+    background-image: url(../images/common/right.png);
+    background-size: cover;
+    margin: 3px 26px 0 0;
+    transform: rotateZ(-90deg);
+    opacity: .5;
+}
+#location_location >div.main div.cities >div.city.open.active >p:after {
+	transform: rotateZ(90deg);
+}
+#location_location >div.main div.cities >div.city.open.active >div.dist {
+	display: block;
+}
+#location_location >div.main div.cities >div.city >p {
+    font-size: 15px;
+    border-top: 1px solid #E2E2E2;
+	padding: 12px 0 10px;
+}
+#location_location >div.main div.cities div.dist {
+	border-top: 1px solid #F4F4F4;
+    padding-top: 8px;
+    display: none;
+}
+#location_location >div.main div.cities div.dist >span {
+	display: inline-block;
+    border: 1px solid #E2E2E2;
+    margin: 0 7px 10px 0;
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+#location_location >div.main div.cities div.dist >span.all {
+    border-style: dashed;
+}
+#location_location >div.main div.cities >ul {
+	position: fixed;
+	top: 44px;
+	right: 0;
+}
+#location_location >div.main div.cities >ul li {
+    text-align: center;
+    width: 36px;
+    height: 3.8vh;
+    line-height: 3.8vh;
 }

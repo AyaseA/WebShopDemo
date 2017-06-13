@@ -1,0 +1,30 @@
+#gascard_gascard {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #F0EFF5;
+}
+#gascard_gascard header{
+		width: 100%;
+		height: 60px;
+		background-color: #fff;
+		overflow: hidden;
+		position: relative;
+}
+#gascard_gascard header img{
+		width: 26px;
+		height: 26px;
+		display: inline-block;
+		margin: 15px 0px 0px 20px;
+}
+#gascard_gascard header span{
+		display: inline-block;
+		font-size: 20px;
+		color: #4E4D53;
+		vertical-align: top;
+		margin: 16px 0px 0px 60px;
+}
+#gascard_gascard aside p,aside span,div{
+		font-size: 14px;
+}

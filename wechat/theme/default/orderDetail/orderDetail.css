@@ -58,6 +58,8 @@
   width: 100%;
   height: 16.38666667rem;
   background: #efeff4;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 #orderDetail_orderDetail > div .order h5 {
   margin-top: 0.26666667rem;
@@ -117,16 +119,20 @@
   margin-top: 0.26666667rem;
   font-size: 0.37333333rem;
   padding-left: 0.26666667rem;
+  width: 7.2rem;
 }
 #orderDetail_orderDetail > div .wrap .right b {
   color: #ea5718;
-  padding-left: 2.53333333rem;
 }
 #orderDetail_orderDetail > div .wrap .right p:nth-child(2) {
   font-size: 0.32rem;
   color: #a9a9a9;
   padding-top: 0.26666667rem;
   position: relative;
+}
+#orderDetail_orderDetail > div .wrap .right p:nth-child(1) .productName {
+  display: inline-block;
+  width: 5.86666667rem;
 }
 #orderDetail_orderDetail > div .wrap .right p:nth-child(2) span {
   position: absolute;
@@ -166,7 +172,7 @@
   color: #484d59;
 }
 #orderDetail_orderDetail > div .orderAmount p span {
-  color: #ea5514 ;
+  color: #ea5514;
 }
 #orderDetail_orderDetail > div .orderAmount p:nth-child(1) {
   padding-top: 0.4rem;
@@ -197,7 +203,7 @@
   position: relative;
 }
 #orderDetail_orderDetail > div .needPay p span {
-  color: #ea5514 ;
+  color: #ea5514;
 }
 #orderDetail_orderDetail > div .needPay p {
   display: inline-block;
@@ -211,6 +217,7 @@
   background: #ffffff;
   margin-top: 1.53333333rem;
   position: relative;
+  padding-bottom: 0.26666667rem;
 }
 #orderDetail_orderDetail > div .choice a {
   display: inline-block;
@@ -219,7 +226,7 @@
   height: 0.8rem;
   line-height: 0.8rem;
   text-align: center;
-  border: 1px solid #ea5718 ;
+  border: 1px solid #ea5718;
   border-radius: 0.4rem;
   position: absolute;
   top: 0.26666667rem;
@@ -227,38 +234,35 @@
 }
 #orderDetail_orderDetail > div .choice a:nth-child(1) {
   color: #484d59;
-  border: 1px solid #484d59 ;
+  border: 1px solid #484d59;
   left: 4rem;
 }
 #orderDetail_orderDetail > div .choice a:nth-child(2) {
   right: 0.4rem;
 }
-#orderDetail_orderDetail > div .content > div .confirm {
+#orderDetail_orderDetail > div.main > div.confirm {
   position: absolute;
-  top: 0;
+  top: 1.4rem;
   left: 0;
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 99;
 }
-#orderDetail_orderDetail > div .content > div .confirm h4 {
-  height: 50px;
-  margin: 0;
-  line-height: 51px;
-  text-align: center;
-}
-#orderDetail_orderDetail > div .content > div .confirm p {
-  color: #999;
+#orderDetail_orderDetail > div.main > div.confirm p {
+  color: #484d59;
   border-bottom: 1px solid #D6D6DB;
   padding: 0;
   margin: 0;
-  height: 50px;
-  line-height: 30px;
+  height: 3.2rem;
+  line-height: 3.2rem;
   text-align: center;
+  font-size: 0.48rem;
 }
-#orderDetail_orderDetail > div .content > div .confirm > div {
-  height: 140px;
-  width: 260px;
+#orderDetail_orderDetail > div.main > div.confirm > div {
+  width: 7.46666667rem;
+  height: 4.4rem;
   position: absolute;
   background-color: #fff;
   top: -70px;
@@ -267,18 +271,18 @@
   bottom: 0;
   margin: auto;
 }
-#orderDetail_orderDetail > div .content > div .confirm > div:after {
+#orderDetail_orderDetail > div.main > div.confirm > div:after {
   content: '';
   display: block;
   clear: both;
 }
-#orderDetail_orderDetail > div .content > div .confirm button {
+#orderDetail_orderDetail > div.main > div.confirm button {
   width: 47%;
-  height: 39px;
-  font-size: 16px;
+  height: 1.2rem;
   background-color: #fff;
   border: none;
   outline: none;
   margin: 0;
   padding: 0;
+  font-size: 0.48rem;
 }

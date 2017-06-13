@@ -48,7 +48,7 @@
 
 #orderList_orderList .content{
 	background:#EFEFF4;
-	overflow-y:auto;
+	overflow-y:hidden;
 	overflow-x:hidden;
 }
 	
@@ -130,4 +130,9 @@
 	text-align:center;
 	width:100%;	
 	line-height:8vw;
+}
+
+#orderList_orderList .all,#orderList_orderList .waitPay,#orderList_orderList .waitPost,#orderList_orderList .waitGet,#orderList_orderList .waitRevice{
+	overflow-y:auto;
+	overflow-x: hidden;
 }

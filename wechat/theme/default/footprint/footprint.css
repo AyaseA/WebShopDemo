@@ -1,0 +1,77 @@
+#footprint_footprint {
+	margin: 0;
+	padding: 0;
+	background-color: #efeff4;
+	height: 100%;
+}
+#footprint_footprint header{
+	width: 100%;
+	height: 16vw;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;
+}
+#footprint_footprint header img{
+	width: 6.9vw;
+	height: 6.9vw;
+	display: inline-block;
+	margin: 4vw 0px 0px 5.3vw;
+}
+#footprint_footprint header span{
+	display: inline-block;
+	font-size: 5.3vw;
+	color: #4E4D53;
+	vertical-align: top;
+	margin: 3.7vw 0px 0px 24vw;
+}
+#footprint_footprint .footprint_date{
+	font-size: 3.7vw;
+	color: #C0C0C2;
+	margin-left: 2.7vw;
+}
+#footprint_footprint .footprint_contain {
+	width: 100%;
+	height: 36vw;
+	background-color: #fff;
+}
+#footprint_footprint .footprint_contain ul{
+	width: 100%;
+}
+#footprint_footprint .footprint_contain ul li{
+	float: left;
+}
+#footprint_footprint .foot_li_x5_img{
+	width: 30.7vw;
+	height: 30.7vw;
+	margin-right: 2.7vw;
+}
+#footprint_footprint .footprint_text{
+	font-size: 3.7vw;
+}
+#footprint_footprint .footprint_price{
+	color: #EB6F42;
+    margin-top: 5.9vw;
+    width: 66.1vw;
+    height: 13.3vw;
+    border-bottom: 1px solid #E2E2E5;
+}
+#footprint_footprint .footprint_price_button{
+	display: inline-block;
+	width: 24vw;
+	height: 6.4vw;
+	text-align: center;
+	vertical-align: top;
+	border: 1px solid #EB6F42;
+	border-radius: 5.3vw;
+	font-size: 3.7vw;
+	font-weight: bold;
+	padding-top: 1.1vw;
+	overflow: hidden;
+}
+#footprint_footprint .footprint_price_1{
+	display: inline-block;
+	margin-top: 1.3vw;
+}
+#footprint_footprint .footprint_price_button{
+	margin-left: 16vw;
+}

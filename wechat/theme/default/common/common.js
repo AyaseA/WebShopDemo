@@ -48,97 +48,99 @@
         },
         // 页面跳转 核心方法
         redirect: function(url, option) {
-            var trans, backUrl, fromGoBack = false;
-            if (option) {
-                trans = option.trans;
-                backUrl = option.backUrl;
-                fromGoBack = option.fromGoBack;
-            }
-
-            var load = function(url, newid, trans) {
-                var url_arr = url.split('?');
-                var dir = url_arr[0].substring(0, url_arr[0].length - 5);
-                $.ajax({
-                    url: url_arr[0] + '?v=' + Math.random(), // 这里是静态页的地址
-                    type: "get", // 静态页用get方法，否则服务器会抛出405错误
-                    cache: false,
-                    dataType: 'text',
-                    beforeSend: function(xmlHttp) {
-                        xmlHttp.setRequestHeader("If-Modified-Since", "0");
-                        xmlHttp.setRequestHeader("Cache-Control", "no-cache");
-                    },
-                    success: function(data) {
-                        var result = $(data);
-                        $("#div_list").children().css({
-                            "display": "none"
-                        });
-                        $("#div_list").append($(result).attr({ id: newid }).hide());
-                        var filedata = dir + '_data.js';
-                        var fileview = dir + '_view.js';
-                        loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
-                        loadJs(fileview, dir.replace(/\//g, "_") + "_view");
-                        transition(trans, newid);
-                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
-                    }
-                });
-            };
-            // 页面已加载，加载数据
-            var loadData = function() {
-                var url_arr = url.split('?');
-                var dir = url_arr[0].substring(0, url_arr[0].length - 5);
-                var filedata = dir + '_data.js';
-                loadJs(filedata, dir.replace(/\//g, "_") + "_data");
-            };
-            // 页面切换动画
-            var transition = function(trans, newid) {
-                $$.setCookie("__NEWDIV__", newid);
-                if (typeof(trans) === "undefined") {
-                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide(0);
-                    $("#div_list>#" + newid).fadeIn(500);
-                } else if (trans == "none") {
-                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide();
-                    $("#div_list>#" + newid).show();
-                } else if (trans == "slideUp") {
-                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).slideUp(500);
-                    $("#div_list>#" + newid).slideDown(500);
-                } else if (trans == "fadeIn") {
-                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide(0);
-                    $("#div_list>#" + newid).fadeIn(500);
-                } else if (typeof(trans) === "function") {
-                    trans($$.getCookie("__OLDDIV__"), newid);
-                } else {
-                    $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide();
-                    $("#div_list>#" + newid).show();
+            if (url) {
+                var trans, backUrl, fromGoBack = false;
+                if (option) {
+                    trans = option.trans;
+                    backUrl = option.backUrl;
+                    fromGoBack = option.fromGoBack;
                 }
-            };
 
-            // 将历史url存入栈
-            if (url == 'index/index.html') {
-                $$.stack = [];
-            } else if ($.inArray($$.getUrl(), $$.stack) == -1 &&
-                           $.inArray(backUrl, $$.stack) == -1 &&
-                           !fromGoBack) {
-                $$.stack.push(backUrl || $$.getUrl());
-            }
+                var load = function(url, newid, trans) {
+                    var url_arr = url.split('?');
+                    var dir = url_arr[0].substring(0, url_arr[0].length - 5);
+                    $.ajax({
+                        url: url_arr[0] + '?v=' + Math.random(), // 这里是静态页的地址
+                        type: "get", // 静态页用get方法，否则服务器会抛出405错误
+                        cache: false,
+                        dataType: 'text',
+                        beforeSend: function(xmlHttp) {
+                            xmlHttp.setRequestHeader("If-Modified-Since", "0");
+                            xmlHttp.setRequestHeader("Cache-Control", "no-cache");
+                        },
+                        success: function(data) {
+                            var result = $(data);
+                            $("#div_list").children().css({
+                                "display": "none"
+                            });
+                            $("#div_list").append($(result).attr({ id: newid }).hide());
+                            var filedata = dir + '_data.js';
+                            var fileview = dir + '_view.js';
+                            loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
+                            loadJs(fileview, dir.replace(/\//g, "_") + "_view");
+                            transition(trans, newid);
+                            loadJs(filedata, dir.replace(/\//g, "_") + "_data");
+                        }
+                    });
+                };
+                // 页面已加载，加载数据
+                var loadData = function() {
+                    var url_arr = url.split('?');
+                    var dir = url_arr[0].substring(0, url_arr[0].length - 5);
+                    var filedata = dir + '_data.js';
+                    loadJs(filedata, dir.replace(/\//g, "_") + "_data");
+                };
+                // 页面切换动画
+                var transition = function(trans, newid) {
+                    $$.setCookie("__NEWDIV__", newid);
+                    if (typeof(trans) === "undefined") {
+                        $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide(0);
+                        $("#div_list>#" + newid).fadeIn(500);
+                    } else if (trans == "none") {
+                        $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide();
+                        $("#div_list>#" + newid).show();
+                    } else if (trans == "slideUp") {
+                        $("#div_list>#" + $$.getCookie("__OLDDIV__")).slideUp(500);
+                        $("#div_list>#" + newid).slideDown(500);
+                    } else if (trans == "fadeIn") {
+                        $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide(0);
+                        $("#div_list>#" + newid).fadeIn(500);
+                    } else if (typeof(trans) === "function") {
+                        trans($$.getCookie("__OLDDIV__"), newid);
+                    } else {
+                        $("#div_list>#" + $$.getCookie("__OLDDIV__")).hide();
+                        $("#div_list>#" + newid).show();
+                    }
+                };
 
-            // 将当前页面存储到cookie
-            $$.setCookie("__URL__", url);
-            // 存储页面加载前显示的div id
-            $$.setCookie("__OLDDIV__", $("div#div_list>div:visible").attr("id"));
+                // 将历史url存入栈
+                if (url == 'index/index.html') {
+                    $$.stack = [];
+                } else if ($.inArray($$.getUrl(), $$.stack) == -1 &&
+                               $.inArray(backUrl, $$.stack) == -1 &&
+                               !fromGoBack) {
+                    $$.stack.push(backUrl || $$.getUrl());
+                }
 
-            var url_arr = url.split('?'),
-                dir = url_arr[0].substring(0, url_arr[0].length - 5),
-                newid = dir.replace(/\//g, "_");
+                // 将当前页面存储到cookie
+                $$.setCookie("__URL__", url);
+                // 存储页面加载前显示的div id
+                $$.setCookie("__OLDDIV__", $("div#div_list>div:visible").attr("id"));
 
-            // 判断要显示的页面是否存在
-            if ($("div#div_list>div#" + newid).length == 0) {
-                // 不存在，加载页面，css, js 
-                load(url, newid, trans);
-            } else {
-                // 显示
-                transition(trans, newid);
-                // 存在，直加载数据*_data.js
-                loadData();
+                var url_arr = url.split('?'),
+                    dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                    newid = dir.replace(/\//g, "_");
+
+                // 判断要显示的页面是否存在
+                if ($("div#div_list>div#" + newid).length == 0) {
+                    // 不存在，加载页面，css, js 
+                    load(url, newid, trans);
+                } else {
+                    // 显示
+                    transition(trans, newid);
+                    // 存在，直加载数据*_data.js
+                    loadData();
+                }
             }
         },
         // 获取当前显示的div id

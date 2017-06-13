@@ -25,11 +25,76 @@ $(function() {
         }
     });
     // 自动检索事件
-
+    $page.on('keyup', '>div.header input.search', function() {
+        var val = $.trim($(this).val());
+        $(this).val(val);
+        if (val) {
+            $page.find('>div.header >div >i').show();
+            autoFilterCity(val);
+        } else {
+            $page.find('>div.header >div >i').hide();
+            resetCityList();
+        }
+    });
+    // 选择城市事件
+    $page.on('click', 'div.dist >span', function() {
+        var id = $(this).attr('data-id'),
+            name = $(this).attr('data-name');
+        $page.find('>div.main >div.there >p').text(name);
+        $$.setCookie('__LOCATION__', name);
+        $$.goBack();
+    });
+    // 情况搜索框
+    $page.on('click', '>div.header >div >i', function() {
+        $(this).hide().prev().val('');
+        resetCityList();
+    });
     // 获取城市列表
     getCitiesList(function(obj) {
     	printCitiesList(obj);
     });
+    // 重置城市列表
+    function resetCityList() {
+        $page.find('>div.header >div >i').hide();
+        $page.find('>div.header input.search').val('');
+        $page.find('>div.main >div.there').show();
+        $page.find('div.cities >h5').show();
+        $page.find('div.cities >ul.cityLtr').show();
+        $page.find('div.cities >div.city').show().removeClass('active');
+        $page.find('div.dist >span').css({
+            'display': 'inline-block'
+        });
+    }
+    // 自动检索方法
+    function autoFilterCity(keyWord) {
+        $page.find('>div.main >div.there').hide();
+        $page.find('div.cities >div.city').hide();
+        $page.find('div.cities >ul.cityLtr').hide();
+        $page.find('div.cities >h5').hide();
+        $page.find('div.dist >span').hide();
+        if (/^[\u4e00-\u9fa5]+$/.test(keyWord)) {
+            $page.find('div.dist >span[data-name*=' + keyWord + ']').css({
+                'display': 'inline-block'
+            }).parents('div.city').show().addClass(function() {
+                if ($(this).hasClass('active')) {
+                    return '';
+                } else {
+                    return 'active';
+                }
+            });
+        } else {
+            keyWord = keyWord.toUpperCase();
+            $page.find('div.dist >span[data-py*=' + keyWord + ']').css({
+                'display': 'inline-block'
+            }).parents('div.city').show().addClass(function() {
+                if ($(this).hasClass('active')) {
+                    return '';
+                } else {
+                    return 'active';
+                }
+            });
+        }
+    }
     // 打印城市列表
     function printCitiesList(obj) {
         var ltrArr = [];

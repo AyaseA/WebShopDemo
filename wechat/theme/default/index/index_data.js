@@ -2,6 +2,10 @@ $(function(){
     var $page = $('#index_index'),
         pageStr = 'index_index';
 
+    // 获取位置
+    $page.find('>div.header >a.location >span').text(
+        $$.getCookie('__LOCATION__') || '济南市'
+    );
     // banner
     getBanners(function() {
         TouchSlide({

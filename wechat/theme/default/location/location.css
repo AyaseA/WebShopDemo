@@ -23,21 +23,36 @@
 	background-position: center;
 	padding-left: 15px;
 }
-#location_location >div.header >input.search {
-	height: 24px;
+#location_location >div.header >div >input.search {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+#location_location >div.header >div {
+    height: 24px;
     width: 66%;
     margin: auto;
-    display: block;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    outline: none;
-    border: none;
-    border-radius: 12px;
-    text-align: center;
+}
+#location_location >div.header >div >i {
+    display: none;
+    background-image: url(../images/common/round_close.png);
+    background-size: cover;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
 }
 #location_location >div.main {
 	position: absolute;

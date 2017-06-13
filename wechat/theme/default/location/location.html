@@ -1,7 +1,10 @@
 <div>
 	<div class="header">
 		<a href="javascript:void(0)" class="goBack"></a>
-		<input type="text" class="search" placeholder="城市/行政区/拼音">
+		<div>
+			<input type="text" class="search" placeholder="城市/行政区/拼音" />
+			<i></i>
+		</div>
 	</div>
 	<div class="main">
 		<div class="there">
@@ -18,7 +21,7 @@
 			{{if cltr != tmplter}}
 				<h5 data-letter="{{tmplter}}">{{cltr = tmplter}}</h5>
 			{{/if}}
-			<div class="city {{if city.children.length > 0}}open{{/if}} " data-id="{{city.id}}" data-name="{{city.name}}" data-py="{{city.pyName}}">
+			<div class="city {{if city.children.length > 0}}open{{/if}} ">
 				<p>{{city.name}}</p>
 				{{if city.children.length > 0}}
 					<div class="dist">

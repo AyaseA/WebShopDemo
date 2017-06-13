@@ -12,13 +12,13 @@
 			reward: function(url,token) {
 				$$.post(url+'/CSL/Reward/QueryRewardCount', {}, function(data) {
 					console.log(data.Data);
-					data.Data = 'Not login!' ? 0 : data.Data; 
+					data.Data == 'Not login!' ? 0 : data.Data; 
 					$('#reward').html(data.Data);
 				});
 			},
 			accound: function(url,token) {
 				$$.post(url+'/CSL/Account/QueryAccountCount', {}, function(data) {
-					data.Data = 'Not login!' ? 0 : data.Data; 
+					data.Data == 'Not login!' ? 0 : data.Data; 
 					$('#accound').html(data.Data);
 				});
 			},
@@ -29,25 +29,25 @@
 			},
 			payment: function(url,token) {
 				$$.post(url+'/CSL/Order/QueryStatusCount', {Token: token,StatusID: 1}, function(data) {
-					data.Data = 'Not login!' ? 0 : data.Data;
+					data.Data == 'Not login!' ? 0 : data.Data;
 					$('#payment').html(data.Data);
 				});
 			},
 			deliverGoods: function(url,token) {
 				$$.post(url+'/CSL/Order/QueryStatusCount', {Token: token,StatusID: 2}, function(data) {
-					data.Data = 'Not login!' ? 0 : data.Data;
+					data.Data == 'Not login!' ? 0 : data.Data;
 					$('#deliverGoods').html(data.Data);
 				});
 			},
 			goodsReceipt: function(url,token) {
 				$$.post(url+'/CSL/Order/QueryStatusCount', {Token: token,StatusID: 4}, function(data) {
-					data.Data = 'Not login!' ? 0 : data.Data;
+					data.Data == 'Not login!' ? 0 : data.Data;
 					$('#goodsReceipt').html(data.Data);
 				});
 			},
 			assessment: function(url,token) {
 				$$.post(url+'/CSL/Order/QueryStatusCount', {Token: token,StatusID: 6}, function(data) {
-					data.Data = 'Not login!' ? 0 : data.Data;
+					data.Data == 'Not login!' ? 0 : data.Data;
 					$('#assessment').html(data.Data);
 				});
 			}

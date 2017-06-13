@@ -8,12 +8,14 @@ $(function() {
 		所有事件绑定到 $('#文件夹名_文件名')下
 		例子如下
 	*/
+	$$.setGoBack($page.find('div.header >a'));
+	
 	function loadDiscount(){
 			//获取内容
-			var contentIndex=$(".navContent").children();
+			var contentIndex=$("#discount_discount .navContent").children();
 			
 			//获取nav标签
-			var li=$(".nav ul li");
+			var li=$("#discount_discount  .nav ul li");
 			
 			//给每个li赋值index指向li的顺序数，通过顺序数改变内容的显示
 			for(var i=0;i<li.length;i++){

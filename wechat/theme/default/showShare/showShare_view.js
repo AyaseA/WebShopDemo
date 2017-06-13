@@ -40,8 +40,8 @@ $(function() {
 
 
             var params = { Mobile: mobile, SessionID: 1, RegisterFrom: 2, RegisterCont: 1, VC:verify };
-debugger
-            $$.post('CSL/Login/HasUserMobile', params, function(data) {
+
+            $$.post('CSL/Login/RegisterMobile', params, function(data) {
                 console.log(1);
                 if (data.Status == 0) {
                 console.log(2);
@@ -56,7 +56,7 @@ debugger
                 }
             }, function(error) {
 
-                            layer.msg('请求失败,请检查网络设置!');
+                layer.msg('请求失败,请检查网络设置!');
             });
         }
 
@@ -69,8 +69,7 @@ debugger
                 title: '请输入手机验证码领取优惠',
                 // area: ['800px', '350px'] //自定义文本域宽高
             }, function(value, index, elem) {
-                alert(value);
-                regiestUser(mobile,value,index);
+              regiestUser(mobile,value,index);
             });
         }
 

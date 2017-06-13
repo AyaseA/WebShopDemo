@@ -1,0 +1,244 @@
+#commit_commit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#commit_commit > div.header {
+  background-color: #FFFFFF;
+  width: 100%;
+  z-index: 10;
+  height: 1.4rem;
+  font-size: 0.48rem;
+  border-bottom: 2px solid #d6d6db;
+  position: fixed;
+  top: 0;
+}
+#commit_commit > div.header a.goBack {
+  background-size: contain;
+  display: inline-block;
+  width: 0.58666667rem;
+  height: 0.58666667rem;
+  margin: 0.45333333rem 0 0 0.4rem;
+  position: absolute;
+  top: 0vw;
+  height: 0vw;
+  float: left;
+}
+#commit_commit > div.header span.title {
+  line-height: 1.4rem;
+  margin-left: 45vw;
+}
+#commit_commit > div.header span.title_commit {
+  line-height: 1.4rem;
+  margin-left: 27vw;
+  color: #F60;
+}
+#commit_commit > div .content .desCont {
+  width: 100%;
+  height: 2rem;
+  padding-top: 0.26666667rem;
+}
+#commit_commit > div.main {
+  width: 100%;
+  top: 1.4rem;
+  position: absolute;
+  overflow: hidden;
+}
+#commit_commit > div.main .content {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+#commit_commit > div .content .contLeft img {
+  width: 1.8rem;
+  height: 1.8rem;
+  padding-left: 0.4rem;
+}
+#commit_commit > div .content .contLeft,
+#commit_commit .content .contRight {
+  float: left;
+}
+#commit_commit > div .content .contRight {
+  margin-left: .3rem;
+  height: 1.8rem;
+  width: 70%;
+}
+#commit_commit > div .content .contRight p {
+  margin: 0;
+}
+#commit_commit > div .content .contRight p:nth-child(1) {
+  font-size: 0.4rem;
+  margin-top: .1rem;
+}
+#commit_commit > div .content .contRight p:nth-child(2) {
+  font-size: 0.33rem;
+  color: #a9a9a9;
+  margin-top: .2rem;
+}
+#commit_commit > div .content .commit_des {
+  width: 100%;
+  color: #484d59;
+  font-size: .4rem;
+  border-bottom: 2px solid #d6d6db;
+  margin-top: 0.4rem;
+  padding-left: 0.4rem;
+  padding-bottom: 0.26666667rem;
+}
+#commit_commit .review {
+  margin-top: 1vw;
+  font-size: .4rem;
+  margin-bottom: 1vw;
+}
+#commit_commit .date {
+  color: #a9a9a9;
+  margin-top: .2rem;
+  font-size: .4rem;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 1vw;
+}
+#commit_commit .content .commit_des p:nth-child(1) {
+  line-height: .6rem;
+  color: #484d59;
+  font-size: 0.45333333rem;
+  display: inline-block;
+  width: 2.06666667rem;
+}
+#commit_commit .content .commit_des p:nth-child(2) {
+  width: 65%;
+  height: .6rem;
+  display: inline-block;
+}
+#commit_commit > div .content .dexTxtCont {
+  width: 100%;
+}
+#commit_commit > div .content .dexTxtCont p {
+  font-size: .4rem;
+  color: #484d59;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.4rem;
+}
+#commit_commit > div .content .dexTxt {
+  height: 3.6rem;
+  background: #efeff4;
+  width: 100%;
+  border: none;
+  font-size: 0.32rem;
+  color: #a9a9a9;
+  padding: .3rem;
+  word-break: break-all;
+}
+#commit_commit > div .content .imgCont {
+  width: 100%;
+  padding-left: 0.4rem;
+}
+#commit_commit > div .content .imgCont ul {
+  height: 2rem;
+  margin: 0;
+  margin-top: .5rem;
+  padding: 0;
+}
+#commit_commit > div .content .imgCont .camera {
+  padding: 0.4rem 0;
+}
+#commit_commit > div .content .imgCont ul .imgCenter {
+  margin-left: .7rem;
+}
+#commit_commit > div .content .imgCont ul > li {
+  float: left;
+  list-style: none;
+}
+#commit_commit > div .content .imgCont ul > li img {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+#commit_commit > div .content .imgCont p img {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.4rem 0;
+}
+/*匿名评价*/
+#commit_commit > div .content .noneNameDes {
+  padding-left: 0.4rem;
+}
+#commit_commit > div .content .noneNameDes span {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  text-align: center;
+  background-image: url("../images/orderCommit/noCheck.png");
+  background-repeat: no-repeat;
+  background-size: .4rem;
+  float: left;
+}
+#commit_commit > div .content .noneNameDes p {
+  font-size: .5rem;
+  color: #484d59;
+  cursor: pointer;
+  width: 50%;
+  margin: 0;
+  float: left;
+  margin-left: .3rem;
+  margin-bottom: 1rem;
+}
+#commit_commit > div .order {
+  margin-top: 0.26666667rem;
+  border-bottom: 1px solid #d6d6db;
+}
+#commit_commit > div .order h5 {
+  margin-top: 0.26666667rem;
+  padding-left: 0.4rem;
+  width: 100%;
+  height: 1.33333333rem;
+  line-height: 1.33333333rem;
+  background: #FFFFFF;
+  font-size: 0.32rem;
+  overflow: hidden;
+  color: #484d59;
+}
+#commit_commit > div .order h5 img {
+  display: inline-block;
+  width: 0.42666667rem;
+  height: 0.42666667rem;
+  padding: 0 0.4rem 0 0.26666667rem;
+}
+#commit_commit > div .detail {
+  width: 100%;
+  height: 2.33333333rem;
+  background: #fafafa;
+}
+#commit_commit > div .wrap {
+  margin: 0 0.26666667rem;
+  height: 2.33333333rem;
+}
+#commit_commit > div .wrap .left {
+  float: left;
+}
+#commit_commit > div .wrap .left img {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-top: 0.26666667rem;
+}
+#commit_commit > div .wrap .right {
+  float: left;
+  margin-top: 0.26666667rem;
+  font-size: 0.37333333rem;
+  padding-left: 0.26666667rem;
+}
+#commit_commit > div .wrap .right b {
+  color: #ea5718;
+  padding-left: 2.53333333rem;
+}
+#commit_commit > div .wrap .right p:nth-child(2) {
+  font-size: 0.32rem;
+  color: #a9a9a9;
+  padding-top: 0.26666667rem;
+  position: relative;
+}
+#commit_commit > div .wrap .right p:nth-child(2) span {
+  position: absolute;
+  right: 0;
+}

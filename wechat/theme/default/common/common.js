@@ -366,7 +366,7 @@
     // 解析Token
     function analyzeToken(token) {
         var uInfo = Base64.decode(token);
-        uInfo = uInfo.substring(0, uInfo.length - 1);
+        //uInfo = uInfo.substring(0, uInfo.length - 1);
         var uObj = JSON.parse(uInfo);
         return uObj;
     }

@@ -25,7 +25,7 @@
 				<p>{{city.name}}</p>
 				{{if city.children.length > 0}}
 					<div class="dist">
-						<span data-id="{{city.id}}" data-name="{{city.name}}" data-py="{{city.pyName}}">全城</span>
+						<span class="all" data-id="{{city.id}}" data-name="{{city.name}}" data-py="{{city.pyName}}">{{city.name}}</span>
 						{{each city.children as dist}}
 							<span data-id="{{dist.id}}" data-name="{{dist.name}}" data-pname="{{city.name}}" data-py="{{dist.pyName}}">{{dist.name}}</span>
 						{{/each}}

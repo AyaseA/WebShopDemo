@@ -118,6 +118,9 @@
     padding: 4px 6px;
     border-radius: 4px;
 }
+#location_location >div.main div.cities div.dist >span.all {
+    border-style: dashed;
+}
 #location_location >div.main div.cities >ul {
 	position: fixed;
 	top: 44px;

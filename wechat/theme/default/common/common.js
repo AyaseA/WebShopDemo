@@ -342,7 +342,13 @@
         },
         // 设置返回
         setGoBack: function(selector) {
-            selector.attr('href', 'javascript:$$.goBack();');
+            if (selector.prop('tagName') == 'A') {
+                selector.attr('href', 'javascript:$$.goBack();');
+            } else {
+                selector.off('click').on('click', function() {
+                    $$.goBack();
+                });
+            }
         },
         reloadData: function() {
 

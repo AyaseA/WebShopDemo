@@ -23,11 +23,13 @@
                 <div class="detail">
                     <div class="wrap clear">
                         <div class="left">
-                            <img src="./images/orderRecord/order.png" alt="">
+                            <!--<img src="./images/orderRecord/order.png" alt="" class="productImg">-->
+                            <img  alt="" class="productImg">
                         </div>
                         <div class="right ">
-                            <p><span>499汽车全年机油养护</span><b>￥499</b></p>
-                            <p>机油养护<span>x1</span></p>
+                            <p><span class="productName"></span><b>￥<span class="productPrice">499</span></b></p>
+                            <!--<p>机油养护<span>x1</span></p>-->
+                            <p class="desc">机油养护<span>x <i class="count">1</i></span></p>
                         </div>
                     </div>
                 </div>
@@ -38,23 +40,32 @@
             </div>
             <!--orderinfo 订单编号时间-->
             <div class="orderinfo">
-                <p>订单编号 <span>57645224111</span></p>
-                <p>下单时间 <span>2017-05-30 16:54:45</span></p>
+                <p>订单编号 <span class="orderNum">57645224111</span></p>
+                <p>下单时间 <span class="orderTime">2017-05-30 16:54:45</span></p>
             </div>
             <!--orderAmount商品金额优惠-->
             <div class="orderAmount">
-                <p>商品金额 <span>¥<b>499.00</b></span></p>
-                <p>优惠 <span>- ¥<b>0.00</b></span></span></p>
+                <p>商品金额 <span>¥<b class="money">499.00</b></span></p>
+                <p>优惠 <span>- ¥<b class="discount">0.00</b></span></span></p>
             </div>
             <!--needPay需付款-->
             <div class="needPay">
-                <p>需付款 <span>¥<b>499.00</b></span></span></p>
+                <p>需付款 <span>¥<b class="needMoney">499.00</b></span></span></p>
             </div>
             <!--choice选择取消或支付-->
             <div class="choice">
-                <a href="javascript:void(0)">取消订单</a>
-                <a href="javascript:void(0)">去支付</a>
+                <a href="javascript:void(0)" class="cancle">取消订单</a>
+                <a href="javascript:void(0)" class="goPay">去支付</a>
             </div>
+            <!--提示框confim-->
+            <!--<div class="confirm">
+                <div>
+                    <h4>提示</h4>
+                    <p>jkfdhadklsjhfjklashldkjh</p>
+                    <button class="confirm" style="color: #EA5514;border-right: 1px solid #D6D6DB;">确认</button>
+                    <button class="cancel">取消</button>
+                </div>
+            </div>-->
         </div>
     </div>
 </div>

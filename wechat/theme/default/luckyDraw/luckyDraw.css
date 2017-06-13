@@ -1,4 +1,9 @@
 @charset "utf-8";
+#luckyDraw_luckyDraw{
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
 
 #luckyDraw_luckyDraw .header{
 	width:100%;
@@ -22,6 +27,7 @@
 #luckyDraw_luckyDraw .content{
 	width:100%;
 	position:relative;
+	overflow-y: auto;
 }
 
 #luckyDraw_luckyDraw .bgImg{
@@ -51,10 +57,11 @@
 
 #luckyDraw_luckyDraw .ruleTitle{
 	border:0.5vw solid #fff;
-	padding:1vw 20vw 1vw 20vw;
 	border-radius:4vw;
 	width:16vw;
 	margin-left:10vw;
+	width: 50vw;
+    text-align: center;
 }
 
 #luckyDraw_luckyDraw .rules p{

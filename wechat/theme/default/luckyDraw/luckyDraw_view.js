@@ -2,6 +2,11 @@ $(function() {
     var $page = $('#luckyDraw_luckyDraw');
     pageStr = 'luckyDraw_luckyDraw';
 
+    var contentHeight= $page.height() - $page.find(".header").height();
+    console.log($page.height());
+    console.log($page.find(".header").height());
+
+    $page.find(".content").css("height", contentHeight + "px");
 
     function makeWard() {
         var flag = 0;
@@ -15,7 +20,7 @@ $(function() {
                 });
                 $$.removeDiv(pageStr);
                 $page.off('click', '*');
-            })
+            });
             //点击开始抽奖
         $page.on("click", ".wardImg", function() {
             if (flag == 0) {
@@ -23,7 +28,7 @@ $(function() {
                 $page.find(".content").append(node);
                 $page.find(".form").animate({ height: "90vw" }, 1000);
             }
-        })
+        });
 
 
         //点击提交按钮触发事件		
@@ -38,7 +43,7 @@ $(function() {
                 $page.find(".form").animate({ height: "0vw" }, 1000);
                 startWard();
             }
-        })
+        });
 
         function startWard() {
             //开始图片替换gif
@@ -90,7 +95,7 @@ $(function() {
                                             j += 1;
                                         }
                                     }
-                                }, 2000)
+                                }, 2000);
 
                                 //弹出中奖信息
                                 setTimeout(function() {
@@ -107,7 +112,7 @@ $(function() {
                                 }, 3000);
                             }
                         }
-                    })
+                    });
                 }, 3000);
         }
 
@@ -134,7 +139,7 @@ $(function() {
     }
 
     function isPhoneNum(num) {
-        return /^1[34578]\d{9}$/.test(num)
+        return /^1[34578]\d{9}$/.test(num);
     }
 
 });

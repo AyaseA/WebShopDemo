@@ -46,6 +46,8 @@ $(function() {
             $$.redirect("payCenter/payCenter.html?oid=" + orderId);
         } else if ($(this).html() == "确定收货") {
             $$.redirect("commit/commit.html?oid=" + orderId);
+        }else if ($(this).html() == "点评") {
+            $$.redirect("orderCommit/orderCommit.html?oid=" + orderId);
         }
 
     });
@@ -138,8 +140,6 @@ $(function() {
                 }else if(scrollArea == "waitGet"){
                     thisLoaded.waitGet=1;
                 }
-
-                console.log(thisLoaded);
                 $("#orderList_orderList ."+scrollArea).scroll(function() {
                     var scrollTop = $page.find("."+scrollArea).scrollTop() + $("."+scrollArea).height();
                     var scrollHeight = $page.find("."+scrollArea)[0].scrollHeight;
@@ -299,7 +299,6 @@ $(function() {
         $(this).addClass("on");
         $page.find(".content").children().hide();
         $page.find(".waitGet").fadeIn(500);
-        console.log(haveLoad.waitGet);
         if(haveLoad.waitGet == 0){
             n = 1;
             isLoad = 0;
@@ -315,31 +314,35 @@ $(function() {
         $(this).addClass("on");
         $page.find(".content").children().hide();
         $page.find(".waitRevice").fadeIn(500);
-        productInfo = "";
-        $.ajax({
-            type:"POST",
-            url:"http://192.168.1.110:8000/CSL/Review/ProductReviewList",
-            data:{"Token":Token,IsReview:0},
-            success:function (Data){
-                Data=$$.eval(Data);
-                console.log(Data);
-                var list = Data.Data.Rows;
-                console.log(list);
-                for(var i = 0;i < list.length;i++){
-                    $.ajax({
-                        type:"POST",
-                        url:"http://192.168.1.110:8000/Product/Prod/QueryDetail",
-                        data:{"ID":list[i].ProductID},
-                        success:function (Data){
-                            productInfo = $$.eval(Data).Data;   
-                        }
-                    });
-                    console.log(productInfo);
-                    onePiece = onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span style='color:red'>" + list[i].OrderID + "</span><p class='pieceStatus'>订单完成</p></div><div class='pieceContent'><div><div class='pInfo'><p>商品名称:<span>"+productInfo.Name+"</span></p><p>商品单价:<span>"+productInfo.Price+"</span></p></div></div></div><div class='piecePay'><button class='PayBtn'>评论</button></div></div>";
-                    $page.find(".waitRevice").append(onePiece);  
-                }
-            },
-        });
+        if(haveLoad.waitRevice == 0){           
+            $.ajax({
+                type:"POST",
+                url:"http://192.168.1.110:8000/CSL/Review/ProductReviewList",
+                data:{"Token":Token,IsReview:0},
+                success:function (Data){
+                    Data=$$.eval(Data);
+                    console.log(Data);
+                    var list = Data.Data.Rows;
+                    console.log(list);
+                    for(var i = 0;i < list.length;i++){
+                        var orderID=list[i].OrderID;
+                        console.log(orderID);
+                        $.ajax({
+                            type:"POST",
+                            url:"http://192.168.1.110:8000/Product/Prod/QueryDetail",
+                            data:{"ID":list[i].ProductID},
+                            success:function (Data){
+                                productInfo = $$.eval(Data).Data; 
+                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span style='color:red'>" + orderID+ "</span><p class='pieceStatus'>订单完成</p></div><div class='pieceContent'><div><img src='http://192.168.1.110:8000/Img/" + productInfo.Img + "'><div class='pInfo'><p>商品名称:<span>"+productInfo.Name+"</span></p><p>商品单价:<span>"+productInfo.Price+"</span></p></div></div></div><div class='piecePay'><button class='PayBtn'>点评</button></div></div>";
+                                $page.find(".waitRevice").append(onePiece);    
+                            }
+                        });
+                        
+                    }
+                    haveLoad.waitRevice = 1;
+                },
+            });
+        }
 
     });
 

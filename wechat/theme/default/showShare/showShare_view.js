@@ -42,9 +42,7 @@ $(function() {
             var params = { Mobile: mobile, SessionID: 1, RegisterFrom: 2, RegisterCont: 1, VC:verify };
 
             $$.post('CSL/Login/RegisterMobile', params, function(data) {
-                console.log(1);
                 if (data.Status == 0) {
-                console.log(2);
 
                     layer.msg('注册成功');
                     layer.close(index);

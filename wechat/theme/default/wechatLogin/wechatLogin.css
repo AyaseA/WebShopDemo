@@ -1,0 +1,123 @@
+#wechatLogin_wechatLogin {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: url(../images/center/bg_login.png) no-repeat;
+	background-size: 100%;
+}
+#wechatLogin_wechatLogin .return_button{
+	width: 5.9vw;
+	height: 5.9vw;
+	margin-left: 4vw;
+	margin-top: 8vw;
+}
+#wechatLogin_wechatLogin .logo_login{
+	width: 17.3vw;
+	height: 17.3vw;
+	display: inline-block;
+	position: relative;
+	left: 41%;
+	top: 2.7vw;
+}
+#wechatLogin_wechatLogin .wechatLogin_aside{
+	margin-top: 2.7vw;
+}
+#wechatLogin_wechatLogin .wechat_input_control{
+	width: 90.93vw;
+	height: 11.73vw;
+	margin-left: 4vw;
+	display: inline-block;
+	border-bottom: 1px solid #e5e5e5;
+	position: relative;
+}
+#wechatLogin_wechatLogin .login_phone{
+	width: 5.3vw;
+	height: 5.6vw;
+	display: inline-block;
+	position: relative;
+	left: 0.8vw;
+	top: 2.7vw;
+}
+#wechatLogin_wechatLogin .wechatLogin_input{
+	display: inline-block;
+	position: relative;
+	left: 1.9vw;
+	top: 1.9vw;
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 4.3vw;
+}
+#wechatLogin_wechatLogin ::-webkit-input-placeholder { 
+    color: #BFBFBF; 
+    text-overflow: ellipsis; 
+} 
+#wechatLogin_wechatLogin .wechatLogin_in_disable{
+	width: 90.93vw;
+	height: 11.73vw;
+	background-color: #9de49c;
+	color: #dbf4db;
+	font-size: 18px;
+	border-radius: 5px;
+	border: 1px;
+	border-color: #029400;
+	outline: none;
+	position: absolute;
+	top: 86.33vw;	
+	left: 4vw;
+}
+#wechatLogin_wechatLogin .wechatLogin_in_able{
+	width: 90.93vw;
+	height: 11.73vw;
+	background-color: #09bb07;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 5px;
+	border: 1px;
+	border-color: #029400;
+	outline: none;
+	position: absolute;
+	top: 86.33vw;	
+	left: 4vw;
+}
+#wechatLogin_wechatLogin #wechatLogin_get_verify{
+	width: 32vw;
+	line-height: 9.33vw;
+	background-color: #09bb07;
+	display: inline-block;
+	font-size: 15px;
+	border-radius: 5px;
+    position: absolute;
+    left: 59vw;
+    top: 1.13vw;
+	text-align: center;
+	vertical-align: center;
+	color: #fff;
+
+}
+#wechatLogin_wechatLogin #wechatLogin_timeclick{
+	width: 32vw;
+	line-height: 9.33vw;
+	background-color: #fdfcfd;
+	display: inline-block;
+	font-size: 15px;
+	border-radius: 5px;
+	position: relative;
+	left: 58.67vw;
+	top: -5.87vw;
+	text-align: center;
+	vertical-align: center;
+	color: #c9c8c9;
+	border: 1px;
+	border-color:#e6e6e6; 
+	display: none;
+}
+
+#wechatLogin_wechatLogin .round_clear{
+	width: 3.2vw;
+	height: 3.2vw;
+	display: none;
+	position: absolute;
+	left: 82.67vw;
+	top: 4.3vw;
+}

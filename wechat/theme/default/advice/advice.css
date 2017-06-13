@@ -1,0 +1,115 @@
+#advice_advice {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #F0EFF5;
+}
+#advice_advice header{
+	width: 100%;
+	height: 16vw;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;
+}
+#advice_advice header img{
+	width: 6.93vw;
+	height: 6.93vw;
+	display: inline-block;
+	margin: 4vw 0px 0px 5.33vw;
+}
+#advice_advice header .advice_point{
+	display: inline-block;
+	font-size: 5.87vw;
+	font-family: "黑体";
+	color: #4E4D53;
+	vertical-align: top;
+	margin: 4.3vw 0px 0px 24vw;
+}
+#advice_advice .advice_contact{
+	display: inline-block;
+	font-size: 3.73vw;
+	font-family: "黑体";
+	color: #4E4D53;
+	vertical-align: top;
+	margin: 5.6vw 0px 0px 18.67vw;		
+}
+#advice_advice .advice_textarea{
+	border: none;
+	outline: none;
+	margin: 10.67vw 0px 0px 5.33vw;
+	border-radius: 0.8vw;
+}
+#advice_advice .advice_button{
+	width: 90.93vw;
+	height: 11.73vw;
+	background-color: #EA5513;
+	color: #fff;
+	font-size: 4.53vw;
+	border-radius: 6.67vw;
+	border: none;
+	outline: none;
+	position: absolute;
+	bottom: 81.33vw;	
+	left: 4vw;
+}
+#advice_advice textarea::-webkit-input-placeholder{
+	color: #BEBEBE;
+	padding: 1.6vw 2.13vw;
+}
+#advice_advice .advice_but_cont{
+	width: 100%;
+	height: 161.87vw;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	background-color: #000;
+	opacity: 0.4;
+	display: none;
+}
+#advice_advice .advice_but_words{
+	width: 81.33vw;
+	height: 45.33vw;
+	opacity: none;
+	background-color: #fff;
+	z-index: 100;
+	position: absolute;
+	bottom: 64vw;
+	left: 9.33vw;
+	border-radius: 3px;
+	display: none;
+}
+#advice_advice .advice_prot_tips{
+	display: inline-block;
+	width: 81.33vw;
+	height: 27.5vw;
+	border-bottom: 1px solid #eee;
+	text-align: center;
+	font-size: 4.3vw;
+	color: #4A4C55;
+	margin-top: 5.87vw;
+	display: none;
+}
+#advice_advice .advice_prot_tips span{
+	color: #ADADAD;
+}
+#advice_advice .advice_right{
+	display: block;
+	float: left;
+	width: 152px;
+	line-height: 45px;
+	text-align: center;
+	color: #616266;
+	overflow: hidden;
+	display: none;
+}
+#advice_advice .advice_wrong{
+	display: block;
+	float: right;
+	width: 40vw;
+	line-height: 12vw;
+	text-align: center;
+	border-left: 1px solid #eee;
+	color: #616266;
+	display: none;
+}

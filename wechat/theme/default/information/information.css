@@ -1,0 +1,159 @@
+#information_information {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #F0EFF5;
+}
+#information_information header{
+	width: 100%;
+	height: 60px;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;
+}
+#information_information header img{
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	margin: 15px 0px 0px 20px;
+}
+#information_information header span{
+	display: inline-block;
+	font-size: 22px;
+	font-family: "黑体";
+	color: #4E4D53;
+	vertical-align: top;
+	margin: 19px 0px 0px 90px;
+}
+#information_information .head_photo_control{
+	margin-top: 20px;
+	width: 100%;
+	height: 90px;
+	background-color: #fff;
+}
+#information_information .login_message_control{
+	width: 100%;
+	height: 60px;
+	background-color: #fff;
+	overflow: hidden;
+	border-top: 1px solid #eee;
+}
+#information_information .sex_message_control{
+	width: 100%;
+	height: 60px;
+	background-color: #fff;
+	overflow: hidden;
+	border-top: 1px solid #eee;
+}
+#information_information .information_logo{
+	width: 24px;
+	height: 24px;
+	display: inline-block;	
+	margin: 18px 0px 0px 25px;
+}
+#information_information .information_logo_1{
+	width: 24px;
+	height: 24px;
+	display: inline-block;	
+	margin: 34px 0px 0px 25px;	
+}
+#information_information .span_infor{
+	vertical-align: top;
+	display: inline-block;
+	font-size: 18px;
+	margin: 19px 0px 0px 10px;	
+}
+#information_information .span_infor_1{
+	vertical-align: top;
+	display: inline-block;
+	font-size: 18px;
+	margin: 34px 0px 0px 10px;
+}
+#information_information .right_copy{
+	width: 10px;
+	height: 16px;
+	display: block;
+	float: right;
+	margin: 35px 20px 0px 0px;	
+}
+#information_information .right_copy_2{
+	width: 10px;
+	height: 16px;
+	display: block;
+	float: right;
+	margin: 22px 20px 0px 0px;
+}
+#information_information .span_login_in{
+	display: block;
+	float: right;
+	font-size: 18px;
+	margin: 19px 20px 0px 0px;
+}
+#information_information .div_float_1{
+	width: 100%;
+	height: 91%;
+	z-index: 100;
+	background-color: #111;
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	display: none;
+	opacity: 0.4;
+}
+#information_information .sex_male,#information_information .photo_take{
+	width: 90%;
+	border-radius: 7px;
+	background-color: #fff;
+	text-align: center;
+	z-index: 200;
+	position: absolute;
+	bottom: 140px;
+	margin-left: 5%;
+	color: #E27A41;
+	opacity: none;
+	line-height: 60px;
+	font-size: 18px;
+	font-weight: normal;
+	border-bottom: 1px solid #eee;
+	display: none;
+}
+#information_information .sex_female,#information_information .photo_photogragh{
+	width: 90%;
+	border-radius: 7px;
+	background-color: #fff;
+	text-align: center;
+	z-index: 200;
+	position: absolute;
+	bottom: 80px;
+	margin-left: 5%;
+	color: #E27A41;
+	opacity: none;
+	line-height: 60px;
+	font-size: 18px;
+	display: none;
+	font-weight: normal;
+}
+#information_information .take_concel_2,#information_information .take_concel{
+	width: 90%;
+	height: 60px;
+	border-radius: 7px;
+	background-color: #fff;
+	text-align: center;
+	z-index: 200;
+	position: absolute;
+	bottom: 5px;
+	margin-left: 5%;
+	color: #000;
+	opacity: none;
+	line-height: 60px;
+	font-size: 18px;
+	display: none;
+	font-weight: normal;
+}
+#information_information .span_text_value{
+	display: inline-block;
+	vertical-align: top;
+	font-size: 18px;
+	margin: 17px 0px 0px 170px;	
+}

@@ -18,13 +18,12 @@
 		$('.logout_right').css('display', 'none');
 		$('.logout_wrong').css('display', 'none');		
 	});
-	$('.logout_back').on('click', function(){
-		
-	});
 	$('.redit_password').on('click', function(){
 		$$.redirect('reditpassword/reditpassword.html');
 	});
 	$('.logout_back').on('click', function(){
-		$$.redirect('pageHome/pageHome.html');
+		$$.redirect('pageHome/pageHome.html', {
+                    'fromGoBack': true
+        });
 	});	
 }());

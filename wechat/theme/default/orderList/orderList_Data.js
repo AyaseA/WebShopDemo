@@ -21,7 +21,7 @@ $(function() {
     $page.off("click", ".PayBtn").on("click", ".PayBtn", function() {
         var orderId = $(this).parent().parent().children(".pieceHeader").children(".orderID").children().html();
         if ($(this).html() == "支付") {
-            $$.redirect("payCenter/payCenter.html?oid=" + orderId);
+            $$.redirect("orderCommit/orderCommit.html?oid=" + orderId);
         } else if ($(this).html() == "确定收货") {
             $$.redirect("commit/commit.html?oid=" + orderId);
         }
@@ -105,7 +105,7 @@ $(function() {
                     var scrollTop = $page.find(".content").scrollTop() + $(".content").height();
                     var scrollHeight = $page.find(".content")[0].scrollHeight;
                     if (noDate == 0) {
-                        if (scrollHeight - scrollTop <= 0) {
+                        if (scrollHeight - scrollTop <= 1) {
                             if (isLoad == 0) {
                                 $.ajax({
                                     type: "POST",

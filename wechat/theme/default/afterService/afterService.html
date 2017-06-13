@@ -3,17 +3,15 @@
     <div class="header">
         <a href="javascript:void(0)" class="goBack"></a>
         <span class="title">售后服务</span>
+        <ul class="list clear">
+            <li class="active" data-type="afterApply" data-index="0">售后申请</li>
+            <li data-type="applyRecord" data-index="1">申请记录</li>
+        </ul>
     </div>
     <!--main-->
     <div class="main">
         <div class="content">
-            <!--list-->
-            <ul class="list clear">
-                <li data-tab="" class="active">售后申请</li>
-                <li data-tab="">申请记录</li>
-            </ul>
-            <!--orders-->
-            <script id="afterService_afterService_order_list" type="text/html">
+           <!-- <script id="afterService_afterService_order_list" type="text/html">
             {{each list as order i}}
                 <div class="order available {{if order.StatusID == 0}}cls1{{else if order.StatusID == 1}}cls2{{/if}}">
                     <h5>
@@ -38,47 +36,184 @@
             </script>
             <div class="orders">
 
-            </div>
-            <div class="order available">
-                <h5>
-                    订单编号：<span>58766699966</span> 下单时间：<span>2017-06-05 14:23:49</span>
-                </h5>
-                <div class="detail">
-                    <div class="wrap clear">
-                        <div class="left">
-                            <img src="./images/orderRecord/order.png" alt="">
-                        </div>
-                        <div class="right ">
-                            <p ><span>499汽车全年机油养护</span></p>
-                            <p>机油养护<span>x1</span></p>
+            </div>-->
+            <!--content又分为两个页面  两个部分-->
+            <!--售后申请appLy页面-->
+            <div class="apply">
+          <!--      <div class="order available">
+                    <h5>
+                        订单编号：<span>58766699966</span> 下单时间：<span>2017-06-05 14:23:49</span>
+                    </h5>
+                    <div class="detail">
+                        <div class="wrap clear">
+                            <div class="left">
+                                <img src="./images/orderRecord/order.png" alt="">
+                            </div>
+                            <div class="right ">
+                                <p ><span>499汽车全年机油养护</span></p>
+                                <p>机油养护<span>x1</span></p>
+                            </div>
                         </div>
                     </div>
+                    <div class="applyser">
+                        <a href="javascript:void(0)">申请售后</a>
+                    </div>
+                </div>-->
+
+                <div class="order available">
+                    <h5>
+                        订单编号：<span class="orderNum">58766699966</span> 下单时间：<span class="orderTime">2017-06-05 14:23:49</span>
+                    </h5>
+                    <div class="detail">
+                        <div class="wrap clear">
+                            <div class="left">
+                                <!--<img src="./images/orderRecord/order.png" alt="" class="productImg">-->
+                                <img  alt="" class="productImg">
+                            </div>
+                            <div class="right ">
+                                <p><span class="productName">499汽车全年机油养护</span><b>￥<span class="productPrice">499</span></b></p>
+                                <p class="desc">机油养护<span>x <i class="count">1</i></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="applyser">
+                        <a href="javascript:void(0)">申请售后</a>
+                    </div>
                 </div>
-                <div class="apply">
-                    <a href="javascript:void(0)">申请售后</a>
+
+
+                <div class="order overdue">
+                    <h5>
+                        订单编号：<span class="orderNum">58766699966</span> 下单时间：<span class="orderTime">2017-06-05 14:23:49</span>
+                    </h5>
+                    <div class="detail">
+                        <div class="wrap clear">
+                            <div class="left">
+                                <!--<img src="./images/orderRecord/order.png" alt="" class="productImg">-->
+                                <img  alt="" class="productImg">
+                            </div>
+                            <div class="right ">
+                                <p><span class="productName">499汽车全年机油养护</span><b>￥<span class="productPrice">499</span></b></p>
+                                <p class="desc">机油养护<span>x <i class="count">1</i></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="applyser">
+                        <span>该商品已超过售后期</span>
+                        <a href="javascript:void(0)">申请售后</a>
+                    </div>
+                </div>
+
+   <!--             <div class="order overdue">
+                    <h5>
+                        订单编号：<span>58766699966</span> 下单时间：<span>2017-06-05 14:23:49</span>
+                    </h5>
+                    <div class="detail">
+                        <div class="wrap clear">
+                            <div class="left">
+                                <img src="./images/orderRecord/order.png" alt="">
+                            </div>
+                            <div class="right ">
+                                <p ><span>499汽车全年机油养护</span></p>
+                                <p>机油养护<span>x1</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="applyser">
+                        <span>该商品已超过售后期</span>
+                        <a href="javascript:void(0)">申请售后</a>
+                    </div>
+                </div>-->
+            </div>
+            <!--申请记录 record页面-->
+            <div class="record">
+
+                <div class="order applied">
+                    <h5>
+                        订单编号：<span class="orderNum">58766699966</span> 下单时间：<span class="orderTime">2017-06-05 14:23:49</span>
+                    </h5>
+                    <div class="detail">
+                        <div class="wrap clear">
+                            <div class="left">
+                                <!--<img src="./images/orderRecord/order.png" alt="" class="productImg">-->
+                                <img  alt="" class="productImg">
+                            </div>
+                            <div class="right ">
+                                <p><span class="productName">499汽车全年机油养护</span><b>￥<span class="productPrice">499</span></b></p>
+                                <p class="desc">机油养护<span>x <i class="count">1</i></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="state">
+                        <p>已申请，正在处理，请耐心等待</p>
+                    </div>
+                </div>
+
+<!--
+                <div class="order applied">
+                    <h5>
+                        订单编号：<span>58766699966</span> 下单时间：<span>2017-06-05 14:23:49</span>
+                    </h5>
+                    <div class="detail">
+                        <div class="wrap clear">
+                            <div class="left">
+                                <img src="./images/orderRecord/order.png" alt="">
+                            </div>
+                            <div class="right">
+                                <p  class="p1"><span>499汽车全年机油养护</span></p>
+                                <p class="p2">机油养护<span>x1</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="state">
+                        <p>已申请，正在处理，请耐心等待</p>
+                    </div>
+                </div>-->
+
+   <!--             <div class="order completed">
+                    <h5>
+                        订单编号：<span>58766699966</span> 下单时间：<span>2017-06-05 14:23:49</span>
+                    </h5>
+                    <div class="detail">
+                        <div class="wrap clear">
+                            <div class="left">
+                                <img src="./images/orderRecord/order.png" alt="">
+                            </div>
+                            <div class="right ">
+                                <p ><span>499汽车全年机油养护</span></p>
+                                <p>机油养护<span>x1</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="state">
+                        <p>已完成</p>
+                    </div>
+                </div>-->
+
+                <div class="order completed">
+                    <h5>
+                        订单编号：<span class="orderNum">58766699966</span> 下单时间：<span class="orderTime">2017-06-05 14:23:49</span>
+                    </h5>
+                    <div class="detail">
+                        <div class="wrap clear">
+                            <div class="left">
+                                <!--<img src="./images/orderRecord/order.png" alt="" class="productImg">-->
+                                <img  alt="" class="productImg">
+                            </div>
+                            <div class="right ">
+                                <p><span class="productName">499汽车全年机油养护</span><b>￥<span class="productPrice">499</span></b></p>
+                                <p class="desc">机油养护<span>x <i class="count">1</i></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="state">
+                        <p>已完成</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="order overdue">
-                <h5>
-                    订单编号：<span>58766699966</span> 下单时间：<span>2017-06-05 14:23:49</span>
-                </h5>
-                <div class="detail">
-                    <div class="wrap clear">
-                        <div class="left">
-                            <img src="./images/orderRecord/order.png" alt="">
-                        </div>
-                        <div class="right ">
-                            <p ><span>499汽车全年机油养护</span></p>
-                            <p>机油养护<span>x1</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="apply">
-                    <span>该商品已超过售后期</span>
-                    <a href="javascript:void(0)">申请售后</a>
-                </div>
-            </div>
+
+
         </div>
     </div>
 </div>

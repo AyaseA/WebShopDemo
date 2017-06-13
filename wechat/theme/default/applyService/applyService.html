@@ -8,26 +8,47 @@
     <div class="main">
         <div class="content">
             <!--orders-->
-            <div class="order pendingPay">
+            <!--<div class="order pendingPay">
                 <div class="detail">
                     <div class="wrap clear">
                         <div class="left">
                             <img src="./images/orderRecord/order.png" alt="">
                         </div>
                         <div class="right ">
-                            <p ><span>499汽车全年机油养护</span><b>￥499</b></p>
+                            <p><span>499汽车全年机油养护</span><b>￥499</b></p>
                             <p>机油养护<span>x1</span></p>
                         </div>
                     </div>
                 </div>
+            </div>-->
+
+            <div class="order available">
+                <h5>
+                    订单编号：<span class="orderNum">58766699966</span> 下单时间：<span class="orderTime">2017-06-05 14:23:49</span>
+                </h5>
+                <div class="detail">
+                    <div class="wrap clear">
+                        <div class="left">
+                            <!--<img src="./images/orderRecord/order.png" alt="" class="productImg">-->
+                            <img  alt="" class="productImg">
+                        </div>
+                        <div class="right ">
+                            <p><span class="productName">499汽车全年机油养护</span><b>￥<span class="productPrice">499</span></b></p>
+                            <p class="des">机油养护<span>x <i class="count">1</i></span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <!--desc问题描述-->
             <div class="desc">
                 问题描述
             </div>
+
             <div class="dexTxtCont">
                 <textarea name="" class="dexTxt" placeholder="请在此描述问题"></textarea>
             </div>
+
             <!--图片imgCont-->
             <div class="imgCont">
                 <ul>
@@ -42,13 +63,21 @@
                 </ul>
                 <p><img src="./images/orderCommit/camera.png" alt="" class="camera"></p>
             </div>
+
             <!--userinfo用户信息-->
             <div class="userinfo">
-                <p>联系人 <input type="text" placeholder="请输入联系人姓名"></p>
-                <p>联系方式 <span>178****6666</span></p>
+                <div class="userInput">
+                    <label>联系人</label><input type="text" placeholder="请输入联系人姓名">
+                </div>
+                <div class="userContact">
+                    <label>联系方式</label><span id="usePhone"></span>
+                </div>
             </div>
 
+            <div class="sumbitBtn">
+                <p>提交服务单后，售后专员可能与您电话沟通,请保持电话畅通</p>
+                <button>提交</button>
+            </div>
         </div>
     </div>
-
 </div>

@@ -11,8 +11,13 @@ $(function() {
     var timer; //定时器
     var registType = 6; //获取验证码的类型
     returnBtn.on('click', function(){
-        clearInterval(timer);
+        
         $$.goBack();
+        clearInterval(timer);
+        $page.find('#wechatLogin_get_verify').css('display', 'block');
+        $page.find('#wechatLogin_timeclick').css('display', 'none');
+        $page.find('#num_delete').html('59');
+        
 
     });
     // $$.goBack('#wechatLogin_wechatLogin .return_button');

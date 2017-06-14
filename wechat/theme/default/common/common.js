@@ -229,8 +229,8 @@
                     url += '?Token=' + token;
                 }
             }
-            if (!url.startsWith($$.serverAddr)) {
-                url = $$.serverAddr + url;
+            if (!url.startsWith($$.config.serverAddr)) {
+                url = $$.config.serverAddr + url;
             }
             $.ajax({
                 url: url,
@@ -252,8 +252,8 @@
         post: function(url, data, succfunc, errfunc) {
             // 获取Token
             var token = $$.getToken();
-            if (!url.startsWith($$.serverAddr)) {
-                url = $$.serverAddr + url;
+            if (!url.startsWith($$.config.serverAddr)) {
+                url = $$.config.serverAddr + url;
             }
             $.ajax({
                 url: url,

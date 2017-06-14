@@ -156,7 +156,7 @@ $(function() {
                     $page.find('>div.brandsModal >div.brands').html(
                         template(pageStr + '_brands_list', {
                             brands: brands,
-                            serverAddr: $$.serverAddr,
+                            serverAddr: $$.config.serverAddr,
                             letterArr: letterArr.sort()
                     }));
                 }
@@ -177,7 +177,7 @@ $(function() {
                     $page.find('>div.seriesModal >div.seriesBox').html(
                         template(pageStr + '_series_list', {
                             series: res.Data.Rows,
-                            serverAddr: $$.serverAddr
+                            serverAddr: $$.config.serverAddr
                     }));
                 }
             }

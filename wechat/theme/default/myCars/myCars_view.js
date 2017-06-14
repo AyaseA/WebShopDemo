@@ -99,7 +99,7 @@ $(function() {
                 if (res.Data && res.Data.Rows) {
                     carsBox.html(template(pageStr + '_list', {
                         list: res.Data.Rows,
-                        serverAddr: $$.serverAddr,
+                        serverAddr: $$.config.serverAddr,
                         defaultCar: $$.getCookie('__DFTCAR__')
                     }));
                 }

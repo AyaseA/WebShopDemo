@@ -19,7 +19,7 @@ $(function() {
 					var d = res.Data.Rows;
 					$proBox.html(template(pageStr + '_products', {
 						list: d,
-						serverAddr: $$.serverAddr
+						serverAddr: $$.config.serverAddr
 					}));
 				}
 			}

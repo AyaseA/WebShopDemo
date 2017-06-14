@@ -41,7 +41,7 @@ $(function() {
                     getComments(d.Name);
                     $page.find('>div.main div.product >div.detail').html(
                         template(pageStr + '_product_detail', {
-                            serverAddr: $$.serverAddr,
+                            serverAddr: $$.config.serverAddr,
                             data: d
                     }));
                     if (d.Imglist) {
@@ -56,6 +56,7 @@ $(function() {
                             interTime: 3000 // 切换间隔时间，毫秒
                         });
                     }
+                    addHistoryFoot();
                 }
             }
         );
@@ -96,7 +97,7 @@ $(function() {
                     ).toFixed(0) + '%');
 
                     var allComments = template(pageStr + '_product_comment', {
-                        serverAddr: $$.serverAddr,
+                        serverAddr: $$.config.serverAddr,
                         commentList: d,
                         productName: productName
                     });
@@ -107,33 +108,44 @@ $(function() {
                     // 评论-好评
                     $page.find('>div.main div.evaluate div.good').html(
                         template(pageStr + '_product_comment', {
-                            serverAddr: $$.serverAddr,
+                            serverAddr: $$.config.serverAddr,
                             commentList: goodComments,
                             productName: productName
                     }));
                     // 评论-中评
                     $page.find('>div.main div.evaluate div.middle').html(
                         template(pageStr + '_product_comment', {
-                            serverAddr: $$.serverAddr,
+                            serverAddr: $$.config.serverAddr,
                             commentList: midComments,
                             productName: productName
                     }));
                     // 评论-差评
                     $page.find('>div.main div.evaluate div.bad').html(
                         template(pageStr + '_product_comment', {
-                            serverAddr: $$.serverAddr,
+                            serverAddr: $$.config.serverAddr,
                             commentList: badCommons,
                             productName: productName
                     }));
                     // 评论-有图
                     $page.find('>div.main div.evaluate div.haveImg').html(
                         template(pageStr + '_product_comment', {
-                            serverAddr: $$.serverAddr,
+                            serverAddr: $$.config.serverAddr,
                             commentList: haveImgComments,
                             productName: productName
                     }));
                 }
             }
         );
+    }
+    // 添加浏览足迹
+    function addHistoryFoot() {
+        $.ajax({
+            type: 'POST',
+            url: $$.config.serverAddr + 'Product/Prod/HandleProduct',
+            data: {
+                ID: pid,
+                Token: $$.getCookie('__TOKEN__')
+            }
+        });
     }
 });

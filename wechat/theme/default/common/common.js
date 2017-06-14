@@ -9,7 +9,8 @@
         serverAddr: 'http://192.168.1.110:8000/',
         // 相关配置
         config: {
-            serverAddr: 'http://192.168.1.110:8000/'
+            serverAddr: 'http://192.168.1.110:8000/',
+            canRefresh: true
         },
         stack: [],
         // 时间转10位时间戳
@@ -49,6 +50,11 @@
         // 页面跳转 核心方法
         redirect: function(url, option) {
             if (url) {
+                // 设置可以刷新为true，加载代码时存在设置则置为false
+                $$.config.canRefresh = true;
+                // 设置全局菜单的按钮显示与隐藏
+                setGlobalMenu();
+                
                 var trans, backUrl, fromGoBack = false;
                 if (option) {
                     trans = option.trans;
@@ -223,8 +229,8 @@
                     url += '?Token=' + token;
                 }
             }
-            if (!url.startsWith($$.serverAddr)) {
-                url = $$.serverAddr + url;
+            if (!url.startsWith($$.config.serverAddr)) {
+                url = $$.config.serverAddr + url;
             }
             $.ajax({
                 url: url,
@@ -246,8 +252,8 @@
         post: function(url, data, succfunc, errfunc) {
             // 获取Token
             var token = $$.getToken();
-            if (!url.startsWith($$.serverAddr)) {
-                url = $$.serverAddr + url;
+            if (!url.startsWith($$.config.serverAddr)) {
+                url = $$.config.serverAddr + url;
             }
             $.ajax({
                 url: url,
@@ -402,6 +408,8 @@
             });
         }
     });
+    /* artTemplate 相关过滤器 start */
+    // 图片为空替换默认
     template.defaults.imports.imgFilter = function(img) {
         if (img) {
             return img;
@@ -409,9 +417,11 @@
             return 'NoImg/' + Math.random() + '.jpg';
         }
     };
+    // 10位时间戳转时间yyyy-MM-dd hh:mm:ss
     template.defaults.imports.timeFilter = function(time) {
         return new Date(time * 1000).pattern('yyyy-MM-dd hh:mm:ss');
     };
+    // 字符串截取为数组
     template.defaults.imports.splitFilter = function(str, sign) {
         if (str) {
             return str.split(sign || ',');
@@ -419,12 +429,20 @@
             return [];
         }
     };
+    // json parse
     template.defaults.imports.jsonParseFilter = function(str) {
         if (str) {
             return JSON.parse(str);
         }
     };
-
+    /* artTemplate 相关过滤器 end */
+    // ajax 全局设置，增加加载动画
+    $(document).ajaxStart(function() {
+        //layer.closeAll('loading');
+        layer.load();
+    }).ajaxStop(function() {
+        layer.closeAll('loading');
+    });
     // 配置微信
     !(function() {
         $$.get(
@@ -444,7 +462,131 @@
             }
         );
     }());
+    /* 全局菜单相关 start */
+    !(function(win, $, undefined) {
+        var $menu = $('#global_menu'),
+            _bodyH = window.innerHeight || document.body.clientHeight,
+            _bodyW = window.innerWidth || document.body.clientWidth,
+            _halfW = $menu.width() / 2,
+            _halfH = $menu.height() / 2,
+            isClick = true;
+        // 拖拽相关
+        $menu.on('touchstart', function(e) {
+            isClick = true;
+            if (!$menu.hasClass('active')) {
+                setGlobalMenu();
+            }
+        }).on('touchmove', function(e) {
+            e.preventDefault();
+            var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+                _x = _touch.pageX,
+                _y = _touch.pageY;
+            isClick = false;
+            if (!isClick) {
+                setPosition(_x, _y);
+            }
+        }).on('touchend', function(e) {
+            e.preventDefault();
+            var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+                _x = _touch.pageX;
 
+            if (isClick) {
+                openCloseMenu(_x);
+            }
+        });
+        // 菜单点击事件
+        $menu.on('touchend', 'li', function(e) {
+            isClick = false;
+            var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+                _x = _touch.pageX,
+                type = $(this).attr('data-type'),
+                url = $$.getUrl();
+            openCloseMenu(_x);
+            
+            switch(type) {
+                case 'refresh': {
+                    var url_arr = url.split('?'),
+                        dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                        filedata = dir + '_data.js';
+                    loadJs(filedata, dir.replace(/\//g, "_") + "_data");
+                } break;
+                case 'index': {
+                    if (url.indexOf('index/index.html') == -1) {
+                        $$.redirect('index/index.html');
+                    }
+                } break;
+                case 'icenter': {
+                    if (url.indexOf('pageHome/pageHome.html') == -1) {
+                        $$.redirect('pageHome/pageHome.html', {
+                            fromGoBack: true
+                        });
+                    }
+                } break;
+            }
+        });
+        // 展开收起菜单
+        function openCloseMenu(_x) {
+            var lis = $menu.find('li').not('.hide'),
+                i = 0;
+            if ($menu.hasClass('active')) {
+                for (i = 0; i < lis.length; i++) {
+                    $(lis[i]).animate({
+                        'right': 0
+                    }, 200);
+                }
+                $menu.removeClass('active').find('>span').text('菜单');
+                $menu.find('>ul').fadeOut(200);
+            } else {
+                $menu.find('>ul').show();
+                for (i = 0; i < lis.length; i++) {
+                    $(lis[i]).animate({
+                        'right': (i + 1) * _halfW * 2 * (_x < _bodyW / 2 ? -1 : 1)
+                    }, 200);
+                }
+                $menu.addClass('active').find('>span').text('收起');
+            }
+        }
+        // 设置菜单位置
+        function setPosition(_x, _y) {
+            if (_x >= _bodyW - _halfW) {
+                _x = _bodyW - _halfW;
+            } else if (_x - _halfW <= 0) {
+                _x = _halfW;
+            }
+            if (_y >= _bodyH - _halfH) {
+                _y = _bodyH - _halfH;
+            } else if (_y - _halfH <=0) {
+                _y = _halfH;
+            }
+            $menu.css({
+                'top': _y - _halfH,
+                'left': _x - _halfW
+            });
+        }
+    }(win, $, undefined));
+    // 设置全局菜单的按钮显示与隐藏
+    function setGlobalMenu() {
+        var $menu = $('#global_menu'),
+            lis = $menu.find('li').removeClass('hide'),
+            url = $$.getUrl();
+        if ($$.config.canRefresh) {
+            $menu.find('li[data-type=refresh]').removeClass('hide');
+        } else {
+            $menu.find('li[data-type=refresh]').addClass('hide');
+        }
+        if (url.indexOf('pageHome/pageHome.html') != -1) {
+            $menu.find('li[data-type=icenter]').addClass('hide');
+        }
+        if (url.indexOf('index/index.html') != -1) {
+            $menu.find('li[data-type=index]').addClass('hide');
+        }
+        lis.css({
+            'right': 0
+        });
+        $menu.removeClass('active').find('>span').text('菜单');
+        $menu.find('>ul').hide();
+    }
+    /* 全局菜单相关 end */
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

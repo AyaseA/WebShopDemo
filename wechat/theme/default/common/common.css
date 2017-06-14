@@ -71,3 +71,49 @@ body >div.common-none {
 #div_list {
     height: 100%;
 }
+#global_menu {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    border-radius: 8px;
+}
+#global_menu >span {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 42px;
+}
+#global_menu.active >span {
+    color: #98e1ff;
+}
+#global_menu >ul {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#global_menu li {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 10%;
+    font-size: 12px;
+    line-height: 33px;
+    border-radius: 8px;
+}
+#global_menu li.hide {
+    display: none;
+}

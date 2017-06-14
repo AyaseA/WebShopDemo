@@ -3,7 +3,7 @@ $(function() {
     	pageStr = 'myCars_myCars';
 
     $page.find('div.confirm').hide();
-
+    
     // 加载车辆信息
 	getMyCars();
     // 加载车辆信息
@@ -19,7 +19,7 @@ $(function() {
 	            if (res.Data && res.Data.Rows) {
 	                carsBox.html(template(pageStr + '_list', {
                         list: res.Data.Rows,
-                        serverAddr: $$.serverAddr,
+                        serverAddr: $$.config.serverAddr,
                         defaultCar: $$.getCookie('__DFTCAR__')
                     }));
 	            }

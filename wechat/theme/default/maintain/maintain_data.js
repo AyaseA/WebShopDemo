@@ -23,7 +23,7 @@ $(function() {
 					var d = res.Data.Rows;
 					$proBox.html(template(pageStr + '_products', {
 						maintainProList: d,
-						serverAddr: $$.serverAddr
+						serverAddr: $$.config.serverAddr
 					}));
 				}
 			}

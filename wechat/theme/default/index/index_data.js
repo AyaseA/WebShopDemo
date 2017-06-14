@@ -31,7 +31,7 @@ $(function(){
                 if (res.Status == 0 && res.Data && res.Data.Rows) {
                     $banner.html(template(pageStr + '_banner_list', {
                         list: res.Data.Rows,
-                        serverAddr: $$.serverAddr
+                        serverAddr: $$.config.serverAddr
                     }));
 
                     if (calback) {
@@ -56,7 +56,7 @@ $(function(){
                     $proBox.html(template(pageStr + '_products', {
                         list: d,
                         length: d.length,
-                        serverAddr: $$.serverAddr
+                        serverAddr: $$.config.serverAddr
                     }));
                 }
             }

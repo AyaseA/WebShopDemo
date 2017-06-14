@@ -4,7 +4,7 @@ $(function() {
     
 	// 加载商品列表
 	getProductsList();
-
+	
 	// 加载商品列表
 	function getProductsList() {
 		var $proBox = $page.find('div.products').empty();
@@ -19,7 +19,7 @@ $(function() {
 					var d = res.Data.Rows;
 					$proBox.html(template(pageStr + '_products', {
 						list: d,
-						serverAddr: $$.serverAddr
+						serverAddr: $$.config.serverAddr
 					}));
 				}
 			}

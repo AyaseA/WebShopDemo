@@ -408,6 +408,8 @@
             });
         }
     });
+    /* artTemplate 相关过滤器 start */
+    // 图片为空替换默认
     template.defaults.imports.imgFilter = function(img) {
         if (img) {
             return img;
@@ -415,9 +417,11 @@
             return 'NoImg/' + Math.random() + '.jpg';
         }
     };
+    // 10位时间戳转时间yyyy-MM-dd hh:mm:ss
     template.defaults.imports.timeFilter = function(time) {
         return new Date(time * 1000).pattern('yyyy-MM-dd hh:mm:ss');
     };
+    // 字符串截取为数组
     template.defaults.imports.splitFilter = function(str, sign) {
         if (str) {
             return str.split(sign || ',');
@@ -425,12 +429,20 @@
             return [];
         }
     };
+    // json parse
     template.defaults.imports.jsonParseFilter = function(str) {
         if (str) {
             return JSON.parse(str);
         }
     };
-
+    /* artTemplate 相关过滤器 end */
+    // ajax 全局设置，增加加载动画
+    $(document).ajaxStart(function() {
+        //layer.closeAll('loading');
+        layer.load();
+    }).ajaxStop(function() {
+        layer.closeAll('loading');
+    });
     // 配置微信
     !(function() {
         $$.get(

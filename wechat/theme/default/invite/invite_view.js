@@ -36,6 +36,7 @@ $(function() {
             shareImage: shareImage,
             shareDesc: shareDesc
         };
+
         // 分享图标点击事件
         $page.on('click', 'div.entry', function() {
             inviteEntry($(this).attr('data-type'), shareObj);

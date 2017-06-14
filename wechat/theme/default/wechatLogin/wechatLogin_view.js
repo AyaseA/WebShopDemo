@@ -61,7 +61,13 @@ $(function() {
     function regiestUser(phonenumber, verify) {
 
 
-        var params = { Mobile: phonenumber, SessionID: 1, RegisterFrom: 2, RegisterCont: 1, VC: verify };
+        var params = {
+            Mobile: phonenumber,
+            SessionID: 1,
+            RegisterFrom: $$.getQueryString('RegisterFrom') || 1,
+            RegisterCont: $$.getQueryString('RegisterCont') || 1,
+            VC: verify
+        };
 
         $.post($$.serverAddr + 'CSL/Login/RegisterMobile', params, function(res) {
             var data = $$.eval(res);

@@ -1,4 +1,4 @@
-!(function(){
+
 	$$.config.hideGlobalMenu();
 	var hostUrl = 'http://192.168.1.110:8000';
 	//登陆页面
@@ -229,4 +229,4 @@
 			console.log('这个bug找YangCunYa');
 		}		
 	});
-});
+

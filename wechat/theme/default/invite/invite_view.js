@@ -22,6 +22,7 @@ $(function() {
         var shareLink = location.href.split('?')[0] +
             "?__RDTURL__=wechatLogin/wechatLogin.html&RegisterFrom=1&RegisterCont=" +
             registerCont;
+
         // 分享标题
         var shareTitle = "测试";
         // 分享图标

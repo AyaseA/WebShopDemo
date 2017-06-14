@@ -46,6 +46,7 @@ $(function() {
             console.log('dynamicLogin'+data);
             if (data.Status == 0) {
                 layer.msg('微信绑定成功');
+                $$.setToken(data.Data.Token);
                 $$.redirect("index/index.html");
             } else if (-3 == data.Status) {
 
@@ -60,7 +61,8 @@ $(function() {
     //注册用户
     function regiestUser(phonenumber, verify) {
 
-
+        alert($$.getQueryString('RegisterFrom'));
+        alert($$.getQueryString('RegisterCont'));
         var params = {
             Mobile: phonenumber,
             SessionID: 1,
@@ -74,6 +76,7 @@ $(function() {
             console.log('regiestUser'+data);
             if (data.Status == 0) {
                 layer.msg('微信绑定成功');
+                $$.setToken(data.Data.Token);
                 $$.redirect("index/index.html");
             } else if (-3 == data.Status) {
 

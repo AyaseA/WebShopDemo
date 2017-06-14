@@ -3,6 +3,7 @@
 	padding: 0;
 	background-color: #efeff4;
 	height: 100%;
+	overflow:hidden; 
 }
 #storefront_storefront header{
 	width: 100%;
@@ -42,7 +43,7 @@
 	color: #4E4D53;
 	vertical-align: top;
 	margin: 3.9vw 0px 0px 24vw;
-	border-bottom: 2px solid #EA5514;
+	
 }
 #storefront_storefront .storefront_face{
 	height: 9.5vw;
@@ -51,7 +52,6 @@
 	color: #4E4D53;
 	vertical-align: top;
 	margin: 3.9vw 0px 0px 4vw;
-	border-bottom: 2px solid #EA5514;
 }
 #storefront_storefront .footprint_contain_x {
 	width: 100%;
@@ -108,7 +108,7 @@
 	width: 49vw;
 	height: 52vw;
 	background-color: #fff;
-	float: right;
+	float: left;
 	border: 0.5vw solid #eee;
 	overflow: hidden;
 }
@@ -118,6 +118,7 @@
 }
 #storefront_storefront .footprint_contain ul li{
 	background: #fff;
+	text-align: center;
 }
 #storefront_storefront .foot_li_x5_img{
 	width: 30.7vw;
@@ -132,7 +133,6 @@
     margin-top: 1vw;
     width: 49vw;
     height: 10.3vw;
-    border-bottom: 1px solid #E2E2E5;
 }
 #storefront_storefront .footprint_price_button{
 	display: inline-block;
@@ -154,3 +154,12 @@
 #storefront_storefront .footprint_price_button{
 	margin-left: 16vw;
 }
+
+#storefront_storefront .storefront_detail_active{
+	overflow-y: auto;
+} 
+
+#storefront_storefront .on{
+	border-bottom: 2px solid #EA5514;
+}
+

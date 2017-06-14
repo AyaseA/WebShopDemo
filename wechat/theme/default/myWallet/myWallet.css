@@ -3,10 +3,11 @@
 	padding: 0;
 	background-color: #efeff4;
 	height: 100%;
+	overflow: hidden;
 }
 #myWallet_myWallet header{
 	width: 100%;
-	height: 16vw;
+	height: 13vw;
 	background-color: #fff;
 	overflow: hidden;
 	position: relative;
@@ -15,14 +16,14 @@
 	width: 6.9vw;
 	height: 6.9vw;
 	display: inline-block;
-	margin: 4vw 0px 0px 5.3vw;
+	margin: 3.5vw 0px 0px 5.3vw;
 }
 #myWallet_myWallet header span{
 	display: inline-block;
-	font-size: 5.3vw;
+	font-size: 4.5vw;
 	color: #4E4D53;
 	vertical-align: top;
-	margin: 3.7vw 0px 0px 24vw;
+	margin: 3.7vw 0px 0px 29vw;
 }
 #myWallet_myWallet .order_content{
 	width: 100%;
@@ -56,9 +57,10 @@
 	width: 49vw;
 	height: 52vw;
 	background-color: #fff;
-	float: right;
+	float: left;
 	border: 0.5vw solid #eee;
 	overflow: hidden;
+	text-align: center;
 }
 #myWallet_myWallet .footprint_contain ul{
 	width: 50vw;
@@ -80,7 +82,6 @@
     margin-top: 1vw;
     width: 49vw;
     height: 10.3vw;
-    border-bottom: 1px solid #E2E2E5;
 }
 #myWallet_myWallet .footprint_price_button{
 	display: inline-block;
@@ -101,4 +102,9 @@
 }
 #myWallet_myWallet .footprint_price_button{
 	margin-left: 16vw;
+}
+
+#myWallet_myWallet .content{
+	overflow-y: auto;
+	overflow-x: hidden;
 }

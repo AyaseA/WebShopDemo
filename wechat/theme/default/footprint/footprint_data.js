@@ -15,6 +15,7 @@ $(function() {
             if (txt.Status != 0) {
                 alert("借口错误");
             } else {
+                $page.find('.content').empty();
                 var list = txt.Data.Rows;
                 var fisrtDate = list[0].Date;
                 var haveAppendTitle = 0;

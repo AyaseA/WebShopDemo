@@ -7,88 +7,88 @@
 }
 #information_information header{
 	width: 100%;
-	height: 60px;
+	height: 16vw;
 	background-color: #fff;
 	overflow: hidden;
 	position: relative;
 }
 #information_information header img{
-	width: 26px;
-	height: 26px;
+	width: 6.93vw;
+	height: 6.93vw;
 	display: inline-block;
-	margin: 15px 0px 0px 20px;
+	margin: 4vw 0px 0px 5.33vw;
 }
 #information_information header span{
 	display: inline-block;
-	font-size: 22px;
+	font-size: 5.87vw;
 	font-family: "黑体";
 	color: #4E4D53;
 	vertical-align: top;
-	margin: 19px 0px 0px 90px;
+	margin: 5.07vw 0px 0px 24vw;
 }
 #information_information .head_photo_control{
-	margin-top: 20px;
+	margin-top: 5.33vw;
 	width: 100%;
-	height: 90px;
+	height: 18.07vw;
 	background-color: #fff;
 }
 #information_information .login_message_control{
 	width: 100%;
-	height: 60px;
+	height: 13vw;
 	background-color: #fff;
 	overflow: hidden;
 	border-top: 1px solid #eee;
 }
 #information_information .sex_message_control{
 	width: 100%;
-	height: 60px;
+	height: 13vw;
 	background-color: #fff;
 	overflow: hidden;
 	border-top: 1px solid #eee;
 }
 #information_information .information_logo{
-	width: 24px;
-	height: 24px;
-	display: inline-block;	
-	margin: 18px 0px 0px 25px;
+    width: 6.4vw;
+    height: 6.4vw;
+    display: inline-block;
+    margin: 3vw 0px 0px 6.67vw;
 }
 #information_information .information_logo_1{
-	width: 24px;
-	height: 24px;
+    width: 6.4vw;
+    height: 6.4vw;
 	display: inline-block;	
-	margin: 34px 0px 0px 25px;	
+    margin: 6.93vw 0px 0px 6.67vw;	
 }
 #information_information .span_infor{
 	vertical-align: top;
 	display: inline-block;
-	font-size: 18px;
-	margin: 19px 0px 0px 10px;	
+    font-size: 4.27vw;
+    margin: 3.37vw 0px 0px 2.67vw;	
 }
 #information_information .span_infor_1{
 	vertical-align: top;
 	display: inline-block;
-	font-size: 18px;
-	margin: 34px 0px 0px 10px;
+	font-size: 4.27vw;
+	margin: 7.47vw 0px 0px 2.67vw;
 }
 #information_information .right_copy{
-	width: 10px;
-	height: 16px;
+	width: 2.67vw;
+	height: 4.27vw;
 	display: block;
 	float: right;
-	margin: 35px 20px 0px 0px;	
+	margin: 7.47vw 5.33vw 0px 0px;	
 }
 #information_information .right_copy_2{
-	width: 10px;
-	height: 16px;
+	width: 2.67vw;
+	height: 4.27vw;
 	display: block;
 	float: right;
-	margin: 22px 20px 0px 0px;
+	margin: 5.07vw 5.33vw 0px 0px;
 }
 #information_information .span_login_in{
 	display: block;
 	float: right;
-	font-size: 18px;
-	margin: 19px 20px 0px 0px;
+	font-size: 4.27vw;
+	margin: 4.27vw 5.33vw 0px 0px;
 }
 #information_information .div_float_1{
 	width: 100%;
@@ -96,64 +96,60 @@
 	z-index: 100;
 	background-color: #111;
 	position: absolute;
-	top: 60px;
+	top: 16vw;
 	left: 0px;
 	display: none;
 	opacity: 0.4;
 }
-#information_information .sex_male,#information_information .photo_take{
+#information_information #sex, #information_information #pho{
 	width: 90%;
 	border-radius: 7px;
-	background-color: #fff;
-	text-align: center;
-	z-index: 200;
 	position: absolute;
-	bottom: 140px;
+	top: 74%;
 	margin-left: 5%;
+	z-index: 200;
+	background-color: #fff;
+}
+#information_information .sex_male,#information_information .photo_take{
+	width: 100%;
+	text-align: center;
 	color: #E27A41;
 	opacity: none;
-	line-height: 60px;
-	font-size: 18px;
+	line-height: 14vw;
+	font-size: 4.27vw;
 	font-weight: normal;
 	border-bottom: 1px solid #eee;
 	display: none;
 }
 #information_information .sex_female,#information_information .photo_photogragh{
-	width: 90%;
-	border-radius: 7px;
-	background-color: #fff;
+	width: 100%;
 	text-align: center;
-	z-index: 200;
-	position: absolute;
-	bottom: 80px;
-	margin-left: 5%;
 	color: #E27A41;
 	opacity: none;
-	line-height: 60px;
-	font-size: 18px;
+	line-height: 14vw;
+	font-size: 4.27vw;
 	display: none;
 	font-weight: normal;
 }
 #information_information .take_concel_2,#information_information .take_concel{
 	width: 90%;
-	height: 60px;
 	border-radius: 7px;
 	background-color: #fff;
 	text-align: center;
 	z-index: 200;
 	position: absolute;
-	bottom: 5px;
+	top: 91%;
 	margin-left: 5%;
-	color: #000;
+	color: #484D59;
 	opacity: none;
-	line-height: 60px;
-	font-size: 18px;
+	line-height: 14vw;
+	font-size: 4.37vw;
 	display: none;
 	font-weight: normal;
 }
 #information_information .span_text_value{
 	display: inline-block;
 	vertical-align: top;
-	font-size: 18px;
-	margin: 17px 0px 0px 170px;	
+    font-size: 4.27vw;
+    margin: 4vw 0px 0px 44.8vw;
 }

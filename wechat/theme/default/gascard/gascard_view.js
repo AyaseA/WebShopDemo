@@ -1,3 +1,5 @@
-$('.gascard_back').on('click', function(){
-	window.location.href = './gas.html';
-});
+!(function(){
+	$('.gascard_back').on('click', function(){
+		$$.goBack();		
+	});
+}());

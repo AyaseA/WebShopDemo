@@ -27,7 +27,7 @@
 #bin_bin .bin_bg_yellow{
 	width: 100%;
 	height: 34.7vw;
-	background: url(../images/bin_bg_1.png) no-repeat center center;
+	background: url(../images/center/bin_bg_1.png) no-repeat center center;
 	background-size: 100%;
 	color: #fff;
 }
@@ -62,7 +62,7 @@
 	background-color: #fff;
 	margin-top: 2.4vw;
 	overflow: hidden;
-	background: #fff url(../images/right_copy.png) no-repeat 85.3vw 4vw;
+	background: #fff url(../images/center/right_copy.png) no-repeat 85.3vw 4vw;
 	background-size: 2.4vw 4vw;
 }
 #bin_bin .bin_apple_to_you{

@@ -68,11 +68,8 @@
 		//待评价
 		centerData.assessment(centerData.hostUrl, token);
 		//我的收藏
-
 		//关注的店面
-
 		//我的足迹
-
 	}
 }());
 

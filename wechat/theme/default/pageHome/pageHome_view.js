@@ -21,6 +21,26 @@
             } break;
         }
     });
+    //个人信息
+    $('.user_name').on('click', function() {
+        $$.redirect('information/information.html');
+    });    
+    //邀请有礼
+    $('#head_active_1').on('click', function() {
+        $$.redirect('invite/invite.html');
+    });
+    //加油卡
+    $('#head_active_2').on('click', function() {
+        $$.redirect('gas/gas.html');
+    });
+    //我的车辆
+    $('#head_active_3').on('click', function() {
+        $$.redirect('reward/reward.html');
+    });
+    //积分
+    $('#reward').on('click', function() {
+        $$.redirect('reward/reward.html');
+    });
     //vip
     $('.header_vip').on('click', function() {
         $$.redirect('vip/vip.html');
@@ -56,12 +76,13 @@
     //意见反馈
     $('#advice').on('click', function(){
         $$.redirect('advice/advice.html');
-    });      
+    });  
+    //退换/售后
+    $('#order_img_span_5').on('click', function(){
+        $$.redirect('afterservice/afterservice.html');
+    });     
     //跳转订单_______TODO
     $('.order_img_span').on('click', function(){
         $$.redirect('orderList/orderList.html');
     });
 }());
-
-
- 

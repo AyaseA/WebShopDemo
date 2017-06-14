@@ -27,13 +27,11 @@
 }
 #gas_gas aside p{
 	color: #C9A45E;
-	margin-left: 5.33vw;
+    margin: 4vw 0 0 5.33vw;
 }
-#gas_gas .gas_img_1{
-	width: 100%;
-}
-#gas_gas .gas_img_2{
-	width: 100%;
+#gas_gas .gas_img_1,#gas_gas .gas_img_2{
+	width: 90%;
+	margin: 3vw 0px 0px 5%;
 }
 #gas_gas .gas_div_1,.gas_div_2{
 	position: relative;
@@ -50,11 +48,11 @@
 #gas_gas .gas_main_text{
 	position: absolute;
 	left: 30.67vw;
-	top: 4vw;	
-	width: 45.33vw;
-	height: 21.33vw;
+    top: 6vw;
+    width: 45.33vw;
+    height: 19.33vw;
 	border-left: 1px dotted #C9A45E;
-	padding-top: 13.33vw;
+	padding-top: 11.33vw;
 	overflow: hidden;
 }
 #gas_gas .gas_div_2{
@@ -69,11 +67,11 @@
 #gas_gas .gas_main_text_2{
 	position: absolute;
 	left: 115px;
-	top: 15px;	
-	width: 30.67vw;
-	height: 21.33vw;
+    top: 26px;
+    width: 45.33vw;
+    height: 19.33vw;
 	border-left: 1px dotted #B7B7B7;
-	padding-top: 13.33vw;
+	padding-top: 11.33vw;
 	overflow: hidden;	
 }
 #gas_gas .gas_main_text_2 span{
@@ -81,7 +79,7 @@
 }
 #gas_gas .gas_span_2{
 	position: absolute;
-	top: 16vw;
-	right: 2.67vw;
+    top: 17vw;
+    right: 6.67vw;
 	color: #fff;
 }

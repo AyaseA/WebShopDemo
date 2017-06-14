@@ -1,0 +1,110 @@
+#reward_reward {
+	margin: 0;
+	padding: 0;
+	background-color: #efeff4;
+	height: 100%;
+}
+#reward_reward ul,li{
+	list-style: none;
+	padding: 0;
+}
+#reward_reward header{
+	width: 100%;
+	height: 16vw;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;
+}
+#reward_reward header img{
+	width: 6.93vw;
+	height: 6.93vw;
+	display: inline-block;
+	margin: 4vw 0px 0px 5.33vw;
+}
+#reward_reward header span{
+	display: inline-block;
+	font-size: 5.33vw;
+	color: #4E4D53;
+	vertical-align: top;
+	margin: 3.73vw 0px 0px 32vw;
+}
+#reward_reward .reword_bg_yellow{
+	width: 100%;
+	height: 34.67vw;
+	background: url(../images/center/reword_rxbg.png) no-repeat center center;
+	background-size: 100%;
+	color: #fff;
+}
+#reward_reward .reword_bg_apple{
+	width: 100%;
+	height: 10.67vw;
+	background: #EA5513 url(../images/center/present_fill.png) no-repeat 34.67vw 2.67vw;
+	background-size: 5.6vw 5.33vw;
+	color: #fff;
+}
+#reward_reward .reword_bg_apple >span{
+	display: inline-block;
+	margin: 2.93vw 0px 0px 42.67vw;
+	font-size: 3.47vw;
+}
+#reward_reward .reword_balance{
+	font-size: 12vw;
+	display: inline-block;
+	margin: 8.53vw 0px 0px 5.33vw;
+}
+#reward_reward .reword_apple{
+	width: 100%;
+	height: 12vw;
+	background-color: #fff;
+	margin-top: 2.4vw;
+	overflow: hidden;
+	background: #fff;
+}
+#reward_reward .reword_apple_to_you{
+	width: 5.33vw;
+	height: 5.87vw;
+	display: inline-block;
+	margin: 2.93vw 2.67vw;
+}
+#reward_reward .reword_banana_to_me{
+	display: inline-block;
+	vertical-align: top;
+	color: #000;
+	font-size: 4.27vw;
+	font-family: "Microsoft YaHei";
+	margin-top: 3.2vw;
+}
+#reward_reward .reword_apple_more{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 3.2vw;
+	margin-left: 42.67vw;
+	font-family: "Microsoft YaHei";
+	color: #B4B4B4;
+}
+#reward_reward .reword_order_content{
+	width: 100%;
+	height: 17.33vw;
+	background-color: #fff;
+	margin-top: 1px;
+	overflow: hidden;
+}
+#reward_reward .reword_order_content div{
+	float: left;
+	margin-top: 2.67vw;
+	margin-left: 4vw;
+}
+#reward_reward #reword_st_gr,#reward_reward #reword_str_xr{
+	font-size: 6.93vw;
+	float: right;
+	margin-right: 4vw;
+	color: #E95C2C;
+}
+#reward_reward #reword_st_gr{
+	float: right;
+	margin-right: 4vw;
+}
+#reward_reward .reword_apple_left_to{
+	color: #B4B4B4;
+	font-size: 3.2vw;
+}

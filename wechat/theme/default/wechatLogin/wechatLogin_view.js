@@ -10,6 +10,8 @@ $(function() {
     var returnBtn = $page.find('.return_button');
     var timer; //定时器
     var registType = 6; //获取验证码的类型
+    
+    //返回按钮
     returnBtn.on('click', function(){
         
         $$.goBack();
@@ -20,7 +22,7 @@ $(function() {
         
 
     });
-    // $$.goBack('#wechatLogin_wechatLogin .return_button');
+    //登录按钮
     loginBtn.on('click', function() {
         var isPhone = validatePhone(phoneNum, '请输入正确手机号', function(obj, msg) {
             layer.msg(msg);
@@ -77,6 +79,7 @@ $(function() {
             }
         });
     }
+    //获取验证码
     verifyBtn.on('click', function() {
         if (phoneNum.val() == "") {
             layer.msg('请输入手机号');
@@ -104,7 +107,7 @@ $(function() {
 
 
     });
-
+    //发送验证码
     function sendVerify(phonenumber) {
         var params = { Mobile: phonenumber, Type: registType, PType: 0 };
         $.post($$.serverAddr + 'Product/Info/SendVerifiedCode', params, function(res) {
@@ -120,7 +123,7 @@ $(function() {
             }
         });
     }
-
+    //定时器方法
     function timeControl() {
         var time = timeLabel.html();
 
@@ -135,7 +138,7 @@ $(function() {
 
         }
     }
-
+    //  监听input
     $page.on('input propertychange', function() {
         var num = phoneNum.val();
         var verf = verify.val();

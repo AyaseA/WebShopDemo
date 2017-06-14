@@ -90,3 +90,10 @@
 #invite_invite div.main div.row img {
 	max-width: 50%;
 }
+#invite_invite_qrcode {
+	padding: 10px 0 0 10px;
+	text-align: center;
+}
+#invite_invite_qrcode >div {
+	margin-bottom: 10px;
+}

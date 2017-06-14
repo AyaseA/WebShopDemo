@@ -117,17 +117,17 @@ $(function() {
             type: 1,
             title: false, //不显示标题栏
             closeBtn: true,
-            area: ['210px', '210px'],
+            area: ['210px', '240px'],
             shade: 0.5,
             moveType: 1, //拖拽模式，0或者1
-            content: '<div id="invite_invite_qrcode" style="padding: 10px 0 0 10px;"></div>'
+            content: template(pageStr + '_qrcode_tpl', {})
         });
     }
     // 根据url创建二维码
     function createQRCode(url) {
         url = $.trim(url);
         if (url) {
-            new QRCode($('#invite_invite_qrcode')[0], {
+            new QRCode($('#invite_invite_qrcode >div')[0], {
                 width: 190,
                 height: 190
             }).makeCode(url);

@@ -4,7 +4,7 @@ $(function() {
     
 	// 加载商品列表
 	getProductsList();
-
+	
 	// 加载商品列表
 	function getProductsList() {
 		var $proBox = $page.find('div.products').empty();

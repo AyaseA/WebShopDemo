@@ -9,7 +9,8 @@
         serverAddr: 'http://192.168.1.110:8000/',
         // 相关配置
         config: {
-            serverAddr: 'http://192.168.1.110:8000/'
+            serverAddr: 'http://192.168.1.110:8000/',
+            canRefresh: true
         },
         stack: [],
         // 时间转10位时间戳
@@ -49,8 +50,11 @@
         // 页面跳转 核心方法
         redirect: function(url, option) {
             if (url) {
-                // 设置悬浮小按钮的菜单
-                setGlobalMenu(url);
+                // 设置可以刷新为true，加载代码时存在设置则置为false
+                $$.config.canRefresh = true;
+                // 设置全局菜单的按钮显示与隐藏
+                setGlobalMenu();
+                
                 var trans, backUrl, fromGoBack = false;
                 if (option) {
                     trans = option.trans;
@@ -454,8 +458,12 @@
             _halfW = $menu.width() / 2,
             _halfH = $menu.height() / 2,
             isClick = true;
+        // 拖拽相关
         $menu.on('touchstart', function(e) {
             isClick = true;
+            if (!$menu.hasClass('active')) {
+                setGlobalMenu();
+            }
         }).on('touchmove', function(e) {
             e.preventDefault();
             var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
@@ -469,17 +477,18 @@
             e.preventDefault();
             var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
                 _x = _touch.pageX;
+
             if (isClick) {
                 openCloseMenu(_x);
             }
         });
+        // 菜单点击事件
         $menu.on('touchend', 'li', function(e) {
             isClick = false;
             var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
                 _x = _touch.pageX,
                 type = $(this).attr('data-type'),
                 url = $$.getUrl();
-            
             openCloseMenu(_x);
             
             switch(type) {
@@ -503,6 +512,7 @@
                 } break;
             }
         });
+        // 展开收起菜单
         function openCloseMenu(_x) {
             var lis = $menu.find('li').not('.hide'),
                 i = 0;
@@ -542,16 +552,27 @@
             });
         }
     }(win, $, undefined));
-    // 隐藏显示相关悬浮菜单按钮
-    function setGlobalMenu(url) {
-        var $menu = $('#global_menu');
-        $menu.find('li').removeClass('hide');
+    // 设置全局菜单的按钮显示与隐藏
+    function setGlobalMenu() {
+        var $menu = $('#global_menu'),
+            lis = $menu.find('li').removeClass('hide'),
+            url = $$.getUrl();
+        if ($$.config.canRefresh) {
+            $menu.find('li[data-type=refresh]').removeClass('hide');
+        } else {
+            $menu.find('li[data-type=refresh]').addClass('hide');
+        }
         if (url.indexOf('pageHome/pageHome.html') != -1) {
             $menu.find('li[data-type=icenter]').addClass('hide');
         }
         if (url.indexOf('index/index.html') != -1) {
             $menu.find('li[data-type=index]').addClass('hide');
         }
+        lis.css({
+            'right': 0
+        });
+        $menu.removeClass('active').find('>span').text('菜单');
+        $menu.find('>ul').hide();
     }
     /* 全局菜单相关 end */
     win.$$ = $$;

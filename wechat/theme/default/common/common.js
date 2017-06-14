@@ -10,7 +10,10 @@
         // 相关配置
         config: {
             serverAddr: 'http://192.168.1.110:8000/',
-            canRefresh: true
+            canRefresh: true,
+            hideGlobalMenu: function() {
+                showHideGlobalMenu(true);
+            }
         },
         stack: [],
         // 时间转10位时间戳
@@ -54,6 +57,8 @@
                 $$.config.canRefresh = true;
                 // 设置全局菜单的按钮显示与隐藏
                 setGlobalMenu();
+                // 显示全局悬浮菜单
+                showHideGlobalMenu(false);
                 
                 var trans, backUrl, fromGoBack = false;
                 if (option) {
@@ -569,9 +574,7 @@
         var $menu = $('#global_menu'),
             lis = $menu.find('li').removeClass('hide'),
             url = $$.getUrl();
-        if ($$.config.canRefresh) {
-            $menu.find('li[data-type=refresh]').removeClass('hide');
-        } else {
+        if (!$$.config.canRefresh) {
             $menu.find('li[data-type=refresh]').addClass('hide');
         }
         if (url.indexOf('pageHome/pageHome.html') != -1) {
@@ -585,6 +588,14 @@
         });
         $menu.removeClass('active').find('>span').text('菜单');
         $menu.find('>ul').hide();
+    }
+    // 是否隐藏全局悬浮菜单
+    function showHideGlobalMenu(isHide) {
+        if (isHide) {
+            $('#global_menu').hide();
+        } else {
+            $('#global_menu').show();
+        }
     }
     /* 全局菜单相关 end */
     win.$$ = $$;

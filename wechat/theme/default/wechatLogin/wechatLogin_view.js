@@ -43,7 +43,7 @@ $(function() {
         var params = { Mobile: phonenumber, VC: verify };
         $.post($$.serverAddr + 'CSL/Login/LGDynamic', params, function(res) {
             var data = $$.eval(res);
-            console.log('dynamicLogin'+data);
+            // console.log('dynamicLogin'+data);
             if (data.Status == 0) {
                 layer.msg('微信绑定成功');
                 $$.setToken(data.Data.Token);
@@ -61,8 +61,7 @@ $(function() {
     //注册用户
     function regiestUser(phonenumber, verify) {
 
-        alert($$.getQueryString('RegisterFrom'));
-        alert($$.getQueryString('RegisterCont'));
+        
         var params = {
             Mobile: phonenumber,
             SessionID: 1,
@@ -73,7 +72,7 @@ $(function() {
 
         $.post($$.serverAddr + 'CSL/Login/RegisterMobile', params, function(res) {
             var data = $$.eval(res);
-            console.log('regiestUser'+data);
+            // console.log('regiestUser'+data);
             if (data.Status == 0) {
                 layer.msg('微信绑定成功');
                 $$.setToken(data.Data.Token);

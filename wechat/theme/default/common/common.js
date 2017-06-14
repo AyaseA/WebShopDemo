@@ -49,6 +49,8 @@
         // 页面跳转 核心方法
         redirect: function(url, option) {
             if (url) {
+                // 设置悬浮小按钮的菜单
+                setGlobalMenu(url);
                 var trans, backUrl, fromGoBack = false;
                 if (option) {
                     trans = option.trans;
@@ -444,7 +446,114 @@
             }
         );
     }());
-
+    /* 全局菜单相关 start */
+    !(function(win, $, undefined) {
+        var $menu = $('#global_menu'),
+            _bodyH = window.innerHeight || document.body.clientHeight,
+            _bodyW = window.innerWidth || document.body.clientWidth,
+            _halfW = $menu.width() / 2,
+            _halfH = $menu.height() / 2,
+            isClick = true;
+        $menu.on('touchstart', function(e) {
+            isClick = true;
+        }).on('touchmove', function(e) {
+            e.preventDefault();
+            var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+                _x = _touch.pageX,
+                _y = _touch.pageY;
+            isClick = false;
+            if (!isClick) {
+                setPosition(_x, _y);
+            }
+        }).on('touchend', function(e) {
+            e.preventDefault();
+            var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+                _x = _touch.pageX;
+            if (isClick) {
+                openCloseMenu(_x);
+            }
+        });
+        $menu.on('touchend', 'li', function(e) {
+            isClick = false;
+            var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+                _x = _touch.pageX,
+                type = $(this).attr('data-type'),
+                url = $$.getUrl();
+            
+            openCloseMenu(_x);
+            
+            switch(type) {
+                case 'refresh': {
+                    var url_arr = url.split('?'),
+                        dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                        filedata = dir + '_data.js';
+                    loadJs(filedata, dir.replace(/\//g, "_") + "_data");
+                } break;
+                case 'index': {
+                    if (url.indexOf('index/index.html') == -1) {
+                        $$.redirect('index/index.html');
+                    }
+                } break;
+                case 'icenter': {
+                    if (url.indexOf('pageHome/pageHome.html') == -1) {
+                        $$.redirect('pageHome/pageHome.html', {
+                            fromGoBack: true
+                        });
+                    }
+                } break;
+            }
+        });
+        function openCloseMenu(_x) {
+            var lis = $menu.find('li').not('.hide'),
+                i = 0;
+            if ($menu.hasClass('active')) {
+                for (i = 0; i < lis.length; i++) {
+                    $(lis[i]).animate({
+                        'right': 0
+                    }, 200);
+                }
+                $menu.removeClass('active').find('>span').text('菜单');
+                $menu.find('>ul').fadeOut(200);
+            } else {
+                $menu.find('>ul').show();
+                for (i = 0; i < lis.length; i++) {
+                    $(lis[i]).animate({
+                        'right': (i + 1) * _halfW * 2 * (_x < _bodyW / 2 ? -1 : 1)
+                    }, 200);
+                }
+                $menu.addClass('active').find('>span').text('收起');
+            }
+        }
+        // 设置菜单位置
+        function setPosition(_x, _y) {
+            if (_x >= _bodyW - _halfW) {
+                _x = _bodyW - _halfW;
+            } else if (_x - _halfW <= 0) {
+                _x = _halfW;
+            }
+            if (_y >= _bodyH - _halfH) {
+                _y = _bodyH - _halfH;
+            } else if (_y - _halfH <=0) {
+                _y = _halfH;
+            }
+            $menu.css({
+                'top': _y - _halfH,
+                'left': _x - _halfW
+            });
+        }
+    }(win, $, undefined));
+    // 隐藏显示相关悬浮菜单按钮
+    function setGlobalMenu(url) {
+        var $menu = $('#global_menu');
+        $menu.find('li').removeClass('hide');
+        if (url.indexOf('pageHome/pageHome.html') != -1) {
+            $menu.find('li[data-type=icenter]').addClass('hide');
+        }
+        if (url.indexOf('index/index.html') != -1) {
+            $menu.find('li[data-type=index]').addClass('hide');
+        }
+    }
+    /* 全局菜单相关 end */
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

@@ -47,7 +47,7 @@ $(function(){
         switch(type) {
             case 'index': {
                 // 首页
-                $$.redirect('index/index.html');
+                //$$.redirect('index/index.html');
             } break;
             case 'luckyDraw': {
                 // 幸运抽奖

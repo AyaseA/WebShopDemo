@@ -574,6 +574,9 @@
         var $menu = $('#global_menu'),
             lis = $menu.find('li').removeClass('hide'),
             url = $$.getUrl();
+        if (!url) {
+            return false;
+        }
         if (!$$.config.canRefresh) {
             $menu.find('li[data-type=refresh]').addClass('hide');
         }

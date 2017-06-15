@@ -205,8 +205,6 @@ $('#login_pass').off('click').on('click', function(e) {
 	}
 	$('#login_input_1').val('');
     $('#login_input_2').val('');
-    debugger;		
-
 });
 //修改并登陆的监听提交
 $('#login_redit').off('click').on('click', function(e) {

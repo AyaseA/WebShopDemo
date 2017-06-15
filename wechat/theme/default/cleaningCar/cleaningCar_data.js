@@ -1,7 +1,3 @@
-
-$('#cleaning_car_back').on('click', function(){
-	$$.goBack();
-});
 //copy的登陆页面需要删减整理
 var hostUrl = $$.config.serverAddr;
 
@@ -160,4 +156,7 @@ $('#cleaning_car_button').on('click', function(e){
 	var carNo = $('#login_input_6').val();
 	console.log(carNo);
 	sessionStorage.setItem('carNo', carNo);
+	$('#login_input_1').val('');
+    $('#login_input_4').val('');
+    $('#login_input_6').val('');
 });

@@ -1,32 +1,32 @@
-html,body{
+#cleaningCar_cleaningCar html,body{
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: 100%;
-	background: url(../images/bg_cleaning_car_2.png) no-repeat center bottom;
+	background: url(../images/center/bg_cleaning_car_2.png) no-repeat center bottom;
 	background-size: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: relative;
 }
-::-webkit-input-placeholder { 
+#cleaningCar_cleaningCar ::-webkit-input-placeholder { 
     color: #DFE0E8;
     font-size: 4.27vw; 
     text-overflow: ellipsis; 
 } 
-header{
+#cleaningCar_cleaningCar header{
 	width: 100%;
 	height: 16vw;
 	background-color: #fff;
 	overflow: hidden;
 }
-header img{
+#cleaningCar_cleaningCar header img{
 	width: 6.93vw;
 	height: 6.93vw;
 	display: inline-block;
 	margin: 4vw 0px 0px 5.33vw;
 }
-header span{
+#cleaningCar_cleaningCar header span{
 	display: inline-block;
 	font-size: 22px;
 	font-family: "黑体";
@@ -34,14 +34,14 @@ header span{
 	vertical-align: top;
 	margin: 5.07vw 0px 0px 24vw;
 }
-.cleaning_car_banner{
+#cleaningCar_cleaningCar .cleaning_car_banner{
 	width: 100%;
 	height: 48.8vw;
-	background: url(../images/bg_cleaning_car.png) no-repeat top center;
+	background: url(../images/center/bg_cleaning_car.png) no-repeat top center;
 	background-size: 100%;
 	overflow: hidden;
 }
-.cleaning_car_title{
+#cleaningCar_cleaningCar .cleaning_car_title{
 	width: 42%;
 	height: 42%;
 	display: block;
@@ -50,7 +50,7 @@ header span{
 	top: 2.67vw;
 	z-index: 100;
 }
-.input_contain_wrap{
+#cleaningCar_cleaningCar .input_contain_wrap{
 	width: 90%;
 	height: 69.33vw;
 	padding-top: 10vw;
@@ -60,7 +60,7 @@ header span{
 	background-color: #B6C0FC;
 	position: relative;
 }
-.input_control{
+#cleaningCar_cleaningCar .input_control{
 	width: 82.4vw;
 	height: 11.73vw;
 	margin-left: 4vw;
@@ -68,7 +68,7 @@ header span{
 	border-bottom: 1px solid #000;
 	position: relative;
 }
-.login_phone{
+#cleaningCar_cleaningCar .login_phone{
 	width: 5.33vw;
 	height: 5.6vw;
 	display: inline-block;
@@ -76,7 +76,7 @@ header span{
 	left: 0.8vw;
 	top: 2.67vw;
 }
-.login_input{
+#cleaningCar_cleaningCar .login_input{
 	display: inline-block;
 	position: relative;
 	left: 1.87vw;
@@ -86,7 +86,7 @@ header span{
 	background: none;
 	font-size: 4.27vw;
 }
-.login_in{
+#cleaningCar_cleaningCar .login_in{
 	width: 90.93vw;
 	height: 11.73vw;
 	background-color: #D7D6DC;
@@ -99,7 +99,7 @@ header span{
 	top: 61.33vw;	
 	left: 1vw;
 }
-.login_check_pn,.login_check_pc,.login_check_pw,.login_check_in,.login_check_ps{
+#cleaningCar_cleaningCar .login_check_pn,#cleaningCar_cleaningCar .login_check_pc,#cleaningCar_cleaningCar .login_check_pxx {
 	width: 53.33vw;
 	line-height: 9.33vw;
 	border-radius: 25px;
@@ -112,7 +112,7 @@ header span{
 	bottom: 49.33vw;
 	display: none;
 }
-#login_timeout{
+#cleaningCar_cleaningCar #login_timeout{
 	line-height: 35px;
 	background-color: #DF6233;
 	display: inline-block;
@@ -123,7 +123,7 @@ header span{
 	color: #fff;
 
 }
-#login_timeclick{
+#cleaningCar_cleaningCar #login_timeclick{
 	line-height: 9.33vw;
 	background-color: #DF6233;
 	display: inline-block;
@@ -134,7 +134,7 @@ header span{
 	color: #fff;
 	display: none;
 }
-#login_check_id{
+#cleaningCar_cleaningCar #login_check_id{
 	width: 80vw;
 	line-height: 9.33vw;
 	position: absolute;
@@ -142,25 +142,25 @@ header span{
 	bottom: 30.67vw;
 	display: none;
 }
-#login_timeout,#login_timeclick{
+#cleaningCar_cleaningCar #login_timeout,#cleaningCar_cleaningCar #login_timeclick{
 	width: 28.8vw;
 	position: relative;
     left: 52.53vw;
     top: -5.87vw;
 }
-#cleaning_car_button{
+#cleaningCar_cleaningCar #cleaning_car_button{
 	width: 80vw;
 	bottom: 34.67vw;
 	left: 5.13vw;
 	background-color: #DF6233;
 }
-#login_redit,#loginin_out{
+#cleaningCar_cleaningCar #login_redit,#cleaningCar_cleaningCar #loginin_out{
 	display: none;
 }
-#input_control_3,#input_control_5{
+#cleaningCar_cleaningCar #input_control_3,#cleaningCar_cleaningCar #input_control_5{
 	display: none;
 }
-.round_clear{
+#cleaningCar_cleaningCar .round_clear{
 	width: 3.2vw;
 	height: 3.2vw;
 	display: none;
@@ -169,7 +169,7 @@ header span{
 	top: 4.27vw;
 }
 
-.p_span{
+#cleaningCar_cleaningCar .p_span{
 	width: 90%;	
 	margin-left: 5%;
 	padding-top: 2.4vw; 
@@ -177,8 +177,6 @@ header span{
 	font-size: 3.2vw;
 	color: #ECF1FE;
 }
-.p_span span:nth-child(1){
+#cleaningCar_cleaningCar .p_span span:nth-child(1){
 	margin-left: 40%;
 } 
-
-

@@ -160,6 +160,9 @@
 	border: none;
 	outline: none;
 }
+#fillOrder_fillOrder >div.footer >button.order.disabled {
+	background-color: #ABABAB;
+}
 #fillOrder_fillOrder >div.couponModal {
 	height: 100%;
 	width: 100%;

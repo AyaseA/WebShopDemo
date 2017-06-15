@@ -19,9 +19,13 @@ $(function() {
 	   }).find('div.usable div.ticket')
 		 .removeClass('checked');
 	$page.find('>div.couponModal button.selectTicket').hide();
-	
+	$page.find('>div.footer >button.order').addClass('disabled');
+
 	// 立即支付
 	$page.off('click', '>div.footer >button.order').on('click', '>div.footer >button.order', function() {
+		if ($(this).hasClass('disabled')) {
+			return false;
+		}
 		addOrder(function(oid) {
 			$$.redirect('payCenter/payCenter.html?oid=' + oid);
 		});
@@ -37,6 +41,7 @@ $(function() {
                     return false;
                 }
                 if (res.Data) {
+                	$page.find('>div.footer >button.order').removeClass('disabled');
                 	var d = res.Data;
                 	total = d.Price;
 					$page.find('>div.main >div.productInfo').html(

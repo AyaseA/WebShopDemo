@@ -323,7 +323,6 @@ $(function() {
                     Data=$$.eval(Data);
                     console.log(Data);
                     var list = Data.Data.Rows;
-                    console.log(list);
                     for(var i = 0;i < list.length;i++){
                         var orderID=list[i].OrderID;
                         console.log(orderID);
@@ -331,6 +330,7 @@ $(function() {
                             type:"POST",
                             url:url+"/Product/Prod/QueryDetail",
                             data:{"ID":list[i].ProductID},
+                            async:false,
                             success:function (Data){
                                 productInfo = $$.eval(Data).Data; 
                                 onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span style='color:red'>" + orderID+ "</span><p class='pieceStatus'>订单完成</p></div><div class='pieceContent'><div><img src='"+url+"Img/" + productInfo.Img + "'><div class='pInfo'><p>商品名称:<span>"+productInfo.Name+"</span></p><p>商品单价:<span>"+productInfo.Price+"</span></p></div></div></div><div class='piecePay'><button class='PayBtn'>点评</button></div></div>";

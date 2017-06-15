@@ -57,7 +57,7 @@
     text-align: center;
     border: 1px solid #484D59;
     border-radius: 18px;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-top: 9px;
 }
 #orderDetail_orderDetail >div.footer >a {
@@ -71,6 +71,6 @@
     border: 1px solid #EA5514;
     color: #EA5514;
     border-radius: 18px;
-    margin-right: 20px;
+    margin-right: 14px;
     margin-top: 9px;
 }

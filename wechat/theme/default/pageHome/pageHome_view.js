@@ -79,10 +79,10 @@
     });  
     //退换/售后
     $('#order_img_span_5').on('click', function(){
-        $$.redirect('afterservice/afterservice.html');
+        $$.redirect('afterService/afterService.html');
     });     
     //跳转订单_______TODO
-/*    $('.order_img_span').on('click', function(){
+    $('.order_img_span').on('click', function(){
         $$.redirect('orderList/orderList.html');
-    });*/
+    });
 }());

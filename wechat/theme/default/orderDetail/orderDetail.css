@@ -51,25 +51,26 @@
     outline: none;
     display: block;
     width: 100px;
-    height: 34px;
+    height: 32px;
     float: right;
     background-color: #fff;
     text-align: center;
     border: 1px solid #484D59;
     border-radius: 18px;
     margin-right: 20px;
-    margin-top: 8px;
+    margin-top: 9px;
 }
 #orderDetail_orderDetail >div.footer >a {
     display: block;
     width: 100px;
-    height: 32px;
+    height: 30px;
     float: right;
     background-color: #fff;
-    line-height: 32px;
+    line-height: 30px;
     text-align: center;
     border: 1px solid #EA5514;
+    color: #EA5514;
     border-radius: 18px;
     margin-right: 20px;
-    margin-top: 8px;
+    margin-top: 9px;
 }

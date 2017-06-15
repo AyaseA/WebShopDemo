@@ -85,7 +85,7 @@ var login = {
     		window.flag2 = flag2;
     	};
     },
-    //异步提交所有数据
+    //注册
 	loginLand: function() {
 		var SessionID = sessionStorage.getItem("key");
 		var data = {
@@ -105,7 +105,13 @@ var login = {
                 	if(data.Data.Token) {
             			$$.setToken(data.Data.Token);
                 	}
-                	$$.getBack();
+                	var prevPage = $$.stack[$$.stack.length - 1];
+                	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
+                		$$.stack.pop();
+                		$$.goBack();
+                	} else {
+                		$$.goBack();
+                	};
                     console.log('发送成功');        
                 }
             });
@@ -196,13 +202,13 @@ $('#login_pass').off('click').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	}
-            	var prevPage = $$.stack[$$.stack.length - 1];
-            	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
-            		$$.stack.pop();
-            		$$.goBack();
-            	} else {
-            		$$.goBack();
-            	}
+    	    	var prevPage = $$.stack[$$.stack.length - 1];
+    	    	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
+    	    		$$.stack.pop();
+    	    		$$.goBack();
+    	    	} else {
+    	    		$$.goBack();
+    	    	};
                 console.log('登陆信息发送成功');        
             }
         });
@@ -230,7 +236,13 @@ $('#login_redit').off('click').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	};
-    	    	$$.goBack();
+    	    	var prevPage = $$.stack[$$.stack.length - 1];
+    	    	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
+    	    		$$.stack.pop();
+    	    		$$.goBack();
+    	    	} else {
+    	    		$$.goBack();
+    	    	};
     	    	console.log('修改密码并登陆成功');        
             }
         });

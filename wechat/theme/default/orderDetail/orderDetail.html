@@ -3,14 +3,38 @@
         <a href="javascript:void(0)" class="goBack"></a>
         <span>订单详情</span>
     </div>
-    <div class="main">
+    <div class="main"></div>
+    <div class="footer"></div>
+    <script id="orderDetail_orderDetail_detail" type="text/html">
         <div class="title">
             <i></i>
             <span>待付款</span>
         </div>
-    </div>
-    <div class="footer">
-        <a href="payCenter/payCenter.html?oid=1">去支付</a>
-        <button class="cancelOrder" data-id="1">取消订单</button>
-    </div>
+        <div class="product">
+            <p><i></i>车势力<a href="javascript:void(0)" class="contactService">联系客服</a></p>
+            {{set totalCount = 0}}
+            {{each proList as pData}}
+            <div class="clear">
+                <img src="./images/product/comment.png">
+                <p>{{pData.Name}}<span>￥{{pData.Price}}</span></p>
+                <p>{{pData.Descri}}<span>x{{$imports.numberFilter(pData.ProductCount)}}</span></p>
+            </div>
+            <%totalCount = totalCount + $imports.numberFilter(pData.ProductCount)%>
+            {{/each}}
+            <p>共{{totalCount}}件商品</p>
+        </div>
+        <div class="order">
+            <p>订单编号：{{orderNum}}</p>
+            <p>下单时间：{{orderTime | timeFilter}}</p>
+        </div>
+        <div class="money">
+            <p>商品金额<span>￥{{allMoney}}</span></p>
+            <p>优惠<span>-￥{{discountMoney}}</span></p>
+            <p class="clear"><span>￥{{payMoney}}</span><span style="color: #000">需付款：</span></p>
+        </div>
+    </script>
+    <script id="orderDetail_orderDetail_footer" type="text/html">
+        <a href="payCenter/payCenter.html?oid={{orderId}}">去支付</a>
+        <button class="cancelOrder" data-id="{{orderId}}">取消订单</button>
+    </script>
 </div>

@@ -5,8 +5,7 @@ $(function() {
     	headerHeight = $page.find('div.header').height();
 
     $page.find('div.main').css({
-    	'height': bodyHeight - headerHeight,
-    	'margin-top': headerHeight
+    	'height': bodyHeight - headerHeight
     });
 
     $$.setGoBack($page.find('>div.header >a.goBack'));

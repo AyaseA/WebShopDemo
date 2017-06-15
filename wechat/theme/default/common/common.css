@@ -79,7 +79,7 @@ body >div.common-none {
     position: fixed;
     right: 0;
     top: 50%;
-    z-index: 99;
+    z-index: 999;
     background-color: rgba(0, 0, 0, .5);
     color: #fff;
     border-radius: 8px;

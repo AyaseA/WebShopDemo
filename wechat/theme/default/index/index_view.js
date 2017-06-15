@@ -63,8 +63,7 @@ $(function(){
     // 重设窗口高度
     function resetWindowSize() {
         $page.find('>div.main').css({
-            'height': bodyHeight - headerHeight - footerHeight + 'px',
-            'margin-top': headerHeight + 'px'
+            'height': bodyHeight - headerHeight - footerHeight - 1
         });
     }
 });

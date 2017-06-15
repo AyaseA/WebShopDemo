@@ -1,8 +1,7 @@
 #index_index {
-	overflow: hidden;
-    width: 100%;
     height: 100%;
     background-color: #EFEFF4;
+    position: relative;
 }
 #index_index >div.header {
 	background-color: #EA5514;
@@ -93,6 +92,18 @@
 	overflow-x: hidden;
 	overflow-y: auto;
     width: 100%;
+    position: absolute;
+    top: 44px;
+}
+@media screen and (min-width: 410px) {
+    #index_index >div.main {
+        top: 48px;
+    }
+}
+@media screen and (max-width: 350px) {
+    #index_index >div.main {
+        top: 40px;
+    }
 }
 #index_index >div.main >div.content .banner {
     width: 100%;

@@ -1,8 +1,8 @@
 #myCars_myCars {
 	overflow: hidden;
-    width: 100%;
     height: 100%;
     background-color: #EFEFF4;
+    position: relative;
 }
 #myCars_myCars >div.header {
 	background-color: #EA5514;
@@ -83,6 +83,19 @@
 #myCars_myCars >div.main {
     overflow-x: hidden;
     overflow-y: auto;
+    width: 100%;
+    position: absolute;
+    top: 44px;
+}
+@media screen and (min-width: 410px) {
+    #myCars_myCars >div.main {
+        top: 48px;
+    }
+}
+@media screen and (max-width: 350px) {
+    #myCars_myCars >div.main {
+        top: 40px;
+    }
 }
 #myCars_myCars >div.main >div.cars {
 	padding: 15px 15px 0;

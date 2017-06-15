@@ -1,6 +1,5 @@
 #carInfo_carInfo {
 	overflow: hidden;
-    width: 100%;
     background-color: #EFEFF4;
     height: 100%;
     position: relative;
@@ -67,6 +66,23 @@
 		height: 26px;
 		line-height: 26px;
 	}
+}
+#carInfo_carInfo >div.main {
+	position: absolute;
+	top: 44px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+@media screen and (min-width: 410px) {
+    #carInfo_carInfo >div.main {
+        top: 48px;
+    }
+}
+@media screen and (max-width: 350px) {
+    #carInfo_carInfo >div.main {
+        top: 40px;
+    }
 }
 #carInfo_carInfo >div.main >div.info {
 	height: 34px;

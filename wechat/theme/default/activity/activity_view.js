@@ -6,8 +6,7 @@ $(function() {
 
     // 设置高度
     $page.find('div.main').css({
-        'height': bodyHeight - headerHeight + 'px',
-        'margin-top': headerHeight + 'px'
+        'height': bodyHeight - headerHeight - 1
     });
     // 点击顶部的提示到我的车辆页面
     $page.on('click', 'div.main div.info', function() {

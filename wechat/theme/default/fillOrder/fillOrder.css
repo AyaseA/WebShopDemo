@@ -1,6 +1,7 @@
 #fillOrder_fillOrder {
 	height: 100%;
 	background-color: #EFEFF4;
+	overflow: hidden;
 	position: relative;
 }
 #fillOrder_fillOrder >div.header {

@@ -233,9 +233,9 @@ $(function() {
     }
     // 设置高度
     function setSize() {
-        $page.find('>div.main').css({
-            'margin-top': headerHeight
-        }).find('>div.carDetail').height(
+        $page.find('>div.main').height(
+            bodyHeight - headerHeight
+        ).find('>div.carDetail').height(
             bodyHeight - headerHeight - 35
         );
         $page.find('>div.brandsModal >div.brands').height(

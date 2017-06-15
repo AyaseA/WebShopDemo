@@ -442,6 +442,12 @@
             return JSON.parse(str);
         }
     };
+    // string to number
+    template.defaults.imports.numberFilter = function(str) {
+        if (str) {
+            return parseInt(str) || 1;
+        }
+    };
     /* artTemplate 相关过滤器 end */
     // ajax 全局设置，增加加载动画
     $(document).ajaxStart(function() {

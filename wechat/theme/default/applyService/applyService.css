@@ -1,208 +1,132 @@
-#applyService_applyService {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
+@charset "utf-8";
+#applyService_applyService{
   height: 100%;
-}
-#applyService_applyService > div.header {
-  background-color: #FFFFFF;
-  position: fixed;
-  top: 0;
   width: 100%;
-  z-index: 10;
-  height: 1.4rem;
-  border-bottom: 1px solid #d6d6db;
+  overflow:hidden;
+  background: #EFEFF4;
 }
-#applyService_applyService > div.header > a.goBack {
-  background: url(../images/common/back.png) no-repeat;
-  background-size: contain;
-  display: inline-block;
-  width: 0.58666667rem;
-  height: 0.58666667rem;
-  margin: 0.45333333rem 0 0 0.4rem;
+
+#applyService_applyService .fl{
+  float: right;
 }
-#applyService_applyService > div.header > span.title {
-  color: #4a4f59;
+
+#applyService_applyService .header{
+  background: #fff;
+  height: 10vw;
+  width: 100%;
+  font-size: 4vw;
+  font-weight: bold;
+  line-height: 10vw;
   text-align: center;
-  margin: auto;
-  font-weight: 700;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  height: 1.4rem;
-  line-height: 1.4rem;
-  width: 60%;
-  font-size: 0.48rem;
+  border-bottom: 1px solid #EEEEF0;
+  position: relative;
 }
-#applyService_applyService > div.main {
-  width: 100%;
+
+#applyService_applyService .header img{
   position: absolute;
-  top: 1.4rem;
-  overflow: hidden;
+  top:1.5vw;
+  left: 4vw;
+  width: 7vw;
 }
-#applyService_applyService > div.main .content {
-  width: 100%;
-  background: #efeff4;
-  overflow-x: hidden;
+
+#applyService_applyService .main{
   overflow-y: auto;
-  height: 100%;
-}
-/*
-#applyService_applyService > div .detail {
-  width: 100%;
-  height: 2.33333333rem;
-  background: #fafafa;
+  overflow-x: hidden;
 }
 
-#applyService_applyService > div .wrap {
-  margin: 0 0.26666667rem;
-  height: 2.33333333rem;
-}
-
-#applyService_applyService > div .wrap .left {
-  float: left;
-}
-
-#applyService_applyService > div .wrap .left img {
-  display: block;
-  width: 1.8rem;
-  height: 1.8rem;
-  margin-top: 0.26666667rem;
-}
-
-#applyService_applyService > div .wrap .right {
-  float: left;
-  margin-top: 0.26666667rem;
-  font-size: 0.37333333rem;
-  padding-left: 0.26666667rem;
-}
-
-#applyService_applyService > div .wrap .right b {
-  color: #ea5718;
-  padding-left: 2.53333333rem;
-}
-
-#applyService_applyService > div .wrap .right p:nth-child(2) {
-  font-size: 0.32rem;
-  color: #a9a9a9;
-  padding-top: 0.26666667rem;
+#applyService_applyService .pieceContent{
+  height: 25vw;
+  padding: 0 4vw 0 4vw;
   position: relative;
+  background: #fff;
 }
 
-#applyService_applyService > div .wrap .right p:nth-child(2) span {
+#applyService_applyService  .pieceContent img{
+  margin-top: 2.7vw;
+  width: 20vw;
+}
+
+#applyService_applyService  .pieceContent .info{
   position: absolute;
-  right: 0;
-}*/
-#applyService_applyService > div .order {
-  margin-top: 0.26666667rem;
-  border-bottom: 1px solid #d6d6db;
+  top:3vw;
+  left: 27vw;
 }
-#applyService_applyService > div .order h5 {
-  margin-top: 0.26666667rem;
-  padding-left: 0.4rem;
+
+#applyService_applyService .applyPiece .pieceContent .info{
+  position: absolute;
+  top:6vw;
+  left: 27vw;
+}
+
+#applyService_applyService .info p{
+  width: 70vw;
+  color:#7b7a7a;
+}
+
+#applyService_applyService .info p span{
+ 
+}
+
+#applyService_applyService .desc{
   width: 100%;
-  height: 1.33333333rem;
-  line-height: 1.33333333rem;
-  background: #FFFFFF;
-  font-size: 0.32rem;
-  overflow: hidden;
-  color: #484d59;
+  height: 10vw;
+  background: #fff;
+  margin-top: 3vw;
+  line-height: 10vw;
+  font-size: 4vw;
+  padding-left: 4vw;
 }
-#applyService_applyService > div .order h5 img {
+
+#applyService_applyService .dexTxt{
+  width: 101%;
+  height: 30vw;
+  border:none;
+  padding: 4vw;
+  outline: none;
+  background: #EFEFF4;
+  color: #000;
+  font-family: "微软雅黑"；
+}
+
+#applyService_applyService .imgCont{
+  margin-top: 3vw;
+  width: 100%;
+  height: 80vw;
+  background: #fff;
+  padding: 0vw;
+  padding-top: 4vw;
+  padding-left: 1vw;
+}
+
+#applyService_applyService .imgCont img{
+  width: 22vw;
+  border-radius: 1vw;
+}
+
+#applyService_applyService .imgCont ul{
+  width: 100%
+  text-align:center;
+}
+
+#applyService_applyService .imgCont ul li{
   display: inline-block;
-  width: 0.42666667rem;
-  height: 0.42666667rem;
-  padding: 0 0.4rem 0 0.26666667rem;
+  width: 23.8%;
+  text-align:center;
+  margin-bottom: 4vw;
 }
-#applyService_applyService > div .detail {
-  width: 100%;
-  height: 2.33333333rem;
-  background: #fafafa;
+
+#applyService_applyService .imgCont p{
+  margin-left: 0.8vw;
+
 }
-#applyService_applyService > div .wrap {
-  margin: 0 0.26666667rem;
-  height: 2.33333333rem;
+
+#applyService_applyService .imgCont p img{
+  padding: 4vw;
+  width: 14vw;
+  border:1px solid #C5C4C4;
+  border-radius: 1vw;
 }
-#applyService_applyService > div .wrap .left {
-  float: left;
-}
-#applyService_applyService > div .wrap .left img {
-  display: block;
-  width: 1.8rem;
-  height: 1.8rem;
-  margin-top: 0.26666667rem;
-}
-#applyService_applyService > div .wrap .right {
-  float: left;
-  margin-top: 0.26666667rem;
-  font-size: 0.37333333rem;
-  padding-left: 0.26666667rem;
-}
-#applyService_applyService > div .wrap .right b {
-  color: #ea5718;
-  padding-left: 2.53333333rem;
-}
-#applyService_applyService > div .wrap .right p:nth-child(2) {
-  font-size: 0.32rem;
-  color: #a9a9a9;
-  padding-top: 0.26666667rem;
-  position: relative;
-}
-#applyService_applyService > div .wrap .right p:nth-child(2) span {
-  position: absolute;
-  right: 35px;
-}
-#applyService_applyService > div .content .desc {
-  width: 100%;
-  font-size: 0.45333333rem;
-  color: #484d59;
-  background: #FFFFFF;
-  padding: 0.4rem;
-  margin-top: 0.4rem;
-}
-#applyService_applyService > div .content .dexTxtCont {
-  width: 100%;
-}
-#applyService_applyService > div .content .dexTxt {
-  height: 3.6rem;
-  background: #efeff4;
-  width: 100%;
-  border: none;
-  font-size: 0.32rem;
-  color: #a9a9a9;
-  padding: .3rem;
-  word-break: break-all;
-}
-#applyService_applyService > div .content .imgCont {
-  width: 100%;
-  padding-left: 0.4rem;
-  background: white;
-  padding-top: 0.26666667rem;
-  margin-bottom: 0.26666667rem;
-}
-#applyService_applyService > div .content .imgCont ul {
-  height: 2rem;
-  margin: 0;
-  padding: 0;
-}
-#applyService_applyService > div .content .imgCont ul .imgCenter {
-  margin-left: .7rem;
-}
-#applyService_applyService > div .content .imgCont ul > li {
-  float: left;
-  list-style: none;
-}
-#applyService_applyService > div .content .imgCont ul > li img {
-  width: 1.8rem;
-  height: 1.8rem;
-}
-#applyService_applyService > div .content .imgCont p img {
-  width: 2rem;
-  height: 2rem;
-  padding: 0.4rem 0;
-}
+
 /*李毅恒开始改*/
 #applyService_applyService > div .content .userinfo {
   width: 100%;
@@ -211,6 +135,7 @@
   padding: 3vw 5vw 3vw 5vw;
   border-bottom: 1px solid #CCC;
   height: 16vw;
+  margin-top: 3vw;
 }
 #applyService_applyService > div .content .userinfo input {
   width: 60vw;
@@ -220,7 +145,7 @@
   padding-left: 4vw;
 }
 #applyService_applyService > div .userInput {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #EEEEF0;
   padding-bottom: 3vw;
   padding-right: 4vw;
   width: 100%;

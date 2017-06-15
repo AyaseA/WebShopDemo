@@ -41,7 +41,6 @@ $(function() {
                     return false;
                 }
                 if (res.Data) {
-                	$page.find('>div.footer >button.order').removeClass('disabled');
                 	var d = res.Data;
                 	total = d.Price;
 					$page.find('>div.main >div.productInfo').html(
@@ -51,6 +50,7 @@ $(function() {
                             count: productNum
                     }));
 					setMoney();
+                	$page.find('>div.footer >button.order').removeClass('disabled');
                 }
 			}
 		);

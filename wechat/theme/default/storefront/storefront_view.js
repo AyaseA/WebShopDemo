@@ -4,6 +4,7 @@ $(function() {
 
     //设置返回    
     $$.setGoBack($page.find("header img"));
+
     
     //设置内容高度
     var contentHeight=$page.height()-$page.find("header").height();
@@ -26,6 +27,7 @@ $(function() {
 
     var token=$$.getToken();
     var IDList=[];
+    var url=$$.config.serverAddr;  
 
     $page.on("click",".footprint_contain_x",function(){
     	$$.redirect("product/product.html?pid=1");
@@ -38,7 +40,7 @@ $(function() {
 
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.110:8000/Product/Prod/QueryList",
+        url: url+"Product/Prod/QueryList",
         success: function(txt) {
             txt = $$.eval(txt);
             if(txt.Status != 0){
@@ -50,7 +52,7 @@ $(function() {
             		if(!list[i].Img){
             			list[i].Img="NoImg/" + Math.random() + ".jpg";
             		}
-            		onePiece="<div class='footprint_contain' name='"+i+"'><ul><li><img src='http://192.168.1.110:8000/Img/"+list[i].Img+"' alt='' class='foot_li_x5_img'></li><li><div class='footprint_text'><span>"+list[i].Name+"</span><br /><span>"+list[i].Descri+"</span></div><div class='footprint_price'><span class='footprint_price_1'>￥<span>"+list[i].Price+"</span></span></div></li></ul></div>";
+            		onePiece="<div class='footprint_contain' name='"+i+"'><ul><li><img src='"+url+"/Img/"+list[i].Img+"' alt='' class='foot_li_x5_img'></li><li><div class='footprint_text'><span>"+list[i].Name+"</span><br /><span>"+list[i].Descri+"</span></div><div class='footprint_price'><span class='footprint_price_1'>￥<span>"+list[i].Price+"</span></span></div></li></ul></div>";
             		var thisID=list[i].ID;
             		IDList.push(thisID);
             		$page.find(".content").append(onePiece);

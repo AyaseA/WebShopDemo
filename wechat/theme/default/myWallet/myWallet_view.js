@@ -9,6 +9,7 @@ $(function() {
 	$page.find(".content").css("height",contentHeight+"px");
 
 	//var token = "eyJVc2VySUQiOiI0MCIsIk5pY2tOYW1lIjpudWxsLCJHcm91dGhWYWx1ZSI6bnVsbCwiVXNlckFkZHJlc3NJRCI6bnVsbCwiQWRkVGltZSI6IjE0OTczMzkzODgiLCJVc2VyQ2FySUQiOm51bGwsIkltZyI6bnVsbCwiRW5hYmxlIjoiMSIsIkludml0ZUNvZGUiOiJNRFF3IiwiTW9iaWxlIjoiMTUwNjY2NzAzMjAiLCJTZXNzaW9uSUQiOiIxIiwiVHlwZSI6IlVzZXIiLCJVSUQiOiJmMjUxZjI0ZjU5OGVhZTFiZGNiNWVmMWIwNjNjZDAwMSJ9";
+    var url=$$.config.serverAddr;
     var token=$$.getToken();
     var IDList=[];
 
@@ -19,7 +20,7 @@ $(function() {
 
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.110:8000/Product/Prod/QueryList",
+        url: url+"Product/Prod/QueryList",
         success: function(txt) {
             txt = $$.eval(txt);
             if(txt.Status != 0){
@@ -31,7 +32,7 @@ $(function() {
             		if(!list[i].Img){
             			list[i].Img="NoImg/" + Math.random() + ".jpg";
             		}
-            		onePiece="<div class='footprint_contain' name='"+i+"'><ul><li><img src='http://192.168.1.110:8000/Img/"+list[i].Img+"' alt='' class='foot_li_x5_img'></li><li><div class='footprint_text'><span>"+list[i].Name+"</span><br /><span>"+list[i].Descri+"</span></div><div class='footprint_price'><span class='footprint_price_1'>￥<span>"+list[i].Price+"</span></span></div></li></ul></div>";
+            		onePiece="<div class='footprint_contain' name='"+i+"'><ul><li><img src='"+url+"Img/"+list[i].Img+"' alt='' class='foot_li_x5_img'></li><li><div class='footprint_text'><span>"+list[i].Name+"</span><br /><span>"+list[i].Descri+"</span></div><div class='footprint_price'><span class='footprint_price_1'>￥<span>"+list[i].Price+"</span></span></div></li></ul></div>";
             		var thisID=list[i].ID;
             		IDList.push(thisID);
             		$page.find(".content").append(onePiece);

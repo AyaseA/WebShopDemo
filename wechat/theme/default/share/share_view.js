@@ -28,7 +28,7 @@ $(function() {
     $page.on('click', 'div.sharebtn', function() {
 
         
-
+        alert('点右上角好不好');
         // window.wx && wx.hideMenuItems({
         //     menuList: shareList
         // });

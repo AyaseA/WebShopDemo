@@ -21,4 +21,8 @@ $(function() {
         $page.find(".apply").animate({left:"0vw"},300);
         $page.find(".record").animate({left:"100vw"},300);
     });
+
+    $page.on("click",".apply button",function(){
+        $$.redirect("applyService/applyService.html");
+    });
 });

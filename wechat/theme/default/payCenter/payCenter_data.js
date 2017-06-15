@@ -40,20 +40,10 @@ $(function() {
 	}
 	// 支付
 	function confirmToPay() {
-		$.ajax({
-			url: $$.config.serverAddr + 'Product/WeChat/GetWeChatPay?OrderID=' + orderId +
-										 '&Total=' + total +
-										 '&OrderDesc=' + orderDesc,
-			type: 'GET',
-			success: function(res) {
-		        alert(res);
-				if (res) {
-					location.href = res;
-	                //window.open(res, '_self');
-	            } else {
-	                console.log('支付失败！');
-	            }
-		    }
-		});
+		location.href = $$.config.serverAddr +
+			'CSL/W_Pay/Pay?OrderID=' + orderId +
+			'&OrderDesc=' + orderDesc +
+			'&Token=' + $$.getToken() +
+			'&Total=' + total;
 	}
 });

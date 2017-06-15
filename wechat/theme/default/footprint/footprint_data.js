@@ -11,11 +11,17 @@ $(function() {
         url: url + "CSL/ProdFoot/QueryFootList",
         data: { Token: token },
         success: function(txt) {
+            $page.find(".content").empty();
             txt = $$.eval(txt);
             if (txt.Status != 0) {
                 alert("借口错误");
             } else {
                 var list = txt.Data.Rows;
+                if(list.length==0){
+                    var msg="<div class='msg'><p>您还没有浏览过商品</p></div>";
+                    $page.find(".content").append(msg);
+                }else{
+
                 var fisrtDate = list[0].Date;
                 var haveAppendTitle = 0;
                 var dateTitle = "<div class='dataDiv'><span class='dateinfo'>" + fisrtDate + "<span></div>";
@@ -57,6 +63,7 @@ $(function() {
                             }
                         });
                     }
+                }
                 }
             }
         }

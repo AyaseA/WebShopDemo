@@ -80,6 +80,10 @@
 	width: 25vw;
 	color:#f60;
 }
+
+#footprint_footprint .msg{
+	text-align: center;
+}
 /*
 #footprint_footprint header span{
 	display: inline-block;

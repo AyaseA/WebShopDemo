@@ -41,7 +41,7 @@ $(function() {
     function dynamicLogin(phonenumber, verify) {
 
         var params = { Mobile: phonenumber, VC: verify };
-        $.post($$.serverAddr + 'CSL/Login/LGDynamic', params, function(res) {
+        $.post($$.config.serverAddr + 'CSL/Login/LGDynamic', params, function(res) {
             var data = $$.eval(res);
             // console.log('dynamicLogin'+data);
             if (data.Status == 0) {
@@ -70,7 +70,7 @@ $(function() {
             VC: verify
         };
 
-        $.post($$.serverAddr + 'CSL/Login/RegisterMobile', params, function(res) {
+        $.post($$.config.serverAddr + 'CSL/Login/RegisterMobile', params, function(res) {
             var data = $$.eval(res);
             // console.log('regiestUser'+data);
             if (data.Status == 0) {
@@ -100,7 +100,7 @@ $(function() {
 
 
             var param = { Mobile: phoneNum.val()};
-            $.post($$.serverAddr + 'CSL/Login/HasUserMobile', param, function(res) {
+            $.post($$.config.serverAddr + 'CSL/Login/HasUserMobile', param, function(res) {
                 var data = $$.eval(res);
                 if (data.Status == 0) {
                     registType = 7;
@@ -118,7 +118,7 @@ $(function() {
     //发送验证码
     function sendVerify(phonenumber) {
         var params = { Mobile: phonenumber, Type: registType, PType: 0 };
-        $.post($$.serverAddr + 'Product/Info/SendVerifiedCode', params, function(res) {
+        $.post($$.config.serverAddr + 'Product/Info/SendVerifiedCode', params, function(res) {
             var data = $$.eval(res);
 
             if (data.Status == 0) {

@@ -20,7 +20,7 @@ $(function(){
         switch(type) {
             case 'carWash': {
                 // 一元洗车
-                $$.redirect();
+                $$.redirect('cleaningCar/cleaningCar.html');
             } break;
             case 'maintain': {
                 // 车辆信息

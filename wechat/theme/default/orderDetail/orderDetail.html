@@ -15,9 +15,9 @@
             {{set totalCount = 0}}
             {{each proList as pData}}
             <div class="clear">
-                <img src="./images/product/comment.png">
+                <img src="{{serverAddr}}Img/{{pData.Img | imgFilter}}">
                 <p>{{pData.Name}}<span>￥{{pData.Price}}</span></p>
-                <p>{{pData.Descri}}<span>x{{$imports.numberFilter(pData.ProductCount)}}</span></p>
+                <p>{{pData.Descri || pData.Name}}<span>x{{$imports.numberFilter(pData.ProductCount)}}</span></p>
             </div>
             <%totalCount = totalCount + $imports.numberFilter(pData.ProductCount)%>
             {{/each}}

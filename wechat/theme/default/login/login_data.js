@@ -1,4 +1,3 @@
-
 $$.config.hideGlobalMenu();
 var hostUrl = $$.config.serverAddr;
 //登陆页面

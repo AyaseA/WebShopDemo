@@ -1,6 +1,95 @@
 #orderCommit_orderCommit {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+    background-color: #EFEFF4;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+#orderCommit_orderCommit >div.header {
+    height: 44px;
+    background-color: #fff;
+    border-bottom: 1px solid #F6F6F7;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 12;
+}
+#orderCommit_orderCommit >div.header >a.goBack {
+    display: block;
+    float: left;
+    height: 44px;
+    width: 44px;
+    background: url(../images/common/round_left_blue.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+    padding-left: 15px;
+}
+#orderCommit_orderCommit >div.header >span {
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    width: 60%;
+}
+#orderCommit_orderCommit >div.header >button.commit {
+    color: #EA5514;
+    border: none;
+    outline: none;
+    background: none;
+    display: block;
+    width: 60px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 15px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#orderCommit_orderCommit >div.main {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    position: absolute;
+    top: 45px;
+}
+#orderCommit_orderCommit >div.main >div.product {
+    background-color: #fff;
+}
+#orderCommit_orderCommit >div.main >div.product >div {
+    padding: 10px 15px;
+}
+#orderCommit_orderCommit >div.main >div.product >div >img {
+    height: 70px;
+    width: 70px;
+    float: left;
+    margin-right: 10px;
+}
+#orderCommit_orderCommit >div.main >div.product >div >p:nth-child(3) {
+    color: #A9A9A9;
+    font-size: 12px;
+    margin-top: 5px;
+}
+#orderCommit_orderCommit >div.main >div.stars {
+    height: 40px;
+    background-color: #fff;
+    padding: 0 15px;
+    line-height: 40px;
+}
+#orderCommit_orderCommit >div.main >div.stars >span {
+    font-size: 16px;
+    float: left;
+    margin-right: 20px;
+}
+#orderCommit_orderCommit >div.main >div.stars >i {
+    float: left;
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #ccc;
 }

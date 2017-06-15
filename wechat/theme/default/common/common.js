@@ -387,7 +387,7 @@
                          'Product/WeChat/GetSign?url=' +
                          escape(location.href),
                     type: 'GET',
-                    async: false,
+                    async: false, // 同步
                     dataType: 'json',
                     success: function(res) {
                         if (res) {

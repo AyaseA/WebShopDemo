@@ -105,7 +105,13 @@ var login = {
                 	if(data.Data.Token) {
             			$$.setToken(data.Data.Token);
                 	}
-                	$$.goBack();
+                	var prevPage = $$.stack[$$.stack.length - 1];
+                	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
+                		$$.stack.pop();
+                		$$.goBack();
+                	} else {
+                		$$.goBack();
+                	}
                     console.log('发送成功');        
                 }
             });

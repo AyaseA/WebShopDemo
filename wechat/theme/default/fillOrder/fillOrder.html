@@ -144,9 +144,9 @@
 	<script id="fillOrder_fillOrder_product_detail" type="text/html">
 		<p><i></i>车势力</p>
 		<div class="clear">
-			<img src="./images/product/comment.png">
+			<img src="{{serverAddr}}Img/{{data.Img | imgFilter}}">
 			<p>{{data.Name}}<span>￥{{data.Price}}</span></p>
-			<p>{{data.Descri}}<span>x{{count}}</span></p>
+			<p>{{data.Descri || data.Name}}<span>x{{count}}</span></p>
 		</div>
 		<p>共{{count}}件商品</p>
 	</script>

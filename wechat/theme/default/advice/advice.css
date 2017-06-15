@@ -37,6 +37,8 @@
 #advice_advice .advice_textarea{
 	border: none;
 	outline: none;
+	width: 90vw;
+	height: 45vw;
 	margin: 10.67vw 0px 0px 5.33vw;
 	border-radius: 0.8vw;
 }
@@ -50,7 +52,7 @@
 	border: none;
 	outline: none;
 	position: absolute;
-	bottom: 81.33vw;	
+	top: 81.33vw;	
 	left: 4vw;
 }
 #advice_advice textarea::-webkit-input-placeholder{

@@ -17,13 +17,13 @@ $(function() {
     });
     
     // 修改立即购买按钮的商品id
-    $page.find('>div.footer >a.buyNow').attr('href', function() {
-        var href = $(this).attr('href');
-        if (href.indexOf('?') != -1) {
-            href = href.split('?')[0];
-        }
-        return href + '?pid=' + pid + '&num=1';
+    getWishList(function() {
+        $page.find('>div.footer').html(template(pageStr + '_product_footer', {
+            productId: pid,
+            isWish: $.inArray(pid, $$.getCookie('__WISHLIST__').split(',')) != -1
+        }));
     });
+    
     // 获取商品信息
     getProductInfo();
 	
@@ -133,6 +133,35 @@ $(function() {
                             commentList: haveImgComments,
                             productName: productName
                     }));
+                }
+            }
+        );
+    }
+    // 获取收藏列表存入cookie
+    function getWishList(calBak) {
+        if ($$.getCookie('__WISHLIST__')) {
+            if (calBak) {
+                calBak();
+            }
+            return false;
+        }
+        $$.post(
+            'CSL/Wish/QueryFootList',
+            {},
+            function(res) {
+                if (res.Status != 0) {
+                    return false;
+                }
+                if (res.Data && res.Data.Rows) {
+                    var d = res.Data.Rows,
+                        wishArr = [];
+                    for (var i = 0; i < d.length; i++) {
+                        wishArr.push(d[i].ProductID);
+                    }
+                    $$.setCookie('__WISHLIST__', wishArr.join(','));
+                    if (calBak) {
+                        calBak();
+                    }
                 }
             }
         );

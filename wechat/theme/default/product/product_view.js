@@ -39,17 +39,14 @@ $(function() {
 	// 收藏
 	$page.on('click', '>div.footer >a.collect', function() {
 		if ($(this).hasClass('collected')) {
-			$(this).removeClass('collected').text('加入收藏');
+			cancelWish($(this).attr('data-id'), $(this));
 		} else {
-			$(this).addClass('collected').text('已加入收藏');
+			addWish($(this).attr('data-id'), $(this));
 		}
 	});
 	// tab页切换
 	function changeTab(item) {
 		$(item).addClass('active').siblings().removeClass('active');
-		$page.find('div.evaluate >ul').css({
-			//'position': ($(item).attr('data-type') == 'evaluate' ? 'fixed' : 'absolute')
-		});
 		$page.find('div.content').animate({
 			'margin-left': - boxWidth * $(item).attr('data-index')
 		}, 300);
@@ -60,5 +57,39 @@ $(function() {
 		$page.find('div.reviews >div.warp').animate({
 			'margin-left': - boxWidth * $(item).attr('data-index')
 		}, 300);
+	}
+	// 添加收藏
+	function addWish(pid, item) {
+		$$.post(
+			'CSL/Wish/AddWishList',
+			{
+				ProductID: pid
+			},
+			function(res) {
+				if (res.Status == 0 && res.Data == 'Succ') {
+					var wishArr = $$.getCookie('__WISHLIST__').split(',');
+					wishArr.push(pid);
+					$$.setCookie('__WISHLIST__', wishArr.join(','));
+					item.addClass('collected').text('已加入收藏');
+				}
+			}
+		);
+	}
+	// 取消收藏
+	function cancelWish(pid, item) {
+		$$.post(
+			'CSL/Wish/DelWishList',
+			{
+				ProductID: pid
+			},
+			function(res) {
+				if (res.Status == 0 && res.Data == 'Succ') {
+					var wishArr = $$.getCookie('__WISHLIST__').split(',');
+					wishArr.splice($.inArray(pid, wishArr), 1);
+					$$.setCookie('__WISHLIST__', wishArr.join(','));
+					item.removeClass('collected').text('加入收藏');
+				}
+			}
+		);
 	}
 });

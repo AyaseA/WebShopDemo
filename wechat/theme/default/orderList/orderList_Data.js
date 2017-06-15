@@ -14,7 +14,7 @@ $(function() {
     var Token = $$.getToken();
 
     //$$.post("http://192.168.1.110:8000/CSL/Order/QueryOrderList",{},)
-        
+    var url=""   
     //设置全局参数
     var n = 1,
     isLoad = 0,

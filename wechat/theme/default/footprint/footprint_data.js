@@ -15,7 +15,6 @@ $(function() {
             if (txt.Status != 0) {
                 alert("借口错误");
             } else {
-                $page.find('.content').empty();
                 var list = txt.Data.Rows;
                 var fisrtDate = list[0].Date;
                 var haveAppendTitle = 0;
@@ -32,8 +31,12 @@ $(function() {
                             url: url + "Product/Prod/QueryDetail",
                             data: { "ID": list[i].ProductID },
                             async: false,
-                            success: function (txt) {
+                            success: function(txt) {
+
                                 productInfo = $$.eval(txt).Data;
+                                if (productInfo.Img == "") {
+                                    productInfo.Img = "NoImg/" + Math.random() + ".jpg";
+                                }
                                 var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + productInfo.Name + "</p><p>" + productInfo.Descri + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
                                 $page.find(".content").append(onePiece);
                             }
@@ -47,7 +50,7 @@ $(function() {
                             url: url + "Product/Prod/QueryDetail",
                             async: false,
                             data: { "ID": list[i].ProductID },
-                            success: function (txt) {
+                            success: function(txt) {
                                 productInfo = $$.eval(txt).Data;
                                 var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + productInfo.Name + "</p><p>" + productInfo.Descri + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
                                 $page.find(".content").append(onePiece);
@@ -59,5 +62,4 @@ $(function() {
         }
     });
 
-    }
-);
+});

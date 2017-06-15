@@ -82,7 +82,7 @@
         $$.redirect('afterservice/afterservice.html');
     });     
     //跳转订单_______TODO
-    $('.order_img_span').on('click', function(){
+/*    $('.order_img_span').on('click', function(){
         $$.redirect('orderList/orderList.html');
-    });
+    });*/
 }());

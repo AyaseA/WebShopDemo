@@ -1,3 +1,6 @@
-/**
- * Created by cheshili6 on 2017/6/6.
- */
+$(function() {
+	var bodyHeight = window.innerHeight || document.body.clientHeight,
+        $page = $('#orderCommit_orderCommit'),
+        pageStr = 'orderCommit_orderCommit',
+        headerHeight = $page.find('>div.header').height();
+});

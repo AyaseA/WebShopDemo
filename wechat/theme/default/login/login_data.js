@@ -105,13 +105,7 @@ var login = {
                 	if(data.Data.Token) {
             			$$.setToken(data.Data.Token);
                 	}
-                	var prevPage = $$.stack[$$.stack.length - 1];
-                	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
-                		$$.stack.pop();
-                		$$.goBack();
-                	} else {
-                		$$.goBack();
-                	}
+                	$$.getBack();
                     console.log('发送成功');        
                 }
             });
@@ -202,7 +196,13 @@ $('#login_pass').off('click').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	}
-    	    	$$.goBack();
+            	var prevPage = $$.stack[$$.stack.length - 1];
+            	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
+            		$$.stack.pop();
+            		$$.goBack();
+            	} else {
+            		$$.goBack();
+            	}
                 console.log('登陆信息发送成功');        
             }
         });

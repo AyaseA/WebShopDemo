@@ -38,6 +38,11 @@
     position: absolute;
     top: 45px;
     width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#orderDetail_orderDetail >div.main >div.title {
+    height: 80px;
 }
 #orderDetail_orderDetail >div.footer {
     position: fixed;

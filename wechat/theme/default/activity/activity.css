@@ -115,7 +115,7 @@
 	margin-top: 10px;
 }
 #activity_activity >div.main >div.content {
-	background: #E00020; /* 一些不支持背景渐变的浏览器 */
+	background: #EA5514; /* 一些不支持背景渐变的浏览器 */
     background: -moz-linear-gradient(top, #E00020, #EA5514);
     background: -webkit-gradient(linear, 0 0, 0 bottom, from(#E00020), to(#EA5514));
     background: -o-linear-gradient(top, #E00020, #EA5514);

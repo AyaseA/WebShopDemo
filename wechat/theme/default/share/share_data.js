@@ -6,7 +6,7 @@ $(function() {
     var weChatSign = $$.getWeChatSign();
 
     wx.config({
-        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: 'wx2c53034422e377cc', // 必填，公众号的唯一标识
         timestamp: weChatSign.timestamp, // 必填，生成签名的时间戳
         nonceStr: weChatSign.noncestr, // 必填，生成签名的随机串
@@ -18,7 +18,6 @@ $(function() {
 
     // -- 4. 通过ready接口处理成功验证
     wx.ready(function() {
-        alert("微信配置成功");
         var shareLink = 'https://www.cheshili.cn/WeChat/theme/lc/index.html?__RDTURL__=showShare/showShare.html';
         var shareTitle = "测试"; // 分享标题
         var shareImage = "https://www.cheshili.cn/WeChat/theme/lc/shareicon.png"; // 分享图标

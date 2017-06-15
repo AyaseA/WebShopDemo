@@ -380,8 +380,8 @@
             }
         },
         // 返回微信签名，参数为true，强制重新获取
-        getWeChatSign: function(notReGet) {
-            if ($.isEmptyObject($$.config.weChatSign) || (notReGet || false)) {
+        getWeChatSign: function(reGet) {
+            if ($.isEmptyObject($$.config.weChatSign) || (reGet || false)) {
                 $.ajax({
                     url: $$.config.serverAddr +
                          'Product/WeChat/GetSign?url=' +

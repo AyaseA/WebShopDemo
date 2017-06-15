@@ -1,6 +1,6 @@
 
 $$.config.hideGlobalMenu();
-var hostUrl = 'http://192.168.1.110:8000';
+var hostUrl = $$.config.serverAddr;
 //登陆页面
 
 //获取验证码 >延时器

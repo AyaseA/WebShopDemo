@@ -1,6 +1,6 @@
 !(function(){
 	var centerData = window.centerData || {
-		hostUrl: 'http://192.168.1.110:8000',
+		hostUrl: $$.config.serverAddr,
 		token: $$.getToken(),
 		phoneNum: $$.getUserMobile(),//手机号
 		rewardNum: $('').val(),

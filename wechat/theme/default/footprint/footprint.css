@@ -69,16 +69,19 @@
 
 #footprint_footprint .price{
 	color:#f60;
+	width: 62vw;
+    display: block;
+    line-height: 8vw;
 }
 
 #footprint_footprint .contentContain button{
-	margin-left: 22vw;
 	height: 8vw;
 	background: none;
 	border: 1px solid #f60;
 	border-radius: 10vw;
 	width: 25vw;
 	color:#f60;
+	float: right;
 }
 
 #footprint_footprint .msg{

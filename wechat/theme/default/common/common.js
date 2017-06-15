@@ -16,7 +16,9 @@
             // 隐藏悬浮菜单
             hideGlobalMenu: function() {
                 showHideGlobalMenu(true);
-            }
+            },
+            // 微信签名
+            weChatSign: {}
         },
         stack: [],
         // 时间转10位时间戳
@@ -369,12 +371,32 @@
         reloadData: function() {
 
         },
+        // 图片为空替换默认
         imgFilter: function(img) {
             if (img) {
                 return img;
             } else {
                 return 'NoImg/' + Math.random() + '.jpg';
             }
+        },
+        // 返回微信签名，参数为true，强制重新获取
+        getWeChatSign: function(notReGet) {
+            if ($.isEmptyObject($$.config.weChatSign) || (notReGet || false)) {
+                $.ajax({
+                    url: $$.config.serverAddr +
+                         'Product/WeChat/GetSign?url=' +
+                         escape(location.href),
+                    type: 'GET',
+                    async: false,
+                    dataType: 'json',
+                    success: function(res) {
+                        if (res) {
+                            $$.config.weChatSign = res;
+                        }
+                    }
+                });
+            }
+            return $$.config.weChatSign;
         }
     });
     // 解析Token
@@ -456,25 +478,6 @@
     }).ajaxStop(function() {
         layer.closeAll('loading');
     });
-    // 配置微信
-    !(function() {
-        $$.get(
-            'Product/WeChat/GetSign?url=' + escape(location.href),
-            function(res) {
-                if (wx) {
-                    wx.config({
-                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                        appId: 'wx2c53034422e377cc', // 必填，公众号的唯一标识
-                        timestamp: res.timestamp, // 必填，生成签名的时间戳
-                        nonceStr: res.noncestr, // 必填，生成签名的随机串
-                        signature: res.sign, // 必填，签名，见附录1
-                        jsApiList: ['getLocation','onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone']
- // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-                    });
-                }
-            }
-        );
-    }());
     /* 全局菜单相关 start */
     !(function(win, $, undefined) {
         var $menu = $('#global_menu'),
@@ -497,6 +500,9 @@
             isClick = false;
             if (!isClick) {
                 setPosition(_x, _y);
+                if ($menu.hasClass('active')) {
+                    openCloseMenu(_x);
+                }
             }
         }).on('touchend', function(e) {
             e.preventDefault();
@@ -553,7 +559,7 @@
                 $menu.find('>ul').show();
                 for (i = 0; i < lis.length; i++) {
                     $(lis[i]).animate({
-                        'right': (i + 1) * _halfW * 2 * (_x < _bodyW / 2 ? -1 : 1)
+                        'right': ((i + 1) * (_halfW + 0.5) * 2) * (_x < _bodyW / 2 ? -1 : 1)
                     }, 200);
                 }
                 $menu.addClass('active').find('>span').text('收起');

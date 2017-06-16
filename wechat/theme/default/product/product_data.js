@@ -138,14 +138,7 @@ $(function() {
     }
     // 获取收藏列表存入cookie
     function getWishList() {
-        if ($$.getCookie('__WISHLIST__')) {
-            var isWish = $.inArray(pid, $$.getCookie('__WISHLIST__').split(',')) != -1;
-            $page.find('>div.footer >a.collect').text(
-                isWish ? '已加入收藏' : '加入收藏'
-            ).addClass(
-                isWish ? 'collected' : ''
-            );
-        } else {
+        if ($$.getCookie('__TOKEN__')) {
             $$.post(
                 'CSL/Wish/QueryFootList',
                 {},
@@ -165,9 +158,18 @@ $(function() {
                         ).addClass(
                             isWish ? 'collected' : ''
                         );
-                        $$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
+                        $$.setCookie('__WISHLIST__', wishArr.join(','));
                     }
                 }
+            );
+        } else if ($$.getCookie('__WISHLIST__')) {
+            var wishCookie = $$.getCookie('__WISHLIST__') || '',
+                wishArr = wishCookie.split(','),
+                isWish = $.inArray(pid, wishArr) != -1;
+            $page.find('>div.footer >a.collect').text(
+                isWish ? '已加入收藏' : '加入收藏'
+            ).addClass(
+                isWish ? 'collected' : ''
             );
         }
     }

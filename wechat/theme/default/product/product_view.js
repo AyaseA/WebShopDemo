@@ -38,10 +38,14 @@ $(function() {
 	});
 	// 收藏
 	$page.on('click', '>div.footer >a.collect', function() {
-		if ($(this).hasClass('collected')) {
-			cancelWish($(this).attr('data-id'), $(this));
-		} else {
-			addWish($(this).attr('data-id'), $(this));
+		var $this = $(this),
+			pid = $this.attr('data-id');
+		if ($$.getToken()) {
+		    if ($this.hasClass('collected')) {
+		        cancelWish(pid, $this);
+		    } else {
+		        addWish(pid, $this);
+		    }
 		}
 	});
 	// tab页切换
@@ -67,8 +71,8 @@ $(function() {
 			},
 			function(res) {
 				if (res.Status == 0 && res.Data == 'Succ') {
-					var wishArr = $$.getCookie('__WISHLIST__').split(',');
-					wishArr.push(pid);
+					var wishCookie = $$.getCookie('__WISHLIST__') || '',
+						wishArr = wishCookie.split(',');
 					$$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
 					item.addClass('collected').text('已加入收藏');
 				}
@@ -84,7 +88,8 @@ $(function() {
 			},
 			function(res) {
 				if (res.Status == 0 && res.Data == 'Succ') {
-					var wishArr = $$.getCookie('__WISHLIST__').split(',');
+					var wishCookie = $$.getCookie('__WISHLIST__') || '',
+						wishArr = wishCookie.split(',');
 					wishArr.splice($.inArray(pid, wishArr), 1);
 					$$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
 					item.removeClass('collected').text('加入收藏');

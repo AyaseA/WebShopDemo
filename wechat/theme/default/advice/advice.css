@@ -7,7 +7,7 @@
 }
 #advice_advice header{
 	width: 100%;
-	height: 16vw;
+	height: 12vw;
 	background-color: #fff;
 	overflow: hidden;
 	position: relative;
@@ -16,15 +16,15 @@
 	width: 6.93vw;
 	height: 6.93vw;
 	display: inline-block;
-	margin: 4vw 0px 0px 5.33vw;
+	margin: 2vw 0px 0px 5.33vw;
 }
 #advice_advice header .advice_point{
 	display: inline-block;
-	font-size: 5.87vw;
+	font-size: 4.6vw;
 	font-family: "黑体";
 	color: #4E4D53;
 	vertical-align: top;
-	margin: 4.3vw 0px 0px 24vw;
+	margin: 3.3vw 0px 0px 24vw;
 }
 #advice_advice .advice_contact{
 	display: inline-block;
@@ -32,7 +32,7 @@
 	font-family: "黑体";
 	color: #4E4D53;
 	vertical-align: top;
-	margin: 5.6vw 0px 0px 18.67vw;		
+	margin: 4.6vw 0px 0px 21vw;		
 }
 #advice_advice .advice_textarea{
 	border: none;

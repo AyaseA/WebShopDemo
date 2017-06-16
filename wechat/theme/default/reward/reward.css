@@ -10,7 +10,7 @@
 }
 #reward_reward header{
 	width: 100%;
-	height: 16vw;
+	height: 12vw;
 	background-color: #fff;
 	overflow: hidden;
 	position: relative;
@@ -19,14 +19,14 @@
 	width: 6.93vw;
 	height: 6.93vw;
 	display: inline-block;
-	margin: 4vw 0px 0px 5.33vw;
+	margin: 2vw 0px 0px 5.33vw;
 }
 #reward_reward header span{
 	display: inline-block;
-	font-size: 5.33vw;
+	font-size: 4.6vw;
 	color: #4E4D53;
 	vertical-align: top;
-	margin: 3.73vw 0px 0px 32vw;
+	margin: 2.73vw 0px 0px 32vw;
 }
 #reward_reward .reword_bg_yellow{
 	width: 100%;

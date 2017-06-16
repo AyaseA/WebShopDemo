@@ -7,24 +7,24 @@
 }
 #gascard_gascard header{
 		width: 100%;
-		height: 60px;
+		height: 12vw;
 		background-color: #fff;
 		overflow: hidden;
 		position: relative;
 }
 #gascard_gascard header img{
-		width: 26px;
-		height: 26px;
+		width: 6.93vw;
+		height: 6.93vw;
 		display: inline-block;
-		margin: 15px 0px 0px 20px;
+		margin: 2vw 0px 0px 5.33vw;
 }
 #gascard_gascard header span{
 		display: inline-block;
-		font-size: 20px;
+		font-size: 4.6vw;
 		color: #4E4D53;
 		vertical-align: top;
-		margin: 16px 0px 0px 60px;
+		margin: 3.3vw 0px 0px 24vw;
 }
 #gascard_gascard aside p,aside span,div{
-		font-size: 14px;
+		font-size: 3.73vw;
 }

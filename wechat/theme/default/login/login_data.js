@@ -251,4 +251,3 @@ $('#login_redit').off('click').on('click', function(e) {
 	$('#login_input_1').val('');
     $('#login_input_2').val('');
 });
-

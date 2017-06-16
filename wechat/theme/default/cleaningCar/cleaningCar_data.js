@@ -76,7 +76,7 @@ function checkPhonenum(num) {
 	    	dataType: "json",
 	    	success: function(data) {
 	    		if(data.Status === 0){
-	    			$('.login_check_pxx').css('display', 'block');
+							    			
 	    		} else {
 	    			var flag6 = true;
 	    			window.flag6 = flag6;
@@ -138,14 +138,8 @@ $('#cleaning_car_button').on('click', function(e){
 		    		if(data.Data.Token) {
 		   				$$.setToken(data.Data.Token);
 		    		}
-		    		var prevPage = $$.stack[$$.stack.length - 1];
-		    		if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
-		    			$$.stack.pop();
-		    			$$.goBack();
-		    		} else {
-		    			$$.goBack();
-		    		};
-		    		   console.log('发送成功');	
+
+	    		   console.log('发送成功');	
 		        },
 		        err: function(xhr){
 		        	console.log('注册并支付接口有问题');
@@ -156,7 +150,7 @@ $('#cleaning_car_button').on('click', function(e){
 	var carNo = $('#login_input_6').val();
 	console.log(carNo);
 	sessionStorage.setItem('carNo', carNo);
-	$('#login_input_1').val('');
+	$('#login_input_1').val(''); 
     $('#login_input_4').val('');
     $('#login_input_6').val('');
 });

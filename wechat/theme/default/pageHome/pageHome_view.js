@@ -50,39 +50,39 @@
         $$.redirect('storefront/storefront.html');
     });
     //商品列表
-    $('#article_con_tent').on('click', function(){
+    $('#article_con_tent').on('click', function() {
         $$.redirect('orderList/orderList.html');
     });   
     //设置
-    $('#login_set_out').on('click', function(){
+    $('#login_set_out').on('click', function() {
         $$.redirect('logout/logout.html');
     });
     //优惠券
-    $('#content_account_wrap').on('click', function(){
+    $('#content_account_wrap').on('click', function() {
         $$.redirect('discount/discount.html');
     });
     //我的钱包
-    $('#wallet').on('click', function(){
+    $('#wallet').on('click', function() {
         $$.redirect('myWallet/myWallet.html');
     });    
     //我的足迹
-    $('#footprint').on('click', function(){
+    $('#footprint').on('click', function() {
         $$.redirect('footprint/footprint.html');
     });     
     //势力币
-    $('#bin').on('click', function(){
+    $('#bin').on('click', function() {
         $$.redirect('bin/bin.html');
     });
     //意见反馈
-    $('#advice').on('click', function(){
+    $('#advice').on('click', function() {
         $$.redirect('advice/advice.html');
     });  
     //退换/售后
-    $('#order_img_span_5').on('click', function(){
+    $('#order_img_span_5').on('click', function() {
         $$.redirect('afterService/afterService.html');
     });     
     //跳转订单_______TODO
-    $('.order_img_span').on('click', function(){
+    $('.order_img_span').on('click', function() {
         $$.redirect('orderList/orderList.html');
     });
 }());

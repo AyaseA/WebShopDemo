@@ -11,6 +11,9 @@
 	background: url(../images/center/center_bg.png) no-repeat top center;
 	background-size: 100%; 
 	overflow: hidden;
+	position: fixed;
+	left: 0px;
+	top: 0px;
 }
 #pageHome_pageHome .head_user{
 	width: 100%;
@@ -258,4 +261,9 @@
 }
 #pageHome_pageHome >div.footer nav >li:nth-child(3):before {
 	background-image: url(../images/index/centerOff.png);
+}
+#pageHome_pageHome article{
+	margin-top: 39vw;
+	overflow-x: hidden;
+	overflow-y: auto;
 }

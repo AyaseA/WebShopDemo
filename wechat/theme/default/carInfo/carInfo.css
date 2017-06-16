@@ -29,7 +29,7 @@
 	display: inline-block;
     width: 28px;
     height: 28px;
-    margin: 9px 0 0 12px;
+    margin: 8px 0 0 12px;
 }
 #carInfo_carInfo >div.header >span.title {
 	color: #fff;
@@ -39,7 +39,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
+    top: 1px;
     bottom: 0;
     height: 30px;
     line-height: 30px;
@@ -49,7 +49,6 @@
 	#carInfo_carInfo >div.header >a.goBack {
 	    width: 30px;
 	    height: 30px;
-	    margin: 9px 0 0 12px;
 	}
 	#carInfo_carInfo >div.header >span.title {
 		height: 32px;
@@ -60,7 +59,6 @@
 	#carInfo_carInfo >div.header >a.goBack {
 	    width: 24px;
 	    height: 24px;
-	    margin: 9px 0 0 12px;
 	}
 	#carInfo_carInfo >div.header >span.title {
 		height: 26px;
@@ -225,7 +223,7 @@
     font-size: 16px;
     height: 44px;
     text-align: center;
-    line-height: 44px;
+    line-height: 45px;
     width: 60%;
 }
 #carInfo_carInfo >div.brandsModal >div.brands {
@@ -371,7 +369,7 @@
     font-size: 16px;
     height: 44px;
     text-align: center;
-    line-height: 44px;
+    line-height: 45px;
     width: 60%;
 }
 #carInfo_carInfo >div.carsModal >div.carsBox {

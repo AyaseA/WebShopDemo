@@ -91,10 +91,12 @@ $(function() {
     });
     // 打开弹出层brands
     $page.on('click', 'div.carDetail input[name="carBrand"]', function() {
+        $(this).blur();
         openBrands();
     });
     // 打开弹出层Cars
     $page.on('click', 'div.carDetail input[name="carType"]', function() {
+        $(this).blur();
         var sid = $page.find('div.carDetail input[name="carBrand"]').attr('data-sid');
         if (!sid) {
             tip('请先选择品牌车系！');

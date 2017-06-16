@@ -16,7 +16,7 @@
 #location_location >div.header >a.goBack {
 	display: block;
 	float: left;
-	height: 44px;
+	height: 45px;
 	width: 44px;
 	background: url(../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
@@ -26,7 +26,7 @@
 #location_location >div.header >div >input.search {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 98%;
     outline: none;
     border: none;
     border-radius: 12px;
@@ -34,12 +34,14 @@
     font-size: 14px;
 }
 #location_location >div.header >div {
-    height: 24px;
+    height: 26px;
     width: 66%;
-    margin: 9px auto 0;
+    margin: auto;
     position: absolute;
     left: 0;
     right: 0;
+    top: 0;
+    bottom: 0;
 }
 #location_location >div.header >div >i {
     display: none;
@@ -50,6 +52,12 @@
     top: 5px;
     width: 16px;
     height: 16px;
+}
+@media screen and (max-width: 350px) {
+    #location_location >div.header >div {
+        height: 22px;
+        top: -4px;
+    }
 }
 #location_location >div.main {
 	position: absolute;

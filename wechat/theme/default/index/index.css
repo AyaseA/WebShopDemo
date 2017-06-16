@@ -27,7 +27,7 @@
     text-align: center;
     display: inline-block;
     height: 100%;
-    line-height: 44px;
+    line-height: 45px;
     width: 22%;
 }
 #index_index >div.header >a.location span {
@@ -52,7 +52,7 @@
 }
 #index_index >div.header >a.search {
     background: url(../images/common/search.png) no-repeat;
-    background-size: contain;
+    background-size: 100% 60%;
     background-position-y: center;
     display: inline-block;
     position: absolute;
@@ -66,7 +66,7 @@
 @media screen and (min-width: 410px) {
 	#index_index >div.header >a.location {
 	    width: 25%;
-	    line-height: 48px;
+	    line-height: 50px;
 	}
 	#index_index >div.header >a.search {
 	    width: 234px;
@@ -74,17 +74,18 @@
 }
 @media screen and (max-width: 350px) {
 	#index_index >div.header >a.location {
-		line-height: 40px;
+		line-height: 41px;
 	    width: 20%;
 	    font-size: 12px;
 	}
 	#index_index >div.header >a.location >span:before {
 	    width: 12px;
 	    height: 16px;
-	    top: 3px;
+	    top: 4px;
 	}
 	#index_index >div.header >a.search {
 		width: 175px;
+        background-size: 100% 64%;
 	}
 }
 /* banner start */

@@ -29,15 +29,15 @@
     font-size: 16px;
     height: 44px;
     text-align: center;
-    line-height: 44px;
+    line-height: 45px;
     width: 60%;
 }
 #fillOrder_fillOrder >div.main {
 	overflow-x: hidden;
 	overflow-y: auto;
-	padding-top: 10px;
-	position: absolute;
 	width: 100%;
+	position: absolute;
+	top: 44px;
 }
 #fillOrder_fillOrder >div.main >div {
 	background-color: #fff;

@@ -69,7 +69,7 @@ $(function() {
 				if (res.Status == 0 && res.Data == 'Succ') {
 					var wishArr = $$.getCookie('__WISHLIST__').split(',');
 					wishArr.push(pid);
-					$$.setCookie('__WISHLIST__', wishArr.join(','));
+					$$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
 					item.addClass('collected').text('已加入收藏');
 				}
 			}
@@ -86,7 +86,7 @@ $(function() {
 				if (res.Status == 0 && res.Data == 'Succ') {
 					var wishArr = $$.getCookie('__WISHLIST__').split(',');
 					wishArr.splice($.inArray(pid, wishArr), 1);
-					$$.setCookie('__WISHLIST__', wishArr.join(','));
+					$$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
 					item.removeClass('collected').text('加入收藏');
 				}
 			}

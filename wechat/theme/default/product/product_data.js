@@ -158,7 +158,7 @@ $(function() {
                     for (var i = 0; i < d.length; i++) {
                         wishArr.push(d[i].ProductID);
                     }
-                    $$.setCookie('__WISHLIST__', wishArr.join(','));
+                    $$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
                     if (calBak) {
                         calBak();
                     }

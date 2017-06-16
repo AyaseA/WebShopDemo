@@ -41,7 +41,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer"></div>
+	<div class="footer">
+		<a href="javascript:void(0)" data-id="" class="collect">加入收藏</a>
+		<a href="fillOrder/fillOrder.html?num=1&pid=1" data-tran="fadeIn" class="buyNow">立即购买</a>
+	</div>
 	<script id="product_product_product_detail" type="text/html">
 		<div class="banner" id="product_product_banner">
 			<div class="hd"><ul></ul></div>
@@ -90,9 +93,5 @@
 			</p>
 		</div>
 	{{/each}}
-	</script>
-	<script id="product_product_product_footer" type="text/html">
-		<a href="javascript:void(0)" data-id="{{productId}}" class="collect {{isWish ? 'collected' : ''}}">{{isWish ? '已加入收藏' : '加入收藏'}}</a>
-		<a href="fillOrder/fillOrder.html?pid={{productId}}&num=1" data-tran="fadeIn" class="buyNow">立即购买</a>
 	</script>
 </div>

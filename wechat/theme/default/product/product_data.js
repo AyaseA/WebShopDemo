@@ -15,18 +15,17 @@ $(function() {
     }).find('div.reviews >div.warp').css({
         'margin-left': 0
     });
-    
-    // 修改立即购买按钮的商品id
-    getWishList(function() {
-        $page.find('>div.footer').html(template(pageStr + '_product_footer', {
-            productId: pid,
-            isWish: $.inArray(pid, $$.getCookie('__WISHLIST__').split(',')) != -1
-        }));
+
+    // 设置底部按钮的pid
+    $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');
+    $page.find('>div.footer >a.buyNow').attr('href', function() {
+        var url = $(this).attr('href');
+        return url.replace(new RegExp("pid=([^&]*)(&|$)", "i"), 'pid=' + pid);
     });
-    
     // 获取商品信息
     getProductInfo();
-	
+	// 修改立即购买按钮的商品id
+    getWishList();
 	// 根据商品id获取商品信息
 	function getProductInfo() {
         $$.get(
@@ -138,33 +137,39 @@ $(function() {
         );
     }
     // 获取收藏列表存入cookie
-    function getWishList(calBak) {
+    function getWishList() {
         if ($$.getCookie('__WISHLIST__')) {
-            if (calBak) {
-                calBak();
-            }
-            return false;
+            var isWish = $.inArray(pid, $$.getCookie('__WISHLIST__').split(',')) != -1;
+            $page.find('>div.footer >a.collect').text(
+                isWish ? '已加入收藏' : '加入收藏'
+            ).addClass(
+                isWish ? 'collected' : ''
+            );
+        } else {
+            $$.post(
+                'CSL/Wish/QueryFootList',
+                {},
+                function(res) {
+                    if (res.Status != 0) {
+                        return false;
+                    }
+                    if (res.Data && res.Data.Rows) {
+                        var d = res.Data.Rows,
+                            wishArr = [];
+                        for (var i = 0; i < d.length; i++) {
+                            wishArr.push(d[i].ProductID);
+                        }
+                        var isWish = $.inArray(pid, wishArr) != -1;
+                        $page.find('>div.footer >a.collect').text(
+                            isWish ? '已加入收藏' : '加入收藏'
+                        ).addClass(
+                            isWish ? 'collected' : ''
+                        );
+                        $$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
+                    }
+                }
+            );
         }
-        $$.post(
-            'CSL/Wish/QueryFootList',
-            {},
-            function(res) {
-                if (res.Status != 0) {
-                    return false;
-                }
-                if (res.Data && res.Data.Rows) {
-                    var d = res.Data.Rows,
-                        wishArr = [];
-                    for (var i = 0; i < d.length; i++) {
-                        wishArr.push(d[i].ProductID);
-                    }
-                    $$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
-                    if (calBak) {
-                        calBak();
-                    }
-                }
-            }
-        );
     }
     // 添加浏览足迹
     function addHistoryFoot() {

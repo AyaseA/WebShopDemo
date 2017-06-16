@@ -7,8 +7,7 @@ $(function() {
 	    boxWidth = $page.find('>div.header').width();
 	// 设置各种高度
 	$page.find('>div.main').css({
-		'height': bodyHeight - headerHeight - footerHeight - 10,
-		'top': headerHeight
+		'height': bodyHeight - headerHeight - footerHeight,
 	});
 	$page.find('>div.couponModal').css({
 		'top': bodyHeight

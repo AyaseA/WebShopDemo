@@ -26,7 +26,7 @@ $(function() {
     	}
     });
     // 匿名评价
-    $page.on('click', '>div.main >p >span', function() {
+    $page.on('click', '>div.main >div.anonymity >p', function() {
     	if ($(this).hasClass('selected')) {
     		$(this).removeClass('selected');
     	} else {

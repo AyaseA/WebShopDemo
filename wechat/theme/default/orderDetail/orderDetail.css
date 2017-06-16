@@ -17,7 +17,7 @@
 #orderDetail_orderDetail >div.header >a.goBack {
     display: block;
     float: left;
-    height: 44px;
+    height: 45px;
     width: 44px;
     background: url(../images/common/round_left_blue.png) no-repeat;
     background-size: 40%;
@@ -29,9 +29,9 @@
     display: block;
     font-weight: 700;
     font-size: 16px;
-    height: 44px;
+    height: 45px;
     text-align: center;
-    line-height: 44px;
+    line-height: 45px;
     width: 60%;
 }
 #orderDetail_orderDetail >div.main {
@@ -42,9 +42,12 @@
     overflow-y: auto;
 }
 #orderDetail_orderDetail >div.main >div {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
-#orderDetail_orderDetail >div.main >div.title {
+#orderDetail_orderDetail >div.main >div >div {
+    background-color: #fff;
+}
+#orderDetail_orderDetail >div.main >div.title >div {
     height: 60px;
     background: #EA5514; /* 一些不支持背景渐变的浏览器 */
     background: -moz-linear-gradient(top, #EA5514, #F47F4D);
@@ -52,7 +55,7 @@
     background: -o-linear-gradient(top, #EA5514, #F47F4D);
     position: relative;
 }
-#orderDetail_orderDetail >div.main >div.title >i {
+#orderDetail_orderDetail >div.main >div.title >div >i {
     display: block;
     height: 16px;
     width: 16px;
@@ -62,28 +65,26 @@
     left: 15px;
     top: 22px;
 }
-#orderDetail_orderDetail >div.main >div.title >span {
+#orderDetail_orderDetail >div.main >div.title >div >span {
     position: absolute;
     color: #fff;
     font-size: 15px;
     left: 40px;
     top: 20px;
 }
-#orderDetail_orderDetail >div.main >div.product {
+#orderDetail_orderDetail >div.main >div.product >div {
     padding: 15px;
-    background-color: #fff;
-    margin-bottom: 10px;
 }
-#orderDetail_orderDetail >div.main >div.product a.contactService {
+#orderDetail_orderDetail >div.main >div.product >div a.contactService {
     display: block;
     width: 80px;
     height: 30px;
     float: right;
     margin-top: -6px;
-    line-height: 30px;
+    line-height: 29px;
     text-align: center;
 }
-#orderDetail_orderDetail >div.main >div.product a.contactService:after {
+#orderDetail_orderDetail >div.main >div.product >div a.contactService:after {
     content: '';
     display: block;
     width: 14px;
@@ -91,64 +92,68 @@
     background-image: url(../images/common/phone.png);
     background-size: cover;
     float: right;
-    margin-top: 8px;
+    margin-top: 7px;
 }
-#orderDetail_orderDetail >div.main >div.product >p:first-child {
+#orderDetail_orderDetail >div.main >div.product >div >p:first-child {
     height: 20px;
-    line-height: 20px;
+    line-height: 19px;
+    padding-bottom: 10px;
 }
-#orderDetail_orderDetail >div.main >div.product >p:first-child >i {
+#orderDetail_orderDetail >div.main >div.product >div >p:first-child >i {
     display: block;
     width: 16px;
     height: 16px;
-    margin-top: 2px;
+    margin-top: 1px;
     margin-right: 10px;
     background: url(../images/icon.png) no-repeat;
     background-size: contain;
     float: left;
 }
-#orderDetail_orderDetail >div.main >div.product >div {
+#orderDetail_orderDetail >div.main >div.product >div >div {
     padding: 10px 15px;
     background-color: #FAFAFA;
-    margin: 10px -15px 0;
+    margin: 0 -15px;
 }
-#orderDetail_orderDetail >div.main >div.product >div >img {
+#orderDetail_orderDetail >div.main >div.product >div >div >img {
     height: 70px;
     width: 70px;
     float: left;
     margin-right: 10px;
 }
-#orderDetail_orderDetail >div.main >div.product >div span {
+#orderDetail_orderDetail >div.main >div.product >div >div span {
     float: right;
 }
-#orderDetail_orderDetail >div.main >div.product >div >p:nth-child(2) span {
+#orderDetail_orderDetail >div.main >div.product >div >div >p:nth-child(2) span {
     color: #EA5514;
 }
-#orderDetail_orderDetail >div.main >div.product >div >p:nth-child(3) {
+#orderDetail_orderDetail >div.main >div.product >div >div >p:nth-child(3) {
     color: #A9A9A9;
     font-size: 12px;
     margin-top: 5px;
 }
-#orderDetail_orderDetail >div.main >div.product >p:last-child {
+#orderDetail_orderDetail >div.main >div.product >div >p:last-child {
     text-align: right;
     color: #A9A9A9;
-    margin-top: 10px;
+    padding-top: 13px;
 }
-#orderDetail_orderDetail >div.main >div.order {
+#orderDetail_orderDetail >div.main >div.order >div {
     background-color: #fff;
     padding: 0 15px;
 }
-#orderDetail_orderDetail >div.main >div.order >p {
+#orderDetail_orderDetail >div.main >div.order >div >p {
     padding: 15px 0;
 }
 #orderDetail_orderDetail >div.main >div.money {
+    padding-bottom: 100px;
+}
+#orderDetail_orderDetail >div.main >div.money >div {
     background-color: #fff;
     padding: 0 15px;
 }
-#orderDetail_orderDetail >div.main >div.money >p {
+#orderDetail_orderDetail >div.main >div.money >div >p {
     padding: 15px 0;
 }
-#orderDetail_orderDetail >div.main >div.money >p >span {
+#orderDetail_orderDetail >div.main >div.money >div >p >span {
     color: #EA5514;
     float: right;
 }

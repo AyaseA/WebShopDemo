@@ -29,9 +29,9 @@
     display: block;
     font-weight: 700;
     font-size: 16px;
-    height: 44px;
+    height: 45px;
     text-align: center;
-    line-height: 44px;
+    line-height: 45px;
     width: 60%;
 }
 #orderCommit_orderCommit >div.header >button.commit {
@@ -76,7 +76,7 @@
 #orderCommit_orderCommit >div.main >div.stars {
     height: 40px;
     background-color: #fff;
-    padding: 0 15px;
+    padding: 5px 15px;
     line-height: 40px;
 }
 #orderCommit_orderCommit >div.main >div.stars >span {
@@ -89,7 +89,7 @@
     display: block;
     width: 20px;
     height: 20px;
-    margin-top: 10px;
+    margin-top: 9px;
     margin-left: 20px;
     background-image: url(../images/common/stars/star.png);
     background-size: cover;
@@ -111,7 +111,7 @@
     text-align: right;
     color: #A9A9A9;
     padding-right: 4%;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 #orderCommit_orderCommit >div.main >div.pictures {
     text-align: center;
@@ -152,14 +152,16 @@
     background-image: url(../images/common/camera.png);
     background-size: cover;
 }
-#orderCommit_orderCommit >div.main >p {
+#orderCommit_orderCommit >div.main >div.anonymity {
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+#orderCommit_orderCommit >div.main >div.anonymity >p {
     background-color: #fff;
     padding: 10px 15px;
-}
-#orderCommit_orderCommit >div.main >p >span {
     font-size: 16px;
 }
-#orderCommit_orderCommit >div.main >p >span:before {
+#orderCommit_orderCommit >div.main >div.anonymity >p:before {
     content: '';
     display: block;
     float: left;
@@ -170,6 +172,6 @@
     margin-top: 3px;
     margin-right: 10px;
 }
-#orderCommit_orderCommit >div.main >p >span.selected:before {
+#orderCommit_orderCommit >div.main >div.anonymity >p.selected:before {
     background-image: url(../images/common/round_check_fill.png);
 }

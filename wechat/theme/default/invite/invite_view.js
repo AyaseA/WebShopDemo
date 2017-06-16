@@ -11,8 +11,7 @@ $(function() {
             registerCont = $$.getUserInfo().InviteCode;
         // 设置高度
         $page.find('div.main').css({
-            'height': bodyHeight - headerHeight,
-            'top': headerHeight
+            'height': bodyHeight - headerHeight
         });
         // 设置返回按钮可用
         $$.setGoBack($page.find('a.goBack'));

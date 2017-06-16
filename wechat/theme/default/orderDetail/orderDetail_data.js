@@ -5,11 +5,6 @@ $(function () {
         headerHeight = $page.find('>div.header').height(),
         orderId = $$.getQueryString('oid');
 
-    // 设置footer按钮的id
-    $page.find('>div.footer').html(template(pageStr + '_footer', {
-		orderId: orderId
-	}));
-
     // 获取订单详情
 	getOrderDetail();
 	function getOrderDetail() {
@@ -24,23 +19,27 @@ $(function () {
                 }
                 if (res.Data) {
                 	var d = res.Data;
+                    d.StatusID = '10';
                 	total = 1;//d.OutPocket;
                 	$page.find('>div.main').html(template(pageStr + '_detail', {
                         serverAddr: $$.config.serverAddr,
                 		proList: JSON.parse(d.Data),
-                		payMoney: d.OutPocket,
-                		allMoney: d.AllMoney,
-                		orderNum: d.ID,
-                		orderTime: d.AddTime,
+                        oData: d,
+                        isPayed: $.inArray(d.StatusID, ['1', '5', '8', '10']) == -1,
                 		discountMoney: (parseFloat(d.Discount) +
                 		                parseFloat(d.ValueVoucherNum) +
                 		                parseFloat(d.RewardPointNum) +
                 		                parseFloat(d.GiftVoucherNum)).toFixed(2)
                 	}));
-                	/*orderDesc = $.trim($page.find('div.productInfo p.desc').text().replace(/[\r\n]/g, "").replace(/[\t]/g, ""));
-                	if (orderDesc.length > 50) {
-                		orderDesc.substring(0, 50);
-                	}*/
+                    var canCancel = $.inArray(d.StatusID, ['1', '2', '3', '4', '8', '10']) != -1,
+                        canPay = $.inArray(d.StatusID, ['1', '8', '10']) != -1;
+                    // 设置底部按钮
+                    $page.find('>div.footer').html(template(pageStr + '_footer', {
+                        orderId: orderId,
+                        oData: d,
+                        canPay: canPay,
+                        canCancel: canCancel
+                    }));
                 }
 			}
 		);

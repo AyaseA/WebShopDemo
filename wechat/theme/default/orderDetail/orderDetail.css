@@ -59,11 +59,29 @@
     display: block;
     height: 16px;
     width: 16px;
-    background-image: url(../images/common/time.png);
     background-size: cover;
     position: absolute;
     left: 15px;
     top: 22px;
+}
+#orderDetail_orderDetail >div.main >div.title >div >i.time {
+    background-image: url(../images/common/time.png);
+}
+#orderDetail_orderDetail >div.main >div.title >div >i.deliver {
+    background-image: url(../images/common/deliver.png);
+}
+#orderDetail_orderDetail >div.main >div.title >div >i.right {
+    background-image: url(../images/common/finish.png);
+}
+#orderDetail_orderDetail >div.main >div.title >div >i.close {
+    background-image: url(../images/common/close.png);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid rgba(255, 255, 255, .6);
+    border-radius: 16px;
+    width: 12px;
+    height: 12px;
 }
 #orderDetail_orderDetail >div.main >div.title >div >span {
     position: absolute;
@@ -161,8 +179,9 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 50px;
+    height: 49px;
     background-color: #fff;
+    border-top: 1px solid #d4d4d4;
 }
 #orderDetail_orderDetail >div.footer >button {
     border: none;

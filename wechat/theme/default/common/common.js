@@ -487,10 +487,16 @@
             return JSON.parse(str);
         }
     };
-    // string to number
-    template.defaults.imports.numberFilter = function(str) {
+    // string to int
+    template.defaults.imports.intFilter = function(str) {
         if (str) {
-            return parseInt(str) || 1;
+            return parseInt(str) || 0;
+        }
+    };
+    // string to float
+    template.defaults.imports.floatFilter = function(str) {
+        if (str) {
+            return (parseFloat(str) || 0).toFixed(2);
         }
     };
     /* artTemplate 相关过滤器 end */

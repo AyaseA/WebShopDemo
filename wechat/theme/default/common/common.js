@@ -301,7 +301,30 @@
                 });
                 //}
             } else {
-                return token;
+                var isLogin = false;
+                $.ajax({
+                    url: $$.config.serverAddr + 'CSL/User/TestToken',
+                    type: 'POST',
+                    data: {
+                        Token: token
+                    },
+                    async: false,
+                    dataType: 'json',
+                    success: function(res) {
+                        if (res.Status == -1 && res.Data == 'Not login!') {
+                            isLogin = false;
+                        } else {
+                            isLogin = true;
+                        }
+                    }
+                });
+                if (isLogin) {
+                    return token;
+                } else {
+                    $$.redirect('login/login.html', {
+                        trans: 'none'
+                    });
+                }
             }
         },
         // 获取用户信息（默认车辆、默认收货地址。。。。）

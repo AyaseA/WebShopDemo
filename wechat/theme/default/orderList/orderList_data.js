@@ -19,6 +19,8 @@ $(function() {
     var n = 1,
     isLoad = 0,
     noDate = 0,
+
+    loadComplete = true;
     
     thisLoaded = {
         all:0,
@@ -33,11 +35,16 @@ $(function() {
         waitPay:0,
         waitPost:0,
         waitGet:0,
-        waitRevice:0,
+        waitRevice:0
     };
 
-    //底部加载
-    loadList({ "Token": Token, "N": n }, ".all","all");
+    //进入清空之前内容,显示首页内容
+    $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
+    $page.find(".content").children().hide();
+    $page.find(".all").fadeIn(500);
+    $page.find(".nav ul li").removeClass("on");
+    $page.find(".nav .allNav").addClass("on");
+    loadList({ "Token": Token, "N": n}, ".all", "all"); 
     
     //点击支付按钮事件  
     $page.off("click", ".PayBtn").on("click", ".PayBtn", function() {
@@ -70,9 +77,10 @@ $(function() {
                 data = $$.eval(data);
                
                 if(data.Status != 0){
-                    console.log(data.Status);
-                    alert("服务有问题");
-                }
+                    $$.redirect("login/login.html");
+                }else{
+
+
 
                 var list = $$.eval(data).Data.Rows;
                 $page.listNum = list.length;
@@ -140,12 +148,17 @@ $(function() {
                 }else if(scrollArea == "waitGet"){
                     thisLoaded.waitGet=1;
                 }
+
+                
                 $("#orderList_orderList ."+scrollArea).scroll(function() {
                     var scrollTop = $page.find("."+scrollArea).scrollTop() + $("."+scrollArea).height();
                     var scrollHeight = $page.find("."+scrollArea)[0].scrollHeight;
+
+
                     if (noDate == 0) {
-                        if (scrollHeight - scrollTop <= 2) {
+                        if (scrollHeight - scrollTop <= 10 && loadComplete) {
                             if (isLoad == 0) {
+                                loadComplete = false;
                                 $.ajax({
                                     type: "POST",
                                     url: url+"CSL/Order/QueryOrderList",
@@ -209,8 +222,9 @@ $(function() {
                                                     onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span style='color:red'>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent'>" + contentNodeList + "<div></div><p style='float:right'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p></div><div class='piecePay'>交易成功<button class='PayBtn'>商品评价</button></div></div>";
                                                     $page.find("" + area).append(onePiece);
                                                 }
-
+                                                
                                             }
+                                        loadComplete =true;
 
                                         }
 
@@ -220,25 +234,29 @@ $(function() {
                                 });
                             }
                             //全部加载完成
-                            if ($page.listNum < 10) {
-                                isLoad = 1;
-                                var loadMsg = "<div class='loadMsg'>已加载全部订单<div>";
-                                $page.find("."+scrollArea).append(loadMsg);
-                                noDate = 1;
-                                if(scrollArea == "all"){
-                                    haveLoad.all=1;
-                                }else if(scrollArea == "waitPay"){
-                                    haveLoad.waitPay=1;
-                                }else if(scrollArea == "waitPost"){
-                                    haveLoad.waitPost=1;           
-                                }else if(scrollArea == "waitGet"){
-                                    haveLoad.waitGet=1;
+                            if(haveLoad[scrollArea] == 0){                             
+                                if ($page.listNum < 10) {
+                                    isLoad = 1;
+                                    var loadMsg = "<div class='loadMsg'>已加载全部订单<div>";
+                                    $page.find("."+scrollArea).append(loadMsg);
+                                    noDate = 1;
+                                    if(scrollArea == "all"){
+                                        haveLoad.all=1;
+                                    }else if(scrollArea == "waitPay"){
+                                        haveLoad.waitPay=1;
+                                    }else if(scrollArea == "waitPost"){
+                                        haveLoad.waitPost=1;           
+                                    }else if(scrollArea == "waitGet"){
+                                        haveLoad.waitGet=1;
+                                    }
                                 }
                             }
                         }
                     }
                 });
             }
+
+        }
 
         });
 
@@ -255,6 +273,7 @@ $(function() {
             n = 1;
             isLoad = 0;
             noDate = 0;
+            loadComplete = true;
             loadList({ "Token": Token, "N": n }, ".all", "all");
         }
 
@@ -272,6 +291,7 @@ $(function() {
             n = 1;
             isLoad = 0;
             noDate = 0;
+            loadComplete = true;
             loadList({ "Token": Token, "N": n, "StatusID": 1 }, ".waitPay", "waitPay");
         }
     });
@@ -287,6 +307,7 @@ $(function() {
             n = 1;
             isLoad = 0;
             noDate = 0;
+            loadComplete = true;
             loadList({ "Token": Token, "N": n, "StatusID": 3 }, ".waitPost", "waitPost");
         }
 
@@ -303,6 +324,7 @@ $(function() {
             n = 1;
             isLoad = 0;
             noDate = 0;
+            loadComplete = true;
             loadList({ "Token": Token, "N": n, "StatusID": 4 }, ".waitGet", "waitGet");
         }
 
@@ -325,7 +347,6 @@ $(function() {
                     var list = Data.Data.Rows;
                     for(var i = 0;i < list.length;i++){
                         var orderID=list[i].OrderID;
-                        console.log(orderID);
                         $.ajax({
                             type:"POST",
                             url:url+"/Product/Prod/QueryDetail",

@@ -46,11 +46,15 @@
 	width: 30%;
 	display: inline-block;
 	height: 30vw;
+	position: relative;
 }
 
 #footprint_footprint .imgContain img{
-	width: 95%;
-	height: 95%;
+	width: 90%;
+	height: 90%;
+	position: absolute;
+	left: 2vw;
+	top:1vw;
 }
 
 #footprint_footprint .contentContain{
@@ -65,6 +69,7 @@
 	position: absolute;
 	top: 4vw;
 	left: 4vw;
+
 }
 
 #footprint_footprint .price{

@@ -9,18 +9,15 @@ $(function() {
     var timeLabel = $page.find('#num_delete'); //倒计时
     var returnBtn = $page.find('.return_button');
     var timer; //定时器
-    var registType = 6; //获取验证码的类型
-    
+    var registType = 8; //获取验证码的类型
+
     //返回按钮
-    returnBtn.on('click', function(){
-        
+    returnBtn.on('click', function() {
         $$.goBack();
         clearInterval(timer);
         $page.find('#wechatLogin_get_verify').css('display', 'block');
         $page.find('#wechatLogin_timeclick').css('display', 'none');
         $page.find('#num_delete').html('59');
-        
-
     });
     //登录按钮
     loginBtn.on('click', function() {
@@ -28,40 +25,31 @@ $(function() {
             layer.msg(msg);
         });
         if (isPhone) {
-            if (registType == 6) {
+            if (registType == 8) {
                 regiestUser(phoneNum.val(), verify.val());
             } else if (registType == 7) {
                 dynamicLogin(phoneNum.val(), verify.val());
-
             }
         }
-
     });
     //动态登录
     function dynamicLogin(phonenumber, verify) {
-
         var params = { Mobile: phonenumber, VC: verify };
         $.post($$.config.serverAddr + 'CSL/Login/LGDynamic', params, function(res) {
             var data = $$.eval(res);
-            // console.log('dynamicLogin'+data);
             if (data.Status == 0) {
                 layer.msg('微信绑定成功');
                 $$.setToken(data.Data.Token);
                 $$.redirect("index/index.html");
             } else if (-3 == data.Status) {
-
                 layer.msg('验证码输入错误,请重新输入');
-
             } else {
                 layer.msg('微信绑定失败');
             }
         });
-
     }
     //注册用户
     function regiestUser(phonenumber, verify) {
-
-        
         var params = {
             Mobile: phonenumber,
             SessionID: 1,
@@ -69,21 +57,24 @@ $(function() {
             RegisterCont: $$.getQueryString('RegisterCont') || 1,
             VC: verify
         };
-
-        $.post($$.config.serverAddr + 'CSL/Login/RegisterMobile', params, function(res) {
-            var data = $$.eval(res);
-            // console.log('regiestUser'+data);
-            if (data.Status == 0) {
-                layer.msg('微信绑定成功');
+        $.get($$.config.serverAddr + 'CSL/Login/RegisterMobile', params, function(res) {
+            if (res.Status == 0 && res.Data) {
+                /*layer.msg('微信绑定成功');
                 $$.setToken(data.Data.Token);
-                $$.redirect("index/index.html");
-            } else if (-3 == data.Status) {
+                $$.redirect("index/index.html");*/
+                $$.get(res.Data, function(res) {
+                    if (res.Status == 0 && res.Data == 'Succ') {
+                        layer.msg('微信绑定成功！');
+                        //$$.redirect("index/index.html");
 
-                layer.msg('验证码输入错误,请重新输入');
-
-
+                    } else {
+                        layer.msg('微信绑定失败，请重试！');
+                    }
+                });
+            } else if (-3 == res.Status) {
+                layer.msg('验证码输入错误，请重新输入');
             } else {
-                layer.msg('微信绑定失败');
+                layer.msg('微信绑定失败，请重试！');
             }
         });
     }
@@ -97,30 +88,23 @@ $(function() {
             layer.msg(msg);
         });
         if (isPhone) {
-
-
-            var param = { Mobile: phoneNum.val()};
+            var param = { Mobile: phoneNum.val() };
             $.post($$.config.serverAddr + 'CSL/Login/HasUserMobile', param, function(res) {
                 var data = $$.eval(res);
                 if (data.Status == 0) {
                     registType = 7;
-                }else{
+                } else {
                     registType = 6;
                 }
                 sendVerify(phoneNum.val());
             });
-
-
         }
-
-
     });
     //发送验证码
     function sendVerify(phonenumber) {
         var params = { Mobile: phonenumber, Type: registType, PType: 0 };
         $.post($$.config.serverAddr + 'Product/Info/SendVerifiedCode', params, function(res) {
             var data = $$.eval(res);
-
             if (data.Status == 0) {
                 layer.msg('验证码已经发送到您的手机');
                 $page.find('#wechatLogin_get_verify').css('display', 'none');
@@ -134,7 +118,6 @@ $(function() {
     //定时器方法
     function timeControl() {
         var time = timeLabel.html();
-
         if (time <= 0) {
             $page.find('#wechatLogin_get_verify').css('display', 'block');
             $page.find('#wechatLogin_timeclick').css('display', 'none');
@@ -147,23 +130,29 @@ $(function() {
         }
     }
     //  监听input
-    $page.on('input propertychange', function() {
-        var num = phoneNum.val();
-        var verf = verify.val();
-
-
-        if (num.length == 11 && verf.length > 3) {
-
+    $page.on('keyup', 'input.wechatLogin_input', function() {
+        loginBtnStatuc();
+    });
+    $page.on('click', 'aside.wechatLogin_aside >p >span', function() {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        } else {
+            $(this).addClass('selected');
+        }
+        loginBtnStatuc();
+    });
+    function loginBtnStatuc() {
+        var num = phoneNum.val(),
+            verf = verify.val(),
+            isCheck = $page.find('aside.wechatLogin_aside >p >span').hasClass('selected');
+        if (num.length == 11 && isCheck && verf.length > 3) {
             loginBtn.attr("disabled", false);
             loginBtn.removeClass('wechatLogin_in_disable');
             loginBtn.addClass('wechatLogin_in_able');
-
         } else {
             loginBtn.attr("disabled", true);
             loginBtn.removeClass('wechatLogin_in_able');
             loginBtn.addClass('wechatLogin_in_disable');
         }
-
-    });
-
+    }
 });

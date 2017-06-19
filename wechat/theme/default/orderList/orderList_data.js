@@ -2,7 +2,7 @@ $(function() {
     var $page = $('#orderList_orderList'),
         pageStr = 'orderList_orderList';
 
-    var contentHeight = $page.height() - $page.find(".nav").height() - $page.find(".header").height();
+    var contentHeight = window.innerHeight || document.body.clientHeight - $page.find(".nav").height() - $page.find(".header").height();
     $page.find(".content").css("height", contentHeight + "px");
     $page.find(".all").css("height", contentHeight + "px");
     $page.find(".waitPay").css("height", contentHeight + "px");

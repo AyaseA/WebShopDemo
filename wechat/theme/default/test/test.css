@@ -6,7 +6,6 @@
 	例：background-image: url(./images/图片名);
 
  */
-#test_test{
-	background-color: gray;
-	height: 500px;
-}
+ #test_test .img{
+ 	width: 50vw;
+ }

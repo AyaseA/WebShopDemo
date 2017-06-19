@@ -2,7 +2,7 @@ $(function() {
     var $page = $('#footprint_footprint'),
         pageStr = 'footprint_footprint';
 
-    var contentHeight = $page.height() - $page.find("header").height();
+    var contentHeight = window.innerHeight || document.body.clientHeight - $page.find("header").height();
     $page.find(".content").css("height", contentHeight + "px");
 
     $$.setGoBack($page.find("header img"));

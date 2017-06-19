@@ -48,7 +48,7 @@
 
 #luckyDraw_luckyDraw .rules{
 	position:absolute;
-	top:160vw;
+	top:150vw;
 	left:13vw;
 	font-size:4vw;
 	width:80vw;
@@ -102,7 +102,7 @@
 	}
 
 #luckyDraw_luckyDraw .form input {
-	width:65vw;
+	width:60vw;
 	height:12vw;
 	margin-bottom:5vw;
 	font-size:4.2vw;
@@ -113,7 +113,7 @@
 }
 
 #luckyDraw_luckyDraw .form button{
-	width:70vw;
+	width:60vw;
 	height:12vw;
 	font-size:4vw;
 	outline:none;
@@ -136,7 +136,7 @@
 #luckyDraw_luckyDraw .cjImg0{
 	position:absolute;
 	top:70vw;
-	left:21vw;
+	left:21.4vw;
 	z-index:130;
 	height:16.9vw;
 }
@@ -165,7 +165,7 @@
 #luckyDraw_luckyDraw .cjImg3{
 	position:absolute;
 	top:88vw;
-	left:21vw;
+	left:21.4vw;
 	z-index:130;
 	height:16.9vw;
 }
@@ -189,7 +189,7 @@
 #luckyDraw_luckyDraw .cjImg6{
 	position:absolute;
 	top:106vw;
-	left:21vw;
+	left:21.4vw;
 	z-index:130;
 	height:16.9vw;
 }

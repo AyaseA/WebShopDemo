@@ -1,7 +1,7 @@
 $(function() {
     var $page=$("#afterService_afterService");
 
-    var contentHeight=$page.height()-$page.find(".header").height()-$page.find(".nav").height();
+    var contentHeight=window.innerHeight || document.body.clientHeight-$page.find(".header").height()-$page.find(".nav").height();
     $page.find(".content").css("height",contentHeight+"px");
     $page.find(".apply").css("height",contentHeight+"px");
     $page.find(".record").css("height",contentHeight+"px");

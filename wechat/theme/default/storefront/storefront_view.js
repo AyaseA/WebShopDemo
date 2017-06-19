@@ -7,7 +7,7 @@ $(function() {
 
     
     //设置内容高度
-    var contentHeight=$page.height()-$page.find("header").height();
+    var contentHeight=window.innerHeight || document.body.clientHeight-$page.find("header").height();
     $page.find(".storefront_detail_active").css("height",contentHeight+"px");
 
     $page.on("click",".storefront_detail",function(){

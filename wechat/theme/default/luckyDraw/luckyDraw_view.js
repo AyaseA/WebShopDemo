@@ -2,10 +2,9 @@ $(function() {
     var $page = $('#luckyDraw_luckyDraw');
     pageStr = 'luckyDraw_luckyDraw';
 
-    var contentHeight= $page.height() - $page.find(".header").height();
+    var contentHeight= window.innerHeight || document.body.clientHeight - $page.find(".header").height();
     console.log($page.height());
     console.log($page.find(".header").height());
-
     $page.find(".content").css("height", contentHeight + "px");
 
     function makeWard() {
@@ -61,12 +60,12 @@ $(function() {
                     for (var i = 0; i < 9; i++) {
                         $page.find(".content").append("<div class='cjImg" + i + " pcjImg'><div>");
                         if (i == 4) {
-                            $page.find(".cjImg" + i).append("<img src='images/lcukyDraw/cqImg.png'>")
+                            $page.find(".cjImg" + i).append("<img src='images/lcukyDraw/cqImg.png'>");
                         } else {
-                            $page.find(".cjImg" + i).append("<img src='images/lcukyDraw/cjImg.png'>")
+                            $page.find(".cjImg" + i).append("<img src='images/lcukyDraw/cjImg.png'>");
                         }
                     }
-                }, 2600);
+                }, 2800);
 
             setTimeout(
                 //点击抽奖图片触发事件
@@ -82,12 +81,10 @@ $(function() {
                                 $(this).css("border", "red 0.5vw solid");
                                 $(this).css("border-radius", "2.5vw");
                                 var imgIndex = $(this)[0].className[5];
-                                console.log(imgIndex);
-                                console.log($(".pcjImg").length);
                                 $page.wardFlag = 1;
                                 setTimeout(function() {
                                     var imgList = ["images/lcukyDraw/one.png", "images/lcukyDraw/two.png", "images/lcukyDraw/three.png", "images/lcukyDraw/four.png", "images/lcukyDraw/five.png", "images/lcukyDraw/six.png", "images/lcukyDraw/wardThank.png"];
-                                    var imgList = randArray(imgList)
+                                    imgList = randArray(imgList);
                                     var j = 0;
                                     for (var i = 0; i < $(".pcjImg").length; i++) {
                                         if (i != 4 && i != imgIndex) {

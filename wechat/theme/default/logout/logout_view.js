@@ -8,7 +8,7 @@
 		$('.logout_wrong').css('display', 'block');
 	});
 	$('.logout_right').on('click', function(){
-		$$.redirect('login/login.html');
+		/*$$.redirect('login/login.html');*/
 		$$.delCookie('__TOKEN__');
 		$('.logout_but_out').css('display', 'none');
 		$('.logout_but_words').css('display', 'none')

@@ -3,6 +3,7 @@
 	var $page = $('#pageHome_pageHome'),
         pageStr = 'pageHome_pageHome';
 
+    
 	// footer 事件
     $page.on('click', 'div.footer li', function() {
         var type = $(this).attr('data-tab');

@@ -40,7 +40,7 @@ $(function() {
 	$page.on('click', '>div.footer >a.collect', function() {
 		var $this = $(this),
 			pid = $this.attr('data-id');
-		if ($$.getToken()) {
+		if ($$.getToken(null)) {
 		    if ($this.hasClass('collected')) {
 		        cancelWish(pid, $this);
 		    } else {
@@ -64,10 +64,12 @@ $(function() {
 	}
 	// 添加收藏
 	function addWish(pid, item) {
+		var token = $$.getToken(null);
 		$$.post(
 			'CSL/Wish/AddWishList',
 			{
-				ProductID: pid
+				ProductID: pid,
+				Token: token
 			},
 			function(res) {
 				if (res.Status == 0 && res.Data == 'Succ') {
@@ -81,10 +83,12 @@ $(function() {
 	}
 	// 取消收藏
 	function cancelWish(pid, item) {
+		var token = $$.getToken(null);
 		$$.post(
 			'CSL/Wish/DelWishList',
 			{
-				ProductID: pid
+				ProductID: pid,
+				Token: token
 			},
 			function(res) {
 				if (res.Status == 0 && res.Data == 'Succ') {

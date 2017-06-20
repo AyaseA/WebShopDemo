@@ -61,9 +61,10 @@ $(function() {
     	$carDetail.find('input[name="plateNumber"]').val(car.PlatePro + car.PlateCity + car.PlateNum);
     	$carDetail.find('input[name="frameNumber"]').val(car.VINNO || '');
         $carDetail.find('input[name="engineNumber"]').val(car.EngineNO || '');
-        $carDetail.find('div.setDefault').addClass(
-        	car.ID == $$.getCookie('__DFTCAR__') ? 'default' : ''
-        );
+        $carDetail.find('div.setDefault').addClass(function() {
+            var dftCar = $$.getUserInfo() ? $$.getUserInfo().UserCarID : '';
+            return car.ID == dftCar ? 'default' : '';
+        });
     }
     // 重置车辆信息
     function resetCarInfo() {

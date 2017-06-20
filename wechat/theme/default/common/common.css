@@ -116,3 +116,62 @@ body >div.common-none {
 #global_menu li.hide {
     display: none;
 }
+/* layer 相关 */
+#authConfirm_authConfirm {
+    padding: 0;
+}
+#authConfirm_authConfirm >div >h2 {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #DCDADD;
+}
+#authConfirm_authConfirm >div >div {
+    padding: 0 20px 10px;
+    border-bottom: 1px solid #DCDADD;
+}
+#authConfirm_authConfirm >div >div:before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #EA5514;
+    border-radius: 30px;
+    background: url(../images/icon.png) no-repeat;
+    background-size: 70%;
+    background-position: center;
+    margin: 15px auto;
+}
+#authConfirm_authConfirm >div >div >p {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DCDADD;
+}
+#authConfirm_authConfirm >div >div >ul {
+    margin-top: 10px;
+}
+#authConfirm_authConfirm >div >div >ul >li {
+    color: #888888;
+}
+#authConfirm_authConfirm >div >div >ul >li:before {
+    content: '·';
+    font-weight: bolder;
+    padding: 0 7px 0 3px;
+}
+#authConfirm_authConfirm >div >button {
+    border: none;
+    outline: none;
+    background: none;
+    width: 50%;
+    padding: 0;
+    display: inline-block;
+    height: 44px;
+    font-size: 16px;
+    line-height: 44px;
+    float: left;
+}
+#authConfirm_authConfirm >div >button:last-child {
+    border-left: 1px solid #DCDADD;
+    color: #2FB823;
+}

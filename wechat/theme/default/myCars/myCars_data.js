@@ -20,7 +20,7 @@ $(function() {
 	                carsBox.html(template(pageStr + '_list', {
                         list: res.Data.Rows,
                         serverAddr: $$.config.serverAddr,
-                        defaultCar: $$.getCookie('__DFTCAR__')
+                        defaultCar: $$.getUserInfo() ? $$.getUserInfo().UserCarID : ''
                     }));
 	            }
         	}

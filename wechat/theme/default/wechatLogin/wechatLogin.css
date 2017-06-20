@@ -39,7 +39,7 @@
 	width: 4vw;
 	background: url(../images/common/uncheck.png) no-repeat;
 	background-size: cover;
-    margin-top: 2px;
+    margin-top: 3px;
     margin-right: 5px;
 }
 #wechatLogin_wechatLogin .wechatLogin_aside >p >span.selected:before {
@@ -145,4 +145,55 @@
 	position: absolute;
 	left: 82.67vw;
 	top: 4.3vw;
+}
+#wechatLogin_wechatLogin .clause {
+	height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    display: none;
+    background-color: #EFEFF4;
+}
+#wechatLogin_wechatLogin >div.clause >div.title {
+	height: 44px;
+	background-color: #fff;
+	border-bottom: 1px solid #F6F6F7;
+	position: absolute;
+	width: 100%;
+	top: 0;
+    z-index: 12;
+}
+#wechatLogin_wechatLogin >div.clause >div.title >a.closeModal {
+	display: block;
+	float: left;
+	height: 44px;
+	width: 44px;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#wechatLogin_wechatLogin >div.clause >div.title >span {
+	margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 45px;
+    width: 60%;
+}
+#wechatLogin_wechatLogin >div.clause >div.content {
+	position: absolute;
+	top: 45px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#wechatLogin_wechatLogin >div.clause >div.content >pre {
+	padding: 10px 15px;
+	margin: 0;
+    white-space: pre-wrap;
 }

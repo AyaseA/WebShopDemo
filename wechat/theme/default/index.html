@@ -27,9 +27,23 @@
             <li data-type="refresh">刷新</li>
             <li data-type="icenter" style="line-height: 16px;">个人中心</li>
             <li data-type="index">首页</li>
+            <li data-type="test" data-url="test/test.html">test</li>
+            <li data-type="clearToken">删除Token</li>
         </ul>
     </div>
-    <a href="javascript:$$.redirect('test/test.html')" style="z-index: 998;position: fixed;bottom: 50px;right: 50px;display: block;width: 50px;height: 50px;background-color: red">test</a>
+    <script id="authConfirm_authConfirm_cnt" type="text/html">
+        <div>
+            <h2>帐号绑定</h2>
+            <div>
+                <p>车势力申请获取以下权限：</p>
+                <ul>
+                    <li>获得您的手机号并与微信帐号绑定</li>
+                </ul>
+            </div>
+            <button class="refuse">拒绝</button>
+            <button class="allow">允许</button>
+        </div>
+    </script>
     <!-- jQuery -->
     <script src="../../plug/jquery-3.2.1.min.js" type="text/JavaScript"></script>
     <!-- Base64 encode/decode -->

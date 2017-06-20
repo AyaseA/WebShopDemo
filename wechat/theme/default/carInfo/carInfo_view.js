@@ -63,7 +63,7 @@ $(function() {
         }
         saveCar(function(cid, cname, isdft) {
             if (isdft == 1) {
-                $$.setCookie('__DFTCAR__', cid);
+                $$.setUserInfo('UserCarID', cid);
             }
             $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname, {
                 backUrl: 'myCars/myCars.html'

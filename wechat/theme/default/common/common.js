@@ -16,10 +16,11 @@
             // 隐藏悬浮菜单
             hideGlobalMenu: function() {
                 showHideGlobalMenu(true);
-            },
-            // 微信签名
-            weChatSign: {}
+            }
         },
+        // 微信签名
+        weChatSign: {},
+        // 存放浏览记录
         stack: [],
         // 时间转10位时间戳
         get10Time: function(time) {
@@ -54,6 +55,51 @@
             if (cval != null) {
                 document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
             }
+        },
+        // 获取随即字符串
+        getRandomCode: function(length) {
+            var str = '0123456789abcdefghijklmnopqrstuvwxyzBCDEFGHIJKLMNOPQRSTUVWXYZ',
+                strLength = str.length,
+                strArr = str.split(''),
+                randomCode = '';
+            length = length || 32;
+            for (var i = 0; i < length; i++) {
+                randomCode += strArr[Math.floor(Math.random() * strLength)];
+            }
+            return randomCode;
+        },
+        // 图片为空替换默认
+        imgFilter: function(img) {
+            if (img) {
+                return img;
+            } else {
+                return 'NoImg/' + Math.random() + '.jpg';
+            }
+        },
+        // 返回微信签名，参数为true，强制重新获取
+        getWeChatSign: function(reGet) {
+            if ($.isEmptyObject($$.weChatSign) || (reGet || false)) {
+                $.ajax({
+                    url: $$.config.serverAddr +
+                         'Product/WeChat/GetSign?url=' +
+                         escape(location.href),
+                    type: 'GET',
+                    async: false, // 同步
+                    dataType: 'json',
+                    success: function(res) {
+                        if (res) {
+                            $$.weChatSign = res;
+                        }
+                    }
+                });
+            }
+            return $$.weChatSign;
+        },
+        // 加载js
+        loadJavascript: function(url, done, fail) {
+            $.getScript(url)
+                .done(done)
+                .fail(fail);
         },
         // 页面跳转 核心方法
         redirect: function(url, option) {
@@ -208,28 +254,8 @@
             }
             return s;
         },
-        // 加载js
-        loadJavascript: function(url, done, fail) {
-            $.getScript(url)
-                .done(done)
-                .fail(fail);
-        },
-        //重置表单隐藏input会被清空
-        resetForm: function(formId) {
-            //TODO
-            if ($("#" + formId)[0]) {
-                $("#" + formId)[0].reset();
-            }
-            //清空隐藏input值
-            $("#" + formId + " input[type='hidden'][notNull!='notNull']").val("");
-            $$.clearFormValid(formId);
-        },
-        // 清除表单的校验样式
-        clearFormValid: function(formId) {
-            //TODO
-        },
         // ajax get
-        get: function(url, succfunc, errfunc) {
+        get: function(url, succfunc, errfunc, isSync) {
             var urlToken = $$.getQueryString('Token', url),
                 token = $$.getCookie('__TOKEN__');
             if (!urlToken && token) {
@@ -246,6 +272,7 @@
                 url: url,
                 type: 'GET',
                 dataType: 'json',
+                async: isSync ? false : true,
                 success: function(data) {
                     if (succfunc) {
                         succfunc($$.eval(data));
@@ -259,19 +286,23 @@
             });
         },
         // ajax post
-        post: function(url, data, succfunc, errfunc) {
+        post: function(url, data, succfunc, errfunc, isSync) {
             // 获取Token
             var token = $$.getToken();
             if (!url.startsWith($$.config.serverAddr)) {
                 url = $$.config.serverAddr + url;
             }
+            if (!data.Token) {
+                $.extend(data, {
+                    Token: token
+                });
+            }
             $.ajax({
                 url: url,
-                data: $.extend(data, {
-                    Token: token
-                }),
+                data: data,
                 type: 'POST',
                 dataType: 'json',
+                async: isSync ? false : true,
                 success: function(data) {
                     if (succfunc) {
                         succfunc($$.eval(data));
@@ -287,66 +318,67 @@
         // 设置Token到cookies
         setToken: function(token) {
             $$.setCookie('__TOKEN__', token);
-            $$.setCookie('__DFTCAR__', analyzeToken(token).UserCarID);
+            // 获取个人信息
+            $.ajax({
+                url: $$.config.serverAddr + 'CSL/User/GetInfoByToken',
+                type: 'POST',
+                data: {
+                    Token: token
+                },
+                dataType: 'json',
+                success: function(res) {
+                    if (res.Status == 0 && res.Data.Info) {
+                        $$.setCookie('__UINFO__', res.Data.Info);
+                    }
+                }
+            });
         },
-        // 获取token
-        getToken: function() {
+        // 获取token 
+        // callback不传，返回之前页面
+        // callback为function，执行function
+        // callback为null，隐藏弹框
+        getToken: function(callback) {
             // 判断cookies
             var token = $$.getCookie('__TOKEN__');
-            if (!token) {
-                //if (!$('#login_login').is(':visible')) {
-                // 没有登录并且没有显示登录界面跳转到登录页面
-                $$.redirect('login/login.html', {
-                    trans: 'none'
-                });
-                //}
+            if (token) {
+                return token;
             } else {
-                var isLogin = false;
-                $.ajax({
-                    url: $$.config.serverAddr + 'CSL/User/TestToken',
-                    type: 'POST',
-                    data: {
-                        Token: token
-                    },
-                    async: false,
-                    dataType: 'json',
-                    success: function(res) {
-                        if (res.Status == -1 && res.Data == 'Not login!') {
-                            isLogin = false;
-                        } else {
-                            isLogin = true;
-                        }
+                authConfirm(function() {
+                    if (typeof callback === 'undefined') {
+                        $$.goBack();
+                    } else if (typeof callback === 'function') {
+                        callback();
                     }
                 });
-                if (isLogin) {
-                    return token;
-                } else {
-                    $$.redirect('login/login.html', {
-                        trans: 'none'
-                    });
-                }
             }
         },
         // 获取用户信息（默认车辆、默认收货地址。。。。）
         getUserInfo: function() {
-            var token = $$.getToken();
-            if (!token) {
+            var uInfoStr = $$.getCookie('__UINFO__');
+            if (!uInfoStr) {
                 return false;
             }
-            return analyzeToken(token);
+            return analyzeToken(uInfoStr);
+        },
+        // 设置个人信息
+        setUserInfo: function(name, value) {
+            var uInfo = $$.getUserInfo();
+            if (uInfo) {
+                uInfo[name] = value;
+                $$.setCookie('__UINFO__', escape(Base64.encode(JSON.stringify(uInfo))));
+            }
         },
         // 获取用户id
         getUserId: function() {
-            return $$.getUserInfo().UserID;
+            if ($$.getUserInfo()) {
+                return $$.getUserInfo().UserID;
+            }
         },
         // 获取用户手机号
         getUserMobile: function() {
-            return $$.getUserInfo().Mobile;
-        },
-        // 后台请求是否登录
-        isLogin: function() {
-            // TODO
-            //getToken();
+            if ($$.getUserInfo()) {
+                return $$.getUserInfo().Mobile;
+            }
         },
         // 在当前请求的url后拼接返回的参数
         // 例：$$.redirect('test/test.html?a=1&' + $$.goBackUrl());
@@ -391,65 +423,84 @@
                 });
             }
         },
-        reloadData: function() {
-
-        },
-        // 图片为空替换默认
-        imgFilter: function(img) {
-            if (img) {
-                return img;
+        // 用户是否授权并登陆
+        isAuthAndLogin: function(callback) {
+            var token = $$.getCookie('__TOKEN__');
+            if (token) {
+                return true;
             } else {
-                return 'NoImg/' + Math.random() + '.jpg';
-            }
-        },
-        // 返回微信签名，参数为true，强制重新获取
-        getWeChatSign: function(reGet) {
-            if ($.isEmptyObject($$.config.weChatSign) || (reGet || false)) {
-                $.ajax({
-                    url: $$.config.serverAddr +
-                         'Product/WeChat/GetSign?url=' +
-                         escape(location.href),
-                    type: 'GET',
-                    async: false, // 同步
-                    dataType: 'json',
-                    success: function(res) {
-                        if (res) {
-                            $$.config.weChatSign = res;
-                        }
+                authConfirm(function() {
+                    if (typeof callback === 'undefined') {
+                        $$.goBack();
+                    } else if (typeof callback === 'function') {
+                        callback();
                     }
                 });
+                return false;
             }
-            return $$.config.weChatSign;
         }
     });
-    // 解析Token
-    function analyzeToken(token) {
-        var uInfo = Base64.decode(unescape(token)),
-            uObj = JSON.parse(uInfo);
-        return uObj;
-    }
-    // 加载js
-    function loadJs(file, id) {
-        $('#' + id).remove();
-        $("<scri" + "pt>" + "</scr" + "ipt>").attr({ src: file + '?v=' + Math.random(), type: 'text/javascript', id: id }).appendTo('body');
-    }
-    // 加载css
-    function loadCss(file, id) {
-        $('#' + id).remove();
-        $("<link />").attr({ href: file + '?v=' + Math.random(), type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
-    }
     // 处理刷新后显示当前页面
-    var rdtUrl = $$.getQueryString('__RDTURL__', location.search);
+    var rdtUrl = $$.getQueryString('R', unescape(location.search));
     if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
-        $$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 10 / 60 / 60 / 24);
+        //$$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 10 / 60 / 60 / 24);
         // 跳到指定页面
         $$.redirect(rdtUrl);
-    } else if ($$.getUrl()) {
+    }/* else if ($$.getUrl()) {
+        alert($$.getUrl());
         $$.redirect($$.getUrl());
-    } else {
+    }*/ else {
         // 默认加载首页
         $$.redirect('index/index.html');
     }
+    // 是否授权
+    !(function() {
+        /*********** 相关方法定义 ************/
+        // 解析url参数
+        var paramHandle = function(url) {
+            // 获取当前url
+            var currentUrl = url;
+            if (url.indexOf('?R=') != -1) {
+                url = unescape(url.split('?')[1]);
+            }
+            var code = $$.getQueryString('code', url),
+                str = $$.getQueryString('str', url);
+
+            // url替换处理
+            urlHandle(currentUrl);
+            if (code == '0') {
+                // 保存token
+                if (str.length == 32) {
+                    $$.setToken(str);
+                }
+            } else if (code == '1') {
+                // 未授权
+            } else {
+                // 其他状态都视为网络的锅
+            }
+        };
+        // url替换处理
+        var urlHandle = function(url) {
+            if (wechatInfo[1] < '6.2') {
+                // 微信6.2以下版本相应处理
+                location.href =  url.split('?')[0];
+            } else {
+                // 微信6.2及以上版本相应处理
+                history.pushState({}, '', url.split('?')[0]);
+            }
+        };
+
+        /********* 开始处理 *********/
+        // 请求后台获取webtoken
+        var wechatInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i);
+        if (wechatInfo) {
+            // 解析url参数
+            paramHandle(location.href);
+        } else {
+            $$.delCookie('__TOKEN__');
+            $$.delCookie('__UINFO__');
+        }
+    }());
     // 使a标签默认的调转事件转为$$.redirect
     $('#div_list').on('click', 'a', function(e) {
         var url = $(this).attr('href');
@@ -460,46 +511,6 @@
             });
         }
     });
-    /* artTemplate 相关过滤器 start */
-    // 图片为空替换默认
-    template.defaults.imports.imgFilter = function(img) {
-        if (img) {
-            return img;
-        } else {
-            return 'NoImg/' + Math.random() + '.jpg';
-        }
-    };
-    // 10位时间戳转时间yyyy-MM-dd hh:mm:ss
-    template.defaults.imports.timeFilter = function(time) {
-        return new Date(time * 1000).pattern('yyyy-MM-dd hh:mm:ss');
-    };
-    // 字符串截取为数组
-    template.defaults.imports.splitFilter = function(str, sign) {
-        if (str) {
-            return str.split(sign || ',');
-        } else {
-            return [];
-        }
-    };
-    // json parse
-    template.defaults.imports.jsonParseFilter = function(str) {
-        if (str) {
-            return JSON.parse(str);
-        }
-    };
-    // string to int
-    template.defaults.imports.intFilter = function(str) {
-        if (str) {
-            return parseInt(str) || 0;
-        }
-    };
-    // string to float
-    template.defaults.imports.floatFilter = function(str) {
-        if (str) {
-            return (parseFloat(str) || 0).toFixed(2);
-        }
-    };
-    /* artTemplate 相关过滤器 end */
     // ajax 全局设置，增加加载动画
     $(document).ajaxStart(function() {
         //layer.closeAll('loading');
@@ -570,6 +581,15 @@
                         });
                     }
                 } break;
+                // 测试用
+                case 'test': {
+                    $$.redirect($(this).attr('data-url'));
+                } break;
+                // 测试用
+                case 'clearToken': {
+                    $$.delCookie('__TOKEN__');
+                    $$.delCookie('__UINFO__');
+                } break;
             }
         });
         // 展开收起菜单
@@ -612,6 +632,57 @@
             });
         }
     }(win, $, undefined));
+    /* 全局菜单相关 end */
+
+    /** 定义相关方法 start **/
+    // 获取授权提示
+    function authConfirm(refuseCalbck, allowCalBck) {
+        layer.open({
+            area: '80%',
+            shade: 0.3,
+            title: false, //不显示标题栏
+            closeBtn: false,
+            btn: [],
+            id: 'authConfirm_authConfirm',
+            content: template('authConfirm_authConfirm_cnt', {}),
+            success: function(modal) {
+                modal.css({
+                    'border-radius': '8px'
+                });
+                modal.find('.layui-layer-btn').remove();
+                modal.find('button.refuse').off('click').on('click', function() {
+                    if (refuseCalbck) {
+                        refuseCalbck();
+                    }
+                    layer.closeAll();
+                });
+                modal.find('button.allow').off('click').on('click', function() {
+                    if (allowCalBck) {
+                        allowCalBck();
+                    } else {
+                        $$.redirect('wechatLogin/wechatLogin.html');
+                    }
+                    layer.closeAll();
+                });
+            }
+        });
+    }
+    // 解析Token
+    function analyzeToken(token) {
+        var uInfo = Base64.decode(unescape(token)),
+            uObj = JSON.parse(uInfo);
+        return uObj;
+    }
+    // 加载js
+    function loadJs(file, id) {
+        $('#' + id).remove();
+        $("<scri" + "pt>" + "</scr" + "ipt>").attr({ src: file + '?v=' + Math.random(), type: 'text/javascript', id: id }).appendTo('body');
+    }
+    // 加载css
+    function loadCss(file, id) {
+        $('#' + id).remove();
+        $("<link />").attr({ href: file + '?v=' + Math.random(), type: 'text/css', rel: "stylesheet", id: id }).appendTo('head');
+    }
     // 设置全局菜单的按钮显示与隐藏
     function setGlobalMenu() {
         var $menu = $('#global_menu'),
@@ -643,7 +714,47 @@
             $('#global_menu').show();
         }
     }
-    /* 全局菜单相关 end */
+    /** 定义相关方法 end **/
+    /* artTemplate 相关过滤器 end */
+    // 图片为空替换默认
+    template.defaults.imports.imgFilter = function(img) {
+        if (img) {
+            return img;
+        } else {
+            return 'NoImg/' + Math.random() + '.jpg';
+        }
+    };
+    // 10位时间戳转时间yyyy-MM-dd hh:mm:ss
+    template.defaults.imports.timeFilter = function(time) {
+        return new Date(time * 1000).pattern('yyyy-MM-dd hh:mm:ss');
+    };
+    // 字符串截取为数组
+    template.defaults.imports.splitFilter = function(str, sign) {
+        if (str) {
+            return str.split(sign || ',');
+        } else {
+            return [];
+        }
+    };
+    // json parse
+    template.defaults.imports.jsonParseFilter = function(str) {
+        if (str) {
+            return JSON.parse(str);
+        }
+    };
+    // string to int
+    template.defaults.imports.intFilter = function(str) {
+        if (str) {
+            return parseInt(str) || 0;
+        }
+    };
+    // string to float
+    template.defaults.imports.floatFilter = function(str) {
+        if (str) {
+            return (parseFloat(str) || 0).toFixed(2);
+        }
+    };
+    /* artTemplate 相关过滤器 start */
     win.$$ = $$;
 }(window, jQuery));
 /** ************************************************常用工具**************************************** */

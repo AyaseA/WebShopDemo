@@ -61,7 +61,7 @@ $(function() {
                 if (res.Status != 0 && res.Data == 'Succ') {
                     return false;
                 }
-                $$.setCookie('__DFTCAR__', cid);
+                $$.setUserInfo('UserCarID', cid);
                 if (calback) {
                     calback();
                 }
@@ -99,7 +99,7 @@ $(function() {
                     carsBox.html(template(pageStr + '_list', {
                         list: res.Data.Rows,
                         serverAddr: $$.config.serverAddr,
-                        defaultCar: $$.getCookie('__DFTCAR__')
+                        defaultCar: $$.getUserInfo() ? $$.getUserInfo().UserCarID : ''
                     }));
                 }
             }

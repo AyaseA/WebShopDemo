@@ -1,6 +1,8 @@
 $(function() {
-    var $page = $('#wechatLogin_wechatLogin'),
-        pageStr = 'wechatLogin_wechatLogin';
+    var bodyHeight = window.innerHeight || document.body.clientHeight,
+        $page = $('#wechatLogin_wechatLogin'),
+        pageStr = 'wechatLogin_wechatLogin',
+        titleHeight = $page.find('>div.clause >div.title').height();
 
     var phoneNum = $page.find('#wechatLogin_phone_num'); //手机号
     var verify = $page.find('#wechatLogin_verify'); //验证码
@@ -10,7 +12,18 @@ $(function() {
     var returnBtn = $page.find('.return_button');
     var timer; //定时器
     var registType = 8; //获取验证码的类型
-
+    // 设置高度
+    $page.find('>div.clause >div.content').height(bodyHeight - titleHeight - 1);
+    $page.on('click', '>div.clause a.closeModal', function() {
+        $page.find('>div.clause').animate({
+            'top': bodyHeight
+        }, 200).fadeOut(200);
+    });
+    $page.on('click', '>aside.wechatLogin_aside a.showClause', function() {
+        $page.find('>div.clause').show().animate({
+            'top': 0
+        }, 200);
+    });
     //返回按钮
     returnBtn.on('click', function() {
         $$.goBack();
@@ -25,58 +38,33 @@ $(function() {
             layer.msg(msg);
         });
         if (isPhone) {
-            if (registType == 8) {
-                regiestUser(phoneNum.val(), verify.val());
-            } else if (registType == 7) {
-                dynamicLogin(phoneNum.val(), verify.val());
-            }
+            regiestUser(phoneNum.val(), verify.val());
         }
     });
-    //动态登录
-    function dynamicLogin(phonenumber, verify) {
-        var params = { Mobile: phonenumber, VC: verify };
-        $.post($$.config.serverAddr + 'CSL/Login/LGDynamic', params, function(res) {
-            var data = $$.eval(res);
-            if (data.Status == 0) {
-                layer.msg('微信绑定成功');
-                $$.setToken(data.Data.Token);
-                $$.redirect("index/index.html");
-            } else if (-3 == data.Status) {
-                layer.msg('验证码输入错误,请重新输入');
-            } else {
-                layer.msg('微信绑定失败');
-            }
-        });
-    }
     //注册用户
     function regiestUser(phonenumber, verify) {
-        var params = {
-            Mobile: phonenumber,
-            SessionID: 1,
-            RegisterFrom: $$.getQueryString('RegisterFrom') || 1,
-            RegisterCont: $$.getQueryString('RegisterCont') || 1,
-            VC: verify
-        };
-        $.get($$.config.serverAddr + 'CSL/Login/RegisterMobile', params, function(res) {
-            if (res.Status == 0 && res.Data) {
-                /*layer.msg('微信绑定成功');
-                $$.setToken(data.Data.Token);
-                $$.redirect("index/index.html");*/
-                $$.get(res.Data, function(res) {
-                    if (res.Status == 0 && res.Data == 'Succ') {
-                        layer.msg('微信绑定成功！');
-                        //$$.redirect("index/index.html");
-
-                    } else {
-                        layer.msg('微信绑定失败，请重试！');
-                    }
-                });
-            } else if (-3 == res.Status) {
-                layer.msg('验证码输入错误，请重新输入');
-            } else {
-                layer.msg('微信绑定失败，请重试！');
+        var RegisterFrom = $$.getQueryString('RegisterFrom') || 1,
+            RegisterCont = $$.getQueryString('RegisterCont') || 1,
+            goBackUrl = 'index/index.html';
+        if ($$.stack.length > 0) {
+            goBackUrl = $$.stack.pop();
+        }
+        $$.get('Product/WeChat/GetAuthUrl?Mobile=' + phonenumber +
+              '&VC=' + verify +
+              '&RegisterFrom=' + RegisterFrom +
+              '&RegisterCont=' + RegisterCont +
+              '&Url=' + goBackUrl,
+            function(res) {
+                if (res.Status == 0 && res.Data) {
+                    //console.log(unescape(res.Data));
+                    location.href = res.Data;
+                } else if (-3 == res.Status) {
+                    layer.msg('验证码输入错误，请重新输入');
+                } else {
+                    layer.msg('微信绑定失败，请重试！');
+                }
             }
-        });
+        );
     }
     //获取验证码
     verifyBtn.on('click', function() {
@@ -88,16 +76,7 @@ $(function() {
             layer.msg(msg);
         });
         if (isPhone) {
-            var param = { Mobile: phoneNum.val() };
-            $.post($$.config.serverAddr + 'CSL/Login/HasUserMobile', param, function(res) {
-                var data = $$.eval(res);
-                if (data.Status == 0) {
-                    registType = 7;
-                } else {
-                    registType = 6;
-                }
-                sendVerify(phoneNum.val());
-            });
+            sendVerify(phoneNum.val());
         }
     });
     //发送验证码

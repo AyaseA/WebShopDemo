@@ -24,7 +24,7 @@
 		$('.logout_wrong').css('display', 'none');		
 	});
 	$('.redit_password').on('click', function(){
-		$$.redirect('reditpassword/reditpassword.html');
+		/*$$.redirect('reditpassword/reditpassword.html');*/
 	});
 	$('.logout_back').on('click', function(){
 		$$.redirect('pageHome/pageHome.html', {

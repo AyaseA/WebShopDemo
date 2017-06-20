@@ -3,7 +3,7 @@ $(function() {
     	$page = $('#wechatLogin_wechatLogin'),
     	pageStr = 'wechatLogin_wechatLogin',
         url = location.href;
-    // 设置禁用
+    // 设置禁用悬浮菜单
     $$.config.hideGlobalMenu();
     $page.find('>div.clause').css({
         'top': bodyHeight,

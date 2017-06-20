@@ -17,6 +17,7 @@
 	});
 	$('.logout_wrong').on('click', function(){
 		/*$$.delCookie('__TOKEN__');*/
+		alert(1);
 		$('.logout_but_words').css('display', 'none')
 		$('.logout_prot_tips').css('display', 'none');
 		$('.logout_right').css('display', 'none');

@@ -8,8 +8,7 @@
 		$('.logout_wrong').css('display', 'block');
 	});
 	$('.logout_right').on('click', function(){
-		/*$$.redirect('login/login.html');*/
-		$$.delCookie('__TOKEN__');
+		$$.refresh('logout/logout.html',0);
 		$('.logout_but_out').css('display', 'none');
 		$('.logout_but_words').css('display', 'none')
 		$('.logout_prot_tips').css('display', 'none');
@@ -17,11 +16,15 @@
 		$('.logout_wrong').css('display', 'none');		
 	});
 	$('.logout_wrong').on('click', function(){
-		$('.logout_but_out').css('display', 'none');
+		/*$$.delCookie('__TOKEN__');*/
 		$('.logout_but_words').css('display', 'none')
 		$('.logout_prot_tips').css('display', 'none');
 		$('.logout_right').css('display', 'none');
-		$('.logout_wrong').css('display', 'none');		
+		$('.logout_wrong').css('display', 'none');	
+		$('.logout_but_out').css('display', 'none');
+		$$.delCookie('__TOKEN__');
+        $$.delCookie('__UINFO__');
+        $$.refresh('removeBlinging/removeBlinging.html',1);	
 	});
 	$('.redit_password').on('click', function(){
 		/*$$.redirect('reditpassword/reditpassword.html');*/

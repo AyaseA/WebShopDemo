@@ -14,6 +14,7 @@
 	position: fixed;
 	left: 0px;
 	top: 0px;
+	z-index: 10;
 }
 #pageHome_pageHome .head_user{
 	width: 100%;

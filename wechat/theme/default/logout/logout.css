@@ -28,7 +28,7 @@
 }
 #logout_logout .photo_updata{
 	margin-top: 5.33vw;
-	margin-bottom: 5.33vw;
+	margin-bottom: 3.33vw;
 	width: 100%;
 	height: 16vw;
 	background-color: #fff;
@@ -83,7 +83,7 @@
 	border: none;
 	outline: none;
 	position: absolute;
-	bottom: 20%;	
+	top: 50%;	
 	left: 5%;
 }
 #logout_logout .logout_but_out{
@@ -126,6 +126,7 @@
 	text-align: center;
 	color: #616266;
 	overflow: hidden;
+	font-size: 4.27vw;
 }
 #logout_logout .logout_wrong{
 	display: block;
@@ -134,5 +135,6 @@
 	line-height: 12vw;
 	text-align: center;
 	border-left: 1px solid #eee;
-	color: #616266;
+	color: #DB6335;
+	font-size: 4.27vw;
 }

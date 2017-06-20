@@ -1,0 +1,57 @@
+
+#removeBlinging_removeBlinging {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #F0EFF5;
+}
+#removeBlinging_removeBlinging header{
+	width: 100%;
+	height: 12vw;
+	background-color: #fff;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+}
+#removeBlinging_removeBlinging header img{
+	width: 6.93vw;
+	height: 6.93vw;
+	display: inline-block;
+	margin: 2vw 0px 0px 5.33vw;
+}
+#removeBlinging_removeBlinging header span{
+	display: inline-block;
+	font-size: 5.87vw;
+	font-family: "黑体";
+	color: #4E4D53;
+	vertical-align: top;
+    margin: 3.06vw 0px 0px 18vw;
+}
+#removeBlinging_removeBlinging aside {
+	width: 100%;
+	height: 100%;
+	background: url(../images/center/remove_bling.png) no-repeat center 20vw;
+	background-size: 40%;
+	text-align: center;
+}
+#removeBlinging_removeBlinging aside span{
+	display: inline-block;
+	margin-top: 70vw;
+	color: #8B8B8D;
+	font-size: 3.6vw;
+}
+#removeBlinging_removeBlinging aside div{
+	display: inline-block;
+	width: 22vw;
+	line-height: 8vw;
+	border: 1px solid #EC5311;
+	border-radius: 20px;
+	color: #EC5311;
+}
+#removeBlinging_removeBlinging .reBl_goto_bling{
+	background-color: #EC5311;
+	color: #fff;
+	margin-left: 3vw;
+	margin-top: 2vw;
+}

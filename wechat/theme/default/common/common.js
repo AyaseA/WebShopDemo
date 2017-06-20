@@ -101,14 +101,15 @@
                 .done(done)
                 .fail(fail);
         },
+        // 后台溜一圈
         refresh: function(url, status) {
             if (url) {
                 url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-                        'appid=wx2c53034422e377cc&redirect_uri=' +
-                       'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
-                       escape(escape(url)) +
-                       '&response_type=code&scope=snsapi_base&state=' + status +
-                       '#wechat_redirect';
+                      'appid=wx2c53034422e377cc&redirect_uri=' +
+                      'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
+                      escape(escape(url)) +
+                      '&response_type=code&scope=snsapi_base&state=' + status +
+                      '#wechat_redirect';
                 location.href = url;
             }
         },
@@ -298,6 +299,9 @@
         },
         // ajax post
         post: function(url, data, succfunc, errfunc, isSync) {
+            if (!$$.isLogin(true, null)) {
+                return false;
+            }
             // 获取Token
             var token = $$.getToken();
             if (!url.startsWith($$.config.serverAddr)) {
@@ -350,7 +354,7 @@
         // showConfirm传，callback为function，执行function
         // showConfirm传，callback为null，隐藏弹框
         getToken: function(showConfirm, callback) {
-            // 判断cookies
+            // 判断cookies 
             var token = $$.getCookie('__TOKEN__');
             if (token) {
                 return token;
@@ -362,9 +366,28 @@
                         callback();
                     }
                 });
-            } else {
-                return '';
             }
+            return false;
+        },
+        // 用户是否登录
+        // showConfirm不传，不弹是否授权框，callback也不传值
+        // showConfirm传，callback不传，返回之前页面
+        // showConfirm传，callback为function，执行function
+        // showConfirm传，callback为null，隐藏弹框
+        isLogin: function(showConfirm, callback) {
+            var token = $$.getCookie('__TOKEN__');
+            if (token) {
+                return true;
+            } else if (showConfirm) {
+                authConfirm(function() {
+                    if (typeof callback === 'undefined') {
+                        $$.goBack();
+                    } else if (typeof callback === 'function') {
+                        callback();
+                    }
+                });
+            }
+            return false;
         },
         // 获取用户信息（默认车辆、默认收货地址。。。。）
         getUserInfo: function() {
@@ -440,6 +463,8 @@
     });
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('R', location.search);
+                $$.delCookie('__TOKEN__');
+            $$.delCookie('__UINFO__');
     if (rdtUrl) {
         // 跳到指定页面
         $$.redirect(unescape(rdtUrl));

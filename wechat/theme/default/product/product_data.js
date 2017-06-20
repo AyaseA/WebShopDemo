@@ -138,13 +138,10 @@ $(function() {
     }
     // 获取收藏列表存入cookie
     function getWishList() {
-        if ($$.getCookie('__TOKEN__')) {
-            var token = $$.getToken(null);
+        if ($$.isLogin()) {
             $$.post(
                 'CSL/Wish/QueryFootList',
-                {
-                    Token: token
-                },
+                {},
                 function(res) {
                     if (res.Status != 0) {
                         return false;

@@ -14,7 +14,7 @@ $(function() {
             $page.find(".content").empty();
             txt = $$.eval(txt);
             if (txt.Status != 0) {
-                alert("借口错误");
+                alert("接口错误");
             } else {
                 var list = txt.Data.Rows;
                 if(list.length==0){

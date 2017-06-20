@@ -262,7 +262,7 @@
 #pageHome_pageHome >div.footer nav >li:nth-child(3):before {
 	background-image: url(../images/index/centerOff.png);
 }
-#pageHome_pageHome article{
+#pageHome_pageHome article {
 	margin-top: 39vw;
 	overflow-x: hidden;
 	overflow-y: auto;

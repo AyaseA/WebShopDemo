@@ -35,7 +35,7 @@
     });
     //我的车辆
     $('#head_active_3').on('click', function() {
-        $$.redirect('reward/reward.html');
+        $$.redirect('myCars/myCars.html');
     });
     //积分
     $('#reward').on('click', function() {

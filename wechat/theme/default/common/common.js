@@ -101,6 +101,17 @@
                 .done(done)
                 .fail(fail);
         },
+        refresh: function(url, status) {
+            if (url) {
+                url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+                        'appid=wx2c53034422e377cc&redirect_uri=' +
+                       'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
+                       escape(escape(url)) +
+                       '&response_type=code&scope=snsapi_base&state=' + status +
+                       '#wechat_redirect';
+                location.href = url;
+            }
+        },
         // 页面跳转 核心方法
         redirect: function(url, option) {
             if (url) {
@@ -334,15 +345,16 @@
             });
         },
         // 获取token 
-        // callback不传，返回之前页面
-        // callback为function，执行function
-        // callback为null，隐藏弹框
-        getToken: function(callback) {
+        // showConfirm不传，不弹是否授权框，callback也不传值
+        // showConfirm传，callback不传，返回之前页面
+        // showConfirm传，callback为function，执行function
+        // showConfirm传，callback为null，隐藏弹框
+        getToken: function(showConfirm, callback) {
             // 判断cookies
             var token = $$.getCookie('__TOKEN__');
             if (token) {
                 return token;
-            } else {
+            } else if (showConfirm) {
                 authConfirm(function() {
                     if (typeof callback === 'undefined') {
                         $$.goBack();
@@ -350,6 +362,8 @@
                         callback();
                     }
                 });
+            } else {
+                return '';
             }
         },
         // 获取用户信息（默认车辆、默认收货地址。。。。）
@@ -422,34 +436,14 @@
                     $$.goBack();
                 });
             }
-        },
-        // 用户是否授权并登陆
-        isAuthAndLogin: function(callback) {
-            var token = $$.getCookie('__TOKEN__');
-            if (token) {
-                return true;
-            } else {
-                authConfirm(function() {
-                    if (typeof callback === 'undefined') {
-                        $$.goBack();
-                    } else if (typeof callback === 'function') {
-                        callback();
-                    }
-                });
-                return false;
-            }
         }
     });
     // 处理刷新后显示当前页面
-    var rdtUrl = $$.getQueryString('R', unescape(location.search));
-    if (rdtUrl && rdtUrl != $$.getCookie('__RDTURLCOOKIE__')) {
-        //$$.setCookie('__RDTURLCOOKIE__', unescape(rdtUrl), 10 / 60 / 60 / 24);
+    var rdtUrl = $$.getQueryString('R', location.search);
+    if (rdtUrl) {
         // 跳到指定页面
-        $$.redirect(rdtUrl);
-    }/* else if ($$.getUrl()) {
-        alert($$.getUrl());
-        $$.redirect($$.getUrl());
-    }*/ else {
+        $$.redirect(unescape(rdtUrl));
+    } else {
         // 默认加载首页
         $$.redirect('index/index.html');
     }
@@ -483,7 +477,7 @@
         var urlHandle = function(url) {
             if (wechatInfo[1] < '6.2') {
                 // 微信6.2以下版本相应处理
-                location.href =  url.split('?')[0];
+                location.href = url.split('?')[0];
             } else {
                 // 微信6.2及以上版本相应处理
                 history.pushState({}, '', url.split('?')[0]);

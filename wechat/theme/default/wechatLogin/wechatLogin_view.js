@@ -49,22 +49,16 @@ $(function() {
         if ($$.stack.length > 0) {
             goBackUrl = $$.stack.pop();
         }
-        $$.get('Product/WeChat/GetAuthUrl?Mobile=' + phonenumber +
-              '&VC=' + verify +
-              '&RegisterFrom=' + RegisterFrom +
-              '&RegisterCont=' + RegisterCont +
-              '&Url=' + goBackUrl,
-            function(res) {
-                if (res.Status == 0 && res.Data) {
-                    //console.log(unescape(res.Data));
-                    location.href = res.Data;
-                } else if (-3 == res.Status) {
-                    layer.msg('验证码输入错误，请重新输入');
-                } else {
-                    layer.msg('微信绑定失败，请重试！');
-                }
-            }
-        );
+        location.href = wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, goBackUrl);
+    }
+    // 微信授权url
+    function wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, url) {
+       return 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+              'appid=wx2c53034422e377cc&redirect_uri=http%3A%2F%2Fapi.cheshili.com.cn%2F' +
+              'CSL%2FLogin%2FHandleWAuth%3Furl%3D' +
+              escape(escape(url)).replace('\/', '%2F') +
+              '&response_type=code&scope=snsapi_base&state=' + phonenumber +
+              'A' + verify + 'A' + RegisterFrom + 'A' + RegisterCont + '#wechat_redirect';
     }
     //获取验证码
     verifyBtn.on('click', function() {

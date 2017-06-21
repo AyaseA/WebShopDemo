@@ -54,21 +54,6 @@ $(function() {
 				? 'block' : 'none')
 		});
 	});
-	// 点击确定选择优惠券
-	$page.on('click', '>div.couponModal button.selectTicket', function() {
-		var couponMoney = '100';
-		$page.find('div.coupon button')
-			 .removeClass(function() {
-			 	return $(this).hasClass('selected') ? '' : 'selected';
-			 })
-			 .text('-￥' + couponMoney);
-		$page.find('div.proMoney >p:last-child >span')
-		 	 .text('-￥' + parseFloat(couponMoney).toFixed(2));
-		 	 
-		$page.find('>div.couponModal').animate({
-			'top': bodyHeight
-		}, 300).fadeOut(400);
-	});
 	// 优惠券tab切换
 	function changeTab(item) {
 		$(item).addClass('active').siblings().removeClass('active');

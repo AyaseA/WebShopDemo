@@ -34,7 +34,7 @@ $(function(){
     });
     // 活动点击事件
     $page.on('click', 'div.activity', function() {
-        $$.redirect('activity/activity.html');
+        $$.refresh('activity/activity.html', 0);
     });
     // 点击商品查看详情
     $page.on('click', 'div.products img', function() {

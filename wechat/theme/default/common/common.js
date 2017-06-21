@@ -21,7 +21,74 @@
         // 微信签名
         weChatSign: {},
         // 存放浏览记录
-        stack: [],
+        stack: (function() {
+            function get() {
+                var stackStr = sessionStorage.getItem('__STACK__');
+                if (stackStr) {
+                    return JSON.parse(stackStr);
+                } else {
+                    return [];
+                }
+            }
+            function set(stackArr) {
+                if (stackArr instanceof Array) {
+                    sessionStorage.setItem('__STACK__', JSON.stringify(stackArr));
+                }
+            }
+            var clear = function() {
+                sessionStorage.removeItem('__STACK__');
+            };
+            var getLast = function() {
+                var stackArr = get();
+                if (stackArr,length > 0) {
+                    return stackArr[stackArr.length - 1];
+                } else {
+                    return '';
+                }
+            };
+            var pop = function() {
+                var stackArr = get();
+                if (stackArr.length > 0) {
+                    var url = stackArr.pop();
+                    set(stackArr);
+                    return url;
+                } else {
+                    return '';
+                }
+            };
+            var push = function(url, backUrl, fromGoBack) {
+                if (url.indexOf('?') != -1) {
+                    var urlArr = url.split('?');
+                    urlArr[1] = urlArr[1].replace(/(^|&)code=([^&]*)/i, '');
+                    urlArr[1] = urlArr[1].replace(/(^|&)str=([^&]*)/i, '');
+                    urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g,'');
+                    url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
+                }
+                
+                var stackArr = get();
+                if ($.inArray(url, stackArr) == -1 &&
+                    $.inArray(backUrl, stackArr) == -1 &&
+                    !fromGoBack) {
+                    stackArr.push(backUrl || url);
+                    set(stackArr);
+                }
+            };
+            var isEmpty = function() {
+                var stackStr = get();
+                if (stackStr.length > 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+            };
+            return {
+                clear: clear,
+                pop: pop,
+                push: push,
+                getLast: getLast,
+                isEmpty: isEmpty
+            };
+        }()),
         // 时间转10位时间戳
         get10Time: function(time) {
             var date = time ? new Date(time) : new Date();
@@ -188,12 +255,10 @@
                 };
 
                 // 将历史url存入栈
-                if (url == 'index/index.html') {
-                    $$.stack = [];
-                } else if ($.inArray($$.getUrl(), $$.stack) == -1 &&
-                               $.inArray(backUrl, $$.stack) == -1 &&
-                               !fromGoBack) {
-                    $$.stack.push(backUrl || $$.getUrl());
+                if (url.indexOf('index/index.html') != -1) {
+                    $$.stack.clear();
+                } else{
+                    $$.stack.push($$.getUrl(), backUrl, fromGoBack);
                 }
 
                 // 将当前页面存储到cookie
@@ -299,9 +364,9 @@
         },
         // ajax post
         post: function(url, data, succfunc, errfunc, isSync) {
-            if (!$$.isLogin(true, null)) {
+            /*if (!$$.isLogin(true, null)) {
                 return false;
-            }
+            }*/
             // 获取Token
             var token = $$.getToken();
             if (!url.startsWith($$.config.serverAddr)) {
@@ -377,7 +442,17 @@
         isLogin: function(showConfirm, callback) {
             var token = $$.getCookie('__TOKEN__');
             if (token) {
-                return true;
+                $$.post(
+                    'CSL/User/TestToken', {}, function(res) {
+                        if (res.Status == -1) {
+                            $$.delCookie('__TOKEN__');
+                            $$.refresh($$.getUrl(), 0);
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }, null, true
+                );
             } else if (showConfirm) {
                 authConfirm(function() {
                     if (typeof callback === 'undefined') {
@@ -440,7 +515,7 @@
         },
         // 调用返回上次页面
         goBack: function() {
-            if ($$.stack.length > 0) {
+            if (!$$.stack.isEmpty()) {
                 $$.redirect($$.stack.pop(), {
                     'fromGoBack': true
                 });
@@ -579,7 +654,7 @@
                 type = $(this).attr('data-type'),
                 url = $$.getUrl();
             openCloseMenu(_x);
-            
+            var aa = sessionStorage.getItem('a') || 1;
             switch(type) {
                 case 'refresh': {
                     var url_arr = url.split('?'),
@@ -603,8 +678,12 @@
                 case 'test': {
                     $$.redirect($(this).attr('data-url'));
                 } break;
-                // 测试用
-                case 'clearToken': {
+                // token
+                case 'token': {
+                    $$.setCookie('__TOKEN__', 'f915f87de410a4064c7825acdf3e888f');
+                } break;
+                // delToken
+                case 'delToken': {
                     $$.delCookie('__TOKEN__');
                     $$.delCookie('__UINFO__');
                 } break;

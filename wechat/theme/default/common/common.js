@@ -461,10 +461,9 @@
             }
         }
     });
+$$.redirect('recommend/recommend.html');
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('R', location.search);
-                $$.delCookie('__TOKEN__');
-            $$.delCookie('__UINFO__');
     if (rdtUrl) {
         // 跳到指定页面
         $$.redirect(unescape(rdtUrl));

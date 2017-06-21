@@ -12,7 +12,6 @@ $(function () {
                 'src', qrCode || $$.config.serverAddr + 'Img/NoImg/' + Math.random() + '.jpg'
             );
         } else {
-            var inviteCode = $$.getUserInfo().InviteCode;
             $$.post(
                 'CSL/W_Msg/PostInfoByToken',
                 {
@@ -22,8 +21,7 @@ $(function () {
                         expire_seconds: 2592000,
                         action_name: 'QR_SCENE',
                         action_info: {
-                            inviteCode: inviteCode,
-                            mobile: $$.getUserMobile()
+                            inviteCode: $$.getUserInfo().InviteCode
                         }
                     })
                 },

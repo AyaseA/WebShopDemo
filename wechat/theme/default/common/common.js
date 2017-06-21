@@ -369,31 +369,36 @@
             }*/
             // 获取Token
             var token = $$.getToken();
-            if (!url.startsWith($$.config.serverAddr)) {
-                url = $$.config.serverAddr + url;
-            }
-            if (!data.Token) {
-                $.extend(data, {
-                    Token: token
+            if (token) {
+                if (!url.startsWith($$.config.serverAddr)) {
+                    url = $$.config.serverAddr + url;
+                }
+                if (!data.Token) {
+                    $.extend(data, {
+                        Token: token
+                    });
+                }
+                $.ajax({
+                    url: url,
+                    data: data,
+                    type: 'POST',
+                    dataType: 'json',
+                    async: isSync ? false : true,
+                    success: function(data) {
+                        data = $$.eval(data);
+                        if (data.Status == -1) {
+                            $$.refreshConfirm();
+                        } else if (succfunc) {
+                            succfunc(data);
+                        }
+                    },
+                    error: function(error) {
+                        if (errfunc) {
+                            errfunc(error);
+                        }
+                    }
                 });
             }
-            $.ajax({
-                url: url,
-                data: data,
-                type: 'POST',
-                dataType: 'json',
-                async: isSync ? false : true,
-                success: function(data) {
-                    if (succfunc) {
-                        succfunc($$.eval(data));
-                    }
-                },
-                error: function(error) {
-                    if (errfunc) {
-                        errfunc(error);
-                    }
-                }
-            });
         },
         // 设置Token到cookies
         setToken: function(token) {
@@ -442,17 +447,24 @@
         isLogin: function(showConfirm, callback) {
             var token = $$.getCookie('__TOKEN__');
             if (token) {
-                $$.post(
-                    'CSL/User/TestToken', {}, function(res) {
+                return true;
+                /*var isLogin = false;
+                $.ajax({
+                    url: $$.config.serverAddr + 'CSL/User/TestToken',
+                    type: 'POST',
+                    async: false,
+                    dataType: 'json',
+                    success: function(res) {
+                        alert(JSON.stringify(res));
                         if (res.Status == -1) {
                             $$.delCookie('__TOKEN__');
                             $$.refresh($$.getUrl(), 0);
-                            return false;
                         } else {
-                            return true;
+                            isLogin = true;
                         }
-                    }, null, true
-                );
+                    }
+                });
+                return isLogin;*/
             } else if (showConfirm) {
                 authConfirm(function() {
                     if (typeof callback === 'undefined') {
@@ -534,6 +546,31 @@
                     $$.goBack();
                 });
             }
+        },
+        // 提示用户刷新
+        refreshConfirm: function() {
+            layer.open({
+                area: '80%',
+                shade: 0.3,
+                title: false, //不显示标题栏
+                closeBtn: false,
+                btn: [],
+                id: 'refreshConfirm_refreshConfirm',
+                content: template('refreshConfirm_refreshConfirm_cnt', {}),
+                success: function(modal) {
+                    modal.css({
+                        'border-radius': '8px'
+                    });
+                    modal.find('.layui-layer-btn').remove();
+                    modal.find('button.cancel').off('click').on('click', function() {
+                        layer.closeAll();
+                    });
+                    modal.find('button.refresh').off('click').on('click', function() {
+                        $$.refresh($$.getUrl(), 0);
+                        layer.closeAll();
+                    });
+                }
+            });
         }
     });
 
@@ -620,7 +657,7 @@
             _halfH = $menu.height() / 2,
             isClick = true;
         // 拖拽相关
-        $menu.on('touchstart', function(e) {
+        $menu.on('touchstart, mousedown', function(e) {
             isClick = true;
             if (!$menu.hasClass('active')) {
                 setGlobalMenu();
@@ -637,20 +674,30 @@
                     openCloseMenu(_x);
                 }
             }
-        }).on('touchend', function(e) {
+        }).on('touchend, mouseup', function(e) {
             e.preventDefault();
-            var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
-                _x = _touch.pageX;
+            var _touch;
+            if (e.type == 'touchend') {
+                _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+            } else {
+                _touch = e.originalEvent;
+            }
+            var _x = _touch.pageX;
 
             if (isClick) {
                 openCloseMenu(_x);
             }
         });
         // 菜单点击事件
-        $menu.on('touchend', 'li', function(e) {
+        $menu.on('touchend, mouseup', 'li', function(e) {
             isClick = false;
-            var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
-                _x = _touch.pageX,
+            var _touch;
+            if (e.type == 'touchend') {
+                _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+            } else {
+                _touch = e.originalEvent;
+            }
+            var _x = _touch.pageX,
                 type = $(this).attr('data-type'),
                 url = $$.getUrl();
             openCloseMenu(_x);
@@ -681,6 +728,7 @@
                 // token
                 case 'token': {
                     $$.setCookie('__TOKEN__', 'f915f87de410a4064c7825acdf3e888f');
+                    alert($$.getCookie('__TOKEN__'));
                 } break;
                 // delToken
                 case 'delToken': {

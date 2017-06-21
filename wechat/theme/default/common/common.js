@@ -461,7 +461,7 @@
             }
         }
     });
-$$.redirect('recommend/recommend.html');
+
     // 处理刷新后显示当前页面
     var rdtUrl = $$.getQueryString('R', location.search);
     if (rdtUrl) {

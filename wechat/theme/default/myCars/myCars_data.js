@@ -8,6 +8,9 @@ $(function() {
 	getMyCars();
     // 加载车辆信息
     function getMyCars() {
+        if (!$$.isLogin(true)) {
+            return false;
+        }
         var carsBox = $page.find('>div.main >div.cars');
         $$.post(
         	'CSL/UserInfo/QueryCarList',

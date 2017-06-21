@@ -5,7 +5,7 @@ $(function() {
         headerHeight = $page.find('div.header').height();
     
     // 如果登录执行事件绑定、信息获取等
-    if ($$.getToken()) {
+    if ($$.isLogin(true)) {
         // 获取Token
         var token = $$.getToken(),
             registerCont = $$.getUserInfo().InviteCode;

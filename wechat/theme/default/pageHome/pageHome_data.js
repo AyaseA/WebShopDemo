@@ -53,7 +53,11 @@
 			}
 		};
 		//获取头像
-		var resImg = $$.getUserInfo();	
+		var resImg = $$.getUserInfo();
+		resImg.Img === null ? "./images/center/address_book.png" : resImg.Img;
+		if(resImg.Img) {
+			alert(resImg.Img);
+		}	
 		$('#pageHome_pageHome .img_icon').attr('src', resImg.Img);
 		//获取用户登录账号
 	 	centerData.getAccound(centerData.phoneNum);

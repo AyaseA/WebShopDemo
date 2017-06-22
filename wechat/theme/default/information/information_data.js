@@ -31,7 +31,7 @@ wx.error(function(res) {
 });*/
 //拍照调取本地相机和相册  
 var url = $$.config.serverAddr;
-
+var imgUrl = 'http://api.cheshili.com.cn/Img/';
 $('.photo_take').click(function() {
 	var token = $$.getToken();
     wx.chooseImage({
@@ -49,9 +49,9 @@ $('.photo_take').click(function() {
             });
             //本地上传到后端
             $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: res.localIds,Platform: 1}, function(data) {
-                $$.setUserInfo('Img', res.localIds);
+                $$.setUserInfo('Img', data.Data);
 				/*var resImg = $$.getUserInfo();*/
-				$('#information_information .img_icon').attr('src', res.localIds);
+				$('#information_information .img_icon').attr('src', imgUrl + data.Data);
 				//$$.setUserInfo('Img', res.localIds);
 				/*$('.img_icon').attr('src', res.localIds);*/
 			});

@@ -54,7 +54,8 @@
 		};
 		//获取头像
 		var resImg = $$.getUserInfo();
-		$('#pageHome_pageHome .img_icon').attr('src', resImg.Img);
+		var imgUrl = 'http://api.cheshili.com.cn/Img/';
+		$('#pageHome_pageHome .img_icon').attr('src', imgUrl + resImg.Img);
 		//获取用户登录账号
 	 	centerData.getAccound(centerData.phoneNum);
 		//用户积分

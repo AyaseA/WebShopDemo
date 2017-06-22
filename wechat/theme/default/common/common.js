@@ -364,9 +364,6 @@
         },
         // ajax post
         post: function(url, data, succfunc, errfunc, isSync) {
-            /*if (!$$.isLogin(true, null)) {
-                return false;
-            }*/
             // 获取Token
             var token = $$.getToken();
             if (token) {
@@ -448,23 +445,6 @@
             var token = $$.getCookie('__TOKEN__');
             if (token) {
                 return true;
-                /*var isLogin = false;
-                $.ajax({
-                    url: $$.config.serverAddr + 'CSL/User/TestToken',
-                    type: 'POST',
-                    async: false,
-                    dataType: 'json',
-                    success: function(res) {
-                        alert(JSON.stringify(res));
-                        if (res.Status == -1) {
-                            $$.delCookie('__TOKEN__');
-                            $$.refresh($$.getUrl(), 0);
-                        } else {
-                            isLogin = true;
-                        }
-                    }
-                });
-                return isLogin;*/
             } else if (showConfirm) {
                 authConfirm(function() {
                     if (typeof callback === 'undefined') {

@@ -46,7 +46,7 @@ $(function() {
         var RegisterFrom = $$.getQueryString('RegisterFrom') || 1,
             RegisterCont = $$.getQueryString('RegisterCont') || 1,
             goBackUrl = 'index/index.html';
-        if ($$.stack.length > 0) {
+        if ($$.stack.getLast()) {
             goBackUrl = $$.stack.pop();
         }
         location.href = wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, goBackUrl);

@@ -1,7 +1,7 @@
 $(function() {
     var $page = $('#myCars_myCars'),
     	pageStr = 'myCars_myCars';
-
+        
     $page.find('div.confirm').hide();
 
     // 加载车辆信息

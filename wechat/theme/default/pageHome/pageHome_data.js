@@ -54,7 +54,7 @@
 		};
 		//获取头像
 		var resImg = $$.getUserInfo();	
-		alert(resImg);
+		$('#pageHome_pageHome .img_icon').attr('src', resImg.Img);
 		//获取用户登录账号
 	 	centerData.getAccound(centerData.phoneNum);
 		//用户积分

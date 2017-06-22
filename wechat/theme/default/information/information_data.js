@@ -47,7 +47,6 @@
                 });
                 //本地上传到后端
                 $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: res.localIds,Platform: 1}, function(data) {
-					alert('头像上传成功');	
 				});
                 
             }

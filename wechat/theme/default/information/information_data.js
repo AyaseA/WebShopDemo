@@ -50,6 +50,7 @@ $('.photo_take').click(function() {
             //本地上传到后端
             $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: res.localIds,Platform: 1}, function(data) {
                 $$.setUserInfo('Img', data.Data);
+                alert(data.Data)
 				/*var resImg = $$.getUserInfo();*/
 				$('#information_information .img_icon').attr('src', imgUrl + data.Data);
 				//$$.setUserInfo('Img', res.localIds);

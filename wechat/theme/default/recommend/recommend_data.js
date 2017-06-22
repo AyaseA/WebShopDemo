@@ -3,6 +3,7 @@ $(function () {
         pageStr = 'recommend_recommend';
     // 设置禁用悬浮菜单
     $$.config.hideGlobalMenu();
+    //$$.delCookie('__RECOMMENDQR__')
     if (!$$.isLogin()) {
         $$.redirect('wechatLogin/wechatLogin.html');
     } else {
@@ -21,7 +22,10 @@ $(function () {
                         expire_seconds: 2592000,
                         action_name: 'QR_SCENE',
                         action_info: {
-                            inviteCode: $$.getUserInfo().InviteCode
+                            //inviteCode: $$.getUserInfo().InviteCode,
+                            scene: {
+                                scene_id: $$.getUserId()
+                            }
                         }
                     })
                 },

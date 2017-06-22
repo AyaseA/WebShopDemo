@@ -73,8 +73,8 @@ body >div.common-none {
 }
 #global_menu {
     display: inline-block;
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
     background-color: #ccc;
     position: fixed;
     right: 0;
@@ -91,7 +91,7 @@ body >div.common-none {
     width: 100%;
     height: 100%;
     text-align: center;
-    line-height: 45px;
+    line-height: 51px;
 }
 #global_menu.active >span {
     color: #98e1ff;
@@ -105,12 +105,12 @@ body >div.common-none {
     position: absolute;
     top: 0;
     display: block;
-    width: 72%;
-    height: 72%;
+    width: 66%;
+    height: 66%;
     text-align: center;
     background-color: rgba(0, 0, 0, .5);
-    padding: 14%;
-    line-height: 33px;
+    padding: 17% 18% 17% 16%;
+    line-height: 34px;
     border-radius: 12px;
 }
 #global_menu li.hide {

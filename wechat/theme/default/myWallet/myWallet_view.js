@@ -5,8 +5,8 @@ $(function() {
 	$$.setGoBack($page.find('header img'));
 
 	//设置内容高度
-	var contentHeight=window.innerHeight || document.body.clientHeight-$page.find("header").height()-$page.find(".order_content").height()-$page.find(".footprint_date").height();
-	$page.find(".content").css("height",contentHeight+"px");
+	var contentHeight=window.innerHeight-$page.find("header").height()-$page.find(".order_content").height()-$page.find(".footprint_date").height();
+	$page.find(".content").height(contentHeight);
 
 	//var token = "eyJVc2VySUQiOiI0MCIsIk5pY2tOYW1lIjpudWxsLCJHcm91dGhWYWx1ZSI6bnVsbCwiVXNlckFkZHJlc3NJRCI6bnVsbCwiQWRkVGltZSI6IjE0OTczMzkzODgiLCJVc2VyQ2FySUQiOm51bGwsIkltZyI6bnVsbCwiRW5hYmxlIjoiMSIsIkludml0ZUNvZGUiOiJNRFF3IiwiTW9iaWxlIjoiMTUwNjY2NzAzMjAiLCJTZXNzaW9uSUQiOiIxIiwiVHlwZSI6IlVzZXIiLCJVSUQiOiJmMjUxZjI0ZjU5OGVhZTFiZGNiNWVmMWIwNjNjZDAwMSJ9";
     var url=$$.config.serverAddr;
@@ -24,7 +24,7 @@ $(function() {
         success: function(txt) {
             txt = $$.eval(txt);
             if(txt.Status != 0){
-            	alert("借口错误");
+            	alert("接口错误");
             }else{
             	var list=txt.Data.Rows;
             	

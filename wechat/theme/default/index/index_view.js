@@ -49,8 +49,12 @@ $(function(){
                 // 首页
                 //$$.redirect('index/index.html');
             } break;
-            case 'luckyDraw': {
-                // 幸运抽奖
+            case 'carCrv': {
+                // 服务网点
+                
+            } break;
+            case 'activity': {
+                // 活动
                 $$.redirect('luckyDraw/luckyDraw.html');
             } break;
             case 'center': {

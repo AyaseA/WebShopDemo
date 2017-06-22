@@ -170,7 +170,7 @@
     margin: 8px 0 6px;
 }
 #index_index >div.main >div.content .entrance >div img {
-    max-width: 50%;
+    max-width: 60%;
 }
 /* entrance end */
 /* activity start */
@@ -262,23 +262,22 @@
 	height: 100%;
 }
 #index_index >div.footer nav >li {
-	position: relative;
-	display: inline-block;
-	color: #81858B;
-	height: 100%;
-	width: 30%;
+    position: relative;
+    display: block;
+    color: #81858B;
+    height: 100%;
+    width: 25%;
+    float: left;
 }
 #index_index >div.footer nav >li:before {
     content: '';
     display: inline-block;
     background-repeat: no-repeat;
     background-size: contain;
-    background-position-x: center;
-    background-position-y: 5px;
+    background-position: center;
     width: 100%;
-    height: 60%;
-    position: absolute;
-    left: 0;
+    height: 50%;
+    margin-top: 5px;
 }
 #index_index >div.footer span {
 	position: absolute;
@@ -309,15 +308,26 @@
 	color: #EA5514;
 }
 #index_index >div.footer nav >li:nth-child(1):before {
-	background-image: url(../images/index/homeOff.png);
+    background-image: url(../images/index/homeOff.png);
+}
+#index_index >div.footer nav >li:nth-child(1).active:before {
+	background-image: url(../images/index/homeOn.png);
 }
 #index_index >div.footer nav >li:nth-child(2):before {
-	background-image: url(../images/index/luckyDraw.png);
-	background-position: center;
-    position: absolute;
-    height: 110%;
-    top: -10%;
+    background-image: url(../images/index/carCrvOff.png);
+}
+#index_index >div.footer nav >li:nth-child(2).active:before {
+    background-image: url(../images/index/carCrvOn.png);
 }
 #index_index >div.footer nav >li:nth-child(3):before {
-	background-image: url(../images/index/centerOff.png);
+    background-image: url(../images/index/presentOff.png);
+}
+#index_index >div.footer nav >li:nth-child(3).active:before {
+	background-image: url(../images/index/presentOn.png);
+}
+#index_index >div.footer nav >li:nth-child(4):before {
+    background-image: url(../images/index/centerOff.png);
+}
+#index_index >div.footer nav >li:nth-child(4).active:before {
+	background-image: url(../images/index/centerOn.png);
 }

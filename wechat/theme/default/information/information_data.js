@@ -53,7 +53,7 @@ $('.photo_take').click(function() {
 				var resImg = $$.getUserInfo();
 				$('#information_information .img_icon').attr('src', resImg.Img);
 				//$$.setUserInfo('Img', res.localIds);
-				$('.img_icon').attr('src', res.localIds);
+				/*$('.img_icon').attr('src', res.localIds);*/
 			});
             
         }

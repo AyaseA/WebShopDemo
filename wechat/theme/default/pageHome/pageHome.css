@@ -207,7 +207,7 @@
 	background: #fff url(../images/center/left_black.png) no-repeat 85.3vw 4vw;
 	background-size: 3.2vw 5.3vw;
 }
-#pageHome_pageHome >div.footer {
+/* #pageHome_pageHome >div.footer {
 	background-color: #FFFFFF;
 	border-top: 1px solid #D5D5D8;
 	position: fixed;
@@ -268,3 +268,88 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 }
+ */
+ #pageHome_pageHome >div.footer {
+ 	background-color: #FFFFFF;
+ 	border-top: 1px solid #D5D5D8;
+ 	position: fixed;
+ 	bottom: 0;
+ 	z-index: 10;
+ 	width: 100%;
+ 	height: 56px;
+ }
+ #pageHome_pageHome >div.footer nav {
+ 	text-align: center;
+ 	width: 100%;
+ 	height: 100%;
+ }
+ #pageHome_pageHome >div.footer nav >li {
+     position: relative;
+     display: block;
+     color: #81858B;
+     height: 100%;
+     width: 25%;
+     float: left;
+ }
+ #pageHome_pageHome >div.footer nav >li:before {
+     content: '';
+     display: inline-block;
+     background-repeat: no-repeat;
+     background-size: contain;
+     background-position: center;
+     width: 100%;
+     height: 50%;
+     margin-top: 5px;
+ }
+ #pageHome_pageHome >div.footer span {
+ 	position: absolute;
+ 	left: 0;
+ 	width: 100%;
+ 	bottom: 8%;
+ 	font-size: 14px;
+ }
+ @media screen and (min-width: 410px) {
+ 	#pageHome_pageHome >div.footer {
+ 		height: 60px;
+ 		bottom: -1px;
+ 	}
+ 	#pageHome_pageHome >div.footer span {
+ 		bottom: 6%;
+ 	}
+ }
+ @media screen and (max-width: 350px) {
+ 	#pageHome_pageHome >div.footer {
+ 		height: 44px;
+ 	}
+ 	#pageHome_pageHome >div.footer span {
+ 		font-size: 12px;
+ 		bottom: 6%;
+ 	}
+ }
+ #pageHome_pageHome >div.footer nav >li.active {
+ 	color: #EA5514;
+ }
+ #pageHome_pageHome >div.footer nav >li:nth-child(1):before {
+     background-image: url(../images/index/homeOff.png);
+ }
+ #pageHome_pageHome >div.footer nav >li:nth-child(1).active:before {
+ 	background-image: url(../images/index/homeOn.png);
+ }
+ #pageHome_pageHome >div.footer nav >li:nth-child(2):before {
+     background-image: url(../images/index/carCrvOff.png);
+ }
+ #pageHome_pageHome >div.footer nav >li:nth-child(2).active:before {
+     background-image: url(../images/index/carCrvOn.png);
+ }
+ #pageHome_pageHome >div.footer nav >li:nth-child(3):before {
+     background-image: url(../images/index/presentOff.png);
+ }
+ #pageHome_pageHome >div.footer nav >li:nth-child(3).active:before {
+ 	background-image: url(../images/index/presentOn.png);
+ }
+ #pageHome_pageHome >div.footer nav >li:nth-child(4):before {
+     background-image: url(../images/index/centerOff.png);
+ }
+ #pageHome_pageHome >div.footer nav >li:nth-child(4).active:before {
+ 	background-image: url(../images/index/centerOn.png);
+ }

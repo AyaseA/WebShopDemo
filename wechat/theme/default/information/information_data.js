@@ -28,6 +28,8 @@
         $page.imgList.splice($(this).attr("data-index"),$(this).attr("data-index"));
     });*/
   //拍照调取本地相机和相册  
+  	var url = $$.config.serverAddr;
+  	var token = $$.getToken();
     $('.photo_take').click(function() {
         wx.chooseImage({
             count: 1, // 默认9
@@ -43,8 +45,10 @@
                         urls: res.localIds // 需要预览的图片http链接列表
                     });
                 });
-                //上传到后端
-                
+                //本地上传到后端
+                $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: res.localIds,Platform: 1}, function(data) {
+					alert('头像上传成功');	
+				});
                 
             }
         });

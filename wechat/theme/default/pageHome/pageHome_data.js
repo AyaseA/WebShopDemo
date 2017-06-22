@@ -52,7 +52,9 @@
 				});
 			}
 		};
-
+		//获取头像
+		var resImg = $$.getUserInfo();	
+		alert(resImg);
 		//获取用户登录账号
 	 	centerData.getAccound(centerData.phoneNum);
 		//用户积分

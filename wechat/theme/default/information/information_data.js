@@ -1,7 +1,8 @@
-
+var url = $$.config.serverAddr;
+var imgUrl = 'http://api.cheshili.com.cn/Img/';
 $page=$("#information_information");
 var resImg = $$.getUserInfo();
-$('#information_information .img_icon').attr('src', resImg.Img);
+$('#information_information .img_icon').attr('src', imgUrl + resImg.Img);
 //微信配置
 var WXsign = $$.getWeChatSign();
 wx.config({
@@ -31,8 +32,7 @@ wx.error(function(res) {
     $page.imgList.splice($(this).attr("data-index"),$(this).attr("data-index"));
 });*/
 //拍照调取本地相机和相册  
-var url = $$.config.serverAddr;
-var imgUrl = 'http://api.cheshili.com.cn/Img/';
+
 $('.photo_take').click(function() {
 	var token = $$.getToken();
     wx.chooseImage({
@@ -54,19 +54,18 @@ $('.photo_take').click(function() {
                 localId: res.localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
                 isShowProgressTips: 1, // 默认为1，显示进度提示
                 success: function (res) {
-                    $page.serverId = res.serverId; // 返回图片的服务器端ID
+                    var serverId = res.serverId; //返回图片的服务器端ID
+                    console.log(serverId);
+                    $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: serverId,Platform: 1}, function(data) {
+                        $$.setUserInfo('Img', data.Data);
+                        alert(data.Data);
+                        $('#information_information .img_icon').attr('src', imgUrl + data.Data);
+                       
+                    });
                 }
             });
 
-            //本地上传到后端
-            $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: $page.serverId,Platform: 1}, function(data) {
-                $$.setUserInfo('Img', data.Data);
-                alert(data.Data)
-				/*var resImg = $$.getUserInfo();*/
-				$('#information_information .img_icon').attr('src', imgUrl + data.Data);
-				//$$.setUserInfo('Img', res.localIds);
-				/*$('.img_icon').attr('src', res.localIds);*/
-			});
+            
             
         }
     });

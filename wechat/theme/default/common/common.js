@@ -705,16 +705,6 @@
                 case 'test': {
                     $$.redirect($(this).attr('data-url'));
                 } break;
-                // token
-                case 'token': {
-                    $$.setCookie('__TOKEN__', 'f915f87de410a4064c7825acdf3e888f');
-                    alert($$.getCookie('__TOKEN__'));
-                } break;
-                // delToken
-                case 'delToken': {
-                    $$.delCookie('__TOKEN__');
-                    $$.delCookie('__UINFO__');
-                } break;
             }
         });
         // 展开收起菜单

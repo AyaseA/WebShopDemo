@@ -2,7 +2,7 @@ $(function() {
     var $page = $('#luckyDraw_luckyDraw');
     pageStr = 'luckyDraw_luckyDraw';
 
-    var contentHeight= window.innerHeight || document.body.clientHeight - $page.find(".header").height();
+    var contentHeight= window.innerHeight - $page.find(".header").height();
     console.log($page.height());
     console.log($page.find(".header").height());
     $page.find(".content").css("height", contentHeight + "px");

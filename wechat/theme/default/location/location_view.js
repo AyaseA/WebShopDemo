@@ -41,8 +41,9 @@ $(function() {
         var id = $(this).attr('data-id'),
             name = $(this).attr('data-name');
         $page.find('>div.main >div.there >p').text(name);
-        address2Geocoder(name);
-        $$.goBack();
+        address2Geocoder(name, function() {
+            $$.goBack();
+        });
     });
     // 情况搜索框
     $page.on('click', '>div.header >div >i', function() {
@@ -162,7 +163,37 @@ $(function() {
         for (var i = 0; i < arr.length; i++) {
             provTmp = arr[i];
             provChd = provTmp.children;
-            if (provTmp.Name.endsWith('市') || /((71)|(81)|(82))(0000)/.test(provTmp.ID)) {
+            if (provTmp.Name.endsWith('市')) {
+                for (var a = 0; a < provChd.length; a++) {
+                    cityTmp = provChd[a];
+                    cityChd = cityTmp.children;
+                    distArr = [];
+                    for (var b = 0; b < cityChd.length; b++) {
+                        distTmp = cityChd[b];
+                        if (distTmp.Name != '市辖区') {
+                            pyTmp = Pinyin.getFullChars(distTmp.Name).toUpperCase();
+                            alphaTmp = pyTmp.substring(0,1);
+                            letters[alphaTmp] = 1;
+                            distArr.push({
+                                name: distTmp.Name,
+                                id: distTmp.ID,
+                                pyName: pyTmp,
+                                alpha: alphaTmp
+                            });
+                        }
+                    }
+                }
+                pyTmp = Pinyin.getFullChars(provTmp.Name).toUpperCase();
+                alphaTmp = pyTmp.substring(0,1);
+                letters[alphaTmp] = 1;
+                cityList.push({
+                    name: provTmp.Name,
+                    id: provTmp.ID,
+                    pyName: pyTmp,
+                    alpha: alphaTmp,
+                    children: distArr
+                });
+            } else if (/((71)|(81)|(82))(0000)/.test(provTmp.ID)) {
                 pyTmp = Pinyin.getFullChars(provTmp.Name).toUpperCase();
                 alphaTmp = pyTmp.substring(0,1);
                 letters[alphaTmp] = 1;
@@ -211,7 +242,7 @@ $(function() {
         };
     }
     // 地址-->经纬度
-    function address2Geocoder(address) {
+    function address2Geocoder(address, callback) {
         var geocoder = new AMap.Geocoder();
         //地理编码,返回地理编码结果
         geocoder.getLocation(address, function(status, result) {
@@ -226,6 +257,9 @@ $(function() {
                 $page.find('>div.main >div.there >p').text(
                     address
                 );
+                if (callback) {
+                    callback();
+                }
             }
         });
     

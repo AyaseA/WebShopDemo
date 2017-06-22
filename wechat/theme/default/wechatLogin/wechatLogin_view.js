@@ -70,7 +70,16 @@ $(function() {
             layer.msg(msg);
         });
         if (isPhone) {
-            sendVerify(phoneNum.val());
+            $$.get(
+                'CSL/Login/IsAuth?Mobile=' + phoneNum.val(),
+                function(res) {
+                    if (res.Status == 0 && res.Data == 'Succ') {
+                        layer.msg('您的手机号已注册！');
+                    } else if (res.Status == 1 && res.Data == 'Not Auth') {
+                        sendVerify(phoneNum.val());
+                    }
+                }
+            );
         }
     });
     //发送验证码

@@ -4,11 +4,13 @@ $(function() {
 	
     // 获取位置
     $page.find('>div.main >div.there >p').text(
-        $$.getCookie('__LOCATION__') || '济南市'
+        $$.getLocationInfo().name
     );
 
 	// 重置城市列表
 	resetCityList();
+
+    // 重置城市列表
     function resetCityList() {
         $page.find('>div.header >div >i').hide();
         $page.find('>div.header input.search').val('');

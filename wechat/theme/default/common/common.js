@@ -162,6 +162,33 @@
             }
             return weChatSign;
         },
+        // 获取地理信息
+        getLocationInfo: function() {
+            var ltInfo = $$.getCookie('__LOCATION__');
+            if (ltInfo) {
+                ltInfo = JSON.parse(ltInfo);
+            } else {
+                ltInfo = {
+                    // 地区
+                    name: '历下区',
+                    // 经度
+                    longitude: 117.10956,
+                    // 纬度
+                    latitude: 36.68165,
+                    // 地区id
+                    id: 370102
+                };
+                $$.setCookie('__LOCATION__', JSON.stringify(ltInfo));
+            }
+            return ltInfo;
+        },
+        // 设置地理信息
+        //{name: '历下区',longitude: 117.10956,latitude: 36.68165,id: 370102}
+        setLocationInfo: function(ltInfo) {
+            if (ltInfo instanceof Object && !$.isEmptyObject(ltInfo)) {
+                $$.setCookie('__LOCATION__', JSON.stringify(ltInfo));
+            }
+        },
         // 加载js
         loadJavascript: function(url, done, fail) {
             $.getScript(url)
@@ -418,7 +445,7 @@
                 }
             });
         },
-        // 获取token 
+        // 获取token
         // showConfirm不传，不弹是否授权框，callback也不传值
         // showConfirm传，callback不传，返回之前页面
         // showConfirm传，callback为function，执行function

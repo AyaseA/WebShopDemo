@@ -41,7 +41,7 @@ $(function() {
         var id = $(this).attr('data-id'),
             name = $(this).attr('data-name');
         $page.find('>div.main >div.there >p').text(name);
-        $$.setCookie('__LOCATION__', name);
+        address2Geocoder(name);
         $$.goBack();
     });
     // 情况搜索框
@@ -209,5 +209,25 @@ $(function() {
         	cityList: cityList,
         	letters: letters
         };
+    }
+    // 地址-->经纬度
+    function address2Geocoder(address) {
+        var geocoder = new AMap.Geocoder();
+        //地理编码,返回地理编码结果
+        geocoder.getLocation(address, function(status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+                var info = result.geocodes[0];
+                $$.setLocationInfo({
+                    name: address,
+                    longitude: info.location.lng,
+                    latitude: info.location.lat,
+                    id: info.adcode
+                });
+                $page.find('>div.main >div.there >p').text(
+                    address
+                );
+            }
+        });
+    
     }
 });

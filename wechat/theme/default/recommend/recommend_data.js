@@ -7,7 +7,9 @@ $(function () {
     if (!$$.isLogin()) {
         $$.redirect('wechatLogin/wechatLogin.html');
     } else {
-        var qrCode = $$.getCookie('__RECOMMENDQR__');
+        var qrCode = $$.getCookie('__RECOMMENDQR__'),
+            mobile = $$.getUserMobile();
+        $page.find('>div.main >div.content >span').text(mobile);
         if (qrCode) {
             $page.find('>div.main >div.content >img').attr(
                 'src', qrCode || $$.config.serverAddr + 'Img/NoImg/' + Math.random() + '.jpg'
@@ -22,7 +24,6 @@ $(function () {
                         expire_seconds: 2592000,
                         action_name: 'QR_SCENE',
                         action_info: {
-                            //inviteCode: $$.getUserInfo().InviteCode,
                             scene: {
                                 scene_id: $$.getUserId()
                             }

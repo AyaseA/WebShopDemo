@@ -1,6 +1,6 @@
 
 var resImg = $$.getUserInfo();
-$('#information_information .img_icon').attr('src', resImg.Img === null ? "./images/center/address_book.png" : resImg.Img);
+$('#information_information .img_icon').attr('src', resImg.Img);
 //微信配置
 var WXsign = $$.getWeChatSign();
 wx.config({
@@ -51,11 +51,11 @@ $('.photo_take').click(function() {
             $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: res.localIds,Platform: 1}, function(data) {
 				$$.setToken(token);
 				var resImg = $$.getUserInfo();
-				var ptt = resImg.Img === null ? "./images/center/address_book.png" : resImg.Img;
-				$('#information_information .img_icon').attr('src', ptt);
+				$('#information_information .img_icon').attr('src', resImg.Img);
 				//$$.setUserInfo('Img', res.localIds);
-				$('.img_icon').attr('src', ptt);
+				$('.img_icon').attr('src', res.localIds);
 			});
+            
         }
     });
 });

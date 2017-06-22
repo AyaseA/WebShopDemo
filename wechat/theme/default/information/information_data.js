@@ -1,6 +1,6 @@
 
 var resImg = $$.getUserInfo();
-$('#information_information .img_icon').attr('src', resImg.Img);
+$('#information_information .img_icon').attr('src', resImg.Img === null ? "./images/center/address_book.png" : resImg.Img);
 //微信配置
 var WXsign = $$.getWeChatSign();
 wx.config({
@@ -33,7 +33,7 @@ wx.error(function(res) {
 	var url = $$.config.serverAddr;
 
 $('.photo_take').click(function() {
-		var token = $$.getToken();
+	var token = $$.getToken();
     wx.chooseImage({
         count: 1, // 默认9
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -49,10 +49,13 @@ $('.photo_take').click(function() {
             });
             //本地上传到后端
             $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: res.localIds,Platform: 1}, function(data) {
-				$$.setUserInfo('Img', res.localIds);
-				$('.img_icon').attr('src', res.localIds);
+				$$.setToken(token);
+				var resImg = $$.getUserInfo();
+				var ptt = resImg.Img === null ? "./images/center/address_book.png" : resImg.Img;
+				$('#information_information .img_icon').attr('src', ptt);
+				//$$.setUserInfo('Img', res.localIds);
+				$('.img_icon').attr('src', ptt);
 			});
-            
         }
     });
 });

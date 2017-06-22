@@ -45,5 +45,18 @@
 	});
 	$('.information_back').on('click', function(){
 		$$.goBack();
-	});	
+	});
+	//拍照
+	$('.photo_take').on('click', function() {
+		$('.div_float_1').css('display', 'none');
+		$('.photo_take').css('display', 'none');
+		$('.photo_photogragh').css('display', 'none');
+		$('.take_concel').css('display', 'none');
+	});
+	$('.photo_photogragh').on('click', function() {
+		$('.div_float_1').css('display', 'none');
+		$('.photo_take').css('display', 'none');
+		$('.photo_photogragh').css('display', 'none');
+		$('.take_concel').css('display', 'none');		
+	});
 }());

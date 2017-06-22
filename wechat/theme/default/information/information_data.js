@@ -36,12 +36,16 @@
             success: function(res) {
                 //  res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
                 $('.img_icon').attr('src', res.localIds);
+                //预览
                 $('.img_icon').on('click', function() {
                     wx.previewImage({
                         current: res.localIds, // 当前显示图片的http链接
                         urls: res.localIds // 需要预览的图片http链接列表
                     });
                 });
+                //上传到后端
+                
+                
             }
         });
     });

@@ -105,7 +105,7 @@ var login = {
                 	if(data.Data.Token) {
             			$$.setToken(data.Data.Token);
                 	}
-                	var prevPage = $$.stack[$$.stack.length - 1];
+                	var prevPage = $$.stack.getLast();
                 	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
                 		$$.stack.pop();
                 		$$.goBack();

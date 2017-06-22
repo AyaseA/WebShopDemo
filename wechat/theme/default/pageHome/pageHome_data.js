@@ -1,5 +1,5 @@
 !(function(){
-	if ($$.getToken()) {
+	if ($$.isLogin(true)) {
 		var token = $$.getToken();
 		var centerData = window.centerData || {
 			hostUrl: $$.config.serverAddr,

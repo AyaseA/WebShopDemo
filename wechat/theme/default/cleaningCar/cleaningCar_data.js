@@ -106,7 +106,7 @@ login.loginphone.addEventListener('blur', function(e) {
 
 
 //监听验证码
-$('#login_input_4').on('blur', function(e) {
+$('#login_input_4').on('input', function(e) {
 	e.preventDefault();
 	var vc = $('#login_input_4').val();
 	if(/^\d{6}$/.test(vc)) {
@@ -138,7 +138,7 @@ $('#cleaning_car_button').on('click', function(e){
 		    		if(data.Data.Token) {
 		   				$$.setToken(data.Data.Token);
 		    		}
-		    		var prevPage = $$.stack[$$.stack.length - 1];
+		    		var prevPage = $$.stack.getLast();
 		    		if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
 		    			$$.stack.pop();
 		    			$$.goBack();

@@ -104,7 +104,7 @@ var login = {
                 	if(data.Data.Token) {
             			$$.setToken(data.Data.Token);
                 	}
-                	var prevPage = $$.stack[$$.stack.length - 1];
+                	var prevPage = $$.stack.getLast();
                 	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
                 		$$.stack.pop();
                 		$$.goBack();
@@ -201,7 +201,7 @@ $('#login_pass').off('click').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	}
-    	    	var prevPage = $$.stack[$$.stack.length - 1];
+    	    	var prevPage = $$.stack.getLast();
     	    	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
     	    		$$.stack.pop();
     	    		$$.goBack();
@@ -235,7 +235,7 @@ $('#login_redit').off('click').on('click', function(e) {
     	    	if(data.Data.Token){
     				$$.setToken(data.Data.Token);
     	    	};
-    	    	var prevPage = $$.stack[$$.stack.length - 1];
+    	    	var prevPage = $$.stack.getLast();
     	    	if (prevPage && prevPage.indexOf('logout/logout.html') != -1) {
     	    		$$.stack.pop();
     	    		$$.goBack();

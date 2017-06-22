@@ -51,12 +51,12 @@ $('.photo_take').click(function() {
                 localId: res.localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
                 isShowProgressTips: 1, // 默认为1，显示进度提示
                 success: function (res) {
-                    var serverId = res.serverId; // 返回图片的服务器端ID
+                     $page.serverId = res.serverId; // 返回图片的服务器端ID
                 }
             });
-            
+
             //本地上传到后端
-            $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: serverId,Platform: 1}, function(data) {
+            $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: $page.serverId,Platform: 1}, function(data) {
                 $$.setUserInfo('Img', data.Data);
                 alert(data.Data)
 				/*var resImg = $$.getUserInfo();*/

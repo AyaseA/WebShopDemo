@@ -1,4 +1,4 @@
-var imgUrl = ;
+
 var resImg = $$.getUserInfo();
 $('#information_information .img_icon').attr('src', resImg.Img);
 //微信配置
@@ -30,7 +30,7 @@ wx.error(function(res) {
     $page.imgList.splice($(this).attr("data-index"),$(this).attr("data-index"));
 });*/
 //拍照调取本地相机和相册  
-	var url = $$.config.serverAddr;
+var url = $$.config.serverAddr;
 
 $('.photo_take').click(function() {
 	var token = $$.getToken();

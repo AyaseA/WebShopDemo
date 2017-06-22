@@ -68,7 +68,7 @@
 		<div class="comment">
 			<p class="uInfo">
 				<img src="./images/product/uimg.png" />
-				<small>187****1111</small>
+				<small>{{comment.Mobile}}</small>
 				{{if comment.Rating >= 0 && comment.Rating <= 20}}
 					{{set star = 1}}
 				{{else if comment.Rating > 20 && comment.Rating <= 40}}

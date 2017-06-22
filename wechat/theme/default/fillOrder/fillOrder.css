@@ -242,18 +242,14 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	box-sizing: border-box;
-	padding: 10px 15px;
 	width: 100%;
 }
 #fillOrder_fillOrder >div.couponModal div.ticket {
 	height: 120px;
 	background-color: #fff;
-	margin: 0 18px;
+	margin: 10px 32px 0;
 	position: relative;
 	margin-bottom: 10px;
-}
-#fillOrder_fillOrder >div.couponModal div.ticket:last-child {
-	margin-bottom: 50px;
 }
 #fillOrder_fillOrder >div.couponModal div.ticket:before {
 	content: '';
@@ -372,7 +368,7 @@
 	background-color: #EA5514;
 	color: #fff;
 	width: 80%;
-	bottom: 10px;
+	bottom: 30px;
 	left: 0;
 	right: 0;
 	margin: 0 auto;

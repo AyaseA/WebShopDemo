@@ -17,7 +17,10 @@ $(function() {
 	}).find('>div.warp').css({
 		'height': bodyHeight - headerHeight * 2 - 1,
 		'width': boxWidth * 2
-	}).find('>div').width(boxWidth - 30).height(bodyHeight - headerHeight * 2 - 20);
+	}).find('>div').css({
+		'height': bodyHeight - headerHeight * 2 - 1,
+		'width': boxWidth
+	});
 
 	// 设置返回页面
 	$$.setGoBack($page.find('>div.header >a.goBack'));

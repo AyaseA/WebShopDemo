@@ -3,6 +3,8 @@
     //js 默认记载数值
     win.GLOBAL_includejs = Array();
 
+    // 微信签名
+    var weChatSign = {};
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
@@ -18,8 +20,6 @@
                 showHideGlobalMenu(true);
             }
         },
-        // 微信签名
-        weChatSign: {},
         // 存放浏览记录
         stack: (function() {
             function get() {
@@ -145,7 +145,7 @@
         },
         // 返回微信签名，参数为true，强制重新获取
         getWeChatSign: function(reGet) {
-            if ($.isEmptyObject($$.weChatSign) || (reGet || false)) {
+            if ($.isEmptyObject(weChatSign) || (reGet || false)) {
                 $.ajax({
                     url: $$.config.serverAddr +
                          'Product/WeChat/GetSign?url=' +
@@ -155,12 +155,12 @@
                     dataType: 'json',
                     success: function(res) {
                         if (res) {
-                            $$.weChatSign = res;
+                            weChatSign = res;
                         }
                     }
                 });
             }
-            return $$.weChatSign;
+            return weChatSign;
         },
         // 加载js
         loadJavascript: function(url, done, fail) {
@@ -263,6 +263,7 @@
 
                 // 将当前页面存储到cookie
                 $$.setCookie("__URL__", url);
+                
                 // 存储页面加载前显示的div id
                 $$.setCookie("__OLDDIV__", $("div#div_list>div:visible").attr("id"));
 
@@ -270,6 +271,7 @@
                     dir = url_arr[0].substring(0, url_arr[0].length - 5),
                     newid = dir.replace(/\//g, "_");
 
+                    //setTimeout(function() {
                 // 判断要显示的页面是否存在
                 if ($("div#div_list>div#" + newid).length == 0) {
                     // 不存在，加载页面，css, js 
@@ -280,6 +282,7 @@
                     // 存在，直加载数据*_data.js
                     loadData();
                 }
+                    //}, 5000);
             }
         },
         // 获取当前显示的div id

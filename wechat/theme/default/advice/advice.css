@@ -98,8 +98,8 @@
 #advice_advice .advice_right{
 	display: block;
 	float: left;
-	width: 152px;
-	line-height: 45px;
+	width: 40vw;
+	line-height: 12vw;
 	text-align: center;
 	color: #616266;
 	overflow: hidden;

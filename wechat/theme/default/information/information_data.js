@@ -1,4 +1,4 @@
-
+var imgUrl = ;
 var resImg = $$.getUserInfo();
 $('#information_information .img_icon').attr('src', resImg.Img);
 //微信配置
@@ -49,9 +49,9 @@ $('.photo_take').click(function() {
             });
             //本地上传到后端
             $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: res.localIds,Platform: 1}, function(data) {
-				$$.setToken(token);
-				var resImg = $$.getUserInfo();
-				$('#information_information .img_icon').attr('src', resImg.Img);
+                $$.setUserInfo('Img', res.localIds);
+				/*var resImg = $$.getUserInfo();*/
+				$('#information_information .img_icon').attr('src', res.localIds);
 				//$$.setUserInfo('Img', res.localIds);
 				/*$('.img_icon').attr('src', res.localIds);*/
 			});

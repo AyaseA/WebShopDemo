@@ -47,8 +47,16 @@ $('.photo_take').click(function() {
                     urls: res.localIds // 需要预览的图片http链接列表
                 });
             });
+            wx.uploadImage({
+                localId: res.localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+                isShowProgressTips: 1, // 默认为1，显示进度提示
+                success: function (res) {
+                    var serverId = res.serverId; // 返回图片的服务器端ID
+                }
+            });
+            
             //本地上传到后端
-            $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: res.localIds[0],Platform: 1}, function(data) {
+            $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: serverId,Platform: 1}, function(data) {
                 $$.setUserInfo('Img', data.Data);
                 alert(data.Data)
 				/*var resImg = $$.getUserInfo();*/

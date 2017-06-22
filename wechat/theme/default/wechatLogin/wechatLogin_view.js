@@ -103,7 +103,7 @@ $(function() {
         }
     }
     //  监听input
-    $page.on('keyup', 'input.wechatLogin_input', function() {
+    $page.on('input', 'input.wechatLogin_input', function() {
         loginBtnStatuc();
     });
     $page.on('click', 'aside.wechatLogin_aside >p >span', function() {

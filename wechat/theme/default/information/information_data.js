@@ -58,9 +58,7 @@ $('.photo_take').click(function() {
                     console.log(serverId);
                     $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: serverId,Platform: 1}, function(data) {
                         $$.setUserInfo('Img', data.Data);
-                        alert(data.Data);
                         $('#information_information .img_icon').attr('src', imgUrl + data.Data);
-                       
                     });
                 }
             });

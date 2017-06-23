@@ -31,7 +31,7 @@
 	height: 11vw;
 	margin-left: 3vw;
 	margin-top: 1vw;
-	border: 4px solid #e5e5e5;
+	border: 1px solid #e5e5e5;
 	border-radius: 50%;
 	background-color: #e5e5e5;
 	display: inline-block;
@@ -40,7 +40,7 @@
 #pageHome_pageHome .img_icon{
 	width: 11vw;
 	height: 11vw;
-	margin: 2px 2px;
+	border-radius: 50%;
 	overflow: hidden;
 }
 #pageHome_pageHome .user_name{

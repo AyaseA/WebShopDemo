@@ -64,13 +64,9 @@ $('.photo_take').click(function() {
 });
 //调取微信头像
 $('.photo_photogragh').click(function(){
-    $$.post(url + '/WeChat/GetWUserInfo',{Url: 'pageHome/pageHome.html',Status: 0},function(res){
-        var code = $$.getQueryString('code'),
-            str = $$.getQueryString('str');
-        if(code === 0) {
-            $$.setToken();
-            $$.redirect(str);
-        }
+    $$.post(url + '/Product/WeChat/GetWUserInfo',{Url: 'information/information.html',Status: 0},function(res){
+        $$.refresh('information/information.html', 0);
+        
     });
 });
 

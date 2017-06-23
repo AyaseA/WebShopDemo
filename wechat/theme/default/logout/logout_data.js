@@ -8,6 +8,7 @@ $('.logout_right').on('click', function(){
 		$$.delCookie('__OLDDIV__');
 		$$.delCookie('__NEWDIV__');
 		$$.delCookie('__UINFO__');
+		$$.delCookie('__WISHLIST__');
 	});
 });
 

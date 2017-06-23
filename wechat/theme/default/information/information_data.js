@@ -32,7 +32,6 @@ wx.error(function(res) {
     $page.imgList.splice($(this).attr("data-index"),$(this).attr("data-index"));
 });*/
 //拍照调取本地相机和相册  
-
 $('.photo_take').click(function() {
 	var token = $$.getToken();
     wx.chooseImage({
@@ -48,8 +47,6 @@ $('.photo_take').click(function() {
                     urls: res.localIds // 需要预览的图片http链接列表
                 });
             });
-
-            
             wx.uploadImage({
                 localId: res.localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
                 isShowProgressTips: 1, // 默认为1，显示进度提示
@@ -62,9 +59,21 @@ $('.photo_take').click(function() {
                     });
                 }
             });
-
-            
-            
         }
     });
 });
+//调取微信头像
+$('.photo_photogragh').click(function(){
+    $$.post(url + '/WeChat/GetWUserInfo',{Url: 'pageHome/pageHome.html',Status: 0},function(res){
+        var code = $$.getQueryString('code'),
+            str = $$.getQueryString('str');
+        if(code === 0) {
+            $$.setToken();
+            $$.redirect(str);
+        }
+    });
+});
+
+
+
+

@@ -2,6 +2,7 @@ $(function() {
     var $page = $('#product_product'),
 	    pageStr = 'product_product',
 	    pid = $$.getQueryString('pid');
+        var url = $$.getUrl();
 
     // 页面重新显示的一些初始化
     $page.find('>div.header li[data-type=product]')

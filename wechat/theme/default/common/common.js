@@ -621,12 +621,20 @@
         };
         // url替换处理
         var urlHandle = function(url) {
+            if (url.indexOf('?') != -1) {
+                var urlArr = url.split('?');
+                urlArr[1] = urlArr[1].replace(/(^|&)code=([^&]*)/i, '');
+                urlArr[1] = urlArr[1].replace(/(^|&)str=([^&]*)/i, '');
+                urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g,'');
+                url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
+            }
             if (wechatInfo[1] < '6.2') {
                 // 微信6.2以下版本相应处理
-                location.href = url.split('?')[0];
+                location.href = url;
+
             } else {
                 // 微信6.2及以上版本相应处理
-                history.pushState({}, '', url.split('?')[0]);
+                history.pushState({}, '', url);
             }
         };
 

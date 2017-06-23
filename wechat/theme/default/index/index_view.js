@@ -51,7 +51,7 @@ $(function(){
             } break;
             case 'carCrv': {
                 // 服务网点
-                
+                $$.redirect('shopList/shopList.html');
             } break;
             case 'activity': {
                 // 活动

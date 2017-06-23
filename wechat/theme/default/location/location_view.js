@@ -40,10 +40,20 @@ $(function() {
     $page.on('click', 'div.dist >span', function() {
         var id = $(this).attr('data-id'),
             name = $(this).attr('data-name');
-        $page.find('>div.main >div.there >p').text(name);
         address2Geocoder(name, function() {
             $$.goBack();
         });
+    });
+    $page.on('click', '>div.main >div.there >p', function() {
+        if ($(this).hasClass('complete')) {
+            $$.setLocationInfo({
+                name: $(this).attr('data-name') || '历下区',
+                longitude: $(this).attr('data-lng') || 117.10956,
+                latitude: $(this).attr('data-lat') || 36.68165,
+                id: $(this).attr('data-id') || 370102
+            });
+            $$.goBack();
+        }
     });
     // 情况搜索框
     $page.on('click', '>div.header >div >i', function() {

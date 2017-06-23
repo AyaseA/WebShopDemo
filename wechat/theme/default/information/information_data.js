@@ -65,6 +65,7 @@ $('.photo_take').click(function() {
 //调取微信头像
 $('.photo_photogragh').click(function(){
     $$.post(url + '/Product/WeChat/GetWUserInfo',{Url: 'information/information.html',Status: 0},function(res){
+        alert(res.Data);
         window.open(res.Data);
         $$.refresh('information/information.html', 0);
     });

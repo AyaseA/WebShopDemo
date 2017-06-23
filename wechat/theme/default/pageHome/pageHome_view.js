@@ -86,4 +86,26 @@
     $('.order_img_span').on('click', function() {
         $$.redirect('orderList/orderList.html');
     });
+    // footer 事件
+    $('#pageHome_pageHome').on('click', 'div.footer li', function() {
+        var type = $(this).attr('data-tab');
+        switch(type) {
+            case 'index': {
+                // 首页
+                //$$.redirect('index/index.html');
+            } break;
+            case 'carCrv': {
+                // 服务网点
+                $$.redirect('shopList/shopList.html');
+            } break;
+            case 'activity': {
+                // 活动
+                $$.redirect('luckyDraw/luckyDraw.html');
+            } break;
+            case 'center': {
+                // 个人中心
+                $$.redirect('pageHome/pageHome.html');
+            } break;
+        }
+    });
 }());

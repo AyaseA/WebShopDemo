@@ -126,7 +126,10 @@ $(function() {
                                             $page.find("" + area).append(onePiece);
                                         }
                                     } else {
-                                        for (var k = 0; k < listData.length; k++) {
+                                        for (var k = 0; k < 3; k++) {
+                                            if (listData[k].Img == "") {
+                                            listData[k].Img = "NoImg/" + Math.random() + ".jpg";
+                                            }
                                             contentNode = "<img src='" + url + "Img/" + listData[k].Img + "'>";
                                             contentNodeList += contentNode;
                                         }

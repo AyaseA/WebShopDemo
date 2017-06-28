@@ -363,13 +363,13 @@
         },
         // ajax get
         get: function(url, succfunc, errfunc, isSync) {
-            var urlToken = $$.getQueryString('Token', url),
+            var urlToken = $$.getQueryString('WToken', url),
                 token = $$.getCookie('__TOKEN__');
             if (!urlToken && token) {
                 if (url.indexOf('?') != -1) {
-                    url += '&Token=' + token;
+                    url += '&WToken=' + token;
                 } else {
-                    url += '?Token=' + token;
+                    url += '?WToken=' + token;
                 }
             }
             if (!url.startsWith($$.config.serverAddr)) {
@@ -402,7 +402,7 @@
                 }
                 if (!data.Token) {
                     $.extend(data, {
-                        Token: token
+                        WToken: token
                     });
                 }
                 $.ajax({
@@ -435,7 +435,7 @@
                 url: $$.config.serverAddr + 'CSL/User/GetInfoByToken',
                 type: 'POST',
                 data: {
-                    Token: token
+                    WToken: token
                 },
                 dataType: 'json',
                 success: function(res) {

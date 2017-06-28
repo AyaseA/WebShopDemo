@@ -51,13 +51,6 @@ $(function () {
 		       		
 		       	}
 
-
-		       	$page.on("click",".showSrc",function(){
-		       		var a= $page.find(".imgCont ul li img").attr("src");
-		       		alert(a);
-		       		}
-		       	)
-
 		    }
 		});
 	});

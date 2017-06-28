@@ -217,11 +217,14 @@ $(function() {
                                                             $page.find("" + area).append(onePiece);
                                                         }
                                                     } else {
-                                                        for (var k = 0; k < listData.length; k++) {
-                                                            contentNode = "<img src='" + url + "+Img/" + listData[k].Img + "'>";
+                                                        for (var k = 0; k < 3; k++) {
+                                                            if (listData[k].Img == "") {
+                                                            listData[k].Img = "NoImg/" + Math.random() + ".jpg";
+                                                            }
+                                                            contentNode = "<img src='" + url + "Img/" + listData[k].Img + "'>";
                                                             contentNodeList += contentNode;
                                                         }
-
+                                                        
                                                         if (list[i].StatusID == 1) {
                                                             onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span style='color:red'>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent'>" + contentNodeList + "<div></div><p style='float:right'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p></div><div class='piecePay'><button class='PayBtn'>支付</button></div></div>";
                                                             $page.find("" + area).append(onePiece);

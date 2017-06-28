@@ -5,7 +5,6 @@ $(function() {
 
     //设置内容高度    
     var contentHeight = window.innerHeight - $page.find(".header").height() - $page.find(".footer").height();
-    console.log(contentHeight);
     $page.find(".content").height(contentHeight);
     $page.find(".content").css({ position: "absolute", top: $page.find(".header").height() + "px", left: 0, width: "100%" });
 
@@ -152,6 +151,15 @@ $(function() {
         }
 
 
+        //关闭模态窗口方法  
+        function colse() {
+            bodyMirror.onclick = function() {
+                $page.find("#shopList_selectModal").fadeOut(300);
+                removeMirror();
+            };
+        }
+
+
         //点击选项事件
         $page.find("#shopList_mainPostion").click(function() {
             $page.find("#shopList_selectModal").fadeIn(300);
@@ -174,13 +182,7 @@ $(function() {
             colse();
         });
 
-        //关闭模态窗口方法  
-        function colse() {
-            bodyMirror.onclick = function() {
-                $page.find("#shopList_selectModal").fadeOut(300);
-                removeMirror();
-            };
-        }
+        
 
         //一级tab
         var selectModal = document.getElementById("shopList_selectModal");

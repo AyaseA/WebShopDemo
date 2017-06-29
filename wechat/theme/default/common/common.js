@@ -744,14 +744,6 @@
                 case 'test': {
                     $$.redirect($(this).attr('data-url'));
                 } break;
-                // 删除token
-                case 'del': {
-                    $$.delCookie('__TOKEN__');
-                } break;
-                // 注销
-                case 'dis': {
-                    $$.refresh('index/index.html', 1);
-                } break;
             }
         });
         // 展开收起菜单

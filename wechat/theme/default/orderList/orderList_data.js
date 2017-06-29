@@ -85,7 +85,7 @@ $(function() {
                     if (thisLoaded[scrollArea] == 0) {
                         data = $$.eval(data);
                         if (data.Status != 0) {
-                            $$.redirect("login/login.html");
+                            /*$$.redirect("login/login.html");*/
                         } else {
                             var list = $$.eval(data).Data.Rows;
                             $page.listNum = list.length;

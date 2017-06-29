@@ -47,7 +47,7 @@ $(function() {
         $page.find(".all").fadeIn(500);
         $page.find(".nav ul li").removeClass("on");
         $page.find(".nav .allNav").addClass("on");
-        loadList({ "Token": Token, "N": n }, ".all", "all");
+        loadList({ "WToken": Token, "N": n }, ".all", "all");
 
         //点击支付按钮事件  
         $page.off("click", ".PayBtn").on("click", ".PayBtn", function() {
@@ -81,13 +81,14 @@ $(function() {
                 type: "POST",
                 url: url + "CSL/Order/QueryOrderList",
                 data: postData,
+                dataType: 'json',
                 success: function(data) {
                     if (thisLoaded[scrollArea] == 0) {
                         data = $$.eval(data);
-                        if (data.Status != 0) {
-                            /*$$.redirect("login/login.html");*/
+                        if (data.Status == -1) {
+                            $$.refreshConfirm();
                         } else {
-                            var list = $$.eval(data).Data.Rows;
+                            var list = data.Data.Rows;
                             $page.listNum = list.length;
                             if ($page.listNum == 0) {
                                 var noOrders = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p><button>最新优惠</button></div>";

@@ -400,7 +400,7 @@
                 if (!url.startsWith($$.config.serverAddr)) {
                     url = $$.config.serverAddr + url;
                 }
-                if (!data.Token) {
+                if (!data.WToken) {
                     $.extend(data, {
                         WToken: token
                     });
@@ -593,6 +593,7 @@
         // 默认加载首页
         $$.redirect('index/index.html');
     }
+
     // 是否授权
     !(function() {
         /*********** 相关方法定义 ************/
@@ -605,12 +606,12 @@
             }
             var code = $$.getQueryString('code', url),
                 str = $$.getQueryString('str', url);
-
+            
             // url替换处理
             urlHandle(currentUrl);
             if (code == '0') {
                 // 保存token
-                if (str.length == 32) {
+                if (str.length == 34) {
                     $$.setToken(str);
                 }
             } else if (code == '1') {
@@ -742,6 +743,14 @@
                 // 测试用
                 case 'test': {
                     $$.redirect($(this).attr('data-url'));
+                } break;
+                // 删除token
+                case 'del': {
+                    $$.delCookie('__TOKEN__');
+                } break;
+                // 注销
+                case 'dis': {
+                    $$.refresh('index/index.html', 1);
                 } break;
             }
         });

@@ -28,25 +28,25 @@
 				});
 			},
 			payment: function(url,token) {
-				$$.post(url+'/CSL/Order/QueryStatusCount', {Token: token,StatusID: 1}, function(data) {
+				$$.post(url+'/CSL/Order/QueryStatusCount', {WToken: token,StatusID: 1}, function(data) {
 					data.Data == 'Not login!' ? 0 : data.Data;
 					$('#payment').html(data.Data);
 				});
 			},
 			deliverGoods: function(url,token) {
-				$$.post(url+'/CSL/Order/QueryStatusCount', {Token: token,StatusID: 2}, function(data) {
+				$$.post(url+'/CSL/Order/QueryStatusCount', {WToken: token,StatusID: 2}, function(data) {
 					data.Data == 'Not login!' ? 0 : data.Data;
 					$('#deliverGoods').html(data.Data);
 				});
 			},
 			goodsReceipt: function(url,token) {
-				$$.post(url+'/CSL/Order/QueryStatusCount', {Token: token,StatusID: 4}, function(data) {
+				$$.post(url+'/CSL/Order/QueryStatusCount', {WToken: token,StatusID: 4}, function(data) {
 					data.Data == 'Not login!' ? 0 : data.Data;
 					$('#goodsReceipt').html(data.Data);
 				});
 			},
 			assessment: function(url,token) {
-				$$.post(url+'/CSL/Order/QueryStatusCount', {Token: token,StatusID: 6}, function(data) {
+				$$.post(url+'/CSL/Order/QueryStatusCount', {WToken: token,StatusID: 6}, function(data) {
 					data.Data == 'Not login!' ? 0 : data.Data;
 					$('#assessment').html(data.Data);
 				});
@@ -75,5 +75,3 @@
 		//我的足迹
 	}
 }());
-
-

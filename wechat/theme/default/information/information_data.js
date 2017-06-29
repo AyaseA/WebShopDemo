@@ -53,7 +53,7 @@ $('.photo_take').click(function() {
                 success: function (res) {
                     var serverId = res.serverId; //返回图片的服务器端ID
                     console.log(serverId);
-                    $$.post(url+'/CSL/User/UpdateImg', {Token: token,Img: serverId,Platform: 1}, function(data) {
+                    $$.post(url+'/CSL/User/UpdateImg', {WToken: token,Img: serverId,From: 1}, function(data) {
                         $$.setUserInfo('Img', data.Data);
                         $('#information_information .img_icon').attr('src', imgUrl + data.Data);
                     });

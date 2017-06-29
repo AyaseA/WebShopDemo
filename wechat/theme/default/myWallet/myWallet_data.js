@@ -13,7 +13,7 @@ $(function() {
         $.ajax({
             type: "POST",
             url: url + "CSL/Account/QueryAccountCount",
-            data: { "Token": token },
+            data: { "WToken": token },
             success: function(txt) {
                 txt = $$.eval(txt);
                 if (txt.Status != 0) {
@@ -28,7 +28,7 @@ $(function() {
         $.ajax({
             type: "POST",
             url: url + "CSL/Reward/QueryRewardCount",
-            data: { "Token": token },
+            data: { "WToken": token },
             success: function(txt) {
                 txt = $$.eval(txt);
                 if (txt.Status != 0) {

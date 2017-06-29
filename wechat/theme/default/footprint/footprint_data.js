@@ -11,7 +11,7 @@ $(function() {
         $.ajax({
             type: "POST",
             url: url + "CSL/ProdFoot/QueryFootList",
-            data: { Token: token },
+            data: { WToken: token },
             success: function(txt) {
                 $page.find(".content").empty();
                 txt = $$.eval(txt);

@@ -291,7 +291,7 @@ $(function() {
                 isLoad = 0;
                 noDate = 0;
                 loadComplete = true;
-                loadList({ "Token": Token, "N": n }, ".all", "all");
+                loadList({ "WToken": Token, "N": n }, ".all", "all");
             }
 
         });
@@ -309,7 +309,7 @@ $(function() {
                 isLoad = 0;
                 noDate = 0;
                 loadComplete = true;
-                loadList({ "Token": Token, "N": n, "StatusID": 1 }, ".waitPay", "waitPay");
+                loadList({ "WToken": Token, "N": n, "StatusID": 1 }, ".waitPay", "waitPay");
             }
         });
 
@@ -325,7 +325,7 @@ $(function() {
                 isLoad = 0;
                 noDate = 0;
                 loadComplete = true;
-                loadList({ "Token": Token, "N": n, "StatusID": 3 }, ".waitPost", "waitPost");
+                loadList({ "WToken": Token, "N": n, "StatusID": 3 }, ".waitPost", "waitPost");
             }
 
         });
@@ -342,7 +342,7 @@ $(function() {
                 isLoad = 0;
                 noDate = 0;
                 loadComplete = true;
-                loadList({ "Token": Token, "N": n, "StatusID": 4 }, ".waitGet", "waitGet");
+                loadList({ "WToken": Token, "N": n, "StatusID": 4 }, ".waitGet", "waitGet");
             }
 
         });
@@ -357,7 +357,7 @@ $(function() {
                 $.ajax({
                     type: "POST",
                     url: url + "CSL/Review/ProductReviewList",
-                    data: { "Token": Token, IsReview: 0 },
+                    data: { "WToken": Token, IsReview: 0 },
                     success: function(Data) {
                         Data = $$.eval(Data);
                         console.log(Data);

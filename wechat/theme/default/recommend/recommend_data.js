@@ -18,7 +18,7 @@ $(function () {
             $$.post(
                 'CSL/W_Msg/PostInfoByToken',
                 {
-                    Token: $$.getToken(),
+                    WToken: $$.getToken(),
                     Url: escape('https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token={ACCESS_TOKEN}'),
                     JsonStr: JSON.stringify({
                         expire_seconds: 2592000,

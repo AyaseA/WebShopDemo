@@ -39,7 +39,7 @@ $(function() {
 		location.href = $$.config.serverAddr +
 			'CSL/W_Pay/Pay?OrderID=' + orderId +
 			'&OrderDesc=' + orderDesc +
-			'&Token=' + $$.getToken() +
+			'&WToken=' + $$.getToken() +
 			'&Total=' + total;
 	}
 });

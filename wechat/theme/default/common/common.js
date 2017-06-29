@@ -581,6 +581,15 @@
                     });
                 }
             });
+        },
+        delUserCookies: function() {
+            $$.delCookie('__TOKEN__');
+            $$.delCookie('__LOCATION__');
+            $$.delCookie('__URL__');
+            $$.delCookie('__OLDDIV__');
+            $$.delCookie('__NEWDIV__');
+            $$.delCookie('__UINFO__');
+            $$.delCookie('__WISHLIST__');
         }
     });
 
@@ -609,15 +618,41 @@
             
             // url替换处理
             urlHandle(currentUrl);
+
             if (code == '0') {
+                // 已关联且成功登陆
                 // 保存token
-                if (str.length == 34) {
-                    $$.setToken(str);
-                }
+                $$.setToken(str);
             } else if (code == '1') {
-                // 未授权
+                // 成功取消关联
+                $$.delUserCookies();
+            } else if (code == '2') {
+                // 微信内部链接错误
+
+            } else if (code == '3') {
+                // 登陆失败
+
+            } else if (code == '4') {
+                // 此手机号已授权
+
+            } else if (code == '5') {
+                // 验证码错误
+
+            } else if (code == '6') {
+                // 上传图片成功
+
+            } else if (code == '7') {
+                // 上传图片错误
+
+            } else if (code == '8') {
+                // 获取UserInfo失败
+
+            } else if (code == '9') {
+                // 用户没有关联
+
             } else {
-                // 其他状态都视为网络的锅
+                // 网络的锅
+
             }
         };
         // url替换处理

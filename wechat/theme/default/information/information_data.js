@@ -74,7 +74,3 @@ $('.photo_photogragh').click(function(){
         window.open(res.Data+ '?' + res);
     });
 });
-
-
-
-

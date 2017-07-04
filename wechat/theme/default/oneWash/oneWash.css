@@ -2,12 +2,17 @@
 /* CSS Document */
 
 #oneWash_oneWash{
-	width: 100%;
-	height: 100%;
-	background: url("../images/oneWash/bg.png");
-	background-size: 100% 100%;
-	background-repeat:no-repeat;
+	width: 100% ;
+	height: auto;
+	position: relative;
+	background: #F39770;
 }
+
+#oneWash_oneWash .bgimg{
+	width: 100vw;
+	height: 180vw;
+}
+
 
 #oneWash_oneWash .formInput{
 	width: 84vw;
@@ -58,6 +63,8 @@
 	color: #fff;
 	font-size: 3.5vw;
 	height: 8vw;
+	float: right;
+	margin-top: 2vw;
 }
 
 #oneWash_oneWash .formInput .submitBtn{
@@ -79,7 +86,7 @@
 }
 
 #oneWash_oneWash .formInput .phone{
-	width: 42vw;
+	width: 38vw;
 }
 
 #oneWash_oneWash  .activeRule{

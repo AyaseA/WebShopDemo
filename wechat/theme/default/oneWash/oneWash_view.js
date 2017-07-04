@@ -45,9 +45,14 @@ $(function() {
                 dataType: "json",
                 success: function(txt) {
                     if (txt.Status == 0 && txt.Data.Count == 1) {
-                        $page.find(".baseInfo").hide();
-                        $page.find(".haveResgn").show();
-                        getUserInfo($page.find(".phoneInput").val(), "haveResgn");
+                        layer.alert('您的手机号已成功领取38元洗车券', function(index) {
+                            $page.find(".baseInfo").hide();
+                            $page.find(".haveResgn").show();
+                            $page.find(".imgTitle").attr("src","images/oneWash/title3.png");
+                            getUserInfo($page.find(".phoneInput").val(), "haveResgn");
+                            layer.close(index);
+                        });
+
                     } else {
                         time($page.find(".getMsg"));
                         $.ajax({
@@ -96,12 +101,12 @@ $(function() {
 
     //点击提交事件
     $page.on("click", ".baseInfo .submitBtn", function() {
-        if (!$page.find(".phoneInput").val()) {
-            layer.msg('请输入手机号');
+        if (!phoneNumReg.test($page.find(".phoneInput").val())) {
+            layer.msg('请输入有效的手机号');
         } else if (!$page.find(".phone").val()) {
             layer.msg('请输入正确验证码');
         } else if (!$page.find(".userName").val()) {
-            layer.msg('姓名不能为空');
+            layer.msg('请输入姓名');
         } else {
             $.ajax({
                 type: "POST",
@@ -117,6 +122,7 @@ $(function() {
                     if (txt.Status == 0) {
                         $page.find(".baseInfo").hide();
                         $page.find(".getWashCard").show();
+                        $page.find(".imgTitle").attr("src","images/oneWash/title2.png");
                         getUserInfo($page.find(".phoneInput").val(), "getWashCard");
                     } else {
                         layer.msg('验证码错误');

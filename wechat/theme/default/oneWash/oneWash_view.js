@@ -113,6 +113,7 @@ $(function() {
                 url: "http://api.cheshili.com.cn/Product/Campaign/AddCampaignReward",
                 data: {
                     CampaignID: 31,
+                    WinOrNot:1,
                     UserName: $page.find(".userName").val(),
                     TheMobile: $page.find(".phoneInput").val(),
                     VC: $page.find(".phone").val()

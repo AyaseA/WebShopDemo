@@ -48,7 +48,7 @@ $(function() {
                         layer.alert('您的手机号已成功领取38元洗车券', function(index) {
                             $page.find(".baseInfo").hide();
                             $page.find(".haveResgn").show();
-                            $page.find(".imgTitle").attr("src","images/oneWash/title3.png");
+                            $page.find(".imgTitle").attr("src","../images/oneWash/title3.png");
                             getUserInfo($page.find(".phoneInput").val(), "haveResgn");
                             layer.close(index);
                         });
@@ -123,7 +123,7 @@ $(function() {
                     if (txt.Status == 0) {
                         $page.find(".baseInfo").hide();
                         $page.find(".getWashCard").show();
-                        $page.find(".imgTitle").attr("src","images/oneWash/title2.png");
+                        $page.find(".imgTitle").attr("src","../images/oneWash/title2.png");
                         getUserInfo($page.find(".phoneInput").val(), "getWashCard");
                     } else {
                         layer.msg('验证码错误');

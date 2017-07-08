@@ -13,7 +13,7 @@ $(function() {
 
     $page.on("click", ".contentContain button", function() {
         pid = $(this)[0].attributes[0].value;
-        $$.redirect("product/product.html?pid=" + pid);
+        $$.redirect("home/product.html?pid=" + pid);
     });
 
     

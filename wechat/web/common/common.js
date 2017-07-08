@@ -556,7 +556,7 @@
                     'fromGoBack': true
                 });
             } else {
-                $$.redirect('index/index.html', {
+                $$.redirect('home/index.html', {
                     'fromGoBack': true
                 });
             }
@@ -779,7 +779,7 @@
                 } break;
                 case 'index': {
                     if (url.indexOf('index/index.html') == -1) {
-                        $$.redirect('index/index.html');
+                        $$.redirect('home/index.html');
                     }
                 } break;
                 case 'icenter': {

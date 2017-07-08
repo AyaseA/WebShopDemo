@@ -30,7 +30,7 @@
 		/*$$.redirect('reditpassword/reditpassword.html');*/
 	});
 	$('.logout_back').on('click', function(){
-		$$.redirect('pageHome/pageHome.html', {
+		$$.redirect('icenter/pageHome.html', {
                     'fromGoBack': true
         });
 	});	

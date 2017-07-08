@@ -23,7 +23,7 @@ $(function() {
     $page.on('click', '>div.main div.car >div', function() {
         var cid = $(this).attr('data-id'),
             cname = $(this).attr('data-name');
-        $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname);
+        $$.redirect('home/maintain.html?cid=' + cid + '&cname=' + cname);
     });
     // 删除车辆
     $page.on('click', '>div.main div.car a.delete', function() {

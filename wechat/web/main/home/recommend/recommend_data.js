@@ -5,7 +5,7 @@ $(function () {
     $$.config.hideGlobalMenu();
     //$$.delCookie('__RECOMMENDQR__')
     if (!$$.isLogin()) {
-        $$.redirect('wechatLogin/wechatLogin.html');
+        $$.redirect('home/wechatLogin.html');
     } else {
         var qrCode = $$.getCookie('__RECOMMENDQR__'),
             mobile = $$.getUserMobile();

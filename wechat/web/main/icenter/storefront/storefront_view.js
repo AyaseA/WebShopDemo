@@ -30,12 +30,12 @@ $(function() {
     var url=$$.config.serverAddr;  
 
     $page.on("click",".footprint_contain_x",function(){
-    	$$.redirect("product/product.html?pid=1");
+    	$$.redirect("home/product.html?pid=1");
     });
 
     $page.on("click",".footprint_contain",function(){
     	var pid=IDList[$(this)[0].attributes.Name.value];
-    	 $$.redirect("product/product.html?pid="+pid);
+    	 $$.redirect("home/product.html?pid="+pid);
     });
 
     $.ajax({

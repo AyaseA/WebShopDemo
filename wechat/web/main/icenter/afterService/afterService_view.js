@@ -23,6 +23,6 @@ $(function() {
     });
 
     $page.on("click",".apply button",function(){
-        $$.redirect("applyService/applyService.html");
+        $$.redirect("icenter/applyService.html");
     });
 });

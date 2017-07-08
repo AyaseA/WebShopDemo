@@ -41,7 +41,7 @@ $(function() {
                 return false;
             }
             addOrder(function(oid) {
-                $$.redirect('payCenter/payCenter.html?oid=' + oid);
+                $$.redirect('home/payCenter.html?oid=' + oid);
             });
         });
     }

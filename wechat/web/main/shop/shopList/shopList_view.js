@@ -17,7 +17,7 @@ $(function() {
             case 'index':
                 {
                     // 首页
-                    $$.redirect('index/index.html');
+                    $$.redirect('home/index.html');
                 }
                 break;
             case 'carCrv':
@@ -29,13 +29,13 @@ $(function() {
             case 'activity':
                 {
                     // 活动
-                    $$.redirect('luckyDraw/luckyDraw.html');
+                    $$.redirect('campaign/activity/luckyDraw.html');
                 }
                 break;
             case 'center':
                 {
                     // 个人中心
-                    $$.redirect('pageHome/pageHome.html');
+                    $$.redirect('icenter/pageHome.html');
                 }
                 break;
         }
@@ -43,7 +43,7 @@ $(function() {
 
 
     $page.on("click", ".onepiece", function() {
-        $$.redirect("serviceNet/shopDetail.html?ID="+$(this).attr("data-ID"));
+        $$.redirect("shop/shopDetail.html?ID="+$(this).attr("data-ID"));
     });
 
     // 获取地理位置

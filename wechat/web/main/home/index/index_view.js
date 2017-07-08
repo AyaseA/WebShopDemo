@@ -20,26 +20,26 @@ $(function(){
         switch(type) {
             case 'carWash': {
                 // 一元洗车
-                $$.redirect('cleaningCar/cleaningCar.html');
+                $$.redirect('campaign/activity//cleaningCar.html');
             } break;
             case 'maintain': {
                 // 车辆信息
-                $$.redirect('myCars/myCars.html');
+                $$.redirect('home/myCars.html');
             } break;
             case 'friendAdd': {
                 // 邀请有礼
-                $$.redirect('invite/invite.html');
+                $$.redirect('icenter/invite.html');
             } break;
         }
     });
     // 活动点击事件
     $page.on('click', 'div.activity', function() {
-        $$.redirect('activity/activity.html', 0);
+        $$.redirect('home/activity.html', 0);
     });
     // 点击商品查看详情
     $page.on('click', 'div.products img', function() {
         var pid = $(this).parent().attr('data-id');
-        $$.redirect('product/product.html?pid=' + pid);
+        $$.redirect('home/product.html?pid=' + pid);
     });
     // footer 事件
     $page.on('click', 'div.footer li', function() {
@@ -51,15 +51,15 @@ $(function(){
             } break;
             case 'carCrv': {
                 // 服务网点
-                $$.redirect('shopList/shopList.html');
+                $$.redirect('shop/shopList.html');
             } break;
             case 'activity': {
                 // 活动
-                $$.redirect('luckyDraw/luckyDraw.html');
+                $$.redirect('campaign/activity//luckyDraw.html');
             } break;
             case 'center': {
                 // 个人中心
-                $$.redirect('pageHome/pageHome.html');
+                $$.redirect('icenter/pageHome.html');
             } break;
         }
     });

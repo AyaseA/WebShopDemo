@@ -45,7 +45,7 @@ $(function() {
         $('.login_check_pw').css('display', 'none');
         $('.login_check_in').css('display', 'none');
 
-        $$.redirect('index/index.html');
+        $$.redirect('home/index.html');
     });
 
     //监听清除的display

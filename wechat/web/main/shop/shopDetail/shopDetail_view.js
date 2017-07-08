@@ -3,7 +3,7 @@ $(function() {
         pageStr = 'shop_shopDetaill';
 
     $page.on("click",".back",function(){
-    	$$.redirect("serviceNet/shopList.html");
+    	$$.redirect("shop/shopList.html");
     });
 
     

@@ -66,7 +66,7 @@ $(function() {
                 $$.setUserInfo('UserCarID', cid);
             }
             $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname, {
-                backUrl: 'myCars/myCars.html'
+                backUrl: 'home/myCars.html'
             });
         });
     });

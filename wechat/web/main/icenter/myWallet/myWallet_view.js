@@ -15,7 +15,7 @@ $(function() {
 
     $page.on("click",".footprint_contain",function(){
     	var pid=IDList[$(this)[0].attributes.Name.value];
-    	 $$.redirect("product/product.html?pid="+pid);
+    	 $$.redirect("home/product.html?pid="+pid);
     });
 
     $.ajax({

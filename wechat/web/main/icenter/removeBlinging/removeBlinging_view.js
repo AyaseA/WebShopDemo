@@ -3,9 +3,9 @@
 		$$.goBack();
 	});
 	$('.reBl_goto_index').on('click', function() {
-		$$.redirect('index/index.html');
+		$$.redirect('home/index.html');
 	});
 	$('.reBl_goto_bling').on('click', function() {
-		$$.redirect('wechatLogin/wechatLogin.html');
+		$$.redirect('icenter/wechatLogin.html');
 	});
 }());

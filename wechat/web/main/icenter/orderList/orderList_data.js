@@ -54,12 +54,12 @@ $(function() {
             var orderId = $(this).parent().parent().children(".pieceHeader").children(".orderID").children().html();
             var productID = "";
             if ($(this).html() == "支付") {
-                $$.redirect("payCenter/payCenter.html?oid=" + orderId);
+                $$.redirect("home/payCenter.html?oid=" + orderId);
             } else if ($(this).html() == "确定收货") {
-                $$.redirect("commit/commit.html?oid=" + orderId);
+                $$.redirect("icenter/commit.html?oid=" + orderId);
             } else if ($(this).html() == "点评") {
                 var productID = $(this).attr("data-index");
-                $$.redirect("orderCommit/orderCommit.html?oid=" + orderId+"&pid="+productID);
+                $$.redirect("icenter/orderCommit.html?oid=" + orderId+"&pid="+productID);
             }
 
         });
@@ -67,11 +67,11 @@ $(function() {
         //点击按钮跳转订单详情界面
         $page.off("click", ".pieceContent").on("click", ".pieceContent", function() {
             var orderId = $(this).parent().children(".pieceHeader").children(".orderID").children().html();
-            $$.redirect("orderDetail/orderDetail.html?oid=" + orderId);
+            $$.redirect("icenter/orderDetail.html?oid=" + orderId);
         });
 
         $page.off("click", ".noOrders button").on("click", ".noOrders button", function() {
-            $$.redirect("index/index.html");
+            $$.redirect("home/index.html");
         });
 
         //进入主界面加载数据

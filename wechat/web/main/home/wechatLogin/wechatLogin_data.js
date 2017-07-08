@@ -20,7 +20,7 @@ $(function() {
             if (str.length == 32) {
                 // 已授权，跳转到首页
                 layer.msg('账户已关联，跳转首页！');
-                $$.redirect('index/index.html?code=' + code + '&str' + str);
+                $$.redirect('home/index.html?code=' + code + '&str' + str);
             }
         }
     }

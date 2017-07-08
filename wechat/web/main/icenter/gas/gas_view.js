@@ -3,6 +3,6 @@
 		$$.goBack();
 	});
 	$('.gas_to_card').on('click', function(){
-		$$.redirect('gascard/gascard.html');
+		$$.redirect('icenter/gascard.html');
 	});
 }());

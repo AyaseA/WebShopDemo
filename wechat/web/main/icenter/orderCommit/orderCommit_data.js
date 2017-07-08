@@ -177,7 +177,7 @@ $(function() {
                             console.log($page.imgList.length);
                             if (i == $page.imgList.length) {
                                 alert("评论上传成功");
-                                $$.redirect("orderList/orderList.html");
+                                $$.redirect("icenter/orderList.html");
                             }
                         });
                     }

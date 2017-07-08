@@ -210,6 +210,19 @@
         // 页面跳转 核心方法
         redirect: function(url, option) {
             if (url) {
+                // 设置   
+                var a_url=url.split('.html');
+                var v_url= a_url[0].split("/");
+                if(v_url.length>2)
+                {
+                    //TODO 清除相关缓存
+                   location.href="../"+v_url[0]+"/index.html?R="+v_url[1]+"/"+v_url[2]+".html"+a_url[1];
+                   
+                }
+                else
+                {
+                    url=a_url[0]+"/"+v_url[1]+".html"+(a_url[1]?a_url[1]:"");
+                }
                 // 设置可以刷新为true，加载代码时存在设置则置为false
                 $$.config.canRefresh = true;
                 // 设置全局菜单的按钮显示与隐藏
@@ -1003,3 +1016,11 @@ Date.prototype.pattern = function(fmt) {
     }
     return fmt;
 };
+String.prototype.startWith=function(str){     
+      var reg=new RegExp("^"+str);     
+      return reg.test(this);        
+    }  
+String.prototype.endWith=function(str){     
+      var reg=new RegExp(str+"$");     
+      return reg.test(this);        
+    }

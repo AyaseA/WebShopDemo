@@ -4,9 +4,11 @@ $(function() {
         pageStr = 'shopList_shopList';
 
     //设置内容高度    
-    var contentHeight = window.innerHeight - $page.find(".header").height() - $page.find(".footer").height();
-    $page.find(".content").height(contentHeight);
-    $page.find(".content").css({ position: "absolute", top: $page.find(".header").height() + "px", left: 0, width: "100%" });
+    var contentHeight = window.innerHeight - $page.find(".header").height() - $page.find(".footer").height() - $page.find(".selectShop").height();
+    $("#shopList_shopList .shopList").height(contentHeight);
+    $("#shopList_shopList .shopList").css({ "position": "fixed", "top": $page.find(".header").height() + $page.find(".selectShop").height() + "px", "left": 0 });
+    $page.find(".selectShop").css({ "position": "fixed", "top": $page.find(".header").height() + "px", "left": 0 });
+
 
     //底部导航时间
     $page.on('click', 'div.footer li', function() {
@@ -110,6 +112,123 @@ $(function() {
         });
     }
 
+    function getGreatCircleDistance(lat1, lng1, lat2, lng2) {
+        var EARTH_RADIUS = 6378137.0; //单位M
+        var PI = Math.PI;
+
+        function getRad(d) {
+            return d * PI / 180.0;
+        }
+        var radLat1 = getRad(lat1);
+        var radLat2 = getRad(lat2);
+
+        var a = radLat1 - radLat2;
+        var b = getRad(lng1) - getRad(lng2);
+
+        var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+        s = s * EARTH_RADIUS;
+        s = Math.round(s * 10000) / 10000000;
+        km = s.toFixed(2);
+        return (km + "km");
+    }
+
+    window.n = 1;
+
+    function reSetAttr() {
+        $page.find(".shopList").empty();
+        n = 1;
+    }
+    //加载商户信息
+    function loadStore(Data, scrollArea) {
+        var _this = this;
+        _this.Data = Data;
+        _this.loadfoot = false;
+        $.ajax({
+            type: "POST",
+            url: "http://api.cheshili.com.cn/Product/Store/QueryStoreList",
+            data: _this.Data,
+            dataType: "json",
+            success: function(txt) {
+                if (txt.Status == 0 && parseInt(txt.Data.Count) > $(".onepiece").length) {
+
+                    var data = txt.Data.Rows;
+                    var shoplist = "";
+                    for (var i = 0; i < data.length; i++) {
+                        var distance = getGreatCircleDistance(36.6875642852, 117.1330654621, data[i].Latitude, data[i].Longitude);
+                        shoplist = '<div class="onepiece"><img src="http://api.cheshili.com.cn/Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + data[i].Address + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
+                        $(scrollArea).append(shoplist);
+                    }
+
+                    if (parseInt(txt.Data.Count) < 10) {
+                        $(scrollArea).append("<div class='notice'>没有更多数据了</div>");
+                        _this.loadfoot=true;
+                    } else {
+                        _this.Data.N += 1;
+                        loadComplete = true;
+
+                        $(scrollArea).scroll(function() {
+                            var scrollTop = $(scrollArea).scrollTop() + $(scrollArea).height();
+                            var scrollHeight = $(scrollArea)[0].scrollHeight;
+                            if (scrollHeight - scrollTop < 10 && loadComplete) {
+                                loadComplete = false;
+                                loadStore(_this.Data, scrollArea);
+                            }
+                        });
+                    }
+
+                } else {
+                    if (!_this.loadfoot) {                     
+                        $(scrollArea).append("<div class='notice'>没有更多数据了</div>");
+                    }
+                }
+            }
+        });
+    }
+
+    loadStore({ Type: -1, N: n }, "#shopList_shopList .shopList");
+
+    //3级联动筛选
+    //点击区域
+    $("#shopList_positionS").on("click", "li", function() {      
+        if ($(this).attr("data-type") == 0) {
+            reSetAttr();
+            loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n }, "#shopList_shopList .shopList");
+        } else {
+            reSetAttr();
+            loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type") }, "#shopList_shopList .shopList");
+        }
+    });
+
+
+    //点击属性排序
+    $("#shopList_carT").on("click", "li", function() {
+        if ($("#shopList_area ul .positionOn").attr("data-type") == 0) {
+            reSetAttr();
+            loadStore({ Type: $(this).attr("data-type"), N: n }, "#shopList_shopList .shopList");
+        } else {
+            reSetAttr();
+            loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#shopList_shopList .shopList");
+            console.log($("#shopList_positionS ul .positionOn").attr("data-type"));
+        }
+    });
+
+    //点击距离排序
+    $("#shopList_orderBy").on("click", "li", function() {
+        if ($(this).attr("data-type") == 31 ) {
+            if($("#shopList_area ul .positionOn").attr("data-type") == 0){         
+                reSetAttr();
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: "117.1330654621,36.6875642852" }, "#shopList_shopList .shopList");
+            }else{
+                reSetAttr();
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: "117.1330654621,36.6875642852", CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#shopList_shopList .shopList");
+            }
+        } else if ($(this).attr("data-type") == 30) {
+            
+            reSetAttr();
+            loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n }, "#shopList_shopList .shopList");
+        }
+    });
+
     //点击弹出模态窗口
     //弹出滤镜层    
     function loadEvent() {
@@ -182,7 +301,7 @@ $(function() {
             colse();
         });
 
-        
+
 
         //一级tab
         var selectModal = document.getElementById("shopList_selectModal");

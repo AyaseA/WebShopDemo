@@ -217,6 +217,7 @@
 #shopList_shopList .selectShop ul{
 	list-style:none;
 	padding:3vw 0;
+	border-bottom: 1px solid #ccc;
 }
 
 #shopList_shopList .selectShop ul li{
@@ -243,6 +244,7 @@
 #shopList_shopList .shopList{
 	background:#fff;
 	overflow-y:auto;
+	width: 100%;
 }
 
 #shopList_shopList .container{
@@ -434,7 +436,10 @@
 	color:#f60;
 }
 
-
+#shopList_shopList .notice{
+	text-align: center;
+	color:#f60;
+}
 
 /*下拉选择框结束*/
 
@@ -508,7 +513,7 @@
 
 
 #shopList_shopList .onepiece img{
-	width: 25vw;
+	width: 23vw;
 	margin: 3vw 0 0 3vw;
 }
 

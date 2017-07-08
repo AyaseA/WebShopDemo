@@ -1,12 +1,12 @@
 // JavaScript Document
 $(function() {
-    var $page = $('#shopList_shopList'),
-        pageStr = 'shopList_shopList';
+    var $page = $('#serviceNet_shopList_shopList'),
+        pageStr = 'serviceNet_shopList_shopList';
 
     //设置内容高度    
     var contentHeight = window.innerHeight - $page.find(".header").height() - $page.find(".footer").height() - $page.find(".selectShop").height();
-    $("#shopList_shopList .shopList").height(contentHeight);
-    $("#shopList_shopList .shopList").css({ "position": "fixed", "top": $page.find(".header").height() + $page.find(".selectShop").height() + "px", "left": 0 });
+    $("#serviceNet_shopList_shopList .shopList").height(contentHeight);
+    $("#serviceNet_shopList_shopList .shopList").css({ "position": "fixed", "top": $page.find(".header").height() + $page.find(".selectShop").height() + "px", "left": 0 });
     $page.find(".selectShop").css({ "position": "fixed", "top": $page.find(".header").height() + "px", "left": 0 });
 
 
@@ -43,7 +43,7 @@ $(function() {
 
 
     $page.on("click", ".onepiece", function() {
-        $$.redirect("shopDetail/shopDetail.html");
+        $$.redirect("serviceNet/shopDetail.html?ID="+$(this).attr("data-ID"));
     });
 
     // 获取地理位置
@@ -65,8 +65,8 @@ $(function() {
             title: false, //不显示标题栏
             closeBtn: false,
             btn: [],
-            id: 'shopList_shopList_confirm',
-            content: template('shopList_shopList_confirm_cnt', {
+            id: 'serviceNet_shopList_shopList_confirm',
+            content: template('serviceNet_shopList_shopList_confirm_cnt', {
                 dist: name
             }),
             success: function(modal) {
@@ -155,13 +155,13 @@ $(function() {
                     var shoplist = "";
                     for (var i = 0; i < data.length; i++) {
                         var distance = getGreatCircleDistance(36.6875642852, 117.1330654621, data[i].Latitude, data[i].Longitude);
-                        shoplist = '<div class="onepiece"><img src="http://api.cheshili.com.cn/Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + data[i].Address + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="'+data[i].ID+'"><img src="http://api.cheshili.com.cn/Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + data[i].Address + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 
                     if (parseInt(txt.Data.Count) < 10) {
                         $(scrollArea).append("<div class='notice'>没有更多数据了</div>");
-                        _this.loadfoot=true;
+                        _this.loadfoot = true;
                     } else {
                         _this.Data.N += 1;
                         loadComplete = true;
@@ -177,7 +177,7 @@ $(function() {
                     }
 
                 } else {
-                    if (!_this.loadfoot) {                     
+                    if (!_this.loadfoot) {
                         $(scrollArea).append("<div class='notice'>没有更多数据了</div>");
                     }
                 }
@@ -185,17 +185,27 @@ $(function() {
         });
     }
 
-    loadStore({ Type: -1, N: n }, "#shopList_shopList .shopList");
+    loadStore({ Type: -1, N: n }, "#serviceNet_shopList_shopList .shopList");
 
     //3级联动筛选
     //点击区域
-    $("#shopList_positionS").on("click", "li", function() {      
+    $("#shopList_positionS").on("click", "li", function() {
         if ($(this).attr("data-type") == 0) {
-            reSetAttr();
-            loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n }, "#shopList_shopList .shopList");
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
+                reSetAttr();
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: "117.1330654621,36.6875642852" }, "#serviceNet_shopList_shopList .shopList");
+            } else {
+                reSetAttr();
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n }, "#serviceNet_shopList_shopList .shopList");
+            }
         } else {
-            reSetAttr();
-            loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type") }, "#shopList_shopList .shopList");
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
+                reSetAttr();
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"),LL: "117.1330654621,36.6875642852" }, "#serviceNet_shopList_shopList .shopList");
+            }else{
+                reSetAttr();
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type") }, "#serviceNet_shopList_shopList .shopList");
+            }
         }
     });
 
@@ -203,29 +213,42 @@ $(function() {
     //点击属性排序
     $("#shopList_carT").on("click", "li", function() {
         if ($("#shopList_area ul .positionOn").attr("data-type") == 0) {
-            reSetAttr();
-            loadStore({ Type: $(this).attr("data-type"), N: n }, "#shopList_shopList .shopList");
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31){
+                reSetAttr();
+                loadStore({ Type: $(this).attr("data-type"), N: n , LL: "117.1330654621,36.6875642852"}, "#serviceNet_shopList_shopList .shopList");
+            }else{
+                reSetAttr();
+                loadStore({ Type: $(this).attr("data-type"), N: n}, "#serviceNet_shopList_shopList .shopList");
+            }
         } else {
-            reSetAttr();
-            loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#shopList_shopList .shopList");
-            console.log($("#shopList_positionS ul .positionOn").attr("data-type"));
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31){
+                reSetAttr();
+                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") , LL: "117.1330654621,36.6875642852"}, "#serviceNet_shopList_shopList .shopList");
+            }else{
+                reSetAttr();
+                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type")}, "#serviceNet_shopList_shopList .shopList");
+            }
         }
     });
 
     //点击距离排序
     $("#shopList_orderBy").on("click", "li", function() {
-        if ($(this).attr("data-type") == 31 ) {
-            if($("#shopList_area ul .positionOn").attr("data-type") == 0){         
+        if ($(this).attr("data-type") == 31) {
+            if ($("#shopList_area ul .positionOn").attr("data-type") == 0) {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: "117.1330654621,36.6875642852" }, "#shopList_shopList .shopList");
-            }else{
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: "117.1330654621,36.6875642852" }, "#serviceNet_shopList_shopList .shopList");
+            } else {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: "117.1330654621,36.6875642852", CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#shopList_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: "117.1330654621,36.6875642852", CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#serviceNet_shopList_shopList .shopList");
             }
         } else if ($(this).attr("data-type") == 30) {
-            
-            reSetAttr();
-            loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n }, "#shopList_shopList .shopList");
+            if ($("#shopList_area ul .positionOn").attr("data-type") == 0) {
+                reSetAttr();
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n }, "#serviceNet_shopList_shopList .shopList");
+            } else {
+                reSetAttr();
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#serviceNet_shopList_shopList .shopList");
+            }
         }
     });
 

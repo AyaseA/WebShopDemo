@@ -1,10 +1,12 @@
 $(function() {
-    var $page = $('#shopDetail_shopDetail'),
-        pageStr = 'shopDetail_shopDetail';
+    var $page = $('#serviceNet_shopDetail_shopDetail'),
+        pageStr = 'serviceNet_shopDetail_shopDetail';
 
     $page.on("click",".back",function(){
-    	$$.redirect("shopList/shopList.html");
+    	$$.redirect("serviceNet/shopList.html");
     });
+
+    
 
     $page.on("click",".map",function(){
     	wx.openLocation({

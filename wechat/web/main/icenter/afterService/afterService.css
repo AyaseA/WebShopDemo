@@ -1,0 +1,138 @@
+#icenter_afterService{
+  height: 100%;
+  width: 100%;
+  overflow:hidden;
+  background: #EFEFF4;
+}
+
+#icenter_afterService .fl{
+  float: right;
+}
+
+#icenter_afterService .header{
+  background: #fff;
+  height: 10vw;
+  width: 100%;
+  font-size: 4vw;
+  font-weight: bold;
+  line-height: 10vw;
+  text-align: center;
+  border-bottom: 1px solid #EEEEF0;
+  position: relative;
+}
+
+#icenter_afterService .header img{
+  position: absolute;
+  top:1.5vw;
+  left: 4vw;
+  width: 7vw;
+}
+
+#icenter_afterService .nav{
+  height: 12vw;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #EEEEF0;
+}
+
+#icenter_afterService .nav ul{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#icenter_afterService .nav ul li{
+  display: inline-block;
+  line-height: 12vw;
+  width: 49%;
+  text-align: center;
+  font-size: 3.7vw;
+}
+
+#icenter_afterService .on{
+  color:#f60;
+  border-bottom: 2px solid #f60;
+}
+
+#icenter_afterService .applyPiece{
+  background: #fff;
+  margin-top: 4vw;
+  height: 45vw;
+}
+
+#icenter_afterService .applyPiece .picecHeader{
+  height: 10vw;
+  padding: 0 4vw 0 4vw;
+  line-height: 10vw;
+  font-size: 3.5vw;
+}
+
+#icenter_afterService .applyPiece .pieceContent{
+  height: 25vw;
+  background: #EFEFF4;
+  padding: 0 4vw 0 4vw;
+  position: relative;
+}
+
+#icenter_afterService .applyPiece .pieceContent img{
+  margin-top: 2.7vw;
+  width: 20vw;
+}
+
+#icenter_afterService .applyPiece .pieceContent .info{
+  position: absolute;
+  top:3vw;
+  left: 27vw;
+}
+
+#icenter_afterService .info p{
+  width: 70vw;
+  color:#7b7a7a;
+}
+
+#icenter_afterService .info p span{
+ 
+}
+
+#icenter_afterService .applyPiece .pieceFoot{
+  height: 10vw;
+  padding: 0 4vw 0 4vw;
+  line-height: 10vw;
+  float: right;
+}
+
+#icenter_afterService .applyPiece .pieceFoot p{
+  color: #F60;
+  font-size: 3.8vw;
+}
+
+
+#icenter_afterService .applyPiece button{
+  width:30vw;
+  border:1px solid #F60;
+  background:none;
+  outline:none;
+  height:8vw;
+  border-radius:6vw;
+  float:right;
+  margin-top:1vw;
+  color: #F60;
+}
+
+#icenter_afterService .content{
+  position: relative;
+}
+
+#icenter_afterService .content .apply{
+  position: absolute;
+  left: 0vw;
+  height:0vw;
+  width: 100%;
+}
+
+#icenter_afterService .content .record{
+  position: absolute;
+  left: 100vw;
+  height:0vw;
+  width: 100%;
+}

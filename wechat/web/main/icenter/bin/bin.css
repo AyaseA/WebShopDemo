@@ -1,0 +1,110 @@
+#icenter_bin {
+	margin: 0;
+	padding: 0;
+	background-color: #efeff4;
+	height: 100%;
+}
+#icenter_bin header{
+	width: 100%;
+	height: 12vw;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;
+}
+#icenter_bin header img{
+	width: 7vw;
+	height: 7vw;
+	display: inline-block;
+	margin: 2vw 0px 0px 5.3vw;
+}
+#icenter_bin header span{
+	display: inline-block;
+	font-size: 4.6vw;
+	color: #4E4D53;
+	vertical-align: top;
+	margin: 2.7vw 0px 0px 23.3vw;
+}
+#icenter_bin .bin_bg_yellow{
+	width: 100%;
+	height: 34.7vw;
+	background: url(../images/center/bin_bg_1.png) no-repeat center center;
+	background-size: 100%;
+	color: #fff;
+}
+#icenter_bin .bin_bg_apple{
+	width: 100%;
+	height: 10.7vw;
+	background-color: #F6B53E;
+}
+#icenter_bin .bin_balance{
+	font-size: 12vw;
+	display: inline-block;
+	margin: 8.5vw 0px 0px 5.3vw;
+}
+#icenter_bin .bin_bg_apple div{
+	float: left;
+	width: 49%;
+	height: 8vw;
+	color: #fff;
+	font-size: 3.2vw;
+	text-align: center;
+	margin-top: 1.3vw;
+}
+#icenter_bin .bin_div_income{
+	border-right: 1px solid #fff;
+}
+#icenter_bin .bin_span_income,#icenter_bin .bin_span_expense{
+	font-size: 3.5vw;
+}
+#icenter_bin .bin_apple{
+	width: 100%;
+	height: 12vw;
+	background-color: #fff;
+	margin-top: 2.4vw;
+	overflow: hidden;
+	background: #fff url(../images/center/right_copy.png) no-repeat 85.3vw 4vw;
+	background-size: 2.4vw 4vw;
+}
+#icenter_bin .bin_apple_to_you{
+	width: 5.3vw;
+	height: 5.9vw;
+	display: inline-block;
+	margin: 2.9vw 2.7vw;
+}
+#icenter_bin .bin_banana_to_me{
+	display: inline-block;
+	vertical-align: top;
+	color: #000;
+	font-size: 4.3vw;
+	font-family: "Microsoft YaHei";
+	margin-top: 3.2vw;
+}
+#icenter_bin .bin_apple_more{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 3.2vw;
+	margin-left: 42.7vw;
+	font-family: "Microsoft YaHei";
+	color: #B4B4B4;
+}
+#icenter_bin .bin_order_content{
+	width: 100%;
+	height: 17.3vw;
+	background-color: #fff;
+	margin-top: 1px;
+	overflow: hidden;
+}
+#icenter_bin .bin_order_content div{
+	float: left;
+	margin-top: 2.7vw;
+	margin-left: 4vw;
+}
+#icenter_bin #bin_st_gr,#icenter_bin #bin_str_xr{
+	font-size: 6.9vw;
+	margin: 2.7vw 0px 0px 32vw;
+	color: #E95C2C;
+}
+#icenter_bin .bin_apple_left_to{
+	color: #B4B4B4;
+	font-size: 3.2vw;
+}

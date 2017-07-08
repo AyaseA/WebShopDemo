@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CSS Document */
+#shop_shopDetaill{
+	width: 100%;
+	background: #EFEFF4;
+	height: 180vw;
+}
+
+#shop_shopDetaill .banner{
+	width: 100%;
+	height: 55vw;
+	position: relative;
+}
+
+#shop_shopDetaill .banner img{
+	width: 100%;
+	height: 55vw;
+}
+
+
+#shop_shopDetaill .banner .back{
+	position: absolute;
+	left: 4vw;
+	top: 3vw;
+	z-index: 10;
+	width: 7vw;
+	height: 7vw;
+}
+
+
+#shop_shopDetaill .content{
+	width: 100%;
+	padding: 0 4vw 0 4vw;
+	border-bottom:1px solid #d6d6db;
+	background: #fff;
+}
+
+#shop_shopDetaill .title{
+	
+	border-bottom:1px solid #d6d6db;
+}
+
+#shop_shopDetaill .title h2{
+	padding-top: 3vw;
+	font-size: 4.8vw;
+}
+
+#shop_shopDetaill .title p{
+	margin:2vw 0 2vw 0;
+	font-size: 3.33vw;
+}
+
+#shop_shopDetaill .title span{
+	color: #f60;
+}
+
+
+#shop_shopDetaill .address{
+	position: relative;
+	height: 12vw;
+	line-height: 12vw;
+}
+
+#shop_shopDetaill .map{
+	position: absolute;
+	top:3vw;
+	left: 2vw;
+	width: 5vw;
+}
+
+#shop_shopDetaill .phone{
+	position: absolute;
+	top:3vw;
+	right:8vw;
+	width: 6vw;
+}
+
+#shop_shopDetaill .address p{
+	padding-left: 9vw;
+	font-size: 3.8vw;
+}
+
+#shop_shopDetaill .info{
+	width: 100%;
+	padding: 0 4vw 0 4vw;
+	border-bottom:1px solid #d6d6db;
+	margin-top: 3vw;
+	background: #fff;
+}
+
+#shop_shopDetaill .info h3{
+	border-bottom:1px solid #d6d6db;
+	font-weight: 600;
+	font-size: 4.44vw;
+	padding:2vw 0 2vw 0;
+}
+
+#shop_shopDetaill .info p{
+	font-size: 3.5vw;
+	margin:1vw 0 2vw 0;
+	color: #797878;
+}
+
+#shop_shopDetaill .adv{
+	position:relative;
+	top:10vw;
+	left: 5vw;
+
+}
+
+#shop_shopDetaill .adv img{
+	width: 88vw;
+}

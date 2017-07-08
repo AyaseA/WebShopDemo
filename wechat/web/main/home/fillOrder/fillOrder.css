@@ -1,0 +1,382 @@
+#home_fillOrder {
+	height: 100%;
+	background-color: #EFEFF4;
+	overflow: hidden;
+	position: relative;
+}
+#home_fillOrder >div.header {
+	height: 44px;
+	background-color: #fff;
+	position: fixed;
+	width: 100%;
+	top: 0;
+    z-index: 99;
+}
+#home_fillOrder >div.header a.goBack {
+	display: block;
+	float: left;
+	height: 44px;
+	width: 44px;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#home_fillOrder >div.header >span {
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 45px;
+    width: 60%;
+}
+#home_fillOrder >div.main {
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%;
+	position: absolute;
+	top: 44px;
+}
+#home_fillOrder >div.main >div {
+	background-color: #fff;
+	padding: 0 15px;
+    margin-bottom: 10px;
+}
+#home_fillOrder >div.main >div:first-child {
+	margin-top: 10px;
+}
+#home_fillOrder div.productInfo >p:first-child {
+	height: 20px;
+	line-height: 20px;
+    padding-top: 15px;
+}
+#home_fillOrder div.productInfo >p:first-child >i {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    margin-right: 10px;
+    background: url(../images/icon.png) no-repeat;
+    background-size: contain;
+    float: left;
+}
+#home_fillOrder div.productInfo >div {
+    padding: 10px 15px;
+    background-color: #FAFAFA;
+    margin: 10px -15px 0;
+}
+#home_fillOrder div.productInfo >div >img {
+	height: 70px;
+	width: 70px;
+	float: left;
+    margin-right: 10px;
+}
+#home_fillOrder div.productInfo >div span {
+	float: right;
+}
+#home_fillOrder div.productInfo >div >p:nth-child(2) span {
+	color: #EA5514;
+}
+#home_fillOrder div.productInfo >div >p:nth-child(3) {
+	color: #A9A9A9;
+	font-size: 12px;
+	margin-top: 5px;
+}
+#home_fillOrder div.productInfo >p:last-child {
+	text-align: right;
+	color: #A9A9A9;
+	margin-top: 10px;
+	padding-bottom: 15px;
+}
+#home_fillOrder div.coupon label {
+    font-size: 16px;
+    display: block;
+    height: 32px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+#home_fillOrder div.coupon button {
+	border: none;
+	outline: none;
+	background: none;
+	float: right;
+	font-size: 16px;
+}
+#home_fillOrder div.coupon button.selected {
+	color: #EA5514;
+}
+#home_fillOrder div.coupon button:after {
+	content: '';
+	display: block;
+	float: right;
+	background: url(../images/common/right.png) no-repeat;
+	height: 14px;
+	width: 8px;
+	background-size: contain;
+	margin-top: 5px;
+	margin-left: 15px;
+}
+#home_fillOrder div.coupon >p {
+	font-size: 16px;
+	border-top: 1px solid #E5E5E5;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#home_fillOrder div.coupon >p >span {
+	float: right;
+	color: #A9A9A9;
+}
+#home_fillOrder div.proMoney >p {
+	font-size: 16px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+#home_fillOrder div.proMoney >p:last-child {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-top: 1px solid #E5E5E5;
+}
+#home_fillOrder div.proMoney >p >span {
+	float: right;
+	color: #EA5514;
+}
+#home_fillOrder >div.footer {
+	position: fixed;
+	bottom: 0;
+	height: 50px;
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+}
+#home_fillOrder >div.footer {
+	text-align: right;
+	font-size: 16px;
+	line-height: 51px;
+	color: #EA5514;
+}
+#home_fillOrder >div.footer >button.order {
+	float: right;
+	display: block;
+	width: 120px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #EA5514;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	margin-left: 10px;
+	border: none;
+	outline: none;
+}
+#home_fillOrder >div.footer >button.order.disabled {
+	background-color: #ABABAB;
+}
+#home_fillOrder >div.couponModal {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	display: none;
+}
+#home_fillOrder >div.couponModal >div.title {
+	height: 44px;
+	background-color: #fff;
+	border-bottom: 1px solid #F6F6F7;
+	position: absolute;
+	width: 100%;
+	top: 0;
+    z-index: 99;
+}
+#home_fillOrder >div.couponModal a.closeModal {
+	display: block;
+	float: left;
+	height: 44px;
+	width: 44px;
+	background: url(../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#home_fillOrder >div.couponModal >div.title >span {
+	margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    width: 60%;
+}
+#home_fillOrder >div.couponModal >ul {
+	position: absolute;
+    top: 45px;
+    width: 100%;
+    background-color: #fff;
+}
+#home_fillOrder >div.couponModal >ul >li {
+	float: left;
+	width: 30%;
+	margin: 0 10%;
+	display: block;
+	height: 42px;
+	border-bottom: 2px solid #fff;
+	line-height: 44px;
+	font-size: 14px;
+	text-align: center;
+}
+#home_fillOrder >div.couponModal >ul >li.active {
+	border-color: #EA5514;
+	color: #EA5514;
+}
+#home_fillOrder >div.couponModal >div.content {
+	position: absolute;
+	top: 89px;
+	background-color: #EFEFF4;
+	overflow: hidden;
+}
+#home_fillOrder >div.couponModal div.warp >div {
+	float: left;
+	overflow-x: hidden;
+	overflow-y: auto;
+	box-sizing: border-box;
+	width: 100%;
+}
+#home_fillOrder >div.couponModal div.ticket {
+	height: 120px;
+	background-color: #fff;
+	margin: 10px 32px 0;
+	position: relative;
+	margin-bottom: 10px;
+}
+#home_fillOrder >div.couponModal div.ticket:before {
+	content: '';
+	display: block;
+	position: absolute;
+	height: 120px;
+	width: 18px;
+	top: 0;
+	left: -18px;
+	background: url(../images/common/ticket_left.png) no-repeat;
+	background-size: contain;
+}
+#home_fillOrder >div.couponModal div.ticket:after {
+	content: '';
+	display: block;
+	position: absolute;
+	height: 120px;
+	width: 18px;
+	top:0;
+	right: -18px;
+	background: url(../images/common/ticket_right.png) no-repeat;
+	background-size: contain;
+}
+#home_fillOrder >div.couponModal div.ticket >div {
+	display: inline-block;
+	width: 110px;
+	height: 120px;
+    filter: alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#F4804C,endcolorstr=#EA5514,gradientType=0);
+    -ms-filter: alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#F4804C,endcolorstr=#EA5514,gradientType=0);/*IE8*/	
+    background: #EA5514;
+    background: -moz-linear-gradient(top, , #F4804C);  
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#F4804C), to(#EA5514));  
+    background: -o-linear-gradient(top, #F4804C, rgba(#EA5514));
+    color: #fff;
+    position: relative;
+    font-weight: 700;
+    line-height: 90px;
+    text-indent: 5px;
+    float: left;
+    margin-right: 10px;
+}
+#home_fillOrder >div.couponModal div.ticket >div >span {
+	font-size: 35px;
+}
+#home_fillOrder >div.couponModal div.ticket >div >small {
+    position: absolute;
+    bottom: 15px;
+    height: 20px;
+    left: -15px;
+    right: 0;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 100;
+    line-height: normal;
+}
+#home_fillOrder >div.couponModal div.ticket >p {
+	padding-top: 10px;
+	font-size: 16px;
+}
+#home_fillOrder >div.couponModal div.ticket >small {
+	color: #A9A9A9;
+	position: absolute;
+	bottom: 10px;
+	left: 120px;
+}
+#home_fillOrder >div.couponModal div.ticket >i {
+	display: block;
+	height: 16px;
+	width: 16px;
+	position: absolute;
+	right: 0;
+	top: 52px;
+	background: url(../images/common/round_check.png) no-repeat;
+	background-size: contain;
+}
+#home_fillOrder >div.couponModal div.ticket.checked >i {
+	background-image: url(../images/common/round_check_fill.png);
+}
+@media screen and (max-width: 350px) {
+	#home_fillOrder >div.couponModal div.ticket {
+		height: 100px;
+	}
+	#home_fillOrder >div.couponModal div.ticket:before {
+		width: 15px;
+		height: 100px;
+		left: -15px;
+	}
+	#home_fillOrder >div.couponModal div.ticket:after {
+		width: 15px;
+		height: 100px;
+		right: -15px;
+	}
+	#home_fillOrder >div.couponModal div.ticket >div {
+		width: 100px;
+		height: 100px;
+		line-height: 70px;
+	}
+	#home_fillOrder >div.couponModal div.ticket >div >small {
+	    left: -15px;
+	}
+	#home_fillOrder >div.couponModal div.ticket >p {
+		font-size: 14px;
+	}
+	#home_fillOrder >div.couponModal div.ticket >small {
+		left: 110px;
+	}
+	#home_fillOrder >div.couponModal div.ticket >i {
+		height: 12px;
+		width: 12px;
+		top: 44px;
+	}
+}
+#home_fillOrder >div.couponModal >div.content button.selectTicket {
+	position: absolute;
+	background-color: #EA5514;
+	color: #fff;
+	width: 80%;
+	bottom: 30px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 20px;
+	text-align: center;
+	border: none;
+	outline: none;
+	display: none;
+}

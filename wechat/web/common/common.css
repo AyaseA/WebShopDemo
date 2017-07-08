@@ -1,0 +1,224 @@
+/* css reset start */
+
+body,
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+br,
+hr,
+table,
+tr,
+td,
+dl,
+dt,
+dd,
+form {
+    margin: 0;
+    padding: 0
+}
+
+html {
+    overflow: hidden;
+    height: 100%
+}
+
+body {
+    font-family: "Microsoft YaHei", Arial;
+    font-size: 14px;
+    color: #434343;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%
+}
+
+.clear:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+ul,
+li {
+    list-style: none
+}
+
+img {
+    border: 0
+}
+
+a {
+    text-decoration: none;
+    color: #000
+}
+
+a:hover {
+    color: #000
+}
+
+
+/* css reset end */
+
+body >div.common-none {
+    display: none;
+}
+#div_list {
+    height: 100%;
+}
+#global_menu {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    border-radius: 12px;
+}
+#global_menu >span {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 51px;
+}
+#global_menu.active >span {
+    color: #98e1ff;
+}
+#global_menu >ul {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#global_menu li {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 66%;
+    height: 66%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 17% 18% 17% 16%;
+    line-height: 34px;
+    border-radius: 12px;
+}
+#global_menu li.hide {
+    display: none;
+}
+/* layer 相关 */
+#authConfirm_authConfirm {
+    padding: 0;
+}
+#authConfirm_authConfirm >div >h2 {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #DCDADD;
+}
+#authConfirm_authConfirm >div >div {
+    padding: 0 20px 10px;
+    border-bottom: 1px solid #DCDADD;
+}
+#authConfirm_authConfirm >div >div:before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #EA5514;
+    border-radius: 30px;
+    background: url(../images/icon.png) no-repeat;
+    background-size: 70%;
+    background-position: center;
+    margin: 15px auto;
+}
+#authConfirm_authConfirm >div >div >p {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DCDADD;
+}
+#authConfirm_authConfirm >div >div >ul {
+    margin-top: 10px;
+}
+#authConfirm_authConfirm >div >div >ul >li {
+    color: #888888;
+}
+#authConfirm_authConfirm >div >div >ul >li:before {
+    content: '·';
+    font-weight: bolder;
+    padding: 0 7px 0 3px;
+}
+#authConfirm_authConfirm >div >button {
+    border: none;
+    outline: none;
+    background: none;
+    width: 50%;
+    padding: 0;
+    display: inline-block;
+    height: 44px;
+    font-size: 16px;
+    line-height: 44px;
+    float: left;
+}
+#authConfirm_authConfirm >div >button:last-child {
+    border-left: 1px solid #DCDADD;
+    color: #2FB823;
+}
+#refreshConfirm_refreshConfirm {
+    padding: 0;
+}
+#refreshConfirm_refreshConfirm >div >h2 {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #DCDADD;
+}
+#refreshConfirm_refreshConfirm >div >div {
+    padding: 0 20px 10px;
+    border-bottom: 1px solid #DCDADD;
+}
+#refreshConfirm_refreshConfirm >div >div:before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #EA5514;
+    border-radius: 30px;
+    background: url(../images/icon.png) no-repeat;
+    background-size: 70%;
+    background-position: center;
+    margin: 15px auto;
+}
+#refreshConfirm_refreshConfirm >div >div >p {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    text-align: center;
+}
+#refreshConfirm_refreshConfirm >div >button {
+    border: none;
+    outline: none;
+    background: none;
+    width: 50%;
+    padding: 0;
+    display: inline-block;
+    height: 44px;
+    font-size: 16px;
+    line-height: 44px;
+    float: left;
+}
+#refreshConfirm_refreshConfirm >div >button:last-child {
+    border-left: 1px solid #DCDADD;
+    color: #2FB823;
+}

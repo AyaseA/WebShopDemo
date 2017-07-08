@@ -1,0 +1,85 @@
+#icenter_gas {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #F0EFF5;
+}
+#icenter_gas header{
+	width: 100%;
+	height: 12vw;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;
+}
+#icenter_gas header img{
+	width: 6.93vw;
+	height: 6.93vw;
+	display: inline-block;
+	margin: 2vw 0px 0px 5.33vw;
+}
+#icenter_gas header span{
+	display: inline-block;
+	font-size: 4.6vw;
+	color: #4E4D53;
+	vertical-align: top;
+	margin: 3.27vw 0px 0px 26.67vw;
+}
+#icenter_gas aside p{
+	color: #C9A45E;
+    margin: 4vw 0 0 5.33vw;
+}
+#icenter_gas .gas_img_1,#icenter_gas .gas_img_2{
+	width: 90%;
+	margin: 3vw 0px 0px 5%;
+}
+#icenter_gas .gas_div_1,.gas_div_2{
+	position: relative;
+}
+#icenter_gas .gas_span{
+	position: absolute;
+	left: 6.67vw;
+	top: 17.33vw;
+	font-size: 30px;
+}
+#icenter_gas .gas_div_2 b{
+	color: #B7B7B7;
+}
+#icenter_gas .gas_main_text{
+	position: absolute;
+	left: 30.67vw;
+    top: 6vw;
+    width: 45.33vw;
+    height: 19.33vw;
+	border-left: 1px dotted #C9A45E;
+	padding-top: 11.33vw;
+	overflow: hidden;
+}
+#icenter_gas .gas_div_2{
+	margin-top: 2.67vw;
+}
+#icenter_gas .gas_main_text span{
+	margin-left: 5.33vw;
+}
+#icenter_gas .gas_main_gascard{
+	color: #B7B7B7;
+}
+#icenter_gas .gas_main_text_2{
+	position: absolute;
+	left: 115px;
+    top: 26px;
+    width: 45.33vw;
+    height: 19.33vw;
+	border-left: 1px dotted #B7B7B7;
+	padding-top: 11.33vw;
+	overflow: hidden;	
+}
+#icenter_gas .gas_main_text_2 span{
+	margin-left: 5.33vw;
+}
+#icenter_gas .gas_span_2{
+	position: absolute;
+    top: 17vw;
+    right: 6.67vw;
+	color: #fff;
+}

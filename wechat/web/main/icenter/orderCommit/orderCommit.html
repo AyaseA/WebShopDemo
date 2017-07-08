@@ -1,0 +1,35 @@
+<div>
+    <div class="header">
+        <a href="javascript:void(0)" class="goBack"></a>
+        <span>评价</span>
+        <button class="commit">提交</button>
+    </div>
+    <div class="main">
+        <div class="product"></div>
+        <div class="stars">
+            <span>评分</span>
+            <i class="star"></i>
+            <i class="star"></i>
+            <i class="star"></i>
+            <i class="star"></i>
+            <i class="star"></i>
+        </div>
+        <textarea placeholder="评价大于20元的商品超过10个字就有机会获得积分呦~"></textarea>
+        <small>500</small>
+        <div class="pictures clear">       
+            <div class="camera"><i></i></div>
+        </div>
+        <div class="anonymity">
+            <p>匿名评价</p>
+        </div>
+    </div>
+    <script id="orderCommit_orderCommit_product" type="text/html">
+        {{each cProList as pD}}
+        <div class="clear">
+            <img src="{{serverAddr}}Img/{{pD.Img | imgFilter}}">
+            <p>{{pD.Name}}</p>
+            <p>{{pD.Descri || pD.Name}}</p>
+        </div>
+        {{/each}}
+    </script>
+</div>

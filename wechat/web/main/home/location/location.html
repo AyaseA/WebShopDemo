@@ -1,0 +1,43 @@
+<div>
+	<div class="header">
+		<a href="javascript:void(0)" class="goBack"></a>
+		<div>
+			<input type="text" class="search" placeholder="城市/行政区/拼音" />
+			<i></i>
+		</div>
+	</div>
+	<div class="main">
+		<div class="there">
+			<h5 data-letter="there">定位城市</h5>
+			<p>济南</p>
+		</div>
+		<div class="cities"></div>
+	</div>
+	<script id="location_location_city_list" type="text/html">
+		{{set cltr = cityList[0].alpha}}
+		<h5 data-letter="{{cltr}}">{{cltr}}</h5>
+		{{each cityList as city}}
+			{{set tmplter = city.alpha}}
+			{{if cltr != tmplter}}
+				<h5 data-letter="{{tmplter}}">{{cltr = tmplter}}</h5>
+			{{/if}}
+			<div class="city {{if city.children.length > 0}}open{{/if}} ">
+				<p>{{city.name}}</p>
+				{{if city.children.length > 0}}
+					<div class="dist">
+						<span class="all" data-id="{{city.id}}" data-name="{{city.name}}" data-py="{{city.pyName}}">{{city.name}}</span>
+						{{each city.children as dist}}
+							<span data-id="{{dist.id}}" data-name="{{dist.name}}" data-pname="{{city.name}}" data-py="{{dist.pyName}}">{{dist.name}}</span>
+						{{/each}}
+					</div>
+				{{/if}}
+			</div>
+		{{/each}}
+		<ul class="cityLtr">
+			<li data-letter="there">当</li>
+		{{each cityLetters as cLetter}}
+			<li data-letter="{{cLetter}}">{{cLetter}}</li>
+		{{/each}}
+		</ul>
+	</script>
+</div>

@@ -1,0 +1,125 @@
+<div>
+	<div class="header">
+		<a href="javascript:void(0)" class="goBack"></a>
+		<span>填写订单</span>
+	</div>
+	<div class="main">
+		<div class="productInfo"></div>
+		<div class="coupon"></div>
+		<div class="proMoney"></div>
+	</div>
+	<div class="footer">
+		实付：￥<span></span>
+		<button class="order disabled">提交订单</button>
+	</div>
+	<div class="couponModal">
+		<div class="title">
+			<a href="javascript:void(0)" class="closeModal"></a>
+			<span>使用优惠券</span>
+		</div>
+		<ul class="clear">
+			<li data-type="usable" class="active" data-index="0">可使用</li>
+			<li data-type="disabled" data-index="1">不可用</li>
+		</ul>
+		<div class="content">
+			<div class="warp clear">
+				<div class="usable">
+					<div class="ticket">
+						<div>
+							￥<span>100</span>
+							<small>满1500元可用</small>
+						</div>
+						<p>仅可购买汽车全年机油养护时使用</p>
+						<small>2017.06.01-2017.07.01</small>
+						<i></i>
+					</div>
+					<div class="ticket">
+						<div>
+							￥<span>100</span>
+							<small>满1500元可用</small>
+						</div>
+						<p>仅可购买汽车全年机油养护时使用</p>
+						<small>2017.06.01-2017.07.01</small>
+						<i></i>
+					</div>
+					<div class="ticket">
+						<div>
+							￥<span>100</span>
+							<small>满1500元可用</small>
+						</div>
+						<p>仅可购买汽车全年机油养护时使用</p>
+						<small>2017.06.01-2017.07.01</small>
+						<i></i>
+					</div>
+					<div class="ticket">
+						<div>
+							￥<span>100</span>
+							<small>满1500元可用</small>
+						</div>
+						<p>仅可购买汽车全年机油养护时使用</p>
+						<small>2017.06.01-2017.07.01</small>
+						<i></i>
+					</div>
+					<div class="ticket">
+						<div>
+							￥<span>100</span>
+							<small>满1500元可用</small>
+						</div>
+						<p>仅可购买汽车全年机油养护时使用</p>
+						<small>2017.06.01-2017.07.01</small>
+						<i></i>
+					</div>
+					<div class="ticket">
+						<div>
+							￥<span>100</span>
+							<small>满1500元可用</small>
+						</div>
+						<p>仅可购买汽车全年机油养护时使用</p>
+						<small>2017.06.01-2017.07.01</small>
+						<i></i>
+					</div>
+					<button class="selectTicket">确定</button>
+				</div>
+				<div class="disabled">
+					<div class="ticket checked">
+						<div>
+							￥<span>100</span>
+							<small>满1500元可用</small>
+						</div>
+						<p>仅可购买汽车全年机油养护时使用</p>
+						<small>2017.06.01-2017.07.01</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script id="fillOrder_fillOrder_product_detail" type="text/html">
+		<p><i></i>车势力</p>
+		<div class="clear">
+			<img src="{{serverAddr}}Img/{{data.Img | imgFilter}}">
+			<p>{{data.Name}}<span>￥{{data.Price}}</span></p>
+			<p>{{data.Descri || data.Name}}<span>x{{count}}</span></p>
+		</div>
+		<p>共{{count}}件商品</p>
+	</script>
+	<script id="fillOrder_fillOrder_price_coupon" type="text/html">
+		<p>商品金额<span>￥{{total}}</span></p>
+		<p>优惠<span>-￥{{coupon}}</span></p>
+	</script>
+	<script id="fillOrder_fillOrder_ticket_point" type="text/html">
+		<label>优惠券
+			{{if ticket > 0}}
+			<button class="selected">
+				-￥{{ticket}}
+			{{else}}
+			<button>
+				选择优惠券
+			{{/if}}
+			</button>
+		</label>
+		<p>
+			积分
+			<span>共{{point}}积分，满1000积分可用</span>
+		</p>
+	</script>
+</div>

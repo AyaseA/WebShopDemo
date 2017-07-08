@@ -1,0 +1,182 @@
+#activity_cleaningCar {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background: url(../images/center/bg_cleaning_car_2.png) no-repeat center bottom;
+	background-size: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+}
+#activity_cleaningCar ::-webkit-input-placeholder { 
+    color: #DFE0E8;
+    font-size: 4.27vw; 
+    text-overflow: ellipsis; 
+} 
+#activity_cleaningCar header{
+	width: 100%;
+	height: 16vw;
+	background-color: #fff;
+	overflow: hidden;
+}
+#activity_cleaningCar header img{
+	width: 6.93vw;
+	height: 6.93vw;
+	display: inline-block;
+	margin: 4vw 0px 0px 5.33vw;
+}
+#activity_cleaningCar header span{
+	display: inline-block;
+	font-size: 22px;
+	font-family: "黑体";
+	color: #4E4D53;
+	vertical-align: top;
+	margin: 5.07vw 0px 0px 24vw;
+}
+#activity_cleaningCar .cleaning_car_banner{
+	width: 100%;
+	height: 48.8vw;
+	background: url(../images/center/bg_cleaning_car.png) no-repeat top center;
+	background-size: 100%;
+	overflow: hidden;
+}
+#activity_cleaningCar .cleaning_car_title{
+	width: 42%;
+	height: 42%;
+	display: block;
+	position: relative;
+	left: 29vw;
+	top: 2.67vw;
+	z-index: 100;
+}
+#activity_cleaningCar .input_contain_wrap{
+	width: 90%;
+	height: 69.33vw;
+	padding-top: 10vw;
+	margin-left: 5%;
+	overflow: hidden;
+	border-radius: 2.67vw;
+	background-color: #B6C0FC;
+	position: relative;
+}
+#activity_cleaningCar .input_control{
+	width: 82.4vw;
+	height: 11.73vw;
+	margin-left: 4vw;
+	display: inline-block;
+	border-bottom: 1px solid #000;
+	position: relative;
+}
+#activity_cleaningCar .login_phone{
+	width: 5.33vw;
+	height: 5.6vw;
+	display: inline-block;
+	position: relative;
+	left: 0.8vw;
+	top: 2.67vw;
+}
+#activity_cleaningCar .login_input{
+	display: inline-block;
+	position: relative;
+	left: 1.87vw;
+	top: 1.87vw;
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 4.27vw;
+}
+#activity_cleaningCar .login_in{
+	width: 90.93vw;
+	height: 11.73vw;
+	background-color: #D7D6DC;
+	color: #fff;
+	font-size: 4.53vw;
+	border-radius: 6.67vw;
+	border: none;
+	outline: none;
+	position: absolute;
+	top: 61.33vw;	
+	left: 1vw;
+}
+#activity_cleaningCar .login_check_pn,#activity_cleaningCar .login_check_pc,#activity_cleaningCar .login_check_pxx {
+	width: 53.33vw;
+	line-height: 9.33vw;
+	border-radius: 25px;
+	text-align: center;
+	font-size: 4.27vw;
+	color: #fff;
+	background-color: #5F5D60; 
+	position: absolute;
+	left: 22.4vw;
+	bottom: 49.33vw;
+	display: none;
+}
+#activity_cleaningCar #login_timeout{
+	line-height: 35px;
+	background-color: #DF6233;
+	display: inline-block;
+	font-size: 15px;
+	border-radius: 25px;
+	text-align: center;
+	vertical-align: center;
+	color: #fff;
+
+}
+#activity_cleaningCar #login_timeclick{
+	line-height: 9.33vw;
+	background-color: #DF6233;
+	display: inline-block;
+	font-size: 4vw;
+	border-radius: 6.67vw;
+	text-align: center;
+	vertical-align: center;
+	color: #fff;
+	display: none;
+}
+#activity_cleaningCar #login_check_id{
+	width: 80vw;
+	line-height: 9.33vw;
+	position: absolute;
+	left: 9.07vw;
+	bottom: 30.67vw;
+	display: none;
+}
+#activity_cleaningCar #login_timeout,#activity_cleaningCar #login_timeclick{
+	width: 28.8vw;
+	position: relative;
+    left: 52.53vw;
+    top: -5.87vw;
+}
+#activity_cleaningCar #cleaning_car_button{
+	width: 80vw;
+	bottom: 34.67vw;
+	left: 5.13vw;
+	background-color: #DF6233;
+}
+#activity_cleaningCar #login_redit,#activity_cleaningCar #loginin_out{
+	display: none;
+}
+#activity_cleaningCar #input_control_3,#activity_cleaningCar #input_control_5{
+	display: none;
+}
+#activity_cleaningCar .round_clear{
+	width: 3.2vw;
+	height: 3.2vw;
+	display: none;
+	position: absolute;
+	left: 82.67vw;
+	top: 4.27vw;
+}
+
+#activity_cleaningCar .p_span{
+	width: 90%;	
+	margin-left: 5%;
+	padding-top: 2.4vw; 
+	overflow: hidden;
+	font-size: 3.2vw;
+	color: #ECF1FE;
+}
+#activity_cleaningCar .p_span span:nth-child(1){
+	margin-left: 40%;
+} 

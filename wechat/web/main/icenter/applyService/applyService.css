@@ -1,0 +1,181 @@
+@charset "utf-8";
+#icenter_applyService{
+  height: 100%;
+  width: 100%;
+  overflow:hidden;
+  background: #EFEFF4;
+}
+
+#icenter_applyService .fl{
+  float: right;
+}
+
+#icenter_applyService .header{
+  background: #fff;
+  height: 10vw;
+  width: 100%;
+  font-size: 4vw;
+  font-weight: bold;
+  line-height: 10vw;
+  text-align: center;
+  border-bottom: 1px solid #EEEEF0;
+  position: relative;
+}
+
+#icenter_applyService .header img{
+  position: absolute;
+  top:1.5vw;
+  left: 4vw;
+  width: 7vw;
+}
+
+#icenter_applyService .main{
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#icenter_applyService .pieceContent{
+  height: 25vw;
+  padding: 0 4vw 0 4vw;
+  position: relative;
+  background: #fff;
+}
+
+#icenter_applyService  .pieceContent img{
+  margin-top: 2.7vw;
+  width: 20vw;
+  height: 20vw;
+}
+
+#icenter_applyService  .pieceContent .info{
+  position: absolute;
+  top:3vw;
+  left: 27vw;
+}
+
+#icenter_applyService .applyPiece .pieceContent .info{
+  position: absolute;
+  top:6vw;
+  left: 27vw;
+}
+
+#icenter_applyService .info p{
+  width: 70vw;
+  color:#7b7a7a;
+}
+
+#icenter_applyService .info p span{
+ 
+}
+
+#icenter_applyService .desc{
+  width: 100%;
+  height: 10vw;
+  background: #fff;
+  margin-top: 3vw;
+  line-height: 10vw;
+  font-size: 4vw;
+  padding-left: 4vw;
+}
+
+#icenter_applyService .dexTxt{
+  width: 101%;
+  height: 30vw;
+  border:none;
+  padding: 4vw;
+  outline: none;
+  background: #EFEFF4;
+  color: #000;
+  font-family: "微软雅黑"；
+}
+
+#icenter_applyService .imgCont{
+  margin-top: 3vw;
+  width: 100%;
+  background: #fff;
+  padding: 0vw;
+  padding-top: 4vw;
+  padding-left: 1vw;
+}
+
+#icenter_applyService .imgCont img{
+  width: 21.5vw;
+  border-radius: 1vw;
+  height: 21.5vw;
+}
+
+#icenter_applyService .imgCont ul{
+  width: 100%
+  text-align:center;
+}
+
+#icenter_applyService .imgCont ul li{
+  display: inline-block;
+  width: 23.8%;
+  text-align:center;
+  margin-bottom: 4vw;
+}
+
+#icenter_applyService .imgCont p{
+  margin-left: 0.8vw;
+
+}
+
+#icenter_applyService .imgCont p img{
+  padding: 4vw;
+  width: 14vw;
+  border:1px solid #C5C4C4;
+  border-radius: 1vw;
+  height: 14vw;
+}
+
+/*李毅恒开始改*/
+#icenter_applyService > div .content .userinfo {
+  width: 100%;
+  background: #FFFFFF;
+  font-size: 4vw;
+  padding: 3vw 5vw 3vw 5vw;
+  border-bottom: 1px solid #CCC;
+  height: 16vw;
+  margin-top: 3vw;
+}
+#icenter_applyService > div .content .userinfo input {
+  width: 60vw;
+  font-size: 3.5vw;
+  border: none;
+  outline: none;
+  padding-left: 4vw;
+}
+#icenter_applyService > div .userInput {
+  border-bottom: 1px solid #EEEEF0;
+  padding-bottom: 3vw;
+  padding-right: 4vw;
+  width: 100%;
+}
+#icenter_applyService > div .userContact {
+  margin-top: 3vw;
+}
+#icenter_applyService > div .sumbitBtn {
+  width: 100%;
+  height: 40vw;
+  position: relative;
+}
+#icenter_applyService > div .sumbitBtn p {
+  position: absolute;
+  top: 3vw;
+  left: 6vw;
+  color: #bfbfbf;
+  font-size: 0.32rem;
+}
+#icenter_applyService > div .sumbitBtn button {
+  position: absolute;
+  top: 20vw;
+  left: 8vw;
+  width: 80vw;
+  height: 10vw;
+  font-size: 4vw;
+  background: #EA5514;
+  border: none;
+  border-radius: 4vw;
+  color: #fff;
+}

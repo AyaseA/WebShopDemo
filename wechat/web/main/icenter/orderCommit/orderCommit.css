@@ -1,0 +1,187 @@
+#icenter_orderCommit {
+    background-color: #EFEFF4;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+#icenter_orderCommit >div.header {
+    height: 44px;
+    background-color: #fff;
+    border-bottom: 1px solid #F6F6F7;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 12;
+}
+#icenter_orderCommit >div.header >a.goBack {
+    display: block;
+    float: left;
+    height: 44px;
+    width: 44px;
+    background: url(../images/common/round_left_blue.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+    padding-left: 15px;
+}
+#icenter_orderCommit >div.header >span {
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    width: 60%;
+}
+#icenter_orderCommit >div.header >button.commit {
+    color: #EA5514;
+    border: none;
+    outline: none;
+    background: none;
+    display: block;
+    width: 60px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 15px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#icenter_orderCommit >div.main {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    position: absolute;
+    top: 45px;
+}
+#icenter_orderCommit >div.main >div.product {
+    background-color: #fff;
+}
+#icenter_orderCommit >div.main >div.product >div {
+    padding: 10px 15px;
+}
+#icenter_orderCommit >div.main >div.product >div >img {
+    height: 70px;
+    width: 70px;
+    float: left;
+    margin-right: 10px;
+}
+#icenter_orderCommit >div.main >div.product >div >p:nth-child(3) {
+    color: #A9A9A9;
+    font-size: 12px;
+    margin-top: 5px;
+}
+#icenter_orderCommit >div.main >div.stars {
+    height: 40px;
+    background-color: #fff;
+    padding: 5px 15px;
+    line-height: 40px;
+}
+#icenter_orderCommit >div.main >div.stars >span {
+    font-size: 16px;
+    float: left;
+    margin-right: 20px;
+}
+#icenter_orderCommit >div.main >div.stars >i {
+    float: left;
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-top: 9px;
+    margin-left: 20px;
+    background-image: url(../images/common/stars/star.png);
+    background-size: cover;
+}
+#icenter_orderCommit >div.main >div.stars >i.star {
+    background-image: url(../images/common/stars/star_fill.png);
+}
+#icenter_orderCommit >div.main >textarea {
+    background-color: #EFEFF4;
+    width: 92%;
+    height: 100px;
+    border: none;
+    outline: none;
+    padding: 15px 4% 5px;
+    resize: none;
+}
+#icenter_orderCommit >div.main >small {
+    display: block;
+    text-align: right;
+    color: #A9A9A9;
+    padding-right: 4%;
+    padding-bottom: 10px;
+}
+#icenter_orderCommit >div.main >div.pictures {
+    text-align: center;
+    padding: 0 2.5%;
+    background-color: #fff;
+}
+#icenter_orderCommit >div.main >div.pictures >div {
+    display: block;
+    width: 19%;
+    height: 18vw;
+    float: left;
+    margin: 10px 2.5% 10px;
+    border-radius: 5px;
+    border: 1px solid #D6D6DB;
+    position: relative;
+}
+#icenter_orderCommit >div.main >div.pictures >div >img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+#icenter_orderCommit >div.main >div.pictures >div.camera >i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    display: block;
+    width: 50%;
+    height: 50%;
+    background-image: url(../images/common/camera.png);
+    background-size: cover;
+}
+#icenter_orderCommit >div.main >div.anonymity {
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+#icenter_orderCommit >div.main >div.anonymity >p {
+    background-color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+#icenter_orderCommit >div.main >div.anonymity >p:before {
+    content: '';
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/common/round_check.png);
+    background-size: cover;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+#icenter_orderCommit >div.main >div.anonymity >p.selected:before {
+    background-image: url(../images/common/round_check_fill.png);
+}
+
+#icenter_orderCommit .close{
+    position:absolute;
+    right: -3.5vw;
+    top:-3.5vw;
+}
+
+#icenter_orderCommit .close img{
+    width:7vw;
+}

@@ -1,0 +1,140 @@
+#icenter_logout {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #F0EFF5;
+}
+#icenter_logout header{
+	width: 100%;
+	height: 16vw;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;
+}
+#icenter_logout header img{
+	width: 6.93vw;
+	height: 6.93vw;
+	display: inline-block;
+	margin: 4vw 0px 0px 5.33vw;
+}
+#icenter_logout header span{
+	display: inline-block;
+	font-size: 5.87vw;
+	font-family: "黑体";
+	color: #4E4D53;
+	vertical-align: top;
+    margin: 4.06vw 0px 0px 31vw;
+}
+#icenter_logout .photo_updata{
+	margin-top: 5.33vw;
+	margin-bottom: 3.33vw;
+	width: 100%;
+	height: 16vw;
+	background-color: #fff;
+}
+#icenter_logout .redit_password{
+	width: 100%;
+	height: 16vw;
+	background-color: #fff;
+	overflow: hidden;
+	border-top: 1px solid #eee;
+}
+#icenter_logout .smart_word{
+	width: 100%;
+	height: 16vw;
+	background-color: #fff;
+	overflow: hidden;
+	border-top: 1px solid #eee;
+}
+#icenter_logout .span_redit,#icenter_logout .span_smart{
+	vertical-align: top;
+	display: inline-block;
+	font-size: 4.8vw;
+	margin: 5.07vw 0px 0px 2.67vw;	
+}
+#icenter_logout .span_updata_1{
+	vertical-align: top;
+	display: inline-block;
+	font-size: 18px;
+	margin: 5.33vw 0px 0px 2.67vw;
+}
+#icenter_logout .right_copy{
+	width: 2.67vw;
+	height: 4.27vw;
+	display: block;
+	float: right;
+	margin: 5.33vw 5.33vw 0px 0px;	
+}
+#icenter_logout .right_copy_2{
+	width: 2.67vw;
+	height: 4.27vw;
+	display: block;
+	float: right;
+	margin: 5.06vw 5.33vw 0px 0px;
+}
+#icenter_logout .logout_but{
+	width: 90%;
+	height: 11.73vw;
+	background-color: #EA5513;
+	color: #fff;
+	font-size: 4.53vw;
+	border-radius: 6.67vw;
+	border: none;
+	outline: none;
+	position: absolute;
+	top: 50%;	
+	left: 5%;
+}
+#icenter_logout .logout_but_out{
+	width: 100%;
+	height: 161.87vw;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	background-color: #000;
+	opacity: 0.4;
+	display: none;
+}
+#icenter_logout .logout_but_words{
+    width: 81.33vw;
+    height: 42.67vw;
+    opacity: none;
+    background-color: #fff;
+    z-index: 100;
+    position: absolute;
+    top: 70vw;
+    left: 8vw;
+    border-radius: 3px;
+    display: none;
+}
+#icenter_logout .logout_prot_tips{
+	display: inline-block;
+	width: 81.33vw;
+	line-height: 30.67vw;
+	border-bottom: 1px solid #eee;
+	text-align: center;
+	font-size: 4.27vw;
+	color: #616266;
+
+}
+#icenter_logout .logout_right{
+	display: block;
+	float: left;
+	width: 40.53vw;
+	line-height: 12vw;
+	text-align: center;
+	color: #616266;
+	overflow: hidden;
+	font-size: 4.27vw;
+}
+#icenter_logout .logout_wrong{
+	display: block;
+	float: right;
+	width: 40vw;
+	line-height: 12vw;
+	text-align: center;
+	border-left: 1px solid #eee;
+	color: #DB6335;
+	font-size: 4.27vw;
+}

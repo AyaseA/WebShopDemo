@@ -1,0 +1,950 @@
+
+
+/*input::-webkit-input-placeholder {
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+input::-moz-placeholder {
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+input::-moz-placeholder {
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+input:-ms-input-placeholder {
+    text-align: center;
+    letter-spacing: 5px;
+}*/
+
+#icenter_showShare .bg {
+    width: 100%;
+    height: 100%;
+    background: url(../images/invite/bg.png) no-repeat;
+}
+
+
+#icenter_showShare .bg .lo_box {
+    margin: 0 auto;
+    padding: 30px 20px 0;
+    display: -webkit-box;
+}
+
+#icenter_showShare .bg .lo_box .logo {
+    width: 36px;
+    height: 36px;
+    background: url(../images/invite/logo.png) no-repeat;
+    background-size: 100% 100%;
+    margin: 0 5px 0 0;
+}
+
+#icenter_showShare .bg .lo_box .text {
+    background: url(../images/invite/box.png) no-repeat;
+    background-size: 100% 100%;
+    color: #888888;
+    font-size: 14px;
+    line-height: 36px;
+    text-indent: 18px;
+    -webkit-box-flex: 1;
+}
+
+#icenter_showShare .bg .title {
+    margin: 20px 0;
+    color: #e2b700;
+    text-align: center;
+    font-size: 24px;
+;
+    letter-spacing: 6px;
+}
+
+#icenter_showShare .bg .red {
+    margin: 0 20px;
+    background: url(../images/invite/red_bg_01.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+#icenter_showShare .bg .red .text {
+    width: 100%;
+    padding: 120px 0 0;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #fcf5d6;
+}
+
+#icenter_showShare .bg .red form,
+#icenter_showShare .bg .red_op form {
+    margin: 15px 30px 0;
+    text-align: center;
+}
+
+#icenter_showShare .bg .red form input.phone {
+    width: 100%;
+    margin: 0;
+    height: 48px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(232, 194, 33, 0.8);
+    background: #fcf5d6;
+}
+
+#icenter_showShare .bg .red form a.btn {
+    width: 100%;
+    display: inline-block;
+    /*margin: 15px 0 0;*/
+    height: 48px;
+    line-height: 48px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(32, 32, 32, 1);
+    background: #33333a;
+    letter-spacing: 10px;
+    color: #dbb30b;
+}
+
+#icenter_showShare .bg .detail {
+    /*padding:0;*/
+    /*margin-bottom: 20px;*/
+}
+
+#icenter_showShare .bg .detail .l_line {
+    border-top: 1px solid #bfbfbf;
+    width: 105px;
+    float: left;
+}
+
+#icenter_showShare .bg .detail .text {
+    position: relative;
+    top: -8px;
+    width: 70px;
+    margin: 0 auto;
+    text-align: center;
+    float: left;
+    font-size: 14px;
+}
+#icenter_showShare .bg .detail .clr {
+    clear: both;
+}
+
+#icenter_showShare .bg .detail .r_line {
+    border-top: 1px solid #bfbfbf;
+    width: 105px;
+    float: left;
+}
+
+#icenter_showShare .bg ul.in {
+    margin: 5px auto 0;
+    padding: 5px 20px 0;
+}
+
+#icenter_showShare .bg ul.in li {
+    font-size: 14px;
+    margin: 0px 0 10px 0;
+}
+
+#icenter_showShare .bg .red_op {
+    margin: 0 20px;
+    background: url(../images/invite/red_bg_01.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+#icenter_showShare .bg .red_op .money {
+    font-size: 14px;
+    text-align: center;
+    padding: 40px 0 0;
+    color: #d81712;
+}
+
+#icenter_showShare .bg .red_op .money span {
+    font-size: 36px;
+}
+
+#icenter_showShare .bg .red_op .detail_op {
+    width: 240px;
+    margin: 20px auto 0px;
+    font-size: 14px;
+}
+
+#icenter_showShare .bg .red_op .detail_op .l_line {
+    border-top: 1px solid #d81712;
+    width: 60px;
+    float: left;
+}
+
+#icenter_showShare .bg .red_op .detail_op .text {
+    position: relative;
+    top: -8px;
+    width: 120px;
+    margin: 0 auto;
+    text-align: center;
+    float: left;
+    color: #d81712;
+}
+
+#icenter_showShare .bg .red_op .detail_op .r_line {
+    border-top: 1px solid #d81712;
+    width: 60px;
+    float: left;
+}
+
+#icenter_showShare .bg .red_op .detail_op .content {
+    font-size: 14px;
+    text-align: center;
+    line-height: 24px;
+}
+
+#icenter_showShare .bg .red_op .content {
+    font-size: 14px;
+    text-align: center;
+    line-height: 24px;
+}
+
+#icenter_showShare .bg .red_op .content a {
+    color: #167ab7;
+}
+
+#icenter_showShare .bg .red_op form span.btn {
+    width: 100%;
+    display: block;
+    font-size: 14px;
+    line-height: 36px;
+    margin: 50px 0;
+    height: 36px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 6px 6px rgba(32, 32, 32, 1);
+    background: #33333a;
+    letter-spacing: 4px;
+    color: #fcf5d6;
+}
+
+#icenter_showShare .bg .me {
+    margin: 25px 20px 0;
+}
+
+#icenter_showShare .bg .me .text {
+    font-size: 14px;
+    line-height: 36px;
+    float: left;
+}
+
+#icenter_showShare .bg .me .money {
+    font-size: 14px;
+    line-height: 36px;
+    padding: 0 0 0 20px;
+    float: right;
+}
+
+#icenter_showShare .bg .detail_op_b {
+    margin: 30px 20px 0;
+}
+
+#icenter_showShare .bg .detail_op_b .l_line_f {
+    border-top: 1px solid #bfbfbf;
+    width: 80px;
+    float: left;
+}
+
+#icenter_showShare .bg .detail_op_b .text_f {
+    position: relative;
+    top: -8px;
+    width: 120px;
+    margin: 0 auto;
+    text-align: center;
+    float: left;
+}
+
+#icenter_showShare .bg .detail_op_b .r_line_f {
+    border-top: 1px solid #bfbfbf;
+    width: 80px;
+    float: left;
+}
+
+#icenter_showShare .bg ul.fri {
+    margin: 15px 20px 0;
+}
+
+#icenter_showShare .bg ul.fri li {
+    position: relative;
+    margin: 0 0 20px 0;
+}
+
+#icenter_showShare .bg ul.fri li .name {
+    color: #ffffff;
+    font-size: 14px;
+    float: left;
+}
+
+#icenter_showShare .bg ul.fri li .time {
+    font-size: 14px;
+    padding: 0 0 0 20px;
+    float: left;
+}
+
+#icenter_showShare .bg ul.fri li .mon {
+    font-size: 14px;
+    padding: 0 0 0 20px;
+    float: right;
+}
+
+
+@media screen and (max-width: 480px) {
+    #icenter_showShare .bg .lo_box .logo {
+        width: 54px;
+        height: 54px;
+    }
+    #icenter_showShare .bg .lo_box .text {
+        line-height: 54px;
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .title {
+        font-size: 28px;
+        letter-spacing: 10px;
+    }
+    #icenter_showShare .bg .red,
+    #icenter_showShare .bg .red_op {
+        width: 440px;
+        height: 470px;
+    }
+    #icenter_showShare .bg .red .text {
+        padding: 220px 0 0;
+        font-size: 18px;
+        letter-spacing: 4px;
+    }
+    #icenter_showShare .bg .red form,
+    #icenter_showShare .bg .red_op form {
+        margin: 25px 60px;
+    }
+    #icenter_showShare .bg .red form input.phone {
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .red form a.btn {
+        font-size: 18px;
+        margin: 25px 0 0 0;
+    }
+    #icenter_showShare .bg .detail {
+        padding: 50px 20px 0;
+    }
+    #icenter_showShare .bg .detail .l_line {
+        width: 180px;
+    }
+    #icenter_showShare .bg .detail .text {
+        top: -10px;
+        width: 80px;
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .detail .r_line {
+        width: 180px;
+    }
+    #icenter_showShare .bg ul.in {
+        margin: 10px auto 0;
+        padding: 10px 20px 0;
+    }
+    #icenter_showShare .bg ul.in li {
+        font-size: 14px;
+        margin: 0 0 10px 0;
+    }
+    #icenter_showShare .bg .red_op .money {
+        font-size: 18px;
+        padding: 50px 0 0;
+    }
+    #icenter_showShare .bg .red_op .money span {
+        font-size: 54px;
+    }
+    #icenter_showShare .bg .red_op .detail_op {
+        width: 380px;
+        margin: 20px auto 0px;
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .l_line {
+        width: 120px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .text {
+        top: -8px;
+        width: 140px;
+        color: #d81712;
+    }
+    #icenter_showShare .bg .red_op .detail_op .r_line {
+        width: 120px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .content {
+        font-size: 18px;
+        text-align: center;
+        line-height: 24px;
+    }
+    #icenter_showShare .bg .red_op .content {
+        font-size: 18px;
+        line-height: 36px;
+    }
+    #icenter_showShare .bg .red_op form a.btn {
+        height: 48px;
+        line-height: 48px;
+        margin: 150px 0 0;
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .me {
+        margin: 40px 20px 0;
+    }
+    #icenter_showShare .bg .me .text {
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .me .money {
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .detail_op_b {
+        margin: 30px 20px 0;
+    }
+    #icenter_showShare .bg .detail_op_b .l_line_f {
+        width: 150px;
+    }
+    #icenter_showShare .bg .detail_op_b .text_f {
+        top: -8px;
+        width: 140px;
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .detail_op_b .r_line_f {
+        width: 150px;
+    }
+    #icenter_showShare .bg ul.fri li {
+        margin: 0 0 30px 0;
+    }
+    #icenter_showShare .bg ul.fri li .name {
+        font-size: 18px;
+    }
+    #icenter_showShare .bg ul.fri li .time {
+        font-size: 18px;
+    }
+    #icenter_showShare .bg ul.fri li .mon {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    #icenter_showShare .bg .red,
+    #icenter_showShare .bg .red_op {
+        width: 384px;
+        height: 410px;
+    }
+    #icenter_showShare .bg .title {
+        font-size: 28px;
+        letter-spacing: 4px;
+    }
+    #icenter_showShare .bg .red .text {
+        padding: 200px 0 0;
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+    #icenter_showShare .bg .red form,
+    #icenter_showShare .bg .red_op form {
+        margin: 20px 50px;
+    }
+    #icenter_showShare .bg .red form a.btn {
+        font-size: 18px;
+        margin: 20px 0 0;
+    }
+    #icenter_showShare .bg .detail .l_line {
+        width: 152px;
+    }
+    #icenter_showShare .bg .detail .text {
+        top: -10px;
+        width: 80px;
+    }
+    #icenter_showShare .bg .detail .r_line {
+        width: 152px;
+    }
+    #icenter_showShare .bg ul.in li {
+        font-size: 14px;
+        margin: 0 0 10px 0;
+    }
+    #icenter_showShare .bg .red_op .detail_op {
+        width: 340px;
+        margin: 20px auto 0px;
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .l_line {
+        width: 100px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .text {
+        top: -8px;
+        width: 140px;
+        color: #d81712;
+    }
+    #icenter_showShare .bg .red_op .detail_op .r_line {
+        width: 100px;
+    }
+    #icenter_showShare .bg .red_op form a.btn {
+        margin: 100px 0 0;
+    }
+    #icenter_showShare .bg .me {
+        margin: 30px 20px 0;
+    }
+    #icenter_showShare .bg .detail_op_b .l_line_f {
+        width: 122px;
+    }
+    #icenter_showShare .bg .detail_op_b .text_f {
+        ptop: -8px;
+        width: 140px;
+    }
+    #icenter_showShare .bg .detail_op_b .r_line_f {
+        width: 122px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    #icenter_showShare .bg .red,
+    #icenter_showShare .bg .red_op {
+        width: 374px;
+        height: 400px;
+    }
+    #icenter_showShare .bg .red form,
+    #icenter_showShare .bg .red_op form {
+        margin: 20px 45px;
+    }
+    #icenter_showShare .bg .detail {
+        padding: 40px 20px 0;
+    }
+    #icenter_showShare .bg .detail .l_line {
+        width: 142px;
+    }
+    #icenter_showShare .bg .detail .text {
+        top: -10px;
+        width: 80px;
+        font-size: 18px;
+    }
+    #icenter_showShare .bg .detail .r_line {
+        width: 142px;
+    }
+    #icenter_showShare .bg ul.in {
+        margin: 5px auto 0;
+        padding: 5px 20px 0;
+    }
+    #icenter_showShare .bg ul.in li {
+        font-size: 14px;
+        margin: 0 0 10px 0;
+    }
+    #icenter_showShare .bg .me {
+        margin: 30px 20px 0;
+    }
+    #icenter_showShare .bg .detail_op_b .l_line_f {
+        width: 117px;
+    }
+    #icenter_showShare .bg .detail_op_b .text_f {
+        ptop: -8px;
+        width: 140px;
+    }
+    #icenter_showShare .bg .detail_op_b .r_line_f {
+        width: 117px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #icenter_showShare .bg .lo_box .logo {
+        width: 45px;
+        height: 45px;
+    }
+    #icenter_showShare .bg .lo_box .text {
+        line-height: 45px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .title {
+        font-size: 26px;
+        letter-spacing: 8px;
+    }
+    #icenter_showShare .bg .red,
+    #icenter_showShare .bg .red_op {
+        width: 360px;
+        height: 384px;
+    }
+    #icenter_showShare .bg .red .text {
+        padding: 180px 0 0;
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+    #icenter_showShare .bg .red form,
+    #icenter_showShare .bg .red_op form {
+        margin: 20px 50px;
+    }
+    #icenter_showShare .bg .red form input.phone {
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .red form a.btn {
+        font-size: 16px;
+        margin: 15px 0 0;
+    }
+    #icenter_showShare .bg .detail {
+        padding: 40px 20px 0;
+    }
+    #icenter_showShare .bg .detail .l_line {
+        width: 145px;
+    }
+    #icenter_showShare .bg .detail .text {
+        top: -8px;
+        width: 70px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .detail .r_line {
+        width: 145px;
+    }
+    #icenter_showShare .bg ul.in li {
+        font-size: 14px;
+        margin: 0 0 10px 0;
+    }
+    #icenter_showShare .bg .red_op .money {
+        font-size: 16px;
+        padding: 50px 0 0;
+    }
+    #icenter_showShare .bg .red_op .money span {
+        font-size: 48px;
+    }
+    #icenter_showShare .bg .red_op .detail_op {
+        width: 300px;
+        margin: 20px auto 0px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .l_line {
+        width: 90px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .text {
+        top: -8px;
+        width: 120px;
+        color: #d81712;
+    }
+    #icenter_showShare .bg .red_op .detail_op .r_line {
+        width: 90px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .content {
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .red_op .content {
+        font-size: 16px;
+        line-height: 30px;
+    }
+    #icenter_showShare .bg .red_op form a.btn {
+        height: 42px;
+        line-height: 42px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .me {
+        margin: 25px 20px 0;
+    }
+    #icenter_showShare .bg .me .text {
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .me .money {
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .detail_op_b {
+        margin: 25px 20px 0;
+    }
+    #icenter_showShare .bg .detail_op_b .l_line_f {
+        width: 120px;
+    }
+    #icenter_showShare .bg .detail_op_b .text_f {
+        top: -8px;
+        width: 120px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .detail_op_b .r_line_f {
+        width: 120px;
+    }
+    #icenter_showShare .bg ul.fri li {
+        margin: 0 0 25px 0;
+    }
+    #icenter_showShare .bg ul.fri li .name {
+        font-size: 16px;
+    }
+    #icenter_showShare .bg ul.fri li .time {
+        font-size: 16px;
+    }
+    #icenter_showShare .bg ul.fri li .mon {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    #icenter_showShare .bg .title {
+        font-size: 26px;
+        letter-spacing: 6px;
+    }
+    #icenter_showShare .bg .red,
+    #icenter_showShare .bg .red_op {
+        width: 344px;
+        height: 368px;
+    }
+    #icenter_showShare .bg .red form,
+    #icenter_showShare .bg .red_op form {
+        margin: 20px 45px;
+    }
+    #icenter_showShare .bg .detail .l_line {
+        width: 137px;
+    }
+    #icenter_showShare .bg .detail .text {
+        top: -8px;
+        width: 70px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .red_op form a.btn {
+        margin: 90px 0 0;
+    }
+    #icenter_showShare .bg .detail .r_line {
+        width: 137px;
+    }
+    #icenter_showShare .bg .detail_op_b .l_line_f {
+        width: 110px;
+    }
+    #icenter_showShare .bg .detail_op_b .text_f {
+        top: -8px;
+        width: 124px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .detail_op_b .r_line_f {
+        width: 110px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #icenter_showShare .bg .title {
+        font-size: 26px;
+        letter-spacing: 5px;
+    }
+    #icenter_showShare .bg .red,
+    #icenter_showShare .bg .red_op {
+        width: 335px;
+        height: 358px;
+    }
+    #icenter_showShare .bg .red .text {
+        padding: 160px 0 0;
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+    #icenter_showShare .bg .red form,
+    #icenter_showShare .bg .red_op form {
+        margin: 20px 40px;
+    }
+    #icenter_showShare .bg .detail .l_line {
+        width: 133px;
+    }
+    #icenter_showShare .bg .detail .text {
+        top: -8px;
+        width: 69px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .detail .r_line {
+        width: 133px;
+    }
+    #icenter_showShare .bg .red_op form a.btn {
+        margin: 80px 0 0;
+        height: 42px;
+        line-height: 42px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .detail_op_b .l_line_f {
+        width: 105px;
+    }
+    #icenter_showShare .bg .detail_op_b .text_f {
+        top: -8px;
+        width: 125px;
+        font-size: 16px;
+    }
+    #icenter_showShare .bg .detail_op_b .r_line_f {
+        width: 105px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #icenter_showShare .bg .lo_box .logo {
+        width: 36px;
+        height: 36px;
+    }
+    #icenter_showShare .bg .lo_box .text {
+        line-height: 36px;
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .title {
+        font-size: 24px;
+        letter-spacing: 10px;
+    }
+    #icenter_showShare .bg .red,
+    #icenter_showShare .bg .red_op {
+        width: 320px;
+        height: 342px;
+    }
+    #icenter_showShare .bg .red .text {
+        padding: 150px 0 0;
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+    #icenter_showShare .bg .red form,
+    #icenter_showShare .bg .red_op form {
+        margin: 15px 45px;
+    }
+    #icenter_showShare .bg .red form input.phone {
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .red form a.btn {
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .detail {
+        padding: 35px 20px 0;
+    }
+    #icenter_showShare .bg .detail .l_line {
+        width: 130px;
+    }
+    #icenter_showShare .bg .detail .text {
+        top: -8px;
+        width: 60px;
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .detail .r_line {
+        width: 130px;
+    }
+    #icenter_showShare .bg ul.in {
+        margin: 5px auto 0;
+        padding: 5px 20px 0;
+    }
+    #icenter_showShare .bg ul.in li {
+        font-size: 14px;
+        margin: 0 0 10px 0;
+    }
+    #icenter_showShare .bg .red_op .money {
+        font-size: 16px;
+        padding: 40px 0 0;
+    }
+    #icenter_showShare .bg .red_op .money span {
+        font-size: 36px;
+    }
+    #icenter_showShare .bg .red_op .detail_op {
+        width: 280px;
+        margin: 20px auto 0px;
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .l_line {
+        width: 85px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .text {
+        top: -8px;
+        width: 110px;
+        color: #d81712;
+    }
+    #icenter_showShare .bg .red_op .detail_op .r_line {
+        width: 85px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .content {
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .red_op .content {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    #icenter_showShare .bg .red_op form a.btn {
+        margin: 100px 0 0;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .me {
+        margin: 20px 20px 0;
+    }
+    #icenter_showShare .bg .me .text {
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .me .money {
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .detail_op_b {
+        margin: 20px 20px 0;
+    }
+    #icenter_showShare .bg .detail_op_b .l_line_f {
+        width: 100px;
+    }
+    #icenter_showShare .bg .detail_op_b .text_f {
+        top: -8px;
+        width: 120px;
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .detail_op_b .r_line_f {
+        width: 100px;
+    }
+    #icenter_showShare .bg ul.fri li {
+        margin: 0 0 15px 0;
+    }
+    #icenter_showShare .bg ul.fri li .name {
+        font-size: 14px;
+    }
+    #icenter_showShare .bg ul.fri li .time {
+        font-size: 14px;
+    }
+    #icenter_showShare .bg ul.fri li .mon {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #icenter_showShare .bg .title {
+        font-size: 24px;
+        letter-spacing: 5px;
+    }
+    #icenter_showShare .bg .red,
+    #icenter_showShare .bg .red_op {
+        width: 280px;
+        height: 299px;
+    }
+    #icenter_showShare .bg .red .text {
+        padding: 130px 0 0;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    #icenter_showShare .bg .red form,
+    #icenter_showShare .bg .red_op form {
+        margin: 15px 35px;
+    }
+    #icenter_showShare .bg .detail .l_line {
+        width: 110px;
+    }
+    #icenter_showShare .bg .detail .text {
+        top: -8px;
+        width: 60px;
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .detail .r_line {
+        width: 110px;
+    }
+    #icenter_showShare .bg .red_op .detail_op {
+        width: 250px;
+        margin: 20px auto 0px;
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .l_line {
+        width: 70px;
+    }
+    #icenter_showShare .bg .red_op .detail_op .text {
+        top: -8px;
+        width: 110px;
+        color: #d81712;
+    }
+    #icenter_showShare .bg .red_op .detail_op .r_line {
+        width: 70px;
+    }
+    #icenter_showShare .bg .red_op form a.btn {
+        margin: 70px 0 0;
+    }
+    #icenter_showShare .bg .detail_op_b .l_line_f {
+        width: 80px;
+    }
+    #icenter_showShare .bg .detail_op_b .text_f {
+        top: -8px;
+        width: 120px;
+        font-size: 14px;
+    }
+    #icenter_showShare .bg .detail_op_b .r_line_f {
+        width: 80px;
+    }
+}
+
+

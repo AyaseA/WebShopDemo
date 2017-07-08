@@ -1,0 +1,213 @@
+#icenter_orderDetail {
+    background-color: #EFEFF4;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#icenter_orderDetail >div.header {
+    height: 44px;
+    background-color: #fff;
+    border-bottom: 1px solid #F6F6F7;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 12;
+}
+#icenter_orderDetail >div.header >a.goBack {
+    display: block;
+    float: left;
+    height: 45px;
+    width: 44px;
+    background: url(../images/common/round_left_blue.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+    padding-left: 15px;
+}
+#icenter_orderDetail >div.header >span {
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    width: 60%;
+}
+#icenter_orderDetail >div.main {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#icenter_orderDetail >div.main >div {
+    padding-bottom: 10px;
+}
+#icenter_orderDetail >div.main >div >div {
+    background-color: #fff;
+}
+#icenter_orderDetail >div.main >div.title >div {
+    height: 60px;
+    background: #EA5514; /* 涓�浜涗笉鏀寔鑳屾櫙娓愬彉鐨勬祻瑙堝櫒 */
+    background: -moz-linear-gradient(top, #EA5514, #F47F4D);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#EA5514), to(#F47F4D));
+    background: -o-linear-gradient(top, #EA5514, #F47F4D);
+    position: relative;
+}
+#icenter_orderDetail >div.main >div.title >div >i {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-size: cover;
+    position: absolute;
+    left: 15px;
+    top: 22px;
+}
+#icenter_orderDetail >div.main >div.title >div >i.time {
+    background-image: url(../images/common/time.png);
+}
+#icenter_orderDetail >div.main >div.title >div >i.deliver {
+    background-image: url(../images/common/deliver.png);
+}
+#icenter_orderDetail >div.main >div.title >div >i.right {
+    background-image: url(../images/common/finish.png);
+}
+#icenter_orderDetail >div.main >div.title >div >i.close {
+    background-image: url(../images/common/close.png);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid rgba(255, 255, 255, .6);
+    border-radius: 16px;
+    width: 12px;
+    height: 12px;
+}
+#icenter_orderDetail >div.main >div.title >div >span {
+    position: absolute;
+    color: #fff;
+    font-size: 15px;
+    left: 40px;
+    top: 20px;
+}
+#icenter_orderDetail >div.main >div.product >div {
+    padding: 15px;
+}
+#icenter_orderDetail >div.main >div.product >div a.contactService {
+    display: block;
+    width: 80px;
+    height: 30px;
+    float: right;
+    margin-top: -6px;
+    line-height: 29px;
+    text-align: center;
+}
+#icenter_orderDetail >div.main >div.product >div a.contactService:after {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-image: url(../images/common/phone.png);
+    background-size: cover;
+    float: right;
+    margin-top: 7px;
+}
+#icenter_orderDetail >div.main >div.product >div >p:first-child {
+    height: 20px;
+    line-height: 19px;
+    padding-bottom: 10px;
+}
+#icenter_orderDetail >div.main >div.product >div >p:first-child >i {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    margin-right: 10px;
+    background: url(../images/icon.png) no-repeat;
+    background-size: contain;
+    float: left;
+}
+#icenter_orderDetail >div.main >div.product >div >div {
+    padding: 10px 15px;
+    background-color: #FAFAFA;
+    margin: 0 -15px;
+}
+#icenter_orderDetail >div.main >div.product >div >div >img {
+    height: 70px;
+    width: 70px;
+    float: left;
+    margin-right: 10px;
+}
+#icenter_orderDetail >div.main >div.product >div >div span {
+    float: right;
+}
+#icenter_orderDetail >div.main >div.product >div >div >p:nth-child(2) span {
+    color: #EA5514;
+}
+#icenter_orderDetail >div.main >div.product >div >div >p:nth-child(3) {
+    color: #A9A9A9;
+    font-size: 12px;
+    margin-top: 5px;
+}
+#icenter_orderDetail >div.main >div.product >div >p:last-child {
+    text-align: right;
+    color: #A9A9A9;
+    padding-top: 13px;
+}
+#icenter_orderDetail >div.main >div.order >div {
+    background-color: #fff;
+    padding: 0 15px;
+}
+#icenter_orderDetail >div.main >div.order >div >p {
+    padding: 15px 0;
+}
+#icenter_orderDetail >div.main >div.money {
+    padding-bottom: 100px;
+}
+#icenter_orderDetail >div.main >div.money >div {
+    background-color: #fff;
+    padding: 0 15px;
+}
+#icenter_orderDetail >div.main >div.money >div >p {
+    padding: 15px 0;
+}
+#icenter_orderDetail >div.main >div.money >div >p >span {
+    color: #EA5514;
+    float: right;
+}
+#icenter_orderDetail >div.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 49px;
+    background-color: #fff;
+    border-top: 1px solid #d4d4d4;
+}
+#icenter_orderDetail >div.footer >button {
+    border: none;
+    outline: none;
+    display: block;
+    width: 100px;
+    height: 32px;
+    float: right;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #484D59;
+    border-radius: 18px;
+    margin-right: 10px;
+    margin-top: 9px;
+}
+#icenter_orderDetail >div.footer >a {
+    display: block;
+    width: 98px;
+    height: 30px;
+    float: right;
+    background-color: #fff;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #EA5514;
+    color: #EA5514;
+    border-radius: 18px;
+    margin-right: 14px;
+    margin-top: 9px;
+}

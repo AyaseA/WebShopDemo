@@ -1,0 +1,35 @@
+<div>
+	<div class="header">
+		<a href="index/index.html" class="goBack"></a>
+		<span class="title">499汽车全年机油养护</span>
+	</div>
+	<div class="main">
+		<div class="info">
+	        <i></i>
+	        <span>添加爱车信息，匹配机油保养方案</span>
+	        <i></i>
+	    </div>
+	    <img src="./images/activity/content1.png">
+	    <div class="content">
+	        <img src="./images/activity/content2.png">
+	        <div class="products"></div>
+	    </div>
+	</div>
+    <script id="activity_activity_products" type="text/html">
+    {{each list as val i}}
+    	<div class="item" data-id="{{val.ID}}">
+			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
+            <div>
+                <h3>壳牌正品黄壳喜力</h3>
+                <h6>HX5 矿物汽车润滑机油</h6>
+                <ul>
+                    <li>动力清洁 抑制有害油泥</li>
+                    <li>更好低温保护 启动更顺畅</li>
+                </ul>
+                <p>抢购价：<span>￥{{val.Price}}</span></p>
+                <a href="fillOrder/fillOrder.html?pid={{val.ID}}" data-tran="fadeIn">立即购买</a>
+            </div>
+		</div>
+	{{/each}}
+    </script>
+</div>

@@ -1,0 +1,590 @@
+@charset "utf-8";
+/* CSS Document */
+
+#shop_shopList >div.header {
+	background-color: #EA5514;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 44px;
+}
+@media screen and (min-width: 410px) {
+	#shop_shopList >div.header {
+		height: 48px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#shop_shopList >div.header {
+		height: 40px;
+	}
+}
+#shop_shopList >div.header >a.location {
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    height: 100%;
+    line-height: 45px;
+    width: 22%;
+}
+#shop_shopList >div.header >a.location span {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 86%;
+    display: inline-block;
+    padding-left: 4px;
+}
+#shop_shopList >div.header >a.location >span:before {
+	content: '';
+	background-image: url(../../images/common/location.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+    display: inline-block;
+	height: 19px;
+    width: 14px;
+    position: relative;
+    top: 5px;
+    left: -2px;
+}
+#shop_shopList >div.header >a.search {
+    background: url(../../images/common/search.png) no-repeat;
+    background-size: 100% 60%;
+    background-position-y: center;
+    display: inline-block;
+    position: absolute;
+    margin: 0 auto 0;
+    left: 10px;
+    right: 0;
+    width: 208px;
+    height: 100%;
+    top: 0;
+}
+@media screen and (min-width: 410px) {
+	#shop_shopList >div.header >a.location {
+	    width: 25%;
+	    line-height: 50px;
+	}
+	#shop_shopList >div.header >a.search {
+	    width: 234px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#shop_shopList >div.header >a.location {
+		line-height: 41px;
+	    width: 20%;
+	    font-size: 12px;
+	}
+	#shop_shopList >div.header >a.location >span:before {
+	    width: 12px;
+	    height: 16px;
+	    top: 4px;
+	}
+	#shop_shopList >div.header >a.search {
+		width: 175px;
+        background-size: 100% 64%;
+	}
+}
+
+
+#shop_shopList >div.footer {
+	background-color: #FFFFFF;
+	border-top: 1px solid #D5D5D8;
+	position: fixed;
+	bottom: 0;
+	z-index: 10;
+	width: 100%;
+	height: 56px;
+}
+#shop_shopList >div.footer nav {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+#shop_shopList >div.footer nav >li {
+    position: relative;
+    display: block;
+    color: #81858B;
+    height: 100%;
+    width: 25%;
+    float: left;
+}
+#shop_shopList >div.footer nav >li:before {
+    content: '';
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 50%;
+    margin-top: 5px;
+}
+#shop_shopList >div.footer span {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	bottom: 8%;
+	font-size: 14px;
+}
+@media screen and (min-width: 410px) {
+	#shop_shopList >div.footer {
+		height: 60px;
+		bottom: -1px;
+	}
+	#shop_shopList >div.footer span {
+		bottom: 6%;
+	}
+}
+@media screen and (max-width: 350px) {
+	#shop_shopList >div.footer {
+		height: 44px;
+	}
+	#shop_shopList >div.footer span {
+		font-size: 12px;
+		bottom: 6%;
+	}
+}
+#shop_shopList >div.footer nav >li.active {
+	color: #EA5514;
+}
+#shop_shopList >div.footer nav >li:nth-child(1):before {
+    background-image: url(../../images/index/homeOff.png);
+}
+#shop_shopList >div.footer nav >li:nth-child(1).active:before {
+	background-image: url(../../images/index/homeOn.png);
+}
+#shop_shopList >div.footer nav >li:nth-child(2):before {
+    background-image: url(../../images/index/carCrvOff.png);
+}
+#shop_shopList >div.footer nav >li:nth-child(2).active:before {
+    background-image: url(../../images/index/carCrvOn.png);
+}
+#shop_shopList >div.footer nav >li:nth-child(3):before {
+    background-image: url(../../images/index/presentOff.png);
+}
+#shop_shopList >div.footer nav >li:nth-child(3).active:before {
+	background-image: url(../../images/index/presentOn.png);
+}
+#shop_shopList >div.footer nav >li:nth-child(4):before {
+    background-image: url(../../images/index/centerOff.png);
+}
+#shop_shopList >div.footer nav >li:nth-child(4).active:before {
+	background-image: url(../../images/index/centerOn.png);
+}
+
+
+/* 内容CSS */
+
+/*服务标题选项开始*/
+#shop_shopList .serviceNav{
+	width:100%;
+	height:22vw;
+    border-bottom:1px solid #d6d6db;
+    background:#fff;
+	margin-top:2vw;
+}
+
+#shop_shopList .serviceNav ul{
+	list-style:none;
+	text-align:center;
+}
+
+#shop_shopList .serviceNav ul li{
+	padding-top:4vw;
+	display:inline-block;
+	text-align:center;
+	width:23%;
+}
+
+#shop_shopList .serviceNav ul li img{
+	width:40%;
+}
+
+#shop_shopList .serviceNav ul a{
+	color:#000;
+}
+/*服务标题选项结束*/
+
+/*店铺类型选择开始*/
+#shop_shopList .selectShop{
+	width:100%;
+	height:12.5vw;
+	background:#fff;
+	border-bottom:1px solid #d6d6db;
+}
+
+#shop_shopList .selectShop ul{
+	list-style:none;
+	padding:3vw 0;
+	border-bottom: 1px solid #ccc;
+}
+
+#shop_shopList .selectShop ul li{
+	display:inline-block;
+	text-align:center;
+	width:32%;
+	line-height:5vw;
+	border-right:1px solid #d6d6db;
+	font-size:14px;
+}
+
+#shop_shopList .selectShop ul li img{
+	width:7%;
+	margin-left:2vw;
+}
+
+#shop_shopList .noBorder{
+	border-right:none;
+}
+
+/*店铺类型选择结束*/
+
+/*店铺列表开始*/
+#shop_shopList .shopList{
+	background:#fff;
+	overflow-y:auto;
+	width: 100%;
+}
+
+#shop_shopList .container{
+	margin:0 3vw;
+}
+
+#shop_shopList .oneShop{
+	height:18vw;
+	width:100%;
+	padding:2vw 0;
+	border-bottom:1px solid #d6d6db;
+}
+
+#shop_shopList .shopImg{
+	width:25%;	
+	display:inline-block;
+}
+
+#shop_shopList .shopImg img{
+	width:100%;
+}
+
+#shop_shopList .shopInfo{
+	width:73%;
+	display:inline-block;
+	position:relative;
+}
+
+#shop_shopList .shopInfo ul{
+	list-style:none;
+	position:absolute;
+	left:1vw;
+	top:-18vw;
+	width:100%;
+}
+
+#shop_shopList .shopInfo ul li{
+	display:inline-block;
+	margin-bottom:1vw;
+}
+
+#shop_shopList .msg{
+	text-align: center;
+    font-size: 14px;
+}
+
+#shop_shopList .msgLeft{
+	width:80%;
+}
+
+#shop_shopList .msgRight{
+	width:15%;
+}
+
+#shop_shopList .shopInfo p{
+	font-size:smaller;
+	color:#666;
+}
+
+#shop_shopList .price{
+	color:#ea5514;
+}
+/*店铺列表结束*/
+
+/*下拉选择框开始*/
+#shop_shopList #shopList_selectModal{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	background:#FFF;
+	z-index:10;
+	display:none;
+}
+
+#shop_shopList #shopList_selectModal .nav{
+	border-bottom:1px solid #d6d6db;
+	height:10.5vw;
+	width:100%;
+}
+
+#shop_shopList #shopList_selectModal .nav ul{
+	text-align:center;
+	padding:3vw 0;
+}
+
+#shop_shopList #shopList_selectModal .nav li{
+	display:inline-block;
+	text-align:center;
+	width:32%;
+	line-height:5vw;
+	border-right:1px solid #d6d6db;
+	font-size:14px;
+}
+
+#shop_shopList #shopList_selectModal .nav ul li img{
+	width:7%;
+	margin-left:2vw;
+}
+
+#shop_shopList .tOn{
+	color:#F60;
+}
+
+#shop_shopList .tOff{
+	color:#000;
+}
+
+#shop_shopList .cOn{
+	display:block;
+}
+
+#shop_shopList .cOff{
+	display:none;
+}
+
+/*地点标签CSS*/
+#shop_shopList #shopList_positionS{
+	padding:0 3vw;
+}
+
+#shop_shopList #shopList_area li{
+	border-bottom:1px solid #d6d6db;
+	padding:10px;
+	font-size:14px;
+}
+
+#shop_shopList .positionOn{
+	color:#F60;
+}
+
+/*服务标签CSS*/
+
+#shop_shopList #shopList_carT{
+	padding:0 3vw;
+}
+
+#shop_shopList #shopList_carT li{
+	border-bottom:1px solid #d6d6db;
+	padding:10px;
+	font-size:14px;
+}
+
+
+
+
+/*汽车服务样式*/
+#shop_shopList #shopList_serviceList{
+	width:65%;
+	display:inline-block;
+}
+
+#shop_shopList #shopList_serviceList ul{
+	width:100%;
+	list-style:none;
+}
+
+#shop_shopList #shopList_serviceList ul li{
+	width:100%;
+	padding:10px;
+	font-size:14px;
+	border-bottom:1px solid #d6d6db;
+}
+
+#shop_shopList .ctOn{
+	background:#fff;
+	color:#F60;
+}
+
+#shop_shopList .ccOn{
+	display:block;
+}
+
+#shop_shopList .ccOff{
+	display:none;
+}
+
+#shop_shopList .cccOn{
+	color:#F60;
+}
+
+#shop_shopList #shopList_orderBy ul li{
+	border-bottom:1px solid #d6d6db;
+	padding:10px;
+	font-size:14px;
+}
+
+#shop_shopList .orderOn{
+	color:#f60;
+}
+
+#shop_shopList .notice{
+	text-align: center;
+	color:#f60;
+}
+
+/*下拉选择框结束*/
+
+#shop_shopList @media screen and (min-width: 410px) {
+	#shop_shopList p{
+		font-size:16px;
+	}
+	
+	#shop_shopList h3{
+		font-size:20px;
+	}
+	
+    #shop_shopList .selectShop ul li{
+		font-size:16px;
+	}
+	
+	#shop_shopList #shopList_area li{
+		font-size:16px;
+	}
+	
+	#shop_shopList .carNav ul li{
+		font-size:16px;
+	}
+	
+	#shop_shopList #shopList_serviceList ul li{
+		font-size:16px;
+	}
+	
+	#shop_shopList #shopList_selectModal .nav li{
+		font-size:16px;
+	}
+		
+}
+#shop_shopList @media screen and (max-width: 350px) {
+	#shop_shopList p{
+		font-size:10px;
+	}
+	
+	#shop_shopList h3{
+		font-size:14px;
+	}
+    
+	#shop_shopList .selectShop ul li{
+		font-size:12px;
+	}
+	
+	#shop_shopList #shopList_area li{
+		font-size:12px;
+	}
+	
+	#shop_shopList .carNav ul li{
+		font-size:12px;
+	}
+	
+	#shop_shopList #shopList_serviceList ul li{
+		font-size:12px;
+	}
+	
+	#shop_shopList #shopList_selectModal .nav li{
+		font-size:12px;
+	}
+}
+
+#shop_shopList .onepiece{
+	width: 100%;
+	height: 25vw;
+	overflow:hidden;
+	border-bottom: 1px solid #EFEFF4;
+	position: relative;
+}
+
+
+#shop_shopList .onepiece img{
+	width: 23vw;
+	margin: 3vw 0 0 3vw;
+}
+
+#shop_shopList .shopInfo{
+	position: absolute;
+	top:3vw;
+	left: 30vw;
+}
+
+#shop_shopList .shopInfo h2{
+	font-weight: 700;
+	font-size: 4.44vw;
+}
+
+#shop_shopList .shopInfo p{
+	font-size: 3.3vw;
+	width: 67vw;
+	color: #9D9B9B;
+	margin-top: 2vw;
+}
+
+#shop_shopList .fr{
+	float: right;
+
+}
+
+#shop_shopList .red{
+	color: #f60;
+}
+
+#shop_shopList .content{
+	background:  #EFEFF4;
+}
+#shopList_shopList_confirm {
+    padding: 0;
+}
+#shopList_shopList_confirm >div >div {
+    padding: 0 20px 10px;
+    border-bottom: 1px solid #DCDADD;
+}
+#shopList_shopList_confirm >div >div:before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #EA5514;
+    border-radius: 30px;
+    background: url(../images/icon.png) no-repeat;
+    background-size: 70%;
+    background-position: center;
+    margin: 15px auto;
+}
+#shopList_shopList_confirm >div >div >p {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    text-align: center;
+}
+#shopList_shopList_confirm >div >button {
+    border: none;
+    outline: none;
+    background: none;
+    width: 50%;
+    padding: 0;
+    display: inline-block;
+    height: 44px;
+    font-size: 16px;
+    line-height: 44px;
+    float: left;
+}
+#shopList_shopList_confirm >div >button:last-child {
+    border-left: 1px solid #DCDADD;
+    color: #2FB823;
+}

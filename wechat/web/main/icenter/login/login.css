@@ -1,0 +1,149 @@
+#icenter_login {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: url(../images/center/bg_login.png) no-repeat;
+	background-size: 100%;
+}
+#icenter_login .return_button{
+	width: 5.9vw;
+	height: 5.9vw;
+	margin-left: 4vw;
+	margin-top: 2.7vw;
+}
+#icenter_login .logo_login{
+	width: 17.3vw;
+	height: 17.3vw;
+	display: inline-block;
+	position: relative;
+	left: 41%;
+	top: 2.7vw;
+}
+#icenter_login .login_aside{
+	margin-top: 2.7vw;
+}
+#icenter_login .input_control{
+	width: 90.93vw;
+	height: 11.73vw;
+	margin-left: 4vw;
+	display: inline-block;
+	border-bottom: 1px solid #e5e5e5;
+	position: relative;
+}
+#icenter_login .login_phone{
+	width: 5.3vw;
+	height: 5.6vw;
+	display: inline-block;
+	position: relative;
+	left: 0.8vw;
+	top: 2.7vw;
+}
+#icenter_login .login_input{
+	display: inline-block;
+	position: relative;
+	left: 1.9vw;
+	top: 1.9vw;
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 4.3vw;
+}
+#icenter_login ::-webkit-input-placeholder { 
+    color: #BFBFBF; 
+    text-overflow: ellipsis; 
+} 
+#icenter_login .login_in{
+	width: 90.93vw;
+	height: 11.73vw;
+	background-color: #D7D6DC;
+	color: #fff;
+	font-size: 4.53vw;
+	border-radius: 6.7vw;
+	border: none;
+	outline: none;
+	position: absolute;
+	top: 86.33vw;	
+	left: 4vw;
+}
+#icenter_login .login_check_pn,#icenter_login .login_check_pc,#icenter_login .login_check_pw,#icenter_login .login_check_in,#icenter_login .login_check_ps{
+	width: 53.33vw;
+	line-height: 9.33vw;
+	border-radius: 6.67vw;
+	text-align: center;
+	font-size: 4.27vw;
+	color: #fff;
+	background-color: #5F5D60; 
+	position: absolute;
+	left: 22.4vw;
+	top: 119.33vw;
+	display: none;
+}
+#icenter_login #login_timeout{
+	width: 32vw;
+	line-height: 9.33vw;
+	background-color: #DF6233;
+	display: inline-block;
+	font-size: 4vw;
+	border-radius: 6.67vw;
+    position: absolute;
+    left: 59vw;
+    top: 1.13vw;
+	text-align: center;
+	vertical-align: center;
+	color: #fff;
+
+}
+#icenter_login #login_timeclick{
+	width: 32vw;
+	line-height: 9.33vw;
+	background-color: #DF6233;
+	display: inline-block;
+	font-size: 4vw;
+	border-radius: 6.67vw;
+	position: relative;
+	left: 58.67vw;
+	top: -5.87vw;
+	text-align: center;
+	vertical-align: center;
+	color: #fff;
+	display: none;
+}
+#icenter_login #login_check_id{
+	width: 80vw;
+	line-height: 9.33vw;
+	position: absolute;
+	left: 9.1vw;
+	top: 119.33vw;
+	display: none;
+}
+#icenter_login .quick_login{
+	display: block;
+	position: absolute;
+    top: 101.67vw;	
+	left: 5.87vw;
+	font-size: 3.73vw;
+	color: #DF6233;
+	font-family: "Microsoft YaHei";
+}
+#icenter_login .miss_password{
+	display: block;
+	position: absolute;
+	top: 101.67vw;	
+	right: 5.87vw;
+	font-size: 3.73vw;
+	color: #A6A5A7;
+}
+#icenter_login #login_redit,#icenter_login #loginin_out{
+	display: none;
+}
+#icenter_login #input_control_3,#icenter_login #input_control_4,#icenter_login #input_control_5{
+	display: none;
+}
+#icenter_login .round_clear{
+	width: 3.2vw;
+	height: 3.2vw;
+	display: none;
+	position: absolute;
+	left: 82.67vw;
+	top: 4.3vw;
+}

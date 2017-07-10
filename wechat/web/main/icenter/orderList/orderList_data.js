@@ -11,7 +11,7 @@ $(function() {
         $page.find(".waitPost").height(contentHeight);
         $page.find(".waitGet").height(contentHeight);
         $page.find(".waitRevice").height(contentHeight);
-        
+
 
         //var Token = "eyJVc2VySUQiOiIxMCIsIk5pY2tOYW1lIjpudWxsLCJHcm91dGhWYWx1ZSI6bnVsbCwiVXNlckFkZHJlc3NJRCI6bnVsbCwiQWRkVGltZSI6IjE0OTYyODA2NDUiLCJVc2VyQ2FySUQiOm51bGwsIkltZyI6bnVsbCwiRW5hYmxlIjoiMSIsIk1vYmlsZSI6IjE1MDY2NjcwMzIwIiwiU2Vzc2lvbklEIjoiMSIsIlR5cGUiOiJVc2VyIiwiVUlEIjoiNWEzYzY5YWYwOWU4ZDA1ODBlN2QwZTdjZTY1NjdlMWUifQ%3D%3D";
         var Token = $$.getToken();
@@ -47,7 +47,7 @@ $(function() {
         $page.find(".all").fadeIn(500);
         $page.find(".nav ul li").removeClass("on");
         $page.find(".nav .allNav").addClass("on");
-        loadList({ "WToken": Token, "N": n }, ".all", "all");
+        loadList({ "WToken": Token, "N": n}, ".all", "all");
 
         //点击支付按钮事件  
         $page.off("click", ".PayBtn").on("click", ".PayBtn", function() {
@@ -59,7 +59,7 @@ $(function() {
                 $$.redirect("icenter/commit.html?oid=" + orderId);
             } else if ($(this).html() == "点评") {
                 var productID = $(this).attr("data-index");
-                $$.redirect("icenter/orderCommit.html?oid=" + orderId+"&pid="+productID);
+                $$.redirect("icenter/orderCommit.html?oid=" + orderId + "&pid=" + productID);
             }
 
         });
@@ -84,7 +84,6 @@ $(function() {
                 dataType: 'json',
                 success: function(data) {
                     if (thisLoaded[scrollArea] == 0) {
-                        data = $$.eval(data);
                         if (data.Status == -1) {
                             $$.refreshConfirm();
                         } else {
@@ -129,7 +128,7 @@ $(function() {
                                     } else {
                                         for (var k = 0; k < 3; k++) {
                                             if (listData[k].Img == "") {
-                                            listData[k].Img = "NoImg/" + Math.random() + ".jpg";
+                                                listData[k].Img = "NoImg/" + Math.random() + ".jpg";
                                             }
                                             contentNode = "<img src='" + url + "Img/" + listData[k].Img + "'>";
                                             contentNodeList += contentNode;
@@ -220,12 +219,12 @@ $(function() {
                                                     } else {
                                                         for (var k = 0; k < 3; k++) {
                                                             if (listData[k].Img == "") {
-                                                            listData[k].Img = "NoImg/" + Math.random() + ".jpg";
+                                                                listData[k].Img = "NoImg/" + Math.random() + ".jpg";
                                                             }
                                                             contentNode = "<img src='" + url + "Img/" + listData[k].Img + "'>";
                                                             contentNodeList += contentNode;
                                                         }
-                                                        
+
                                                         if (list[i].StatusID == 1) {
                                                             onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span style='color:red'>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent'>" + contentNodeList + "<div></div><p style='float:right'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p></div><div class='piecePay'><button class='PayBtn'>支付</button></div></div>";
                                                             $page.find("" + area).append(onePiece);
@@ -362,11 +361,11 @@ $(function() {
                         Data = $$.eval(Data);
                         console.log(Data);
                         var list = Data.Data.Rows;
-                        if(list==0){
+                        if (list == 0) {
                             var noOrders = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p><button>最新优惠</button></div>";
                             $page.find(area).append(noOrders);
-                            haveLoad.waitRevice = 1;  
-                        }else{
+                            haveLoad.waitRevice = 1;
+                        } else {
                             for (var i = 0; i < list.length; i++) {
                                 var orderID = list[i].OrderID;
                                 $.ajax({
@@ -382,7 +381,7 @@ $(function() {
                                 });
 
                             }
-                            haveLoad.waitRevice = 1;                           
+                            haveLoad.waitRevice = 1;
                         }
                     },
                 });

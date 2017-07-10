@@ -1,7 +1,7 @@
 // JavaScript Document
 $(function() {
-    var $page = $('#shop_shopDetaill'),
-        pageStr = 'shop_shopDetaill';
+    var $page = $('#shop_shopDetail'),
+        pageStr = 'shop_shopDetail';
 
 	var id=$$.getQueryString("ID");
     $.ajax({

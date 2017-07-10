@@ -14,7 +14,7 @@ $(function() {
 
         //点击返回按钮
         $page.on("click", "a .back", function() {
-                $$.redirect("home/index.html", {
+                $$.redirect("main/home/index.html", {
                     'trans': "fadeIn"
                 });
                 $$.removeDiv(pageStr);
@@ -100,7 +100,7 @@ $(function() {
                                     $(".mirror").css("z-index", "140");
                                     $(".noWard").animate({ height: "82vw" }, 500);
                                     $page.on("click", ".backImg img", function() {
-                                        $$.redirect("home/index.html", {
+                                        $$.redirect("main/home/index.html", {
                                             'trans': "fadeIn"
                                         });
                                         $$.removeDiv(pageStr);

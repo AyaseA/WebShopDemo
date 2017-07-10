@@ -8,7 +8,7 @@
 #icenter_pageHome header{
 	width: 100%;
 	height: 39vw;
-	background: #fff url(../images/center/center_bg.png) no-repeat top center;
+	background: #fff url(../../images/center/center_bg.png) no-repeat top center;
 	background-size: 100%; 
 	overflow: hidden;
 	position: fixed;
@@ -209,7 +209,7 @@
 	font-size: 3.2vw;
 }
 #icenter_pageHome #article_con_tent{
-	background: #fff url(../images/center/left_black.png) no-repeat 85.3vw 4vw;
+	background: #fff url(../../images/center/left_black.png) no-repeat 85.3vw 4vw;
 	background-size: 3.2vw 5.3vw;
 }
 /* #icenter_pageHome >div.footer {
@@ -330,26 +330,26 @@
  	color: #EA5514;
  }
  #icenter_pageHome >div.footer nav >li:nth-child(1):before {
-     background-image: url(../images/index/homeOff.png);
+     background-image: url(../../images/index/homeOff.png);
  }
  #icenter_pageHome >div.footer nav >li:nth-child(1).active:before {
- 	background-image: url(../images/index/homeOn.png);
+ 	background-image: url(../../images/index/homeOn.png);
  }
  #icenter_pageHome >div.footer nav >li:nth-child(2):before {
-     background-image: url(../images/index/carCrvOff.png);
+     background-image: url(../../images/index/carCrvOff.png);
  }
  #icenter_pageHome >div.footer nav >li:nth-child(2).active:before {
-     background-image: url(../images/index/carCrvOn.png);
+     background-image: url(../../images/index/carCrvOn.png);
  }
  #icenter_pageHome >div.footer nav >li:nth-child(3):before {
-     background-image: url(../images/index/presentOff.png);
+     background-image: url(../../images/index/presentOff.png);
  }
  #icenter_pageHome >div.footer nav >li:nth-child(3).active:before {
- 	background-image: url(../images/index/presentOn.png);
+ 	background-image: url(../../images/index/presentOn.png);
  }
  #icenter_pageHome >div.footer nav >li:nth-child(4):before {
-     background-image: url(../images/index/centerOff.png);
+     background-image: url(../../images/index/centerOff.png);
  }
  #icenter_pageHome >div.footer nav >li:nth-child(4).active:before {
- 	background-image: url(../images/index/centerOn.png);
+ 	background-image: url(../../images/index/centerOn.png);
  }

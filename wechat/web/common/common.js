@@ -961,7 +961,7 @@
     win.$$ = $$;
 
     //微信配置
-    if (wx) {
+    if (wx != undefined) {
         var WXsign = $$.getWeChatSign();
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -982,7 +982,7 @@
         });
     }
 }(window, jQuery));
-/** ************************************************常用工具**************************************** */
+/**************************************************常用工具**************************************** */
 //日期
 Date.prototype.pattern = function(fmt) {
     var o = {
@@ -1017,11 +1017,3 @@ Date.prototype.pattern = function(fmt) {
     }
     return fmt;
 };
-String.prototype.startWith=function(str){     
-	  var reg=new RegExp("^"+str);     
-	  return reg.test(this);        
-	}  
-String.prototype.endWith=function(str){     
-	  var reg=new RegExp(str+"$");     
-	  return reg.test(this);        
-	}

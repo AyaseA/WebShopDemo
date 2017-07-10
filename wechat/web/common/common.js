@@ -30,6 +30,7 @@
                     return [];
                 }
             }
+
             function set(stackArr) {
                 if (stackArr instanceof Array) {
                     sessionStorage.setItem('__STACK__', JSON.stringify(stackArr));
@@ -40,7 +41,7 @@
             };
             var getLast = function() {
                 var stackArr = get();
-                if (stackArr,length > 0) {
+                if (stackArr, length > 0) {
                     return stackArr[stackArr.length - 1];
                 } else {
                     return '';
@@ -57,14 +58,14 @@
                 }
             };
             var push = function(url, backUrl, fromGoBack) {
-                if (url&&url.indexOf('?') != -1) {
+                if (url && url.indexOf('?') != -1) {
                     var urlArr = url.split('?');
                     urlArr[1] = urlArr[1].replace(/(^|&)code=([^&]*)/i, '');
                     urlArr[1] = urlArr[1].replace(/(^|&)str=([^&]*)/i, '');
-                    urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g,'');
+                    urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g, '');
                     url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
                 }
-                
+
                 var stackArr = get();
                 if ($.inArray(url, stackArr) == -1 &&
                     $.inArray(backUrl, stackArr) == -1 &&
@@ -86,7 +87,8 @@
                 pop: pop,
                 push: push,
                 getLast: getLast,
-                isEmpty: isEmpty
+                isEmpty: isEmpty,
+                list: get
             };
         }()),
         // 时间转10位时间戳
@@ -148,8 +150,8 @@
             if ($.isEmptyObject(weChatSign) || (reGet || false)) {
                 $.ajax({
                     url: $$.config.serverAddr +
-                         'Product/WeChat/GetSign?url=' +
-                         escape(location.href),
+                        'Product/WeChat/GetSign?url=' +
+                        escape(location.href),
                     type: 'GET',
                     async: false, // 同步
                     dataType: 'json',
@@ -199,37 +201,34 @@
         refresh: function(url, status) {
             if (url) {
                 url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-                      'appid=wx2c53034422e377cc&redirect_uri=' +
-                      'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
-                      escape(escape(url)) +
-                      '&response_type=code&scope=snsapi_base&state=' + status +
-                      '#wechat_redirect';
+                    'appid=wx2c53034422e377cc&redirect_uri=' +
+                    'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
+                    escape(escape(url)) +
+                    '&response_type=code&scope=snsapi_base&state=' + status +
+                    '#wechat_redirect';
                 location.href = url;
             }
         },
         // 页面跳转 核心方法
         redirect: function(url, option) {
             if (url) {
-            	// 设置   
-            	var a_url=url.split('.html');
-            	var v_url= a_url[0].split("/");
-            	if(v_url.length>2)
-            	{
-            		//TODO 清除相关缓存
-            	   location.href="../"+v_url[0]+"/index.html?R="+v_url[1]+"/"+v_url[2]+".html"+a_url[1];
-            	   
-            	}
-            	else
-            	{
-            		url=a_url[0]+"/"+v_url[1]+".html"+(a_url[1]?a_url[1]:"");
-            	}
+                // 设置   
+                var a_url = url.split('.html');
+                var v_url = a_url[0].split("/"),
+                    tmpUrl = url;
+                if (v_url.length > 2) {
+                    // 清除相关缓存
+                    location.href = "../" + v_url[0] + "/index.html?R=" + v_url[1] + "/" + v_url[2] + ".html" + a_url[1];
+                } else {
+                    url = a_url[0] + "/" + v_url[1] + ".html" + (a_url[1] ? a_url[1] : "");
+                }
                 // 设置可以刷新为true，加载代码时存在设置则置为false
                 $$.config.canRefresh = true;
                 // 设置全局菜单的按钮显示与隐藏
                 setGlobalMenu();
                 // 显示全局悬浮菜单
                 showHideGlobalMenu(false);
-                
+
                 var trans, backUrl, fromGoBack = false;
                 if (option) {
                     trans = option.trans;
@@ -295,24 +294,24 @@
                 };
 
                 // 将历史url存入栈
-                if (url.indexOf('home/index.html') != -1) {
+                if (tmpUrl.indexOf('home/index.html') != -1) {
                     $$.stack.clear();
-                } else{
+                } else {
                     $$.stack.push($$.getUrl(), backUrl, fromGoBack);
                 }
 
                 // 将当前页面存储到cookie
-                $$.setCookie("__URL__", url);
-                
+                $$.setCookie("__URL__", tmpUrl);
+
                 // 存储页面加载前显示的div id
                 $$.setCookie("__OLDDIV__", $("div#div_list>div:visible").attr("id"));
 
                 var url_arr = url.split('?'),
                     dir = url_arr[0].substring(0, url_arr[0].length - 5),
-                    tempdir=dir.split("/");
-                    newid=tempdir[0]+"_"+tempdir[1];
-                    //newid = dir.replace(/\//g, "_");
-                    //setTimeout(function() {
+                    tempdir = dir.split("/");
+                newid = tempdir[0] + "_" + tempdir[1];
+                //newid = dir.replace(/\//g, "_");
+                //setTimeout(function() {
                 // 判断要显示的页面是否存在
                 if ($("div#div_list>div#" + newid).length == 0) {
                     // 不存在，加载页面，css, js 
@@ -323,7 +322,7 @@
                     // 存在，直加载数据*_data.js
                     loadData();
                 }
-                    //}, 5000);
+                //}, 5000);
             }
         },
         // 获取当前显示的div id
@@ -629,7 +628,7 @@
             }
             var code = $$.getQueryString('code', url),
                 str = $$.getQueryString('str', url);
-            
+
             // url替换处理
             urlHandle(currentUrl);
 
@@ -675,7 +674,7 @@
                 var urlArr = url.split('?');
                 urlArr[1] = urlArr[1].replace(/(^|&)code=([^&]*)/i, '');
                 urlArr[1] = urlArr[1].replace(/(^|&)str=([^&]*)/i, '');
-                urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g,'');
+                urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g, '');
                 url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
             }
             if (wechatInfo[1] < '6.2') {
@@ -770,29 +769,37 @@
                 url = $$.getUrl();
             openCloseMenu(_x);
             var aa = sessionStorage.getItem('a') || 1;
-            switch(type) {
-                case 'refresh': {
-                    var url_arr = url.split('?'),
-                        dir = url_arr[0].substring(0, url_arr[0].length - 5),
-                        filedata = dir + '_data.js';
-                    loadJs(filedata, dir.replace(/\//g, "_") + "_data");
-                } break;
-                case 'index': {
-                    if (url.indexOf('home/index.html') == -1) {
-                        $$.redirect('home/index.html');
+            switch (type) {
+                case 'refresh':
+                    {
+                        var url_arr = url.split('?'),
+                            dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                            filedata = dir + '_data.js';
+                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                     }
-                } break;
-                case 'icenter': {
-                    if (url.indexOf('icenter/pageHome.html') == -1) {
-                        $$.redirect('icenter/pageHome.html', {
-                            fromGoBack: true
-                        });
+                    break;
+                case 'index':
+                    {
+                        if (url.indexOf('home/index.html') == -1) {
+                            $$.redirect('home/index.html');
+                        }
                     }
-                } break;
-                // 测试用
-                case 'test': {
-                    $$.redirect($(this).attr('data-url'));
-                } break;
+                    break;
+                case 'icenter':
+                    {
+                        if (url.indexOf('icenter/pageHome.html') == -1) {
+                            $$.redirect('icenter/pageHome.html', {
+                                fromGoBack: true
+                            });
+                        }
+                    }
+                    break;
+                    // 测试用
+                case 'test':
+                    {
+                        $$.redirect($(this).attr('data-url'));
+                    }
+                    break;
             }
         });
         // 展开收起菜单
@@ -826,7 +833,7 @@
             }
             if (_y >= _bodyH - _halfH) {
                 _y = _bodyH - _halfH;
-            } else if (_y - _halfH <=0) {
+            } else if (_y - _halfH <= 0) {
                 _y = _halfH;
             }
             $menu.css({

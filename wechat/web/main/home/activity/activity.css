@@ -175,7 +175,7 @@
     margin: 10px 0 0 0;
 }
 #home_activity >div.main div.item li:before {
-	content: '路';
+	content: '·';
 	padding-right: 5px;
 }
 #home_activity >div.main div.item p {

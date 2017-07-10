@@ -770,36 +770,28 @@
             openCloseMenu(_x);
             var aa = sessionStorage.getItem('a') || 1;
             switch (type) {
-                case 'refresh':
-                    {
+                case 'refresh': {
                         var url_arr = url.split('?'),
                             dir = url_arr[0].substring(0, url_arr[0].length - 5),
                             filedata = dir + '_data.js';
                         loadJs(filedata, dir.replace(/\//g, "_") + "_data");
-                    }
-                    break;
-                case 'index':
-                    {
+                    } break;
+                case 'index': {
                         if (url.indexOf('home/index.html') == -1) {
-                            $$.redirect('home/index.html');
+                            $$.redirect('main/home/index.html');
                         }
-                    }
-                    break;
-                case 'icenter':
-                    {
+                    } break;
+                case 'icenter': {
                         if (url.indexOf('icenter/pageHome.html') == -1) {
-                            $$.redirect('icenter/pageHome.html', {
+                            $$.redirect('main/icenter/pageHome.html', {
                                 fromGoBack: true
                             });
                         }
-                    }
-                    break;
+                    } break;
                     // 测试用
-                case 'test':
-                    {
+                case 'test': {
                         $$.redirect($(this).attr('data-url'));
-                    }
-                    break;
+                    } break;
             }
         });
         // 展开收起菜单

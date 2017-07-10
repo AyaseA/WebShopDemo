@@ -1,11 +1,11 @@
 <div>
 	<div class="header">
-		<a href="location/location.html" class="location"><span></span></a>
+		<a href="home/location.html" class="location"><span></span></a>
 		<a href="javascript:void(0)" class="search"></a>
 	</div>
 	<div class="main">
 		<div class="content">
-			<div class="banner" id="index_index_banner">
+			<div class="banner" id="home_index_banner">
 				<div class="hd">
 					<ul></ul>
 				</div>
@@ -38,7 +38,7 @@
 			<li data-tab="center"><span>个人中心</span></li>
 		</nav>
 	</div>
-	<script id="index_index_banner_list" type="text/html">
+	<script id="home_index_banner_list" type="text/html">
     {{each list as val}}
 		<li>
             <a href="{{val.Link}}">
@@ -47,7 +47,7 @@
         </li>
     {{/each}}
 	</script>
-	<script id="index_index_products" type="text/html">
+	<script id="home_index_products" type="text/html">
 		<div class="row">
 		{{each list as val i}}
 			<div>
@@ -64,7 +64,7 @@
 		{{/each}}
 		</div>
 	</script>
-    <script id="index_index_confirm_cnt" type="text/html">
+    <script id="home_index_confirm_cnt" type="text/html">
         <div>
             <div>
                 <p>系统定位您现在的位置是{{dist}}，是否切换到{{dist}}？</p>
@@ -73,14 +73,4 @@
             <button class="change">切换</button>
         </div>
     </script>
-
-    <div class="footer">
-        <nav>
-            <li data-tab="index" class="active"><span>首页</span></li>
-            <li data-tab="carCrv"><span>服务网点</span></li>
-            <li data-tab="activity"><span>活动</span></li>
-            <li data-tab="center"><span>个人中心</span></li>
-        </nav>
-    </div>
-
 </div>

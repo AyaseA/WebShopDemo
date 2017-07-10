@@ -45,8 +45,8 @@
 		<a href="javascript:void(0)" data-id="" class="collect">加入收藏</a>
 		<a href="fillOrder/fillOrder.html?num=1&pid=1" data-tran="fadeIn" class="buyNow">立即购买</a>
 	</div>
-	<script id="product_product_product_detail" type="text/html">
-		<div class="banner" id="product_product_banner">
+	<script id="home_product_product_detail" type="text/html">
+		<div class="banner" id="home_product_banner">
 			<div class="hd"><ul></ul></div>
 			<div class="bd"><ul>
 				{{set imgList = $imports.splitFilter(data.Imglist, ',')}}
@@ -63,7 +63,7 @@
 			<h1><small>￥</small>{{data.Price}}</h1>
 		</div>
 	</script>
-	<script id="product_product_product_comment" type="text/html">
+	<script id="home_product_product_comment" type="text/html">
 	{{each commentList as comment}}
 		<div class="comment">
 			<p class="uInfo">

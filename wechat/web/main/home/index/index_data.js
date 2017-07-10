@@ -26,9 +26,14 @@ $(function(){
     // 获取banner相关
     function getBanners(calback) {
         var $banner = $('#home_index_banner >div.bd >ul');
-        $$.get(
-            'Product/Banner/QueryBannerList?BannerID=1',
-            function(res) {
+        $.ajax({
+            url: $$.serverAddr + 'Product/Banner/QueryBannerList',
+            type: 'POST',
+            data: {
+                BannerTypeID: 1
+            },
+            dataType: 'json',
+            success: function(res) {
                 if (res.Status == 0 && res.Data && res.Data.Rows) {
                     $banner.html(template(pageStr + '_banner_list', {
                         list: res.Data.Rows,
@@ -39,7 +44,7 @@ $(function(){
                     }
                 }
             }
-        );
+        });
     }
     // 加载商品列表
     function getProductsList() {

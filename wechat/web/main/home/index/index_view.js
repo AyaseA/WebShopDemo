@@ -28,7 +28,7 @@ $(function(){
             } break;
             case 'friendAdd': {
                 // 邀请有礼
-                $$.redirect('icenter/invite.html');
+                $$.redirect('home/invite.html');
             } break;
         }
     });

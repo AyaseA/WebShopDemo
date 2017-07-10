@@ -22,7 +22,7 @@
 	}
 }
 #home_activity >div.header >a.goBack {
-	background: url(../images/common/round_left.png) no-repeat;
+	background: url(../../images/common/round_left.png) no-repeat;
 	background-size: contain;
 	display: inline-block;
     width: 28px;
@@ -96,11 +96,11 @@
 	margin-top: 5px;
 }
 #home_activity >div.main >div.info i:first-child {
-	background-image: url(../images/common/info.png);
+	background-image: url(../../images/common/info.png);
 	margin-left: 14px;
 }
 #home_activity >div.main >div.info i:last-child {
-	background-image: url(../images/common/right.png);
+	background-image: url(../../images/common/right.png);
 	float: right;
 	width: 16px;
 	height: 16px;

@@ -18,7 +18,7 @@
 	float: left;
 	height: 45px;
 	width: 44px;
-	background: url(../images/common/round_left_blue.png) no-repeat;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;
@@ -45,7 +45,7 @@
 }
 #home_location >div.header >div >i {
     display: none;
-    background-image: url(../images/common/round_close.png);
+    background-image: url(../../images/common/round_close.png);
     background-size: cover;
     position: absolute;
     right: 5px;
@@ -94,7 +94,7 @@
     float: right;
     height: 13px;
     width: 8px;
-    background-image: url(../images/common/right.png);
+    background-image: url(../../images/common/right.png);
     background-size: cover;
     margin: 3px 26px 0 0;
     transform: rotateZ(-90deg);

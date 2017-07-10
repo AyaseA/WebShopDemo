@@ -17,7 +17,7 @@
 	float: left;
 	height: 44px;
 	width: 44px;
-	background: url(../images/common/round_left_blue.png) no-repeat;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;
@@ -141,7 +141,7 @@
 #home_product div.product div.comments p a:after {
 	content: '';
 	display: inline-block;
-	background: url(../images/common/right.png) no-repeat;
+	background: url(../../images/common/right.png) no-repeat;
 	background-size: contain;
 	width: 16px;
 	height: 16px;
@@ -179,25 +179,25 @@
     width: 115px;
     background-repeat: no-repeat;
     margin: 7px 3px 0 0;
-    background-image: url(../images/common/stars/star_5.png);
+    background-image: url(../../images/common/stars/star_5.png);
 }
 #home_product div.product div.comment span.stars.start_0 {
-	background-image: url(../images/common/stars/star_0.png);
+	background-image: url(../../images/common/stars/star_0.png);
 }
 #home_product div.product div.comment span.stars.start_1 {
-	background-image: url(../images/common/stars/star_1.png);
+	background-image: url(../../images/common/stars/star_1.png);
 }
 #home_product div.product div.comment span.stars.start_2 {
-	background-image: url(../images/common/stars/star_2.png);
+	background-image: url(../../images/common/stars/star_2.png);
 }
 #home_product div.product div.comment span.stars.start_3 {
-	background-image: url(../images/common/stars/star_3.png);
+	background-image: url(../../images/common/stars/star_3.png);
 }
 #home_product div.product div.comment span.stars.start_4 {
-	background-image: url(../images/common/stars/star_4.png);
+	background-image: url(../../images/common/stars/star_4.png);
 }
 #home_product div.product div.comment span.stars.start_5 {
-	background-image: url(../images/common/stars/star_5.png);
+	background-image: url(../../images/common/stars/star_5.png);
 }
 #home_product div.product div.comment div.cnt {
 	font-size: 14px;
@@ -274,25 +274,25 @@
     width: 115px;
     background-repeat: no-repeat;
     margin: 7px 3px 0 0;
-    background-image: url(../images/common/stars/star_5.png);
+    background-image: url(../../images/common/stars/star_5.png);
 }
 #home_product div.evaluate div.comment span.stars.start_0 {
-	background-image: url(../images/common/stars/star_0.png);
+	background-image: url(../../images/common/stars/star_0.png);
 }
 #home_product div.evaluate div.comment span.stars.start_1 {
-	background-image: url(../images/common/stars/star_1.png);
+	background-image: url(../../images/common/stars/star_1.png);
 }
 #home_product div.evaluate div.comment span.stars.start_2 {
-	background-image: url(../images/common/stars/star_2.png);
+	background-image: url(../../images/common/stars/star_2.png);
 }
 #home_product div.evaluate div.comment span.stars.start_3 {
-	background-image: url(../images/common/stars/star_3.png);
+	background-image: url(../../images/common/stars/star_3.png);
 }
 #home_product div.evaluate div.comment span.stars.start_4 {
-	background-image: url(../images/common/stars/star_4.png);
+	background-image: url(../../images/common/stars/star_4.png);
 }
 #home_product div.evaluate div.comment span.stars.start_5 {
-	background-image: url(../images/common/stars/star_5.png);
+	background-image: url(../../images/common/stars/star_5.png);
 }
 #home_product div.evaluate div.comment div.cnt {
 	font-size: 14px;
@@ -321,14 +321,14 @@
     height: 50px;
     display: inline-block;
     position: relative;
-    background: url(../images/common/like.png) no-repeat;
+    background: url(../../images/common/like.png) no-repeat;
     background-size: 24px 20px;
     background-position-x: center;
     background-position-y: 8px; 
     line-height: 76px;
 }
 #home_product >div.footer >a.collect.collected {
-	background-image: url(../images/common/like_fill.png)
+	background-image: url(../../images/common/like_fill.png)
 }
 #home_product >div.footer >a.buyNow {
 	float: right;

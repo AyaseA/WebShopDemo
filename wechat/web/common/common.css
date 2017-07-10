@@ -137,7 +137,7 @@ body >div.common-none {
     height: 40px;
     border: 1px solid #EA5514;
     border-radius: 30px;
-    background: url(../images/icon.png) no-repeat;
+    background: url(./images/icon.png) no-repeat;
     background-size: 70%;
     background-position: center;
     margin: 15px auto;
@@ -195,7 +195,7 @@ body >div.common-none {
     height: 40px;
     border: 1px solid #EA5514;
     border-radius: 30px;
-    background: url(../images/icon.png) no-repeat;
+    background: url(./images/icon.png) no-repeat;
     background-size: 70%;
     background-position: center;
     margin: 15px auto;

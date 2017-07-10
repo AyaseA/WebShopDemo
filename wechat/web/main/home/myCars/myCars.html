@@ -2,7 +2,7 @@
 	<div class="header">
 		<a href="javascript:void(0)" class="goBack"></a>
 		<span class="title">我的车辆</span>
-		<a href="carInfo/carInfo.html" class="addNew">添加新车辆</a>
+		<a href="home/carInfo.html" class="addNew">添加新车辆</a>
 	</div>
 	<div class="main">
 		<div class="cars"></div>
@@ -15,7 +15,7 @@
 			<button class="cancel">取消</button>
 		</div>
 	</div>
-	<script id="myCars_myCars_list" type="text/html">
+	<script id="home_myCars_list" type="text/html">
 	{{if list.length > 0}}
 		{{each list as val}}
 			{{set data = $imports.jsonParseFilter(val.Data)}}
@@ -27,7 +27,7 @@
 		        </div>
 		        <i data-id="{{val.ID}}">设为默认</i>
 		        <span>
-		            <a href="carInfo/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
+		            <a href="home/carInfo.html?cid={{val.ID}}" class="modify">修改</a>
 		            <a href="javascript:void(0)" class="delete" data-id="{{val.ID}}">删除</a>
 		        </span>
 		    </div>
@@ -36,7 +36,7 @@
 		<div class="noCar">
 			<img src="./images/myCars/noCar.png" alt="">
 			<p>您还没有添加车辆信息哟</p>
-			<a href="carInfo/carInfo.html">添加新车辆</a>
+			<a href="home/carInfo.html">添加新车辆</a>
 		</div>
     {{/if}}
 	</script>

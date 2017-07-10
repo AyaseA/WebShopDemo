@@ -10,7 +10,7 @@ $(function() {
 
     $$.setGoBack($page.find('>div.header >a.goBack'));
     
-    $page.find('a.addNew').attr('href', 'carInfo/carInfo.html');
+    $page.find('a.addNew').attr('href', 'home/carInfo.html');
 
     // 设置默认车辆
     $page.on('click', '>div.main div.car >i', function() {

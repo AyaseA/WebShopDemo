@@ -17,7 +17,7 @@
 	float: left;
 	height: 44px;
 	width: 44px;
-	background: url(../images/common/round_left_blue.png) no-repeat;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;
@@ -58,7 +58,7 @@
     height: 16px;
     margin-top: 2px;
     margin-right: 10px;
-    background: url(../images/icon.png) no-repeat;
+    background: url(../../images/icon.png) no-repeat;
     background-size: contain;
     float: left;
 }
@@ -111,7 +111,7 @@
 	content: '';
 	display: block;
 	float: right;
-	background: url(../images/common/right.png) no-repeat;
+	background: url(../../images/common/right.png) no-repeat;
 	height: 14px;
 	width: 8px;
 	background-size: contain;
@@ -195,7 +195,7 @@
 	float: left;
 	height: 44px;
 	width: 44px;
-	background: url(../images/common/round_left_blue.png) no-repeat;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;
@@ -259,7 +259,7 @@
 	width: 18px;
 	top: 0;
 	left: -18px;
-	background: url(../images/common/ticket_left.png) no-repeat;
+	background: url(../../images/common/ticket_left.png) no-repeat;
 	background-size: contain;
 }
 #home_fillOrder >div.couponModal div.ticket:after {
@@ -270,7 +270,7 @@
 	width: 18px;
 	top:0;
 	right: -18px;
-	background: url(../images/common/ticket_right.png) no-repeat;
+	background: url(../../images/common/ticket_right.png) no-repeat;
 	background-size: contain;
 }
 #home_fillOrder >div.couponModal div.ticket >div {
@@ -323,11 +323,11 @@
 	position: absolute;
 	right: 0;
 	top: 52px;
-	background: url(../images/common/round_check.png) no-repeat;
+	background: url(../../images/common/round_check.png) no-repeat;
 	background-size: contain;
 }
 #home_fillOrder >div.couponModal div.ticket.checked >i {
-	background-image: url(../images/common/round_check_fill.png);
+	background-image: url(../../images/common/round_check_fill.png);
 }
 @media screen and (max-width: 350px) {
 	#home_fillOrder >div.couponModal div.ticket {

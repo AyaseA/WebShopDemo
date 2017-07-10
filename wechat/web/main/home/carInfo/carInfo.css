@@ -24,7 +24,7 @@
 	}
 }
 #home_carInfo >div.header >a.goBack {
-	background: url(../images/common/round_left.png) no-repeat;
+	background: url(../../images/common/round_left.png) no-repeat;
 	background-size: contain;
 	display: inline-block;
     width: 28px;
@@ -95,7 +95,7 @@
 	width: 24px;
 	height: 24px;
 	margin-top: 5px;
-	background-image: url(../images/common/info.png);
+	background-image: url(../../images/common/info.png);
 	margin-left: 14px;
 }
 #home_carInfo >div.main >div.info span {
@@ -144,7 +144,7 @@
     width: 48%;
 }
 #home_carInfo >div.main div.carDetail i {
-	background: url(../images/common/right.png) no-repeat;
+	background: url(../../images/common/right.png) no-repeat;
     background-size: contain;
     display: inline-block;
     float: right;
@@ -160,7 +160,7 @@
     font-size: 16px;
 }
 #home_carInfo >div.main div.carDetail div.setDefault i {
-    background-image: url(../images/common/check.png);
+    background-image: url(../../images/common/check.png);
     margin: 6px 22px;
     display: none;
 }
@@ -211,7 +211,7 @@
 	float: left;
 	height: 44px;
 	width: 44px;
-	background: url(../images/common/round_left_blue.png) no-repeat;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;
@@ -357,7 +357,7 @@
 	float: left;
 	height: 44px;
 	width: 44px;
-	background: url(../images/common/round_left_blue.png) no-repeat;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;

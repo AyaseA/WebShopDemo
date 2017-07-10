@@ -23,7 +23,7 @@
 	}
 }
 #home_myCars >div.header >a.goBack {
-	background: url(../images/common/round_left.png) no-repeat;
+	background: url(../../images/common/round_left.png) no-repeat;
 	background-size: contain;
 	display: inline-block;
     width: 28px;
@@ -135,7 +135,7 @@
 #home_myCars >div.main >div.cars >div.car.default:before {
 	content: "";
 	display: inline-block;
-	background: url(../images/common/default.png) no-repeat;
+	background: url(../../images/common/default.png) no-repeat;
 	background-size: contain;
 	position: absolute;
 	height: 36px;
@@ -164,10 +164,10 @@
     top: 1px;
 }
 #home_myCars >div.main >div.cars >div.car >span a.modify:before {
-	background-image: url(../images/common/edit_1.png);
+	background-image: url(../../images/common/edit_1.png);
 }
 #home_myCars >div.main >div.cars >div.car >span a.delete:before {
-	background-image: url(../images/common/delete.png);
+	background-image: url(../../images/common/delete.png);
 }
 #home_myCars >div.main >div.cars >div.car >div {
 	width: 100%;

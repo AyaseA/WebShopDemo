@@ -12,7 +12,7 @@
 	height: 44px;
 }
 #home_payCenter >div.header >a.goBack {
-	background: url(../images/common/round_left.png) no-repeat;
+	background: url(../../images/common/round_left.png) no-repeat;
 	background-size: contain;
 	display: inline-block;
     width: 28px;
@@ -103,7 +103,7 @@
 	position: absolute;
 }
 #home_payCenter >div.main >div.warp >div.payMode >div.selected:after {
-	background: url(../images/common/check.png) no-repeat;
+	background: url(../../images/common/check.png) no-repeat;
 	background-size: contain;
 	height: 14px;
 	width: 14px;

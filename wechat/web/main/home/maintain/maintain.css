@@ -15,7 +15,7 @@
 	font-size: 16px;
 }
 #home_maintain >div.header >a.goBack {
-	background: url(../images/common/round_left.png) no-repeat;
+	background: url(../../images/common/round_left.png) no-repeat;
 	background-size: contain;
 	display: inline-block;
     width: 28px;
@@ -50,7 +50,7 @@
 #home_maintain >div.header >a.modify:before {
 	content: '';
 	display: inline-block;
-	background: url(../images/common/edit.png) no-repeat;
+	background: url(../../images/common/edit.png) no-repeat;
 	background-size: contain;
     width: 13px;
     height: 13px;
@@ -74,7 +74,7 @@
 #home_maintain >div.main h4:before {
 	content: '';
 	display: inline-block;
-	background: url(../images/common/recommend_maintain.png) no-repeat;
+	background: url(../../images/common/recommend_maintain.png) no-repeat;
 	background-size: contain;
     position: relative;
     margin-right: 6px;

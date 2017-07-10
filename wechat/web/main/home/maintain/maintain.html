@@ -8,7 +8,7 @@
 		<h4>推荐保养</h4>
 		<div class="products"></div>
 	</div>
-	<script id="maintain_maintain_products" type="text/html">
+	<script id="home_maintain_products" type="text/html">
     {{each maintainProList as mpl i}}
     	<div class="item" data-id="{{mpl.ID}}">
 			<img src="{{serverAddr}}Img/{{mpl.Img | imgFilter}}">
@@ -20,7 +20,7 @@
                     <li>更好低温保护 启动更顺畅</li>
                 </ul>
                 <p>抢购价：<span>￥{{mpl.Price}}</span></p>
-                <a href="fillOrder/fillOrder.html?pid={{mpl.ID}}">立即购买</a>
+                <a href="home/fillOrder.html?pid={{mpl.ID}}">立即购买</a>
             </div>
 		</div>
 	{{/each}}

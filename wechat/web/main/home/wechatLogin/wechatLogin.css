@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	background: url(../images/center/bg_login.png) no-repeat;
+	background: url(../../images/center/bg_login.png) no-repeat;
 	background-size: 100%;
 }
 #home_wechatLogin .return_button {
@@ -37,13 +37,13 @@
 	float: left;
 	height: 4vw;
 	width: 4vw;
-	background: url(../images/common/uncheck.png) no-repeat;
+	background: url(../../images/common/uncheck.png) no-repeat;
 	background-size: cover;
     margin-top: 3px;
     margin-right: 5px;
 }
 #home_wechatLogin .wechatLogin_aside >p >span.selected:before {
-	background-image: url(../images/common/checked.png);
+	background-image: url(../../images/common/checked.png);
 }
 #home_wechatLogin .wechatLogin_aside >p >a {
 	color: #7588AC;
@@ -170,7 +170,7 @@
 	float: left;
 	height: 44px;
 	width: 44px;
-	background: url(../images/common/round_left_blue.png) no-repeat;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;

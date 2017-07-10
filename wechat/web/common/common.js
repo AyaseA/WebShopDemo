@@ -773,6 +773,8 @@
                 case 'refresh': {
                         var url_arr = url.split('?'),
                             dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                            dirArr = dir.split('/'),
+                            dir = dirArr[0] + '/' + dirArr[1] + '/' + dirArr[1],
                             filedata = dir + '_data.js';
                         loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                     } break;
@@ -862,7 +864,7 @@
                     if (allowCalBck) {
                         allowCalBck();
                     } else {
-                        $$.redirect('wechatLogin/wechatLogin.html');
+                        $$.redirect('home/wechatLogin.html');
                     }
                     layer.closeAll();
                 });

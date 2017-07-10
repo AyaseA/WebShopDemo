@@ -295,7 +295,7 @@
                 };
 
                 // 将历史url存入栈
-                if (url.indexOf('index/index.html') != -1) {
+                if (url.indexOf('home/index.html') != -1) {
                     $$.stack.clear();
                 } else{
                     $$.stack.push($$.getUrl(), backUrl, fromGoBack);
@@ -614,7 +614,7 @@
         $$.redirect(unescape(rdtUrl));
     } else {
         // 默认加载首页
-        $$.redirect('index/index.html');
+        $$.redirect('home/index.html');
     }
 
     // 是否授权
@@ -778,13 +778,13 @@
                     loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                 } break;
                 case 'index': {
-                    if (url.indexOf('index/index.html') == -1) {
+                    if (url.indexOf('home/index.html') == -1) {
                         $$.redirect('home/index.html');
                     }
                 } break;
                 case 'icenter': {
-                    if (url.indexOf('pageHome/pageHome.html') == -1) {
-                        $$.redirect('pageHome/pageHome.html', {
+                    if (url.indexOf('icenter/pageHome.html') == -1) {
+                        $$.redirect('icenter/pageHome.html', {
                             fromGoBack: true
                         });
                     }
@@ -897,10 +897,10 @@
         if (!$$.config.canRefresh) {
             $menu.find('li[data-type=refresh]').addClass('hide');
         }
-        if (url.indexOf('pageHome/pageHome.html') != -1) {
+        if (url.indexOf('icenter/pageHome.html') != -1) {
             $menu.find('li[data-type=icenter]').addClass('hide');
         }
-        if (url.indexOf('index/index.html') != -1) {
+        if (url.indexOf('home/index.html') != -1) {
             $menu.find('li[data-type=index]').addClass('hide');
         }
         lis.css({

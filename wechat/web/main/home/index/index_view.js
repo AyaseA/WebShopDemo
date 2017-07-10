@@ -20,7 +20,7 @@ $(function(){
         switch(type) {
             case 'carWash': {
                 // 一元洗车
-                $$.redirect('campaign/activity//cleaningCar.html');
+                $$.redirect('campaign/activity/cleaningCar.html');
             } break;
             case 'maintain': {
                 // 车辆信息
@@ -55,7 +55,7 @@ $(function(){
             } break;
             case 'activity': {
                 // 活动
-                $$.redirect('campaign/activity//luckyDraw.html');
+                $$.redirect('campaign/activity/luckyDraw.html');
             } break;
             case 'center': {
                 // 个人中心

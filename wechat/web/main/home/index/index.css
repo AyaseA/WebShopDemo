@@ -40,7 +40,7 @@
 }
 #home_index >div.header >a.location >span:before {
 	content: '';
-	background-image: url(../images/common/location.png);
+	background-image: url(images/common/location.png);
 	background-repeat: no-repeat;
 	background-size: contain;
     display: inline-block;
@@ -51,7 +51,7 @@
     left: -2px;
 }
 #home_index >div.header >a.search {
-    background: url(../images/common/search.png) no-repeat;
+    background: url(images/common/search.png) no-repeat;
     background-size: 100% 60%;
     background-position-y: center;
     display: inline-block;
@@ -308,28 +308,28 @@
 	color: #EA5514;
 }
 #home_index >div.footer nav >li:nth-child(1):before {
-    background-image: url(../images/index/homeOff.png);
+    background-image: url(images/index/homeOff.png);
 }
 #home_index >div.footer nav >li:nth-child(1).active:before {
-	background-image: url(../images/index/homeOn.png);
+	background-image: url(images/index/homeOn.png);
 }
 #home_index >div.footer nav >li:nth-child(2):before {
-    background-image: url(../images/index/carCrvOff.png);
+    background-image: url(images/index/carCrvOff.png);
 }
 #home_index >div.footer nav >li:nth-child(2).active:before {
-    background-image: url(../images/index/carCrvOn.png);
+    background-image: url(images/index/carCrvOn.png);
 }
 #home_index >div.footer nav >li:nth-child(3):before {
-    background-image: url(../images/index/presentOff.png);
+    background-image: url(images/index/presentOff.png);
 }
 #home_index >div.footer nav >li:nth-child(3).active:before {
-	background-image: url(../images/index/presentOn.png);
+	background-image: url(images/index/presentOn.png);
 }
 #home_index >div.footer nav >li:nth-child(4):before {
-    background-image: url(../images/index/centerOff.png);
+    background-image: url(images/index/centerOff.png);
 }
 #home_index >div.footer nav >li:nth-child(4).active:before {
-	background-image: url(../images/index/centerOn.png);
+	background-image: url(images/index/centerOn.png);
 }
 #home_index_confirm {
     padding: 0;
@@ -345,7 +345,7 @@
     height: 40px;
     border: 1px solid #EA5514;
     border-radius: 30px;
-    background: url(../images/icon.png) no-repeat;
+    background: url(images/icon.png) no-repeat;
     background-size: 70%;
     background-position: center;
     margin: 15px auto;

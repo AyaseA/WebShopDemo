@@ -1,0 +1,418 @@
+Searching 435 files for "$$.redirect"
+
+E:\work\git\wechat\wechat\wechat\web\campaign\activity\luckyDraw\luckyDraw_view.js:
+   15          //点击返回按钮
+   16          $page.on("click", "a .back", function() {
+   17:                 $$.redirect("home/index.html", {
+   18                      'trans': "fadeIn"
+   19                  });
+   ..
+  101                                      $(".noWard").animate({ height: "82vw" }, 500);
+  102                                      $page.on("click", ".backImg img", function() {
+  103:                                         $$.redirect("home/index.html", {
+  104                                              'trans': "fadeIn"
+  105                                          });
+
+E:\work\git\wechat\wechat\wechat\web\common\common.js:
+  530          },
+  531          // 在当前请求的url后拼接返回的参数
+  532:         // 例：$$.redirect('test/test.html?a=1&' + $$.goBackUrl());
+  533:         // 例：$$.redirect('test/test.html?' + $$.goBackUrl());
+  534          goBackUrl: function(url) {
+  535              if (!url) {
+  ...
+  553          goBack: function() {
+  554              if (!$$.stack.isEmpty()) {
+  555:                 $$.redirect($$.stack.pop(), {
+  556                      'fromGoBack': true
+  557                  });
+  558              } else {
+  559:                 $$.redirect('index/index.html', {
+  560                      'fromGoBack': true
+  561                  });
+  ...
+  612      if (rdtUrl) {
+  613          // 跳到指定页面
+  614:         $$.redirect(unescape(rdtUrl));
+  615      } else {
+  616          // 默认加载首页
+  617:         $$.redirect('home/index.html');
+  618      }
+  619  
+  ...
+  700          }
+  701      }());
+  702:     // 使a标签默认的调转事件转为$$.redirect
+  703      $('#div_list').on('click', 'a', function(e) {
+  704          var url = $(this).attr('href');
+  705          if (url.indexOf('.html') != -1) {
+  706              e.preventDefault();
+  707:             $$.redirect(url, {
+  708                  'trans': $(this).attr('data-tran')
+  709              });
+  ...
+  780                  case 'index': {
+  781                      if (url.indexOf('home/index.html') == -1) {
+  782:                         $$.redirect('home/index.html');
+  783                      }
+  784                  } break;
+  785                  case 'icenter': {
+  786                      if (url.indexOf('icenter/pageHome.html') == -1) {
+  787:                         $$.redirect('icenter/pageHome.html', {
+  788                              fromGoBack: true
+  789                          });
+  ...
+  792                  // 测试用
+  793                  case 'test': {
+  794:                     $$.redirect($(this).attr('data-url'));
+  795                  } break;
+  796              }
+  ...
+  864                          allowCalBck();
+  865                      } else {
+  866:                         $$.redirect('icenter/wechatLogin.html');
+  867                      }
+  868                      layer.closeAll();
+
+E:\work\git\wechat\wechat\wechat\web\main\home\activity\activity_view.js:
+   11      // 点击顶部的提示到我的车辆页面
+   12      $page.on('click', 'div.main div.info', function() {
+   13:     	$$.redirect('home/myCars.html');
+   14      });
+   15      // 点击跳转到商品详情
+   16      $page.on('click', 'div.products >div.item', function() {
+   17          var pid = $(this).attr('data-id');
+   18:         $$.redirect('home/product.html?pid=' + pid);
+   19      });
+   20      $page.on('click', 'div.products >div.item >div >a', function(e) {
+   21          e.stopPropagation();
+   22          e.preventDefault();
+   23:         $$.redirect($(this).attr('href'));
+   24      });
+   25  });
+
+E:\work\git\wechat\wechat\wechat\web\main\home\carInfo\carInfo_view.js:
+   66                  $$.setUserInfo('UserCarID', cid);
+   67              }
+   68:             $$.redirect('home/maintain.html?cid=' + cid + '&cname=' + cname, {
+   69                  backUrl: 'myCars/myCars.html'
+   70              });
+
+E:\work\git\wechat\wechat\wechat\web\main\home\fillOrder\fillOrder_data.js:
+   42              }
+   43              addOrder(function(oid) {
+   44:                 $$.redirect('home/payCenter.html?oid=' + oid);
+   45              });
+   46          });
+
+E:\work\git\wechat\wechat\wechat\web\main\home\index\index_view.js:
+   21              case 'carWash': {
+   22                  // 一元洗车
+   23:                 $$.redirect('campaign/activity/cleaningCar.html');
+   24              } break;
+   25              case 'maintain': {
+   26                  // 车辆信息
+   27:                 $$.redirect('home/myCars.html');
+   28              } break;
+   29              case 'friendAdd': {
+   30                  // 邀请有礼
+   31:                 $$.redirect('icenter/invite.html');
+   32              } break;
+   33          }
+   ..
+   35      // 活动点击事件
+   36      $page.on('click', 'div.activity', function() {
+   37:         $$.redirect('home/activity.html', 0);
+   38      });
+   39      // 点击商品查看详情
+   40      $page.on('click', 'div.products img', function() {
+   41          var pid = $(this).parent().attr('data-id');
+   42:         $$.redirect('home/product.html?pid=' + pid);
+   43      });
+   44      // footer 事件
+   ..
+   48              case 'index': {
+   49                  // 首页
+   50:                 //$$.redirect('home/index.html');
+   51              } break;
+   52              case 'carCrv': {
+   53                  // 服务网点
+   54:                 $$.redirect('shop/shopList.html');
+   55              } break;
+   56              case 'activity': {
+   57                  // 活动
+   58:                 $$.redirect('campaign/activity/luckyDraw.html');
+   59              } break;
+   60              case 'center': {
+   61                  // 个人中心
+   62:                 $$.redirect('icenter/pageHome.html');
+   63              } break;
+   64          }
+
+E:\work\git\wechat\wechat\wechat\web\main\home\maintain\maintain_view.js:
+   11      // 修改车辆事件
+   12      $page.on('click', '>div.header >a.modify', function() {
+   13:         $$.redirect('home/myCars.html', {
+   14              fromGoBack: true
+   15          });
+   ..
+   18      $page.on('click', 'div.products >div.item', function() {
+   19          var pid = $(this).attr('data-id');
+   20:         $$.redirect('home/product.html?pid=' + pid);
+   21      });
+   22      $page.on('click', 'div.products >div.item >div >a', function(e) {
+   23          e.stopPropagation();
+   24          e.preventDefault();
+   25:         $$.redirect($(this).attr('href'));
+   26      });
+   27  });
+
+E:\work\git\wechat\wechat\wechat\web\main\home\myCars\myCars_view.js:
+   24          var cid = $(this).attr('data-id'),
+   25              cname = $(this).attr('data-name');
+   26:         $$.redirect('home/maintain.html?cid=' + cid + '&cname=' + cname);
+   27      });
+   28      // 删除车辆
+
+E:\work\git\wechat\wechat\wechat\web\main\home\recommend\recommend_data.js:
+    6      //$$.delCookie('__RECOMMENDQR__')
+    7      if (!$$.isLogin()) {
+    8:         $$.redirect('home/wechatLogin.html');
+    9      } else {
+   10          var qrCode = $$.getCookie('__RECOMMENDQR__'),
+
+E:\work\git\wechat\wechat\wechat\web\main\home\wechatLogin\wechatLogin_data.js:
+   21                  // 已授权，跳转到首页
+   22                  layer.msg('账户已关联，跳转首页！');
+   23:                 $$.redirect('home/index.html?code=' + code + '&str' + str);
+   24              }
+   25          }
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\afterService\afterService_view.js:
+   24  
+   25      $page.on("click",".apply button",function(){
+   26:         $$.redirect("icenter/applyService.html");
+   27      });
+   28  });
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\footprint\footprint_view.js:
+   14      $page.on("click", ".contentContain button", function() {
+   15          pid = $(this)[0].attributes[0].value;
+   16:         $$.redirect("home/product.html?pid=" + pid);
+   17      });
+   18  
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\gas\gas_view.js:
+    4  	});
+    5  	$('.gas_to_card').on('click', function(){
+    6: 		$$.redirect('icenter/gascard.html');
+    7  	});
+    8  }());
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\login\login_view.js:
+   46          $('.login_check_in').css('display', 'none');
+   47  
+   48:         $$.redirect('home/index.html');
+   49      });
+   50  
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\logout\logout_view.js:
+   28  	});
+   29  	$('.redit_password').on('click', function(){
+   30: 		/*$$.redirect('icenter/reditpassword.html');*/
+   31  	});
+   32  	$('.logout_back').on('click', function(){
+   33: 		$$.redirect('icenter/pageHome.html', {
+   34                      'fromGoBack': true
+   35          });
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\myWallet\myWallet_view.js:
+   16      $page.on("click",".footprint_contain",function(){
+   17      	var pid=IDList[$(this)[0].attributes.Name.value];
+   18:     	 $$.redirect("home/product.html?pid="+pid);
+   19      });
+   20  
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\orderCommit\orderCommit_data.js:
+  178                              if (i == $page.imgList.length) {
+  179                                  alert("评论上传成功");
+  180:                                 $$.redirect("icenter/orderList.html");
+  181                              }
+  182                          });
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\orderList\orderList_data.js:
+   55              var productID = "";
+   56              if ($(this).html() == "支付") {
+   57:                 $$.redirect("home/payCenter.html?oid=" + orderId);
+   58              } else if ($(this).html() == "确定收货") {
+   59:                 $$.redirect("icenter/commit.html?oid=" + orderId);
+   60              } else if ($(this).html() == "点评") {
+   61                  var productID = $(this).attr("data-index");
+   62:                 $$.redirect("icenter/orderCommit.html?oid=" + orderId+"&pid="+productID);
+   63              }
+   64  
+   ..
+   68          $page.off("click", ".pieceContent").on("click", ".pieceContent", function() {
+   69              var orderId = $(this).parent().children(".pieceHeader").children(".orderID").children().html();
+   70:             $$.redirect("icenter/orderDetail.html?oid=" + orderId);
+   71          });
+   72  
+   73          $page.off("click", ".noOrders button").on("click", ".noOrders button", function() {
+   74:             $$.redirect("home/index.html");
+   75          });
+   76  
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\pageHome\pageHome_view.js:
+   11              case 'index': {
+   12                  // 首页
+   13:                 $$.redirect('home/index.html');
+   14              } break;
+   15              case 'luckyDraw': {
+   16                  // 幸运抽奖
+   17:                 $$.redirect('campaign/activity/luckyDraw.html');
+   18              } break;
+   19              case 'center': {
+   20                  // 个人中心
+   21:                 $$.redirect('icenter/pageHome.html');
+   22              } break;
+   23          }
+   ..
+   25      //个人信息
+   26      $('.user_name').on('click', function() {
+   27:         $$.redirect('icenter/information.html');
+   28      });    
+   29      //邀请有礼
+   30      $('#head_active_1').on('click', function() {
+   31:         $$.redirect('icenter/invite.html');
+   32      });
+   33      //加油卡
+   34      $('#head_active_2').on('click', function() {
+   35:         $$.redirect('icenter/gas.html');
+   36      });
+   37      //我的车辆
+   38      $('#head_active_3').on('click', function() {
+   39:         $$.redirect('icenter/myCars.html');
+   40      });
+   41      //积分
+   42      $('#reward').on('click', function() {
+   43:         $$.redirect('icenter/reward.html');
+   44      });
+   45      //vip
+   46      $('.header_vip').on('click', function() {
+   47:         $$.redirect('icenter/vip.html');
+   48      });
+   49      //我的收藏
+   50      $('#my_cover').on('click', function() {
+   51:         $$.redirect('icenter/storefront.html');
+   52      });
+   53      //商品列表
+   54      $('#article_con_tent').on('click', function() {
+   55:         $$.redirect('icenter/orderList.html');
+   56      });   
+   57      //设置
+   58      $('#login_set_out').on('click', function() {
+   59:         $$.redirect('icenter/logout.html');
+   60      });
+   61      //优惠券
+   62      $('#content_account_wrap').on('click', function() {
+   63:         $$.redirect('icenter/discount.html');
+   64      });
+   65      //我的钱包
+   66      $('#wallet').on('click', function() {
+   67:         $$.redirect('icenter/myWallet.html');
+   68      });    
+   69      //我的足迹
+   70      $('#footprint').on('click', function() {
+   71:         $$.redirect('icenter/footprint.html');
+   72      });     
+   73      //势力币
+   74      $('#bin').on('click', function() {
+   75:         $$.redirect('icenter/bin.html');
+   76      });
+   77      //意见反馈
+   78      $('#advice').on('click', function() {
+   79:         $$.redirect('icenter/advice.html');
+   80      });  
+   81      //退换/售后
+   82      $('#order_img_span_5').on('click', function() {
+   83:         $$.redirect('icenter/afterService.html');
+   84      });     
+   85      //跳转订单_______TODO
+   86      $('.order_img_span').on('click', function() {
+   87:         $$.redirect('icenter/orderList.html');
+   88      });
+   89      // footer 事件
+   ..
+   93              case 'index': {
+   94                  // 首页
+   95:                 //$$.redirect('home/index.html');
+   96              } break;
+   97              case 'carCrv': {
+   98                  // 服务网点
+   99:                 $$.redirect('shop/shopList.html');
+  100              } break;
+  101              case 'activity': {
+  102                  // 活动
+  103:                 $$.redirect('campaign/activity/luckyDraw.html');
+  104              } break;
+  105              case 'center': {
+  106                  // 个人中心
+  107:                 $$.redirect('icenter/pageHome.html');
+  108              } break;
+  109          }
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\removeBlinging\removeBlinging_view.js:
+    4  	});
+    5  	$('.reBl_goto_index').on('click', function() {
+    6: 		$$.redirect('home/index.html');
+    7  	});
+    8  	$('.reBl_goto_bling').on('click', function() {
+    9: 		$$.redirect('icenter/wechatLogin.html');
+   10  	});
+   11  }());
+
+E:\work\git\wechat\wechat\wechat\web\main\icenter\storefront\storefront_view.js:
+   31  
+   32      $page.on("click",".footprint_contain_x",function(){
+   33:     	$$.redirect("home/product.html?pid=1");
+   34      });
+   35  
+   36      $page.on("click",".footprint_contain",function(){
+   37      	var pid=IDList[$(this)[0].attributes.Name.value];
+   38:     	 $$.redirect("home/product.html?pid="+pid);
+   39      });
+   40  
+
+E:\work\git\wechat\wechat\wechat\web\main\shop\shopDetail\shopDetail_view.js:
+    4  
+    5      $page.on("click",".back",function(){
+    6:     	$$.redirect("shop/shopList.html");
+    7      });
+    8  
+
+E:\work\git\wechat\wechat\wechat\web\main\shop\shopList\shopList_view.js:
+   18                  {
+   19                      // 首页
+   20:                     $$.redirect('home/index.html');
+   21                  }
+   22                  break;
+   ..
+   30                  {
+   31                      // 活动
+   32:                     $$.redirect('campaign/activity/luckyDraw.html');
+   33                  }
+   34                  break;
+   ..
+   36                  {
+   37                      // 个人中心
+   38:                     $$.redirect('icenter/pageHome.html');
+   39                  }
+   40                  break;
+   ..
+   44  
+   45      $page.on("click", ".onepiece", function() {
+   46:         $$.redirect("shop/shopDetail.html?ID="+$(this).attr("data-ID"));
+   47      });
+   48  
+
+79 matches across 23 files

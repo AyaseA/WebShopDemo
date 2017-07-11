@@ -107,7 +107,7 @@
 #home_fillOrder div.coupon button.selected {
 	color: #EA5514;
 }
-#home_fillOrder div.coupon button:after {
+#home_fillOrder div.coupon button::after {
 	content: '';
 	display: block;
 	float: right;
@@ -251,7 +251,7 @@
 	position: relative;
 	margin-bottom: 10px;
 }
-#home_fillOrder >div.couponModal div.ticket:before {
+#home_fillOrder >div.couponModal div.ticket::before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -262,7 +262,7 @@
 	background: url(../../images/common/ticket_left.png) no-repeat;
 	background-size: contain;
 }
-#home_fillOrder >div.couponModal div.ticket:after {
+#home_fillOrder >div.couponModal div.ticket::after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -333,12 +333,12 @@
 	#home_fillOrder >div.couponModal div.ticket {
 		height: 100px;
 	}
-	#home_fillOrder >div.couponModal div.ticket:before {
+	#home_fillOrder >div.couponModal div.ticket::before {
 		width: 15px;
 		height: 100px;
 		left: -15px;
 	}
-	#home_fillOrder >div.couponModal div.ticket:after {
+	#home_fillOrder >div.couponModal div.ticket::after {
 		width: 15px;
 		height: 100px;
 		right: -15px;

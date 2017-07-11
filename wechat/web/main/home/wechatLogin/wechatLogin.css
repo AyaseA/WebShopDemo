@@ -31,7 +31,7 @@
 #home_wechatLogin .wechatLogin_aside >p >span {
 	color: #9E9E9E;
 }
-#home_wechatLogin .wechatLogin_aside >p >span:before {
+#home_wechatLogin .wechatLogin_aside >p >span::before {
 	content: '';
 	display: block;
 	float: left;
@@ -42,7 +42,7 @@
     margin-top: 3px;
     margin-right: 5px;
 }
-#home_wechatLogin .wechatLogin_aside >p >span.selected:before {
+#home_wechatLogin .wechatLogin_aside >p >span.selected::before {
 	background-image: url(../../images/common/checked.png);
 }
 #home_wechatLogin .wechatLogin_aside >p >a {

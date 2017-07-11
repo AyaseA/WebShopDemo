@@ -52,7 +52,7 @@
 #home_payCenter >div.main >div.warp >div:not(.payMode) >div:last-child {
     border: none;
 }
-#home_payCenter >div.main >div.warp >div:not(.payMode) >div:after {
+#home_payCenter >div.main >div.warp >div:not(.payMode) >div::after {
     content: '';
     display: block;
     clear: both;
@@ -96,13 +96,13 @@
 	height: 34px;
 	margin: 6px 16px 0 0;
 }
-#home_payCenter >div.main >div.warp >div.payMode >div:after {
+#home_payCenter >div.main >div.warp >div.payMode >div::after {
 	content: '';
 	display: inline-block;
 	clear: both;
 	position: absolute;
 }
-#home_payCenter >div.main >div.warp >div.payMode >div.selected:after {
+#home_payCenter >div.main >div.warp >div.payMode >div.selected::after {
 	background: url(../../images/common/check.png) no-repeat;
 	background-size: contain;
 	height: 14px;
@@ -169,7 +169,7 @@
     bottom: 0;
     margin: auto;
 }
-#home_payCenter >div.main >div.confirm >div:after {
+#home_payCenter >div.main >div.confirm >div::after {
     content: '';
     display: block;
     clear: both;

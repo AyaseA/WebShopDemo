@@ -81,13 +81,12 @@
         top: 40px;
     }
 }
-#home_activity >div.main >div.info {
+#home_activity >div.main div.info {
 	height: 34px;
 	background-color: #FFEED0;
-	border: 1px solid #D6D6DB;
-	margin-top: -1px;
+	border-bottom: 1px solid #D6D6DB;
 }
-#home_activity >div.main >div.info i {
+#home_activity >div.main div.info i {
 	background-repeat: no-repeat;
 	background-size: contain;
 	display: inline-block;
@@ -95,11 +94,11 @@
 	height: 24px;
 	margin-top: 5px;
 }
-#home_activity >div.main >div.info i:first-child {
+#home_activity >div.main div.info i:first-child {
 	background-image: url(../../images/common/info.png);
 	margin-left: 14px;
 }
-#home_activity >div.main >div.info i:last-child {
+#home_activity >div.main div.info i:last-child {
 	background-image: url(../../images/common/right.png);
 	float: right;
 	width: 16px;
@@ -107,7 +106,7 @@
 	margin-top: 9px;
 	margin-right: 10px;
 }
-#home_activity >div.main >div.info span {
+#home_activity >div.main div.info span {
 	color: #7F8389;
 	position: relative;
     font-size: 14px;
@@ -115,27 +114,38 @@
     left: 10px;
 }
 @media screen and (max-width: 350px) {
-	#home_activity >div.main >div.info i:first-child {
+	#home_activity >div.main div.info i:first-child {
 		margin-left: 12px;
 	}
 }
-#home_activity >div.main >img {
+#home_activity >div.main >div.warp >img {
 	width: 100%;
 	margin-top: 10px;
 }
-#home_activity >div.main >div.content {
+#home_activity >div.main div.content {
 	background: #E00020; /* 涓�浜涗笉鏀寔鑳屾櫙娓愬彉鐨勬祻瑙堝櫒 */
     background: -moz-linear-gradient(top, #E00020, #EA5514);
     background: -webkit-gradient(linear, 0 0, 0 bottom, from(#E00020), to(#EA5514));
     background: -o-linear-gradient(top, #E00020, #EA5514);
     text-align: center;
-    padding: 10px 0;
+    padding-top: 10px;
     margin-top: -4px;
 }
-#home_activity >div.main >div.content >img {
+#home_activity >div.main div.content >img {
 	max-width: 90%;
 }
-#home_activity >div.main div.item:after {
+#home_activity >div.main div.products {
+	padding-bottom: 10px;
+}
+#home_activity >div.main div.products.loading::after {
+    content: '加载中···';
+    color: #FFF;
+}
+#home_activity >div.main div.products.loaded::after {
+    content: '已加载全部';
+    color: #FFF;
+}
+#home_activity >div.main div.item::after {
 	content: '';
 	display: block;
 	clear: both;
@@ -174,7 +184,7 @@
     list-style: none;
     margin: 10px 0 0 0;
 }
-#home_activity >div.main div.item li:before {
+#home_activity >div.main div.item li::before {
 	content: '·';
 	padding-right: 5px;
 }

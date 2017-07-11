@@ -80,8 +80,8 @@
 		</div>
 		<div class="carsBox"></div>
 	</div>
-	<div id="carInfo_carInfo_tip"><span></span></div>
-	<script id="carInfo_carInfo_brands_list" type="text/html">
+	<div id="home_carInfo_tip"><span></span></div>
+	<script id="home_carInfo_brands_list" type="text/html">
 		{{set letter = brands[0].Alpha}}
 		<h5 data-letter="{{letter}}">{{letter}}</h5>
 		{{each brands as brand}}
@@ -104,7 +104,7 @@
 		{{/each}}
 		</ul>
 	</script>
-	<script id="carInfo_carInfo_series_list" type="text/html">
+	<script id="home_carInfo_series_list" type="text/html">
 		{{each series as ses}}
 		<div class="series" data-id="{{ses.ID}}" data-pid="{{ses.BrandID}}" data-name="{{ses.Name}}">
 			<div class="img">
@@ -116,7 +116,7 @@
 		</div>
 		{{/each}}
 	</script>
-	<script id="carInfo_carInfo_cars_list" type="text/html">
+	<script id="home_carInfo_cars_list" type="text/html">
 		{{each cars as car}}
 			<p class="car" data-id="{{car.ID}}">{{car.Name}}</p>
 		{{/each}}

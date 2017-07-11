@@ -88,7 +88,7 @@
     padding: 0 15px;
     background-color: #fff;
 }
-#home_location >div.main div.cities >div.city.open >p:after {
+#home_location >div.main div.cities >div.city.open >p::after {
     content: '';
     display: block;
     float: right;
@@ -100,7 +100,7 @@
     transform: rotateZ(-90deg);
     opacity: .5;
 }
-#home_location >div.main div.cities >div.city.open.active >p:after {
+#home_location >div.main div.cities >div.city.open.active >p::after {
 	transform: rotateZ(90deg);
 }
 #home_location >div.main div.cities >div.city.open.active >div.dist {

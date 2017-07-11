@@ -304,7 +304,7 @@
 	position: absolute;
     right: -100%;
 }
-#home_carInfo >div.seriesModal div.series:after {
+#home_carInfo >div.seriesModal div.series::after {
 	content: '';
 	display: block;
 	clear: both;

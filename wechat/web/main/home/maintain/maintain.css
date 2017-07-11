@@ -47,7 +47,7 @@
 	margin: 8px;
 	position: relative;
 }
-#home_maintain >div.header >a.modify:before {
+#home_maintain >div.header >a.modify::before {
 	content: '';
 	display: inline-block;
 	background: url(../../images/common/edit.png) no-repeat;
@@ -71,7 +71,7 @@
 	padding: 0 14px 1px;
 	background-color: #fff;
 }
-#home_maintain >div.main h4:before {
+#home_maintain >div.main h4::before {
 	content: '';
 	display: inline-block;
 	background: url(../../images/common/recommend_maintain.png) no-repeat;
@@ -82,13 +82,24 @@
     height: 24px;
     top: 6px;
 }
-#home_maintain >div.main >div.products {
+#home_maintain >div.main >div.warp {
 	top: 37px;
 	width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
-#home_maintain >div.main div.item:after {
+#home_maintain >div.main div.products {
+	text-align: center;
+}
+#home_maintain >div.main div.products.loading::after {
+    content: '加载中···';
+    padding-bottom: 5px;
+}
+#home_maintain >div.main div.products.loaded::after {
+    content: '已加载全部';
+    padding-bottom: 5px;
+}
+#home_maintain >div.main div.item::after {
 	content: '';
 	display: block;
 	clear: both;
@@ -127,7 +138,7 @@
     list-style: none;
     margin: 10px 0 0 0;
 }
-#home_maintain >div.main div.item li:before {
+#home_maintain >div.main div.item li::before {
 	content: '·';
 	padding-right: 5px;
 }

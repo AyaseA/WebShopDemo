@@ -65,7 +65,7 @@ $(function() {
             if (isdft == 1) {
                 $$.setUserInfo('UserCarID', cid);
             }
-            $$.redirect('maintain/maintain.html?cid=' + cid + '&cname=' + cname, {
+            $$.redirect('home/maintain.html?cid=' + cid + '&cname=' + cname, {
                 backUrl: 'home/myCars.html'
             });
         });
@@ -150,6 +150,9 @@ $(function() {
                         letterArr = [],
                         brands = res.Data.sort(function(a, b) {
                             letters[a.Alpha] = 1;
+                            if (a.Alpha == null) {
+                                return 1;
+                            }
                             return a.Alpha.localeCompare(b.Alpha);
                         });
                     $.each(letters, function(key, val) {

@@ -38,7 +38,7 @@
     display: inline-block;
     padding-left: 4px;
 }
-#home_index >div.header >a.location >span:before {
+#home_index >div.header >a.location >span::before {
 	content: '';
 	background-image: url(../../images/common/location.png);
 	background-repeat: no-repeat;
@@ -78,7 +78,7 @@
 	    width: 20%;
 	    font-size: 12px;
 	}
-	#home_index >div.header >a.location >span:before {
+	#home_index >div.header >a.location >span::before {
 	    width: 12px;
 	    height: 16px;
 	    top: 4px;
@@ -192,6 +192,12 @@
     text-align: center;
     padding-bottom: 30px;
 }
+#home_index >div.main >div.content .products.loading::after {
+    content: '加载中···';
+}
+#home_index >div.main >div.content .products.loaded::after {
+    content: '已加载全部';
+}
 #home_index >div.main >div.content .products div.row {
     text-align: left;
     padding: 5px 0 8px 1.6%;
@@ -269,7 +275,7 @@
     width: 25%;
     float: left;
 }
-#home_index >div.footer nav >li:before {
+#home_index >div.footer nav >li::before {
     content: '';
     display: inline-block;
     background-repeat: no-repeat;
@@ -307,28 +313,28 @@
 #home_index >div.footer nav >li.active {
 	color: #EA5514;
 }
-#home_index >div.footer nav >li:nth-child(1):before {
+#home_index >div.footer nav >li:nth-child(1)::before {
     background-image: url(../../images/index/homeOff.png);
 }
-#home_index >div.footer nav >li:nth-child(1).active:before {
+#home_index >div.footer nav >li:nth-child(1).active::before {
 	background-image: url(../../images/index/homeOn.png);
 }
-#home_index >div.footer nav >li:nth-child(2):before {
+#home_index >div.footer nav >li:nth-child(2)::before {
     background-image: url(../../images/index/carCrvOff.png);
 }
-#home_index >div.footer nav >li:nth-child(2).active:before {
+#home_index >div.footer nav >li:nth-child(2).active::before {
     background-image: url(../../images/index/carCrvOn.png);
 }
-#home_index >div.footer nav >li:nth-child(3):before {
+#home_index >div.footer nav >li:nth-child(3)::before {
     background-image: url(../../images/index/presentOff.png);
 }
-#home_index >div.footer nav >li:nth-child(3).active:before {
+#home_index >div.footer nav >li:nth-child(3).active::before {
 	background-image: url(../../images/index/presentOn.png);
 }
-#home_index >div.footer nav >li:nth-child(4):before {
+#home_index >div.footer nav >li:nth-child(4)::before {
     background-image: url(../../images/index/centerOff.png);
 }
-#home_index >div.footer nav >li:nth-child(4).active:before {
+#home_index >div.footer nav >li:nth-child(4).active::before {
 	background-image: url(../../images/index/centerOn.png);
 }
 #home_index_confirm {
@@ -338,7 +344,7 @@
     padding: 0 20px 10px;
     border-bottom: 1px solid #DCDADD;
 }
-#home_index_confirm >div >div:before {
+#home_index_confirm >div >div::before {
     content: '';
     display: block;
     width: 40px;

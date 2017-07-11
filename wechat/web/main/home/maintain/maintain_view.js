@@ -3,7 +3,7 @@ $(function() {
     	$page = $('#home_maintain'),
 	    pageStr = 'home_maintain';
 	// 设置高度
-	$page.find('div.products').height(
+	$page.find('div.warp').height(
 		bodyHeight - 81
 	);
 	// 设置返回按钮可用

@@ -44,7 +44,7 @@
     margin: 0 auto;
     box-shadow: 15px 50px 20px 0px rgba(0, 0, 0, 0.5);
 }
-#home_recommend >div.main >div.content:before {
+#home_recommend >div.main >div.content::before {
     content: '';
     display: block;
     width: 280px;

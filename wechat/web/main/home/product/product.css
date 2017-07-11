@@ -138,7 +138,7 @@
 #home_product div.product div.comments p a {
 	float: right;
 }
-#home_product div.product div.comments p a:after {
+#home_product div.product div.comments p a::after {
 	content: '';
 	display: inline-block;
 	background: url(../../images/common/right.png) no-repeat;

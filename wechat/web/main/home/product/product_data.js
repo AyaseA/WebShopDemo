@@ -2,9 +2,9 @@ $(function() {
     var $page = $('#home_product'),
 	    pageStr = 'home_product',
 	    pid = $$.getQueryString('pid');
-
+    
     // 页面重新显示的一些初始化
-    $page.find('>div.header li[data-type=product]')
+    $page.find('>div.header li[data-type=product]') 
          .addClass('active').siblings()
          .removeClass('active');
     $page.find('div.evaluate li[data-type=all]')

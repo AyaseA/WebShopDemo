@@ -38,10 +38,16 @@ $(function() {
                     var d = res.Data;
                     // 获取评论
                     getComments(d.Name);
+                    var descri = '';
+                    if (d.Descri) {
+                        d.Descri = JSON.parse(d.Descri);
+                        descri = Base64.decode(unescape(d.Descri.text));
+                    }
                     $page.find('>div.main div.product >div.detail').html(
                         template(pageStr + '_product_detail', {
                             serverAddr: $$.config.serverAddr,
-                            data: d
+                            data: d,
+                            descri: descri
                     }));
                     if (d.Imglist) {
                         TouchSlide({

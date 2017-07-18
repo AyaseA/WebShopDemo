@@ -5,21 +5,27 @@ $(function() {
 	    carName = $$.getQueryString('cname'),
         pageNum = 1,
         pageSize = 9,
-        allCount = 0;
+        allCount = 0,
+        loadComplate = true;
 	
 	$page.find('>div.header >span.edit').text(carName);
 
     // 懒加载
     $page.find('>div.main >div.warp').scrollTop(0).scroll(function() {
-        if (pageNum * pageSize < allCount) {
-            var proBox = $(this).find('>div.products'),
-            	maxScroll = $(this).find('>div.products').height() - $(this).height() + 20;
-            if ($(this).scrollTop() == maxScroll) {
-                proBox.addClass('loading');
-                getProductsList(++pageNum, pageSize);
-                $(this).scrollTop($(this).scrollTop() - 1);
-            }
-        }
+    	if (loadComplate) {
+	        if (pageNum * pageSize < allCount) {
+	            var proBox = $(this).find('>div.products'),
+	            	maxScroll = $(this).find('>div.products').height() - $(this).height() + 20;
+	            if ($(this).scrollTop() == maxScroll) {
+	                proBox.addClass('loading');
+	                getProductsList(++pageNum, pageSize);
+	                $(this).scrollTop($(this).scrollTop() - 10);
+	                loadComplate = false;
+	            }
+	        }
+    	} else {
+    		return false;
+    	}
     });
 
 	// 加载商品列表
@@ -51,6 +57,7 @@ $(function() {
                     } else {
                         $proBox.removeClass('loaded');
                     }
+                    loadComplate = true;
 				}
 			}
 		);

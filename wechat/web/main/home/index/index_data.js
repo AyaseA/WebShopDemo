@@ -3,7 +3,8 @@ $(function(){
         pageStr = 'home_index',
         pageNum = 1,
         pageSize = 9,
-        allCount = 0;
+        allCount = 0,
+        loadComplate = true;
 
     // 获取位置
     $page.find('>div.header >a.location >span').text(
@@ -12,14 +13,19 @@ $(function(){
 
     // 懒加载
     $page.find('>div.main').scrollTop(0).scroll(function() {
-        if (pageNum * pageSize < allCount) {
-            var proBox = $(this).find('>div.content >div.products'),
-                maxScroll = $(this).find('div.content').height() - $(this).height();
-            if ($(this).scrollTop() == maxScroll) {
-                proBox.addClass('loading');
-                getProductsList(++pageNum, pageSize);
-                $(this).scrollTop($(this).scrollTop() - 1);
+        if (loadComplate) {
+            if (pageNum * pageSize < allCount) {
+                var proBox = $(this).find('>div.content >div.products'),
+                    maxScroll = $(this).find('div.content').height() - $(this).height();
+                if ($(this).scrollTop() == maxScroll) {
+                    proBox.addClass('loading');
+                    getProductsList(++pageNum, pageSize);
+                    $(this).scrollTop($(this).scrollTop() - 10);
+                    loadComplate = false;
+                }
             }
+        } else {
+            return false;
         }
     });
     
@@ -89,6 +95,7 @@ $(function(){
                     } else {
                         $proBox.removeClass('loaded');
                     }
+                    loadComplate = true;
                 }
             }
         );

@@ -363,7 +363,7 @@ $(function() {
                         var list = Data.Data.Rows;
                         if (list == 0) {
                             var noOrders = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p><button>最新优惠</button></div>";
-                            $page.find(area).append(noOrders);
+                            $page.find(".waitRevice").append(noOrders);
                             haveLoad.waitRevice = 1;
                         } else {
                             for (var i = 0; i < list.length; i++) {

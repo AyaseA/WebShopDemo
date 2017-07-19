@@ -11,7 +11,6 @@
 			},
 			reward: function(url,token) {
 				$$.post(url+'/CSL/Reward/QueryRewardCount', {}, function(data) {
-					console.log(data.Data);
 					data.Data == 'Not login!' ? 0 : data.Data; 
 					$('#reward').html(data.Data);
 				});
@@ -55,7 +54,7 @@
 		//获取头像
 		var resImg = $$.getUserInfo();
 		var imgUrl = 'http://api.cheshili.com.cn/Img/';
-		$('#icenter_pageHome .img_icon').attr('src', imgUrl + resImg.Img);
+		$('#icenter_pageHome .img_icon').attr('src', (resImg.Img ? (imgUrl + resImg) : './images/icon.png'));
 		//获取用户登录账号
 	 	centerData.getAccound(centerData.phoneNum);
 		//用户积分

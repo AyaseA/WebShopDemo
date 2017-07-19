@@ -1,8 +1,11 @@
 !(function(){
-	
-	var $page = $('#icenter_pageHome'),
+	var bodyHeight = window.innerHeight || document.body.clientHeight,
+        $page = $('#icenter_pageHome'),
         pageStr = 'icenter_pageHome';
 
+    $page.find('>div.main').height(
+        bodyHeight * 0.99 - $page.find('>div.footer').height() - $page.find('>header').height() - 1
+    );
     
 	// footer 事件
     $page.on('click', 'div.footer li', function() {

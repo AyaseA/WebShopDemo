@@ -7,8 +7,8 @@
 }
 #icenter_pageHome header{
 	width: 100%;
-	height: 39vw;
-	background: #fff url(../../images/center/center_bg.png) no-repeat;
+	height: 40vw;
+	background: url(../../images/center/center_bg.png) no-repeat;
 	background-size: cover; 
 	overflow: hidden;
 	position: fixed;
@@ -18,7 +18,6 @@
 }
 #icenter_pageHome article {
 	width: 100%;
-	margin-top: 39vw;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -101,58 +100,60 @@
 	height: 12vw;
 	background-color: #fff;
 	margin-top: 2.4vw;
-	overflow: hidden;
+    border-bottom: 1px solid #eaeaea;
+    box-sizing: border-box;
 }
 #icenter_pageHome .img_order{
 	width: 5.3vw;
 	height: 5.9vw;
 	display: inline-block;
-	margin: 2.9vw 2.7vw;
+    margin: 2.9vw 4.5vw;
 }
 #icenter_pageHome .order_text{
 	color: #000;
-	margin-top: -10.1vw;
-	margin-left: 10.7vw;
+    margin-top: -9.8vw;
+    margin-left: 14vw;
 	font-size: 4.3vw;
 	font-family: "Microsoft YaHei";
 }
 #icenter_pageHome .order_content{
 	width: 100%;
-	height: 17.3vw;
+	height: 19vw;
 	background-color: #fff;
-	margin-top: 1px;
 	overflow: hidden;
 }
 #icenter_pageHome .content_wrap_food{
 	width: 25%;
-	height: 16vw;
+	height: 100%;
 	text-align: center;
 	float: left;
-	margin-top: 2.7vw;
+}
+#icenter_pageHome .content_wrap_food >span {
+	display: block;
 }
 #icenter_pageHome .content_wrap_food_1{
 	color: #E95829;
 	display: inline-block;
-	margin-bottom: 2vw;
+    height: 11vw;
+    line-height: 12vw;
 }
 #icenter_pageHome .content_wrap_food_2{
 	font-size: 3.7vw;
 	color: #545760;
 }
 #icenter_pageHome .order_control_wallet{
-	width: 5vw;
-	height: 5.6vw;
-	margin-left: 1.3vw;
-	display: inline-block;
-	margin-bottom: 3px;
+    width: 5vw;
+    height: 5vw;
+    display: inline-block;
+    margin-top: 3vw;
+    margin-bottom: 0.6vw;
 }
 #icenter_pageHome .order_img_span{
 	position: relative;
 	float: left;
-	width: 16%;
-	height: 9.6vw;
-	margin-left: 11px;
-	margin-top: 10px;
+	width: 20%;
+	height: 100%;
+	text-align: center;
 }
 #icenter_pageHome .order_img_span_22{
 	position: relative;
@@ -162,22 +163,17 @@
 	margin-left: 11px;
 	margin-top: 10px;	
 }
-#icenter_pageHome #order_img_span_5{
-	position: relative;
-	float: left;
-	width: 16.6%;
-	height: 9.6vw;
-	margin-left: 11px;
-	margin-top: 10px;	
-}
 #icenter_pageHome .order_control{
-	width: 5vw;
-	height: 5vw;
-	margin-left: 3.2vw;
+    width: 5vw;
+    height: 5vw;
+    margin-top: 4vw;
+    margin-bottom: 1vw;
 }
 #icenter_pageHome .order_business{
 	font-size: 3.7vw;
 	color: #545760;
+	display: block;
+	text-align: center;
 } 
 #icenter_pageHome .order_business_2{
 	font-size: 3.5vw;
@@ -201,22 +197,41 @@
 #icenter_pageHome .order_control_5{
 	width: 6.4vw;
 	height: 6.4vw;
+    margin-top: 3vw;
 }
 #icenter_pageHome .order_top_tips{
-	width: 4.3vw;
-	height: 4.3vw;
-	text-align: center;
-	position: absolute;
-	left: 6.4vw;
-	top: -2.1vw;
-	background-color: #E85223;
-	color: #fff;
-	border-radius: 50%;
-	font-size: 3.2vw;
+    position: absolute;
+    background-color: #E85223;
+    color: #fff;
+    border-radius: 10vw;
+    font-size: 3.2vw;
+    top: 1vw;
+    right: 1vw;
+    padding: 0.2vw 1.5vw .6vw;
 }
 #icenter_pageHome #article_con_tent{
-	background: #fff url(../../images/center/left_black.png) no-repeat 85.3vw 4vw;
+    background: #fff url(../../images/center/left_black.png) no-repeat 91vw 3.5vw;
 	background-size: 3.2vw 5.3vw;
+}
+#icenter_pageHome >article >div.tools {
+	margin-bottom: 50px;
+	height: inherit;
+}
+#icenter_pageHome >article >div.tools >div {
+	width: 25%;
+	height: 18vw;
+}
+#icenter_pageHome >article >div.tools >div >span {
+	display: block;
+}
+#icenter_pageHome >article >div.tools >div >span:first-child {
+
+}
+#icenter_pageHome >article >div.tools >div >img {
+	width: 6vw;
+	height: 6vw;
+    margin-top: 2.5vw;
+    margin-bottom: 0.6vw;
 }
 #icenter_pageHome >div.footer {
 	background-color: #FFFFFF;

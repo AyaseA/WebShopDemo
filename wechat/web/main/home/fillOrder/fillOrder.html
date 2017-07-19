@@ -23,73 +23,8 @@
 		</ul>
 		<div class="content">
 			<div class="warp clear">
-				<div class="usable">
-					<div class="ticket">
-						<div>
-							￥<span>100</span>
-							<small>满1500元可用</small>
-						</div>
-						<p>仅可购买汽车全年机油养护时使用</p>
-						<small>2017.06.01-2017.07.01</small>
-						<i></i>
-					</div>
-					<div class="ticket">
-						<div>
-							￥<span>100</span>
-							<small>满1500元可用</small>
-						</div>
-						<p>仅可购买汽车全年机油养护时使用</p>
-						<small>2017.06.01-2017.07.01</small>
-						<i></i>
-					</div>
-					<div class="ticket">
-						<div>
-							￥<span>100</span>
-							<small>满1500元可用</small>
-						</div>
-						<p>仅可购买汽车全年机油养护时使用</p>
-						<small>2017.06.01-2017.07.01</small>
-						<i></i>
-					</div>
-					<div class="ticket">
-						<div>
-							￥<span>100</span>
-							<small>满1500元可用</small>
-						</div>
-						<p>仅可购买汽车全年机油养护时使用</p>
-						<small>2017.06.01-2017.07.01</small>
-						<i></i>
-					</div>
-					<div class="ticket">
-						<div>
-							￥<span>100</span>
-							<small>满1500元可用</small>
-						</div>
-						<p>仅可购买汽车全年机油养护时使用</p>
-						<small>2017.06.01-2017.07.01</small>
-						<i></i>
-					</div>
-					<div class="ticket">
-						<div>
-							￥<span>100</span>
-							<small>满1500元可用</small>
-						</div>
-						<p>仅可购买汽车全年机油养护时使用</p>
-						<small>2017.06.01-2017.07.01</small>
-						<i></i>
-					</div>
-					<button class="selectTicket">确定</button>
-				</div>
-				<div class="disabled">
-					<div class="ticket checked">
-						<div>
-							￥<span>100</span>
-							<small>满1500元可用</small>
-						</div>
-						<p>仅可购买汽车全年机油养护时使用</p>
-						<small>2017.06.01-2017.07.01</small>
-					</div>
-				</div>
+				<div class="usable"></div>
+				<div class="disabled"></div>
 			</div>
 		</div>
 	</div>
@@ -98,7 +33,7 @@
 		<div class="clear">
 			<img src="{{serverAddr}}Img/{{data.Img | imgFilter}}">
 			<p>{{data.Name}}<span>￥{{data.Price}}</span></p>
-			<p>{{data.Descri || data.Name}}<span>x{{count}}</span></p>
+			<p>{{descri}}<span>x{{count}}</span></p>
 		</div>
 		<p>共{{count}}件商品</p>
 	</script>
@@ -121,5 +56,22 @@
 			积分
 			<span>共{{point}}积分，满1000积分可用</span>
 		</p>
+	</script>
+	<script id="home_fillOrder_coupon_item" type="text/html">
+		{{each list as val}}
+		<div class="ticket" data-id="{{val.ID}}" data-coupon="{{val.Discount}}">
+			<div><i>￥</i><span>{{val.Discount}}</span>
+				<small>{{val.Name}}</small>
+			</div>
+			<p>{{val.Descri}}</p>
+			<small>{{val.TimeStart}} 到 {{val.TimeEnd}}</small>
+			{{if enable}}
+			<i></i>
+			{{/if}}
+		</div>
+		{{/each}}
+		{{if enable}}
+		<button class="selectTicket">确定</button>
+		{{/if}}
 	</script>
 </div>

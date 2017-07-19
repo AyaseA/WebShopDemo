@@ -6,7 +6,8 @@ $(function() {
         productNum = $$.getQueryString('num') || 1,
         total = 0,
         coupon = 0,
-        point = 0;
+        point = 0,
+        couponID = '';
     // 判断是否登录
     if ($$.isLogin(true)) {
         // 页面重新显示的一些初始化
@@ -26,9 +27,9 @@ $(function() {
         // 点击确定选择优惠券
         $page.off('click', '>div.couponModal button.selectTicket')
             .on('click', '>div.couponModal button.selectTicket', function() {
-            total = total + 100;
-	        coupon = coupon + 5;
-	        point = point + 5;
+            var $ticket = $page.find('>div.couponModal div.usable div.ticket.checked');
+	        coupon = parseFloat($ticket.attr('data-coupon'));
+            couponID = $ticket.attr('data-id');
             setCoupon();
             setMoney();
             $page.find('>div.couponModal').animate({
@@ -54,16 +55,83 @@ $(function() {
                     return false;
                 }
                 if (res.Data) {
-                    var d = res.Data;
+                    var d = res.Data,
+                        descri = '';
+                    if (d.Descri) {
+                        d.Descri = JSON.parse(d.Descri);
+                        descri = Base64.decode(unescape(d.Descri.text));
+                    }
                     total = parseFloat(d.Price);
                     $page.find('>div.main >div.productInfo').html(
                         template(pageStr + '_product_detail', {
                             'serverAddr': $$.config.serverAddr,
                             'data': d,
-                            'count': productNum
+                            'count': productNum,
+                            'descri': descri
                         }));
                     setMoney();
                     $page.find('>div.footer >button.order').removeClass('disabled');
+                    getValueVoucher();
+                }
+            }
+        );
+    }
+    // 优惠券
+    function getValueVoucher() {
+        $$.post(
+            'CSL/User/QueryValueVoucherJson',
+            {},
+            function(res) {
+                if (res.Status != 0) {
+                    return false;
+                }
+                if (res.Data) {
+                    var usableCoupons = [],
+                        disabledCoupons = [],
+                        nowTime = new Date().pattern('yyyy-MM-dd');
+                    res.Data.Status0.forEach(function(item) {
+                        item = JSON.parse(item.DataVoucherData);
+                        var coupon = {
+                            ID: item.ID,
+                            Name: item.Name,
+                            Descri: item.Descri,
+                            AboveNum: item.AboveNum,
+                            Discount: item.Discount,
+                            TimeStart: $$.timeToStr(item.TimeStart),
+                            TimeEnd: $$.timeToStr(item.TimeEnd)
+                        };
+                        if (coupon.AboveNum <= total &&
+                            nowTime >= coupon.TimeStart &&
+                            nowTime <= coupon.TimeEnd) {
+                            usableCoupons.push(coupon);
+                        } else {
+                            disabledCoupons.push(coupon);
+                        }
+                    });
+                    res.Data.Status1.forEach(function(item) {
+                        item = JSON.parse(item.DataVoucherData);
+                        disabledCoupons.push({
+                            ID: item.ID,
+                            Name: item.Name,
+                            Descri: item.Descri,
+                            AboveNum: item.AboveNum,
+                            Discount: item.Discount,
+                            TimeStart: $$.timeToStr(item.TimeStart),
+                            TimeEnd: $$.timeToStr(item.TimeEnd)
+                        });
+                    });
+                    $page.find('div.couponModal div.usable').html(
+                        template(pageStr + '_coupon_item', {
+                            list: usableCoupons,
+                            enable: true
+                        })
+                    );
+                    $page.find('div.couponModal div.disabled').html(
+                        template(pageStr + '_coupon_item', {
+                            list: disabledCoupons,
+                            enable: false
+                        })
+                    );
                 }
             }
         );
@@ -72,7 +140,9 @@ $(function() {
     function addOrder(calback) {
         $$.post(
             'CSL/Order/AddOrder', {
-                'ProdList': productId + '_' + productNum
+                'ProdList': productId + '_' + productNum,
+                'ValueVoucherID': couponID,
+                'ValueVoucherNum': coupon
             },
             function(res) {
                 if (res.Status != 0) {
@@ -89,7 +159,7 @@ $(function() {
         $page.find('>div.main >div.proMoney').html(
             template(pageStr + '_price_coupon', {
                 'total': parseFloat(total).toFixed(2),
-                'coupon': parseFloat(coupon).toFixed(2)
+                'coupon': coupon
             }));
         $page.find('>div.footer >span').text(parseFloat(total - coupon).toFixed(2));
     }

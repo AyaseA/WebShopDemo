@@ -28,7 +28,8 @@ $(function() {
                 	$page.find('>div.main >div.warp').html(template(pageStr + '_detail', {
                 		proList: JSON.parse(d.Data),
                 		payMoney: d.OutPocket,
-                		allMoney: d.AllMoney
+                		allMoney: d.AllMoney,
+                		valueVoucher: d.ValueVoucherNum
                 	}));
                 }
 			}

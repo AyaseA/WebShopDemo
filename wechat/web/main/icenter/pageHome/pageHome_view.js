@@ -7,24 +7,7 @@
         bodyHeight * 0.99 - $page.find('>div.footer').height() - $page.find('>header').height() - 1
     );
     
-	// footer 事件
-    $page.on('click', 'div.footer li', function() {
-        var type = $(this).attr('data-tab');
-        switch(type) {
-            case 'index': {
-                // 首页
-                $$.redirect('home/index.html');
-            } break;
-            case 'luckyDraw': {
-                // 幸运抽奖
-                $$.redirect('campaign/activity/luckyDraw.html');
-            } break;
-            case 'center': {
-                // 个人中心
-                $$.redirect('icenter/pageHome.html');
-            } break;
-        }
-    });
+
     //个人信息
     $('.user_name').on('click', function() {
         $$.redirect('icenter/information.html');
@@ -86,7 +69,7 @@
         $$.redirect('icenter/afterService.html');
     });     
     //跳转订单_______TODO
-    $('.order_img_span').on('click', function() {
+    $('.order_img_span:not(#order_img_span_5)').on('click', function() {
         $$.redirect('icenter/orderList.html');
     });
     // footer 事件
@@ -95,7 +78,7 @@
         switch(type) {
             case 'index': {
                 // 首页
-                //$$.redirect('index/index.html');
+                $$.redirect('home/index.html');
             } break;
             case 'carCrv': {
                 // 服务网点
@@ -107,7 +90,7 @@
             } break;
             case 'center': {
                 // 个人中心
-                $$.redirect('icenter/pageHome.html');
+                //$$.redirect('icenter/pageHome.html');
             } break;
         }
     });

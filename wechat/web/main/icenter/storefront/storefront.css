@@ -19,7 +19,6 @@
 }
 #icenter_storefront .storefront_face_active{
 	height: 20vw;
-	background: #fff url(../images/center/csl.png) no-repeat 8vw 5.3vw;
 	background-size: 20%;
 	border-top: 1px solid #eee;
 	color: #676C75;
@@ -106,7 +105,7 @@
 }
 #icenter_storefront .footprint_contain {
 	width: 49vw;
-	height: 52vw;
+	height: 58vw;
 	background-color: #fff;
 	float: left;
 	border: 0.5vw solid #eee;

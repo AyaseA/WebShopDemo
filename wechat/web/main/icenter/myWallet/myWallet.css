@@ -50,12 +50,12 @@
 }
 #icenter_myWallet .footprint_date{
 	height: 11.3vw;
-	background: url(../images/center/center_customer_detail.png) no-repeat center center;
+	background: url(../../images/center/center_customer_detail.png) no-repeat center center;
 	background-size: 50%;
 }
 #icenter_myWallet .footprint_contain {
 	width: 49vw;
-	height: 52vw;
+	height: 58vw;
 	background-color: #fff;
 	float: left;
 	border: 0.5vw solid #eee;

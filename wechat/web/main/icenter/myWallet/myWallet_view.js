@@ -32,9 +32,15 @@ $(function() {
             		if(!list[i].Img){
             			list[i].Img="NoImg/" + Math.random() + ".jpg";
             		}
-            		onePiece="<div class='footprint_contain' name='"+i+"'><ul><li><img src='"+url+"Img/"+list[i].Img+"' alt='' class='foot_li_x5_img'></li><li><div class='footprint_text'><span>"+list[i].Name+"</span><br /><span>"+list[i].Descri+"</span></div><div class='footprint_price'><span class='footprint_price_1'>￥<span>"+list[i].Price+"</span></span></div></li></ul></div>";
+                    var descri = list[i].Descri,
+                        content = '';
+                    if (descri) {
+                        descri = JSON.parse(descri);
+                        content = Base64.decode(unescape(descri.text));
+                    }
+            		onePiece="<div class='footprint_contain' name='"+i+"'><ul><li><img src='"+url+"Img/"+list[i].Img+"' alt='' class='foot_li_x5_img'></li><li><div class='footprint_text'><span>"+list[i].Name+"</span><br /><span>"+content+"</span></div><div class='footprint_price'><span class='footprint_price_1'>￥<span>"+list[i].Price+"</span></span></div></li></ul></div>";
             		var thisID=list[i].ID;
-            		IDList.push(thisID);
+            		IDList.push(thisID);  
             		$page.find(".content").append(onePiece);
             	}
             }

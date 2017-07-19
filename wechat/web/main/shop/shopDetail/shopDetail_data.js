@@ -3,6 +3,8 @@ $(function() {
     var $page = $('#shop_shopDetail'),
         pageStr = 'shop_shopDetail';
 
+    
+
 	var id=$$.getQueryString("ID");
     $.ajax({
     	type:"POST",

@@ -4,9 +4,7 @@ $(function() {
 
     $page.on("click",".back",function(){
     	$$.redirect("shop/shopList.html");
-    });
-
-    
+    }); 
 
     $page.on("click",".map",function(){
     	wx.openLocation({

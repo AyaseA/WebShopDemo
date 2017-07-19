@@ -450,6 +450,7 @@
                 data: {
                     WToken: token
                 },
+                async: false,
                 dataType: 'json',
                 success: function(res) {
                     if (res.Status == 0 && res.Data.Info) {

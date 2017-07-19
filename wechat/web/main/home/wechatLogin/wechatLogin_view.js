@@ -45,7 +45,7 @@ $(function() {
     function regiestUser(phonenumber, verify) {
         var RegisterFrom = $$.getQueryString('RegisterFrom') || 1,
             RegisterCont = $$.getQueryString('RegisterCont') || 1,
-            goBackUrl = 'index/index.html';
+            goBackUrl = 'home/index.html';
         if ($$.stack.getLast()) {
             goBackUrl = $$.stack.pop();
         }

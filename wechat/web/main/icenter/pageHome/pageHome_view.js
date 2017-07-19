@@ -6,7 +6,6 @@
     $page.find('>div.main').height(
         bodyHeight * 0.99 - $page.find('>div.footer').height() - $page.find('>header').height() - 1
     );
-    
 
     //个人信息
     $('.user_name').on('click', function() {
@@ -14,7 +13,7 @@
     });    
     //邀请有礼
     $('#head_active_1').on('click', function() {
-        $$.redirect('icenter/invite.html');
+        $$.redirect('home/invite.html');
     });
     //加油卡
     $('#head_active_2').on('click', function() {
@@ -22,7 +21,7 @@
     });
     //我的车辆
     $('#head_active_3').on('click', function() {
-        $$.redirect('icenter/myCars.html');
+        $$.redirect('home/myCars.html');
     });
     //积分
     $('#reward').on('click', function() {

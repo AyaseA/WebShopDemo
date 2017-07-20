@@ -2,8 +2,7 @@ $(function() {
     var $page = $('#home_product'),
 	    pageStr = 'home_product',
 	    pid = $$.getQueryString('pid'),
-        pNum = 1,
-        campaignNum = 0;
+        pNum = 1;
     
     // 页面重新显示的一些初始化
     $page.find('>div.header li[data-type=product]') 
@@ -21,22 +20,12 @@ $(function() {
     // 设置底部按钮的pid
     $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');
     $page.off('click', '>div.footer >a.buyNow').on('click', '>div.footer >a.buyNow', function() {
-        if (campaignNum > 0) {
-            getCampaignProduct(function() {
-                toFillOrder();
-            });
-        } else {
-            toFillOrder();
-        }
+        $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum);
     });
     // 获取商品信息
     getProductInfo();
 	// 修改立即购买按钮的商品id
     getWishList();
-    // 跳转填写订单页面
-    function toFillOrder() {
-        $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum);
-    }
 	// 根据商品id获取商品信息
 	function getProductInfo() {
         $$.get(
@@ -47,7 +36,6 @@ $(function() {
                 }
                 if (res.Data) {
                     var d = res.Data;
-                    campaignNum = d.CampaignNum || 0;
                     // 获取评论
                     getComments(d.Name);
                     var descri = '';
@@ -150,25 +138,6 @@ $(function() {
                             commentList: haveImgComments,
                             productName: productName
                     }));
-                }
-            }
-        );
-    }
-    // 判断限制次数商品是否可用
-    function getCampaignProduct(callback) {
-        $$.post(
-            'CSL/Order/QueryCampaignProduct',
-            {
-                ProductID: pid
-            },
-            function(res) {
-                if (res.Status != 0) {
-                    return false;
-                }
-                if (res.Data.Code == 1) {
-                    callback();
-                } else {
-                    layer.msg('您已参加过该活动了~');
                 }
             }
         );

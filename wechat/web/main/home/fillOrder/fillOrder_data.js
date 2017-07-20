@@ -7,7 +7,8 @@ $(function() {
         total = 0,
         coupon = 0,
         point = 0,
-        couponID = '';
+        couponID = '',
+        campaignNum = 0;
     // 判断是否登录
     if ($$.isLogin(true)) {
         // 页面重新显示的一些初始化
@@ -41,10 +42,37 @@ $(function() {
             if ($(this).hasClass('disabled')) {
                 return false;
             }
-            addOrder(function(oid) {
-                $$.redirect('home/payCenter.html?oid=' + oid);
-            });
+            if (campaignNum > 0) {
+                getCampaignProduct(function() {
+                    addOrder(function(oid) {
+                        $$.redirect('home/payCenter.html?oid=' + oid);
+                    });
+                });
+            } else {
+                addOrder(function(oid) {
+                    $$.redirect('home/payCenter.html?oid=' + oid);
+                });
+            }
         });
+    }
+    // 判断限制次数商品是否可用
+    function getCampaignProduct(callback) {
+        $$.post(
+            'CSL/Order/QueryCampaignProduct',
+            {
+                ProductID: productId
+            },
+            function(res) {
+                if (res.Status != 0) {
+                    return false;
+                }
+                if (res.Data.Code == 1) {
+                    callback();
+                } else {
+                    layer.msg('您已参加过该活动了~');
+                }
+            }
+        );
     }
     // 获取商品详情
     function getProductDetail() {
@@ -57,6 +85,7 @@ $(function() {
                 if (res.Data) {
                     var d = res.Data,
                         descri = '';
+                    campaignNum = d.CampaignNum || 0;
                     if (d.Descri) {
                         d.Descri = JSON.parse(d.Descri);
                         descri = Base64.decode(unescape(d.Descri.text));

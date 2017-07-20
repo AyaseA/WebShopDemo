@@ -4,8 +4,8 @@ $(function() {
         pageStr = 'shop_shopDetail';
 
     
-
-	var id=$$.getQueryString("ID");
+    var id=$$.getQueryString("ID");
+	
     $.ajax({
     	type:"POST",
     	url:"http://api.cheshili.com.cn/Product/Store/QueryStoreDetail",

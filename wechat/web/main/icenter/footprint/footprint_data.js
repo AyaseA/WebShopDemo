@@ -45,7 +45,15 @@ $(function() {
                                         if (productInfo.Img == "") {
                                             productInfo.Img = "NoImg/" + Math.random() + ".jpg";
                                         }
-                                        var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + productInfo.Name + "</p><p>" + productInfo.Descri + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
+
+                                        var descri = productInfo.Descri,
+                                            content = '';
+                                        if (descri) {
+                                            descri = JSON.parse(descri);
+                                            content = Base64.decode(unescape(descri.text));
+                                        }
+
+                                        var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + productInfo.Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
                                         $page.find(".content").append(onePiece);
                                     }
                                 });
@@ -59,8 +67,17 @@ $(function() {
                                     async: false,
                                     data: { "ID": list[i].ProductID },
                                     success: function(txt) {
+
                                         productInfo = $$.eval(txt).Data;
-                                        var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + productInfo.Name + "</p><p>" + productInfo.Descri + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
+
+                                        var descri = productInfo.Descri,
+                                            content = '';
+                                        if (descri) {
+                                            descri = JSON.parse(descri);
+                                            content = Base64.decode(unescape(descri.text));
+                                        }
+
+                                        var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + content + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
                                         $page.find(".content").append(onePiece);
                                     }
                                 });

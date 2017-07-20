@@ -6,10 +6,7 @@ $(function() {
 
         var url = $$.config.serverAddr;
         var token = $$.getToken();
-        //var token = "eyJVc2VySUQiOiI0MCIsIk5pY2tOYW1lIjpudWxsLCJHcm91dGhWYWx1ZSI6bnVsbCwiVXNlckFkZHJlc3NJRCI6bnVsbCwiQWRkVGltZSI6IjE0OTczMzkzODgiLCJVc2VyQ2FySUQiOm51bGwsIkltZyI6bnVsbCwiRW5hYmxlIjoiMSIsIkludml0ZUNvZGUiOiJNRFF3IiwiTW9iaWxlIjoiMTUwNjY2NzAzMjAiLCJTZXNzaW9uSUQiOiIxIiwiVHlwZSI6IlVzZXIiLCJVSUQiOiJmMjUxZjI0ZjU5OGVhZTFiZGNiNWVmMWIwNjNjZDAwMSJ9";
-
-
-
+        
         $.ajax({
             type: "POST",
             url: url + "CSL/Account/QueryAccountCount",

@@ -63,7 +63,7 @@
 
 #icenter_discount .haveDate img{
 	padding-left:0.6vw;
-	padding-top:0.6vw;	
+	padding-top:0.3vw;	
 }
 
 #icenter_discount .contentOn{
@@ -76,7 +76,6 @@
 
 #icenter_discount .oneDiscount{
 	position: relative;
-	margin-top: 3vw;
 }
 
 #icenter_discount .discountMoney{

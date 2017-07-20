@@ -11,6 +11,9 @@ $(function() {
 		{},
 		function(txt){
 			if(txt.Status==0){
+				$page.find(".canUse").empty();
+				$page.find(".haveUsed").empty();
+				$page.find(".haveDate").empty();
 				var useList=txt.Data.Status0;
 				var node="";
 				var data="";
@@ -58,6 +61,8 @@ $(function() {
 
 
 				$page.find(".canUse").append(node);
+				$page.find(".haveUsed").append(useNode);
+				$page.find(".haveDate").append(dateNode);
 			}
 	});
 });

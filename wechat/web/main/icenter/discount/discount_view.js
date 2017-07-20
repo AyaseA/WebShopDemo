@@ -9,7 +9,7 @@ $(function() {
     	例子如下
     */
     $page.find('div.header >a').click(function(){
-    	$$.redirect("icenter_pageHome.html");
+    	$$.goBack();
     });
 
     function loadDiscount() {

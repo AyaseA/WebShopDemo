@@ -1,16 +1,15 @@
 $(function() {
     var $page = $('#icenter_discount'),
         pageStr = 'icenter_discount';
-    /*
-    	选择器要加上 #文件夹名_文件名
-    	例：$('#文件夹名_文件名 button.button')
 
-    	所有事件绑定到 $('#文件夹名_文件名')下
-    	例子如下
-    */
+    var contentHeight=window.innerHeight-$page.find(".header").height()-$page.find(".nav").height();
+    $page.find(".navContent").height(contentHeight);
+
     $page.find('div.header >a').click(function(){
     	$$.goBack();
     });
+
+
 
     function loadDiscount() {
         //获取内容

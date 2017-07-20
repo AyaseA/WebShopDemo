@@ -96,13 +96,16 @@
 		    $('.order_img_span:not(#order_img_span_5)').off('click').on('click', function() {
 		        $$.redirect('icenter/orderList.html');
 		    });
-		    $('#order_content_need_4').click(function() {
+
+		    
+		    $('#order_content_need_4').off('click').on('click', function() {
 		        $page.find('div.confirm').show();
 		    });
-		    $page.on('click', 'div.confirm, div.confirm button.cancel', function() {
+		    $page.off('click', 'div.confirm, div.confirm button.cancel')
+		    	.on('click', 'div.confirm, div.confirm button.cancel', function() {
 		        $page.find('div.confirm').hide();
 		    });
-		    $page.on('click', 'div.confirm >div', function(e) {
+		    $page.off('click', 'div.confirm >div').on('click', 'div.confirm >div', function(e) {
 		        e.stopPropagation();
 		    });
 		}

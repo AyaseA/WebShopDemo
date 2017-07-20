@@ -1,13 +1,116 @@
 #icenter_storefront{
-	height: 100%
+	height: 100%;
+	background: #EFEFF4;
 }
 
 #icenter_storefront .header{
 	height:10vw;
 	width: 100%;
+	position: relative;
+	text-align: center;
+	line-height: 10vw;
+	border-bottom: 1px solid #E4E4E7;
+	background: #fff;
 }
 
+#icenter_storefront .header span{
+	width: 15vw;
+	font-size: 4vw;
+	font-weight: bold;
+	display: inline-table;
+}
+
+#icenter_storefront  .on{
+	border-bottom: 2px solid #f60;
+}
 
 #icenter_storefront .header a{
-	
+	position: absolute;
+	top:2.2vw;
+	left: 3vw;
+}
+
+#icenter_storefront .header a img{
+	width: 6vw;
+}
+
+#icenter_storefront .productInfo{
+	padding: 2vw;
+	position: relative;
+	background: #fff;
+	padding-bottom: 0;
+}
+
+#icenter_storefront .productInfo .info{
+	width: 65vw;
+	position: absolute;
+	top:4vw;
+	left: 35vw;
+	border-bottom: 1px solid #E4E4E7;
+	padding-bottom: 5vw;
+	height: 24vw;
+}
+
+#icenter_storefront .productInfo img{
+	width: 30vw;
+}
+
+#icenter_storefront .productInfo .name{
+	font-size: 3.8vw;
+}
+
+#icenter_storefront .productInfo .descri,#icenter_storefront .productInfo .time,#icenter_storefront .productInfo .price{
+	font-size: 3.3vw;
+}
+
+#icenter_storefront .productInfo .price{
+	color:#f60;
+	height: 8vw;
+    line-height: 8vw;
+}
+
+#icenter_storefront .productInfo p button{
+	float: right;
+	background: none;
+	outline: none;
+	border:1px solid #f60;
+	border-radius: 17px;
+	width: 25vw;
+	height: 8vw;
+	color:#f60;
+	margin-right: 5vw;
+}
+
+#icenter_storefront .storeContent{
+	display: none;
+}
+
+#icenter_storefront  .noData{
+	color:#f60;
+	text-align: center;
+}
+
+#icenter_storefront .storeInfo{
+	padding: 2vw;
+	background: #fff;
+	border-bottom: 1px solid #E4E4E7;
+	position: absolute;
+	height: 24vw;
+	width: 100%
+}
+
+#icenter_storefront .storeInfo img{
+	width: 25vw;
+}
+
+#icenter_storefront .detail{
+	position: absolute;
+	left: 30vw;
+	top: 5vw;
+	width: 70vw;
+}
+
+#icenter_storefront .detail p{
+	margin-top: 1vw;
+	margin-bottom:2vw;
 }

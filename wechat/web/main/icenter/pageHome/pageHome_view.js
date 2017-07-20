@@ -95,4 +95,23 @@
             } break;
         }
     });
+    /*$page.on('click', '>div.header >a.goBack', function() {
+        if ($page.find('div.confirm').is(':visible')) {
+            return false;
+        }
+        
+        $page.find('div.confirm').find('p').text('订单还未支付，确认退出？');
+    });*/
+    $('#order_content_need_4').click(function() {
+        $page.find('div.confirm').show();
+    });
+    $page.on('click', 'div.confirm, div.confirm button.cancel', function() {
+        $page.find('div.confirm').hide();
+    });
+    $page.on('click', 'div.confirm >div', function(e) {
+        e.stopPropagation();
+    });
+    $page.on('click', 'div.confirm button.confirm', function() {
+        $$.goBack();
+    });
 }());

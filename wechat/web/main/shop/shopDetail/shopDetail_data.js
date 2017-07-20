@@ -23,4 +23,17 @@ $(function() {
     		}
     	}
     });
+
+    $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/QueryFollowDetail",
+        {StoreID:id},
+        function(txt){
+            if(txt.Status==0){
+                $page.find(".btn").attr("data-watch", "1");
+                $page.find(".btn img").attr("src", "images/common/like_fill.png");
+            }else{
+                $page.find(".btn").attr("data-watch", "0");
+                $page.find(".btn img").attr("src", "images/common/like.png");
+            }
+        }
+    );
 });

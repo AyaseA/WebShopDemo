@@ -146,7 +146,7 @@ $(function() {
     function getWishList() {
         if ($$.isLogin()) {
             $$.post(
-                'CSL/Wish/QueryFootList',
+                'CSL/Wish/QueryWishList',
                 {},
                 function(res) {
                     if (res.Status != 0) {

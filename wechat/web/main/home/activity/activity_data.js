@@ -43,6 +43,14 @@ $(function() {
                         allCount = parseInt(res.Data.Count);
                     }
 					var d = res.Data.Rows;
+					d.forEach(function(item) {
+						var descri = '';
+	                    if (item.Descri) {
+	                        item.Descri = JSON.parse(item.Descri);
+	                        descri = Base64.decode(unescape(item.Descri.text));
+	                    }
+						item.desc = descri;
+					});
 					$proBox.append(template(pageStr + '_products', {
 						list: d,
 						serverAddr: $$.config.serverAddr

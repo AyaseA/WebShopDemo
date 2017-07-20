@@ -1,8 +1,8 @@
 $(function() {
-    var $page = $('#shop_shopDetaill'),
-        pageStr = 'shop_shopDetaill';
+    var $page = $('#shop_shopDetail'),
+        pageStr = 'shop_shopDetail';
 
-    $page.on("click",".back",function(){
+    $page.find(".back").click(function(){
     	$$.redirect("shop/shopList.html");
     }); 
 

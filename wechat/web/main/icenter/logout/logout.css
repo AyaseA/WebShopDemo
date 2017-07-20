@@ -5,42 +5,37 @@
 	height: 100%;
 	background-color: #F0EFF5;
 }
+
 #icenter_logout header{
 	width: 100%;
-	height: 16vw;
+	height: 10vw;
 	background-color: #fff;
-	overflow: hidden;
-	position: relative;
+	text-align: center;
+	line-height: 10vw;
 }
+
 #icenter_logout header img{
 	width: 6.93vw;
-	height: 6.93vw;
-	display: inline-block;
-	margin: 4vw 0px 0px 5.33vw;
+	position: absolute;
+	left: 3vw;
+	top:1.5vw;
 }
+
 #icenter_logout header span{
-	display: inline-block;
-	font-size: 5.87vw;
-	font-family: "黑体";
+	font-size: 4.8vw;
 	color: #4E4D53;
-	vertical-align: top;
-    margin: 4.06vw 0px 0px 31vw;
 }
+
 #icenter_logout .photo_updata{
 	margin-top: 5.33vw;
 	margin-bottom: 3.33vw;
 	width: 100%;
-	height: 16vw;
+	height: 12vw;
 	background-color: #fff;
+	line-height: 12vw;
+    padding-left: 3vw;
 }
 #icenter_logout .redit_password{
-	width: 100%;
-	height: 16vw;
-	background-color: #fff;
-	overflow: hidden;
-	border-top: 1px solid #eee;
-}
-#icenter_logout .smart_word{
 	width: 100%;
 	height: 16vw;
 	background-color: #fff;
@@ -54,17 +49,15 @@
 	margin: 5.07vw 0px 0px 2.67vw;	
 }
 #icenter_logout .span_updata_1{
-	vertical-align: top;
-	display: inline-block;
-	font-size: 18px;
-	margin: 5.33vw 0px 0px 2.67vw;
+	font-size: 4vw;
+	margin: 3vw 0px 0px 2.67vw;
 }
 #icenter_logout .right_copy{
 	width: 2.67vw;
 	height: 4.27vw;
 	display: block;
 	float: right;
-	margin: 5.33vw 5.33vw 0px 0px;	
+	margin: 3.6vw 5.33vw 0px 0px;	
 }
 #icenter_logout .right_copy_2{
 	width: 2.67vw;
@@ -83,7 +76,7 @@
 	border: none;
 	outline: none;
 	position: absolute;
-	top: 50%;	
+	top: 20%;	
 	left: 5%;
 }
 #icenter_logout .logout_but_out{

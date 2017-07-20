@@ -864,7 +864,16 @@
                     if (allowCalBck) {
                         allowCalBck();
                     } else {
-                        $$.redirect('home/wechatLogin.html');
+                        if (navigator.userAgent.indexOf('csl-ios') != -1) {
+                            layer.msg('欢迎使用IOS版车势力商城！');
+                        } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+                            layer.msg('欢迎使用微信版车势力商城！');
+                            $$.redirect('home/wechatLogin.html');
+                        } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+                            layer.msg('欢迎使用Android版车势力商城！');
+                        } else {
+                            layer.msg('欢迎使用HTML5版车势力商城！');
+                        }
                     }
                     layer.closeAll();
                 });

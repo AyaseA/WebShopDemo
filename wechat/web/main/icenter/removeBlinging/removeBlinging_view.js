@@ -6,6 +6,6 @@
 		$$.redirect('home/index.html');
 	});
 	$('.reBl_goto_bling').on('click', function() {
-		$$.redirect('icenter/wechatLogin.html');
+		$$.redirect('home/wechatLogin.html');
 	});
 }());

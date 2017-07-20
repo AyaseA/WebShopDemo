@@ -211,3 +211,67 @@
     margin-right: 14px;
     margin-top: 9px;
 }
+#icenter_orderDetail >div.confirm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+    z-index: 9;
+}
+#icenter_orderDetail >div.confirm h4 {
+    height: 50px;
+    margin: 0;
+    line-height: 51px;
+    text-align: center;
+    font-size: 16px;
+}
+#icenter_orderDetail >div.confirm p {
+    color: #999;
+    border-bottom: 1px solid #D6D6DB;
+    padding: 0;
+    margin: 0;
+    height: 70px;
+    line-height: 30px;
+    text-align: center;
+}
+#icenter_orderDetail >div.confirm >div {
+    height: 160px;
+    width: 260px;
+    position: absolute;
+    background-color: #fff;
+    top: -70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+#icenter_orderDetail >div.confirm >div::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#icenter_orderDetail >div.confirm button {
+    width: 49%;
+    height: 39px;
+    font-size: 16px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+#icenter_orderDetail >div.confirm a {
+    width: 49%;
+    height: 39px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #EA5514;
+    border-left: 1px solid #D6D6DB;
+    display: inline-block;
+    text-align: center;
+    float: right;
+    line-height: 39px;
+}

@@ -5,6 +5,16 @@ $(function () {
         headerHeight = $page.find('>div.header').height(),
         orderId = $$.getQueryString('oid');
 
+    $page.off('click', 'div.product a.contactService').on('click','div.product a.contactService', function() {
+        $page.find('div.confirm').show();
+    });
+    $page.off('click', 'div.confirm, div.confirm button.cancel')
+        .on('click', 'div.confirm, div.confirm button.cancel', function() {
+        $page.find('div.confirm').hide();
+    });
+    $page.off('click', 'div.confirm >div').on('click', 'div.confirm >div', function(e) {
+        e.stopPropagation();
+    });
     // 获取订单详情
 	getOrderDetail();
 	function getOrderDetail() {

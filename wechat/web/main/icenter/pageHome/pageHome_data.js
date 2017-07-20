@@ -1,76 +1,110 @@
 !(function(){
 	if ($$.isLogin(true)) {
 		var token = $$.getToken();
-		var centerData = window.centerData || {
-			hostUrl: $$.config.serverAddr,
-			token: $$.getToken(),
-			phoneNum: $$.getUserMobile(),//手机号
-			rewardNum: $('').val(),
-			getAccound: function(num) {
-				$('.user_name').html(num);
-			},
-			reward: function(url,token) {
-				$$.post(url+'/CSL/Reward/QueryRewardCount', {}, function(data) {
-					data.Data == 'Not login!' ? 0 : data.Data; 
-					$('#reward').html(data.Data);
-				});
-			},
-			accound: function(url,token) {
-				$$.post(url+'/CSL/Account/QueryAccountCount', {}, function(data) {
-					data.Data == 'Not login!' ? 0 : data.Data; 
-					$('#accound').html(data.Data);
-				});
-			},
-			account: function(url,token) {
-				$$.post(url+'', {}, function() {
-					
-				});
-			},
-			payment: function(url,token) {
-				$$.post(url+'/CSL/Order/QueryStatusCount', {WToken: token,StatusID: 1}, function(data) {
-					data.Data == 'Not login!' ? 0 : data.Data;
-					$('#payment').html(data.Data);
-				});
-			},
-			deliverGoods: function(url,token) {
-				$$.post(url+'/CSL/Order/QueryStatusCount', {WToken: token,StatusID: 2}, function(data) {
-					data.Data == 'Not login!' ? 0 : data.Data;
-					$('#deliverGoods').html(data.Data);
-				});
-			},
-			goodsReceipt: function(url,token) {
-				$$.post(url+'/CSL/Order/QueryStatusCount', {WToken: token,StatusID: 4}, function(data) {
-					data.Data == 'Not login!' ? 0 : data.Data;
-					$('#goodsReceipt').html(data.Data);
-				});
-			},
-			assessment: function(url,token) {
-				$$.post(url+'/CSL/Order/QueryStatusCount', {WToken: token,StatusID: 6}, function(data) {
-					data.Data == 'Not login!' ? 0 : data.Data;
-					$('#assessment').html(data.Data);
-				});
-			}
-		};
-		//获取头像
-		var resImg = $$.getUserInfo();
-		var imgUrl = 'http://api.cheshili.com.cn/Img/';
-		$('#icenter_pageHome .img_icon').attr('src', (resImg.Img ? (imgUrl + resImg) : './images/icon.png'));
-		//获取用户登录账号
-	 	centerData.getAccound(centerData.phoneNum);
-		//用户积分
-		centerData.reward(centerData.hostUrl, token);
-		//我的余额/势力币
-		centerData.accound(centerData.hostUrl, token);
-		//待发货
-		centerData.payment(centerData.hostUrl, token);
-		//待付款
-		centerData.deliverGoods(centerData.hostUrl, token);
-		//待收货
-		centerData.goodsReceipt(centerData.hostUrl, token);
-		//待评价
-		centerData.assessment(centerData.hostUrl, token);
-		//我的收藏
-		//关注的店面
-		//我的足迹
+		$('.user_name').html($$.getUserMobile());
+		var $page = $('#icenter_pageHome'),
+	        pageStr = 'icenter_pageHome';
+		var resImg = $$.getUserInfo();//获取头像
+		$('#icenter_pageHome .img_icon').attr('src', 
+			(resImg.Img ? ($$.config.serverAddr + resImg) : './images/icon.png')
+		);
+		getICenterInfo();
+		function getICenterInfo() {
+			$$.post(
+				'CSL/User/QueryICenterInfo',
+				{},
+				function(res) {
+					if (res.Status == 0) {
+						var d = res.Data;
+						d.OrderStatus.forEach(function(item) {
+							d['OrderStatus' + item.StatusID] = item.Count;
+						});
+						$("#icenter_pageHome").find('article').html(
+							template('icenter_pageHome_infos', {
+								d: res.Data
+							})
+						);
+					}
+					bindEvent();
+				}
+			);
+		}
+		function bindEvent() {
+			//个人信息
+		    $('.user_name').off('click').on('click', function() {
+		        $$.redirect('icenter/information.html');
+		    });    
+		    //邀请有礼
+		    $('#head_active_1').off('click').on('click', function() {
+		        $$.redirect('home/recommend.html');
+		    });
+		    //加油卡
+		    $('#head_active_2').off('click').on('click', function() {
+		        $$.redirect('icenter/gas.html');
+		    });
+		    //我的车辆
+		    $('#head_active_3').off('click').on('click', function() {
+		        $$.redirect('home/myCars.html');
+		    });
+		    //积分
+		    $('#reward').off('click').on('click', function() {
+		        layer.msg('即将开放，敬请期待~');
+		        return false;
+		        $$.redirect('icenter/reward.html');
+		    });
+		    //vip
+		    $('.header_vip').off('click').on('click', function() {
+		        $$.redirect('icenter/vip.html');
+		    });
+		    //我的收藏
+		    $('#my_cover').off('click').on('click', function() {
+		        $$.redirect('icenter/storefront.html');
+		    });
+		    //商品列表
+		    $('#article_con_tent').off('click').on('click', function() {
+		        $$.redirect('icenter/orderList.html');
+		    });   
+		    //设置
+		    $('#login_set_out').off('click').on('click', function() {
+		        $$.redirect('icenter/logout.html');
+		    });
+		    //优惠券
+		    $('#content_account_wrap').off('click').on('click', function() {
+		        $$.redirect('icenter/discount.html');
+		    });
+		    //我的钱包
+		    $('#wallet').off('click').on('click', function() {
+		        $$.redirect('icenter/myWallet.html');
+		    });    
+		    //我的足迹
+		    $('#footprint').off('click').on('click', function() {
+		        $$.redirect('icenter/footprint.html');
+		    });     
+		    //势力币
+		    $('#bin').off('click').on('click', function() {
+		        $$.redirect('icenter/bin.html');
+		    });
+		    //意见反馈
+		    $('#advice').off('click').on('click', function() {
+		        $$.redirect('icenter/advice.html');
+		    });  
+		    //退换/售后
+		    $('#order_img_span_5').off('click').on('click', function() {
+		        $$.redirect('icenter/afterService.html');
+		    });     
+		    //跳转订单_______TODO
+		    $('.order_img_span:not(#order_img_span_5)').off('click').on('click', function() {
+		        $$.redirect('icenter/orderList.html');
+		    });
+		    $('#order_content_need_4').click(function() {
+		        $page.find('div.confirm').show();
+		    });
+		    $page.on('click', 'div.confirm, div.confirm button.cancel', function() {
+		        $page.find('div.confirm').hide();
+		    });
+		    $page.on('click', 'div.confirm >div', function(e) {
+		        e.stopPropagation();
+		    });
+		}
 	}
 }());

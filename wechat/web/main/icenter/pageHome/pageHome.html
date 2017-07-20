@@ -28,7 +28,7 @@
 	<article>
 		<div class="order_content" style="margin-top:42.4vw;">
 			<div class="content_wrap_food" id="">
-				<span class="content_wrap_food_1" id="reward">0</span>
+				<span class="content_wrap_food_1" id="reward">0.00</span>
 				<span class="content_wrap_food_2">我的积分</span>
 			</div>
 			<div class="content_wrap_food" id="content_account_wrap">
@@ -36,7 +36,7 @@
 				<span class="content_wrap_food_2">优惠券</span>
 			</div>
 			<div class="content_wrap_food" id="bin">
-				<span class="content_wrap_food_1" id="accound">0</span>
+				<span class="content_wrap_food_1" id="accound">0.00</span>
 				<span class="content_wrap_food_2">势力币</span>
 			</div>
 			<div class="content_wrap_food" id="wallet">
@@ -52,22 +52,18 @@
 		</div>
 		<div class="order_content">
 			<div class="order_img_span" id="order_img_span_1">
-				<div class="order_top_tips" id="payment">0</div>
 				<img src="./images/center/payment_pic.png" alt="" class="order_control">
 				<span class="order_business">待付款</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_2">
-				<div class="order_top_tips" id="deliverGoods">0</div>
 				<img src="./images/center/use_pic.png" alt="" class="order_control">
 				<span class="order_business">待发货</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_3">
-				<div class="order_top_tips" id="goodsReceipt">0</div>
 				<img src="./images/center/make_pic.png" alt="" class="order_control">
 				<span class="order_business">待收货</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_4">
-				<div class="order_top_tips" id="assessment">0</div>
 				<img src="./images/center/center_evaluate.png" alt="" class="order_control">
 				<span class="order_business">待评价</span>
 			</div>
@@ -129,4 +125,108 @@
 			<li class="active" data-tab="center"><span>个人中心</span></li>
 		</nav>
 	</div>
+	<script id="icenter_pageHome_infos" type="text/html">
+		<div class="order_content" style="margin-top:42.4vw;">
+			<div class="content_wrap_food" id="">
+				<span class="content_wrap_food_1" id="reward">{{d.RewardBalance}}</span>
+				<span class="content_wrap_food_2">我的积分</span>
+			</div>
+			<div class="content_wrap_food" id="content_account_wrap">
+				<span class="content_wrap_food_1" id="account">{{d.VoucherCount}}</span>
+				<span class="content_wrap_food_2">优惠券</span>
+			</div>
+			<div class="content_wrap_food" id="bin">
+				<span class="content_wrap_food_1" id="accound">{{d.Balance}}</span>
+				<span class="content_wrap_food_2">势力币</span>
+			</div>
+			<div class="content_wrap_food" id="wallet">
+				<span class="content_wrap_food_1">
+					<img src="./images/center/center_wallet.png" class="order_control_wallet">
+				</span>
+				<span class="content_wrap_food_2">我的钱包</span>
+			</div>
+		</div>
+		<div class="article_content" id="article_con_tent">
+			<img src="./images/center/note_pic.png" alt="" class="img_order">
+			<p class="order_text" id="old_list">订单记录</p>
+		</div>
+		<div class="order_content">
+			<div class="order_img_span" id="order_img_span_1">
+				{{if d.OrderStatus1}}
+				<div class="order_top_tips" id="payment">{{d.OrderStatus1}}</div>
+				{{/if}}
+				<img src="./images/center/payment_pic.png" alt="" class="order_control">
+				<span class="order_business">待付款</span>
+			</div>
+			<div class="order_img_span" id="order_img_span_2">
+				{{if d.OrderStatus2}}
+				<div class="order_top_tips" id="deliverGoods">{{d.OrderStatus2}}</div>
+				{{/if}}
+				<img src="./images/center/use_pic.png" alt="" class="order_control">
+				<span class="order_business">待发货</span>
+			</div>
+			<div class="order_img_span" id="order_img_span_3">
+				{{if d.OrderStatus4}}
+				<div class="order_top_tips" id="goodsReceipt">{{d.OrderStatus4}}</div>
+				{{/if}}
+				<img src="./images/center/make_pic.png" alt="" class="order_control">
+				<span class="order_business">待收货</span>
+			</div>
+			<div class="order_img_span" id="order_img_span_4">
+				{{if d.OrderStatus6}}
+				<div class="order_top_tips" id="assessment">{{d.OrderStatus6}}</div>
+				{{/if}}
+				<img src="./images/center/center_evaluate.png" alt="" class="order_control">
+				<span class="order_business">待评价</span>
+			</div>
+			<!-- <div class="order_img_span" id="order_img_span_5">
+				<img src="./images/center/center_refund.png" alt="" class="order_control">
+				<span class="order_business">退换/售后</span>
+			</div> -->
+		</div>
+		<div class="article_content" id="article_content_1">
+			<img src="./images/center/center_ineed.png" class="img_order" style="width:5.5vw;height:5.5vw">
+			<p class="order_text">必备工具</p>
+		</div>
+		<div class="order_content tools">
+			<div class="content_wrap_food" id="my_cover">
+				<span class="content_wrap_food_1">{{d.WishListCount}}</span>
+				<span class="content_wrap_food_2">我的收藏</span>
+			</div>
+			<div class="content_wrap_food">
+				<span class="content_wrap_food_1">{{d.StoreFollowCount}}</span>
+				<span class="content_wrap_food_2">关注的店面</span>
+			</div>
+			<div class="content_wrap_food" id="footprint">
+				<span class="content_wrap_food_1">{{d.ProductFootCount}}</span>
+				<span class="content_wrap_food_2">我的足迹</span>
+			</div>
+			<div class="content_wrap_food" id="order_content_need_4">
+				<span class="content_wrap_food_1">
+					<img src="./images/center/center_service.png" alt="" class="order_control_5">
+				</span>
+				<span class="order_business">帮助与客服</span>
+			</div>
+			<div class="content_wrap_food" id="advice" style="margin-bottom:20px">
+				<span class="content_wrap_food_1">
+					<img src="./images/center/message_light.png" alt="" class="order_control_5">
+				</span>
+				<span class="order_business">意见反馈</span>
+			</div>
+			<!-- <div class="content_wrap_food" id="login_set_out">
+				<span class="content_wrap_food_1">
+					<img src="./images/center/center_settings.png" alt="" class="order_control_5">
+				</span>
+				<span class="order_business" id="">设置</span>
+			</div>	 -->
+		</div>
+		<div class="confirm">
+			<div>
+				<h4>帮助与客服</h4>
+				<p>0531-85523333<br />工作时间：9:30-17:30</p>
+				<button class="cancel">取消</button>
+				<a class="confirm" href="tel:0531-85523333">呼叫</a>
+			</div>
+		</div>
+	</script>
 </div>

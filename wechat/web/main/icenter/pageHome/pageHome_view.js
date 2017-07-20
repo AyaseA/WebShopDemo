@@ -13,7 +13,7 @@
     });    
     //邀请有礼
     $('#head_active_1').on('click', function() {
-        $$.redirect('home/invite.html');
+        $$.redirect('home/recommend.html');
     });
     //加油卡
     $('#head_active_2').on('click', function() {
@@ -25,6 +25,8 @@
     });
     //积分
     $('#reward').on('click', function() {
+        layer.msg('即将开放，敬请期待~');
+        return false;
         $$.redirect('icenter/reward.html');
     });
     //vip

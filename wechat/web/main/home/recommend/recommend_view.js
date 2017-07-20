@@ -8,5 +8,6 @@ $(function () {
         bodyHeight - headerHeight - 1
     );
 
-
+    // 返回按钮
+    $$.setGoBack($page.find('>div.header >a.goBack'));
 });

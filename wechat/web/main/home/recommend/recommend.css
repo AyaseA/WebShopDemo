@@ -14,12 +14,22 @@
     top: 0;
     z-index: 12;
 }
+#home_recommend >div.header a.goBack {
+    display: block;
+    float: left;
+    height: 44px;
+    width: 44px;
+    background: url(../../images/common/round_left_blue.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+    padding-left: 15px;
+}
 #home_recommend >div.header >span {
     margin: auto;
     display: block;
     font-weight: 700;
     font-size: 16px;
-    height: 45px;
+    height: 44px;
     text-align: center;
     line-height: 45px;
     width: 60%;
@@ -80,9 +90,7 @@
     margin-top: 30px;
     display: block;
 }
-#home_recommend >div.main >div.content >img {
-    display: block;
-    width: 80%;
+#home_recommend_qrcode {
     margin: 15px 0 0 10%;
 }
 #home_recommend >div.main >div.content >p {

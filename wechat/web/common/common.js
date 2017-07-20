@@ -310,8 +310,7 @@
                     dir = url_arr[0].substring(0, url_arr[0].length - 5),
                     tempdir = dir.split("/");
                 newid = tempdir[0] + "_" + tempdir[1];
-                //newid = dir.replace(/\//g, "_");
-                //setTimeout(function() {
+                
                 // 判断要显示的页面是否存在
                 if ($("div#div_list>div#" + newid).length == 0) {
                     // 不存在，加载页面，css, js 
@@ -322,7 +321,6 @@
                     // 存在，直加载数据*_data.js
                     loadData();
                 }
-                //}, 5000);
             }
         },
         // 获取当前显示的div id
@@ -769,32 +767,33 @@
                 type = $(this).attr('data-type'),
                 url = $$.getUrl();
             openCloseMenu(_x);
-            var aa = sessionStorage.getItem('a') || 1;
             switch (type) {
                 case 'refresh': {
-                        var url_arr = url.split('?'),
-                            dir = url_arr[0].substring(0, url_arr[0].length - 5),
-                            dirArr = dir.split('/'),
-                            dir = dirArr[0] + '/' + dirArr[1] + '/' + dirArr[1],
-                            filedata = dir + '_data.js';
-                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
-                    } break;
+                    var url_arr = url.split('?'),
+                        dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                        dirArr = dir.split('/'),
+                        dir = dirArr[0] + '/' + dirArr[1] + '/' + dirArr[1],
+                        filedata = dir + '_data.js';
+                    loadJs(filedata, dir.replace(/\//g, "_") + "_data");
+                } break;
                 case 'index': {
-                        if (url.indexOf('home/index.html') == -1) {
-                            $$.redirect('main/home/index.html');
-                        }
-                    } break;
+                    if (url.indexOf('home/index.html') == -1) {
+                        $$.redirect('home/index.html');
+                    }
+                } break;
                 case 'icenter': {
-                        if (url.indexOf('icenter/pageHome.html') == -1) {
-                            $$.redirect('main/icenter/pageHome.html', {
-                                fromGoBack: true
-                            });
-                        }
-                    } break;
-                    // 测试用
-                case 'test': {
-                        $$.redirect($(this).attr('data-url'));
-                    } break;
+                    if (url.indexOf('icenter/pageHome.html') == -1) {
+                        $$.redirect('icenter/pageHome.html', {
+                            fromGoBack: true
+                        });
+                    }
+                } break;
+                case 'recommend': {
+                    // 推荐码
+                    if (url.indexOf('home/recommend.html') == -1) {
+                        $$.redirect('home/recommend.html');
+                    }
+                } break;
             }
         });
         // 展开收起菜单
@@ -904,6 +903,9 @@
         }
         if (url.indexOf('home/index.html') != -1) {
             $menu.find('li[data-type=index]').addClass('hide');
+        }
+        if (url.indexOf('home/recommend.html') != -1) {
+            $menu.find('li[data-type=recommend]').addClass('hide');
         }
         lis.css({
             'right': 0

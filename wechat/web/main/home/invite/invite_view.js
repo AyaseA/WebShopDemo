@@ -19,7 +19,7 @@ $(function() {
         $$.loadJavascript('http://res.wx.qq.com/open/js/jweixin-1.2.0.js');
         // 分享链接http://127.0.0.1:8080/theme/default/?__RDTURL__=showShare/showShare.html
         var shareLink = location.href.split('?')[0] +
-            "?__RDTURL__=wechatLogin/wechatLogin.html&RegisterFrom=1&RegisterCont=" +
+            "?R=home/wechatLogin.html&RegisterFrom=1&RegisterCont=" +
             registerCont;
 
         // 分享标题

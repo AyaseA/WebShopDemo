@@ -29,7 +29,7 @@ $(function() {
             case 'activity':
                 {
                     // 活动
-                    $$.redirect('campaign/activity/luckyDraw.html');
+                    $$.redirect('home/product.html?pid=7');
                 }
                 break;
             case 'center':

@@ -43,9 +43,10 @@ $(function() {
     });
     //注册用户
     function regiestUser(phonenumber, verify) {
-        var RegisterFrom = $$.getQueryString('RegisterFrom') || 1,
-            RegisterCont = $$.getQueryString('RegisterCont') || 1,
+        var RegisterFrom = $$.getQueryString('RegisterFrom') || 0,
+            RegisterCont = $$.getQueryString('RegisterCont'),
             goBackUrl = 'home/index.html';
+        RegisterCont = RegisterCont ? parseInt(Base64.decode(RegisterCont)) : '';
         if ($$.stack.getLast()) {
             goBackUrl = $$.stack.pop();
         }

@@ -38,7 +38,7 @@ $(function() {
     );
 
 
-    $page.on("click", ".btn", function() {
+    $page.off(".btn").on("click", ".btn", function() {
         if ($(this).attr("data-watch") == 0) {
             $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/AddUpdateFollow", { StoreID: id },
                 function(txt) {

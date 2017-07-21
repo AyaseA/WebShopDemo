@@ -69,9 +69,9 @@ $(function() {
                                 '</div>';
                         }
                         $page.find(".productContent").append(node);
-
+                        $page.off(".price button");
                         $page.find(".price button").click(function(){
-                            $$.redirect("home/product.html?pid="+$(this).attr("data-id"));
+                            $$.redirect("home/fillOrder.html?pid="+$(this).attr("data-id")+"&num=1");
                         });
                     }
                 }
@@ -91,8 +91,8 @@ $(function() {
                         $page.find(".storeContent").append(storeNode);
                     } else {
                         for (var i = 0; i < storeData.length; i++) {
-                            storeNode += '<div class="storeInfo">' +
-                                '<img src="http://api.cheshili.com.cn/Img/' + storeData[i].Img + '">' +
+                            storeNode += '<div class="storeInfo" data-id="'+storeData[i].ID+'">' +
+                                '<img src="http://api.cheshili.com.cn/Img/' + noImg(storeData[i].Img) + '">' +
                                 '<div class="detail">' +
                                 '<p>' + storeData[i].Name + '</p>' +
                                 '<p>共' + storeData[i].FollowCount + '人关注</p>' +
@@ -101,6 +101,10 @@ $(function() {
                             
                         }
                         $page.find(".storeContent").append(storeNode);
+                        $page.off(".storeInfo");
+                        $page.find(".storeInfo").click(function(){
+                            $$.redirect("shop/shopDetail.html?ID="+$(this).attr("data-id"));
+                        });
                     }
                 }
             }

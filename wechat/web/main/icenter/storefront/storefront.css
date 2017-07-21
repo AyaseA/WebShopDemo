@@ -1,6 +1,7 @@
 #icenter_storefront{
 	height: 100%;
 	background: #EFEFF4;
+	overflow: hidden;
 }
 
 #icenter_storefront .header{
@@ -32,6 +33,11 @@
 
 #icenter_storefront .header a img{
 	width: 6vw;
+}
+
+#icenter_storefront .content{
+	overflow-y: auto;
+	overflow-x:hidden;
 }
 
 #icenter_storefront .productInfo{

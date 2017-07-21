@@ -37,7 +37,7 @@ $(function() {
                                 $.ajax({
                                     type: "POST",
                                     url: url + "Product/Prod/QueryDetail",
-                                    data: { "ID": list[i].ProductID },
+                                    data: { "ID": list[i].ID },
                                     async: false,
                                     success: function(txt) {
 
@@ -65,7 +65,7 @@ $(function() {
                                     type: "POST",
                                     url: url + "Product/Prod/QueryDetail",
                                     async: false,
-                                    data: { "ID": list[i].ProductID },
+                                    data: { "ID": list[i].ID },
                                     success: function(txt) {
 
                                         productInfo = $$.eval(txt).Data;

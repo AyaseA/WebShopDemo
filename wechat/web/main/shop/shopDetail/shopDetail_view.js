@@ -5,7 +5,7 @@ $(function() {
     var id = $$.getQueryString("ID");
 
     $page.find(".back").click(function() {
-        $$.redirect("shop/shopList.html");
+        $$.goBack();
     });
 
     $page.on("click", ".map", function() {
@@ -18,8 +18,6 @@ $(function() {
             infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
         });
     });
-
-    console.log(id);
 
     $page.on("click", ".btn", function() {
         if ($(this).attr("data-watch") == 0) {

@@ -2,6 +2,7 @@ $(function() {
     var $page = $('#icenter_storefront'),
         pageStr = 'icenter_storefront';
 
+
     function getDesCri(txt) {
         txt = JSON.parse(txt);
         return Base64.decode(unescape(txt.text));
@@ -14,6 +15,7 @@ $(function() {
             return "1.png";
         }
     }
+
 
     $$.post("http://api.cheshili.com.cn/CSL/Wish/QueryWishList", {},
         function(txt) {
@@ -37,6 +39,10 @@ $(function() {
                             '</div>';
                     }
                     $page.find(".productContent").append(node);
+
+                    $page.find(".price button").click(function(){
+                    	$$.redirect("home/product.html?pid="+$(this).attr("data-id"));
+                    });
                 }
             }
         });
@@ -44,7 +50,7 @@ $(function() {
     $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/QueryFollowList", {},
         function(txt) {
             if (txt.Status == 0) {
-                $page.find(".storeContent").empty();
+            	$page.find(".storeContent").empty();
                 var storeNode = "";
                 var storeData = txt.Data.Rows;
                 if (storeData.length == 0) {
@@ -59,6 +65,7 @@ $(function() {
                             '<p>共' + storeData[i].FollowCount + '人关注</p>' +
                             '</div>' +
                             '</div>';
+                        
                     }
                     $page.find(".storeContent").append(storeNode);
                 }

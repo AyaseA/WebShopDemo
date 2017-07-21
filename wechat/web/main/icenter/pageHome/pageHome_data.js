@@ -58,7 +58,10 @@
 		    });
 		    //我的收藏
 		    $('#my_cover').off('click').on('click', function() {
-		        $$.redirect('icenter/storefront.html');
+		        $$.redirect("icenter/storefront.html?type=product");
+		    });
+		    $('#home_pageHome_store').off('click').on('click', function() {
+		        $$.redirect("icenter/storefront.html?type=store");
 		    });
 		    //商品列表
 		    $('#article_con_tent').off('click').on('click', function() {

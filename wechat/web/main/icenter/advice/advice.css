@@ -4,6 +4,8 @@
 	width: 100%;
 	height: 100%;
 	background-color: #F0EFF5;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 #icenter_advice >div.header {
 	background-color: #FFF;
@@ -46,79 +48,21 @@
     outline: none;
     width: 90vw;
     height: 45vw;
-    margin: 20vw 5vw;
+    margin: 20vw 5vw 5vw;
     border-radius: 0.8vw;
     padding: 2vw;
     box-sizing: border-box;
 }
 #icenter_advice .advice_button{
-	width: 90.93vw;
-	height: 11.73vw;
-	background-color: #EA5513;
-	color: #fff;
-	font-size: 4.53vw;
-	border-radius: 6.67vw;
-	border: none;
-	outline: none;
-	position: absolute;
-	top: 81.33vw;	
-	left: 4vw;
-}
-#icenter_advice .advice_but_cont{
-	width: 100%;
-	height: 161.87vw;
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	background-color: #000;
-	opacity: 0.4;
-	display: none;
-}
-#icenter_advice .advice_but_words{
-	width: 81.33vw;
-	height: 45.33vw;
-	opacity: none;
-	background-color: #fff;
-	z-index: 100;
-	position: absolute;
-	bottom: 64vw;
-	left: 9.33vw;
-	border-radius: 3px;
-	display: none;
-}
-#icenter_advice .advice_prot_tips{
-	display: inline-block;
-	width: 81.33vw;
-	height: 27.5vw;
-	border-bottom: 1px solid #eee;
-	text-align: center;
-	font-size: 4.3vw;
-	color: #4A4C55;
-	margin-top: 5.87vw;
-	display: none;
-}
-#icenter_advice .advice_prot_tips span{
-	color: #ADADAD;
-}
-#icenter_advice .advice_right{
-	display: block;
-	float: left;
-	width: 40vw;
-	line-height: 12vw;
-	text-align: center;
-	color: #616266;
-	overflow: hidden;
-	display: none;
-}
-#icenter_advice .advice_wrong{
-	display: block;
-	float: right;
-	width: 40vw;
-	line-height: 12vw;
-	text-align: center;
-	border-left: 1px solid #eee;
-	color: #616266;
-	display: none;
+    width: 90vw;
+    height: 11.73vw;
+    background-color: #EA5513;
+    color: #fff;
+    font-size: 4.53vw;
+    border-radius: 6.67vw;
+    border: none;
+    outline: none;
+    margin-left: 5vw;
 }
 #icenter_advice >div.confirm {
     position: absolute;
@@ -183,4 +127,22 @@
     text-align: center;
     float: right;
     line-height: 39px;
+}
+#icenter_advice div.advice_list {
+    margin-top: 15px;
+    background-color: #FFF;
+}
+#icenter_advice div.advice_list h4 {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+#icenter_advice div.advice_list div.advice {
+    padding: 5px 15px;
+}
+#icenter_advice div.advice_list div.advice >span {
+    color: #999;
+}
+#icenter_advice div.advice_list div.advice >p {
+    word-break: break-all;
 }

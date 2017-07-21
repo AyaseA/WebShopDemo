@@ -6,6 +6,7 @@
 	</div>
 	<textarea placeholder="感谢您关注车势力，希望您多提宝贵意见和建议~" class="advice_textarea"></textarea>
 	<button class="advice_button">提交</button>
+	<div class="advice_list"></div>
 	<div class="confirm">
 		<div>
 			<h4>联系我们</h4>
@@ -14,4 +15,15 @@
 			<a class="confirm" href="tel:0531-85523333">呼叫</a>
 		</div>
 	</div>
+	<script id="icenter_advice_content" type="text/html">
+		{{if list.length > 0}}
+		<h4>历史意见与建议</h4>
+		{{each list as val}}
+		<div class="advice">
+			<span>{{val.AddTime | timeFilter}}</span>
+			<p>{{val.Descri}}</p>
+		</div>
+		{{/each}}
+		{{/if}}
+	</script>
 </div>

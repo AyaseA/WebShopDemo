@@ -19,8 +19,8 @@ $(function(){
         var type = $(this).attr('data-type');
         switch(type) {
             case 'carWash': {
-                // 一元洗车
-                $$.redirect('campaign/activity/cleaningCar.html');
+                // 一元洗车活动
+                $$.redirect('home/product.html?pid=7');
             } break;
             case 'maintain': {
                 // 车辆信息
@@ -34,7 +34,7 @@ $(function(){
     });
     // 活动点击事件
     $page.on('click', 'div.activity', function() {
-        $$.redirect('home/activity.html', 0);
+        $$.redirect('home/activity.html');
     });
     // 点击商品查看详情
     $page.on('click', 'div.products img', function() {

@@ -9,7 +9,7 @@
 	</div>
 	<div class="main">
 		<div class="content clear">
-			<div class="product">
+			<div class="product" data-index="0">
 				<div class="detail"></div>
 				<div class="comments">
 					<p>评价（<i></i>）
@@ -18,10 +18,8 @@
 					<div class="commentList"></div>
 				</div>
 			</div>
-			<div class="proDetail">
-				<img src="./images/product/proDetail.png">
-			</div>
-			<div class="evaluate">
+			<div class="proDetail" data-index="1"></div>
+			<div class="evaluate" data-index="2">
 				<ul class="clear">
 					<li data-type="all" data-index="0" class="active">全部</li>
 					<li data-type="good" data-index="1">好评</li>
@@ -30,12 +28,12 @@
 					<li data-type="haveImg" data-index="4">有图</li>
 				</ul>
 				<div class="reviews">
-					<div class="warp">
-						<div class="all"></div>
-						<div class="good"></div>
-						<div class="middle"></div>
-						<div class="bad"></div>
-						<div class="haveImg"></div>
+					<div class="warp clear">
+						<div class="all" data-index="0"></div>
+						<div class="good" data-index="1"></div>
+						<div class="middle" data-index="2"></div>
+						<div class="bad" data-index="3"></div>
+						<div class="haveImg" data-index="4"></div>
 					</div>
 				</div>
 			</div>
@@ -45,11 +43,11 @@
 		<a href="javascript:void(0)" data-id="" class="collect">加入收藏</a>
 		<a href="javascript:void(0)" class="buyNow">立即购买</a>
 	</div>
-	<script id="home_product_product_detail" type="text/html">
+	<script id="home_product_product_info" type="text/html">
 		<div class="banner" id="home_product_banner">
 			<div class="hd"><ul></ul></div>
 			<div class="bd"><ul>
-				{{set imgList = $imports.splitFilter(data.Imglist, ',')}}
+				{{set imgList = $imports.splitFilter(data.ImgList, ',')}}
 				{{each imgList as image}}
 					<li><a href="javascript:void(0)">
 						<img _src="{{serverAddr}}Img/{{image | imgFilter}}" src="./images/common/blank.png" />
@@ -59,9 +57,15 @@
 		</div>
 		<div class="info">
 			<p>{{data.Name}}</p>
-			<span>{{descri}}</span>
+			<span>{{descriTxt}}</span>
 			<h1><small>￥</small>{{data.Price}}</h1>
 		</div>
+	</script>
+	<script id="home_product_product_detail" type="text/html">
+		{{each descriImgs as img}}
+			<img src="{{serverAddr}}Img/{{img | imgFilter}}">
+		{{/each}}
+		<div>{{descriTxt}}</div>
 	</script>
 	<script id="home_product_product_comment" type="text/html">
 	{{each commentList as comment}}

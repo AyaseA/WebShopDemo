@@ -48,19 +48,184 @@ $(function() {
 		    }
 		}
 	});
+	// 左右滑动
+	var moveObj = {
+		x: 0,
+		y: 0,
+		xDis: 0,
+		yDis: 0,
+		targetIndex: 0,
+		isSub: false
+	};
+
+	$page.on('touchstart', 'div.content >div', function(e) {
+		if (!moveObj.isSub) {
+			var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+	            _x = _touch.pageX,
+	            _y = _touch.pageY;
+	        moveObj.x = _x;
+	        moveObj.y = _y;
+		}
+	}).on('touchmove', 'div.content >div', function(e) {
+		if (!moveObj.isSub) {
+			var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+	            _x = _touch.pageX,
+	            _y = _touch.pageY,
+	            cls = $(this).attr('class'),
+	            index = parseInt($(this).attr('data-index')),
+	            marginLeft = 0;
+	        moveObj.xDis = _x - moveObj.x;
+	        moveObj.yDis = _y - moveObj.y;
+	        if (Math.abs(moveObj.xDis) > Math.abs(moveObj.yDis)) {
+		        moveObj.isSub = false;
+		        if (moveObj.xDis > 0) {
+		        	// 往右滑动
+		        	moveObj.targetIndex = index - 1;
+		        	if (cls == 'product') {
+			        	moveObj.xDis = 0;
+			        	moveObj.targetIndex = 0;
+			        }
+			        marginLeft = (- index * boxWidth) + moveObj.xDis;
+		        } else if (moveObj.xDis < 0) {
+		        	// 往左滑动
+		        	moveObj.targetIndex = index + 1;
+			        if (cls == 'evaluate') {
+			        	moveObj.xDis = 0;
+			        	moveObj.targetIndex = 2;
+			        	moveObj.isSub = true;
+			        }
+			        marginLeft = moveObj.xDis - index * boxWidth;
+		        }
+		        if (Math.abs(moveObj.xDis) > boxWidth * 0.2) {
+		        	$page.find('div.content').css({
+						'margin-left': marginLeft
+					});
+		        }
+		    }
+	    }
+	}).on('touchend', 'div.content >div', function(e) {
+		if (!moveObj.isSub) {
+			var index = parseInt($(this).attr('data-index')),
+				marginLeft = 0,
+				targetTitleIndex = 0;
+			if (Math.abs(moveObj.xDis) > boxWidth * 0.4) {
+				// 滑动距离大于40%，跳到下一个
+				marginLeft = - boxWidth * moveObj.targetIndex;
+				targetTitleIndex = moveObj.targetIndex;
+			} else {
+				marginLeft = - boxWidth * index;
+				targetTitleIndex = index;
+			}
+			$page.find('div.content').animate({
+				'margin-left': marginLeft
+			}, 300);
+			$page.find('>div.header li[data-index=' + targetTitleIndex + ']').addClass('active').siblings().removeClass('active');
+			moveObj = {
+				x: 0,
+				y: 0,
+				xDis: 0,
+				yDis: 0,
+				targetIndex: moveObj.targetIndex,
+				isSub: false
+			};
+		}
+	});
+	var moveReviewObj = {
+		x: 0,
+		y: 0,
+		xDis: 0,
+		yDis: 0,
+		targetIndex: 0
+	};
+	$page.on('touchstart', 'div.content >div div.warp >div', function(e) {
+		if (moveObj.isSub) {
+			var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+	            _x = _touch.pageX,
+	            _y = _touch.pageY;
+	        moveReviewObj.x = _x;
+	        moveReviewObj.y = _y;
+		}
+	}).on('touchmove', 'div.content >div div.warp >div', function(e) {
+		if (moveObj.isSub) {
+			var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+	            _x = _touch.pageX,
+	            _y = _touch.pageY,
+	            cls = $(this).attr('class'),
+	            index = parseInt($(this).attr('data-index')),
+	            marginLeft = 0;
+	        moveReviewObj.xDis = _x - moveReviewObj.x;
+	        moveReviewObj.yDis = _y - moveReviewObj.y;
+	        if (Math.abs(moveReviewObj.xDis) > Math.abs(moveReviewObj.yDis)) {
+		        moveObj.isSub = true;
+		        if (moveReviewObj.xDis > 0) {
+		        	// 往右滑动
+		        	moveReviewObj.targetIndex = index - 1;
+		        	if (cls == 'all') {
+			        	moveReviewObj.xDis = 0;
+			        	moveReviewObj.targetIndex = 0;
+			        	moveObj.isSub = false;
+			        }
+			        marginLeft = (- index * boxWidth) + moveReviewObj.xDis;
+		        } else if (moveReviewObj.xDis < 0) {
+		        	// 往左滑动
+		        	moveReviewObj.targetIndex = index + 1;
+			        if (cls == 'haveImg') {
+			        	moveReviewObj.xDis = 0;
+			        	moveReviewObj.targetIndex = 4;
+			        }
+			        marginLeft = moveReviewObj.xDis - index * boxWidth;
+		        }
+		        if (Math.abs(moveReviewObj.xDis) > boxWidth * 0.2) {
+		        	$page.find('div.reviews >div.warp').css({
+						'margin-left': marginLeft
+					});
+		        }
+	        }
+		}
+	}).on('touchend', 'div.content >div div.warp >div', function(e) {
+		if (moveObj.isSub) {
+			var index = parseInt($(this).attr('data-index')),
+				marginLeft = 0,
+				targetTitleIndex = 0;
+			if (Math.abs(moveReviewObj.xDis) > boxWidth * 0.4) {
+				// 滑动距离大于40%，跳到下一个
+				marginLeft = - boxWidth * moveReviewObj.targetIndex;
+				targetTitleIndex = moveReviewObj.targetIndex;
+			} else {
+				marginLeft = - boxWidth * index;
+				targetTitleIndex = index;
+			}
+			$page.find('div.reviews >div.warp').animate({
+				'margin-left': marginLeft
+			}, 300);
+			$page.find('div.evaluate >ul li[data-index=' + targetTitleIndex + ']').addClass('active').siblings().removeClass('active');
+			moveReviewObj = {
+				x: 0,
+				y: 0,
+				xDis: 0,
+				yDis: 0,
+				targetIndex: moveReviewObj.targetIndex
+			};
+		}
+	});
 	// tab页切换
 	function changeTab(item) {
+		var index = parseInt($(item).attr('data-index'));
 		$(item).addClass('active').siblings().removeClass('active');
 		$page.find('div.content').animate({
-			'margin-left': - boxWidth * $(item).attr('data-index')
+			'margin-left': - boxWidth * index
 		}, 300);
+		moveObj.targetIndex = index;
+		moveObj.isSub = (index == 2);
 	}
 	// 评价tab页切换
 	function changeCommentsTab(item, type) {
+		var index = parseInt($(item).attr('data-index'));
 		$(item).addClass('active').siblings().removeClass('active');
 		$page.find('div.reviews >div.warp').animate({
-			'margin-left': - boxWidth * $(item).attr('data-index')
+			'margin-left': - boxWidth * index
 		}, 300);
+		moveReviewObj.targetIndex = index;
 	}
 	// 添加收藏
 	function addWish(pid, item) {

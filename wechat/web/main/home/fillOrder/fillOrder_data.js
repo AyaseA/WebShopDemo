@@ -88,7 +88,7 @@ $(function() {
                     campaignNum = d.CampaignNum || 0;
                     if (d.Descri) {
                         d.Descri = JSON.parse(d.Descri);
-                        descri = Base64.decode(unescape(d.Descri.text));
+                        descri = d.Descri.text ? Base64.decode(unescape(d.Descri.text)) : '';
                     }
                     total = parseFloat(d.Price);
                     $page.find('>div.main >div.productInfo').html(

@@ -214,8 +214,15 @@
 	float: right;
 	font-size: 14px;
 }
+#home_product div.proDetail {
+    font-size: 0;
+}
 #home_product div.proDetail >img {
 	width: 100%;
+}
+#home_product div.proDetail >div {
+	padding: 5px 10px;
+    font-size: 14px;
 }
 #home_product div.evaluate >ul {
 	width: 100%;

@@ -38,18 +38,30 @@ $(function() {
                     var d = res.Data;
                     // 获取评论
                     getComments(d.Name);
-                    var descri = '';
+                    var descriTxt = '',
+                        descriTitle = '',
+                        descriImgs = [];
                     if (d.Descri) {
                         d.Descri = JSON.parse(d.Descri);
-                        descri = Base64.decode(unescape(d.Descri.text));
+                        descriTitle = d.Descri.title;
+                        descriTxt = d.Descri.text ? Base64.decode(unescape(d.Descri.text)) : '';
+                        descriImgs = d.Descri.imgs ? d.Descri.imgs.split(',') : '';
                     }
                     $page.find('>div.main div.product >div.detail').html(
-                        template(pageStr + '_product_detail', {
+                        template(pageStr + '_product_info', {
                             serverAddr: $$.config.serverAddr,
                             data: d,
-                            descri: descri
+                            descriTitle: descriTitle,
+                            descriTxt: descriTxt
                     }));
-                    if (d.Imglist) {
+                    $page.find('>div.main div.proDetail').html(
+                        template(pageStr + '_product_detail', {
+                            serverAddr: $$.config.serverAddr,
+                            descriTitle: descriTitle,
+                            descriTxt: descriTxt,
+                            descriImgs: descriImgs
+                    }));
+                    if (d.ImgList) {
                         TouchSlide({
                             slideCell: "#home_product_banner",
                             titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层

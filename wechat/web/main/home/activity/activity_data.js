@@ -47,7 +47,7 @@ $(function() {
 						var descri = '';
 	                    if (item.Descri) {
 	                        item.Descri = JSON.parse(item.Descri);
-	                        descri = Base64.decode(unescape(item.Descri.text));
+	                        descri = item.Descri.text ? Base64.decode(unescape(item.Descri.text)) : '';
 	                    }
 						item.desc = descri;
 					});

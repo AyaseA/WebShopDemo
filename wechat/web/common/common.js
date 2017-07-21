@@ -294,7 +294,9 @@
                 };
 
                 // 将历史url存入栈
-                if (tmpUrl.indexOf('home/index.html') != -1) {
+                if (tmpUrl.indexOf('home/index.html') != -1 ||
+                    tmpUrl.indexOf('shop/shopList.html') != -1 ||
+                    tmpUrl.indexOf('icenter/pageHome.html') != -1) {
                     $$.stack.clear();
                 } else {
                     $$.stack.push($$.getUrl(), backUrl, fromGoBack);

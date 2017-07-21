@@ -6,11 +6,6 @@ $(function() {
         $$.goBack();
     });
 
-    $page.find(".header span").click(function(){
-        $page.find(".header span").removeClass("on");
-        $(this).addClass("on");
-        $(".storeContent,.productContent").hide();
-        $("."+$(this).attr("data-content")).show();
-    });
+    
 
 });

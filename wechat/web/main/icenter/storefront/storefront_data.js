@@ -33,7 +33,7 @@ $(function() {
     }
 
 
-    $page.off(".header span").on("click",".header span",function(){
+    $page.off("click",".header span").on("click",".header span",function(){
         $page.find(".header span").removeClass("on");
         $(this).addClass("on");
         $(".storeContent,.productContent").hide();
@@ -69,7 +69,7 @@ $(function() {
                                 '</div>';
                         }
                         $page.find(".productContent").append(node);
-                        $page.off(".price button");
+                        $page.off("click",".price button");
                         $page.find(".price button").click(function(){
                             $$.redirect("home/fillOrder.html?pid="+$(this).attr("data-id")+"&num=1");
                         });
@@ -101,7 +101,7 @@ $(function() {
                             
                         }
                         $page.find(".storeContent").append(storeNode);
-                        $page.off(".storeInfo");
+                        $page.off("click",".storeInfo");
                         $page.find(".storeInfo").click(function(){
                             $$.redirect("shop/shopDetail.html?ID="+$(this).attr("data-id"));
                         });

@@ -15,6 +15,13 @@ $(function () {
     $page.off('click', 'div.confirm >div').on('click', 'div.confirm >div', function(e) {
         e.stopPropagation();
     });
+    $page.off('click', 'button.cancelOrder').on('click', 'button.cancelOrder', function() {
+        layer.confirm('确认取消订单？', { icon: 3, title: '提示' }, function(index) {
+            cancelOrder();
+            layer.close(index);
+        });
+        
+    });
     // 获取订单详情
 	getOrderDetail();
 	function getOrderDetail() {
@@ -40,7 +47,7 @@ $(function () {
                 		                parseFloat(d.RewardPointNum) +
                 		                parseFloat(d.GiftVoucherNum)).toFixed(2)
                 	}));
-                    var canCancel = $.inArray(d.StatusID, ['1', '2', '3', '4', '8', '10']) != -1,
+                    var canCancel = $.inArray(d.StatusID, ['1'/*, '2', '3', '4', '8', '10'*/]) != -1,
                         canPay = $.inArray(d.StatusID, ['1', '8', '10']) != -1;
                     // 设置底部按钮
                     $page.find('>div.footer').html(template(pageStr + '_footer', {
@@ -53,4 +60,19 @@ $(function () {
 			}
 		);
 	}
+    // 取消订单
+    function cancelOrder() {
+        $$.post(
+            'CSL/Order/CancelOrder',
+            {
+                ID: orderId
+            },
+            function(res) {
+                if (res.Status == 0 && res.Data == 'succ') {
+                    layer.msg('订单取消成功！');
+                    getOrderDetail();
+                }
+            }
+        );
+    }
 });

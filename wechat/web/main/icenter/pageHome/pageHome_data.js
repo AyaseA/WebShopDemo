@@ -32,6 +32,7 @@
 		function bindEvent() {
 			//个人信息
 		    $('.user_name').off('click').on('click', function() {
+		    	return false;
 		        $$.redirect('icenter/information.html');
 		    });    
 		    //邀请有礼

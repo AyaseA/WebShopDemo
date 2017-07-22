@@ -2,12 +2,12 @@
 	if($$.getToken()) {
 		$('.span_login_in').html($$.getUserMobile());
 	}
-	$('.head_photo_control').on('click', function() {
+	/*$('.head_photo_control').on('click', function() {
 		$('.div_float_1').css('display', 'block');
 		$('.photo_take').css('display', 'block');
 		$('.photo_photogragh').css('display', 'block');
 		$('.take_concel').css('display', 'block');
-	});
+	});*/
 	$('.take_concel').on('click', function() {
 		$('.div_float_1').css('display', 'none');
 		$('.photo_take').css('display', 'none');
@@ -47,7 +47,7 @@
 		$$.goBack();
 	});
 	//拍照
-	$('.photo_take').on('click', function() {
+	/*$('.photo_take').on('click', function() {
 		$('.div_float_1').css('display', 'none');
 		$('.photo_take').css('display', 'none');	
 		$('.photo_photogragh').css('display', 'none');
@@ -58,5 +58,5 @@
 		$('.photo_take').css('display', 'none');
 		$('.photo_photogragh').css('display', 'none');
 		$('.take_concel').css('display', 'none');		
-	});
+	});*/
 }());

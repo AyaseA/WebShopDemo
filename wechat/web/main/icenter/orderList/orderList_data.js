@@ -33,21 +33,37 @@ $(function() {
                 waitRevice: 0,
             },
 
-            haveLoad = {
-                all: 0,
-                waitPay: 0,
-                waitPost: 0,
-                waitGet: 0,
-                waitRevice: 0
-            };
+        haveLoad = {
+            all: 0,
+            waitPay: 0,
+            waitPost: 0,
+            waitGet: 0,
+            waitRevice: 0
+        };
 
-        //进入清空之前内容,显示首页内容
-        $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
-        $page.find(".content").children().hide();
-        $page.find(".all").fadeIn(500);
-        $page.find(".nav ul li").removeClass("on");
-        $page.find(".nav .allNav").addClass("on");
-        loadList({ "WToken": Token, "N": n}, ".all", "all");
+        var type=$$.getQueryString("type") || all;
+
+        function showContent(area,nav,load){
+            $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
+            $page.find(".content").children().hide();
+            $page.find(area).fadeIn(500);
+            $page.find(".nav ul li").removeClass("on");
+            $page.find(nav).addClass("on");
+            load;
+        }
+
+        if(type == "all"){
+            showContent(".all",".allNav",loadList({ "WToken": Token, "N": n}, ".all", "all"));
+        }else if(type == "waitPay"){
+            showContent(".waitPay",".waitPayNav",loadList({ "WToken": Token, "N": n, "StatusID": 1 }, ".waitPay", "waitPay"));
+        }else if(type == "waitPost"){
+            showContent(".waitPost",".waitPostNav",loadList({ "WToken": Token, "N": n, "StatusID": 3 }, ".waitPost", "waitPost"));
+        }else if(type == "waitGet"){
+            showContent(".waitGet",".waitGetNav",loadList({ "WToken": Token, "N": n, "StatusID": 4 }, ".waitGet", "waitGet"));
+        }else{
+
+        }
+
 
         //点击支付按钮事件  
         $page.off("click", ".PayBtn").on("click", ".PayBtn", function() {
@@ -94,20 +110,6 @@ $(function() {
                                 $page.find(area).append(noOrders);
                             } else {
                                 for (var i = 0; i < list.length; i++) {
-                                    //用creatElement方法增加列表
-                                    //              var onePiece=document.createElement("div");
-                                    //              onePiece.className="onePiece";
-                                    //              var pieceHeader=document.createElement("div");
-                                    //              pieceHeader.className="pieceHeader";
-                                    //              var pieceHeaderNode='<p class="pieceStatus">状态</p>';
-                                    //              pieceHeader.innerHTML=""+pieceHeaderNode;
-                                    //              var pieceContent=document.createElement("div");
-                                    //              pieceContent.className="pieceContent";
-                                    //              var piecePay=document.createElement("div");
-                                    //              piecePay.className="piecePay";
-                                    //              $(".onePiece").append(pieceHeader);
-                                    //              $(".onePiece").append(pieceContent);
-                                    //              $(".onePiece").append(piecePay);
                                     listData = $$.eval(list[i].Data);
                                     var contentNodeList = "",
                                         onePiece = '';
@@ -181,20 +183,6 @@ $(function() {
                                                 var list = $$.eval(data).Data.Rows;
                                                 $page.listNum = list.length;
                                                 for (var i = 0; i < list.length; i++) {
-                                                    //用creatElement方法增加列表
-                                                    //              var onePiece=document.createElement("div");
-                                                    //              onePiece.className="onePiece";
-                                                    //              var pieceHeader=document.createElement("div");
-                                                    //              pieceHeader.className="pieceHeader";
-                                                    //              var pieceHeaderNode='<p class="pieceStatus">状态</p>';
-                                                    //              pieceHeader.innerHTML=""+pieceHeaderNode;
-                                                    //              var pieceContent=document.createElement("div");
-                                                    //              pieceContent.className="pieceContent";
-                                                    //              var piecePay=document.createElement("div");
-                                                    //              piecePay.className="piecePay";
-                                                    //              $(".onePiece").append(pieceHeader);
-                                                    //              $(".onePiece").append(pieceContent);
-                                                    //              $(".onePiece").append(piecePay);
                                                     listData = $$.eval(list[i].Data);
                                                     var contentNodeList = "";
                                                     var onePiece = "";
@@ -271,11 +259,8 @@ $(function() {
                             }
                         });
                     }
-
                 }
-
             });
-
         }
 
         //点击全部事件
@@ -359,7 +344,6 @@ $(function() {
                     data: { "WToken": Token, IsReview: 0 },
                     success: function(Data) {
                         Data = $$.eval(Data);
-                        console.log(Data);
                         var list = Data.Data.Rows;
                         if (list == 0) {
                             var noOrders = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p><button>最新优惠</button></div>";
@@ -379,7 +363,6 @@ $(function() {
                                         $page.find(".waitRevice").append(onePiece);
                                     }
                                 });
-
                             }
                             haveLoad.waitRevice = 1;
                         }

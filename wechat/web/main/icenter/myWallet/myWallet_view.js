@@ -34,7 +34,7 @@ $(function() {
             		}
                     var descri = list[i].Descri,
                         content = '';
-                    if (descri) {
+                    if (descri.text) {
                         descri = JSON.parse(descri);
                         content = Base64.decode(unescape(descri.text));
                     }

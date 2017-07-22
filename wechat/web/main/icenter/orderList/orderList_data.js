@@ -62,6 +62,7 @@ $(function() {
             showContent(".waitGet",".waitGetNav",loadList({ "WToken": Token, "N": n, "StatusID": 4 }, ".waitGet", "waitGet"));
         }else if(type == "waitRevice"){
             $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
+            $page.find(".all, .waitPost, .waitGet, .waitPay").hide();
             $page.find(".nav ul li").removeClass("on");
             $page.find(".waitReviceNav").addClass("on");
             $page.find(".waitRevice").fadeIn(500);

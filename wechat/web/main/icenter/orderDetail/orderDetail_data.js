@@ -29,8 +29,7 @@ $(function () {
                 }
                 if (res.Data) {
                 	var d = res.Data;
-                    d.StatusID = '10';
-                	total = 1;//d.OutPocket;
+                	total = d.OutPocket;
                 	$page.find('>div.main').html(template(pageStr + '_detail', {
                         serverAddr: $$.config.serverAddr,
                 		proList: JSON.parse(d.Data),

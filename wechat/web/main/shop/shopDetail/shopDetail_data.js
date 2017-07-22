@@ -8,6 +8,14 @@ $(function() {
 	
     $('#shop_shopDetail_banner .bd ul').empty();
 
+    function checkInfo(data,name){
+        for(var i=0;i<data.length;i++){
+            if(data[i].Name==name){
+                return data[i].Value;
+            }
+        }
+    }
+
     $.ajax({
     	type:"POST",
     	url:"http://api.cheshili.com.cn/Product/Store/QueryStoreDetail",
@@ -20,8 +28,11 @@ $(function() {
     			$page.find(".storeName").html(txt.Data.Name);
     			$page.find(".storeNum").html(txt.Data.WDeviceNum||0);
     			$page.find(".storeAddr").html(txt.Data.Address);
-    			$page.find(".call").attr("href","tel:"+(txt.Data.Tel||10086));
-    			$page.find(".storePhone").html(txt.Data.Tel||10086);
+    			$page.find(".call").attr("href","tel:"+txt.Data.Tel);
+    			$page.find(".storePhone").html(txt.Data.Tel);
+                $page.find(".saleTime span").html(checkInfo(JSON.parse(txt.Data.Params)[0]?JSON.parse(txt.Data.Params)[0].Children:"","营业开始时间")+"-"+checkInfo(JSON.parse(txt.Data.Params)["0"].Children,"营业结束时间"));
+                $page.find(".storeArea span").html(checkInfo(JSON.parse(JSON.parse(txt.Data.Params)[0]?JSON.parse(txt.Data.Params)[0].Children:"","店铺面积"));
+
                 if(txt.Data.ImgList){
                     var imgList=txt.Data.ImgList.split(",");
                     for(var i=0;i<imgList.length;i++){

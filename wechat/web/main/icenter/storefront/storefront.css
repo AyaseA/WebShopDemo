@@ -91,11 +91,6 @@
 	display: none;
 }
 
-#icenter_storefront  .noData{
-	color:#f60;
-	text-align: center;
-}
-
 #icenter_storefront .storeInfo{
 	padding: 2vw;
 	background: #fff;
@@ -119,4 +114,25 @@
 #icenter_storefront .detail p{
 	margin-top: 1vw;
 	margin-bottom:2vw;
+}
+
+#icenter_storefront .noOrders{
+	width: 55vw;
+	height: 80vw;
+	text-align: center;
+	position: absolute;
+	top: 20vw;
+	left: 23vw;
+
+}
+
+#icenter_storefront .noOrders img{
+	width: 55vw;
+}
+
+#icenter_storefront .noOrders p{
+	color: #f60;
+	font-size: 4vw;
+	margin-top:3vw;
+	margin-bottom: 3vw;
 }

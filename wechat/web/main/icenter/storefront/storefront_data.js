@@ -54,7 +54,7 @@ $(function() {
                     var node = "";
                     var data = txt.Data.Rows;
                     if (data.length == 0) {
-                        node = "<div class='noData'>您还没有关注商品</div>";
+                        node = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p></div>";
                         $page.find(".productContent").append(node);
                     } else {
                         for (var i = 0; i < data.length; i++) {
@@ -87,7 +87,7 @@ $(function() {
                     var storeNode = "";
                     var storeData = txt.Data.Rows;
                     if (storeData.length == 0) {
-                        storeNode = "<div class='noData'>您还没有关注店铺</div>";
+                        storeNode = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p></div>";
                         $page.find(".storeContent").append(storeNode);
                     } else {
                         for (var i = 0; i < storeData.length; i++) {

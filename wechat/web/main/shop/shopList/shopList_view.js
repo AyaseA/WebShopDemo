@@ -7,7 +7,7 @@ $(function() {
     var contentHeight = window.innerHeight - $page.find(".header").height() - $page.find(".footer").height() - $page.find(".selectShop").height();
     $("#shop_shopList .shopList").height(contentHeight);
     $("#shop_shopList .shopList").css({ "position": "fixed", "top": $page.find(".header").height() + $page.find(".selectShop").height() + "px", "left": 0 });
-    $page.find(".selectShop").css({ "position": "fixed", "top": $page.find(".header").height() + "px", "left": 0 });
+    $page.find(".selectShop").css({ "position": "relative", "top": $page.find(".header").height() + "px", "left": 0 });
 
 
     //底部导航时间

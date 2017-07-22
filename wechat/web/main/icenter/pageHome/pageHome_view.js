@@ -42,7 +42,7 @@
     });
     //商品列表
     $('#article_con_tent').on('click', function() {
-        $$.redirect('icenter/orderList.html');
+        $$.redirect('icenter/orderList.html?type=all');
     });   
     //设置
     $('#login_set_out').on('click', function() {

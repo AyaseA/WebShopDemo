@@ -61,9 +61,9 @@ $(function() {
         }else if(type == "waitGet"){
             showContent(".waitGet",".waitGetNav",loadList({ "WToken": Token, "N": n, "StatusID": 4 }, ".waitGet", "waitGet"));
         }else{
+            $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
             $page.find(".nav ul li").removeClass("on");
             $page.find(".waitReviceNav").addClass("on");
-            $page.find(".content").children().hide();
             $page.find(".waitRevice").fadeIn(500);
             $.ajax({
                     type: "POST",

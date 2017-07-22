@@ -6,6 +6,8 @@ $(function() {
     
     var id=$$.getQueryString("ID");
 	
+    $('#shop_shopDetail_banner .bd ul').empty();
+
     $.ajax({
     	type:"POST",
     	url:"http://api.cheshili.com.cn/Product/Store/QueryStoreDetail",
@@ -20,9 +22,31 @@ $(function() {
     			$page.find(".storeAddr").html(txt.Data.Address);
     			$page.find(".call").attr("href","tel:"+(txt.Data.Tel||10086));
     			$page.find(".storePhone").html(txt.Data.Tel||10086);
+                if(txt.Data.ImgList){
+                    var imgList=txt.Data.ImgList.split(",");
+                    for(var i=0;i<imgList.length;i++){
+                       $('#shop_shopDetail_banner .bd ul').append("<li><img src='http://api.cheshili.com.cn/Img/"+imgList[i]+"'></li>");
+                    }
+                    bannerSlide();
+                }
     		}
     	}
     });
+
+
+    function bannerSlide(){
+        TouchSlide({
+            slideCell: "#shop_shopDetail_banner",
+            titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+            mainCell: ".bd ul",
+            effect: "left",
+            autoPlay: true, //自动播放
+            autoPage: true, //自动分页
+            switchLoad: "_src", //切换加载，真实图片路径为"_src" 
+            interTime: 3000 // 切换间隔时间，毫秒
+        });
+    }
+
 
     $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/QueryFollowDetail",
         {StoreID:id},

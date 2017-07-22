@@ -143,6 +143,10 @@ $(function() {
                 function(txt) {
                     txt = $$.eval(txt);
                     $page.ReviewID = txt.Data.ID;
+                    layer.alert("评论上传成功", function(index) {
+                        $$.redirect("icenter/orderList.html");
+                        layer.close(index);
+                    });
                 }
             );
         }
@@ -162,7 +166,7 @@ $(function() {
                             console.log(i);
                             console.log($page.imgList.length);
                             if (i == $page.imgList.length) {
-                                layer.alert("评论上传成功",function(index){
+                                layer.alert("评论上传成功", function(index) {
                                     $$.redirect("icenter/orderList.html");
                                     layer.close(index);
                                 });

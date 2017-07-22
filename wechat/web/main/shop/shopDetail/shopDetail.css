@@ -12,11 +12,6 @@
 	position: relative;
 }
 
-#shop_shopDetail .banner img{
-	width: 100%;
-	height: 55vw;
-}
-
 
 #shop_shopDetail .banner .back{
 	position: absolute;
@@ -132,4 +127,57 @@
 #shop_shopDetail .btn img{
 	float: right;
 	width: 5.5vw;
+}
+
+/* banner */
+#shop_shopDetail .shopbanner {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    height: 55vw;
+}
+#shop_shopDetail .shopbanner .hd {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    bottom: 5px;
+    text-align: center;
+}
+#shop_shopDetail .shopbanner .hd ul {
+    height: 7px;
+    padding: 3px 5px;
+    font-size: 0;
+    vertical-align: top;
+}
+#shop_shopDetail .shopbanner .hd ul li {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background: rgba(255,255,255,.6);
+    margin: 0 5px;
+    vertical-align: top;
+    overflow: hidden;
+}
+#shop_shopDetail .shopbanner .hd ul .on {
+    background: #fff;
+}
+#shop_shopDetail .shopbanner .bd {
+    position: relative;
+    z-index: 0;
+}
+#shop_shopDetail .shopbanner .bd ul li {
+    float: left;
+    list-style: none;
+}
+#shop_shopDetail .shopbanner .bd li img {
+    width: 100%;
+    height: 55vw;/* 有待实际验证 */
+    background-color: #fff; 
+}
+#shop_shopDetail .shopbanner .bd li a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

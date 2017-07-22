@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 
+#shop_shopList {
+	height: 100%;
+    background-color: #EFEFF4;
+    position: relative;
+}
 #shop_shopList >div.header {
 	background-color: #EA5514;
 	position: fixed;
@@ -212,12 +217,15 @@
 	height:12.5vw;
 	background:#fff;
 	border-bottom:1px solid #d6d6db;
+	position: fixed;
+	box-sizing: border-box;
 }
 
 #shop_shopList .selectShop ul{
-	list-style:none;
-	padding:3vw 0;
-	border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    height: 100%;
+    line-height: 12.5vw;
+    box-sizing: border-box;
 }
 
 #shop_shopList .selectShop ul li{
@@ -244,7 +252,10 @@
 #shop_shopList .shopList{
 	background:#fff;
 	overflow-y:auto;
+	overflow-x: hidden;
 	width: 100%;
+	position: absolute;
+
 }
 
 #shop_shopList .container{

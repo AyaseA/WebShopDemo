@@ -1,13 +1,21 @@
 // JavaScript Document
 $(function() {
-    var $page = $('#shop_shopList'),
-        pageStr = 'shop_shopList';
+    var bodyH = window.innerHeight || document.body.clientHeight,
+        $page = $('#shop_shopList'),
+        pageStr = 'shop_shopList',
+        headerH = $page.find(".header").height(),
+        selectorH = $page.find('.selectShop').height(),
+        footerH = $page.find(".footer").height();
 
     //设置内容高度    
     var contentHeight = window.innerHeight - $page.find(".header").height() - $page.find(".footer").height() - $page.find(".selectShop").height();
-    $("#shop_shopList .shopList").height(contentHeight);
-    $("#shop_shopList .shopList").css({ "position": "fixed", "top": $page.find(".header").height() + $page.find(".selectShop").height() + "px", "left": 0 });
-    $page.find(".selectShop").css({ "position": "relative", "top": $page.find(".header").height() + "px", "left": 0 });
+    $page.find(".shopList").css({
+        'height': bodyH - headerH - selectorH - footerH - 1,
+        'top': headerH + selectorH
+    });
+    $page.find(".selectShop").css({
+        'top': headerH
+    });
 
 
     //底部导航时间

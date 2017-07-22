@@ -198,21 +198,15 @@
 #home_index >div.main >div.content .products.loaded::after {
     content: '已加载全部';
 }
-#home_index >div.main >div.content .products div.row {
-    text-align: left;
-    padding: 5px 0 8px 1.6%;
-}
-#home_index >div.main >div.content .products div.row >div {
-    text-align: center;
-    display: inline-block;
-    width: 32%;
-}
 #home_index >div.main >div.content .products div.item {
-    width: 94%;
+    width: 30%;
     display: inline-block;
     border: 1px solid #E0E0E4;
-    margin: 0 -1px;
     padding: 8px 0 8px;
+    box-sizing: border-box;
+    margin-left: 2.5%;
+    margin-bottom: 10px;
+    float: left;
 }
 #home_index >div.main >div.content .products div.item img {
     max-width: 80%;
@@ -221,6 +215,7 @@
     margin: 0 0 5px;
     font-size: 14px;
     padding: 0 5px;
+    min-height: 38px;
 }
 #home_index >div.main >div.content .products div.item a {
     background-color: #EA5514;

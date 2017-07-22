@@ -27,7 +27,7 @@
 			<div class="activity">
 				<img src="./images/activity/activity.png">
 			</div>
-			<div class="products"></div>
+			<div class="products clear"></div>
 		</div>
 	</div>
 	<div class="footer">
@@ -48,21 +48,13 @@
     {{/each}}
 	</script>
 	<script id="home_index_products" type="text/html">
-		<div class="row">
 		{{each list as val i}}
-			<div>
-				<div class="item" data-id="{{val.ID}}">
-					<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
-					<p>{{val.Name}}</p>
-					<a href="home/fillOrder.html?pid={{val.ID}}">立即购买</a>
-				</div>
-			</div>
-			{{if ((i != length - 1) && ((i + 1) % 3 == 0))}}
-			</div>
-			<div class="row">
-			{{/if}}
-		{{/each}}
+		<div class="item" data-id="{{val.ID}}">
+			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
+			<p>{{val.Name}}</p>
+			<a href="home/fillOrder.html?pid={{val.ID}}">立即购买</a>
 		</div>
+		{{/each}}
 	</script>
     <script id="home_index_confirm_cnt" type="text/html">
         <div>

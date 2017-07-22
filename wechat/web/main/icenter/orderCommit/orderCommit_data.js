@@ -96,12 +96,8 @@ $(function() {
 
         //删除照片
         $page.on("click", ".close img", function() {
-            //$page.find(".pictures").remove($(this).parent().parent());
-            //在imglist数组中删除照片
-            //$page.imgList.splice($(this).attr("data-index"),$(this).attr("data-index"));
+
         });
-
-
 
 
         $("#icenter_orderCommit .camera").click(function() {
@@ -158,8 +154,6 @@ $(function() {
                     isShowProgressTips: 1, // 默认为1，显示进度提示
                     success: function(res) {
                         var serverId = res.serverId;
-                        console.log(serverId);
-                        //
                         $$.post("CSL/Review/AddReviewImg", {
                             ProductReviewID: $page.ReviewID,
                             Img: serverId,

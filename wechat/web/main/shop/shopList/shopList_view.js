@@ -87,6 +87,14 @@ $(function() {
         });
     }
 
+    function overText(node,num){
+        if(node.length>num){
+            return node.substring(0,num)+"..";
+        }else{
+            return node;
+        }
+    }
+
     // 经纬度-->地址
     function geocoder2Address(geocodeArr) {
         var geocoder = new AMap.Geocoder();
@@ -155,7 +163,7 @@ $(function() {
                     var shoplist = "";
                     for (var i = 0; i < data.length; i++) {
                         var distance = getGreatCircleDistance(36.6875642852, 117.1330654621, data[i].Latitude, data[i].Longitude);
-                        shoplist = '<div class="onepiece" data-ID="'+data[i].ID+'"><img src="http://api.cheshili.com.cn/Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + data[i].Address + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="'+data[i].ID+'"><img src="http://api.cheshili.com.cn/Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address,10) + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 
@@ -343,23 +351,6 @@ $(function() {
                 contentList[this.index].className = "cOn";
             }
         }
-
-        //汽车服务二级tab
-        //  var navTitle2=document.getElementById("navTitle2");
-        //  var selectList2=navTitle2.children;
-        //  var serviceList=document.getElementById("serviceList");
-        //  var serviceListDiv=serviceList.children;
-        //  for(var i=0;i<selectList2.length;i++){
-        //      selectList2[i].index=i;
-        //      selectList2[i].onclick=function(){
-        //          for(var j=0;j<serviceListDiv.length;j++){
-        //                  selectList2[j].className="";
-        //                  serviceListDiv[j].className="ccOff";
-        //              }
-        //              selectList2[this.index].className="ctOn";
-        //              serviceListDiv[this.index].className="ccOn";
-        //          }   
-        //      }
 
         //列表选项点击事件  
         $page.find("#shopList_area li").click(function() {

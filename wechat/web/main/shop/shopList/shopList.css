@@ -511,9 +511,9 @@
 	position: relative;
 }
 
-
 #shop_shopList .onepiece img{
 	width: 23vw;
+	height: 18vw;
 	margin: 3vw 0 0 3vw;
 }
 
@@ -547,6 +547,7 @@
 #shop_shopList .content{
 	background:  #EFEFF4;
 }
+
 #shopList_shopList_confirm {
     padding: 0;
 }

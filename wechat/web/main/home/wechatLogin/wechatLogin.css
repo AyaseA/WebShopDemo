@@ -117,7 +117,6 @@
     left: 59vw;
     top: 1.2vw;
 	text-align: center;
-	vertical-align: center;
 	color: #fff;
 
 }
@@ -128,13 +127,11 @@
 	display: inline-block;
 	font-size: 15px;
 	border-radius: 5px;
-	position: relative;
-	left: 58.67vw;
-	top: -5.6vw;
+    position: absolute;
+    left: 59vw;
+    top: 1.2vw;
 	text-align: center;
-	vertical-align: center;
 	color: #c9c8c9;
-	border: 1px;
 	border-color:#e6e6e6; 
 	display: none;
 }

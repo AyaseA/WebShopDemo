@@ -62,6 +62,8 @@
     });     
     //势力币
     $('#bin').on('click', function() {
+        layer.msg('即将开放，敬请期待~');
+        return false;
         $$.redirect('icenter/bin.html');
     });
     //意见反馈

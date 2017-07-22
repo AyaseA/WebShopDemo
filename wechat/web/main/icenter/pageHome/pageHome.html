@@ -152,28 +152,28 @@
 		</div>
 		<div class="order_content">
 			<div class="order_img_span" id="order_img_span_1">
-				{{if d.OrderStatus1}}
+				{{if d.OrderStatus1 && d.OrderStatus1 > 0}}
 				<div class="order_top_tips" id="payment">{{d.OrderStatus1}}</div>
 				{{/if}}
 				<img src="./images/center/payment_pic.png" alt="" class="order_control">
 				<span class="order_business">待付款</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_2">
-				{{if d.OrderStatus2}}
+				{{if d.OrderStatus2 && d.OrderStatus2 > 0}}
 				<div class="order_top_tips" id="deliverGoods">{{d.OrderStatus2}}</div>
 				{{/if}}
 				<img src="./images/center/use_pic.png" alt="" class="order_control">
 				<span class="order_business">待发货</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_3">
-				{{if d.OrderStatus4}}
+				{{if d.OrderStatus4 && d.OrderStatus4 > 0}}
 				<div class="order_top_tips" id="goodsReceipt">{{d.OrderStatus4}}</div>
 				{{/if}}
 				<img src="./images/center/make_pic.png" alt="" class="order_control">
 				<span class="order_business">待收货</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_4">
-				{{if d.NotReviewCount}}
+				{{if d.NotReviewCount && d.NotReviewCount > 0}}
 				<div class="order_top_tips" id="assessment">{{d.NotReviewCount}}</div>
 				{{/if}}
 				<img src="./images/center/center_evaluate.png" alt="" class="order_control">

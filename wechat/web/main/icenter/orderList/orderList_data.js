@@ -60,7 +60,7 @@ $(function() {
             showContent(".waitPost",".waitPostNav",loadList({ "WToken": Token, "N": n, "StatusID": 3 }, ".waitPost", "waitPost"));
         }else if(type == "waitGet"){
             showContent(".waitGet",".waitGetNav",loadList({ "WToken": Token, "N": n, "StatusID": 4 }, ".waitGet", "waitGet"));
-        }else{
+        }else if(type == "waitRevice"){
             $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
             $page.find(".nav ul li").removeClass("on");
             $page.find(".waitReviceNav").addClass("on");

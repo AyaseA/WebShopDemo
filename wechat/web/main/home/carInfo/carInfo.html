@@ -70,7 +70,6 @@
 		<div class="brands"></div>
 	</div>
 	<div class="seriesModal">
-		<h5></h5>
 		<div class="seriesBox"></div>
 	</div>
 	<div class="carsModal">
@@ -89,7 +88,7 @@
 			{{if letter != lter}}
 				<h5 data-letter="{{lter}}">{{letter = lter}}</h5>
 			{{/if}}
-			<div class="brand" data-id="{{brand.ID}}" data-name="{{brand.Name}}">
+			<div class="brand" data-id="{{brand.ID}}" data-name="{{brand.Name}}" data-ids="{{brand.children | idsParseFilter}}">
 				<div class="img">
 					<img src="{{serverAddr}}Img/{{brand.Img | imgFilter}}" />
 				</div>
@@ -106,14 +105,17 @@
 	</script>
 	<script id="home_carInfo_series_list" type="text/html">
 		{{each series as ses}}
-		<div class="series" data-id="{{ses.ID}}" data-pid="{{ses.BrandID}}" data-name="{{ses.Name}}">
+		<h5>{{ses.BrandName}}</h5>
+		{{each ses.Children as ch}}
+		<div class="series" data-id="{{ch.ID}}" data-pid="{{ch.BrandID}}" data-name="{{ch.Name}}" data-pname="{{ses.BrandName}}">
 			<div class="img">
-				<img src="{{serverAddr}}Img/{{ses.Img | imgFilter}}" />
+				<img src="{{serverAddr}}Img/{{ch.Img | imgFilter}}" />
 			</div>
 			<div class="sName">
-				{{ses.Name}}
+				{{ch.Name}}
 			</div>
 		</div>
+		{{/each}}
 		{{/each}}
 	</script>
 	<script id="home_carInfo_cars_list" type="text/html">

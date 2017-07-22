@@ -11,7 +11,16 @@ $(function() {
         headerHeight = $page.find('div.header').height();
         setSize();
     };
-    
+    // 汽车对象子类数组转ids字符串
+    template.defaults.imports.idsParseFilter = function(arr) {
+        var idArr = [],
+            ids = '';
+        arr.forEach(function(item) {
+            idArr.push(item.ID);
+        });
+        ids = idArr.join(',');
+        return ids;
+    };
     // 设置返回
     $$.setGoBack($page.find('>div.header >a.goBack'));
     
@@ -34,8 +43,9 @@ $(function() {
     // 点击品牌事件
     $page.on('click', '>div.brandsModal div.brand', function() {
         var bid = $(this).attr('data-id'),
-            bName = $(this).attr('data-name');
-        getSeries(bid, bName);
+            bName = $(this).attr('data-name'),
+            bids = $(this).attr('data-ids');
+        getSeries(bid, bids, bName);
         openSeries();
     });
     // 点击series事件
@@ -43,7 +53,7 @@ $(function() {
         var sid = $(this).attr('data-id'),
             sName = $(this).attr('data-name'),
             pid = $(this).attr('data-pid'),
-            pName = $page.find('>div.seriesModal >h5').text();
+            pName = $(this).attr('data-pname');
         $page.find('div.carDetail input[name="carBrand"]')
             .val(pName + ' ' + sName)
             .attr('data-bid', pid)
@@ -169,19 +179,19 @@ $(function() {
         );
     }
     // 获取Series
-    function getSeries(bid, bName) {
+    function getSeries(bid, bids, bName) {
         $page.find('>div.seriesModal >h5').text(bName);
         $$.get(
-            'Product/Car/GetSeriesByBrand?BrandID=' + bid,
+            'Product/Car/GetSeriesJsonByBrand?BrandIDs=' + bids,
             function(res) {
                 if (res.Status != 0) {
                     console.log('获取Series失败');
                     return false;
                 }
-                if (res.Data && res.Data.Rows) {
+                if (res.Data) {
                     $page.find('>div.seriesModal >div.seriesBox').html(
                         template(pageStr + '_series_list', {
-                            series: res.Data.Rows,
+                            series: res.Data,
                             serverAddr: $$.config.serverAddr
                     }));
                 }
@@ -248,8 +258,6 @@ $(function() {
         );
         $page.find('>div.seriesModal').height(
             bodyHeight - 44
-        ).find('>div.seriesBox').height(
-            bodyHeight - 75
         );
         $page.find('>div.carsModal >div.carsBox').height(
             bodyHeight - 45

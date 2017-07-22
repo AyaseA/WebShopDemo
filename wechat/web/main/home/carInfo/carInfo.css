@@ -288,21 +288,19 @@
     width: 75%;
     position: absolute;
     right: -100%;
-    top: 30px;
     background-color: #fff;
     overflow-y: auto;
     overflow-x: hidden;
+    border-top: 1px solid #f1f1f1;
+    box-sizing: border-box;
 }
-#home_carInfo >div.seriesModal >h5 {
+#home_carInfo >div.seriesModal >div.seriesBox >h5 {
 	background-color: #ECECEC;
 	text-indent: 15px;
 	font-size: 14px;
 	color: #939393;
 	height: 30px;
 	line-height: 30px;
-	width: 75%;
-	position: absolute;
-    right: -100%;
 }
 #home_carInfo >div.seriesModal div.series::after {
 	content: '';

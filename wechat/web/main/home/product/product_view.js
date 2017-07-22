@@ -48,6 +48,33 @@ $(function() {
 		    }
 		}
 	});
+	/************** 左右滑动相关 start **************/
+	var moveBannerObj = {
+		x: 0,
+		y: 0,
+		xDis: 0,
+		yDis: 0
+	};
+	$page.on('touchstart', '#home_product_banner', function(e) {
+		var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+            _x = _touch.pageX,
+            _y = _touch.pageY;
+        moveBannerObj.x = _x;
+        moveBannerObj.y = _y;
+	}).on('touchmove', '#home_product_banner', function(e) {
+		var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
+            _x = _touch.pageX,
+            _y = _touch.pageY,
+            cls = $(this).attr('class'),
+            index = parseInt($(this).attr('data-index')),
+            marginLeft = 0;
+        moveBannerObj.xDis = _x - moveBannerObj.x;
+        moveBannerObj.yDis = _y - moveBannerObj.y;
+        if (Math.abs(moveBannerObj.xDis) > Math.abs(moveBannerObj.yDis)) {
+			e.preventDefault();
+			e.stopPropagation();
+        }
+	});
 	// 左右滑动
 	var moveObj = {
 		x: 0,
@@ -57,7 +84,6 @@ $(function() {
 		targetIndex: 0,
 		isSub: false
 	};
-
 	$page.on('touchstart', 'div.content >div', function(e) {
 		if (!moveObj.isSub) {
 			var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
@@ -208,6 +234,7 @@ $(function() {
 			};
 		}
 	});
+	/************** 左右滑动相关 end **************/
 	// tab页切换
 	function changeTab(item) {
 		var index = parseInt($(item).attr('data-index'));

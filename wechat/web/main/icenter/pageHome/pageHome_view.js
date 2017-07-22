@@ -72,10 +72,20 @@
     $('#order_img_span_5').on('click', function() {
         $$.redirect('icenter/afterService.html');
     });     
-    //跳转订单_______TODO
-    $('.order_img_span:not(#order_img_span_5)').on('click', function() {
-        $$.redirect('icenter/orderList.html');
+    //跳转订单
+    $('#order_img_span_1').off('click').on('click', function() {
+        $$.redirect('icenter/orderList.html?type=waitPay');
     });
+    $('#order_img_span_2').off('click').on('click', function() {
+        $$.redirect('icenter/orderList.html?type=waitPost');
+    });
+    $('#order_img_span_3').off('click').on('click', function() {
+        $$.redirect('icenter/orderList.html?type=waitGet');
+    });
+    $('#order_img_span_4').off('click').on('click', function() {
+        $$.redirect('icenter/orderList.html?type=waitRevice');
+    });
+    
     // footer 事件
     $('#icenter_pageHome').on('click', 'div.footer li', function() {
         var type = $(this).attr('data-tab');

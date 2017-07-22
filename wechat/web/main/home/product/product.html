@@ -50,7 +50,7 @@
 				{{set imgList = $imports.splitFilter(data.ImgList, ',')}}
 				{{each imgList as image}}
 					<li><a href="javascript:void(0)">
-						<img _src="{{serverAddr}}Img/{{image | imgFilter}}" src="./images/common/blank.png" />
+						<img class="bnr" _src="{{serverAddr}}Img/{{image | imgFilter}}" src="./images/common/blank.png" />
 					</a></li>
 				{{/each}}
 			</ul></div>

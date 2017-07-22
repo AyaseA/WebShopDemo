@@ -95,11 +95,19 @@
 		    $('#order_img_span_5').off('click').on('click', function() {
 		        $$.redirect('icenter/afterService.html');
 		    });     
-		    //跳转订单_______TODO
-		    $('.order_img_span:not(#order_img_span_5)').off('click').on('click', function() {
-		        $$.redirect('icenter/orderList.html');
+		    //跳转订单
+		    $('#order_img_span_1').off('click').on('click', function() {
+		        $$.redirect('icenter/orderList.html?type=waitPay');
 		    });
-
+		    $('#order_img_span_2').off('click').on('click', function() {
+		        $$.redirect('icenter/orderList.html?type=waitPost');
+		    });
+		    $('#order_img_span_3').off('click').on('click', function() {
+		        $$.redirect('icenter/orderList.html?type=waitGet');
+		    });
+		    $('#order_img_span_4').off('click').on('click', function() {
+		        $$.redirect('icenter/orderList.html?type=waitRevice');
+		    });
 		    
 		    $('#order_content_need_4').off('click').on('click', function() {
 		        $page.find('div.confirm').show();

@@ -8,7 +8,7 @@
     );
 
     //个人信息
-    $('.user_name').on('click', function() {
+    $('.user_name, .head_portrait').on('click', function() {
         $$.redirect('icenter/information.html');
     });    
     //邀请有礼

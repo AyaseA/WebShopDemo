@@ -41,7 +41,7 @@ $(function() {
             waitRevice: 0
         };
 
-        var type=$$.getQueryString("type") || all;
+        var type=$$.getQueryString("type") || "all";
 
         function showContent(area,nav,load){
             $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
@@ -61,8 +61,41 @@ $(function() {
         }else if(type == "waitGet"){
             showContent(".waitGet",".waitGetNav",loadList({ "WToken": Token, "N": n, "StatusID": 4 }, ".waitGet", "waitGet"));
         }else{
-
-        }
+            $page.find(".nav ul li").removeClass("on");
+            $page.find(".waitReviceNav").addClass("on");
+            $page.find(".content").children().hide();
+            $page.find(".waitRevice").fadeIn(500);
+            $.ajax({
+                    type: "POST",
+                    url: url + "CSL/Review/ProductReviewList",
+                    data: { "WToken": Token, IsReview: 0 },
+                    success: function(Data) {
+                        Data = $$.eval(Data);
+                        var list = Data.Data.Rows;
+                        if (list == 0) {
+                            var noOrders = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p><button>最新优惠</button></div>";
+                            $page.find(".waitRevice").append(noOrders);
+                            haveLoad.waitRevice = 1;
+                        } else {
+                            for (var i = 0; i < list.length; i++) {
+                                var orderID = list[i].OrderID;
+                                $.ajax({
+                                    type: "POST",
+                                    url: url + "/Product/Prod/QueryDetail",
+                                    data: { "ID": list[i].ProductID },
+                                    async: false,
+                                    success: function(Data) {
+                                        productInfo = $$.eval(Data).Data;
+                                        onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span style='color:red'>" + orderID + "</span><p class='pieceStatus'>订单完成</p></div><div class='pieceContent'><div><img src='" + url + "Img/" + productInfo.Img + "'><div class='pInfo'><p>商品名称:<span>" + productInfo.Name + "</span></p><p>商品单价:<span>" + productInfo.Price + "</span></p></div></div></div><div class='piecePay'><button class='PayBtn' data-index='" + list[i].ProductID + "'>点评</button></div></div>";
+                                        $page.find(".waitRevice").append(onePiece);
+                                    }
+                                });
+                            }
+                            haveLoad.waitRevice = 1;
+                        }
+                    },
+                });
+        }   
 
 
         //点击支付按钮事件  

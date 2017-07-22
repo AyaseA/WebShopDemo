@@ -226,6 +226,7 @@
     height: 100%;
     line-height: 12.5vw;
     box-sizing: border-box;
+    background-color: #fff;
 }
 
 #shop_shopList .selectShop ul li{

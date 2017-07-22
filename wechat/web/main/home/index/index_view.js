@@ -37,7 +37,7 @@ $(function(){
         $$.redirect('home/activity.html');
     });
     // 点击商品查看详情
-    $page.on('click', 'div.products img', function() {
+    $page.on('click', 'div.products img, div.products p', function() {
         var pid = $(this).parent().attr('data-id');
         $$.redirect('home/product.html?pid=' + pid);
     });

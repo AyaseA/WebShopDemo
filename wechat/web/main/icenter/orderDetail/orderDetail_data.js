@@ -20,7 +20,6 @@ $(function () {
             cancelOrder();
             layer.close(index);
         });
-        
     });
     // 获取订单详情
 	getOrderDetail();

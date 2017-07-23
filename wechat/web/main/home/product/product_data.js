@@ -168,7 +168,7 @@ $(function() {
                         var d = res.Data.Rows,
                             wishArr = [];
                         for (var i = 0; i < d.length; i++) {
-                            wishArr.push(d[i].ProductID);
+                            wishArr.push(d[i].ID);
                         }
                         var isWish = $.inArray(pid, wishArr) != -1;
                         $page.find('>div.footer >a.collect').text(

@@ -42,7 +42,10 @@ $(function() {
 			pid = $this.attr('data-id');
 		if ($$.isLogin(true, null)) {
 		    if ($this.hasClass('collected')) {
-		        cancelWish(pid, $this);
+		    	layer.confirm('确认取消收藏？', { icon: 3, title: '提示' }, function(index) {
+			        cancelWish(pid, $this);
+		            layer.close(index);
+		        });
 		    } else {
 		        addWish(pid, $this);
 		    }
@@ -268,6 +271,7 @@ $(function() {
 						wishArr = wishCookie.split(',');
 					$$.setCookie('__WISHLIST__', wishArr.join(','), 30 / 60 / 24);
 					item.addClass('collected').text('已加入收藏');
+					layer.msg('收藏成功！');
 				}
 			}
 		);

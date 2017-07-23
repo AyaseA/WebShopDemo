@@ -198,7 +198,7 @@ $(function() {
             url: $$.config.serverAddr + 'Product/Prod/HandleProduct',
             data: {
                 ID: pid,
-                Token: $$.getCookie('__TOKEN__')
+                WToken: $$.getCookie('__TOKEN__')
             }
         });
     }

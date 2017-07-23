@@ -93,39 +93,44 @@ $(function() {
 
         wx.error(function(res) {});
 
+        window.photoNum = 3;
 
-        //删除照片
-        $page.on("click", ".close img", function() {
 
-        });
 
 
         $("#icenter_orderCommit .camera").click(function() {
             wx.chooseImage({
-                count: 3, // 默认9
+                count: window.photoNum, // 默认9
                 sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
                 sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                 success: function(res) {
 
                     $page.imgList = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
                     for (var i = 0; i < $page.imgList.length; i++) {
-                        var oneItem = "<div><img src='" + $page.imgList[i] + "' data-index='" + i + "' class='reserve'><div class='close'><img src='images/common/round_close_fill.png' data-index='" + i + "'></div></div>";
+                        var oneItem = "<div><img src='" + $page.imgList[i] + "' data-index='" + i + "' class='reserve'><div class='close'><img src='images/common/round_close.png' data-index='" + i + "'></div></div>";
                         $page.find(".pictures").prepend(oneItem);
                     }
 
-                    $page.on("click", ".reserve", function() {
+                    window.photoNum -= $page.imgList.length;
+
+                    //删除照片
+                    $page.off("click", ".close img").on("click", ".close img", function() {
+                        $(this).parent().parent().remove();
+                        window.photoNum += 1;
+                    });
+
+                    $page.off("click", ".reserve").on("click", ".reserve", function() {
                         var j = $(this).attr("data-index");
                         wx.previewImage({
                             current: $page.imgList[j], // 当前显示图片的http链接
                             urls: $page.imgList // 需要预览的图片http链接列表
                         });
                     });
-
                 }
             });
         });
 
-        $page.off(".commit").on("click", ".commit", function() {
+        $page.off("click", ".commit").on("click", ".commit", function() {
             upLoad();
         });
 
@@ -143,10 +148,14 @@ $(function() {
                 function(txt) {
                     txt = $$.eval(txt);
                     $page.ReviewID = txt.Data.ID;
-                    layer.alert("评论上传成功", function(index) {
-                        $$.redirect("icenter/orderList.html");
-                        layer.close(index);
-                    });
+                    if (window.photoNum < 3) {
+                        upImg();
+                    }else {
+                        layer.alert("评论成功", function(index) {
+                            $$.redirect("icenter/orderList.html");
+                            layer.close(index);
+                        });
+                    }
                 }
             );
         }
@@ -163,10 +172,8 @@ $(function() {
                             Img: serverId,
                             Platform: 1
                         }, function(txt) {
-                            console.log(i);
-                            console.log($page.imgList.length);
                             if (i == $page.imgList.length) {
-                                layer.alert("评论上传成功", function(index) {
+                                layer.alert("评论成功", function(index) {
                                     $$.redirect("icenter/orderList.html");
                                     layer.close(index);
                                 });

@@ -12,7 +12,7 @@ $(function() {
         for(var i=0;i<data.length;i++){
             if(data[i].Name==name){
                 return data[i].Value;
-            }
+            }else{}
         }
     }
 
@@ -30,8 +30,13 @@ $(function() {
     			$page.find(".storeAddr").html(txt.Data.Address);
     			$page.find(".call").attr("href","tel:"+txt.Data.Tel);
     			$page.find(".storePhone").html(txt.Data.Tel);
-                $page.find(".saleTime span").html(checkInfo(JSON.parse(txt.Data.Params)[0]?JSON.parse(txt.Data.Params)[0].Children:"","营业开始时间")+"-"+checkInfo(JSON.parse(txt.Data.Params)["0"].Children,"营业结束时间"));
-                $page.find(".storeArea span").html(checkInfo(JSON.parse(JSON.parse(txt.Data.Params)[0]?JSON.parse(txt.Data.Params)[0].Children:"","店铺面积"));
+                if(txt.Data.Params){
+                    $page.find(".saleTime span").html(checkInfo(JSON.parse(txt.Data.Params)[0].Children,"营业开始时间")+"-"+checkInfo(JSON.parse(txt.Data.Params)["0"].Children,"营业结束时间"));
+                    $page.find(".storeArea span").html(checkInfo(JSON.parse(txt.Data.Params)[0].Children,"店铺面积"));
+                }else{
+                    $page.find(".saleTime span").html("暂未获取");
+                    $page.find(".storeArea span").html("暂未获取");
+                }
 
                 if(txt.Data.ImgList){
                     var imgList=txt.Data.ImgList.split(",");

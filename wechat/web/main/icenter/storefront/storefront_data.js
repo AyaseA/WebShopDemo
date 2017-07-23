@@ -58,7 +58,7 @@ $(function() {
                         $page.find(".productContent").append(node);
                     } else {
                         for (var i = 0; i < data.length; i++) {
-                            node += '<div class="productInfo">' +
+                            node += '<div class="productInfo" data-id="' + data[i].ID + '">' +
                                 '<img src="http://api.cheshili.com.cn/Img/' + noImg(data[i].Img) + '">' +
                                 '<div class="info">' +
                                 '<p class="name"><b>' + data[i].Name + '</b></p>' +
@@ -69,9 +69,13 @@ $(function() {
                                 '</div>';
                         }
                         $page.find(".productContent").append(node);
-                        $page.off("click",".price button");
-                        $page.find(".price button").click(function(){
+                        $page.off("click",".price button").on("click",".price button",function(e){
                             $$.redirect("home/fillOrder.html?pid="+$(this).attr("data-id")+"&num=1");
+                            e.preventDefault();
+                            e.stopPropagation();
+                        });
+                        $page.off("click",".productInfo").on("click",".productInfo",function(){
+                            $$.redirect("home/product.html?pid="+$(this).attr("data-id"));
                         });
                     }
                 }

@@ -100,10 +100,7 @@
 }
 
 #shop_shopDetail .adv{
-	position:relative;
-	top:10vw;
-	left: 5vw;
-
+	margin: 10vw 0 0vw 5vw;
 }
 
 #shop_shopDetail .adv img{

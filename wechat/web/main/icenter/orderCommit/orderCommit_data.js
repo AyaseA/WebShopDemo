@@ -4,20 +4,15 @@ $(function() {
 
 
     if ($$.isLogin(true)) {
-
         var bodyHeight = window.innerHeight || document.body.clientHeight,
             $page = $('#icenter_orderCommit'),
             pageStr = 'icenter_orderCommit',
             headerHeight = $page.find('>div.header').height();
 
-
         //重置HTML界面
         $page.find("textarea").val("");
         $page.find(".pictures").empty();
-        $page.find(".pictures").append("<div class='camera'><i></i></div>")
-
-
-
+        $page.find(".pictures").append("<div class='camera'><i></i></div>");
 
         // 设置界面高度
         $page.find('>div.main').height(bodyHeight - headerHeight - 1);
@@ -94,9 +89,6 @@ $(function() {
         wx.error(function(res) {});
 
         window.photoNum = 3;
-
-
-
 
         $("#icenter_orderCommit .camera").click(function() {
             wx.chooseImage({

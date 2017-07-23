@@ -3,7 +3,7 @@
 #shop_shopDetail{
 	width: 100%;
 	background: #EFEFF4;
-	height: 100%;
+	min-height: 100%
 }
 
 #shop_shopDetail .banner{

@@ -10,7 +10,9 @@ $(function () {
     );
     // 设置返回按钮可用
     $page.on('click', '>div.header >a.goBack', function() {
-        $$.redirect('icenter/orderList.html');
+        $$.redirect('icenter/orderList.html', {
+            fromGoBack: true
+        });
     });
 
 });

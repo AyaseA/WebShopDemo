@@ -56,7 +56,6 @@
 #shop_shopDetail .address{
 	position: relative;
 	height: 12vw;
-	line-height: 12vw;
 }
 
 #shop_shopDetail .map{
@@ -76,6 +75,7 @@
 #shop_shopDetail .address p{
 	padding-left: 9vw;
 	font-size: 3.8vw;
+	width: 55vw;
 }
 
 #shop_shopDetail .info{

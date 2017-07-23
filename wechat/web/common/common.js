@@ -942,9 +942,9 @@
             return 'NoImg/' + Math.random() + '.jpg';
         }
     };
-    // 10位时间戳转时间yyyy-MM-dd hh:mm:ss
+    // 10位时间戳转时间yyyy-MM-dd HH:mm:ss
     template.defaults.imports.timeFilter = function(time) {
-        return new Date(time * 1000).pattern('yyyy-MM-dd hh:mm:ss');
+        return new Date(time * 1000).pattern('yyyy-MM-dd HH:mm:ss');
     };
     // 字符串截取为数组
     template.defaults.imports.splitFilter = function(str, sign) {

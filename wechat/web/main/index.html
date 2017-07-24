@@ -57,14 +57,11 @@
     <script src="../../plug/jquery-3.2.1.min.js" type="text/JavaScript"></script>
     <script type="text/javascript">
         if (!navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
-            /*ios + android*/
-            $.getScript("../common/csl-webview-bridge.js")
-                    .done(function() {
-                        
-                    })
-                    .fail(function() {
-                      
-                    });
+            /* ios + android */
+            $.getScript("../common/csl-webview-bridge.js");
+        } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+            /* wechat */
+            $.getScript("http://res.wx.qq.com/open/js/jweixin-1.2.0.js");
         }
     </script>
     <!-- Base64 encode/decode -->

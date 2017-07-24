@@ -41,7 +41,7 @@
             };
             var getLast = function() {
                 var stackArr = get();
-                if (stackArr, length > 0) {
+                if (stackArr.length > 0) {
                     return stackArr[stackArr.length - 1];
                 } else {
                     return '';
@@ -844,17 +844,20 @@
     // 获取授权提示
     function authConfirm(refuseCalbck, allowCalBck) {
         var fullUrl = location.href;
-            fullUrl = fullUrl.indexOf('?') != -1 ?
-                fullUrl.split('?')[0] + '?R=' + escape($$.getUrl()) :
-                fullUrl + '?R=' + escape($$.getUrl());
+            fullUrl = fullUrl.indexOf('?') != -1 ? fullUrl.split('?')[0] + '?R=' : fullUrl + '?R=',
+            page = fullUrl + escape($$.getUrl()),
+            prevPage = fullUrl + escape($$.stack.getLast());
+
         if (navigator.userAgent.indexOf('csl-ios') != -1) {
             wx.showLoginPage({
-                page: fullUrl
+                'page': page,
+                'prevPage': prevPage
             });
             return false;
         } else if (navigator.userAgent.indexOf('csl-android') != -1) {
             wx.showLoginPage({
-                page: fullUrl
+                'page': page,
+                'prevPage': prevPage
             });
             return false;
         } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {

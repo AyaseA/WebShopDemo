@@ -843,13 +843,21 @@
     /** 定义相关方法 start **/
     // 获取授权提示
     function authConfirm(refuseCalbck, allowCalBck) {
+        var fullUrl = location.href;
+            fullUrl = fullUrl.indexOf('?') != -1 ?
+                fullUrl.split('?')[0] + '?R=' + escape($$.getUrl()) :
+                fullUrl + '?R=' + escape($$.getUrl());
         if (navigator.userAgent.indexOf('csl-ios') != -1) {
             layer.msg('欢迎使用IOS版车势力商城！');
-            wx.showLoginPage();
+            wx.showLoginPage({
+                page: fullUrl
+            });
             return false;
         } else if (navigator.userAgent.indexOf('csl-android') != -1) {
             layer.msg('欢迎使用Android版车势力商城！');
-            wx.showLoginPage();
+            wx.showLoginPage({
+                page: fullUrl
+            });
             return false;
         } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             layer.open({

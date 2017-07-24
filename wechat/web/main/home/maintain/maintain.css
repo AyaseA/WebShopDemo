@@ -122,6 +122,8 @@
 #home_maintain >div.main div.item >div {
 	float: left;
 	text-align: left;
+	margin-left: 5px;
+	width: 60%;
 }
 #home_maintain >div.main div.item h3 {
     margin: 10px 0 0 0;
@@ -131,6 +133,11 @@
 	color: #EA5514;
     margin: 3px 0 0 0;
     font-weight: normal;
+}
+#home_maintain >div.main div.item h5 {
+    margin: 10px 0 0 0;
+    font-weight: normal;
+    height: 50px;
 }
 #home_maintain >div.main div.item ul {
 	font-size: 14px;
@@ -183,9 +190,6 @@
 @media screen and (max-width: 350px) {
 	#home_maintain >div.main div.item {
 		min-width: 300px;
-	}
-	#home_maintain >div.main div.item div {
-		margin-left: -5px;
 	}
 	#home_maintain >div.main div.item img {
 	    max-width: 100px;

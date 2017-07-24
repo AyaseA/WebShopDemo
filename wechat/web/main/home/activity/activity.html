@@ -23,12 +23,13 @@
 			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
             <div>
                 <h3>{{val.Name}}</h3>
-                <h6>HX5 矿物汽车润滑机油</h6>
+                <h5>{{val.desc}}</h5>
+                <!--  <h6>HX5 矿物汽车润滑机油</h6>
                 <ul>
                     <li>动力清洁 抑制有害油泥</li>
                     <li>更好低温保护 启动更顺畅</li>
-                </ul>
-                <p>抢购价：<span>￥{{val.Price}}</span></p>
+                </ul> -->
+                <p>抢购价:<span>￥{{val.Price}}</span></p>
                 <a href="home/fillOrder.html?pid={{val.ID}}" data-tran="fadeIn">立即购买</a>
             </div>
 		</div>

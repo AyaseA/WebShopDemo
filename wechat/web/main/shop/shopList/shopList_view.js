@@ -13,8 +13,7 @@ $(function() {
         'height': bodyH - headerH - selectorH - footerH - 1,
         'top': headerH + selectorH
     });
-
-
+    
     //底部导航时间
     $page.on('click', 'div.footer li', function() {
         var type = $(this).attr('data-tab');

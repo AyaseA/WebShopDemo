@@ -9,6 +9,10 @@ $(function () {
         bodyHeight - headerHeight - footerHeight - 1
     );
     // 设置返回按钮可用
-    $$.setGoBack($page.find('>div.header >a.goBack'));
+    $page.on('click', '>div.header >a.goBack', function() {
+        $$.redirect('icenter/orderList.html', {
+            fromGoBack: true
+        });
+    });
 
 });

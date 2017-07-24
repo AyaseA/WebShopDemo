@@ -5,8 +5,6 @@
 
 
 
-
-
     // 申明交互 -->
     function setupWebViewJavascriptBridge(callback) {
 
@@ -94,11 +92,16 @@
         bridge: null,
         handlerName: js2ocHandlerName,
         recieveMessageFromPhone: null,
+        readyFun:null,
 
         config: function(data) {
-            $extend(this.defaultSet, data);
+            $.extend(this.defaultSet, data);
+            
         },
-
+        ready: function(data) {
+            this.readyFun = data;
+            this.readyFun();
+        },
         //检测接口是否能用
         checkJsApi: function(data, callback) {
             sendMessageToPhone('checkJsApi', data, callback);

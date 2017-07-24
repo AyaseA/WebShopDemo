@@ -150,7 +150,7 @@
             if ($.isEmptyObject(weChatSign) || (reGet || false)) {
                 $.ajax({
                     url: $$.config.serverAddr +
-                        'Product/WeChat/GetSign?url=' +
+                        'Product/WeChat/SHA1Sign?Url=' +
                         escape(location.href),
                     type: 'GET',
                     async: false, // 同步
@@ -843,6 +843,19 @@
     /** 定义相关方法 start **/
     // 获取授权提示
     function authConfirm(refuseCalbck, allowCalBck) {
+        if (navigator.userAgent.indexOf('csl-ios') != -1) {
+            layer.msg('欢迎使用IOS版车势力商城！');
+            wx.showLoginPage();
+            return false;
+        } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+            layer.msg('欢迎使用Android版车势力商城！');
+            wx.showLoginPage();
+            return false;
+        } else {
+            layer.msg('欢迎使用HTML5版车势力商城！');
+            
+            return false;
+        }
         layer.open({
             area: '80%',
             shade: 0.3,
@@ -866,16 +879,7 @@
                     if (allowCalBck) {
                         allowCalBck();
                     } else {
-                        if (navigator.userAgent.indexOf('csl-ios') != -1) {
-                            layer.msg('欢迎使用IOS版车势力商城！');
-                        } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
-                            layer.msg('欢迎使用微信版车势力商城！');
-                            $$.redirect('home/wechatLogin.html');
-                        } else if (navigator.userAgent.indexOf('csl-android') != -1) {
-                            layer.msg('欢迎使用Android版车势力商城！');
-                        } else {
-                            layer.msg('欢迎使用HTML5版车势力商城！');
-                        }
+                        $$.redirect('home/wechatLogin.html');
                     }
                     layer.closeAll();
                 });
@@ -976,7 +980,7 @@
     win.$$ = $$;
 
     //微信配置
-    if (wx != undefined) {
+    if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
         var WXsign = $$.getWeChatSign();
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。

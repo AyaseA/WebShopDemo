@@ -13,9 +13,6 @@ $(function() {
         'height': bodyH - headerH - selectorH - footerH - 1,
         'top': headerH + selectorH
     });
-    $page.find(".selectShop").css({
-        'top': headerH
-    });
 
 
     //底部导航时间

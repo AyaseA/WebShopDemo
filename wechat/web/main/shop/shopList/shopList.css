@@ -219,6 +219,18 @@
 	border-bottom:1px solid #d6d6db;
 	position: fixed;
 	box-sizing: border-box;
+	top:44px;
+}
+
+@media screen and (min-width: 410px) {
+	#shop_shopList .selectShop {
+		top: 48px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#shop_shopList .selectShop {
+		top: 40px;
+	}
 }
 
 #shop_shopList .selectShop ul{

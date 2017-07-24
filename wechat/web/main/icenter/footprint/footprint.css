@@ -95,4 +95,9 @@
 
 #icenter_footprint .descri{
 	color:#777373;
+	height: 10vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 60vw;
+    white-space: nowrap;
 }

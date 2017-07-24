@@ -157,7 +157,7 @@
                     dataType: 'json',
                     success: function(res) {
                         if (res) {
-                            weChatSign = res;
+                            weChatSign = res.Data;
                         }
                     }
                 });

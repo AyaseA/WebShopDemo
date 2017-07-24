@@ -3,15 +3,13 @@ $(function() {
     var bodyH = window.innerHeight || document.body.clientHeight,
         $page = $('#shop_shopList'),
         pageStr = 'shop_shopList',
-        headerH = $page.find(".header").height(),
-        selectorH = $page.find('.selectShop').height(),
-        footerH = $page.find(".footer").height();
+        headerH = $page.find(">div.header").height(),
+        selectorH = 47,//$page.find('>div.selectShop').height(),
+        footerH = $page.find(">div.footer").height();
 
     //设置内容高度    
-    var contentHeight = window.innerHeight - $page.find(".header").height() - $page.find(".footer").height() - $page.find(".selectShop").height();
-    $page.find(".shopList").css({
+    $page.find(">div.shopList").css({
         'height': bodyH - headerH - selectorH - footerH - 1,
-        'top': headerH + selectorH
     });
     
     //底部导航时间

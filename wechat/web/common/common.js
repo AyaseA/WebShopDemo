@@ -848,13 +848,11 @@
                 fullUrl.split('?')[0] + '?R=' + escape($$.getUrl()) :
                 fullUrl + '?R=' + escape($$.getUrl());
         if (navigator.userAgent.indexOf('csl-ios') != -1) {
-            layer.msg('欢迎使用IOS版车势力商城！');
             wx.showLoginPage({
                 page: fullUrl
             });
             return false;
         } else if (navigator.userAgent.indexOf('csl-android') != -1) {
-            layer.msg('欢迎使用Android版车势力商城！');
             wx.showLoginPage({
                 page: fullUrl
             });

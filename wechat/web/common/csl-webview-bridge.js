@@ -5,6 +5,8 @@
 
 
 
+
+
     // 申明交互 -->
     function setupWebViewJavascriptBridge(callback) {
 
@@ -186,7 +188,6 @@
         },
         //跳转登录页面
         showLoginPage: function(data, callback) {
-            alert('登录去吧，皮皮恒！');
             sendMessageToPhone('showLoginPage', data, callback);
         },
         //发送自定义消息
@@ -217,6 +218,9 @@
 
     function sendMessageToPhone(methodName, data, callback) {
         var tempCallback = callback;
+        
+        data = data || {};
+
         var callbacks = {};
         if (data.success) {
             callbacks['success'] = data.success;
@@ -244,7 +248,7 @@
         var params = {
             config: csl.defaultSet,
             method: methodName,
-            data: data
+            data: data 
         };
         csl.bridge.callHandler(csl.handlerName, params, function(res) {
             var method = methodName;

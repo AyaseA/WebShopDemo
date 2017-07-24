@@ -851,40 +851,41 @@
             layer.msg('欢迎使用Android版车势力商城！');
             wx.showLoginPage();
             return false;
+        } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+            layer.open({
+                area: '80%',
+                shade: 0.3,
+                title: false, //不显示标题栏
+                closeBtn: false,
+                btn: [],
+                id: 'authConfirm_authConfirm',
+                content: template('authConfirm_authConfirm_cnt', {}),
+                success: function(modal) {
+                    modal.css({
+                        'border-radius': '8px'
+                    });
+                    modal.find('.layui-layer-btn').remove();
+                    modal.find('button.refuse').off('click').on('click', function() {
+                        if (refuseCalbck) {
+                            refuseCalbck();
+                        }
+                        layer.closeAll();
+                    });
+                    modal.find('button.allow').off('click').on('click', function() {
+                        if (allowCalBck) {
+                            allowCalBck();
+                        } else {
+                            $$.redirect('home/wechatLogin.html');
+                        }
+                        layer.closeAll();
+                    });
+                }
+            });
         } else {
             layer.msg('欢迎使用HTML5版车势力商城！');
-            
+
             return false;
         }
-        layer.open({
-            area: '80%',
-            shade: 0.3,
-            title: false, //不显示标题栏
-            closeBtn: false,
-            btn: [],
-            id: 'authConfirm_authConfirm',
-            content: template('authConfirm_authConfirm_cnt', {}),
-            success: function(modal) {
-                modal.css({
-                    'border-radius': '8px'
-                });
-                modal.find('.layui-layer-btn').remove();
-                modal.find('button.refuse').off('click').on('click', function() {
-                    if (refuseCalbck) {
-                        refuseCalbck();
-                    }
-                    layer.closeAll();
-                });
-                modal.find('button.allow').off('click').on('click', function() {
-                    if (allowCalBck) {
-                        allowCalBck();
-                    } else {
-                        $$.redirect('home/wechatLogin.html');
-                    }
-                    layer.closeAll();
-                });
-            }
-        });
     }
     // 解析Token
     function analyzeToken(token) {
@@ -980,7 +981,7 @@
     win.$$ = $$;
 
     //微信配置
-    if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+    if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i) && wx != undefined) {
         var WXsign = $$.getWeChatSign();
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。

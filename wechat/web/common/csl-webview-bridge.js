@@ -186,6 +186,7 @@
         },
         //跳转登录页面
         showLoginPage: function(data, callback) {
+            alert('登录去吧，皮皮恒！');
             sendMessageToPhone('showLoginPage', data, callback);
         },
         //发送自定义消息

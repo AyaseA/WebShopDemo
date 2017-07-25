@@ -94,18 +94,17 @@
         bridge: null,
         handlerName: js2ocHandlerName,
         recieveMessageFromPhone: null,
-        readyFun:null,
+        readyFun: null,
 
         config: function(data) {
             $.extend(this.defaultSet, data);
-            
+
         },
         ready: function(data) {
             this.readyFun = data;
             this.readyFun();
         },
-        error: function(data) {
-        },
+        error: function(data) {},
         //检测接口是否能用
         checkJsApi: function(data, callback) {
             sendMessageToPhone('checkJsApi', data, callback);
@@ -224,7 +223,7 @@
 
     function sendMessageToPhone(methodName, data, callback) {
         var tempCallback = callback;
-        
+
         data = data || {};
 
         var callbacks = {};
@@ -254,9 +253,18 @@
         var params = {
             config: csl.defaultSet,
             method: methodName,
-            data: data 
+            data: data
         };
-        csl.bridge.callHandler(csl.handlerName, params, function(res) {
+        csl.bridge.callHandler(csl.handlerName, params, function(resp) {
+
+            var res = resp;
+            var palteform = getPlateform();
+            if (palteform != 'iOS') {
+                // androd
+                res = JSON.parse(resp);
+            }
+
+
             var method = methodName;
             var status = res.status;
             var callbackData = res.data;

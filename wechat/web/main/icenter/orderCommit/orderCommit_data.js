@@ -173,7 +173,7 @@ $(function() {
                         }, function(txt) {
                             if (i == $page.imgList.length) {
                                 layer.alert("评论成功", function(index) {
-                                    $$.redirect("icenter/orderList.html");
+                                    $$.redirect("icenter/orderList.html?type=waitRevice");
                                     layer.close(index);
                                 });
                             }

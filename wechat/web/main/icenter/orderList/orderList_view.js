@@ -2,5 +2,7 @@ $(function() {
     var $page = $('#icenter_orderList'),
         pageStr = 'icenter_orderList';
         
-	$$.setGoBack($page.find('div.header >a'));
+	$page.find('div.header >a').click(function(){
+		$$.redirect("icenter/pageHome.html");
+	});
 });

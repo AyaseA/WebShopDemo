@@ -102,13 +102,14 @@ $(function() {
 
 
         //通过ready接口处理成功验证
-        wx.ready(function() {});
+        wx.ready(function() {
+        });
 
         wx.error(function(res) {});
 
         window.photoNum = 3;
 
-        $("#icenter_orderCommit .camera").off("click","#icenter_orderCommit .camera").click(function() {
+        $page.off("click",".camera").on("click",".camera",function(e) {
             if(window.photoNum != 0){
                 wx.chooseImage({
                     count: window.photoNum, // 默认9
@@ -126,13 +127,12 @@ $(function() {
                 });         
             }else{
                 layer.msg("最多选择3张图片");
-            }
+            }     
         });
 
         $page.off("click", ".commit").on("click", ".commit", function() {
             upLoad();
         });
-
 
         //添加评论
         function upLoad() {

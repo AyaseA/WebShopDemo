@@ -104,6 +104,8 @@
             this.readyFun = data;
             this.readyFun();
         },
+        error: function(data) {
+        },
         //检测接口是否能用
         checkJsApi: function(data, callback) {
             sendMessageToPhone('checkJsApi', data, callback);

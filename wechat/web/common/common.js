@@ -215,14 +215,14 @@
                         currentUrl: location.href.split('?')[0],
                         url: $$.getUrl(),
                         state: status,
-                        hasParams: $$.getUrl().indexOf('?') != -1
+                        hasParams: ($$.getUrl().indexOf('?') != -1 ? true : false)
                     });
                 } else if (navigator.userAgent.indexOf('csl-android') != -1) {
                     wx.refreshPage({
                         currentUrl: location.href.split('?')[0],
                         url: $$.getUrl(),
                         state: status,
-                        hasParams: $$.getUrl().indexOf('?') != -1
+                        hasParams: ($$.getUrl().indexOf('?') != -1 ? true : false)
                     });
                 }
             }

@@ -202,6 +202,13 @@
         // 后台溜一圈
         refresh: function(url, status) {
             if (url) {
+                if (url.indexOf('?') != -1) {
+                    var urlArr = url.split('?');
+                    urlArr[1] = urlArr[1].replace(/(^|&)code=([^&]*)/i, '');
+                    urlArr[1] = urlArr[1].replace(/(^|&)str=([^&]*)/i, '');
+                    urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g, '');
+                    url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
+                }
                 if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                     url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
                         'appid=wx2c53034422e377cc&redirect_uri=' +
@@ -213,16 +220,16 @@
                 } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
                     wx.refreshPage({
                         currentUrl: location.href.split('?')[0],
-                        url: $$.getUrl(),
+                        url: url,
                         state: status,
-                        hasParams: ($$.getUrl().indexOf('?') != -1 ? true : false)
+                        hasParams: (url.indexOf('?') != -1 ? true : false)
                     });
                 } else if (navigator.userAgent.indexOf('csl-android') != -1) {
                     wx.refreshPage({
                         currentUrl: location.href.split('?')[0],
-                        url: $$.getUrl(),
+                        url: url,
                         state: status,
-                        hasParams: ($$.getUrl().indexOf('?') != -1 ? true : false)
+                        hasParams: (url.indexOf('?') != -1 ? true : false)
                     });
                 }
             }

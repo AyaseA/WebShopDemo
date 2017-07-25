@@ -149,10 +149,12 @@
         getWeChatSign: function(reGet) {
             if ($.isEmptyObject(weChatSign) || (reGet || false)) {
                 $.ajax({
+                    type: 'POST',
                     url: $$.config.serverAddr +
-                        'Product/WeChat/SHA1Sign?Url=' +
-                        escape(location.href),
-                    type: 'GET',
+                        'Product/WeChat/SHA1Sign',
+                    data: {
+                        Url: escape(location.href)
+                    },
                     async: false, // 同步
                     dataType: 'json',
                     success: function(res) {
@@ -201,11 +203,11 @@
         refresh: function(url, status) {
             if (url) {
                 url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-                        'appid=wx2c53034422e377cc&redirect_uri=' +
-                        'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
-                        escape(escape(url)) +
-                        '&response_type=code&scope=snsapi_base&state=' + status +
-                        '#wechat_redirect';
+                    'appid=wx2c53034422e377cc&redirect_uri=' +
+                    'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
+                    escape(escape(url)) +
+                    '&response_type=code&scope=snsapi_base&state=' + status +
+                    '#wechat_redirect';
                 /*if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                     url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
                         'appid=wx2c53034422e377cc&redirect_uri=' +
@@ -324,7 +326,7 @@
                     dir = url_arr[0].substring(0, url_arr[0].length - 5),
                     tempdir = dir.split("/");
                 newid = tempdir[0] + "_" + tempdir[1];
-                
+
                 // 判断要显示的页面是否存在
                 if ($("div#div_list>div#" + newid).length == 0) {
                     // 不存在，加载页面，css, js 
@@ -776,32 +778,40 @@
                 url = $$.getUrl();
             openCloseMenu(_x);
             switch (type) {
-                case 'refresh': {
-                    var url_arr = url.split('?'),
-                        dir = url_arr[0].substring(0, url_arr[0].length - 5),
-                        dirArr = dir.split('/'),
-                        dir = dirArr[0] + '/' + dirArr[1] + '/' + dirArr[1],
-                        filedata = dir + '_data.js';
-                    loadJs(filedata, dir.replace(/\//g, "_") + "_data");
-                } break;
-                case 'index': {
-                    if (url.indexOf('home/index.html') == -1) {
-                        $$.redirect('home/index.html');
+                case 'refresh':
+                    {
+                        var url_arr = url.split('?'),
+                            dir = url_arr[0].substring(0, url_arr[0].length - 5),
+                            dirArr = dir.split('/'),
+                            dir = dirArr[0] + '/' + dirArr[1] + '/' + dirArr[1],
+                            filedata = dir + '_data.js';
+                        loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                     }
-                } break;
-                case 'icenter': {
-                    if (url.indexOf('icenter/pageHome.html') == -1) {
-                        $$.redirect('icenter/pageHome.html', {
-                            fromGoBack: true
-                        });
+                    break;
+                case 'index':
+                    {
+                        if (url.indexOf('home/index.html') == -1) {
+                            $$.redirect('home/index.html');
+                        }
                     }
-                } break;
-                case 'recommend': {
-                    // 推荐码
-                    if (url.indexOf('home/recommend.html') == -1) {
-                        $$.redirect('home/recommend.html');
+                    break;
+                case 'icenter':
+                    {
+                        if (url.indexOf('icenter/pageHome.html') == -1) {
+                            $$.redirect('icenter/pageHome.html', {
+                                fromGoBack: true
+                            });
+                        }
                     }
-                } break;
+                    break;
+                case 'recommend':
+                    {
+                        // 推荐码
+                        if (url.indexOf('home/recommend.html') == -1) {
+                            $$.redirect('home/recommend.html');
+                        }
+                    }
+                    break;
             }
         });
         // 展开收起菜单
@@ -850,7 +860,7 @@
     // 获取授权提示
     function authConfirm(refuseCalbck, allowCalBck) {
         var fullUrl = location.href;
-            fullUrl = fullUrl.indexOf('?') != -1 ? fullUrl.split('?')[0] + '?R=' : fullUrl + '?R=',
+        fullUrl = fullUrl.indexOf('?') != -1 ? fullUrl.split('?')[0] + '?R=' : fullUrl + '?R=',
             page = fullUrl + escape($$.getUrl()),
             prevPage = fullUrl + escape($$.stack.getLast() || 'home/index.html');
 

@@ -63,74 +63,10 @@ $(function(){
             } break;
         }
     });
-    // 获取地理位置
-    wx.getLocation({
-        type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
-        success: function (res) {
-            var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-            var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-            var speed = res.speed; // 速度，以米/每秒计
-            var accuracy = res.accuracy; // 位置精度
-            geocoder2Address([+longitude + 0.006, latitude]);
-        }
-    });
     // 重设窗口高度
     function resetWindowSize() {
         $page.find('>div.main').css({
             'height': bodyHeight - headerHeight - footerHeight - 1
-        });
-    }
-    // layer
-    function loactionConfirm(name, callback) {
-        layer.open({
-            area: '80%',
-            shade: 0.3,
-            title: false, //不显示标题栏
-            closeBtn: false,
-            btn: [],
-            id: 'home_index_confirm',
-            content: template('home_index_confirm_cnt', {
-                dist: name
-            }),
-            success: function(modal) {
-                modal.css({
-                    'border-radius': '8px'
-                });
-                modal.find('.layui-layer-btn').remove();
-                modal.find('button.cancel').off('click').on('click', function() {
-                    layer.closeAll();
-                });
-                modal.find('button.change').off('click').on('click', function() {
-                    if (callback) {
-                        callback();
-                    }
-                    layer.closeAll();
-                });
-            }
-        });
-    }
-    // 经纬度-->地址
-    function geocoder2Address(geocodeArr) {
-        var geocoder = new AMap.Geocoder();
-        geocoder.getAddress(geocodeArr, function(status, result) {
-            if (status === 'complete' && result.info === 'OK') {
-                var info = result.regeocode.addressComponent,
-                    ltInfo = $$.getLocationInfo();
-                    //alert(ltInfo && ltInfo.id != info.adcode);
-                if (ltInfo && ltInfo.id != info.adcode) {
-                    loactionConfirm(info.district, function() {
-                        $$.setLocationInfo({
-                            name: info.district,
-                            longitude: geocodeArr[0],
-                            latitude: geocodeArr[1],
-                            id: info.adcode
-                        });
-                        $page.find('>div.header >a.location >span').text(
-                            info.district
-                        );
-                    });
-                }
-            }
         });
     }
 });

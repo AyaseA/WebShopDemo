@@ -200,12 +200,18 @@
         // 后台溜一圈
         refresh: function(url, status) {
             if (url) {
-                url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-                    'appid=wx2c53034422e377cc&redirect_uri=' +
-                    'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
-                    escape(escape(url)) +
-                    '&response_type=code&scope=snsapi_base&state=' + status +
-                    '#wechat_redirect';
+                if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+                    url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+                        'appid=wx2c53034422e377cc&redirect_uri=' +
+                        'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
+                        escape(escape(url)) +
+                        '&response_type=code&scope=snsapi_base&state=' + status +
+                        '#wechat_redirect';
+                } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
+
+                } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+                    
+                }
                 location.href = url;
             }
         },
@@ -678,26 +684,20 @@
                 urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g, '');
                 url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
             }
-            if (wechatInfo[1] < '6.2') {
+
+            var wechatInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i);
+            if (wechatInfo && wechatInfo[1] < '6.2') {
                 // 微信6.2以下版本相应处理
                 location.href = url;
-
             } else {
-                // 微信6.2及以上版本相应处理
+                // 其他情况相应处理
                 history.pushState({}, '', url);
             }
         };
 
         /********* 开始处理 *********/
-        // 请求后台获取webtoken
-        var wechatInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i);
-        if (wechatInfo) {
-            // 解析url参数
-            paramHandle(location.href);
-        } else {
-            $$.delCookie('__TOKEN__');
-            $$.delCookie('__UINFO__');
-        }
+        // 解析url参数
+        paramHandle(location.href);
     }());
     // 使a标签默认的调转事件转为$$.redirect
     $('#div_list').on('click', 'a', function(e) {

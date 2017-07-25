@@ -190,6 +190,10 @@
         showLoginPage: function(data, callback) {
             sendMessageToPhone('showLoginPage', data, callback);
         },
+        //获取code刷新界面
+        refreshPage: function(data, callback) {
+            sendMessageToPhone('refreshPage', data, callback);
+        },
         //发送自定义消息
         sendCustomMessage: function(data, callback) {
             sendMessageToPhone('sendCustomMessage', data, callback);

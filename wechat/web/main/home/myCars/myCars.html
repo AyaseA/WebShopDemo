@@ -21,7 +21,7 @@
 			{{set data = $imports.jsonParseFilter(val.Data)}}
 			<div class="car {{val.ID == defaultCar ? 'default' : ''}}">
 		        <div data-id="{{val.ID}}" data-name="{{data.CarBrandName}} {{data.CarSeriesName}} {{data.CarCarName}}">
-		            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}" unselectable="true">
+		            <img src="{{serverAddr}}Img/{{data.CarBrandImg | imgFilter}}" unselectable="true">
 		            <h4>{{val.PlatePro}}{{val.PlateCity}}{{val.PlateNum}}</h4>
 		            <p>{{data.CarBrandName}} {{data.CarSeriesName}} {{data.CarCarName}}</p>
 		        </div>

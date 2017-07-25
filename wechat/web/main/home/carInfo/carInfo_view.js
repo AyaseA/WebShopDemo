@@ -44,8 +44,9 @@ $(function() {
     $page.on('click', '>div.brandsModal div.brand', function() {
         var bid = $(this).attr('data-id'),
             bName = $(this).attr('data-name'),
-            bids = $(this).attr('data-ids');
-        getSeries(bid, bids, bName);
+            bids = $(this).attr('data-ids'),
+            img = $(this).attr('data-img');
+        getSeries(bid, bids, bName, img);
         openSeries();
     });
     // 点击series事件
@@ -53,13 +54,15 @@ $(function() {
         var sid = $(this).attr('data-id'),
             sName = $(this).attr('data-name'),
             pid = $(this).attr('data-pid'),
-            pName = $(this).attr('data-pname');
+            pName = $(this).attr('data-pname'),
+            img = $(this).attr('data-img');
         $page.find('div.carDetail input[name="carBrand"]')
             .val(pName + ' ' + sName)
             .attr('data-bid', pid)
             .attr('data-sid', sid)
             .attr('data-sname', sName)
-            .attr('data-bname', pName);
+            .attr('data-bname', pName)
+            .attr('data-img', img);
 
         $page.find('div.carDetail input[name="carType"]')
              .val('')
@@ -179,7 +182,7 @@ $(function() {
         );
     }
     // 获取Series
-    function getSeries(bid, bids, bName) {
+    function getSeries(bid, bids, bName, img) {
         $page.find('>div.seriesModal >h5').text(bName);
         $$.get(
             'Product/Car/GetSeriesJsonByBrand?BrandIDs=' + bids,
@@ -192,7 +195,8 @@ $(function() {
                     $page.find('>div.seriesModal >div.seriesBox').html(
                         template(pageStr + '_series_list', {
                             series: res.Data,
-                            serverAddr: $$.config.serverAddr
+                            serverAddr: $$.config.serverAddr,
+                            brandImg: img
                     }));
                 }
             }
@@ -328,6 +332,7 @@ $(function() {
 
         car.CarBrandId = $carDetail.find('input[name="carBrand"]').attr('data-bid');
         car.CarBrandName = $carDetail.find('input[name="carBrand"]').attr('data-bname');
+        car.CarBrandImg = $carDetail.find('input[name="carBrand"]').attr('data-img');
         car.CarSeriesId = $carDetail.find('input[name="carBrand"]').attr('data-sid');
         car.CarSeriesName = $carDetail.find('input[name="carBrand"]').attr('data-sname');
         car.CarCarName = $carDetail.find('input[name="carType"]').val();
@@ -335,6 +340,7 @@ $(function() {
         var Data = {
             CarBrandId: car.CarBrandId,
             CarBrandName: car.CarBrandName,
+            CarBrandImg: car.CarBrandImg,
             CarSeriesId: car.CarSeriesId,
             CarSeriesName: car.CarSeriesName,
             CarCarName: car.CarCarName

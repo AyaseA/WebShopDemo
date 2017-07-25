@@ -88,7 +88,7 @@
 			{{if letter != lter}}
 				<h5 data-letter="{{lter}}">{{letter = lter}}</h5>
 			{{/if}}
-			<div class="brand" data-id="{{brand.ID}}" data-name="{{brand.Name}}" data-ids="{{brand.children | idsParseFilter}}">
+			<div class="brand" data-id="{{brand.ID}}" data-name="{{brand.Name}}" data-ids="{{brand.children | idsParseFilter}}" data-img="{{brand.Img}}">
 				<div class="img">
 					<img src="{{serverAddr}}Img/{{brand.Img | imgFilter}}" />
 				</div>
@@ -107,7 +107,7 @@
 		{{each series as ses}}
 		<h5>{{ses.BrandName}}</h5>
 		{{each ses.Children as ch}}
-		<div class="series" data-id="{{ch.ID}}" data-pid="{{ch.BrandID}}" data-name="{{ch.Name}}" data-pname="{{ses.BrandName}}">
+		<div class="series" data-id="{{ch.ID}}" data-pid="{{ch.BrandID}}" data-name="{{ch.Name}}" data-pname="{{ses.BrandName}}" data-img="{{brandImg}}">
 			<div class="img">
 				<img src="{{serverAddr}}Img/{{ch.Img | imgFilter}}" />
 			</div>

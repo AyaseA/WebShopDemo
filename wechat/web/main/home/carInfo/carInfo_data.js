@@ -51,7 +51,8 @@ $(function() {
 	    	$carDetail.find('input[name="carBrand"]').attr('data-bid', carData.CarBrandId || '');
 	    	$carDetail.find('input[name="carBrand"]').attr('data-bname', carData.CarBrandName || '');
 	    	$carDetail.find('input[name="carBrand"]').attr('data-sid', carData.CarSeriesId || '');
-	    	$carDetail.find('input[name="carBrand"]').attr('data-sname', carData.CarSeriesName || '');
+            $carDetail.find('input[name="carBrand"]').attr('data-sname', carData.CarSeriesName || '');
+	    	$carDetail.find('input[name="carBrand"]').attr('data-img', carData.CarBrandImg || '');
 	    	$carDetail.find('input[name="carBrand"]').val((carData.CarBrandName || '') + (carData.CarSeriesName || ''));
 	    	$carDetail.find('input[name="carType"]').val(carData.CarCarName || '');
     	}
@@ -71,7 +72,8 @@ $(function() {
     	$carDetail.find('input[name="carBrand"]').attr('data-bid', '');
     	$carDetail.find('input[name="carBrand"]').attr('data-bname', '');
     	$carDetail.find('input[name="carBrand"]').attr('data-sid', '');
-    	$carDetail.find('input[name="carBrand"]').attr('data-sname', '');
+        $carDetail.find('input[name="carBrand"]').attr('data-sname', '');
+    	$carDetail.find('input[name="carBrand"]').attr('data-img', '');
     	$carDetail.find('input[name="carBrand"]').val('');
     	$carDetail.find('input[name="carType"]').val('');
     	$carDetail.find('input[name="carType"]').attr('data-cid', '');

@@ -202,25 +202,36 @@
         // 后台溜一圈
         refresh: function(url, status) {
             if (url) {
-                url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-                    'appid=wx2c53034422e377cc&redirect_uri=' +
-                    'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
-                    escape(escape(url)) +
-                    '&response_type=code&scope=snsapi_base&state=' + status +
-                    '#wechat_redirect';
-                /*if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+                if (url.indexOf('?') != -1) {
+                    var urlArr = url.split('?');
+                    urlArr[1] = urlArr[1].replace(/(^|&)code=([^&]*)/i, '');
+                    urlArr[1] = urlArr[1].replace(/(^|&)str=([^&]*)/i, '');
+                    urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g, '');
+                    url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
+                }
+                if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                     url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
                         'appid=wx2c53034422e377cc&redirect_uri=' +
                         'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
                         escape(escape(url)) +
                         '&response_type=code&scope=snsapi_base&state=' + status +
                         '#wechat_redirect';
+                    location.href = url;
                 } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
-
+                    wx.refreshPage({
+                        currentUrl: location.href.split('?')[0],
+                        url: url,
+                        state: status,
+                        hasParams: (url.indexOf('?') != -1 ? true : false)
+                    });
                 } else if (navigator.userAgent.indexOf('csl-android') != -1) {
-                    
-                }*/
-                location.href = url;
+                    wx.refreshPage({
+                        currentUrl: location.href.split('?')[0],
+                        url: url,
+                        state: status,
+                        hasParams: (url.indexOf('?') != -1 ? true : false)
+                    });
+                }
             }
         },
         // 页面跳转 核心方法

@@ -44,6 +44,24 @@ $(function() {
             }
         });
 
+        //查看删除照片
+        $page.off("click", ".close img").on("click", ".close img", function() {
+            var _this=$(this);
+            layer.confirm("确定要删除此照片吗",function(index){
+                _this.parent().parent().remove();
+                window.photoNum += 1;
+                layer.close(index);
+            });
+        });
+
+        $page.off("click", ".reserve").on("click", ".reserve", function() {
+            var j = $(this).attr("data-index");
+            wx.previewImage({
+                current: $page.imgList[j], // 当前显示图片的http链接
+                urls: $page.imgList // 需要预览的图片http链接列表
+            });
+        });
+
         url = $$.getUrl();
         orderId = $$.getQueryString("oid");
         productId = $$.getQueryString("pid");
@@ -90,36 +108,25 @@ $(function() {
 
         window.photoNum = 3;
 
-        $("#icenter_orderCommit .camera").click(function() {
-            wx.chooseImage({
-                count: window.photoNum, // 默认9
-                sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
-                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-                success: function(res) {
-
-                    $page.imgList = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
-                    for (var i = 0; i < $page.imgList.length; i++) {
-                        var oneItem = "<div><img src='" + $page.imgList[i] + "' data-index='" + i + "' class='reserve'><div class='close'><img src='images/common/round_close.png' data-index='" + i + "'></div></div>";
-                        $page.find(".pictures").prepend(oneItem);
+        $("#icenter_orderCommit .camera").off("click","#icenter_orderCommit .camera").click(function() {
+            if(window.photoNum != 0){
+                wx.chooseImage({
+                    count: window.photoNum, // 默认9
+                    sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function(res) {
+                        $page.imgList = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
+                        for (var i = 0; i < $page.imgList.length; i++) {
+                            var oneItem = "<div><img src='" + $page.imgList[i] + "' data-index='" + i + "' class='reserve'><div class='close'><img src='images/common/round_close.png' data-index='" + i + "'></div></div>";
+                            $page.find(".pictures").prepend(oneItem);
+                        }
+                        window.photoNum -= $page.imgList.length;
+                        //删除照片              
                     }
-
-                    window.photoNum -= $page.imgList.length;
-
-                    //删除照片
-                    $page.off("click", ".close img").on("click", ".close img", function() {
-                        $(this).parent().parent().remove();
-                        window.photoNum += 1;
-                    });
-
-                    $page.off("click", ".reserve").on("click", ".reserve", function() {
-                        var j = $(this).attr("data-index");
-                        wx.previewImage({
-                            current: $page.imgList[j], // 当前显示图片的http链接
-                            urls: $page.imgList // 需要预览的图片http链接列表
-                        });
-                    });
-                }
-            });
+                });         
+            }else{
+                layer.msg("最多选择3张图片");
+            }
         });
 
         $page.off("click", ".commit").on("click", ".commit", function() {

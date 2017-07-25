@@ -2,21 +2,34 @@ $(function() {
     var $page = $('#icenter_storefront'),
         pageStr = 'icenter_storefront';
 
-    var type=$$.getQueryString("type");
+    var type = $$.getQueryString("type");
 
-    if(type=="product"){
+    $page.off("click", ".price button").on("click", ".price button", function(e) {
+        $$.redirect("home/fillOrder.html?pid=" + $(this).attr("data-id") + "&num=1");
+        e.preventDefault();
+        e.stopPropagation();
+    });
+    $page.off("click", ".productInfo").on("click", ".productInfo", function() {
+        $$.redirect("home/product.html?pid=" + $(this).attr("data-id"));
+    });
+
+    $page.off("click",".storeInfo").on("click",".storeInfo",function() {
+        $$.redirect("shop/shopDetail.html?ID=" + $(this).attr("data-id"));
+    });
+
+    if (type == "product") {
         loadProduct();
         $page.find(".header span").removeClass("on");
         $page.find(".header span:first").addClass("on");
-      	$page.find(".productContent").show();
-      	$page.find(".storeContent").hide();
+        $page.find(".productContent").show();
+        $page.find(".storeContent").hide();
 
-    }else{
-    	loadStore();
-    	$page.find(".header span").removeClass("on");
-    	$page.find(".header span:last").addClass("on");
-    	$page.find(".productContent").hide();
-      	$page.find(".storeContent").show();
+    } else {
+        loadStore();
+        $page.find(".header span").removeClass("on");
+        $page.find(".header span:last").addClass("on");
+        $page.find(".productContent").hide();
+        $page.find(".storeContent").show();
     }
 
     function getDesCri(txt) {
@@ -33,20 +46,20 @@ $(function() {
     }
 
 
-    $page.off("click",".header span").on("click",".header span",function(){
+    $page.off("click", ".header span").on("click", ".header span", function() {
         $page.find(".header span").removeClass("on");
         $(this).addClass("on");
         $(".storeContent,.productContent").hide();
-        $("."+$(this).attr("data-content")).show();
-        if($(this).attr("data-content")=="productContent"){
+        $("." + $(this).attr("data-content")).show();
+        if ($(this).attr("data-content") == "productContent") {
             loadProduct();
-        }else{
+        } else {
             loadStore();
         }
     });
 
 
-    function loadProduct(){     
+    function loadProduct() {
         $$.post("http://api.cheshili.com.cn/CSL/Wish/QueryWishList", {},
             function(txt) {
                 if (txt.Status == 0) {
@@ -69,21 +82,13 @@ $(function() {
                                 '</div>';
                         }
                         $page.find(".productContent").append(node);
-                        $page.off("click",".price button").on("click",".price button",function(e){
-                            $$.redirect("home/fillOrder.html?pid="+$(this).attr("data-id")+"&num=1");
-                            e.preventDefault();
-                            e.stopPropagation();
-                        });
-                        $page.off("click",".productInfo").on("click",".productInfo",function(){
-                            $$.redirect("home/product.html?pid="+$(this).attr("data-id"));
-                        });
                     }
                 }
             }
         );
     }
 
-    function loadStore(){
+    function loadStore() {
         $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/QueryFollowList", {},
             function(txt) {
                 if (txt.Status == 0) {
@@ -95,20 +100,16 @@ $(function() {
                         $page.find(".storeContent").append(storeNode);
                     } else {
                         for (var i = 0; i < storeData.length; i++) {
-                            storeNode += '<div class="storeInfo" data-id="'+storeData[i].ID+'">' +
+                            storeNode += '<div class="storeInfo" data-id="' + storeData[i].ID + '">' +
                                 '<img src="http://api.cheshili.com.cn/Img/' + noImg(storeData[i].Img) + '">' +
                                 '<div class="detail">' +
                                 '<p>' + storeData[i].Name + '</p>' +
                                 '<p>共' + storeData[i].FollowCount + '人关注</p>' +
                                 '</div>' +
                                 '</div>';
-                            
+
                         }
                         $page.find(".storeContent").append(storeNode);
-                        $page.off("click",".storeInfo");
-                        $page.find(".storeInfo").click(function(){
-                            $$.redirect("shop/shopDetail.html?ID="+$(this).attr("data-id"));
-                        });
                     }
                 }
             }

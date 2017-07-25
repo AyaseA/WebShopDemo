@@ -4,14 +4,14 @@ $(function() {
         $page = $('#shop_shopList'),
         pageStr = 'shop_shopList',
         headerH = $page.find(">div.header").height(),
-        selectorH = 47,//$page.find('>div.selectShop').height(),
+        selectorH = 47, //$page.find('>div.selectShop').height(),
         footerH = $page.find(">div.footer").height();
 
     //设置内容高度    
     $page.find(">div.shopList").css({
         'height': bodyH - headerH - selectorH - footerH - 1,
     });
-    
+
     //底部导航时间
     $page.on('click', 'div.footer li', function() {
         var type = $(this).attr('data-tab');
@@ -45,20 +45,9 @@ $(function() {
 
 
     $page.on("click", ".onepiece", function() {
-        $$.redirect("shop/shopDetail.html?ID="+$(this).attr("data-ID"));
+        $$.redirect("shop/shopDetail.html?ID=" + $(this).attr("data-ID"));
     });
 
-    // 获取地理位置
-    wx.getLocation({
-        type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
-        success: function(res) {
-            var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-            var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-            var speed = res.speed; // 速度，以米/每秒计
-            var accuracy = res.accuracy; // 位置精度
-            geocoder2Address([+longitude + 0.006, latitude]);
-        }
-    });
     // layer
     function loactionConfirm(name, callback) {
         layer.open({
@@ -89,10 +78,10 @@ $(function() {
         });
     }
 
-    function overText(node,num){
-        if(node.length>num){
-            return node.substring(0,num)+"..";
-        }else{
+    function overText(node, num) {
+        if (node.length > num) {
+            return node.substring(0, num) + "..";
+        } else {
             return node;
         }
     }
@@ -165,7 +154,7 @@ $(function() {
                     var shoplist = "";
                     for (var i = 0; i < data.length; i++) {
                         var distance = getGreatCircleDistance(36.6875642852, 117.1330654621, data[i].Latitude, data[i].Longitude);
-                        shoplist = '<div class="onepiece" data-ID="'+data[i].ID+'"><img src="http://api.cheshili.com.cn/Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address,10) + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="http://api.cheshili.com.cn/Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 
@@ -195,8 +184,7 @@ $(function() {
         });
     }
 
-    loadStore({ Type: -1, N: n }, "#shop_shopList .shopList");
-
+    loadStore({N:1}, "#shop_shopList .shopList");
     //3级联动筛选
     //点击区域
     $("#shopList_positionS").on("click", "li", function() {
@@ -211,8 +199,8 @@ $(function() {
         } else {
             if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"),LL: "117.1330654621,36.6875642852" }, "#shop_shopList .shopList");
-            }else{
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"), LL: "117.1330654621,36.6875642852" }, "#shop_shopList .shopList");
+            } else {
                 reSetAttr();
                 loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type") }, "#shop_shopList .shopList");
             }
@@ -223,20 +211,20 @@ $(function() {
     //点击属性排序
     $("#shopList_carT").on("click", "li", function() {
         if ($("#shopList_area ul .positionOn").attr("data-type") == 0) {
-            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31){
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n , LL: "117.1330654621,36.6875642852"}, "#shop_shopList .shopList");
-            }else{
+                loadStore({ Type: $(this).attr("data-type"), N: n, LL: "117.1330654621,36.6875642852" }, "#shop_shopList .shopList");
+            } else {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n}, "#shop_shopList .shopList");
+                loadStore({ Type: $(this).attr("data-type"), N: n }, "#shop_shopList .shopList");
             }
         } else {
-            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31){
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") , LL: "117.1330654621,36.6875642852"}, "#shop_shopList .shopList");
-            }else{
+                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type"), LL: "117.1330654621,36.6875642852" }, "#shop_shopList .shopList");
+            } else {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type")}, "#shop_shopList .shopList");
+                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#shop_shopList .shopList");
             }
         }
     });
@@ -351,7 +339,7 @@ $(function() {
                 }
                 selectList[this.index].className = "tOn";
                 contentList[this.index].className = "cOn";
-            }
+            };
         }
 
         //列表选项点击事件  

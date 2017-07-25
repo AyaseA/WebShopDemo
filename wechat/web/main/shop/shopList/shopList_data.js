@@ -7,4 +7,8 @@ $(function() {
         selectorH = $page.find('.selectShop').height(),
         footerH = $page.find(".footer").height();
 
+    // 获取位置
+    $page.find('>div.header >a.location >span').text(
+        $$.getLocationInfo().name
+    );
 });

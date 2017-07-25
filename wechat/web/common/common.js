@@ -200,7 +200,13 @@
         // 后台溜一圈
         refresh: function(url, status) {
             if (url) {
-                if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+                url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+                        'appid=wx2c53034422e377cc&redirect_uri=' +
+                        'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
+                        escape(escape(url)) +
+                        '&response_type=code&scope=snsapi_base&state=' + status +
+                        '#wechat_redirect';
+                /*if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                     url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
                         'appid=wx2c53034422e377cc&redirect_uri=' +
                         'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
@@ -211,7 +217,7 @@
 
                 } else if (navigator.userAgent.indexOf('csl-android') != -1) {
                     
-                }
+                }*/
                 location.href = url;
             }
         },

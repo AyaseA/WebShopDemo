@@ -488,7 +488,11 @@ Date.prototype.pattern = function(fmt) {
                     success: function(data) {
                         data = $$.eval(data);
                         if (data.Status == -1) {
-                            $$.refreshConfirm();
+                            if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+                                $$.refreshConfirm();
+                            } else {
+                                authConfirm();
+                            }
                         } else if (succfunc) {
                             succfunc(data);
                         }
@@ -712,7 +716,6 @@ Date.prototype.pattern = function(fmt) {
             if (code == '0') {
                 // 已关联且成功登陆
                 // 保存token
-                alert(str);
                 $$.setToken(str);
             } else if (code == '1') {
                 // 成功取消关联

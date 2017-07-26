@@ -87,10 +87,12 @@
 				<span class="stars start_{{star}}"></span>
 			</p>
 			<div class="cnt">{{comment.Cont}}</div>
+			{{if comment.ImgList != null}}
 			{{set imgs = $imports.splitFilter(comment.ImgList, ',')}}
 			{{each imgs as img}}
 				<img src="{{serverAddr}}Img/{{img | imgFilter}}">
 			{{/each}}
+			{{/if}}
 			<p class="proInfo">
 				{{productName}}
 				<small>{{comment.AddTime | timeFilter}}</small>

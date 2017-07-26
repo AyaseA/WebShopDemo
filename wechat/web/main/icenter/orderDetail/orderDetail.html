@@ -94,5 +94,8 @@
         {{if canCancel}}
         <button class="cancelOrder" data-id="{{orderId}}">取消订单</button>
         {{/if}}
+        {{if canReBuy}}
+        <a href="home/product.html?pid={{productInfo[0].ID}}">重新购买</a>
+        {{/if}}
     </script>
 </div>

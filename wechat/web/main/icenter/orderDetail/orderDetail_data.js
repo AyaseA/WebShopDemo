@@ -34,11 +34,12 @@ $(function () {
                     return false;
                 }
                 if (res.Data) {
-                	var d = res.Data;
+                	var d = res.Data,
+                        productInfo = JSON.parse(d.Data);
                 	total = d.OutPocket;
                 	$page.find('>div.main').html(template(pageStr + '_detail', {
                         serverAddr: $$.config.serverAddr,
-                		proList: JSON.parse(d.Data),
+                		proList: productInfo,
                         oData: d,
                         isPayed: $.inArray(d.StatusID, ['1', '5', '8', '10']) == -1,
                 		discountMoney: (parseFloat(d.Discount) +
@@ -47,13 +48,16 @@ $(function () {
                 		                parseFloat(d.GiftVoucherNum)).toFixed(2)
                 	}));
                     var canCancel = $.inArray(d.StatusID, ['1'/*, '2', '3', '4', '8', '10'*/]) != -1,
-                        canPay = $.inArray(d.StatusID, ['1', '8', '10']) != -1;
+                        canPay = $.inArray(d.StatusID, ['1', '8', '10']) != -1,
+                        canReBuy = $.inArray(d.StatusID, ['5']) != -1;
                     // 设置底部按钮
                     $page.find('>div.footer').html(template(pageStr + '_footer', {
                         orderId: orderId,
                         oData: d,
                         canPay: canPay,
-                        canCancel: canCancel
+                        canCancel: canCancel,
+                        canReBuy: canReBuy,
+                        productInfo: productInfo
                     }));
                 }
 			}

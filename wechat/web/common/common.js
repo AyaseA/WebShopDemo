@@ -661,6 +661,9 @@ Date.prototype.pattern = function(fmt) {
                 }
             });
         },
+        authConfirm: function(refuseCalbck, allowCalBck) {
+            authConfirm(refuseCalbck, allowCalBck);
+        },
         delUserCookies: function() {
             $$.delCookie('__TOKEN__');
             $$.delCookie('__UINFO__');

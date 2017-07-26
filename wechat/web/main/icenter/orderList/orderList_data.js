@@ -138,7 +138,7 @@ $(function() {
                             if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                                 $$.refreshConfirm();
                             } else {
-                                authConfirm();
+                                $$.authConfirm();
                             }
                         } else {
                             var list = data.Data.Rows;

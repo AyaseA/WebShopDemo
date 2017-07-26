@@ -677,6 +677,25 @@ Date.prototype.pattern = function(fmt) {
     // 是否授权
     !(function() {
         /*********** 相关方法定义 ************/
+        // url替换处理
+        var urlHandle = function(url) {
+            if (url.indexOf('?') != -1) {
+                var urlArr = url.split('?');
+                urlArr[1] = urlArr[1].replace(/(^|&)code=([^&]*)/i, '');
+                urlArr[1] = urlArr[1].replace(/(^|&)str=([^&]*)/i, '');
+                urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g, '');
+                url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
+            }
+
+            var wechatInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i);
+            if (wechatInfo && wechatInfo[1] < '6.2') {
+                // 微信6.2以下版本相应处理
+                location.href = url;
+            } else {
+                // 其他情况相应处理
+                history.pushState({}, '', url);
+            }
+        };
         // 解析url参数
         var paramHandle = function(url) {
             // 获取当前url
@@ -693,6 +712,7 @@ Date.prototype.pattern = function(fmt) {
             if (code == '0') {
                 // 已关联且成功登陆
                 // 保存token
+                alert(str);
                 $$.setToken(str);
             } else if (code == '1') {
                 // 成功取消关联
@@ -724,25 +744,6 @@ Date.prototype.pattern = function(fmt) {
             } else {
                 // 网络的锅
 
-            }
-        };
-        // url替换处理
-        var urlHandle = function(url) {
-            if (url.indexOf('?') != -1) {
-                var urlArr = url.split('?');
-                urlArr[1] = urlArr[1].replace(/(^|&)code=([^&]*)/i, '');
-                urlArr[1] = urlArr[1].replace(/(^|&)str=([^&]*)/i, '');
-                urlArr[1] = urlArr[1].replace(/(^&*)|(&*$)/g, '');
-                url = urlArr[0] + (urlArr[1] ? '?' + urlArr[1] : '');
-            }
-
-            var wechatInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i);
-            if (wechatInfo && wechatInfo[1] < '6.2') {
-                // 微信6.2以下版本相应处理
-                location.href = url;
-            } else {
-                // 其他情况相应处理
-                history.pushState({}, '', url);
             }
         };
 

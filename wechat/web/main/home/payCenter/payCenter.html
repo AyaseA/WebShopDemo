@@ -49,16 +49,19 @@
 		</div>
 		<h5>请选择支付方式</h5>
 		<div class="payMode">
+			{{if isWx}}
 			<div class="selected">
 				<img src="./images/payCenter/wechat.png">
 				<p>微信支付</p>
 				<p>推荐安装微信客户端的用户使用</p>
 			</div>
-			<!-- <div>
-				<img src="./images/pay/alipay.png">
+			{{else}}
+			<div class="selected">
+				<img src="./images/payCenter/alipay.png">
 				<p>支付宝支付</p>
 				<p>推荐安装支付宝客户端的用户使用</p>
-			</div> -->
+			</div>
+			{{/if}}
 		</div>
 		<button>确认并支付</button>
 	</script>

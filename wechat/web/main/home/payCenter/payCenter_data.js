@@ -46,7 +46,14 @@ $(function() {
 				'&WToken=' + $$.getToken() +
 				'&Total=' + total;
 		} else {
-			layer.msg('支付个茄子，没钱！！！');
+			var payType = $page.find('>div.main div.payMode >div').attr('data-type');
+			wx.orderPay({
+				OrderID: orderId,
+				OrderDesc: orderDesc,
+				WToken: $$.getToken(),
+				Total: total,
+				PayType: payType
+			});
 		}
 	}
 });

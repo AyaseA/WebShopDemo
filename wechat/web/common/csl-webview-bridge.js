@@ -51,7 +51,14 @@
         }
 
         // 处理 移动端 调用 js -->registerHandler
-        bridge.registerHandler(oc2jsHandlerName, function(data, responseCallback) {
+        bridge.registerHandler(oc2jsHandlerName, function(resdata, responseCallback) {
+
+            var data = resdata;
+            var palteform = getPlateform();
+            if (palteform != 'iOS') {
+                // androd
+                data = JSON.parse(resdata);
+            }
 
             if (data.messageType == 'pickImages') {
                 var imagArr = data.imageVals;
@@ -194,6 +201,10 @@
         //获取code刷新界面
         refreshPage: function(data, callback) {
             sendMessageToPhone('refreshPage', data, callback);
+        },
+        //获取code刷新界面
+        orderPay: function(data, callback) {
+            sendMessageToPhone('orderPay', data, callback);
         },
         //发送自定义消息
         sendCustomMessage: function(data, callback) {

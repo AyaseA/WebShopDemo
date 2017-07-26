@@ -68,7 +68,7 @@ $(function() {
                                     data: { "ID": list[i].ID },
                                     success: function(txt) {
 
-                                        productInfo = $$.eval(txt).Data;
+                                        var productInfo = $$.eval(txt).Data;
 
                                         var descri = productInfo.Descri,
                                             content = '';
@@ -77,7 +77,7 @@ $(function() {
                                             content = Base64.decode(unescape(descri.text));
                                         }
 
-                                        var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + content + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
+                                        var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + productInfo.Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
                                         $page.find(".content").append(onePiece);
                                     }
                                 });

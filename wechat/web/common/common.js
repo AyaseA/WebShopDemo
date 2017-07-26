@@ -659,10 +659,6 @@ Date.prototype.pattern = function(fmt) {
         },
         delUserCookies: function() {
             $$.delCookie('__TOKEN__');
-            $$.delCookie('__LOCATION__');
-            $$.delCookie('__URL__');
-            $$.delCookie('__OLDDIV__');
-            $$.delCookie('__NEWDIV__');
             $$.delCookie('__UINFO__');
             $$.delCookie('__WISHLIST__');
         }

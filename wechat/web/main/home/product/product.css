@@ -124,6 +124,7 @@
 #home_product div.product div.comments {
     margin-top: 10px;
     background-color: #fff;
+    padding-bottom: 30px;
 }
 #home_product div.product div.comments >p {
 	font-size: 16px;

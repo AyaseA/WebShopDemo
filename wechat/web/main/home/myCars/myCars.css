@@ -96,7 +96,7 @@
     }
 }
 #home_myCars >div.main >div.cars {
-	padding: 15px 15px 0;
+	padding: 15px 15px 30px;
 }
 #home_myCars >div.main >div.cars >div.car {
 	border: 1px solid #fff;

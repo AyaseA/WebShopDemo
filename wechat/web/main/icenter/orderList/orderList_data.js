@@ -134,7 +134,11 @@ $(function() {
                 success: function(data) {
                     if (thisLoaded[scrollArea] == 0) {
                         if (data.Status == -1) {
-                            $$.refreshConfirm();
+                            if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+                                $$.refreshConfirm();
+                            } else {
+                                $$.authConfirm();
+                            }
                         } else {
                             var list = data.Data.Rows;
                             $page.listNum = list.length;

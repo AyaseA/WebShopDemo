@@ -101,6 +101,7 @@ $(function() {
         //点击支付按钮事件  
         $page.off("click", ".PayBtn").on("click", ".PayBtn", function() {
             var orderId = $(this).parent().parent().children(".pieceHeader").children(".orderID").children().html();
+            var _this=$(this);
             var productID = "";
             if ($(this).html() == "支付") {
                 $$.redirect("home/payCenter.html?oid=" + orderId);
@@ -110,7 +111,7 @@ $(function() {
                 var productID = $(this).attr("data-index");
                 $$.redirect("icenter/orderCommit.html?oid=" + orderId + "&pid=" + productID);
             } else if ($(this).html() == "重新购买"){
-                $$.redirect("home/product.html?pid=" + orderId);
+                $$.redirect("home/product.html?pid=" + _this.attr("data-id"));
             }
 
         });

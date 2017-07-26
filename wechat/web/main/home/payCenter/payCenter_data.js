@@ -39,10 +39,14 @@ $(function() {
 	}
 	// 支付
 	function confirmToPay() {
-		location.href = $$.config.serverAddr +
-			'CSL/' + (isWx ? 'W' : 'A') + '_Pay/Pay?OrderID=' + orderId +
-			'&OrderDesc=' + orderDesc +
-			'&WToken=' + $$.getToken() +
-			'&Total=' + total;
+		if (isWx) {
+			location.href = $$.config.serverAddr +
+				'CSL/W_Pay/Pay?OrderID=' + orderId +
+				'&OrderDesc=' + orderDesc +
+				'&WToken=' + $$.getToken() +
+				'&Total=' + total;
+		} else {
+			layer.msg('支付个茄子，没钱！！！');
+		}
 	}
 });

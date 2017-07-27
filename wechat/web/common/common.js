@@ -40,7 +40,8 @@ Date.prototype.pattern = function(fmt) {
     win.GLOBAL_includejs = Array();
 
     // 微信签名
-    var weChatSign = {};
+    var weChatSign = {},
+        isReload = true;
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
@@ -105,7 +106,9 @@ Date.prototype.pattern = function(fmt) {
                 var stackArr = get();
                 if ($.inArray(url, stackArr) == -1 &&
                     $.inArray(backUrl, stackArr) == -1 &&
-                    !fromGoBack) {
+                    !fromGoBack &&
+                    !isReload) {
+                    isReload = false;
                     stackArr.push(backUrl || url);
                     set(stackArr);
                 }

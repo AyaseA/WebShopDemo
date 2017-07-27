@@ -213,6 +213,11 @@
 
         //跳转页面
         jumpToUrl: function(url) {
+            var urlArr = url.split('?R=');
+             if (urlArr.length > 1) {
+                urlArr[1] = escape(unescape(urlArr[1]));
+                url = urlArr[0] + '?R=' + urlArr[1];
+             }
             location.href = url;
         },
         //处理图片信息

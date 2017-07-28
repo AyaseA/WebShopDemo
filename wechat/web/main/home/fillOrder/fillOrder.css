@@ -244,6 +244,18 @@
 	box-sizing: border-box;
 	width: 100%;
 }
+#home_fillOrder >div.couponModal div.warp div.no-ticket {
+	text-align: center;
+    margin-top: 50px;
+}
+#home_fillOrder >div.couponModal div.warp div.no-ticket >img {
+	width: 50%;
+}
+#home_fillOrder >div.couponModal div.warp div.no-ticket >p {
+	font-size: 18px;
+    margin-top: 20px;
+    color: #7d7d7d;
+}
 #home_fillOrder >div.couponModal div.ticket {
 	height: 120px;
 	background-color: #fff;

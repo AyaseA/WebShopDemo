@@ -58,18 +58,25 @@
 		</p>
 	</script>
 	<script id="home_fillOrder_coupon_item" type="text/html">
-		{{each list as val}}
-		<div class="ticket" data-id="{{val.ID}}" data-coupon="{{val.Discount}}">
-			<div><i>￥</i><span>{{val.Discount}}</span>
-				<small>{{val.Name}}</small>
+		{{if list.length > 0}}
+			{{each list as val}}
+			<div class="ticket" data-id="{{val.ID}}" data-coupon="{{val.Discount}}">
+				<div><i>￥</i><span>{{val.Discount}}</span>
+					<small>{{val.Name}}</small>
+				</div>
+				<p>{{val.Descri}}</p>
+				<small>{{val.TimeStart}} 到 {{val.TimeEnd}}</small>
+				{{if enable}}
+				<i></i>
+				{{/if}}
 			</div>
-			<p>{{val.Descri}}</p>
-			<small>{{val.TimeStart}} 到 {{val.TimeEnd}}</small>
-			{{if enable}}
-			<i></i>
-			{{/if}}
-		</div>
-		{{/each}}
+			{{/each}}
+		{{else}}
+			<div class="no-ticket">
+				<img src="./images/orders/no_ticket.png">
+				<p>没有相关优惠券</p>
+			</div>
+		{{/if}}
 		{{if enable}}
 		<button class="selectTicket">确定</button>
 		{{/if}}

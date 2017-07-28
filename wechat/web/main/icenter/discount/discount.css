@@ -110,3 +110,12 @@
 #icenter_discount .navContent{
 	overflow-y: auto;
 }
+
+#icenter_discount .noData{
+	text-align: center;
+	padding-top: 10vw;
+}
+
+#icenter_discount .noData img{
+	width: 70vw;
+}

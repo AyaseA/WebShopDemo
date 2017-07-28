@@ -2,7 +2,6 @@ $(function() {
     var $page = $('#icenter_orderCommit'),
         pageStr = 'icenter_orderCommit';
 
-    alert(1);
     if ($$.isLogin(true)) {
         var bodyHeight = window.innerHeight || document.body.clientHeight,
             $page = $('#icenter_orderCommit'),

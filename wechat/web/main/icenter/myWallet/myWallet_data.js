@@ -7,7 +7,7 @@ $(function() {
         var url = $$.config.serverAddr;
         var token = $$.getToken();
         
-        $$.post("http://api.cheshili.com.cn/CSL/User/QueryICenterInfo",
+        $$.post("CSL/User/QueryICenterInfo",
             {},
             function(txt){
                 if(txt.Status==0){

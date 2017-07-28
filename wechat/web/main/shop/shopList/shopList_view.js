@@ -146,7 +146,7 @@ $(function() {
         _this.loadfoot = false;
         $.ajax({
             type: "POST",
-            url: "http://api.cheshili.com.cn/Product/Store/QueryStoreList",
+            url: $$.config.serverAddr + "Product/Store/QueryStoreList",
             data: _this.Data,
             dataType: "json",
             success: function(txt) {
@@ -156,7 +156,7 @@ $(function() {
                     var shoplist = "";
                     for (var i = 0; i < data.length; i++) {
                         var distance = getGreatCircleDistance(locationInfo?locationInfo.latitude:36.6875642852, locationInfo?locationInfo.longitude:117.1330654621, data[i].Latitude, data[i].Longitude);
-                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="http://api.cheshili.com.cn/Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span><span class="fr">' + (data[i].Mobile || "无") + '</span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 

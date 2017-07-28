@@ -7,7 +7,7 @@ $(function() {
 		例：$('#文件夹名_文件名 button.button')
 
 	*/
-	$$.post("http://api.cheshili.com.cn/CSL/User/QueryValueVoucherJson",
+	$$.post("CSL/User/QueryValueVoucherJson",
 		{},
 		function(txt){
 			if(txt.Status==0){

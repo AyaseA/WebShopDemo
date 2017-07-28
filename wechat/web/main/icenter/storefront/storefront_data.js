@@ -60,7 +60,7 @@ $(function() {
 
 
     function loadProduct() {
-        $$.post("http://api.cheshili.com.cn/CSL/Wish/QueryWishList", {},
+        $$.post("CSL/Wish/QueryWishList", {},
             function(txt) {
                 if (txt.Status == 0) {
                     $page.find(".productContent").empty();
@@ -74,7 +74,7 @@ $(function() {
                             console.log(data[i].WishAddTime);
                             console.log(Date.prototype);
                             node += '<div class="productInfo" data-id="' + data[i].ID + '">' +
-                                '<img src="http://api.cheshili.com.cn/Img/' + noImg(data[i].Img) + '">' +
+                                '<img src=' + $$.config.serverAddr + '"Img/' + noImg(data[i].Img) + '">' +
                                 '<div class="info">' +
                                 '<p class="name"><b>' + data[i].Name + '</b></p>' +
                                 '<p class="descri">' + getDesCri(data[i].Descri) + '</p>' +
@@ -91,7 +91,7 @@ $(function() {
     }
 
     function loadStore() {
-        $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/QueryFollowList", {},
+        $$.post("CSL/StoreFollow/QueryFollowList", {},
             function(txt) {
                 if (txt.Status == 0) {
                     $page.find(".storeContent").empty();
@@ -103,7 +103,7 @@ $(function() {
                     } else {
                         for (var i = 0; i < storeData.length; i++) {
                             storeNode += '<div class="storeInfo" data-id="' + storeData[i].ID + '">' +
-                                '<img src="http://api.cheshili.com.cn/Img/' + noImg(storeData[i].Img) + '">' +
+                                '<img src="' + $$.config.serverAddr + 'Img/' + noImg(storeData[i].Img) + '">' +
                                 '<div class="detail">' +
                                 '<p>' + storeData[i].Name + '</p>' +
                                 '<p>共' + storeData[i].FollowCount + '人关注</p>' +

@@ -45,11 +45,11 @@ Date.prototype.pattern = function(fmt) {
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
-        serverAddr: 'http://api.cheshili.com.cn/',
+        serverAddr: 'http://api.cheshili.com.cn:8000/',
         // 相关配置
         config: {
             // 接口地址--各种请求地址
-            serverAddr: 'http://api.cheshili.com.cn/',
+            serverAddr: 'http://api.cheshili.com.cn:8000/',
             // 悬浮菜单刷新是否可用
             canRefresh: true,
             // 隐藏悬浮菜单
@@ -250,9 +250,9 @@ Date.prototype.pattern = function(fmt) {
                 }
                 if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                     url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-                        'appid=wx2c53034422e377cc&redirect_uri=' +
-                        'http%3A%2F%2Fapi.cheshili.com.cn%2FCSL%2FLogin%2FHandleWUri%3Furl%3D' +
-                        escape(escape(url)) +
+                        'appid=wx2c53034422e377cc&redirect_uri=' + escape($$.config.serverAddr).replace(/\//g, '%2F') +
+                        'CSL%2FLogin%2FHandleWUri%3Furl%3D' +
+                        escape(escape(url)).replace(/\//g, '%2F') +
                         '&response_type=code&scope=snsapi_base&state=' + status +
                         '#wechat_redirect';
                     location.href = url;

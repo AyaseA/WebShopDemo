@@ -37,7 +37,7 @@ $(function() {
         if (phoneNumReg.test($page.find(".phoneInput").val())) {
             $.ajax({
                 type: "POST",
-                url: "http://api.cheshili.com.cn/Product/Campaign/QueryMyDetail",
+                url: "Product/Campaign/QueryMyDetail",
                 data: {
                     CampaignID: 31,
                     TheMobile: $page.find(".phoneInput").val(),
@@ -57,7 +57,7 @@ $(function() {
                         time($page.find(".getMsg"));
                         $.ajax({
                             type: "POST",
-                            url: "http://api.cheshili.com.cn/Product/Info/SendMsg",
+                            url: $$.config.serverAddr + "Product/Info/SendMsg",
                             data: {
                                 Mobile: $page.find(".phoneInput").val(),
                                 SendVC: 1,
@@ -84,7 +84,7 @@ $(function() {
     function getUserInfo(num, area) {
         $.ajax({
             type: "POST",
-            url: "http://api.cheshili.com.cn/Product/Campaign/QueryMyDetail",
+            url: "Product/Campaign/QueryMyDetail",
             data: {
                 CampaignID: 31,
                 TheMobile: num,
@@ -110,7 +110,7 @@ $(function() {
         } else {
             $.ajax({
                 type: "POST",
-                url: "http://api.cheshili.com.cn/Product/Campaign/AddCampaignReward",
+                url: "Product/Campaign/AddCampaignReward",
                 data: {
                     CampaignID: 31,
                     WinOrNot:1,

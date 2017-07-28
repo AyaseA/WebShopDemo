@@ -31,7 +31,7 @@ $(function() {
 
     $.ajax({
         type: "POST",
-        url: "http://api.cheshili.com.cn/Product/Store/QueryStoreDetail",
+        url: $$.config.serverAddr + "Product/Store/QueryStoreDetail",
         data: {
             ID: id
         },
@@ -54,7 +54,7 @@ $(function() {
                 if (txt.Data.ImgList) {
                     var imgList = txt.Data.ImgList.split(",");
                     for (var i = 0; i < imgList.length; i++) {
-                        $('#shop_shopDetail_banner .bd ul').append("<li><img src='http://api.cheshili.com.cn/Img/" + imgList[i] + "'></li>");
+                        $('#shop_shopDetail_banner .bd ul').append("<li><img src='" + $$.config.serverAddr + "Img/" + imgList[i] + "'></li>");
                     }
                 }
                 bannerSlide();
@@ -88,7 +88,7 @@ $(function() {
     }
 
 
-    $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/QueryFollowDetail", { StoreID: id },
+    $$.post("CSL/StoreFollow/QueryFollowDetail", { StoreID: id },
         function(txt) {
             if (txt.Status == 0) {
                 $page.find(".btn").attr("data-watch", "1");
@@ -103,7 +103,7 @@ $(function() {
 
     $page.off("click", ".btn").on("click", ".btn", function() {
         if ($(this).attr("data-watch") == 0) {
-            $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/AddUpdateFollow", { StoreID: id },
+            $$.post("CSL/StoreFollow/AddUpdateFollow", { StoreID: id },
                 function(txt) {
                     if (txt.Status == 0) {
                         $page.find(".btn").attr("data-watch", "1");
@@ -114,7 +114,7 @@ $(function() {
             );
         } else {
             layer.confirm("是否要取消关注", function(index) {
-                $$.post("http://api.cheshili.com.cn/CSL/StoreFollow/DeleteFollow", { StoreID: id },
+                $$.post("CSL/StoreFollow/DeleteFollow", { StoreID: id },
                     function(txt) {
                         if (txt.Status == 0) {
                             $page.find(".btn").attr("data-watch", "0");

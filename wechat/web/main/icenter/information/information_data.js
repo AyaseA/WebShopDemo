@@ -1,5 +1,5 @@
 var url = $$.config.serverAddr;
-var imgUrl = 'http://api.cheshili.com.cn/Img/';
+var imgUrl = $$.config.serverAddr + 'Img/';
 $page=$("#icenter_information");
 /*var resImg = $$.getUserInfo();
 $('#icenter_information .img_icon').attr('src', imgUrl + resImg.Img);*/

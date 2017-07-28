@@ -22,11 +22,11 @@
             if (isLogout) {
                 layer.msg('您已退出登录！');
                 $$.delUserCookies();
-                location.href = 'http://api.cheshili.com.cn/wechat/www/web/main/index.html?R=home%2Findex.html';
+                location.href = $$.config.serverAddr + 'wechat/www/web/main/index.html?R=home%2Findex.html';
             } else {
                 layer.msg('您已解除绑定！');
                 $$.delUserCookies();
-                location.href = 'http://api.cheshili.com.cn/CSL/Login/HandleMenu?url%3Dhome/index.html%26state%3D1'
+                location.href = $$.config.serverAddr + 'CSL/Login/HandleMenu?url%3Dhome/index.html%26state%3D1'
             }
             layer.close(index);
         });

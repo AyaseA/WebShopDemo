@@ -185,7 +185,7 @@ $(function() {
     function getSeries(bid, bids, bName, img) {
         $page.find('>div.seriesModal >h5').text(bName);
         $$.get(
-            'Product/Car/GetSeriesJsonByBrand?BrandIDs=' + bids,
+            'Product/Car/GetSeriesJsonByBrand?BrandIDs=' + bids + '&Rows=9999',
             function(res) {
                 if (res.Status != 0) {
                     console.log('获取Series失败');
@@ -205,7 +205,7 @@ $(function() {
     // 获取Cars
     function getCars(sid) {
         $$.get(
-            'Product/Car/GetCarBySeries?SeriesID=' + sid,
+            'Product/Car/GetCarBySeries?SeriesID=' + sid + '&Rows=9999',
             function(res) {
                 if (res.Status != 0) {
                     console.log('获取Cars失败');

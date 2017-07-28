@@ -2,7 +2,7 @@ $(function() {
     var $page = $('#icenter_orderCommit'),
         pageStr = 'icenter_orderCommit';
 
-
+    alert(1);
     if ($$.isLogin(true)) {
         var bodyHeight = window.innerHeight || document.body.clientHeight,
             $page = $('#icenter_orderCommit'),
@@ -56,9 +56,16 @@ $(function() {
 
         $page.off("click", ".reserve").on("click", ".reserve", function() {
             var j = $(this).attr("data-index");
+            var _this=$(this);
             wx.previewImage({
-                current: $page.imgList[j], // 当前显示图片的http链接
-                urls: $page.imgList // 需要预览的图片http链接列表
+                current: $(this).attr("src"), // 当前显示图片的http链接
+                urls: function(){
+                    var showList=new Array();
+                    for(var i=0;i<$page.find(".reserve").length;i++){
+                        showList.push($($page.find(".reserve")[i]).attr("src"));
+                    } 
+                    return showList;// 需要预览的图片http链接列表
+                }
             });
         });
 

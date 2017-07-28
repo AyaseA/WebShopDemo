@@ -36,6 +36,18 @@ $(function() {
 		}
 		changeCommentsTab($(this));
 	});
+	// 点击图片放大
+	$page.on('click', 'div.comment >img', function() {
+		var url = $(this).attr('src');
+		layer.open({
+            type: 1,
+            title: false, //不显示标题栏
+            closeBtn: true,
+            shade: 0.5,
+            moveType: 1, //拖拽模式，0或者1
+            content: '<img style="max-width:100%;max-height:120vw;margin-bottom:-4px" src="' + url + '" />'
+        });
+	});
 	// 收藏
 	$page.on('click', '>div.footer >a.collect', function() {
 		var $this = $(this),

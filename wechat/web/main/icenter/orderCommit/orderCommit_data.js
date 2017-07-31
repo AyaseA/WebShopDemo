@@ -175,7 +175,7 @@ $(function() {
                         $$.post("CSL/Review/AddReviewImg", {
                             ProductReviewID: $page.ReviewID,
                             Img: serverId,
-                            Platform: 1
+                            Platform: 10
                         }, function(txt) {
                             if (i == $page.imgList.length) {
                                 layer.alert("评论成功", function(index) {

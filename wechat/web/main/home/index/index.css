@@ -21,6 +21,18 @@
 		height: 40px;
 	}
 }
+#home_index >div.header >a.scan {
+    background-image: url(../../images/common/scan.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 30px;
+    height: 24px;
+}
 #home_index >div.header >a.location {
     font-size: 14px;
     color: #fff;
@@ -71,6 +83,9 @@
 	#home_index >div.header >a.search {
 	    width: 234px;
 	}
+    #home_index >div.header >a.scan {
+        top: 12px
+    }
 }
 @media screen and (max-width: 350px) {
 	#home_index >div.header >a.location {
@@ -87,6 +102,9 @@
 		width: 175px;
         background-size: 100% 64%;
 	}
+    #home_index >div.header >a.scan {
+        top: 8px;
+    }
 }
 /* banner start */
 #home_index >div.main {

@@ -308,7 +308,8 @@
 	padding: 5px 0;
 }
 #home_product div.evaluate div.comment >img {
-	width: 80px;
+    width: 23vw;
+    height: 23vw;
 }
 #home_product div.evaluate div.comment p.proInfo {
 	color: #B6B6B6;

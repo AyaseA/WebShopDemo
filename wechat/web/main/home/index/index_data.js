@@ -100,6 +100,23 @@ $(function(){
             }
         );
     }
+
+    $page.off('click', 'div.header a.scan').on('click', 'div.header a.scan', function() {
+        if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+            wx.scanQRCode({
+                needResult: 0,
+                scanType: ["qrCode","barCode"],
+                success: function (res) {
+                    var result = res.resultStr;
+                    alert(result);
+                }
+            });
+        } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
+            wx.scanQRCode();
+        } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+            wx.scanQRCode();
+        }
+    });
     //微信配置
     var WXsign = $$.getWeChatSign(1);
     wx.config({

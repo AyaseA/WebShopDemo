@@ -1,0 +1,145 @@
+#icenter_info {
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFF4;
+	overflow: hidden;
+    position: relative;
+}
+#icenter_info >div.header {
+	width: 100%;
+	height: 45px;
+	position: absolute;
+	top: 0;
+    z-index: 12;
+    background-color: #FFF;
+}
+#icenter_info >div.header >a.goBack {
+	display: block;
+	float: left;
+	height: 45px;
+	width: 44px;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#icenter_info >div.header >span {
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 45px;
+    width: 60%;
+}
+#icenter_info >div.main {
+	position: absolute;
+	top: 45px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#icenter_info >div.main >div {
+    padding: 0 15px;
+    background-color: #FFF;
+}
+#icenter_info >div.main >div.header-icon {
+    margin-top: 10px;
+}
+#icenter_info >div.main >div.header-icon >p {
+    border: 0;
+}
+#icenter_info >div.main >div >p {
+    height: 46px;
+    line-height: 46px;
+    border-top: 1px solid #E8E8E8;
+    position: relative;
+    text-indent: 30px;
+}
+#icenter_info >div.main >div >p::before {
+    content: '';
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 21px;
+    position: absolute;
+    top: 13px;
+}
+#icenter_info >div.main >div.header-icon >p::before {
+    background-image: url(../../images/center/address_book.png);
+}
+#icenter_info >div.main >div.account >p::before {
+    background-image: url(../../images/center/people.png);
+}
+#icenter_info >div.main >div.sex >p::before {
+    background-image: url(../../images/center/friend_favor_blue.png);
+}
+#icenter_info >div.main >div:not(.account) >p::after {
+    content: '';
+    display: block;
+    background-image: url(../../images/center/right_copy.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 7px;
+    position: absolute;
+    top: 17px;
+    right: 0;
+}
+#icenter_info >div.main >div img {
+    height: 36px;
+    width: 36px;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    box-sizing: border-box;
+    background-color: #E5E5E5;
+    border-radius: 50%;
+    padding: 4px;
+}
+#icenter_info >div.main >div span {
+    float: right;
+    margin-right: 20px;
+}
+#icenter_info >div.main >div.mask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .35);
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    padding: 0;
+    display: none;
+}
+#icenter_info >div.main >div.mask >div {
+    z-index: 11;
+    width: 90%;
+    padding: 10px 5%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0;
+}
+#icenter_info >div.main >div.mask >div >div {
+    background-color: #FFF;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+#icenter_info >div.main >div.mask a {
+    display: block;
+    height: 46px;
+    text-align: center;
+    line-height: 46px;
+    color: #EA5514;
+    border-top: 1px solid #ECECEE;
+}
+#icenter_info >div.main >div.mask a.option1 {
+    border: 0;
+}
+#icenter_info >div.main >div.mask div.cancel {
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+}

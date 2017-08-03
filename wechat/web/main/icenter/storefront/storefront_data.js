@@ -71,8 +71,6 @@ $(function() {
                         $page.find(".productContent").append(node);
                     } else {
                         for (var i = 0; i < data.length; i++) {
-                            console.log(data[i].WishAddTime);
-                            console.log(Date.prototype);
                             node += '<div class="productInfo" data-id="' + data[i].ID + '">' +
                                 '<img src=' + $$.config.serverAddr + '"Img/' + noImg(data[i].Img) + '">' +
                                 '<div class="info">' +

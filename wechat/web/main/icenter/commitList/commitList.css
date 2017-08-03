@@ -1,0 +1,142 @@
+#icenter_commitList{
+	width:100%;
+    height:100%;
+	overflow:hidden;
+	background: #EFEFF4;
+}
+
+#icenter_commitList .header{
+	height:12vw;
+	width:100%;
+	border-bottom:1px solid #D6D6DB;
+	line-height:12vw;
+	text-align:center;
+	background: #fff;
+	position: relative;
+	box-sizing: border-box;
+}
+
+#icenter_commitList .header img{
+	width:6vw;
+	position:absolute;
+	left:3vw;
+	top:3vw;
+}
+
+#icenter_commitList .header p{
+	font-size:4.5vw;
+	font-weight:bold;
+}
+
+#icenter_commitList .nav{
+	height: 12vw;
+	border-bottom:1px solid #D6D6DB;
+	text-align: center;
+	background: #fff;
+	box-sizing: border-box;
+}
+
+#icenter_commitList .nav ul{
+	width: 100%;
+	height: 12vw;
+	padding-top: 1.2vw;
+}
+
+#icenter_commitList .nav li{
+	display: inline-block;
+	width: 32%;
+	text-align: center;
+	font-size: 3.8vw;
+}
+
+#icenter_commitList .nav .active{
+	border-bottom: 2px solid #E93900;
+	color:#E93900;
+}
+
+#icenter_commitList .empty{
+	height: 3vw;
+}
+
+#icenter_commitList .content{
+	overflow-y: auto;
+	overflow-x: hidden;
+	box-sizing: border-box;
+}
+
+#icenter_commitList .content .waitRevice,#icenter_commitList .content .hadRevice,#icenter_commitList .content .serverRevice{
+	display: none;
+}
+
+#icenter_commitList .content .onePiece{
+	background: #fff;
+	height: 28.3vw;
+	position: relative;
+	padding-top: 1vw;
+}
+
+#icenter_commitList .content .onePiece img{
+	background: #fff;
+	width: 30vw;
+	margin-left: 2vw;
+	height: 28vw;
+}
+
+#icenter_commitList .onePiece .prodInfo{
+	display:inline-block;
+	position: absolute;
+	top:2vw;
+	left: 35vw;
+	width: 65vw;
+	border-bottom: 1px solid #D6D6DB;
+    height: 27vw; 
+}
+
+#icenter_commitList .onePiece .descri{
+	height: 7vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 61vw;
+    white-space: nowrap;
+}
+
+#icenter_commitList .onePiece  .rewardPoint{
+	color:#BDBDBD;
+	font-size: 3.3vw;
+}
+
+#icenter_commitList .onePiece button{
+	float: right;
+	margin-right: 4vw;
+	width: 24vw;
+	height: 7vw;
+	background: none;
+	outline: none;
+	border-radius: 15px;
+	border: 1px solid #f60;
+	color:#f60;
+	margin-top: 1vw;
+}
+
+#icenter_commitList .onePiece .addRevice{
+	color:#646262;
+	border:1px solid #646262;
+}
+
+#icenter_commitList .content .active{
+	display: block;
+}
+
+#icenter_commitList .noData{
+	text-align: center;
+	padding-top: 10vw;
+	font-size: 4.5vw;
+    color: #f60;
+    font-weight: bold;
+}
+
+#icenter_commitList .noData img{
+	width: 70vw;
+}
+
+

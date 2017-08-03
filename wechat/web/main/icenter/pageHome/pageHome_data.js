@@ -96,7 +96,7 @@
 		    });  
 		    //退换/售后
 		    $('#order_img_span_5').off('click').on('click', function() {
-		        $$.redirect('icenter/afterService.html');
+		        $$.redirect('icenter/commitList.html');
 		    });     
 		    //跳转订单
 		    $('#order_img_span_1').off('click').on('click', function() {

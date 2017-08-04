@@ -151,7 +151,6 @@ $(function() {
             dataType: "json",
             success: function(txt) {
                 if (txt.Status == 0 && parseInt(txt.Data.Count) > $(".onepiece").length) {
-
                     var data = txt.Data.Rows;
                     var shoplist = "";
                     for (var i = 0; i < data.length; i++) {

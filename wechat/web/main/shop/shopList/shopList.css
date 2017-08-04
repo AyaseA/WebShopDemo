@@ -302,6 +302,14 @@
 	position:relative;
 }
 
+#shop_shopList .shopInfo h2{
+	width: 65vw;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 #shop_shopList .shopInfo ul{
 	list-style:none;
 	position:absolute;
@@ -548,7 +556,7 @@
 
 #shop_shopList .shopInfo{
 	position: absolute;
-	top:3vw;
+	top:1.5vw;
 	left: 30vw;
 }
 

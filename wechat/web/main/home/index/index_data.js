@@ -10,7 +10,6 @@ $(function(){
     $page.find('>div.header >a.location >span').text(
         $$.getLocationInfo().name
     );
-
     // 懒加载
     $page.find('>div.main').scrollTop(0).scroll(function() {
         if (loadComplate) {

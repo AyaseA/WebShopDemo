@@ -21,7 +21,7 @@
 		height: 40px;
 	}
 }
-#home_index >div.header >a.scan {
+#home_index >div.header >a.scan { 
     background-image: url(../../images/common/scan.png);
     background-repeat: no-repeat;
     background-size: 45%;

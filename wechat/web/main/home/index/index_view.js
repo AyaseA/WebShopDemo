@@ -7,6 +7,7 @@ $(function(){
 
     // 设置主窗口高度和位置
     resetWindowSize();
+    
     // 窗口尺寸变化重新计算窗口高度和位置
     window.onresize = function() {
         bodyHeight = window.innerHeight || document.body.clientHeight;

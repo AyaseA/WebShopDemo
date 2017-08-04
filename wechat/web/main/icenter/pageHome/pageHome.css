@@ -26,17 +26,17 @@
 	overflow: hidden;
 }
 #icenter_pageHome .head_portrait{
-	width: 11vw;
-	height: 11vw;
-	margin-left: 5vw;
-	margin-top: 5vw;
-	padding: 1vw;
-	border: 1px solid #e5e5e5;
-	border-radius: 50%;
-	background-color: #e5e5e5;
-	box-sizing: border-box;
-	display: inline-block;
-	overflow: hidden;
+    width: 13vw;
+    height: 13vw;
+    margin-left: 5vw;
+    margin-top: 4vw;
+    padding: .5vw;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
 }
 #icenter_pageHome .img_icon{
 	width: 100%;
@@ -45,11 +45,11 @@
 	overflow: hidden;
 }
 #icenter_pageHome .user_name{
-	display: inline-block;
-	position: relative;
-	top: -4vw;
-	left: 1vw;
-	color: #FAD2BA;
+    display: inline-block;
+    position: relative;
+    top: -4.5vw;
+    left: 2vw;
+    color: #FAD2BA;
 }
 #icenter_pageHome .header_vip{
     width: 24vw;
@@ -73,6 +73,9 @@
 	position: relative;
     top: 1.5vw;
     left: 0%;
+}
+#icenter_pageHome .personal_info {
+	display: inline-block;
 }
 #icenter_pageHome .head_active {
 	text-align: center;

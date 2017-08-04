@@ -25,18 +25,9 @@ $(function() {
             $page.find('div.sex span').text(option.text());
         } else if (option.attr('data-type') == 'icon') {
             if (option.attr('data-id') == 0) {
-                alert('相册');
+                upLoadImg('album');
             } else if (option.attr('data-id') == 1) {
-                alert('拍照');
-                wx.chooseImage({
-                    count: 1,
-                    sizeType: ['compressed'],
-                    sourceType: ['camera'],
-                    success: function(res) {
-                        var localIds = res.localIds;
-                        alert(localIds);
-                    }
-                });
+                upLoadImg('camera');
             }
         }
         maskFadeOut();
@@ -48,6 +39,43 @@ $(function() {
         $page.find('div.mask').fadeOut(200).find('>div').animate({
             'height': '0'
         }, 200);
+    }
+
+    function upLoadImg(type) {
+        var sourceType = [];
+        if (type == 'camera') {
+            sourceType.push('camera');
+        } else {
+            sourceType.push('album');
+        }
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['compressed'],
+            sourceType: sourceType,
+            success: function (res) {
+                var localIds = res.localIds;
+                wx.uploadImage({
+                    localId: localIds[0],
+                    isShowProgressTips: 1,
+                    success: function (res) {
+                        var serverId = res.serverId;
+                        $$.post(
+                            'CSL/User/UpdateImg',
+                            {
+                                Img: serverId,
+                                From: 1
+                            },
+                            function(res) {
+                                if (res.Status == 0) {
+                                    $$.setUserInfo('Img', res.Data);
+                                    initUInfo();
+                                }
+                            }
+                        );
+                    }
+                });
+            }
+        });
     }
 
     function initUInfo() {

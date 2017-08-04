@@ -104,17 +104,28 @@ $(function(){
     $page.off('click', 'div.header a.scan').on('click', 'div.header a.scan', function() {
         if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             wx.scanQRCode({
-                needResult: 0,
+                needResult: 1,
                 scanType: ["qrCode","barCode"],
                 success: function (res) {
                     var result = res.resultStr;
-                    alert(result);
+                    if ($$.isLogin(true)) {
+                        location.href = result;
+                    } else {
+                        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+                        'appid='+ $$.config.wxAppID + '&redirect_uri=' + escape(escape(result).replace(/\//g, '%2F')) +
+                        '&response_type=code&scope=snsapi_base&state=0' + 
+                        '#wechat_redirect';
+                    }
                 }
             });
         } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
-            wx.scanQRCode();
+            wx.scanQRCode({
+                needResult: 0
+            });
         } else if (navigator.userAgent.indexOf('csl-android') != -1) {
-            wx.scanQRCode();
+            wx.scanQRCode({
+                needResult: 0
+            });
         }
     });
     //微信配置

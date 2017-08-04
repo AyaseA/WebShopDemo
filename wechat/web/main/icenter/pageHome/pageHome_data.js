@@ -4,9 +4,9 @@
 		$('.user_name').html($$.getUserMobile());
 		var $page = $('#icenter_pageHome'),
 	        pageStr = 'icenter_pageHome';
-		var resImg = $$.getUserInfo();//获取头像
-		$('#icenter_pageHome .img_icon').attr('src', 
-			(resImg.Img ? ($$.config.serverAddr + resImg) : './images/icon.png')
+		var resImg = $$.getUserInfo().Img;//获取头像
+		$('#icenter_pageHome .img_icon').attr('src',
+			(resImg ? ($$.config.serverAddr + 'Img/' + resImg) : './images/icon.png')
 		);
 		getICenterInfo();
 		function getICenterInfo() {
@@ -31,9 +31,8 @@
 		}
 		function bindEvent() {
 			//个人信息
-		    $('.user_name').off('click').on('click', function() {
-		    	return false;
-		        $$.redirect('icenter/information.html');
+		    $('.personal_info').off('click').on('click', function() {
+		        $$.redirect('icenter/info.html');
 		    });    
 		    //邀请有礼
 		    $('#head_active_1').off('click').on('click', function() {

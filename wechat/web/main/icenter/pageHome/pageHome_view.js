@@ -8,9 +8,8 @@
     );
 
     //个人信息
-    $('.user_name, .head_portrait').on('click', function() {
-        return false;
-        $$.redirect('icenter/information.html');
+    $('.personal_info').on('click', function() {
+        $$.redirect('icenter/info.html');
     });    
     //邀请有礼
     $('#head_active_1').on('click', function() {

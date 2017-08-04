@@ -41,6 +41,7 @@
 #shop_shopDetail .title h2{
 	padding-top: 3vw;
 	font-size: 4.8vw;
+	width: 80vw;
 }
 
 #shop_shopDetail .title p{
@@ -54,28 +55,32 @@
 
 
 #shop_shopDetail .address{
-	position: relative;
-	height: 12vw;
+	display: table;
+	min-height: 12vw;
+	width: 91.5vw;
+}
+
+#shop_shopDetail .address span{
+	display:table-cell;
+	vertical-align: middle;
 }
 
 #shop_shopDetail .map{
-	position: absolute;
-	top:3vw;
-	left: 2vw;
 	width: 5vw;
+	float: left;
 }
 
 #shop_shopDetail .phone{
-	position: absolute;
-	top:3vw;
-	right:8vw;
 	width: 6vw;
+	margin-left: 4vw;
 }
 
 #shop_shopDetail .address p{
-	padding-left: 9vw;
+	padding-left: 2vw;
 	font-size: 3.8vw;
-	width: 55vw;
+	width: 75vw;
+	display:table-cell;
+	vertical-align: middle;
 }
 
 #shop_shopDetail .info{

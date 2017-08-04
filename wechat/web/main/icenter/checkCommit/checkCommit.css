@@ -26,6 +26,10 @@
 	font-size: 4.5vw;
 }
 
+#icenter_checkCommit .content{
+	overflow-y: auto;
+}
+
 #icenter_checkCommit .content .userInfo{
 	margin-top: 3vw;
     padding: 0 3vw;
@@ -64,5 +68,16 @@
 #icenter_checkCommit .conmmitContent{
 	padding: 0 3vw;
     margin-top: 5vw;
+    text-align: center;
+}
+
+#icenter_checkCommit .commitText{
+	float: left;
+}
+
+#icenter_checkCommit .conmmitContent img{
+	width: 90vw;
+	padding: 0;
+	margin-top: 5vw;
 }
 

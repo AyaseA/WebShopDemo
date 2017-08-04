@@ -94,4 +94,8 @@ $(function() {
         json = JSON.parse(json);
         return Base64.decode(unescape(json.text));
     }
+
+    function bottomToLoad(){
+        
+    }
 });

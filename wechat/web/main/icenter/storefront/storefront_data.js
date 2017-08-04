@@ -72,7 +72,7 @@ $(function() {
                     } else {
                         for (var i = 0; i < data.length; i++) {
                             node += '<div class="productInfo" data-id="' + data[i].ID + '">' +
-                                '<img src=' + $$.config.serverAddr + '"Img/' + noImg(data[i].Img) + '">' +
+                                '<img src="' + $$.config.serverAddr + 'Img/' + noImg(data[i].Img) + '">' +
                                 '<div class="info">' +
                                 '<p class="name"><b>' + data[i].Name + '</b></p>' +
                                 '<p class="descri">' + getDesCri(data[i].Descri) + '</p>' +

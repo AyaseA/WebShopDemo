@@ -55,7 +55,7 @@ $(function() {
     // 微信授权url
     function wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, url) {
        return 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-              'appid=wx2c53034422e377cc&redirect_uri=' + escape($$.config.serverAddr).replace(/\//g, '%2F') +
+              'appid=' + $$.config.wxAppID + '&redirect_uri=' + escape($$.config.serverAddr).replace(/\//g, '%2F') +
               'CSL%2FLogin%2FHandleWAuth%3Furl%3D' +
               escape(escape(url).replace(/\//g, '%2F')) +
               '&response_type=code&scope=snsapi_base&state=' + phonenumber +

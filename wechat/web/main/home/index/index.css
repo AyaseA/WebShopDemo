@@ -24,14 +24,14 @@
 #home_index >div.header >a.scan {
     background-image: url(../../images/common/scan.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 45%;
     background-position: center;
     display: block;
     position: absolute;
-    right: 15px;
-    top: 10px;
-    width: 30px;
-    height: 24px;
+    right: 5px;
+    top: 0;
+    width: 50px;
+    height: 100%;
 }
 #home_index >div.header >a.location {
     font-size: 14px;

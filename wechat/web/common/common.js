@@ -117,6 +117,9 @@ Date.prototype.pattern = function(fmt) {
                     stackArr.push(backUrl || url);
                     set(stackArr);
                 }
+                if (isReload) {
+                    isReload = false;
+                }
             };
             var isEmpty = function() {
                 var stackStr = get();

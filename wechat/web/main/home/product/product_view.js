@@ -45,7 +45,7 @@ $(function() {
             closeBtn: true,
             shade: 0.5,
             moveType: 1, //拖拽模式，0或者1
-            content: '<img style="max-width:100%;max-height:120vw;margin-bottom:-4px" src="' + url + '" />'
+            content: '<img style="max-width:92vw;max-height:120vw;margin-bottom:-4px" src="' + url + '" />'
         });
 	});
 	// 收藏

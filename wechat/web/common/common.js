@@ -1088,13 +1088,4 @@ Date.prototype.pattern = function(fmt) {
         });
     }
 
-    new WOW().init();
-    var wow = new WOW({
-        boxClass: 'wow',
-        animateClass: 'animated',
-        offset: 0,
-        mobile: true,
-        live: true
-    });
-    wow.init();
 }(window, jQuery));

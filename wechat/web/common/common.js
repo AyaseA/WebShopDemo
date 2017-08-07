@@ -258,7 +258,7 @@ Date.prototype.pattern = function(fmt) {
                 }
                 if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                     url = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-                        'appid='+ $$.config.wxAppID + '&redirect_uri=' + escape($$.config.serverAddr).replace(/\//g, '%2F') +
+                        'appid=' + $$.config.wxAppID + '&redirect_uri=' + escape($$.config.serverAddr).replace(/\//g, '%2F') +
                         'CSL%2FLogin%2FHandleWUri%3Furl%3D' +
                         escape(escape(url)).replace(/\//g, '%2F') +
                         '&response_type=code&scope=snsapi_base&state=' + status +
@@ -1089,4 +1089,12 @@ Date.prototype.pattern = function(fmt) {
     }
 
     new WOW().init();
+    var wow = new WOW({
+        boxClass: 'wow',
+        animateClass: 'animated',
+        offset: 0,
+        mobile: true,
+        live: true
+    });
+    wow.init();
 }(window, jQuery));

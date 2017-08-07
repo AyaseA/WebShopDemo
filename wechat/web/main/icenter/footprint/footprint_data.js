@@ -12,9 +12,9 @@ $(function() {
             type: "POST",
             url: url + "CSL/ProdFoot/QueryFootList",
             data: { WToken: token },
+            dataType:"json",
             success: function(txt) {
                 $page.find(".content").empty();
-                txt = $$.eval(txt);
                 if (txt.Status != 0) {
                     alert("接口错误");
                 } else {
@@ -23,7 +23,6 @@ $(function() {
                         var msg = "<div class='msg'><p>您还没有浏览过商品</p></div>";
                         $page.find(".content").append(msg);
                     } else {
-
                         var fisrtDate = list[0].Date;
                         var haveAppendTitle = 0;
                         var dateTitle = "<div class='dataDiv'><span class='dateinfo'>" + fisrtDate + "<span></div>";

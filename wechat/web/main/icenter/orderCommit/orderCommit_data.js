@@ -45,8 +45,8 @@ $(function() {
 
         //查看删除照片
         $page.off("click", ".close img").on("click", ".close img", function() {
-            var _this=$(this);
-            layer.confirm("确定要删除此照片吗",function(index){
+            var _this = $(this);
+            layer.confirm("确定要删除此照片吗", function(index) {
                 _this.parent().parent().remove();
                 window.photoNum += 1;
                 layer.close(index);
@@ -55,15 +55,15 @@ $(function() {
 
         $page.off("click", ".reserve").on("click", ".reserve", function() {
             var j = $(this).attr("data-index");
-            var _this=$(this);
+            var _this = $(this);
             wx.previewImage({
                 current: $(this).attr("src"), // 当前显示图片的http链接
-                urls: function(){
-                    var showList=new Array();
-                    for(var i=0;i<$page.find(".reserve").length;i++){
+                urls: function() {
+                    var showList = new Array();
+                    for (var i = 0; i < $page.find(".reserve").length; i++) {
                         showList.push($($page.find(".reserve")[i]).attr("src"));
-                    } 
-                    return showList;// 需要预览的图片http链接列表
+                    }
+                    return showList; // 需要预览的图片http链接列表
                 }
             });
         });
@@ -98,7 +98,7 @@ $(function() {
         //微信配置
         var WXsign = $$.getWeChatSign(1);
         wx.config({
-            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
             appId: $$.config.wxAppID, // 必填，公众号的唯一标识
             timestamp: WXsign.timestamp, // 必填，生成签名的时间戳
             nonceStr: WXsign.noncestr, // 必填，生成签名的随机串
@@ -115,8 +115,9 @@ $(function() {
 
         window.photoNum = 3;
 
-        $page.off("click",".camera").on("click",".camera",function(e) {
-            if(window.photoNum != 0){
+
+        $page.off("click", ".camera").on("click", ".camera", function(e) {
+            if (window.photoNum != 0) {
                 wx.chooseImage({
                     count: window.photoNum, // 默认9
                     sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -130,10 +131,10 @@ $(function() {
                         window.photoNum -= $page.imgList.length;
                         //删除照片              
                     }
-                });         
-            }else{
+                });
+            } else {
                 layer.msg("最多选择3张图片");
-            }     
+            }
         });
 
         $page.off("click", ".commit").on("click", ".commit", function() {
@@ -155,7 +156,7 @@ $(function() {
                     $page.ReviewID = txt.Data.ID;
                     if (window.photoNum < 3) {
                         upImg();
-                    }else {
+                    } else {
                         layer.alert("评论成功", function(index) {
                             $$.redirect("icenter/commitList.html");
                             layer.close(index);

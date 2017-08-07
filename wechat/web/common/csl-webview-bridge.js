@@ -124,7 +124,7 @@
         },
         //调起分享界面
         onMenuShowShareView: function(data, callback) {
-            this.shareToPlatform('shareAlert', data, callback);
+            sendMessageToPhone('shareAlert', data, callback);
         },
         //分享到朋友圈
         onMenuShareTimeline: function(data, callback) {

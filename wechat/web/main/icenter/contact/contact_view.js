@@ -7,13 +7,16 @@ $(function () {
     $page.find('>div.main').height(
         bodyHeight - headerHeight - 1
     );
-
+    $page.find('a.button').removeClass('active');
     // 返回按钮
     $$.setGoBack($page.find('>div.header >a.goBack'));
 
     $page.on('click', 'a.button', function() {
-        var code = $(this).attr('data-code');
-        getToUserId(code);
+        if (!$(this).hasClass('active')) {
+            var code = $(this).attr('data-code');
+            $(this).addClass('active');
+            getToUserId(code);
+        }
     });
 
     function getToUserId(code) {
@@ -39,7 +42,6 @@ $(function () {
             },
             dataType: 'json',
             success: function(res) {
-                console.log(res.code);
                 if (res.code == '0') {
                     $page.find('div.warp').html(template(pageStr + '_content', {
                         type: 'succ',

@@ -1,0 +1,106 @@
+#icenter_sharePacket {
+    width: 100%;
+    position: relative;
+}
+
+#icenter_sharePacket .banner {
+    width: 100%;
+    background-color: #B74242;
+}
+
+#icenter_sharePacket .banner img {
+    width: 100%;
+}
+
+#icenter_sharePacket .content {
+    background-color: #B74242;
+    height: 100vw;
+}
+
+#icenter_sharePacket .content .redPacket {
+    position: absolute;
+    top: 85vw;
+    text-align: center;
+    width: 100%;
+    height: 45vw;
+}
+
+#icenter_sharePacket .content .redPacket .redPacketImg {
+    width: 80vw;
+    height: 44vw;
+}
+
+#icenter_sharePacket .packetInfo{
+	width: 90vw;
+    background-color: #E2B3B3;
+    font-size:3.5vw;
+    border-radius: 5px;
+    padding-top: 2vw;
+    box-sizing: border-box;
+    height: 100%;
+    display: none;
+    margin-left:5vw;
+}
+
+.money{
+	width: 100%
+}
+
+.money p{
+	font-size: 5vw;
+	font-weight: bold;
+	color: red;
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	top:7vw;
+	left: 0;
+}
+
+.money span{
+	font-size:5vw;
+}
+
+#icenter_sharePacket .packetInfo img{
+	width: 90%;
+}
+
+#icenter_sharePacket .packetInfo .congulation{
+	font-size: 3vw;
+	margin: 1vw 0;
+	color: #000;
+}
+
+#icenter_sharePacket .packetInfo button{
+	width: 90%;
+	color: #fff; 
+	border: none;
+	border-radius: 35px;
+	outline: none;
+	background-color: #f60;
+	height: 9vw;
+    font-size: 4vw;
+}
+
+#icenter_sharePacket .content .rule {
+    position: absolute;
+    top: 135vw;
+    left: 5vw;
+    width: 90vw;
+    background-color: #E2B3B3;
+    font-size:3.5vw;
+    border-radius: 5px;
+    padding: 5vw 3vw 0 3vw;
+    box-sizing: border-box;
+}
+
+#icenter_sharePacket .content .rule h3{
+	font-size:4vw;
+	text-align: center;
+	margin-bottom: 3vw;
+	font-weight: normal;
+}
+
+#icenter_sharePacket .content .rule p{
+	margin-bottom: 3vw;
+}

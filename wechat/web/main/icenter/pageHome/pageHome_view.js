@@ -73,7 +73,7 @@
     //退换/售后
     $('#order_img_span_5').on('click', function() {
         $$.redirect('icenter/commitList.html');
-    });     
+    });
     //跳转订单
     $('#order_img_span_1').off('click').on('click', function() {
         $$.redirect('icenter/orderList.html?type=waitPay');
@@ -87,6 +87,7 @@
     $('#order_img_span_4').off('click').on('click', function() {
         $$.redirect('icenter/orderList.html?type=waitRevice');
     });
+
     
     // footer 事件
     $('#icenter_pageHome').on('click', 'div.footer li', function() {

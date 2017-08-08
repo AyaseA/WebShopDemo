@@ -1,0 +1,92 @@
+#icenter_contact {
+    background-color: #EFEFF4;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#icenter_contact >div.header {
+    height: 44px;
+    background-color: #fff;
+    border-bottom: 1px solid #F6F6F7;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 12;
+}
+#icenter_contact >div.header a.goBack {
+    display: block;
+    float: left;
+    height: 44px;
+    width: 44px;
+    background: url(../../images/common/round_left_blue.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+    padding-left: 15px;
+}
+#icenter_contact >div.header >span {
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 44px;
+    text-align: center;
+    line-height: 45px;
+    width: 60%;
+}
+#icenter_contact >div.main {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: url(../../images/center/contact_bg.png) #F49E7A;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#icenter_contact div.content {
+    position: absolute;
+    top: 23.6vw;
+    left: 28.5vw;
+    width: 43vw;
+    height: 76vw;
+}
+#icenter_contact div.content::before  {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+#icenter_contact div.warp {
+    word-break: break-all;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+}
+#icenter_contact div.content h3 {
+    text-align: center;
+    color: #EA5514;
+    font-size: 5vw;
+    height: 15vw;
+}
+#icenter_contact div.content p {
+    margin: 0;
+    font-size: 3.6vw;
+    line-height: 1.7;
+}
+#icenter_contact div.content a.button {
+    display: block;
+    width: 90%;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background-color: #EA5514;
+    border-radius: 50px;
+    position: fixed;
+    bottom: 5vw;
+    left: 5%;
+}

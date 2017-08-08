@@ -110,6 +110,20 @@
 		    $('#order_img_span_4').off('click').on('click', function() {
 		        $$.redirect('icenter/orderList.html?type=waitRevice');
 		    });
+		    $('#move_car_qrcode').off('click').on('click', function() {
+    			layer.open({
+		            type: 1,
+		            title: false, //不显示标题栏
+		            closeBtn: true,
+		            area: ['280px', '400px'],
+		            shade: 0.5,
+		            moveType: 1, //拖拽模式，0或者1
+		            content: '<div style="padding:5px;box-sizing:border-box;text-align:center"><img style="width:100%" src="' +
+		            	$$.config.serverAddr +
+		            	'CSL/P_Msg/GetMyPhoneQR?WToken=' + token +
+		            	'"><p>将二维码打印出来放在车上<br>扫一扫，即可移车</p><img style="margin-top:15px;width:90px;height:40px" src="./images/center/car.png"></div>'
+		        });
+		    });
 		    
 		    $('#order_content_need_4').off('click').on('click', function() {
 		        $page.find('div.confirm').show();
@@ -121,6 +135,7 @@
 		    $page.off('click', 'div.confirm >div').on('click', 'div.confirm >div', function(e) {
 		        e.stopPropagation();
 		    });
+
 		}
 	}
 }());

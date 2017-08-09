@@ -1,5 +1,5 @@
 !(function(){
-	if ($$.isLogin(true)) {
+	if ($$.isLogin()) {
 		var token = $$.getToken();
 		$('.user_name').html($$.getUserMobile());
 		var $page = $('#icenter_pageHome'),

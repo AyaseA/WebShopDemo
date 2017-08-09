@@ -14,8 +14,12 @@ $(function () {
     $page.on('click', 'a.button', function() {
         if (!$(this).hasClass('active')) {
             var callCode = $(this).attr('data-callcode');
-            $(this).addClass('active');
-            getToUserId(callCode);
+            if ($$.getCookie('__TOKEN__')) {
+                $(this).addClass('active');
+                getToUserId(callCode);
+            } else {
+                $$.authConfirm();
+            }
         }
     });
 
@@ -37,7 +41,7 @@ $(function () {
             url: $$.config.serverAddr + 'CSL/P_Msg/CallUser',
             type: 'post',
             data: {
-                WToken: $$.getToken(),
+                WToken: $$.getToken(true),
                 ToUserID: uid
             },
             dataType: 'json',

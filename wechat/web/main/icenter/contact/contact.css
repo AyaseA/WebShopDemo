@@ -51,19 +51,13 @@
     width: 43vw;
     height: 76vw;
 }
-#icenter_contact div.content::before  {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}
 #icenter_contact div.warp {
     word-break: break-all;
-    display: inline-block;
-    vertical-align: middle;
     box-sizing: border-box;
     padding: 5px;
     width: 100%;
+    position: absolute;
+    top: 10vw;
 }
 #icenter_contact div.content h3 {
     text-align: center;

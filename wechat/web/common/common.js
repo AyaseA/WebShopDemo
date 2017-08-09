@@ -968,9 +968,35 @@ Date.prototype.pattern = function(fmt) {
                 }
             });
         } else {
-            layer.msg('欢迎使用HTML5版车势力商城！');
-
-            return false;
+            layer.open({
+                area: '80%',
+                shade: 0.3,
+                title: false, //不显示标题栏
+                closeBtn: false,
+                btn: [],
+                id: 'loginConfirm_loginConfirm',
+                content: template('loginConfirm_loginConfirm_cnt', {}),
+                success: function(modal) {
+                    modal.css({
+                        'border-radius': '8px'
+                    });
+                    modal.find('.layui-layer-btn').remove();
+                    modal.find('button.cancel').off('click').on('click', function() {
+                        if (refuseCalbck) {
+                            refuseCalbck();
+                        }
+                        layer.closeAll();
+                    });
+                    modal.find('button.refresh').off('click').on('click', function() {
+                        if (allowCalBck) {
+                            allowCalBck();
+                        } else {
+                            $$.redirect('icenter/login.html');
+                        }
+                        layer.closeAll();
+                    });
+                }
+            });
         }
     }
     // 解析Token

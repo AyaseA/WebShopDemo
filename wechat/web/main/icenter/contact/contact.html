@@ -16,7 +16,7 @@
                 2.关注车势力公众号<br>
                 3.点击页面下方“联系车主”按钮即可拨通车主随
             </p>
-            <a class="button" href="javascript:void(0)" data-code='{{code}}'>联系车主</a>
+            <a class="button" href="javascript:void(0)" data-callcode='{{callCode}}'>联系车主</a>
         {{else if type=='succ'}}
             <h3>恭喜您</h3>
             <p style="text-align: center;">车势力已为您联系车主<br>移车成功</p>
@@ -24,7 +24,7 @@
         {{else if type=='err'}}
             <h3>很抱歉</h3>
             <p style="text-align: center;">暂未拨通<br>请稍后再联系车主</p>
-            <a class="button" href="javascript:void(0)" data-code='{{code}}'>联系车主</a>
+            <a class="button" href="javascript:void(0)" data-callcode='{{callCode}}'>联系车主</a>
         {{/if}}
     </script>
 </div>

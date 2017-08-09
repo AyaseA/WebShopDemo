@@ -13,26 +13,26 @@ $(function () {
 
     $page.on('click', 'a.button', function() {
         if (!$(this).hasClass('active')) {
-            var code = $(this).attr('data-code');
+            var callCode = $(this).attr('data-callcode');
             $(this).addClass('active');
-            getToUserId(code);
+            getToUserId(callCode);
         }
     });
 
-    function getToUserId(code) {
+    function getToUserId(callCode) {
         $$.post(
             'CSL/P_Msg/TriCall',
             {
-                Code: code
+                CallCode: callCode
             },
             function(res) {
                 if (res.Status == 0) {
-                    callUser(res.Data, code);
+                    callUser(res.Data, callCode);
                 }
             }
         );
     }
-    function callUser(uid, code) {
+    function callUser(uid, callCode) {
         $.ajax({
             url: $$.config.serverAddr + 'CSL/P_Msg/CallUser',
             type: 'post',
@@ -46,12 +46,12 @@ $(function () {
                 if (res.CallCode == '0') {
                     $page.find('div.warp').html(template(pageStr + '_content', {
                         type: 'succ',
-                        code: code
+                        callCode: callCode
                     }));
                 } else {
                     $page.find('div.warp').html(template(pageStr + '_content', {
                         type: 'err',
-                        code: code
+                        callCode: callCode
                     }));
                 }
             }

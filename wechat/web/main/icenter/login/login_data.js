@@ -3,8 +3,8 @@ $(function() {
         pageStr = 'icenter_login',
         timer,
         type = 2,
-        registerFrom = $$.getQueryString('rfrom') || '',
-        registerCont = $$.getQueryString('rcont') || '';
+        registerFrom = $$.getQueryString('RegisterFrom') || '',
+        registerCont = $$.getQueryString('RegisterCont') || '';
 
     $$.config.hideGlobalMenu();
 

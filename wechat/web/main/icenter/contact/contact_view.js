@@ -43,7 +43,7 @@ $(function () {
             dataType: 'json',
             success: function(res) {
                 $page.find('a.button').removeClass('active');
-                if (res.CallCode == '0') {
+                if (res.code == '0') {
                     $page.find('div.warp').html(template(pageStr + '_content', {
                         type: 'succ',
                         callCode: callCode

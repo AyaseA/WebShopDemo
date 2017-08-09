@@ -87,7 +87,6 @@
     background-color: #EA5514;
     border-radius: 50px;
     position: fixed;
-    /* bottom: 5vw; */
-    top: 10vw;
+    bottom: 5vw;
     left: 5%;
 }

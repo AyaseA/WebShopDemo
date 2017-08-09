@@ -50,16 +50,19 @@ $(function() {
         if ($$.stack.getLast()) {
             goBackUrl = $$.stack.pop();
         }
+        if ($$.getQueryString('redirecturl')) {
+            goBackUrl = unescape($$.getQueryString('redirecturl'));
+        }
         location.href = wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, goBackUrl);
     }
     // 微信授权url
     function wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, url) {
-       return 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-              'appid=' + $$.config.wxAppID + '&redirect_uri=' + escape($$.config.serverAddr).replace(/\//g, '%2F') +
-              'CSL%2FLogin%2FHandleWAuth%3Furl%3D' +
-              escape(escape(url).replace(/\//g, '%2F')) +
-              '&response_type=code&scope=snsapi_base&state=' + phonenumber +
-              'A' + verify + 'A' + RegisterFrom + 'A' + RegisterCont + '#wechat_redirect';
+        return 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+               'appid=' + $$.config.wxAppID + '&redirect_uri=' + escape($$.config.serverAddr).replace(/\//g, '%2F') +
+               'CSL%2FLogin%2FHandleWAuth%3Furl%3D' +
+               escape(escape(url).replace(/\//g, '%2F')) +
+               '&response_type=code&scope=snsapi_base&state=' + phonenumber +
+               'A' + verify + 'A' + RegisterFrom + 'A' + RegisterCont + '#wechat_redirect';
     }
     //获取验证码
     verifyBtn.on('click', function() {

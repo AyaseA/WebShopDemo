@@ -1,8 +1,7 @@
 $(function() {
     var bodyHeight = window.innerHeight || document.body.clientHeight,
     	$page = $('#home_wechatLogin'),
-    	pageStr = 'home_wechatLogin',
-        redirectUrl = unescape($$.getQueryString('redirecturl'));
+    	pageStr = 'home_wechatLogin';
 
     // 设置禁用悬浮菜单
     $$.config.hideGlobalMenu();
@@ -21,16 +20,7 @@ $(function() {
             if (str.length == 32) {
                 // 已授权，跳转到首页
                 layer.msg('账户已关联，跳转首页！');
-                if (redirectUrl) {
-                    if (redirectUrl.indexOf('?')) {
-                        redirectUrl += '&code=' + code + '&str' + str
-                    } else {
-                        redirectUrl += '?code=' + code + '&str' + str
-                    }
-                    $$.redirect(redirectUrl);
-                } else {
-                    $$.redirect('home/index.html?code=' + code + '&str' + str);
-                }
+                $$.redirect('home/index.html?code=' + code + '&str' + str);
             }
         }
     }

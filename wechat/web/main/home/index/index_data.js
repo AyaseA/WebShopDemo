@@ -107,14 +107,16 @@ $(function(){
                 scanType: ["qrCode","barCode"],
                 success: function (res) {
                     var result = res.resultStr;
-                    if ($$.isLogin(true)) {
-                        location.href = result;
+                    if (!$$.getCookie('__TOKEN__')) {
+                        var redirecturl = result.split('?R=')[1];
+                        $$.authConfirm(function(){},
+                            function(){
+                                $$.redirect("home/wechatLogin.html?redirecturl=" + escape(redirecturl));
+                            });
                     } else {
-                        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-                        'appid='+ $$.config.wxAppID + '&redirect_uri=' + escape(escape(result).replace(/\//g, '%2F')) +
-                        '&response_type=code&scope=snsapi_base&state=0' + 
-                        '#wechat_redirect';
+                        location.href = result;
                     }
+                    return false;
                 }
             });
         } else if (navigator.userAgent.indexOf('csl-ios') != -1) {

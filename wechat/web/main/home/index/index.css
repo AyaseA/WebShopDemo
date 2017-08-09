@@ -83,9 +83,6 @@
 	#home_index >div.header >a.search {
 	    width: 234px;
 	}
-    #home_index >div.header >a.scan {
-        top: 12px
-    }
 }
 @media screen and (max-width: 350px) {
 	#home_index >div.header >a.location {
@@ -102,9 +99,6 @@
 		width: 175px;
         background-size: 100% 64%;
 	}
-    #home_index >div.header >a.scan {
-        top: 8px;
-    }
 }
 /* banner start */
 #home_index >div.main {

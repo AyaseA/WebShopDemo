@@ -22,10 +22,17 @@ $(function() {
     });
 
     function checkInfo(data, name) {
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].Name == name) {
-                return data[i].Value;
-            } else {}
+        if(data.hasOwnProperty(Children)){
+            data = data.Children;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].Name == name) {
+                    return data[i].Value;
+                } else {
+
+                }
+            }
+        }else{
+            
         }
     }
 
@@ -44,8 +51,8 @@ $(function() {
                 $page.find(".call").attr("href", "tel:" + txt.Data.Phone);
                 $page.find(".storePhone").html(txt.Data.Phone);
                 if (txt.Data.Params) {
-                    $page.find(".saleTime span").html(checkInfo(JSON.parse(txt.Data.Params)[0].Children, "营业开始时间") + "-" + checkInfo(JSON.parse(txt.Data.Params)["0"].Children, "营业结束时间"));
-                    $page.find(".storeArea span").html(checkInfo(JSON.parse(txt.Data.Params)[0].Children, "店铺面积") + "平方米");
+                    $page.find(".saleTime span").html(checkInfo(JSON.parse(txt.Data.Params)[0], "营业开始时间") + "-" + checkInfo(JSON.parse(txt.Data.Params)["0"].Children, "营业结束时间"));
+                    $page.find(".storeArea span").html(checkInfo(JSON.parse(txt.Data.Params)[0], "店铺面积") + "平方米");
                 } else {
                     $page.find(".saleTime span").html("暂未获取");
                     $page.find(".storeArea span").html("暂未获取");

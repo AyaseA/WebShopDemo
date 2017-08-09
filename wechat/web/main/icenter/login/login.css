@@ -24,8 +24,109 @@
 	background-size: 80%;
 	background-position: center;
 	position: absolute;
-	top: 80px;
+	top: 60px;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
+}
+#icenter_login form {
+	position: absolute;
+	top: 190px;
+	width: 100%;
+	padding: 0 15px;
+	box-sizing: border-box;
+	height: 280px;
+}
+#icenter_login label {
+	display: block;
+	border-bottom: 1px solid #797C86;
+	height: 40px;
+	position: relative;
+}
+#icenter_login label::before {
+	content: '';
+	display: block;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: center;
+}
+#icenter_login label >input {
+	display: block;
+	height: 40px;
+    width: 76%;
+	line-height: 41px;
+	font-size: 17px;
+	border: 0;
+	outline: 0;
+    background-color: transparent;
+    position: absolute;
+	top: 0;
+	left: 42px;
+}
+#icenter_login label >input[name="vcode"] {
+	width: 50%;
+}
+#icenter_login label.phone::before {
+	background-image: url(../../images/center/login_phone.png);
+}
+#icenter_login label.pwd::before {
+	background-image: url(../../images/center/lock_login.png);
+}
+#icenter_login label.vcode::before {
+	background-image: url(../../images/center/safe_login.png);
+}
+#icenter_login label.invitecode::before {
+	background-image: url(../../images/center/friend_add_blue.png);
+}
+#icenter_login button.getVCode {
+    background-color: #EA5514;
+    color: #FFF;
+    position: absolute;
+    top: 4px;
+    right: 0;
+    height: 32px;
+    padding: 0 15px;
+    border-radius: 40px;
+    border: 0;
+    outline: none;
+    font-size: 16px;
+}
+#icenter_login button.getVCode.sending {
+	background-color: #D6D6DB;
+}
+#icenter_login button.commit {
+	background-color: #EA5514;
+	color: #FFF;
+	position: absolute;
+	bottom: 35px;
+	right: 5%;
+	height: 44px;
+	width: 90%;
+	font-size: 18px;
+	border-radius: 44px;
+	border: 0;
+	outline: none;
+}
+#icenter_login button.commit.disabled {
+	background-color: #D6D6DB;
+}
+#icenter_login form >div {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+#icenter_login a.register {
+	color: #EA5514;
+}
+#icenter_login a.forget {
+	float: right;
+	color: #909090;
 }

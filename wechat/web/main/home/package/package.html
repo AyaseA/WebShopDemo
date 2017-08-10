@@ -1,0 +1,46 @@
+<div>
+	<div class="header">
+		<a href="javascript:void(0)" class="goback"></a>
+		<a href="javascript:void(0)" class="search"></a>
+	</div>
+	<div class="main">
+		<div class="content">
+			<div class="banner" id="home_package_banner_top">
+				<div class="hd">
+					<ul></ul>
+				</div>
+				<div class="bd"> 
+					<ul></ul>
+				</div>
+			</div>
+            <div class="warp">
+                <div class="title">
+                    <span><i></i><small>车势力放心购</small></span>
+                    <span><i></i><small>多店就近保养</small></span>
+                    <span><i></i><small>壳牌正品机油</small></span>
+                    <h3>保养套餐</h3>
+                </div>
+                <div class="products clear"></div>
+            </div>
+        </div>
+    </div>
+    <script id="home_package_banner_list" type="text/html">
+    {{each list as val}}
+        <li>
+            <a href="{{val.Link}}">
+                <img _src="{{serverAddr}}Img/{{val.Img | imgFilter}}" src="./images/common/blank.png" />
+            </a>
+        </li>
+    {{/each}}
+    </script>
+    <script id="home_package_products" type="text/html">
+		{{each list as val i}}
+		<div class="item" data-id="{{val.ID}}">
+			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
+			<p>{{val.Name}}<small>{{val.desc}}</small></p>
+            <span>￥{{val.Price}}</span>
+			<a href="home/fillOrder.html?pid={{val.ID}}">立即购买</a>
+		</div>
+		{{/each}}
+	</script>
+</div>

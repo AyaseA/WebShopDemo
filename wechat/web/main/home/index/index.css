@@ -1,122 +1,85 @@
 #home_index {
     height: 100%;
-    background-color: #EFEFF4;
+    background-color: #FFFFFF;
     position: relative;
 }
 #home_index >div.header {
-	background-color: #EA5514;
+	background: rgba(0, 0, 0, .6);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 0, 0, .6)), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(top, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 10;
-	height: 44px;
+	height: 46px;
+    transition: background .6s;
 }
-@media screen and (min-width: 410px) {
-	#home_index >div.header {
-		height: 48px;
-	}
-}
-@media screen and (max-width: 350px) {
-	#home_index >div.header {
-		height: 40px;
-	}
+#home_index >div.header.on {
+    background: #EA5514;
 }
 #home_index >div.header >a.scan { 
     background-image: url(../../images/common/scan.png);
     background-repeat: no-repeat;
-    background-size: 45%;
+    background-size: 40%;
     background-position: center;
     display: block;
     position: absolute;
-    right: 5px;
-    top: 0;
-    width: 50px;
-    height: 100%;
+    right: 0;
+    bottom: 6px;
+    width: 54px;
+    height: 34px;
 }
 #home_index >div.header >a.location {
+    position: absolute;
+    left: 0;
+    bottom: 6px;
     font-size: 14px;
     color: #fff;
-    text-align: center;
-    display: inline-block;
-    height: 100%;
-    line-height: 45px;
+    height: 36px;
     width: 22%;
-}
-#home_index >div.header >a.location span {
-	overflow: hidden;
+    text-align: center;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 86%;
-    display: inline-block;
-    padding-left: 4px;
+    padding: 8px 10px;
+    box-sizing: border-box;
 }
-#home_index >div.header >a.location >span::before {
-	content: '';
-	background-image: url(../../images/common/location.png);
-	background-repeat: no-repeat;
-	background-size: contain;
+#home_index >div.header >a.location span {
     display: inline-block;
-	height: 19px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+#home_index >div.header >a.location::before {
+    content: '';
+    background-image: url(../../images/common/location.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+    height: 19px;
     width: 14px;
-    position: relative;
-    top: 5px;
-    left: -2px;
+    margin-top: 2px;
+    margin-right: 2px;
 }
 #home_index >div.header >a.search {
     background: url(../../images/common/search.png) no-repeat;
-    background-size: 100% 60%;
+    background-size: 100%;
     background-position-y: center;
     display: inline-block;
     position: absolute;
     margin: 0 auto 0;
-    left: 10px;
+    left: 0;
     right: 0;
-    width: 208px;
-    height: 100%;
-    top: 0;
-}
-@media screen and (min-width: 410px) {
-	#home_index >div.header >a.location {
-	    width: 25%;
-	    line-height: 50px;
-	}
-	#home_index >div.header >a.search {
-	    width: 234px;
-	}
-}
-@media screen and (max-width: 350px) {
-	#home_index >div.header >a.location {
-		line-height: 41px;
-	    width: 20%;
-	    font-size: 12px;
-	}
-	#home_index >div.header >a.location >span::before {
-	    width: 12px;
-	    height: 16px;
-	    top: 4px;
-	}
-	#home_index >div.header >a.search {
-		width: 175px;
-        background-size: 100% 64%;
-	}
+    bottom: 6px;
+    width: 52%;
+    height: 34px;
 }
 /* banner start */
 #home_index >div.main {
 	overflow-x: hidden;
 	overflow-y: auto;
     width: 100%;
-    position: absolute;
-    top: 44px;
-}
-@media screen and (min-width: 410px) {
-    #home_index >div.main {
-        top: 48px;
-    }
-}
-@media screen and (max-width: 350px) {
-    #home_index >div.main {
-        top: 40px;
-    }
 }
 #home_index >div.main >div.content .banner {
     width: 100%;
@@ -139,8 +102,8 @@
 }
 #home_index >div.main >div.content .banner .hd ul li {
     display: inline-block;
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
@@ -162,53 +125,54 @@
 }
 #home_index >div.main >div.content .banner .bd li img {
     width: 100%;
-    height: 32vw;/* 有待实际验证 */
+    height: 49.13vw;
     background-color: #fff; 
 }
 #home_index >div.main >div.content .banner .bd li a {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+#home_index #home_index_banner_middle {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+#home_index #home_index_banner_middle .bd li img {
+    height: 27.78vw;
+}
+#home_index #home_index_banner_middle .hd {
+    display: none;
+}
 /* banner end */
 /* entrance start */
 #home_index >div.main >div.content .entrance {
     width: 100%;
-    margin-top: 5px;
     background-color: #fff;
     text-align: center;
 }
 #home_index >div.main >div.content .entrance >div {
-    display: inline-block;
     width: 31%;
-    margin: 8px 0 6px;
+    height: 110px;
+    margin-left: 1.5%;
+    float: left;
 }
 #home_index >div.main >div.content .entrance >div img {
-    max-width: 60%;
+    margin-top: 15px;
+    height: 82px;
 }
 /* entrance end */
-/* activity start */
-#home_index >div.main >div.content .activity {
-    width: 100%;
-    background-color: #fff;
-    text-align: center;
-    border-top: 1px solid #E1E1E5;
-}
-#home_index >div.main >div.content .activity img {
-    margin: 10px 0 0;
-    max-width: 90%;
-}
-/* activity end */
 /* products start */
 #home_index >div.main >div.content .products {
     width: 100%;
     background-color: #fff;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 #home_index >div.main >div.content .products.loading::after {
     content: '加载中···';
+    padding: 15px;
 }
 #home_index >div.main >div.content .products.loaded::after {
     content: '已加载全部';
+    padding: 15px;
 }
 #home_index >div.main >div.content .products div.item {
     width: 30%;
@@ -236,8 +200,7 @@
     display: inline-block;
     margin-top: 2px;
     width: 70%;
-    height: 28px;
-    line-height: 28px;
+    padding: 6px 0;
     font-size: 12px;
 }
 @media screen and (max-width: 350px) {
@@ -247,11 +210,6 @@
     #home_index >div.main >div.content .products div.item p {
         font-size: 12px;
     }
-    #home_index >div.main >div.content .products div.item a {
-        width: 78%;
-        height: 24px;
-        line-height: 24px;
-    }
 }
 @media screen and (min-width: 410px) {
     #home_index >div.main >div.content .products div.row {
@@ -259,7 +217,6 @@
     }
 }
 /* products end */
-
 #home_index >div.footer {
 	background-color: #FFFFFF;
 	border-top: 1px solid #D5D5D8;

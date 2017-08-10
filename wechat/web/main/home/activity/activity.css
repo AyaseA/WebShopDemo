@@ -123,7 +123,7 @@
 	margin-top: 10px;
 }
 #home_activity >div.main div.content {
-	background: #E00020; /* 涓�浜涗笉鏀寔鑳屾櫙娓愬彉鐨勬祻瑙堝櫒 */
+	background: #E00020;
     background: -moz-linear-gradient(top, #E00020, #EA5514);
     background: -webkit-gradient(linear, 0 0, 0 bottom, from(#E00020), to(#EA5514));
     background: -o-linear-gradient(top, #E00020, #EA5514);

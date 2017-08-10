@@ -10,8 +10,14 @@ $(function(){
     $page.find('>div.header >a.location >span').text(
         $$.getLocationInfo().name
     );
+    $page.find('>div.header').removeClass('on');
     // 懒加载
     $page.find('>div.main').scrollTop(0).scroll(function() {
+        if ($(this).scrollTop() > $('#home_index_banner_top').height()) {
+            $page.find('>div.header').addClass('on');
+        } else {
+            $page.find('>div.header').removeClass('on');
+        }
         if (loadComplate) {
             if (pageNum * pageSize < allCount) {
                 var proBox = $(this).find('>div.content >div.products'),
@@ -28,45 +34,9 @@ $(function(){
         }
     });
     
-    // banner
-    getBanners(function() {
-        TouchSlide({
-            slideCell: "#home_index_banner",
-            titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
-            mainCell: ".bd ul",
-            effect: "left",
-            autoPlay: true, //自动播放
-            autoPage: true, //自动分页
-            switchLoad: "_src", //切换加载，真实图片路径为"_src" 
-            interTime: 3000 // 切换间隔时间，毫秒
-        });
-    });
     // 获取商品
     getProductsList(pageNum, pageSize);
     
-    // 获取banner相关
-    function getBanners(calback) {
-        var $banner = $('#home_index_banner >div.bd >ul');
-        $.ajax({
-            url: $$.serverAddr + 'Product/Banner/QueryBannerList',
-            type: 'POST',
-            data: {
-                BannerTypeID: 1
-            },
-            dataType: 'json',
-            success: function(res) {
-                if (res.Status == 0 && res.Data && res.Data.Rows) {
-                    $banner.html(template(pageStr + '_banner_list', {
-                        list: res.Data.Rows,
-                        serverAddr: $$.config.serverAddr
-                    }));
-                    if (calback) {
-                        calback();
-                    }
-                }
-            }
-        });
-    }
     // 加载商品列表
     function getProductsList(pn, ps) {
         var $proBox = $page.find('>div.main >div.content >div.products');

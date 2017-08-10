@@ -1,0 +1,214 @@
+#home_service {
+    height: 100%;
+    background-color: #FFFFFF;
+    position: relative;
+}
+#home_service >div.header {
+	background: rgba(0, 0, 0, .6);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 0, 0, .6)), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(top, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	height: 46px;
+}
+#home_service >div.header >a.search {
+    background: url(../../images/common/search.png) no-repeat;
+    background-size: 100%;
+    background-position-y: center;
+    display: inline-block;
+    position: absolute;
+    margin: 0 auto 0;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    width: 52%;
+    height: 34px;
+}
+#home_service >div.header >a.goback {
+    display: block;
+    height: 34px;
+    width: 40px;
+    background: url(../../images/common/round_left_fill.png) no-repeat;
+    background-size: 64%;
+    background-position: center;
+    position: absolute;
+    bottom: 6px;
+    left: 5px;
+}
+/* banner start */
+#home_service >div.main {
+	overflow: hidden;
+    width: 100%;
+}
+#home_service >div.main >div.content .banner {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+#home_service >div.main >div.content .banner .hd {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    bottom: 5px;
+    text-align: center;
+}
+#home_service >div.main >div.content .banner .hd ul {
+    height: 7px;
+    padding: 3px 5px;
+    font-size: 0;
+    vertical-align: top;
+}
+#home_service >div.main >div.content .banner .hd ul li {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background: rgba(255,255,255,.6);
+    margin: 0 5px;
+    vertical-align: top;
+    overflow: hidden;
+}
+#home_service >div.main >div.content .banner .hd ul .on {
+    background: #fff;
+}
+#home_service >div.main >div.content .banner .bd {
+    position: relative;
+    z-index: 0;
+}
+#home_service >div.main >div.content .banner .bd ul li {
+    float: left;
+    list-style: none;
+}
+#home_service >div.main >div.content .banner .bd li img {
+    width: 100%;
+    height: 49.13vw;
+    background-color: #fff; 
+}
+#home_service >div.main >div.content .banner .bd li a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+/* banner end */
+/* title start*/
+#home_service >div.main >div.content div.title >span {
+    padding: 10px 0;
+    display: block;
+    width: 33.3%;
+    margin-left: 0.025vw;
+    float: left;
+    text-align: center;
+    color: #EA5514;
+}
+#home_service >div.main >div.content div.title >span >i {
+    display: inline-block;
+    background: url(../../images/common/round_check_orange.png) no-repeat;
+    background-size: 100%;
+    height: 14px;
+    width: 14px;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+#home_service >div.main >div.content div.title >span >small {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 3vw;
+}
+#home_service >div.main >div.content div.title >h3 {
+    clear: both;
+    text-align: center;
+    position: relative;
+    background-color: #FAFAFA;
+    padding: 18px 0;
+    font-weight: 600;
+    font-size: 18px;
+}
+#home_service >div.main >div.content div.title >h3::before,
+#home_service >div.main >div.content div.title >h3::after {
+    content: '';
+    display: block;
+    width: 20%;
+    height: 0;
+    border-top: 1px solid #D6D6DB;
+    position: absolute;
+    top: 31px;
+}
+#home_service >div.main >div.content div.title >h3::before {
+    left: 16%;
+}
+#home_service >div.main >div.content div.title >h3::after {
+    right: 16%;
+}
+/* title end*/
+/* products start */
+#home_service >div.main >div.content .warp {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#home_service >div.main >div.content .products {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+#home_service >div.main >div.content .products.loading::after {
+    content: '加载中···';
+    padding: 15px 0;
+}
+#home_service >div.main >div.content .products.loaded::after {
+    content: '已加载全部';
+    padding: 15px 0;
+}
+#home_service >div.main >div.content .products div.item {
+    height: 34vw;
+    box-sizing: border-box;
+    padding-top: 2vw;
+    padding-right: 1vw;
+    border-bottom: 1px solid #D6D6DB;
+    position: relative;
+}
+#home_service >div.main >div.content .products div.item img {
+    height: 32vw;
+    width: 31vw;
+    float: left;
+    padding: 0 3vw 0 2vw;
+    background-color: #FFF;
+}
+#home_service >div.main >div.content .products div.item p {
+    float: left;
+    font-size: 4vw;
+    width: 60vw;
+    text-align: left;
+    font-weight: bold;
+}
+#home_service >div.main >div.content .products div.item small {
+    display: block;
+    margin-top: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-weight: normal;
+}
+#home_service >div.main >div.content .products div.item a {
+    border: 1px solid #EA5514;
+    border-radius: 50px;
+    padding: 1vw 3vw;
+    color: #EA5514;
+    position: absolute;
+    bottom: 3vw;
+    right: 3vw;
+}
+#home_service >div.main >div.content .products div.item span {
+    color: #EA5514;
+    position: absolute;
+    bottom: 3.5vw;
+    left: 35vw;
+    font-size: 4.3vw;
+}
+/* products end */

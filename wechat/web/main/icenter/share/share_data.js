@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 
 
     
@@ -83,3 +83,4 @@ $(function() {
 
 
 });
+*/

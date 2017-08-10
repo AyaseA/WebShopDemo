@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
     var $page = $('#home_invite'),
         pageStr = 'home_invite',
         bodyHeight = window.innerHeight || document.body.clientHeight,
@@ -135,3 +135,4 @@ $(function() {
         }
     }
 });
+*/

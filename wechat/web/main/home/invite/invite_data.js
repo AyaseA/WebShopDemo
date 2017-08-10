@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
     // 如果登录执行事件绑定、信息获取等
     if ($$.isLogin(true)) {
         var weChatSign = $$.getWeChatSign();
@@ -80,3 +80,4 @@ $(function() {
         });
     }
 });
+*/

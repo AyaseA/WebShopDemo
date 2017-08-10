@@ -5,7 +5,8 @@
     height: 100%;
     position: relative;
 }
-#home_recommend >div.header {
+
+#home_recommend>div.header {
     height: 44px;
     background-color: #fff;
     border-bottom: 1px solid #F6F6F7;
@@ -14,36 +15,51 @@
     top: 0;
     z-index: 12;
 }
-#home_recommend >div.header a.goBack {
+
+#home_recommend>div.header a.goBack {
     display: block;
     float: left;
     height: 44px;
-    width: 44px;
+    width: 15%;
     background: url(../../images/common/round_left_blue.png) no-repeat;
     background-size: 40%;
     background-position: center;
     padding-left: 15px;
+    box-sizing: border-box;
 }
-#home_recommend >div.header >span {
+
+#home_recommend>div.header>span {
     margin: auto;
-    display: block;
-    font-weight: 700;
-    font-size: 16px;
+    display: inline-block;
     height: 44px;
     text-align: center;
     line-height: 45px;
-    width: 60%;
 }
-#home_recommend >div.main {
+
+#home_recommend .title {
+    width: 70%;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#home_recommend .share {
+    display: inline-block;
+    width: 15%;
+    float: right;
+    font-size: 14px;
+}
+
+#home_recommend>div.main {
     position: absolute;
     top: 45px;
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    background: linear-gradient(-60deg, #F47E4D 15%, #F49E79 0, #F49E79 50%,#F47E4D 0, #F47E4D 70%, #F49E79 0);
+    background: linear-gradient(-60deg, #F47E4D 15%, #F49E79 0, #F49E79 50%, #F47E4D 0, #F47E4D 70%, #F49E79 0);
     background-size: 9px 15.57px;
 }
-#home_recommend >div.main >div.content {
+
+#home_recommend>div.main>div.content {
     width: 280px;
     height: 360px;
     background-color: #fff;
@@ -54,7 +70,8 @@
     margin: 0 auto;
     box-shadow: 15px 50px 20px 0px rgba(0, 0, 0, 0.5);
 }
-#home_recommend >div.main >div.content::before {
+
+#home_recommend>div.main>div.content::before {
     content: '';
     display: block;
     width: 280px;
@@ -64,7 +81,8 @@
     position: absolute;
     top: -72px;
 }
-#home_recommend >div.main >div.content >i {
+
+#home_recommend>div.main>div.content>i {
     display: block;
     float: left;
     height: 50px;
@@ -74,7 +92,8 @@
     border-radius: 5px;
     margin: 15px 15px 0 15px;
 }
-#home_recommend >div.main >div.content >i >img {
+
+#home_recommend>div.main>div.content>i>img {
     width: 80%;
     height: 80%;
     position: absolute;
@@ -84,20 +103,53 @@
     left: 0;
     margin: auto;
 }
-#home_recommend >div.main >div.content >span {
+
+#home_recommend>div.main>div.content>span {
     font-size: 16px;
     font-weight: bold;
     margin-top: 30px;
     display: block;
 }
+
 #home_recommend_qrcode {
     margin: 15px 0 0 10%;
 }
-#home_recommend >div.main >div.content >p {
+
+#home_recommend>div.main>div.content>p {
     text-align: center;
     font-size: 12px;
     color: #888888;
     width: 100%;
     position: absolute;
     bottom: 15px;
+}
+
+#home_recommend .mirror {
+    width: 100%;
+    height: 100%;
+    background: #373636;
+    opacity: 0.9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 13;
+}
+
+#home_recommend .mirror img {
+    width: 15vw;
+    position: absolute;
+    top: 1.5vw;
+    left: 76vw;
+}
+
+#home_recommend .mirror p {
+    font-weight: bold;
+    font-size: 4.5vw;
+    color: #fff;
+    text-align: center;
+    margin-top: 60vw;
+}
+
+#home_recommend .mirror span {
+    color: red;
 }

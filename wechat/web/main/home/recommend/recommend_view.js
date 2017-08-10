@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     var bodyHeight = window.innerHeight || document.body.clientHeight,
         $page = $('#home_recommend'),
         pageStr = 'home_recommend',
@@ -10,4 +10,6 @@ $(function () {
 
     // 返回按钮
     $$.setGoBack($page.find('>div.header >a.goBack'));
+
+    
 });

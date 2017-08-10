@@ -44,8 +44,8 @@ $(function() {
             title: false, //不显示标题栏
             closeBtn: true,
             shade: 0.5,
-            moveType: 1, //拖拽模式，0或者1
-            content: '<img style="max-width:92vw;max-height:120vw;margin-bottom:-4px" src="' + url + '" />'
+            moveType: 0, //拖拽模式，0或者1
+            content: '<div style=""width:90vw;height:120vw"><img style="float: left;width:90vw;max-height:120vw;margin-bottom:-4px" src="' + url + '" /></div>'
         });
 	});
 	// 收藏

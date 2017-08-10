@@ -39,14 +39,33 @@ $(function() {
 	// 点击图片放大
 	$page.on('click', 'div.comment >img', function() {
 		var url = $(this).attr('src');
-		layer.open({
-            type: 1,
-            title: false, //不显示标题栏
-            closeBtn: true,
-            shade: 0.5,
-            moveType: 0, //拖拽模式，0或者1
-            content: '<div style=""width:90vw;height:120vw"><img style="float: left;width:90vw;max-height:120vw;margin-bottom:-4px" src="' + url + '" /></div>'
-        });
+		var img = new Image();
+		img.src = url;
+		img.onload = function() {
+			var w = img.width;
+            var h = img.height;
+            var divID = $$.getRandomCode(6);
+            if (w > boxWidth * 0.9) {
+	        	h = boxWidth * 0.9 / w * h;
+	        	w = boxWidth * 0.9;
+	        }
+	        if (h > bodyHeight *0.9) {
+	        	w = bodyHeight *0.9 / h * w;
+	        	h = bodyHeight *0.9
+	        }
+            layer.open({
+	            type: 1,
+	            title: false, //不显示标题栏
+	            closeBtn: true,
+	            shade: 0.5,
+	            moveType: 0, //拖拽模式，0或者1
+	            content: '<div id="' + divID + '" style="width:' + w + 'px;height:' + h + 'px"></div>'
+	        });
+	        $(img).width(w).height(h).css(
+        	    'margin-bottom', '-4px'
+	        );
+	        $('#' + divID).html(img);
+		}
 	});
 	// 收藏
 	$page.on('click', '>div.footer >a.collect', function() {

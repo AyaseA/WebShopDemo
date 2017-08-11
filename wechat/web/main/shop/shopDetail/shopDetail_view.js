@@ -8,7 +8,13 @@ $(function() {
         $$.goBack();
     });
 
-    
+    $page.on("click",".serviceNav ul li",function(){
+        $page.find(".serviceNav ul li").removeClass("active");
+        $(this).addClass("active");
+        $page.find(".serviceContent .item").removeClass("active");
+        $page.find("."+$(this).attr("data-content")).addClass("active");
+        
+    });
 
     $page.on("click", ".btn", function() {
         if ($(this).attr("data-watch") == 0) {

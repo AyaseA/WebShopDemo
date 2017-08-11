@@ -1,0 +1,56 @@
+#icenter_codeRegister{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background: #FF8555;
+	text-align: center;
+}
+
+#icenter_codeRegister .background{
+	width: 100%;
+	position: absolute;
+	top:0;
+	left: 0;
+} 
+
+#icenter_codeRegister .code{
+    position: relative;
+    margin-top: 45vw;
+    display: inline-block;
+    padding: 2vw;
+    border: double;
+}
+
+#icenter_codeRegister .content{
+	position: absolute;
+	top: 130vw;
+	left: 10vw;
+}
+
+#icenter_codeRegister .content p,#icenter_codeRegister .content span{
+	width: 80vw;
+	text-align: center;
+	display: block;
+	font-size: 4vw;
+	font-weight: 500;
+}
+
+#icenter_codeRegister .content p{
+	color: #000;
+}
+
+#icenter_codeRegister .content span{
+	margin-top: 2vw;
+	color: #9A9B9D
+}
+
+#icenter_codeRegister .content span button{
+	color: #fff;
+	background: #f60;
+	border: none;
+	border-radius: 5vw;
+	outline: none;
+	width: 25vw;
+	height: 6vw;
+	font-size: 4vw;
+}

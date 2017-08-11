@@ -34,7 +34,6 @@
 }
 
 #shop_shopDetail .title{
-	
 	border-bottom:1px solid #d6d6db;
 }
 
@@ -52,7 +51,6 @@
 #shop_shopDetail .title span{
 	color: #f60;
 }
-
 
 #shop_shopDetail .address{
 	display: table;
@@ -104,14 +102,6 @@
 	color: #797878;
 }
 
-#shop_shopDetail .adv{
-	margin: 10vw 0 0vw 5vw;
-}
-
-#shop_shopDetail .adv img{
-	width: 88vw;
-}
-
 #shop_shopDetail .btn{
 	position: absolute;
 	top:3.5vw;
@@ -131,6 +121,95 @@
 #shop_shopDetail .btn img{
 	float: right;
 	width: 5.5vw;
+}
+
+#shop_shopDetail .storeService{
+	width: 100%;
+	margin-top:4vw;
+}
+
+#shop_shopDetail .serviceNav{
+	width: 25%;
+	height: 60vw;
+	overflow-y:auto;
+	display: inline-block;
+	background: #EFEFF4;
+	box-sizing: border-box;
+}
+
+#shop_shopDetail .serviceNav ul{
+	width: 100%;
+}
+
+#shop_shopDetail .serviceNav ul li{
+	width: 100%;
+	text-align: center;
+	font-size: 3.8vw;
+	height: 10vw;
+	line-height: 10vw;
+}
+
+#shop_shopDetail .serviceNav .active{
+	background: #fff;
+	color: #f60;
+}
+
+#shop_shopDetail .serviceContent{
+	width: 75%;
+	height: 60vw;
+	overflow-y:auto;
+	display: inline-block;
+	background: #fff;
+	box-sizing: border-box;
+}
+
+#shop_shopDetail .serviceContent .item{
+	display: none;
+}
+
+#shop_shopDetail .serviceContent .active{
+	display: block;
+}
+
+#shop_shopDetail .serviceContent .oneService{
+	margin-left: 4vw;
+	border-bottom: 1px solid #F3F3F4;
+	padding: 3vw 2vw 2vw 0;
+}
+
+#shop_shopDetail .serviceContent .serviceTitle{
+	font-size: 3.8vw;
+	color: #000;
+	margin-bottom: 2vw;
+}
+
+#shop_shopDetail .serviceContent .serviceDesci{
+	font-size: 3.5vw;
+	color: #8D8D8D;
+	margin-bottom: 1vw;
+}
+
+#shop_shopDetail .serviceContent .price span{
+	font-size: 3.8vw;
+	color: #f60;
+}
+
+#shop_shopDetail .serviceContent .price button{
+	float: right;
+	color: #fff;
+	background: #f60;
+	border-radius: 3vw;
+	border:none;
+	outline: none;
+}
+
+#shop_shopDetail .adv{
+	margin: 10vw 0 0vw 5vw;
+	display: none;
+}
+
+#shop_shopDetail .adv img{
+	width: 88vw;
 }
 
 /* banner */

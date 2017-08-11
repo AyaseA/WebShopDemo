@@ -8,8 +8,6 @@ $(function() {
 
     $('#shop_shopDetail_banner .bd ul').empty();
 
-
-    
     //微信配置
     var WXsign = $$.getWeChatSign(1);
     wx.config({
@@ -22,7 +20,7 @@ $(function() {
     });
 
     function checkInfo(data, name) {
-        if(data.hasOwnProperty(Children)){
+        if (data.hasOwnProperty("Children")) {
             data = data.Children;
             for (var i = 0; i < data.length; i++) {
                 if (data[i].Name == name) {
@@ -31,11 +29,12 @@ $(function() {
 
                 }
             }
-        }else{
-            
+        } else {
+
         }
     }
 
+    //获取门店基本信息
     $.ajax({
         type: "POST",
         url: $$.config.serverAddr + "Product/Store/QueryStoreDetail",
@@ -80,7 +79,45 @@ $(function() {
         }
     });
 
+    //获取门店服务列表
+    $.ajax({
+        type: "POST",
+        url: $$.config.serverAddr + "Product/StoreService/QueryServiceJson",
+        data: {
+            StoreID: id
+        },
+        dataType: "json",
+        success: function(txt) {
+            $page.find(".storeService").show();
+            $page.find(".adv").hide();
+            $page.find(".serviceNav ul").empty();
+            $page.find(".serviceContent").empty();
+            var serviceList = txt.Data,
+                navNode = "";
+            serviceNode = "";
+            if (serviceList.length == 0) {
+                $page.find(".storeService").hide();
+                $page.find(".adv").show();
+            }
+            for (var i = 0; i < serviceList.length; i++) {
+                navNode += '<li data-content="service' + i + '">' + serviceList[i].CategoryName + '</li>';
+                $page.find(".serviceContent").append('<div class="service' + i + ' item"></div>');
+                for (var j = 0; j < serviceList[i].Children.length; j++) {
+                    serviceNode = '<div class="oneService">' +
+                        '<p class="serviceTitle">' + serviceList[i].Children[j].ProductName + '</p>' +
+                        '<p class="serviceDesci">' + serviceList[i].Children[j].Descri + '</p>' +
+                        '<p class="price"><span>¥' + serviceList[i].Children[j].NewPrice + '</span><button>购买</button></p>' +
+                        '</div>';
+                    $page.find(".service" + i).append(serviceNode);
+                }
+            }
+            $page.find(".serviceNav ul").append(navNode);
+            $page.find(".serviceNav ul li:first-child").addClass("active");
+            $page.find(".serviceContent div:first-child").addClass("active");
+        }
+    });
 
+    //轮播图
     function bannerSlide() {
         TouchSlide({
             slideCell: "#shop_shopDetail_banner",
@@ -94,7 +131,7 @@ $(function() {
         });
     }
 
-
+    //获取是否关注
     $$.post("CSL/StoreFollow/QueryFollowDetail", { StoreID: id },
         function(txt) {
             if (txt.Status == 0) {
@@ -107,7 +144,7 @@ $(function() {
         }
     );
 
-
+    //关注点击事件
     $page.off("click", ".btn").on("click", ".btn", function() {
         if ($(this).attr("data-watch") == 0) {
             $$.post("CSL/StoreFollow/AddUpdateFollow", { StoreID: id },
@@ -133,4 +170,7 @@ $(function() {
             });
         }
     });
+
+
+
 });

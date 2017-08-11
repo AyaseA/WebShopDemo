@@ -5,15 +5,24 @@ $(function() {
     var type = $$.getQueryString("type");
 
     $page.off("click", ".price button").on("click", ".price button", function(e) {
-        $$.redirect("home/fillOrder.html?pid=" + $(this).attr("data-id") + "&num=1");
+        var tid = $(this).attr("data-tid");
+        $$.redirect("home/fillOrder.html?pid=" + $(this).attr("data-id") + "&num=1&type="+tid);
         e.preventDefault();
         e.stopPropagation();
     });
     $page.off("click", ".productInfo").on("click", ".productInfo", function() {
-        $$.redirect("home/product.html?pid=" + $(this).attr("data-id"));
+        var pid = $(this).attr("data-id");
+        var tid = $(this).attr("data-tid");
+        if (tid == 0) {
+            $$.redirect("home/product.html?pid=" + pid);
+        } else if (tid == 1) {
+            $$.redirect("home/prodservice.html?pid=" + pid);
+        } else if (tid == 5) {
+            $$.redirect("home/prodmulti.html?pid=" + pid);
+        }
     });
 
-    $page.off("click",".storeInfo").on("click",".storeInfo",function() {
+    $page.off("click", ".storeInfo").on("click", ".storeInfo", function() {
         $$.redirect("shop/shopDetail.html?ID=" + $(this).attr("data-id"));
     });
 
@@ -71,13 +80,13 @@ $(function() {
                         $page.find(".productContent").append(node);
                     } else {
                         for (var i = 0; i < data.length; i++) {
-                            node += '<div class="productInfo" data-id="' + data[i].ID + '">' +
+                            node += '<div class="productInfo" data-tid="'+data[i].ProductType+'" data-id="' + data[i].ID + '">' +
                                 '<img src="' + $$.config.serverAddr + 'Img/' + noImg(data[i].Img) + '">' +
                                 '<div class="info">' +
                                 '<p class="name"><b>' + data[i].Name + '</b></p>' +
                                 '<p class="descri">' + getDesCri(data[i].Descri) + '</p>' +
                                 '<p class="time">关注时间:' + $$.timeToStr(data[i].WishAddTime) + '</p>' +
-                                '<p class="price">￥' + data[i].Price + '<button data-id="' + data[i].ID + '">立即购买</button></p>' +
+                                '<p class="price">￥' + data[i].Price + '<button data-id="' + data[i].ID + '" data-tid="'+data[i].ProductType+'">立即购买</button></p>' +
                                 '</div>' +
                                 '</div>';
                         }

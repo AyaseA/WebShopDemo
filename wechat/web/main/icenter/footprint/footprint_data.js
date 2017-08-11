@@ -2,7 +2,6 @@ $(function() {
     var $page = $('#icenter_footprint'),
         pageStr = 'icenter_footprint';
 
-    //var token = "eyJVc2VySUQiOiI0MCIsIk5pY2tOYW1lIjpudWxsLCJHcm91dGhWYWx1ZSI6bnVsbCwiVXNlckFkZHJlc3NJRCI6bnVsbCwiQWRkVGltZSI6IjE0OTczMzkzODgiLCJVc2VyQ2FySUQiOm51bGwsIkltZyI6bnVsbCwiRW5hYmxlIjoiMSIsIkludml0ZUNvZGUiOiJNRFF3IiwiTW9iaWxlIjoiMTUwNjY2NzAzMjAiLCJTZXNzaW9uSUQiOiIxIiwiVHlwZSI6IlVzZXIiLCJVSUQiOiI3MzNlY2VmZGU4MzcwNzU5ZmU5NmQ2OTNmNTE1OGFiYiJ9";
     if ($$.isLogin(true)) {
 
         var token = $$.getToken();
@@ -11,8 +10,8 @@ $(function() {
         $.ajax({
             type: "POST",
             url: url + "CSL/ProdFoot/QueryFootList",
-            data: { WToken: token },
-            dataType:"json",
+            data: { WToken: token ,Rows:30},
+            dataType: "json",
             success: function(txt) {
                 $page.find(".content").empty();
                 if (txt.Status != 0) {
@@ -33,53 +32,31 @@ $(function() {
                                     $page.find(".content").append(dateTitle);
                                     haveAppendTitle = 1;
                                 }
-                                $.ajax({
-                                    type: "POST",
-                                    url: url + "Product/Prod/QueryDetail",
-                                    data: { "ID": list[i].ID },
-                                    async: false,
-                                    success: function(txt) {
 
-                                        productInfo = $$.eval(txt).Data;
-                                        if (productInfo.Img == "") {
-                                            productInfo.Img = "NoImg/" + Math.random() + ".jpg";
-                                        }
-
-                                        var descri = productInfo.Descri,
-                                            content = '';
-                                        if (descri) {
-                                            descri = JSON.parse(descri);
-                                            content = Base64.decode(unescape(descri.text));
-                                        }
-
-                                        var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + productInfo.Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
-                                        $page.find(".content").append(onePiece);
-                                    }
-                                });
+                                var descri = list[i].Descri,
+                                    content = '';
+                                if (descri) {
+                                    descri = JSON.parse(descri);
+                                    content = Base64.decode(unescape(descri.text));
+                                }
+                                list[i].Img=list[i].Img||"1.png";
+                                var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + list[i].Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + list[i].Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + list[i].Price + "<span><button data-tid='"+list[i].ProductType+"' data-id='" + list[i].ID + "'>点击购买</button><p></div></div></div>";
+                                $page.find(".content").append(onePiece);
                             } else {
                                 fisrtDate = list[i].Date;
                                 dateTitle = "<div class='dataDiv'><span class='dateinfo'>" + fisrtDate + "<span></div>";
                                 $page.find(".content").append(dateTitle);
-                                $.ajax({
-                                    type: "POST",
-                                    url: url + "Product/Prod/QueryDetail",
-                                    async: false,
-                                    data: { "ID": list[i].ID },
-                                    success: function(txt) {
 
-                                        var productInfo = $$.eval(txt).Data;
-
-                                        var descri = productInfo.Descri,
-                                            content = '';
-                                        if (descri) {
-                                            descri = JSON.parse(descri);
-                                            content = Base64.decode(unescape(descri.text));
-                                        }
-
-                                        var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + productInfo.Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + productInfo.Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + productInfo.Price + "<span><button data-id='" + productInfo.ID + "'>点击购买</button><p></div></div></div>";
-                                        $page.find(".content").append(onePiece);
-                                    }
-                                });
+                                var descri = list[i].Descri;
+                                var content = '';
+                                if (descri) {
+                                    descri = JSON.parse(descri);
+                                    content = Base64.decode(unescape(descri.text));
+                                }
+                                list[i].Img=list[i].Img||"1.png";
+                                var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + list[i].Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + list[i].Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + list[i].Price + "<span><button data-tid='"+list[i].ProductType+"' data-id='" + list[i].ID + "'>点击购买</button><p></div></div></div>";
+                                $page.find(".content").append(onePiece);
+                                
                             }
                         }
                     }

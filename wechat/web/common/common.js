@@ -313,6 +313,7 @@ Date.prototype.pattern = function(fmt) {
                 var load = function(url, newid, trans) {
                     var url_arr = url.split('?');
                     var dir = url_arr[0].substring(0, url_arr[0].length - 5);
+                    loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
                     $.ajax({
                         url: url_arr[0] + '?v=' + Math.random(), // 这里是静态页的地址
                         type: "get", // 静态页用get方法，否则服务器会抛出405错误
@@ -330,7 +331,6 @@ Date.prototype.pattern = function(fmt) {
                             $("#div_list").append($(result).attr({ id: newid }).hide());
                             var filedata = dir + '_data.js';
                             var fileview = dir + '_view.js';
-                            loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
                             loadJs(fileview, dir.replace(/\//g, "_") + "_view");
                             transition(trans, newid);
                             loadJs(filedata, dir.replace(/\//g, "_") + "_data");

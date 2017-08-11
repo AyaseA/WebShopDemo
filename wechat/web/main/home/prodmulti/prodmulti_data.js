@@ -81,7 +81,7 @@ $(function() {
     // 根据商品id获取评论
     function getComments(productName) {
         $$.get(
-            'Product/Review/ProductReviewList?ProductID=' + pid,
+            'Product/Review/ProductReviewList?ProductID=' + pid + '&ProductType=5',
             function(res) {
                 if (res.Status != 0) {
                     return false;

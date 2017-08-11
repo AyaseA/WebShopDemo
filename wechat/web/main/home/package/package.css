@@ -194,6 +194,7 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
     font-weight: normal;
+    padding-bottom: 4px;
 }
 #home_package >div.main >div.content .products div.item a {
     border: 1px solid #EA5514;

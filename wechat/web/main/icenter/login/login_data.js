@@ -48,15 +48,17 @@ $(function() {
             }
         }
     });
-    $page.off('click', 'button.getVCode').on('click', 'button.getVCode', function(e) {
+    $page.off('click', 'span.getVCode').on('click', 'span.getVCode', function(e) {
         e.preventDefault();
         if (!$(this).hasClass('sending')) {
             var phone = $.trim($page.find('input[name=phone]').val());
             if (phone.length == 11 && /^1[3|4|5|7|8]\d{9}$/.test(phone)) {
-                sendingVCode({
-                    Mobile: phone,
-                    Type: type,
-                    PType: 0
+                isRegister(phone, function() {
+                    sendingVCode({
+                        Mobile: phone,
+                        Type: type,
+                        PType: 0
+                    });
                 });
             } else {
                 layer.msg('请输入正确的手机号');
@@ -190,6 +192,26 @@ $(function() {
             return false;
         }
     }
+    function isRegister(phone, callback) {
+        $.ajax({
+            url: $$.config.serverAddr + 'CSL/Login/HasUserMobile',
+            type: 'POST',
+            data: {
+                Mobile: phone
+            },
+            dataType: 'json',
+            success: function(res) {
+                if (res.Status == 0 && res.Data == 'Succ') {
+                    layer.msg('您的手机号已注册，请直接登录');
+                    statusLogin();
+                    resetVCode();
+                    validate();
+                } else {
+                    callback();
+                }
+            }
+        });
+    }
     function sendingVCode(data) {
         resetVCode();
         $.ajax({
@@ -206,18 +228,18 @@ $(function() {
     }
     function tickVCode() {
         var tick = 60;
-        $page.find('button.getVCode').addClass('sending').text(tick + 'S后重发');
+        $page.find('span.getVCode').addClass('sending').text(tick + 'S后重发');
         timer = setInterval(function() {
             if (tick == 1) {
                 resetVCode();
             } else {
-                $page.find('button.getVCode').text(--tick + 'S后重发');
+                $page.find('span.getVCode').text(--tick + 'S后重发');
             }
         }, 1000);
     }
     function resetVCode() {
         clearInterval(timer);
-        $page.find('button.getVCode').removeClass('sending').text('获取验证码');
+        $page.find('span.getVCode').removeClass('sending').text('获取验证码');
     }
 
     function statusLogin() {

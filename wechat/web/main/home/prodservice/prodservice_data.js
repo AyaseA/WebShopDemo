@@ -1,6 +1,6 @@
 $(function() {
-    var $page = $('#home_product'),
-	    pageStr = 'home_product',
+    var $page = $('#home_prodservice'),
+	    pageStr = 'home_prodservice',
 	    pid = $$.getQueryString('pid'),
         pNum = 1;
     
@@ -20,7 +20,7 @@ $(function() {
     // 设置底部按钮的pid
     $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');
     $page.off('click', '>div.footer >a.buyNow').on('click', '>div.footer >a.buyNow', function() {
-        $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum + '&type=0');
+        $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum + '&type=1');
     });
     // 获取商品信息
     getProductInfo();
@@ -29,7 +29,7 @@ $(function() {
 	// 根据商品id获取商品信息
 	function getProductInfo() {
         $$.get(
-            'Product/Prod/QueryDetail?ID=' + pid,
+            'Product/StoreService/QueryProductServiceDetail?ID=' + pid,
             function(res) {
                 if (res.Status != 0) {
                     return false;
@@ -63,7 +63,7 @@ $(function() {
                     }));
                     if (d.ImgList) {
                         TouchSlide({
-                            slideCell: "#home_product_banner",
+                            slideCell: "#home_prodservice_banner",
                             titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
                             mainCell: ".bd ul",
                             effect: "left",

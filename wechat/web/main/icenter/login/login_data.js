@@ -103,6 +103,7 @@ $(function() {
                         $$.setToken(res.Data.WToken);
                         layer.msg(msg);
                         $$.goBack();
+                        resetForm();
                     }
                 }
             }
@@ -151,6 +152,7 @@ $(function() {
                         $$.setToken(res.Data.WToken);
                         layer.msg('登录成功');
                         $$.goBack();
+                        resetForm();
                     }
                 }
             }
@@ -241,7 +243,9 @@ $(function() {
         clearInterval(timer);
         $page.find('span.getVCode').removeClass('sending').text('获取验证码');
     }
-
+    function resetForm() {
+        $page.find('input[name=phone], input[name=pwd], input[name=vcode], input[name=invitecode]').val('');
+    }
     function statusLogin() {
         type = 2;
         $page.find('form').find('label, a').show();

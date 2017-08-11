@@ -14,7 +14,7 @@ $(function(){
                     maxScroll = $(this).find('div.products').outerHeight() + $(this).find('div.title').outerHeight() - $(this).height();
                 if ($(this).scrollTop() == maxScroll) {
                     proBox.addClass('loading');
-                    getProductsList(++pageNum, pageSize);
+                    getProductPackagesList(++pageNum, pageSize);
                     $(this).scrollTop($(this).scrollTop() - 10);
                     loadComplate = false;
                 }
@@ -25,16 +25,15 @@ $(function(){
     });
     
     // 获取商品
-    getProductsList(pageNum, pageSize);
+    getProductPackagesList(pageNum, pageSize);
     
     // 加载商品列表
-    function getProductsList(pn, ps) {
+    function getProductPackagesList(pn, ps) {
         var $proBox = $page.find('>div.main >div.content div.products');
         $$.get(
-            'Product/Prod/QueryList?N=' + pn + '&Rows=' + ps,
+            'Product/ProdMulti/QueryList?N=' + pn + '&Rows=' + ps,
             function(res) {
                 if (res.Status != 0) {
-                    console.log('获取商品信息失败');
                     return false;
                 }
                 if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {

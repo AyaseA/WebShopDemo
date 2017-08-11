@@ -4,11 +4,20 @@ $(function() {
         pageStr = 'home_fillOrder',
         productId = $$.getQueryString('pid'),
         productNum = $$.getQueryString('num') || 1,
+        orderType = $$.getQueryString('type') || 0,
         total = 0,
         coupon = 0,
         point = 0,
         couponID = '',
-        campaignNum = 0;
+        campaignNum = 0,
+        detailUrl = 'Product/Prod/QueryDetail?ID=';
+
+    if (orderType == 1) {
+        detailUrl = 'Product/StoreService/QueryProductServiceDetail?ID=';
+    } else if (orderType == 5) {
+        detailUrl = 'Product/ProdMulti/QueryDetail?ID=';
+    }
+
     // 判断是否登录
     if ($$.isLogin(true)) {
         // 页面重新显示的一些初始化
@@ -77,7 +86,7 @@ $(function() {
     // 获取商品详情
     function getProductDetail() {
         $$.get(
-            'Product/Prod/QueryDetail?ID=' + productId,
+            detailUrl + productId,
             function(res) {
                 if (res.Status != 0) {
                     return false;
@@ -170,6 +179,7 @@ $(function() {
         $$.post(
             'CSL/Order/AddOrder', {
                 'ProdList': productId + '_' + productNum,
+                'OrderType': orderType,
                 'ValueVoucherID': couponID,
                 'ValueVoucherNum': coupon
             },

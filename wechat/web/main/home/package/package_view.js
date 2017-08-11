@@ -4,7 +4,7 @@ $(function(){
         pageStr = 'home_package';
 
     if (navigator.userAgent.indexOf('csl-ios') != -1) {
-        $page.find('>div.header').height(50).find('>a').css({
+        $page.find('>div.header').height(56).find('>a').css({
             'bottom': 1
         });
     }
@@ -61,7 +61,7 @@ $(function(){
     // 点击商品查看详情
     $page.on('click', 'div.products div.item', function() {
         var pid = $(this).attr('data-id');
-        $$.redirect('home/product.html?pid=' + pid);
+        $$.redirect('home/prodmulti.html?pid=' + pid);
     });
 
     // 立即购买

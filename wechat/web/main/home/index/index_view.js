@@ -5,8 +5,8 @@ $(function(){
         footerHeight = $page.find('>div.footer').height();
 
     if (navigator.userAgent.indexOf('csl-ios') != -1) {
-        $page.find('>div.header').height(50).find('>a').css({
-            'bottom': 0
+        $page.find('>div.header').height(56).find('>a').css({
+            'bottom': 1
         });
     }
     

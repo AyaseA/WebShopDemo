@@ -1,8 +1,11 @@
 $(function() {
-    var $page = $('#home_prodservice'),
+    var bodyHeight = window.innerHeight || document.body.clientHeight,
+        $page = $('#home_prodservice'),
 	    pageStr = 'home_prodservice',
-	    pid = $$.getQueryString('pid'),
-        pNum = 1;
+        boxWidth = $page.find('>div.header').width(),
+        pid = $$.getQueryString('pid'),
+        pNum = 1,
+        serviceId = '';
     
     // 页面重新显示的一些初始化
     $page.find('>div.header li[data-type=product]') 
@@ -17,11 +20,36 @@ $(function() {
         'margin-left': 0
     });
 
+
+
+
+
+    $page.find('div.appointment').html(template(pageStr + '_appointment_store', {
+        name: name || ''
+    }));
+    $page.find('div.appointment >div').width(
+        boxWidth - 30 - 8 - 8
+    );
+
+
+    getStoresByService({
+        N: 1,
+        Rows: 9999,
+        ProductServiceID: pid
+    });
+
     // 设置底部按钮的pid
     $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');
     $page.off('click', '>div.footer >a.buyNow').on('click', '>div.footer >a.buyNow', function() {
-        $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum + '&type=1');
+        if (serviceId != '') {
+            $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum + '&type=1');
+        } else {
+            $page.find('>div.storeModal div.warp').animate({
+                'top': bodyHeight * 0.2
+            }, 200).parent().fadeIn(200);
+        }
     });
+
     // 获取商品信息
     getProductInfo();
 	// 修改立即购买按钮的商品id
@@ -191,6 +219,24 @@ $(function() {
             );
         }
     }
+
+    function getStoresByService(data, callback) {
+        $.ajax({
+            url: $$.config.serverAddr + 'Product/StoreService/QueryMapByProductServiceID',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(res) {
+                if (res.Status == 0) {
+                    var d = res.Data.Rows;
+                    $page.find('>div.storeModal div.stores >div').html(template(pageStr + '_store_items', {
+                        stores: d
+                    }));
+                }
+            }
+        });
+    }
+
     // 添加浏览足迹
     function addHistoryFoot() {
         $.ajax({

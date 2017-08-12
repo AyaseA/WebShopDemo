@@ -14,7 +14,8 @@
 }
 #home_prodservice >div.header a.goBack {
 	display: block;
-	float: left;
+    position: absolute;
+    bottom: 0;
 	height: 44px;
 	width: 44px;
 	background: url(../../images/common/round_left_blue.png) no-repeat;
@@ -25,7 +26,6 @@
 #home_prodservice >div.main {
 	width: 100%;
 	position: absolute;
-	top: 44px;
     overflow: hidden;
 }
 #home_prodservice div.content {
@@ -40,6 +40,10 @@
 	width: 50%;
 	margin: 0 auto;
 	text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 #home_prodservice >div.header li {
 	float: left;
@@ -348,4 +352,178 @@
 	font-size: 16px;
 	color: #fff;
 	line-height: 50px;
+}
+
+#home_prodservice div.appointment {
+    padding: 0px 15px;
+    background-color: #FFF;
+    margin: 10px 0px;
+    box-sizing: border-box;
+    width: 100%;
+}
+#home_prodservice div.appointment >div {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 0;
+    position: relative;
+}
+#home_prodservice div.appointment p {
+    font-size: 16px;
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+#home_prodservice div.appointment span {
+    font-size: 14px;
+    width: 45%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+}
+#home_prodservice div.appointment p >small {
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    color: #A9A9A9;
+}
+#home_prodservice div.appointment >i {
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../../images/common/right.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 16px;
+    width: 10px;
+}
+
+#home_prodservice >div.storeModal {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, .5);
+    /* display: none; */
+}
+#home_prodservice >div.storeModal div.warp {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 80%;
+}
+#home_prodservice >div.storeModal div.title {
+    height: 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+    z-index: 99;
+    position: relative;
+    border-bottom: 1px solid #F6F6F7;
+    box-sizing: border-box;
+}
+#home_prodservice >div.storeModal a.closeModal {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    height: 40px;
+    width: 40px;
+    background: url(../../images/common/round_down_blue.png) no-repeat;
+    background-size: 57.5%;
+    background-position: center;
+}
+#home_prodservice >div.storeModal a.location {
+    display: block;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    height: 40px;
+    width: 40px;
+    background: url(../../images/common/map_blue.png) no-repeat;
+    background-size: 57.5%;
+    background-position: center;
+}
+#home_prodservice >div.storeModal div.title >span {
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    width: 60%;
+}
+#home_prodservice >div.storeModal div.stores {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #EFEFF4;
+}
+#home_prodservice >div.storeModal div.stores div.item {
+    padding: 10px 0 10px 5vw;
+    width: 100%;
+    background-color: #FFF;
+    box-sizing: border-box;
+    border-bottom: 1px solid #F3F3F4;
+}
+#home_prodservice >div.storeModal div.stores div.item >div {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 3vw;
+    width: 70vw;
+}
+#home_prodservice >div.storeModal div.stores div.item p {
+    color: #9c9c9c;
+    margin: 5px 0;
+    font-size: 12px;
+}
+#home_prodservice >div.storeModal div.stores div.item small {
+    font-size: 12px;
+}
+#home_prodservice >div.storeModal div.stores div.item small::before {
+    content: '';
+    display: block;
+    float: left;
+    width: 14px;
+    height: 14px;
+    background: url(../../images/common/location_small_blue.png) no-repeat;
+    background-size: contain;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+#home_prodservice >div.storeModal div.stores div.item small >span {
+    color: #EA5514;
+    margin-left: 5px;
+}
+#home_prodservice >div.storeModal div.stores div.item >a {
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../../images/common/form.png) no-repeat;
+    background-size: 50%;
+    background-position: center;
+    height: 12vw;
+    width: 12vw;
+}
+#home_prodservice >div.storeModal div.stores div.item::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 6vw;
+    width: 6vw;
+    background: url(../../images/common/round_check.png) no-repeat;
+    background-size: 100%;
+}
+#home_prodservice >div.storeModal div.stores div.item.checked::before {
+    background-image: url(../../images/common/round_check_fill.png)
+}
+#home_prodservice >div.storeModal div.selectAndBuy {
+    height: 46px;
+    line-height: 46px;
+    width: 100%;
+    background-color: #EA5514;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: #FFF;
+    font-size: 16px;
 }

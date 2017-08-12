@@ -2,13 +2,13 @@ $(function(){
     var bodyHeight = window.innerHeight || document.body.clientHeight,
         $page = $('#home_service').height(bodyHeight),
         pageStr = 'home_service';
-
+/*
     if (navigator.userAgent.indexOf('csl-ios') != -1) {
         $page.find('>div.header').height(56).find('>a').css({
             'bottom': 1
         });
     }
-
+*/
     // 窗口尺寸变化重新计算窗口高度和位置
     window.onresize = function() {
         bodyHeight = window.innerHeight || document.body.clientHeight;

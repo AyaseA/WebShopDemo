@@ -2,13 +2,10 @@ $(function() {
 	var bodyHeight = window.innerHeight || document.body.clientHeight,
 		$page = $('#home_fillOrder'),
     	pageStr = 'home_fillOrder',
+	    boxWidth = $page.find('>div.header').width(),
 	    headerHeight = $page.find('>div.header').height(),
-	    footerHeight = $page.find('>div.footer').height(),
-	    boxWidth = $page.find('>div.header').width();
-	// 设置各种高度
-	$page.find('>div.main').css({
-		'height': bodyHeight - headerHeight - footerHeight,
-	});
+	    footerHeight = $page.find('>div.footer').height();
+
 	$page.find('>div.couponModal').css({
 		'top': bodyHeight
 	}).find('>div.content').css({
@@ -20,6 +17,30 @@ $(function() {
 	}).find('>div').css({
 		'height': bodyHeight - headerHeight * 2 - 1,
 		'width': boxWidth
+	});
+
+
+/*
+	if (navigator.userAgent.indexOf('csl-ios') != -1) {
+        $page.find('>div.main').css({
+        	'top': '64px'
+        }).end().find('>div.header').height(64).find('a, span').css({
+            'bottom': 0
+        });
+        $page.find('>div.couponModal').find('div.title').height(64)
+        	.end().find('>ul').css({
+        		'top': '65px'
+        	})
+        	.end().find('>div.content').css({
+        		'top': '110px',
+        		'height': bodyHeight - 110
+        	});
+    }
+*/
+
+	// 设置各种高度
+	$page.find('>div.main').css({
+		'height': bodyHeight - headerHeight - footerHeight,
 	});
 
 	// 设置返回页面

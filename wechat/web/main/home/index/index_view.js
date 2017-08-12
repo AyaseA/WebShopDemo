@@ -3,13 +3,13 @@ $(function(){
         $page = $('#home_index').height(bodyHeight),
         pageStr = 'home_index',
         footerHeight = $page.find('>div.footer').height();
-
+/*
     if (navigator.userAgent.indexOf('csl-ios') != -1) {
         $page.find('>div.header').height(56).find('>a').css({
             'bottom': 1
         });
     }
-    
+*/  
     // 设置主窗口高度和位置
     resetWindowSize();
     

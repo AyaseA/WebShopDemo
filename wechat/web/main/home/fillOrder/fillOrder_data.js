@@ -2,6 +2,7 @@ $(function() {
     var bodyHeight = window.innerHeight || document.body.clientHeight,
         $page = $('#home_fillOrder'),
         pageStr = 'home_fillOrder',
+        boxWidth = $page.find('>div.header').width(),
         productId = $$.getQueryString('pid'),
         productNum = $$.getQueryString('num') || 1,
         orderType = $$.getQueryString('type') || 0,
@@ -10,16 +11,17 @@ $(function() {
         point = 0,
         couponID = '',
         campaignNum = 0,
-        detailUrl = 'Product/Prod/QueryDetail?ID=';
-
-    if (orderType == 1) {
-        detailUrl = 'Product/StoreService/QueryProductServiceDetail?ID=';
-    } else if (orderType == 5) {
-        detailUrl = 'Product/ProdMulti/QueryDetail?ID=';
-    }
+        detailUrl = 'Product/Prod/QueryDetail?ID=',
+        serviceDate = '';
 
     // 判断是否登录
     if ($$.isLogin(true)) {
+        if (orderType == 1) {
+            detailUrl = 'Product/StoreService/QueryServiceDetail?ID=';
+            setServiceOption();
+        } else if (orderType == 5) {
+            detailUrl = 'Product/ProdMulti/QueryDetail?ID=';
+        }
         // 页面重新显示的一些初始化
         $page.find('>div.couponModal').css({
                 'top': bodyHeight,
@@ -208,5 +210,14 @@ $(function() {
             'ticket': parseFloat(coupon).toFixed(2),
             'point': point
         }));
+    }
+
+    function setServiceOption(name, time) {
+        $page.find('div.appointment').html(template(pageStr + '_appointment_time', {
+            time: time || ''
+        }));
+        $page.find('div.appointment >div').width(
+            boxWidth - 30 - 8 - 10
+        );
     }
 });

@@ -14,13 +14,14 @@
 }
 #home_fillOrder >div.header a.goBack {
 	display: block;
-	float: left;
+	position: absolute;
 	height: 44px;
 	width: 44px;
 	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;
+    bottom: 0;
 }
 #home_fillOrder >div.header >span {
     margin: auto;
@@ -31,6 +32,10 @@
     text-align: center;
     line-height: 45px;
     width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 #home_fillOrder >div.main {
 	overflow-x: hidden;
@@ -102,7 +107,7 @@
 	outline: none;
 	background: none;
 	float: right;
-	font-size: 16px;
+	font-size: 14px;
 }
 #home_fillOrder div.coupon button.selected {
 	color: #EA5514;
@@ -115,7 +120,7 @@
 	height: 14px;
 	width: 8px;
 	background-size: contain;
-	margin-top: 5px;
+	margin-top: 4px;
 	margin-left: 15px;
 }
 #home_fillOrder div.coupon >p {
@@ -127,6 +132,7 @@
 #home_fillOrder div.coupon >p >span {
 	float: right;
 	color: #A9A9A9;
+    font-size: 14px;
 }
 #home_fillOrder div.proMoney >p {
 	font-size: 16px;
@@ -141,6 +147,40 @@
 #home_fillOrder div.proMoney >p >span {
 	float: right;
 	color: #EA5514;
+}
+#home_fillOrder div.appointment >div {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 15px 0;
+    position: relative;
+}
+#home_fillOrder div.appointment p {
+    font-size: 16px;
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+#home_fillOrder div.appointment span {
+    font-size: 14px;
+    width: 45%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+}
+#home_fillOrder div.appointment p >small {
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    color: #A9A9A9;
+}
+#home_fillOrder div.appointment >i {
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../../images/common/right.png) no-repeat;
+    background-size: 100%;
+    background-position: center;
+    height: 14px;
+    width: 8px;
 }
 #home_fillOrder >div.footer {
 	position: fixed;
@@ -192,7 +232,8 @@
 }
 #home_fillOrder >div.couponModal a.closeModal {
 	display: block;
-	float: left;
+	position: absolute;
+    bottom: 0;
 	height: 44px;
 	width: 44px;
 	background: url(../../images/common/round_left_blue.png) no-repeat;
@@ -209,6 +250,10 @@
     text-align: center;
     line-height: 44px;
     width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 #home_fillOrder >div.couponModal >ul {
 	position: absolute;

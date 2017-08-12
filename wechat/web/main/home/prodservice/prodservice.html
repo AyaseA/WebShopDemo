@@ -11,6 +11,7 @@
 		<div class="content clear">
 			<div class="product" data-index="0">
 				<div class="detail"></div>
+				<div class="appointment"></div>
 				<div class="comments">
 					<p>评价（<i></i>）
 						<a href="javascript:void(0)">好评率<span></span></a>
@@ -43,6 +44,40 @@
 		<a href="javascript:void(0)" data-id="" class="collect">加入收藏</a>
 		<a href="javascript:void(0)" class="buyNow">立即购买</a>
 	</div>
+	<div class="storeModal">
+		<div class="warp">
+			<div class="title">
+				<a href="javascript:void(0)" class="closeModal"></a>
+				<span>选择预约店面</span>
+				<a href="javascript:void(0)" class="location"></a>
+			</div>
+			<div class="stores">
+				<div></div>
+			</div>
+			<div class="selectAndBuy">
+				购买
+			</div>
+		</div>
+	</div>
+	<script id="home_prodservice_appointment_store" type="text/html">
+		<div data-id="{{id}}">
+			<p>预约店面<small>预约店面，查看价格</small></p>
+			<span>{{name}}</span>
+		</div>
+		<i></i>
+	</script>
+	<script id="home_prodservice_store_items" type="text/html">
+		{{each stores as s}}
+		<div class="item" data-id="{{s.ID}}">
+			<div>
+				<h3>{{s.StoreName}}</h3>
+				<p>法哈德森开发和艰苦拉萨的恢复健康lash法核算</p>
+				<small>0.031Km <span></span></small>
+			</div>
+			<a href="javascript:void(0)"></a>
+		</div>
+		{{/each}}
+	</script>
 	<script id="home_prodservice_product_info" type="text/html">
 		<div class="banner" id="home_prodservice_banner">
 			<div class="hd"><ul></ul></div>

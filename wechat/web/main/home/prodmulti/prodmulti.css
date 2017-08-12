@@ -14,7 +14,8 @@
 }
 #home_prodmulti >div.header a.goBack {
 	display: block;
-	float: left;
+    position: absolute;
+    bottom: 0;
 	height: 44px;
 	width: 44px;
 	background: url(../../images/common/round_left_blue.png) no-repeat;
@@ -25,7 +26,6 @@
 #home_prodmulti >div.main {
 	width: 100%;
 	position: absolute;
-	top: 44px;
     overflow: hidden;
 }
 #home_prodmulti div.content {
@@ -40,6 +40,10 @@
 	width: 50%;
 	margin: 0 auto;
 	text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 #home_prodmulti >div.header li {
 	float: left;

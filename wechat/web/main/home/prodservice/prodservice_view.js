@@ -8,16 +8,44 @@ $(function() {
 	    boxWidth = $page.find('>div.header').width(),
 	    headerHeight = $page.find('>div.header').height(),
 	    footerHeight = $page.find('>div.footer').height();
+
+/*
+    if (navigator.userAgent.indexOf('csl-ios') != -1) {
+        $page.find('>div.header').height(64);
+    }
+*/
+
 	// 设置各个div的宽高
-	$page.find('>div.main').height(bodyHeight - headerHeight - footerHeight - 1)
+	$page.find('>div.main').css({
+			'height': bodyHeight - headerHeight - footerHeight - 1,
+			'top': headerHeight
+		})
 		 .find('>div.content').width(boxWidth * 3)
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight - footerHeight - 1);
 	$page.find('div.reviews >div.warp').width(boxWidth * 5)
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight * 2 - footerHeight - 2);
 	
+	$page.find('>div.storeModal div.stores').css({
+		'height': bodyHeight * 0.8 - 40 - 46
+	});
+
     // 返回按钮
     $$.setGoBack($page.find('>div.header >a.goBack'));
     
+    $page.on('click', '>div.storeModal, >div.storeModal a.closeModal', function() {
+    	$page.find('>div.storeModal').find('div.warp').animate({
+    		'top': bodyHeight
+    	}, 200).end().fadeOut(200);
+    }).on('click', 'div.warp', function(e) {
+    	e.stopPropagation();
+
+    });
+    $page.on('click', 'div.appointment', function() {
+    	$page.find('>div.storeModal div.warp').animate({
+    		'top': bodyHeight * 0.2
+    	}, 200).parent().fadeIn(200);
+    });
+
 	// tab页点击
 	$page.on('click', 'div.header li', function() {
 		if ($(this).hasClass('active')) {
@@ -268,6 +296,7 @@ $(function() {
 			};
 		}
 	});
+
 	/************** 左右滑动相关 end **************/
 	// tab页切换
 	function changeTab(item) {

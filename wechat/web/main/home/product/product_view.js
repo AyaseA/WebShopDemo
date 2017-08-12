@@ -8,13 +8,23 @@ $(function() {
 	    boxWidth = $page.find('>div.header').width(),
 	    headerHeight = $page.find('>div.header').height(),
 	    footerHeight = $page.find('>div.footer').height();
+
+/*
+    if (navigator.userAgent.indexOf('csl-ios') != -1) {
+        $page.find('>div.header').height(64);
+    }
+*/
+
 	// 设置各个div的宽高
-	$page.find('>div.main').height(bodyHeight - headerHeight - footerHeight - 1)
+	$page.find('>div.main').css({
+			'height': bodyHeight - headerHeight - footerHeight - 1,
+			'top': headerHeight
+		})
 		 .find('>div.content').width(boxWidth * 3)
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight - footerHeight - 1);
 	$page.find('div.reviews >div.warp').width(boxWidth * 5)
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight * 2 - footerHeight - 2);
-	
+    
     // 返回按钮
     $$.setGoBack($page.find('>div.header >a.goBack'));
     

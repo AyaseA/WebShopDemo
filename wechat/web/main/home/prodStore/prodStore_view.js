@@ -68,7 +68,7 @@ $(function() {
 		}
 	});
 	// 收藏
-	$page.on('click', '>div.footer >a.collect', function() {
+	/*$page.on('click', '>div.footer >a.collect', function() {
 		var $this = $(this),
 			pid = $this.attr('data-id');
 		if ($$.isLogin(true, null)) {
@@ -81,7 +81,7 @@ $(function() {
 		        addWish(pid, $this);
 		    }
 		}
-	});
+	});*/
 	/************** 左右滑动相关 start **************/
 	var moveBannerObj = {
 		x: 0,
@@ -288,7 +288,7 @@ $(function() {
 		}, 300);
 		moveReviewObj.targetIndex = index;
 	}
-	// 添加收藏
+	/*// 添加收藏
 	function addWish(pid, item) {
 		$$.isLogin(true, null);
 		$$.post(
@@ -325,5 +325,5 @@ $(function() {
 				}
 			}
 		);
-	}
+	}*/
 });

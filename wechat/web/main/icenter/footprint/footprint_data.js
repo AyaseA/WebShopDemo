@@ -28,15 +28,13 @@ $(function() {
                         for (var i = 0; i < list.length; i++) {
                             if (list[i].Date == fisrtDate) {
                                 if (haveAppendTitle == 0) {
-
                                     $page.find(".content").append(dateTitle);
                                     haveAppendTitle = 1;
                                 }
 
-                                var descri = list[i].Descri,
+                                var descri = JSON.parse(list[i].Descri),
                                     content = '';
-                                if (descri) {
-                                    descri = JSON.parse(descri);
+                                if (descri.text) {
                                     content = Base64.decode(unescape(descri.text));
                                 }
                                 list[i].Img=list[i].Img||"1.png";
@@ -47,10 +45,9 @@ $(function() {
                                 dateTitle = "<div class='dataDiv'><span class='dateinfo'>" + fisrtDate + "<span></div>";
                                 $page.find(".content").append(dateTitle);
 
-                                var descri = list[i].Descri;
-                                var content = '';
-                                if (descri) {
-                                    descri = JSON.parse(descri);
+                                var descri = JSON.parse(list[i].Descri),
+                                    content = '';
+                                if (descri.text) {
                                     content = Base64.decode(unescape(descri.text));
                                 }
                                 list[i].Img=list[i].Img||"1.png";

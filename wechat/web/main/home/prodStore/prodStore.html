@@ -1,0 +1,103 @@
+<div>
+	<div class="header">
+		<a href="javascript:void(0)" class="goBack"></a>
+		<ul class="clear">
+			<li class="active" data-type="product" data-index="0">服务</li>
+			<li data-type="detail" data-index="1">详情</li>
+			<li data-type="evaluate" data-index="2">评价</li>
+		</ul>
+	</div>
+	<div class="main">
+		<div class="content clear">
+			<div class="product" data-index="0">
+				<div class="detail"></div>
+				<div class="comments">
+					<p>评价（<i></i>）
+						<a href="javascript:void(0)">好评率<span></span></a>
+					</p>
+					<div class="commentList"></div>
+				</div>
+			</div>
+			<div class="proDetail" data-index="1"></div>
+			<div class="evaluate" data-index="2">
+				<ul class="clear">
+					<li data-type="all" data-index="0" class="active">全部</li>
+					<li data-type="good" data-index="1">好评</li>
+					<li data-type="middle" data-index="2">中评</li>
+					<li data-type="bad" data-index="3">差评</li>
+					<li data-type="haveImg" data-index="4">有图</li>
+				</ul>
+				<div class="reviews">
+					<div class="warp clear">
+						<div class="all" data-index="0"></div>
+						<div class="good" data-index="1"></div>
+						<div class="middle" data-index="2"></div>
+						<div class="bad" data-index="3"></div>
+						<div class="haveImg" data-index="4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<a href="javascript:void(0)" data-id="" class="collect">加入收藏</a>
+		<a href="javascript:void(0)" class="buyNow">立即购买</a>
+	</div>
+	<script id="home_prodStore_product_info" type="text/html">
+		<!-- <div class="banner" id="home_product_banner">
+			<div class="hd"><ul></ul></div>
+			<div class="bd"><ul>
+				{{set imgList = $imports.splitFilter(data.ImgList, ',')}}
+				{{each imgList as image}}
+					<li><a href="javascript:void(0)">
+						<img class="bnr" _src="{{serverAddr}}Img/{{image | imgFilter}}" src="./images/common/blank.png" />
+					</a></li>
+				{{/each}}
+			</ul></div>
+		</div> -->
+		<div class="info">
+			<p>{{data.ProductName}}</p>
+			<span>{{data.CategoryName}}</span>
+			<h1><small>￥</small>{{data.NewPrice}}</h1>
+		</div>
+	</script>
+	<!-- <script id="home_product_product_detail" type="text/html">
+		{{each descriImgs as img}}
+			<img src="{{serverAddr}}Img/{{img | imgFilter}}">
+		{{/each}}
+		<div>{{descriTxt}}</div>
+	</script>
+	<script id="home_product_product_comment" type="text/html">
+	{{each commentList as comment}}
+		<div class="comment">
+			<p class="uInfo">
+				<img src="./images/product/uimg.png" />
+				<small>{{comment.Mobile}}</small>
+				{{if comment.Rating >= 0 && comment.Rating <= 20}}
+					{{set star = 1}}
+				{{else if comment.Rating > 20 && comment.Rating <= 40}}
+					{{set star = 2}}
+				{{else if comment.Rating > 40 && comment.Rating <= 60}}
+					{{set star = 3}}
+				{{else if comment.Rating > 60 && comment.Rating <= 80}}
+					{{set star = 4}}
+				{{else if comment.Rating > 80 && comment.Rating <= 100}}
+					{{set star = 5}}
+				{{/if}}
+				<span class="stars start_{{star}}"></span>
+			</p>
+			<div class="cnt">{{comment.Cont}}</div>
+			{{if comment.ImgList != null}}
+			{{set imgs = $imports.splitFilter(comment.ImgList, ',')}}
+			{{each imgs as img}}
+				<img src="{{serverAddr}}Img/{{img | imgFilter}}">
+			{{/each}}
+			{{/if}}
+			<p class="proInfo">
+				{{productName}}
+				<small>{{comment.AddTime | timeFilter}}</small>
+			</p>
+		</div>
+	{{/each}}
+	</script> -->
+</div>

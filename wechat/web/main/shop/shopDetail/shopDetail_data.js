@@ -2,12 +2,42 @@
 $(function() {
     var $page = $('#shop_shopDetail'),
         pageStr = 'shop_shopDetail';
-
-
     var id = $$.getQueryString("ID");
 
     $('#shop_shopDetail_banner .bd ul').empty();
 
+    //关注点击事件
+    $page.off("click", ".btn").on("click", ".btn", function() {
+        if ($(this).attr("data-watch") == 0) {
+            $$.post("CSL/StoreFollow/AddUpdateFollow", { StoreID: id },
+                function(txt) {
+                    if (txt.Status == 0) {
+                        $page.find(".btn").attr("data-watch", "1");
+                        $page.find(".btn img").attr("src", "images/common/like_fill.png");
+                        layer.msg("关注成功");
+                    }
+                }
+            );
+        } else {
+            layer.confirm("是否要取消关注", function(index) {
+                $$.post("CSL/StoreFollow/DeleteFollow", { StoreID: id },
+                    function(txt) {
+                        if (txt.Status == 0) {
+                            $page.find(".btn").attr("data-watch", "0");
+                            $page.find(".btn img").attr("src", "images/common/like.png");
+                            layer.msg("取消关注成功");
+                        }
+                    }
+                );
+            });
+        }
+    });
+
+    //购买服务
+    $page.off("click",".oneService button").on("click",".oneService button",function(){
+        var serviceID=$(this).attr("data-id");
+        $$.redirect("home/prodStore.html?sid="+serviceID);
+    });
     //微信配置
     var WXsign = $$.getWeChatSign(1);
     wx.config({
@@ -106,7 +136,7 @@ $(function() {
                     serviceNode = '<div class="oneService">' +
                         '<p class="serviceTitle">' + serviceList[i].Children[j].ProductName + '</p>' +
                         '<p class="serviceDesci">' + serviceList[i].Children[j].Descri + '</p>' +
-                        '<p class="price"><span>¥' + serviceList[i].Children[j].NewPrice + '</span><button>购买</button></p>' +
+                        '<p class="price"><span>¥' + serviceList[i].Children[j].NewPrice + '</span><button data-id="'+serviceList[i].Children[j].ID+'">购买</button></p>' +
                         '</div>';
                     $page.find(".service" + i).append(serviceNode);
                 }
@@ -144,30 +174,5 @@ $(function() {
         }
     );
 
-    //关注点击事件
-    $page.off("click", ".btn").on("click", ".btn", function() {
-        if ($(this).attr("data-watch") == 0) {
-            $$.post("CSL/StoreFollow/AddUpdateFollow", { StoreID: id },
-                function(txt) {
-                    if (txt.Status == 0) {
-                        $page.find(".btn").attr("data-watch", "1");
-                        $page.find(".btn img").attr("src", "images/common/like_fill.png");
-                        layer.msg("关注成功");
-                    }
-                }
-            );
-        } else {
-            layer.confirm("是否要取消关注", function(index) {
-                $$.post("CSL/StoreFollow/DeleteFollow", { StoreID: id },
-                    function(txt) {
-                        if (txt.Status == 0) {
-                            $page.find(".btn").attr("data-watch", "0");
-                            $page.find(".btn img").attr("src", "images/common/like.png");
-                            layer.msg("取消关注成功");
-                        }
-                    }
-                );
-            });
-        }
-    });
+
 });

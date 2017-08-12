@@ -1,0 +1,351 @@
+#home_prodStore {
+	height: 100%;
+	background-color: #EFEFF4;
+	position: relative;
+}
+#home_prodStore >div.header {
+	height: 44px;
+	background-color: #fff;
+	border-bottom: 1px solid #F6F6F7;
+	position: fixed;
+	width: 100%;
+	top: 0;
+    z-index: 99;
+}
+#home_prodStore >div.header a.goBack {
+	display: block;
+	float: left;
+	height: 44px;
+	width: 44px;
+	background: url(../../images/common/round_left_blue.png) no-repeat;
+	background-size: 40%;
+	background-position: center;
+	padding-left: 15px;
+}
+#home_prodStore >div.main {
+	width: 100%;
+	position: absolute;
+	top: 44px;
+    overflow: hidden;
+}
+#home_prodStore div.content {
+	width: 350%;
+}
+#home_prodStore div.content >div {
+	float: left;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#home_prodStore >div.header ul {
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+#home_prodStore >div.header li {
+	float: left;
+	display: block;
+	width: 29%;
+	height: 42px;
+	border-bottom: 2px solid #fff;
+	line-height: 45px;
+	font-size: 16px;
+	margin: 0 2%;
+}
+#home_prodStore >div.header li.active {
+	border-color: #EA5514;
+	color: #EA5514;
+}
+#home_prodStore_banner {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+#home_prodStore_banner .hd {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    bottom: 5px;
+    text-align: center;
+}
+#home_prodStore_banner .hd ul {
+    height: 7px;
+    padding: 3px 5px;
+    font-size: 0;
+    vertical-align: top;
+}
+#home_prodStore_banner .hd ul li {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background: rgba(255,255,255,.6);
+    margin: 0 5px;
+    vertical-align: top;
+    overflow: hidden;
+}
+#home_prodStore_banner .hd ul .on {
+    background: #EA5514;
+}
+#home_prodStore_banner .bd {
+    position: relative;
+    z-index: 0;
+}
+#home_prodStore_banner .bd ul li {
+    float: left;
+    list-style: none;
+}
+#home_prodStore_banner .bd li img {
+    width: 100%;
+    height: 62.5vw;
+    background-color: #fff; 
+}
+#home_prodStore_banner .bd li a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+#home_prodStore div.product div.info {
+	background-color: #fff;
+}
+#home_prodStore div.product div.info p {
+	padding: 10px 0 10px 15px;
+	font-size: 18px;
+}
+#home_prodStore div.product div.info span {
+	color: #EA5514;
+    padding: 0 15px;
+    display: block;
+}
+#home_prodStore div.product div.info h1 {
+	color: #EA5514;
+	padding: 5px 0 10px 15px;
+}
+#home_prodStore div.product div.comments {
+    margin-top: 10px;
+    background-color: #fff;
+    padding-bottom: 30px;
+}
+#home_prodStore div.product div.comments >p {
+	font-size: 16px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 15px;
+	border-bottom: 1px solid #E7E7E7;
+}
+#home_prodStore div.product div.comments >p >i {
+	font-style: normal;
+}
+#home_prodStore div.product div.comments p a {
+	float: right;
+}
+#home_prodStore div.product div.comments p a::after {
+	content: '';
+	display: inline-block;
+	background: url(../../images/common/right.png) no-repeat;
+	background-size: contain;
+	width: 16px;
+	height: 16px;
+	position: relative;
+	top: 2px;
+	right: -5px;
+}
+#home_prodStore div.product div.comments p span {
+	margin: 0 10px 0 8px;
+	color: #EA5514;
+}
+#home_prodStore div.product div.comment {
+	padding: 5px 15px;
+	border-bottom: 1px solid #E7E7E7;
+}
+#home_prodStore div.product div.comment p.uInfo {
+	height: 30px;
+}
+#home_prodStore div.product div.comment p.uInfo >img {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+}
+#home_prodStore div.product div.comment p.uInfo small {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    font-size: 12px;
+    left: 10px;
+}
+#home_prodStore div.product div.comment span.stars {
+    display: block;
+    float: right;
+    height: 14px;
+    width: 115px;
+    background-repeat: no-repeat;
+    margin: 7px 3px 0 0;
+    background-image: url(../../images/common/stars/star_5.png);
+}
+#home_prodStore div.product div.comment span.stars.start_0 {
+	background-image: url(../../images/common/stars/star_0.png);
+}
+#home_prodStore div.product div.comment span.stars.start_1 {
+	background-image: url(../../images/common/stars/star_1.png);
+}
+#home_prodStore div.product div.comment span.stars.start_2 {
+	background-image: url(../../images/common/stars/star_2.png);
+}
+#home_prodStore div.product div.comment span.stars.start_3 {
+	background-image: url(../../images/common/stars/star_3.png);
+}
+#home_prodStore div.product div.comment span.stars.start_4 {
+	background-image: url(../../images/common/stars/star_4.png);
+}
+#home_prodStore div.product div.comment span.stars.start_5 {
+	background-image: url(../../images/common/stars/star_5.png);
+}
+#home_prodStore div.product div.comment div.cnt {
+	font-size: 14px;
+	padding: 5px 0;
+}
+#home_prodStore div.product div.comment >img {
+	width: 23vw;
+    height: 23vw;
+}
+#home_prodStore div.product div.comment p.proInfo {
+	color: #B6B6B6;
+	margin: 2px 0;
+}
+#home_prodStore div.product div.comment p.proInfo >small {
+	float: right;
+	font-size: 14px;
+}
+#home_prodStore div.proDetail {
+    font-size: 0;
+}
+#home_prodStore div.proDetail >img {
+	width: 100%;
+}
+#home_prodStore div.proDetail >div {
+	padding: 5px 10px;
+    font-size: 14px;
+}
+#home_prodStore div.evaluate >ul {
+	width: 100%;
+	position: absolute;
+	border-bottom: 1px solid #ECECEF;
+    background-color: #fff;
+    z-index: 98;
+}
+#home_prodStore div.evaluate >ul >li {
+	float: left;
+	display: block;
+	width: 20%;
+	height: 42px;
+	border-bottom: 2px solid #fff;
+	line-height: 45px;
+	font-size: 14px;
+	text-align: center;
+}
+#home_prodStore div.evaluate >ul >li.active {
+	border-color: #EA5514;
+	color: #EA5514;
+}
+#home_prodStore div.reviews {
+	background-color: #fff;
+	padding-top: 45px;
+}
+#home_prodStore div.reviews >div.warp >div {
+	float: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#home_prodStore div.evaluate div.comment {
+	padding: 5px 15px;
+	border-bottom: 1px solid #E7E7E7;
+    background-color: #fff;
+}
+#home_prodStore div.evaluate div.comment p.uInfo {
+	height: 30px;
+}
+#home_prodStore div.evaluate div.comment p.uInfo >img {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+}
+#home_prodStore div.evaluate div.comment p.uInfo small {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    font-size: 12px;
+    left: 10px;
+}
+#home_prodStore div.evaluate div.comment span.stars {
+    display: block;
+    float: right;
+    height: 14px;
+    width: 115px;
+    background-repeat: no-repeat;
+    margin: 7px 3px 0 0;
+    background-image: url(../../images/common/stars/star_5.png);
+}
+#home_prodStore div.evaluate div.comment span.stars.start_0 {
+	background-image: url(../../images/common/stars/star_0.png);
+}
+#home_prodStore div.evaluate div.comment span.stars.start_1 {
+	background-image: url(../../images/common/stars/star_1.png);
+}
+#home_prodStore div.evaluate div.comment span.stars.start_2 {
+	background-image: url(../../images/common/stars/star_2.png);
+}
+#home_prodStore div.evaluate div.comment span.stars.start_3 {
+	background-image: url(../../images/common/stars/star_3.png);
+}
+#home_prodStore div.evaluate div.comment span.stars.start_4 {
+	background-image: url(../../images/common/stars/star_4.png);
+}
+#home_prodStore div.evaluate div.comment span.stars.start_5 {
+	background-image: url(../../images/common/stars/star_5.png);
+}
+#home_prodStore div.evaluate div.comment div.cnt {
+	font-size: 14px;
+	padding: 5px 0;
+}
+#home_prodStore div.evaluate div.comment >img {
+    width: 23vw;
+    height: 23vw;
+}
+#home_prodStore div.evaluate div.comment p.proInfo {
+	color: #B6B6B6;
+	margin: 2px 0;
+}
+#home_prodStore div.evaluate div.comment p.proInfo >small {
+	float: right;
+	font-size: 14px;
+}
+#home_prodStore >div.footer {
+	position: fixed;
+	bottom: 0;
+	height: 50px;
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+}
+#home_prodStore >div.footer >a.collect {
+    height: 50px;
+    display: inline-block;
+    position: relative;
+    background: url(../../images/common/like.png) no-repeat;
+    background-size: 24px 20px;
+    background-position-x: center;
+    background-position-y: 8px; 
+    line-height: 76px;
+}
+#home_prodStore >div.footer >a.collect.collected {
+	background-image: url(../../images/common/like_fill.png)
+}
+#home_prodStore >div.footer >a.buyNow {
+	float: right;
+	display: block;
+	width: 120px;
+	background-color: #EA5514;
+	font-size: 16px;
+	color: #fff;
+	line-height: 50px;
+}

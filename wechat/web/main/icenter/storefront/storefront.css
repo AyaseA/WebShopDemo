@@ -110,6 +110,7 @@
 
 #icenter_storefront .storeInfo img{
 	width: 25vw;
+    padding: 1vw 0 0 1vw;
 }
 
 #icenter_storefront .detail{

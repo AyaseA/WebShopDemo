@@ -369,13 +369,13 @@
 }
 #home_prodservice div.appointment p {
     font-size: 16px;
-    width: 50%;
+    width: 49%;
     display: inline-block;
     vertical-align: middle;
 }
 #home_prodservice div.appointment span {
     font-size: 14px;
-    width: 45%;
+    width: 48%;
     display: inline-block;
     vertical-align: middle;
     text-align: right;
@@ -403,11 +403,10 @@
     top: 0;
     z-index: 100;
     background-color: rgba(0, 0, 0, .5);
-    /* display: none; */
+    display: none;
 }
 #home_prodservice >div.storeModal div.warp {
     position: absolute;
-    top: 20%;
     width: 100%;
     height: 80%;
 }
@@ -490,6 +489,11 @@
     margin-top: 3px;
     margin-right: 10px;
 }
+#home_prodservice >div.storeModal div.stores div.item h5 {
+    color: #EA5514;
+    font-size: 15px;
+    margin-top: 5px;
+}
 #home_prodservice >div.storeModal div.stores div.item small >span {
     color: #EA5514;
     margin-left: 5px;
@@ -526,4 +530,7 @@
     text-align: center;
     color: #FFF;
     font-size: 16px;
+}
+#home_prodservice >div.storeModal div.selectAndBuy.disable {
+    background-color: #CCC;
 }

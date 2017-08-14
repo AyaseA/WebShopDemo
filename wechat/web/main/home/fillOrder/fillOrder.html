@@ -5,9 +5,9 @@
 	</div>
 	<div class="main">
 		<div class="productInfo"></div>
-		<div class="appointment"></div>
 		<div class="coupon"></div>
 		<div class="proMoney"></div>
+		<div class="appointment"></div>
 	</div>
 	<div class="footer">
 		实付：￥<span></span>
@@ -35,6 +35,15 @@
 			<span>{{time}}</span>
 		</div>
 		<i></i>
+	</script>
+	<script id="home_fillOrder_service_detail" type="text/html">
+		<p><i></i>车势力</p>
+		<div class="clear">
+			<img src="{{serverAddr}}Img/{{data.Img | imgFilter}}">
+			<p>{{data.StoreName}}<br>{{data.ProductName}}<span>￥{{data.NewPrice}}</span></p>
+			<p>{{descri}}<span>x{{count}}</span></p>
+		</div>
+		<p>共{{count}}件商品</p>
 	</script>
 	<script id="home_fillOrder_product_detail" type="text/html">
 		<p><i></i>车势力</p>

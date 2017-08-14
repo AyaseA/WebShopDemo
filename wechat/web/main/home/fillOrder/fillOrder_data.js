@@ -96,19 +96,33 @@ $(function() {
                 if (res.Data) {
                     var d = res.Data,
                         descri = '';
-                    campaignNum = d.CampaignNum || 0;
-                    if (d.Descri) {
-                        d.Descri = JSON.parse(d.Descri);
-                        descri = d.Descri.text ? Base64.decode(unescape(d.Descri.text)) : '';
+                    if (orderType == 1) {
+                        total = parseFloat(d.NewPrice);
+                        if (d.StoreDescri) {
+                            d.StoreDescri = JSON.parse(d.StoreDescri);
+                            descri = d.StoreDescri.text ? Base64.decode(unescape(d.StoreDescri.text)) : '';
+                        }
+                        $page.find('>div.main >div.productInfo').html(
+                            template(pageStr + '_service_detail', {
+                                'serverAddr': $$.config.serverAddr,
+                                'data': d,
+                                'count': productNum
+                            }));
+                    } else {
+                        total = parseFloat(d.Price);
+                        if (d.Descri) {
+                            d.Descri = JSON.parse(d.Descri);
+                            descri = d.Descri.text ? Base64.decode(unescape(d.Descri.text)) : '';
+                        }
+                        $page.find('>div.main >div.productInfo').html(
+                            template(pageStr + '_product_detail', {
+                                'serverAddr': $$.config.serverAddr,
+                                'data': d,
+                                'count': productNum,
+                                'descri': descri
+                            }));
                     }
-                    total = parseFloat(d.Price);
-                    $page.find('>div.main >div.productInfo').html(
-                        template(pageStr + '_product_detail', {
-                            'serverAddr': $$.config.serverAddr,
-                            'data': d,
-                            'count': productNum,
-                            'descri': descri
-                        }));
+                    campaignNum = d.CampaignNum || 0;
                     setMoney();
                     $page.find('>div.footer >button.order').removeClass('disabled');
                     getValueVoucher();
@@ -119,7 +133,7 @@ $(function() {
     // 优惠券
     function getValueVoucher() {
         $$.post(
-            'CSL/User/QueryValueVoucherJson',
+            'CSL/ValueVoucher/QueryValueVoucherJson',
             {},
             function(res) {
                 if (res.Status != 0) {

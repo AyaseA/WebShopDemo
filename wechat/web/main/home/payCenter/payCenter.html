@@ -22,13 +22,23 @@
 			</div>
 			<div>
 				<span>服务项目</span>
-				<p>普通商品</p>
+				<p>
+					{{if type == 1}}
+						服务商品
+					{{else}}
+						普通商品
+					{{/if}}
+				</p>
 			</div>
 			<div>
 				<span>服务描述</span>
 				<p class="desc">
-				{{each proList as oPro}}	
-					{{oPro.Name}} x {{oPro.ProductCount > 0 ? oPro.ProductCount : 0}}<br>
+				{{each proList as oPro}}
+					{{if type == 1}}
+						{{oPro.StoreName}}<br>{{oPro.ProductName}} x {{oPro.ProductCount > 0 ? oPro.ProductCount : 0}}<br>
+					{{else}}
+						{{oPro.Name}} x {{oPro.ProductCount > 0 ? oPro.ProductCount : 0}}<br>
+					{{/if}}
 				{{/each}}
 				</p>
 			</div>

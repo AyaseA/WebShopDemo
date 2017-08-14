@@ -32,18 +32,25 @@ $(function() {
     // 返回按钮
     $$.setGoBack($page.find('>div.header >a.goBack'));
     
+    // 关闭modal
     $page.on('click', '>div.storeModal, >div.storeModal a.closeModal', function() {
     	$page.find('>div.storeModal').find('div.warp').animate({
     		'top': bodyHeight
     	}, 200).end().fadeOut(200);
     }).on('click', 'div.warp', function(e) {
     	e.stopPropagation();
-
     });
+    // 打开
     $page.on('click', 'div.appointment', function() {
     	$page.find('>div.storeModal div.warp').animate({
     		'top': bodyHeight * 0.2
     	}, 200).parent().fadeIn(200);
+    });
+    // 详情
+    $page.on('click', '>div.storeModal div.item >a', function(e) {
+    	e.stopPropagation();
+    	e.preventDefault();
+    	$$.redirect($(this).attr('href'));
     });
 
 	// tab页点击

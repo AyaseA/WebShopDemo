@@ -20,8 +20,9 @@ $(function() {
         'margin-left': 0
     });
 
-
-
+    $page.find('>div.storeModal').hide().find('div.warp').css({
+        'top': bodyHeight
+    });
 
 
     $page.find('div.appointment').html(template(pageStr + '_appointment_store', {
@@ -38,11 +39,35 @@ $(function() {
         ProductServiceID: pid
     });
 
+    // 选择店面
+    $page.off('click', '>div.storeModal div.item').on('click', '>div.storeModal div.item', function() {
+        if (!$(this).hasClass('checked')) {
+            $(this).addClass('checked').siblings().removeClass('checked');
+            serviceId = $(this).attr('data-id');
+            $page.find('div.appointment').html(template(pageStr + '_appointment_store', {
+                name: $(this).attr('data-name') || '',
+                id: $(this).attr('data-store-id') || ''
+            }));
+            $page.find('div.appointment >div').width(
+                boxWidth - 30 - 8 - 8
+            );
+            var price = $(this).attr('data-price');
+            $page.find('div.product >div.detail >div.info >h1').html('<small>￥</small>' + price);
+            
+            // 修改立即购买按钮的商品id
+            $page.find('>div.footer >a.collect').attr('data-id', serviceId).removeClass('collected').show();
+            getWishList();
+
+            $page.find('div.selectAndBuy').removeClass('disable');
+        }
+    });
+
     // 设置底部按钮的pid
-    $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');
-    $page.off('click', '>div.footer >a.buyNow').on('click', '>div.footer >a.buyNow', function() {
+    $page.find('>div.footer >a.collect').hide();
+    $page.off('click', '>div.footer >a.buyNow, div.selectAndBuy')
+         .on('click', '>div.footer >a.buyNow, div.selectAndBuy', function() {
         if (serviceId != '') {
-            $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum + '&type=1');
+            $$.redirect('home/fillOrder.html?pid=' + serviceId + '&num=' + pNum + '&type=1');
         } else {
             $page.find('>div.storeModal div.warp').animate({
                 'top': bodyHeight * 0.2
@@ -52,8 +77,6 @@ $(function() {
 
     // 获取商品信息
     getProductInfo();
-	// 修改立即购买按钮的商品id
-    getWishList();
 	// 根据商品id获取商品信息
 	function getProductInfo() {
         $$.get(
@@ -198,7 +221,7 @@ $(function() {
                         for (var i = 0; i < d.length; i++) {
                             wishArr.push(d[i].ID);
                         }
-                        var isWish = $.inArray(pid, wishArr) != -1;
+                        var isWish = $.inArray(serviceId, wishArr) != -1;
                         $page.find('>div.footer >a.collect').text(
                             isWish ? '已加入收藏' : '加入收藏'
                         ).addClass(
@@ -211,7 +234,7 @@ $(function() {
         } else if ($$.getCookie('__WISHLIST__')) {
             var wishCookie = $$.getCookie('__WISHLIST__') || '',
                 wishArr = wishCookie.split(','),
-                isWish = $.inArray(pid, wishArr) != -1;
+                isWish = $.inArray(serviceId, wishArr) != -1;
             $page.find('>div.footer >a.collect').text(
                 isWish ? '已加入收藏' : '加入收藏'
             ).addClass(

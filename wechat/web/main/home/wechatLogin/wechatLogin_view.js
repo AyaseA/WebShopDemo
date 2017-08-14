@@ -74,7 +74,7 @@ $(function() {
             layer.msg(msg);
         });
         if (isPhone) {
-            $$.get(
+            /*$$.get(
                 'CSL/Login/IsAuth?Mobile=' + phoneNum.val(),
                 function(res) {
                     if (res.Status == 0 && res.Data == 'Succ') {
@@ -83,7 +83,8 @@ $(function() {
                         sendVerify(phoneNum.val());
                     }
                 }
-            );
+            );*/
+            sendVerify(phoneNum.val());
         }
     });
     //发送验证码

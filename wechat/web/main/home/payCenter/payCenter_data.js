@@ -24,14 +24,17 @@ $(function() {
                     return false;
                 }
                 if (res.Data) {
-                	var d = res.Data;
+                	var d = res.Data,
+                        type = d.OrderType;
                 	total = d.OutPocket;
+
                 	$page.find('>div.main >div.warp').html(template(pageStr + '_detail', {
                 		proList: JSON.parse(d.Data),
                 		payMoney: d.OutPocket,
                 		allMoney: d.AllMoney,
                 		valueVoucher: d.ValueVoucherNum,
-                		isWx: isWx
+                		isWx: isWx,
+                        type: type
                 	}));
                 }
 			}

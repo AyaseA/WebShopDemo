@@ -1,11 +1,20 @@
 $(function() {
 	var bodyHeight = window.innerHeight || document.body.clientHeight,
 		$page = $('#home_payCenter'),
-    	pageStr = 'home_payCenter',
-    	headerHeight = $page.find('>div.header').height();
+    	pageStr = 'home_payCenter';
 
+/*
+    if (navigator.userAgent.indexOf('csl-ios') != -1) {
+        $page.find('>div.main').css({
+            'top': '64px'
+        }).end().find('>div.header').height(64);
+    }
+*/
+
+    var headerHeight = $page.find('>div.header').height();
     $page.find('>div.main').height(bodyHeight - headerHeight);
-	// 默认
+
+    // 默认
 	$page.on('click', 'div.payMode >div', function() {
 		var $this = $(this);
         if ($this.hasClass('selected')) {

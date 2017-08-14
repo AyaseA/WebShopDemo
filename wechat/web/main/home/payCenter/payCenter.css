@@ -12,27 +12,30 @@
 	height: 44px;
 }
 #home_payCenter >div.header >a.goBack {
-	background: url(../../images/common/round_left.png) no-repeat;
-	background-size: contain;
-	display: inline-block;
-    width: 28px;
-    height: 28px;
-    margin: 9px 0 0 12px;
+    background: url(../../images/common/round_left.png) no-repeat;
+    background-size: 63.6%;
+    background-position: center;
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    bottom: 0;
+    left: 5px;
 }
 #home_payCenter >div.header >span {
-	color: #fff;
+    color: #fff;
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
     font-weight: 700;
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
     bottom: 0;
     height: 30px;
     line-height: 30px;
     width: 60%;
     font-size: 16px;
+    padding: 7px 0;
 }
 #home_payCenter >div.main {
 	position: absolute;

@@ -1,16 +1,25 @@
 $(function() {
 	var bodyHeight = window.innerHeight || document.body.clientHeight,
         $page = $('#home_carInfo'),
-    	pageStr = 'home_carInfo',
-        headerHeight = $page.find('div.header').height();
+    	pageStr = 'home_carInfo';
+
+    if ($$.config.isCompatibleIOSTop && navigator.userAgent.indexOf('csl-ios') != -1) {
+        $page.find('>div.header').height(64);
+    }
+
+    var headerHeight = $page.find('div.header').height();
 
     // 设置高度
-    setSize();
-    window.onresize = function() {
-        bodyHeight = window.innerHeight || document.body.clientHeight;
-        headerHeight = $page.find('div.header').height();
-        setSize();
-    };
+    $page.find('>div.main, >div.brandsModal >div.brands, >div.seriesModal, >div.carsModal >div.carsBox').css({
+        'height': bodyHeight - headerHeight,
+        'top': headerHeight
+    }).find('>div.carDetail').height(
+        bodyHeight - headerHeight - 35
+    );
+    $page.find('>div.brandsModal >div.title, >div.carsModal >div.title').css({
+        'height': headerHeight
+    });
+
     // 汽车对象子类数组转ids字符串
     template.defaults.imports.idsParseFilter = function(arr) {
         var idArr = [],
@@ -250,23 +259,6 @@ $(function() {
             }
         );
     }
-    // 设置高度
-    function setSize() {
-        $page.find('>div.main').height(
-            bodyHeight - headerHeight
-        ).find('>div.carDetail').height(
-            bodyHeight - headerHeight - 35
-        );
-        $page.find('>div.brandsModal >div.brands').height(
-            bodyHeight - 44
-        );
-        $page.find('>div.seriesModal').height(
-            bodyHeight - 44
-        );
-        $page.find('>div.carsModal >div.carsBox').height(
-            bodyHeight - 45
-        );
-    }
     // tip
     function tip(cnt, time) {
         var $tip = $('#home_carInfo_tip');
@@ -281,14 +273,14 @@ $(function() {
         $page.find('>div.brandsModal').animate({
             'top': 0
         }, 300).show().find('ul.letter').animate({
-            'top': 44
+            'top': headerHeight
         }, 300).show(100);
     }
     function closeBrands() {
         $page.find('>div.brandsModal').animate({
             'top': bodyHeight
         }, 300).fadeOut(400).find('ul.letter').animate({
-            'top': bodyHeight + 44
+            'top': bodyHeight + headerHeight
         }, 300).fadeOut(400);
         closeSeries();
     }

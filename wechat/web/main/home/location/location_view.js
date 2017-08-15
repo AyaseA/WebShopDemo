@@ -1,10 +1,20 @@
 $(function() {
 	var bodyHeight = window.innerHeight || document.body.clientHeight,
 		$page = $('#home_location'),
-    	pageStr = 'home_location',
-    	headerHeight = $page.find('>div.header').height();
+    	pageStr = 'home_location';
+
+    if ($$.config.isCompatibleIOSTop && navigator.userAgent.indexOf('csl-ios') != -1) {
+        $page.find('>div.header').height(64);
+    }
+
+    var headerHeight = $page.find('>div.header').height();
+
     // 设置高度
-    $page.find('>div.main').height(bodyHeight - headerHeight - 1);
+    $page.find('>div.main').css({
+        'height': bodyHeight - headerHeight,
+        'top': headerHeight
+    });
+
     // 设置返回按钮可用
     $$.setGoBack($page.find('>div.header >a.goBack'));
     // 点击字母事件
@@ -136,6 +146,9 @@ $(function() {
                 }
             })
     	}));
+        $page.find('>div.main div.cities >ul').css({
+            'top': headerHeight - 1
+        });
     }
     // 获取城市列表
     function getCitiesList(calback) {

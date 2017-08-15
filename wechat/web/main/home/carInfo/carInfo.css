@@ -13,57 +13,29 @@
 	height: 44px;
 	font-size: 16px;
 }
-@media screen and (min-width: 410px) {
-	#home_carInfo >div.header {
-		height: 48px;
-	}
-}
-@media screen and (max-width: 350px) {
-	#home_carInfo >div.header {
-		height: 40px;
-	}
-}
 #home_carInfo >div.header >a.goBack {
-	background: url(../../images/common/round_left.png) no-repeat;
-	background-size: contain;
-	display: inline-block;
-    width: 28px;
-    height: 28px;
-    margin: 8px 0 0 12px;
+    background: url(../../images/common/round_left.png) no-repeat;
+    background-size: 63.6%;
+    background-position: center;
+    display: block;
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    bottom: 0;
+    left: 6px;
 }
 #home_carInfo >div.header >span.title {
-	color: #fff;
+    color: #fff;
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
     font-weight: 700;
     position: absolute;
     left: 0;
     right: 0;
-    top: 1px;
     bottom: 0;
-    height: 30px;
-    line-height: 30px;
-    width: 60%;
-}
-@media screen and (min-width: 410px) {
-	#home_carInfo >div.header >a.goBack {
-	    width: 30px;
-	    height: 30px;
-	}
-	#home_carInfo >div.header >span.title {
-		height: 32px;
-		line-height: 32px;
-	}
-}
-@media screen and (max-width: 350px) {
-	#home_carInfo >div.header >a.goBack {
-	    width: 24px;
-	    height: 24px;
-	}
-	#home_carInfo >div.header >span.title {
-		height: 26px;
-		line-height: 26px;
-	}
+    width: 50%;
+    font-size: 16px;
+    padding: 11.5px;
 }
 #home_carInfo >div.main {
 	position: absolute;
@@ -71,16 +43,6 @@
 	width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
-}
-@media screen and (min-width: 410px) {
-    #home_carInfo >div.main {
-        top: 48px;
-    }
-}
-@media screen and (max-width: 350px) {
-    #home_carInfo >div.main {
-        top: 40px;
-    }
 }
 #home_carInfo >div.main >div.info {
 	height: 34px;
@@ -205,30 +167,35 @@
 	width: 100%;
 	top: 0;
     z-index: 12;
+    box-sizing: border-box;
 }
 #home_carInfo >div.brandsModal >div.title >a.closeModal {
 	display: block;
-	float: left;
 	height: 44px;
 	width: 44px;
 	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;
+    position: absolute;
+    bottom: 0;
 }
 #home_carInfo >div.brandsModal >div.title >span {
-	margin: auto;
+	margin: 0 auto;
     display: block;
     font-weight: 700;
     font-size: 16px;
-    height: 44px;
+    padding: 11.5px 0;
     text-align: center;
-    line-height: 45px;
     width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 #home_carInfo >div.brandsModal >div.brands {
 	position: absolute;
-	top: 45px;
+	top: 44px;
 	width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -349,26 +316,31 @@
 	width: 100%;
 	top: 0;
     z-index: 12;
+    box-sizing: border-box;
 }
 #home_carInfo >div.carsModal >div.title >a.closeModal {
-	display: block;
-	float: left;
-	height: 44px;
-	width: 44px;
-	background: url(../../images/common/round_left_blue.png) no-repeat;
-	background-size: 40%;
-	background-position: center;
-	padding-left: 15px;
+    display: block;
+    height: 44px;
+    width: 44px;
+    background: url(../../images/common/round_left_blue.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+    padding-left: 15px;
+    position: absolute;
+    bottom: 0;
 }
 #home_carInfo >div.carsModal >div.title >span {
-	margin: auto;
+    margin: 0 auto;
     display: block;
     font-weight: 700;
     font-size: 16px;
-    height: 44px;
+    padding: 11.5px 0;
     text-align: center;
-    line-height: 45px;
     width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 #home_carInfo >div.carsModal >div.carsBox {
 	position: absolute;

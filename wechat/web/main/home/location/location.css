@@ -12,16 +12,19 @@
 	position: absolute;
 	top: 0;
     z-index: 12;
+    box-sizing: border-box;
 }
 #home_location >div.header >a.goBack {
 	display: block;
-	float: left;
-	height: 45px;
+	height: 44px;
 	width: 44px;
 	background: url(../../images/common/round_left_blue.png) no-repeat;
 	background-size: 40%;
 	background-position: center;
 	padding-left: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 #home_location >div.header >div >input.search {
     display: block;
@@ -36,12 +39,11 @@
 #home_location >div.header >div {
     height: 26px;
     width: 66%;
-    margin: auto;
+    margin: 0 auto;
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
-    bottom: 0;
+    bottom: 9px;
 }
 #home_location >div.header >div >i {
     display: none;
@@ -53,15 +55,9 @@
     width: 16px;
     height: 16px;
 }
-@media screen and (max-width: 350px) {
-    #home_location >div.header >div {
-        height: 22px;
-        top: -4px;
-    }
-}
 #home_location >div.main {
 	position: absolute;
-	top: 45px;
+	top: 44px;
 	width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;

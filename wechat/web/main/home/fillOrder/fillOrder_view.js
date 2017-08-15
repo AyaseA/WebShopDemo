@@ -19,9 +19,7 @@ $(function() {
 		'width': boxWidth
 	});
 
-
-/*
-	if (navigator.userAgent.indexOf('csl-ios') != -1) {
+	if ($$.config.isCompatibleIOSTop && navigator.userAgent.indexOf('csl-ios') != -1) {
         $page.find('>div.main').css({
         	'top': '64px'
         }).end().find('>div.header').height(64).find('a, span').css({
@@ -36,7 +34,6 @@ $(function() {
         		'height': bodyHeight - 110
         	});
     }
-*/
 
 	// 设置各种高度
 	$page.find('>div.main').css({

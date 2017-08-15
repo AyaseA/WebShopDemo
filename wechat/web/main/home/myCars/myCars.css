@@ -12,71 +12,37 @@
 	z-index: 10;
 	height: 44px;
 }
-@media screen and (min-width: 410px) {
-	#home_myCars >div.header {
-		height: 48px;
-	}
-}
-@media screen and (max-width: 350px) {
-	#home_myCars >div.header {
-		height: 40px;
-	}
-}
 #home_myCars >div.header >a.goBack {
 	background: url(../../images/common/round_left.png) no-repeat;
-	background-size: contain;
-	display: inline-block;
-    width: 28px;
-    height: 28px;
-    margin: 8px 0 0 12px;
+	background-size: 63.6%;
+    background-position: center;
+	display: block;
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    bottom: 0;
+    left: 6px;
 }
 #home_myCars >div.header >span.title {
 	color: #fff;
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
     font-weight: 700;
     position: absolute;
     left: 0;
     right: 0;
-    top: 1px;
     bottom: 0;
-    height: 30px;
-    line-height: 30px;
-    width: 60%;
+    width: 50%;
     font-size: 16px;
+    padding: 11.5px;
 }
 #home_myCars >div.header >a.addNew {
 	color: #fff;
-	float: right;
     font-size: 14px;
-	padding: 4px;
-	margin: 8px;
-}
-@media screen and (min-width: 410px) {
-	#home_myCars >div.header >a.goBack {
-	    width: 30px;
-	    height: 30px;
-	}
-	#home_myCars >div.header >span.title {
-		height: 32px;
-		line-height: 32px;
-	}
-	#home_myCars >div.header >a.addNew {
-		margin: 10px;
-	}
-}
-@media screen and (max-width: 350px) {
-	#home_myCars >div.header >a.goBack {
-	    width: 24px;
-	    height: 24px;
-	}
-	#home_myCars >div.header >span.title {
-		height: 26px;
-		line-height: 26px;
-	}
-	#home_myCars >div.header >a.addNew {
-		margin: 6px;
-	}
+	padding: 12.5px;
+    position: absolute;
+    bottom: 0;
+    right: 3px;
 }
 #home_myCars >div.main {
     overflow-x: hidden;
@@ -84,16 +50,6 @@
     width: 100%;
     position: absolute;
     top: 44px;
-}
-@media screen and (min-width: 410px) {
-    #home_myCars >div.main {
-        top: 48px;
-    }
-}
-@media screen and (max-width: 350px) {
-    #home_myCars >div.main {
-        top: 40px;
-    }
 }
 #home_myCars >div.main >div.cars {
 	padding: 15px 15px 30px;

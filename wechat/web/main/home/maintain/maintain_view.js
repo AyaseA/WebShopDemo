@@ -16,8 +16,15 @@ $(function() {
     });
     // 点击跳转到商品详情
     $page.on('click', 'div.products >div.item', function() {
-        var pid = $(this).attr('data-id');
-        $$.redirect('home/product.html?pid=' + pid);
+        var pid = $(this).attr('data-id'),
+            type = $(this).attr('data-type') || 0;
+        if (type == 1) {
+            $$.redirect('home/prodservice.html?pid=' + pid);
+        } else if (type == 5) {
+            $$.redirect('home/prodmulti.html?pid=' + pid);
+        } else if (type == 0) {
+            $$.redirect('home/product.html?pid=' + pid);
+        }
     });
     $page.on('click', 'div.products >div.item >div >a', function(e) {
         e.stopPropagation();

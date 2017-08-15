@@ -58,6 +58,8 @@ Date.prototype.pattern = function(fmt) {
             hideGlobalMenu: function() {
                 showHideGlobalMenu(true);
             },
+            // 兼容ios 顶部20px
+            isCompatibleIOSTop: true,
             // 微信appid
             // 开发版appid
             wxAppID: 'wx20efd36312d69bc6'

@@ -11,7 +11,7 @@ $(function() {
 	$page.find('>div.header >span.edit').text(carName);
 
     // 懒加载
-    $page.find('>div.main >div.warp').scrollTop(0).scroll(function() {
+/*    $page.find('>div.main >div.warp').scrollTop(0).scroll(function() {
     	if (loadComplate) {
 	        if (pageNum * pageSize < allCount) {
 	            var proBox = $(this).find('>div.products'),
@@ -26,7 +26,7 @@ $(function() {
     	} else {
     		return false;
     	}
-    });
+    });*/
 
 	// 加载商品列表
 	getProductsList(pageNum, pageSize);
@@ -34,19 +34,21 @@ $(function() {
 	// 加载商品列表
 	function getProductsList(pn, ps) {
 		var $proBox = $page.find('div.products');
-		$$.get(
-			'Product/Prod/QueryList?N=' + pn + '&Rows=' + ps,
+		$$.post(
+			'CSL/UserInfo/QueryProductsByCar',
+            {
+                ID: carId
+            },
 			function(res) {
 				if (res.Status != 0) {
-					console.log('获取商品信息失败');
 					return false;
 				}
-				if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {
-					if (pn == 1) {
+				if (res.Data/* && res.Data.Rows && res.Data.Rows.length > 0*/) {
+					/*if (pn == 1) {
                         $proBox.empty();
                         allCount = parseInt(res.Data.Count);
-                    }
-					var d = res.Data.Rows;
+                    }*/
+					var d = res.Data/*.Rows*/;
 					d.forEach(function(item) {
 						var descri = '';
 	                    if (item.Descri) {
@@ -59,13 +61,13 @@ $(function() {
 						maintainProList: d,
 						serverAddr: $$.config.serverAddr
 					}));
-					$proBox.removeClass('loading');
+					/*$proBox.removeClass('loading');
 					if (pageNum * pageSize >= allCount) {
                         $proBox.addClass('loaded');
                     } else {
                         $proBox.removeClass('loaded');
                     }
-                    loadComplate = true;
+                    loadComplate = true;*/
 				}
 			}
 		);

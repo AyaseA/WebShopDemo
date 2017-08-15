@@ -1,11 +1,17 @@
 $(function() {
 	var bodyHeight = window.innerHeight || document.body.clientHeight,
 		$page = $('#home_myCars'),
-    	pageStr = 'home_myCars',
-    	headerHeight = $page.find('div.header').height();
+    	pageStr = 'home_myCars';
+
+    if ($$.config.isCompatibleIOSTop && navigator.userAgent.indexOf('csl-ios') != -1) {
+        $page.find('>div.header').height(64);
+    }
+
+    var headerHeight = $page.find('div.header').height();
 
     $page.find('div.main').css({
-    	'height': bodyHeight - headerHeight
+        'height': bodyHeight - headerHeight,
+    	'top': headerHeight
     });
 
     $$.setGoBack($page.find('>div.header >a.goBack'));

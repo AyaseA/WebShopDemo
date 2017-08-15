@@ -12,18 +12,13 @@
 	</div>
 	<script id="home_maintain_products" type="text/html">
     {{each maintainProList as mpl i}}
-    	<div class="item" data-id="{{mpl.ID}}">
+    	<div class="item" data-id="{{mpl.ID}}" data-type="{{mpl.ProductType}}">
 			<img src="{{serverAddr}}Img/{{mpl.Img | imgFilter}}">
             <div>
                 <h3>{{mpl.Name}}</h3>
                 <h5>{{mpl.desc}}</h5>
-                <!-- <h6>HX5 矿物汽车润滑机油</h6>
-                <ul>
-                    <li>动力清洁 抑制有害油泥</li>
-                    <li>更好低温保护 启动更顺畅</li>
-                </ul> -->
                 <p>抢购价:<span>￥{{mpl.Price}}</span></p>
-                <a href="home/fillOrder.html?pid={{mpl.ID}}">立即购买</a>
+                <a href="home/fillOrder.html?pid={{mpl.ID}}&&type={{mpl.ProductType}}">立即购买</a>
             </div>
 		</div>
 	{{/each}}

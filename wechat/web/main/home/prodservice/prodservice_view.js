@@ -9,11 +9,9 @@ $(function() {
 	    headerHeight = $page.find('>div.header').height(),
 	    footerHeight = $page.find('>div.footer').height();
 
-/*
-    if (navigator.userAgent.indexOf('csl-ios') != -1) {
+    if ($$.config.isCompatibleIOSTop && navigator.userAgent.indexOf('csl-ios') != -1) {
         $page.find('>div.header').height(64);
     }
-*/
 
 	// 设置各个div的宽高
 	$page.find('>div.main').css({

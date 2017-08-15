@@ -44,9 +44,6 @@
                     </ul>
                 </div>
             </div>
-			<!-- <div class="activity">
-                <img src="./images/activity/activity.png">
-            </div> -->
 			<div class="products clear"></div>
 		</div>
 	</div>
@@ -72,7 +69,7 @@
 		<div class="item" data-id="{{val.ID}}">
 			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
 			<p>{{val.Name}}</p>
-			<a href="home/fillOrder.html?pid={{val.ID}}">立即购买</a>
+			<a href="home/fillOrder.html?pid={{val.ID}}&&type={{val.ProductType}}">立即购买</a>
 		</div>
 		{{/each}}
 	</script>

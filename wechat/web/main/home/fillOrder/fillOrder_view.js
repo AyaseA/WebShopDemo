@@ -43,8 +43,32 @@ $(function() {
 		'height': bodyHeight - headerHeight - footerHeight,
 	});
 
+	$page.find('>div.appointmentModal div.timeList').css({
+		'height': bodyHeight * 0.8 - 40 - 46
+	});
+
 	// 设置返回页面
 	$$.setGoBack($page.find('>div.header >a.goBack'));
+
+	// 关闭modal
+    $page.on('click', '>div.appointmentModal, >div.appointmentModal a.closeModal', function() {
+    	$page.find('>div.appointmentModal').find('div.warp').animate({
+    		'top': bodyHeight
+    	}, 200).end().fadeOut(200);
+    }).on('click', 'div.warp', function(e) {
+    	e.stopPropagation();
+    });
+    // 打开
+    $page.on('click', 'div.appointment', function() {
+    	$page.find('>div.appointmentModal div.warp').animate({
+    		'top': bodyHeight * 0.2
+    	}, 200).parent().fadeIn(200);
+    });
+    // 选择日期
+    $page.on('click', '>div.appointmentModal span.am, >div.appointmentModal span.pm', function() {
+        $page.find('>div.appointmentModal span.am, >div.appointmentModal span.pm').removeClass('selected');
+        $(this).addClass('selected');
+    });
 	
 	// 点击优惠券按钮弹出优惠券框
 	$page.on('click', 'div.coupon button', function() {

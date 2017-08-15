@@ -12,7 +12,8 @@ $(function() {
         couponID = '',
         campaignNum = 0,
         detailUrl = 'Product/Prod/QueryDetail?ID=',
-        serviceDate = '';
+        serviceDate = '',
+        serviceTime = '';
 
     // 判断是否登录
     if ($$.isLogin(true)) {
@@ -31,10 +32,31 @@ $(function() {
         $page.find('>div.couponModal button.selectTicket').hide();
         $page.find('>div.footer >button.order').addClass('disabled');
 
+        $page.find('>div.appointmentModal').hide().find('div.warp').css({
+            'top': bodyHeight
+        });
+
         // 优惠券积分
         setCoupon();
 		// 获取商品详情
         getProductDetail();
+
+        getAppointTime(function(timeArr) {
+            $page.find('div.appointmentModal div.timeList >div').html(template(pageStr + '_appointment_time_list', {
+                list: timeArr
+            }));
+        });
+
+        // 确认
+        $page.off('click', '>div.appointmentModal div.select')
+             .on('click', '>div.appointmentModal div.select', function() {
+            serviceDate = $page.find('>div.appointmentModal span.selected').attr('data-date');
+            serviceTime = $page.find('>div.appointmentModal span.selected').attr('data-time');
+            setServiceOption();
+            $page.find('>div.appointmentModal').find('div.warp').animate({
+                'top': bodyHeight
+            }, 200).end().fadeOut(200);
+        });
 
         // 点击确定选择优惠券
         $page.off('click', '>div.couponModal button.selectTicket')
@@ -203,8 +225,40 @@ $(function() {
                 if (res.Status != 0) {
                     return false;
                 }
-                if (res.Data && res.Data.ID && calback) {
+                if (orderType == 1 && serviceDate != '' && serviceTime != '' && res.Data && res.Data.ID && res.Data.ServiceID) {
+                    appointment(res.Data.ID, res.Data.ServiceID, function() {
+                        if (res.Data && res.Data.ID && calback) {
+                            calback(res.Data.ID);
+                        }
+                    })
+                } else if (res.Data && res.Data.ID && calback) {
                     calback(res.Data.ID);
+                }
+            }
+        );
+    }
+    function appointment(oid, sid, calback) {
+        var platform = 13;
+        if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+            platform = 10;
+        } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
+            platform = 12;
+        } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+            platform = 11;
+        }
+        $$.post(
+            'CSL/Appointment/AddAppoint',
+            {
+                OrderID: oid,
+                ServiceID: sid,
+                Platform: platform,
+                AppointDate: $$.get10Time(serviceDate),
+                AppointTimeS: $$.get10Time(serviceDate + ' ' + serviceTime.split('-')[0]),
+                AppointTimeE: $$.get10Time(serviceDate + ' ' + serviceTime.split('-')[1])
+            },
+            function(res) {
+                if (res.Status == 0) {
+                    calback();
                 }
             }
         );
@@ -226,12 +280,30 @@ $(function() {
         }));
     }
 
-    function setServiceOption(name, time) {
+    function setServiceOption() {
         $page.find('div.appointment').html(template(pageStr + '_appointment_time', {
-            time: time || ''
+            time: serviceDate + ' ' + serviceTime
         }));
         $page.find('div.appointment >div').width(
             boxWidth - 30 - 8 - 10
         );
     }
+    // 计算预约时间
+    function getAppointTime(callback) {
+        var timeArr = [];
+        for (var i = 1; i <= 30; i++) {
+            timeArr.push(
+                getDateFromCurrentDate(i)
+            );
+        }
+        callback(timeArr);
+    }
+    function getDateFromCurrentDate(dayInterval) {
+        var curDate = new Date();
+        curDate.setDate(curDate.getDate() + dayInterval);
+        var year = curDate.getFullYear();
+        var month = (curDate.getMonth() + 1) < 10 ? "0" + (curDate.getMonth() + 1) : (curDate.getMonth() + 1);
+        var day = curDate.getDate() < 10 ? "0" + curDate.getDate() : curDate.getDate();
+        return year + "-" + month + "-" + day;
+    };
 });

@@ -83,6 +83,11 @@ $(function(){
         }
     });
     
+    // news
+    $page.on('click', 'div.news >img', function() {
+        $$.redirect('home/product.html?pid=7');
+    });
+
     // 点击商品查看详情
     $page.on('click', 'div.products img, div.products p', function() {
         var pid = $(this).parent().attr('data-id');

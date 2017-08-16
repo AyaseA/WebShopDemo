@@ -132,7 +132,7 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 #home_index #home_index_banner_middle {
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 #home_index #home_index_banner_middle .bd li img {
@@ -160,6 +160,9 @@
 }
 /* entrance end */
 /* news start*/
+#home_index div.news {
+    margin-bottom: 5px;
+}
 #home_index div.news img {
     width: 100%;
 }

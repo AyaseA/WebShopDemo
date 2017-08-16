@@ -225,8 +225,8 @@ $(function() {
                 if (res.Status != 0) {
                     return false;
                 }
-                if (orderType == 1 && serviceDate != '' && serviceTime != '' && res.Data && res.Data.ID && res.Data.ServiceID) {
-                    appointment(res.Data.ID, res.Data.ServiceID, function() {
+                if (orderType == 1 && serviceDate != '' && serviceTime != '' && res.Data && res.Data.ServiceID) {
+                    appointment(res.Data.ServiceID, function() {
                         if (res.Data && res.Data.ID && calback) {
                             calback(res.Data.ID);
                         }
@@ -237,7 +237,7 @@ $(function() {
             }
         );
     }
-    function appointment(oid, sid, calback) {
+    function appointment(sid, calback) {
         var platform = 13;
         if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             platform = 10;
@@ -249,7 +249,6 @@ $(function() {
         $$.post(
             'CSL/Appointment/AddAppoint',
             {
-                OrderID: oid,
                 ServiceID: sid,
                 Platform: platform,
                 AppointDate: $$.get10Time(serviceDate),

@@ -72,12 +72,12 @@
 		</div>
 		<div class="article_content title" id="article_con_tent2">
 			<img src="./images/center/note_pic.png" alt="" class="img_order">
-			<p class="order_text" id="old_list">预约记录</p>
+			<p class="order_text" id="old_list">服务记录</p>
 		</div>
 		<div class="order_content">
 			<div class="order_img_span" id="order_img_span_6">
 				<img src="./images/center/payment_pic.png" alt="" class="order_control">
-				<span class="order_business">待付款</span>
+				<span class="order_business">可用服务</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_7">
 				<img src="./images/center/remind.png" alt="" class="order_control">
@@ -208,33 +208,33 @@
 		</div>
 		<div class="article_content title" id="article_con_tent2">
 			<img src="./images/center/note_pic.png" alt="" class="img_order">
-			<p class="order_text" id="old_list">预约记录</p>
+			<p class="order_text" id="old_list">服务记录</p>
 		</div>
 		<div class="order_content">
 			<div class="order_img_span" id="order_img_span_6">
-				{{if d.OrderStatus1 && d.OrderStatus1 > 0}}
-				<div class="order_top_tips" id="payment">{{d.OrderStatus1}}</div>
+				{{if d.MyService0 && d.MyService0 > 0}}
+				<div class="order_top_tips" id="payment">{{d.MyService0}}</div>
 				{{/if}}
 				<img src="./images/center/payment_pic.png" alt="" class="order_control">
-				<span class="order_business">待付款</span>
+				<span class="order_business">可用服务</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_7">
-				{{if d.OrderStatus2 && d.OrderStatus2 > 0}}
-				<div class="order_top_tips" id="deliverGoods">{{d.OrderStatus2}}</div>
+				{{if d.MyAppoint0 && d.MyAppoint0 > 0}}
+				<div class="order_top_tips" id="deliverGoods">{{d.MyAppoint0}}</div>
 				{{/if}}
 				<img src="./images/center/remind.png" alt="" class="order_control">
 				<span class="order_business">已预约</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_8">
-				{{if d.OrderStatus4 && d.OrderStatus4 > 0}}
-				<div class="order_top_tips" id="goodsReceipt">{{d.OrderStatus4}}</div>
+				{{if d.MyAppoint4 && d.MyAppoint4 > 0}}
+				<div class="order_top_tips" id="goodsReceipt">{{d.MyAppoint4}}</div>
 				{{/if}}
 				<img src="./images/center/bar_code.png" alt="" class="order_control">
 				<span class="order_business">已验证</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_9">
-				{{if d.NotReviewCount && d.NotReviewCount > 0}}
-				<div class="order_top_tips" id="assessment">{{d.NotReviewCount}}</div>
+				{{if d.MyService1 && d.MyService0 > 1}}
+				<div class="order_top_tips" id="assessment">{{d.MyService1}}</div>
 				{{/if}}
 				<img src="./images/center/round_check.png" alt="" class="order_control">
 				<span class="order_business">已完成</span>

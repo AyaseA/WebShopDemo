@@ -19,6 +19,12 @@
 						d.OrderStatus.forEach(function(item) {
 							d['OrderStatus' + item.StatusID] = item.Count;
 						});
+						d.MyService.forEach(function(item) {
+							d['MyService' + item.Status] = item.Count;
+						});
+						d.MyAppoint.forEach(function(item) {
+							d['MyAppoint' + item.Status] = item.Count;
+						});
 						$("#icenter_pageHome").find('article').html(
 							template('icenter_pageHome_infos', {
 								d: res.Data

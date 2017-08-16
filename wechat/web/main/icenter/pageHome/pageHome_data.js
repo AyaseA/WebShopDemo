@@ -138,7 +138,7 @@
 
 		    // 预约
 		    $('#article_con_tent2').off('click').on('click', function() {
-		        layer.msg('全部预约');
+		        $$.redirect("icenter/appointmentList.html");
 		    });
 		    $('#order_img_span_6').off('click').on('click', function() {
 		        layer.msg('预约-代付款');

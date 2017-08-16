@@ -159,6 +159,30 @@
     height: 82px;
 }
 /* entrance end */
+/* news start*/
+#home_index div.news img {
+    width: 100%;
+}
+/* news end*/
+/* recommend start*/
+#home_index div.recommend {
+    border-top: 1px solid #EFEFF4;
+    border-bottom: 1px solid #EFEFF4;
+    font-size: 0;
+}
+#home_index div.recommend >div {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    float: left;
+}
+#home_index div.recommend >div >img {
+    width: 100%;
+}
+#home_index div.recommend >div:first-child {
+    border-right: 1px solid #EFEFF4;
+}
+/* recommend end*/
 /* products start */
 #home_index >div.main >div.content .products {
     width: 100%;

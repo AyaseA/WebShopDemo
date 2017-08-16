@@ -136,6 +136,22 @@
 		        e.stopPropagation();
 		    });
 
+		    // 预约
+		    $('#article_con_tent2').off('click').on('click', function() {
+		        layer.msg('全部预约');
+		    });
+		    $('#order_img_span_6').off('click').on('click', function() {
+		        layer.msg('预约-代付款');
+		    });
+		    $('#order_img_span_7').off('click').on('click', function() {
+		        layer.msg('预约-已预约');
+		    });
+		    $('#order_img_span_8').off('click').on('click', function() {
+		        layer.msg('预约-已验证');
+		    });
+		    $('#order_img_span_9').off('click').on('click', function() {
+		        layer.msg('预约-已完成');
+		    });
 		}
 	}
 }());

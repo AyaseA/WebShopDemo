@@ -1,0 +1,312 @@
+#icenter_appointServer{
+	position: relative;
+	width: 100%;
+	background-color: #EFEFF4;
+	height: 100%;
+	overflow:hidden;
+}
+
+#icenter_appointServer .header{
+	width: 100%;
+	height: 12vw;
+	line-height: 12vw;
+	border-bottom: 1px solid #CCCCCC;
+	text-align: center;
+	background: #fff;
+}
+
+#icenter_appointServer .header img{
+	width: 6vw;
+    position: absolute;
+    left: 3vw;
+    top: 3vw;
+}
+
+#icenter_appointServer .header p{
+	font-size: 4.5vw;
+	font-weight: bold;
+}
+
+#icenter_appointServer .content{
+	margin-top: 2vw;
+}
+
+#icenter_appointServer .content .selectStore,#icenter_appointServer .content .selectDate{
+	background: #fff;
+	width: 100%;
+	height: 12vw;
+	line-height: 12vw;
+	padding:0 4vw;
+	box-sizing: border-box;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#icenter_appointServer .content .title{
+	font-size: 4.2vw;
+} 
+
+#icenter_appointServer .content .selectDetail{
+	float: right;
+	display: inline-block;
+	width: 66vw;
+}
+
+#icenter_appointServer .content .selectDetail img{
+	float: right;
+	margin: 4vw 0 0 7vw;
+	width: 2.6vw
+}
+
+#icenter_appointServer .content .selectDetail span{
+	font-size: 3.8vw;
+	float: right;
+}
+
+#icenter_appointServer .chooseDetail{
+    padding-left: 4vw;
+    margin-top: 5vw;
+    height: 8vw;
+    line-height: 8vw;
+}
+
+#icenter_appointServer .chooseDetail span{
+	font-size: 3.8vw;
+}
+
+#icenter_appointServer .chooseDetail img{
+	width: 5vw;
+    vertical-align: middle;
+    margin-left: 2vw;
+}
+
+#icenter_appointServer .serverDetail{
+	height: 0;
+	overflow: hidden;
+}
+
+#icenter_appointServer .serverDetail textarea{
+	background-color: #EFEFF4;
+    width: 92%;
+    height: 100px;
+    border: none;
+    outline: none;
+    padding: 15px 4% 5px;
+    resize: none;
+}
+
+#icenter_appointServer .serverDetail .camera{
+	margin-top: 2vw;
+	background: #fff;
+	padding:2vw 4vw;
+}
+
+#icenter_appointServer .serverDetail .camera .photo{
+	box-sizing: border-box;
+	width: 20vw;
+	padding: 2vw;
+	border: 1px solid #ccc;
+    border-radius: 3vw;
+    margin-right: 1.5vw;
+}
+
+#icenter_appointServer .sumbit{
+	width: 92vw;
+	margin: 10vw 0 0 4vw;
+	height: 10vw;
+	background: #f60;
+	color: #fff;
+	outline: none;
+	border: none;
+	border-radius: 5vw;
+	font-size: 4.5vw;
+}
+
+#icenter_appointServer  .storeInfo{
+	position: relative;
+	top:0vw;
+	left: 0vw;
+}
+
+#icenter_appointServer  .storeInfo .selectTitle{
+	background: #fff;
+	text-align: center;
+	height: 10vw;
+	line-height: 10vw;
+	position: relative;
+	font-size: 4.2vw;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+#icenter_appointServer  .storeInfo .selectTitle img{
+	width: 6vw;
+	position: absolute;
+	top:2vw;
+	left: 4vw;
+}
+
+#icenter_appointServer .storeContent{
+	height: 115vw;
+	overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #EFEFF4;
+}
+
+#icenter_appointServer  .storeInfo  .item {
+    padding: 10px 0 10px 5vw;
+    width: 100%;
+    background-color: #FFF;
+    box-sizing: border-box;
+    border-bottom: 1px solid #F3F3F4;
+}
+
+#icenter_appointServer  .storeInfo  .item >div {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 3vw;
+    width: 70vw;
+}
+#icenter_appointServer  .storeInfo  .item p {
+    color: #9c9c9c;
+    margin: 5px 0;
+    font-size: 12px;
+}
+#icenter_appointServer  .storeInfo  .item small {
+    font-size: 12px;
+}
+#icenter_appointServer  .storeInfo  .item small::before {
+    content: '';
+    display: block;
+    float: left;
+    width: 14px;
+    height: 14px;
+    background: url(../../images/common/location_small_blue.png) no-repeat;
+    background-size: contain;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+#icenter_appointServer  .storeInfo  .item h5 {
+    color: #EA5514;
+    font-size: 15px;
+    margin-top: 5px;
+}
+#icenter_appointServer  .storeInfo  .item small >span {
+    color: #EA5514;
+    margin-left: 5px;
+}
+#icenter_appointServer  .storeInfo  .item >a {
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../../images/common/form.png) no-repeat;
+    background-size: 50%;
+    background-position: center;
+    height: 12vw;
+    width: 12vw;
+}
+#icenter_appointServer  .storeInfo  .item::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 6vw;
+    width: 6vw;
+    background: url(../../images/common/round_check.png) no-repeat;
+    background-size: 100%;
+}
+
+#icenter_appointServer  .storeInfo  .item.checked::before {
+    background-image: url(../../images/common/round_check_fill.png)
+}
+
+#icenter_appointServer  .storeInfo .storeConfirm{
+	background-color: #CCC;
+	height: 12vw;
+	line-height:12vw;
+	color: #fff;
+	font-size: 4.5vw;
+	text-align: center;
+}
+
+
+/*选择时间*/
+#icenter_appointServer  .dateInfo{
+	position: relative;
+	top:-137vw;
+	left: 0vw;
+}
+
+#icenter_appointServer  .dateInfo .dateTitle{
+	background: #fff;
+	text-align: center;
+	height: 10vw;
+	line-height: 10vw;
+	position: relative;
+	font-size: 4.2vw;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+#icenter_appointServer  .dateInfo .dateTitle img{
+	width: 6vw;
+	position: absolute;
+	top:2vw;
+	left: 4vw;
+}
+
+#icenter_appointServer .dateContent {
+    width: 100%;
+    height: 80vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #EFEFF4;
+}
+
+#icenter_appointServer .dateContent  .item {
+    font-size: 0;
+    border-top: 1px solid #CCC;
+}
+#icenter_appointServer .dateContent  .item:last-child {
+    font-size: 0;
+    border-bottom: 1px solid #CCC;
+}
+#icenter_appointServer .dateContent  .item span {
+    width: 33.3%;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px 0;
+}
+#icenter_appointServer .dateContent .date {
+    background-color: #eaeaea;
+}
+#icenter_appointServer .dateContent .am {
+    background-color: #FFF;
+}
+#icenter_appointServer .dateContent .pm {
+    background-color: #FFF;
+}
+#icenter_appointServer .dateContent .selected {
+    background-color: #EA5514;
+    color: #FFF;
+}
+#icenter_appointServer .dateContent .select{
+    height: 46px;
+    line-height: 46px;
+    width: 100%;
+    background-color: #EA5514;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: #FFF;
+    font-size: 16px;
+}
+
+#icenter_appointServer  .dateInfo .dateConfirm{
+	background-color: #f60;
+	height: 12vw;
+	line-height:12vw;
+	color: #fff;
+	font-size: 4.5vw;
+	text-align: center;
+}

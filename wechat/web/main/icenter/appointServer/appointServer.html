@@ -1,0 +1,79 @@
+<div>
+    <div class="header">
+        <a href="void:javascript(0)"><img src="images/common/round_left_blue.png"></a>
+        <p>选择预约服务</p>
+    </div>
+    <div class="content">
+        <div class="selectStore">
+            <span class="title">预约店面</span>
+            <div class="selectDetail">
+                <img src="images/common/right.png">
+                <span>请选择服务门店</span>
+            </div>
+        </div>
+        <div class="selectDate">
+            <span class="title">预约时间</span>
+            <div class="selectDetail">
+                <img src="images/common/right.png">
+                <span>请选择服务时间</span>
+            </div>
+        </div>
+        <div class="chooseDetail">
+            <span>是否添加备注信息</span>
+            <img src="images/common/uncheck.png" data-check="0">
+        </div>
+        <div class="serverDetail">
+            <textarea placeholder="在此填写服务备注"></textarea>
+            <div class="camera">
+                <img class="photo" src="images/common/camera.png">
+            </div>
+        </div>
+        <button class="sumbit">确定</button>
+    </div>
+
+    <div class="storeInfo">
+    	<div class="selectTitle">
+    		<img src="images/common/round_down_blue.png">
+    		<p>选择预约商店</p>
+    	</div>
+    	<div class="storeContent">
+	        <script id="icenter_appointServer_store_items" type="text/html">
+	            {{each stores as d index}}
+	            <div class="item" data-id="{{d.ID}}" data-store-id="{{d.StoreID}}" data-name="{{d.StoreName}}">
+	                <div>
+	                    <h3>{{d.StoreName}}</h3>
+	                    <p>服务数量：{{d.ServiceCount}}</p>
+	                    <p>地址：{{d.Address}}</p>
+	                    <small>0.031Km <span>{{if index == 0}}最近{{/if}}</span></small>
+	                </div>
+	                <a href="shop/shopDetail.html?ID={{d.StoreID}}"></a>
+	            </div>
+	            {{/each}}
+	        </script>
+    	</div>
+        <div class="storeConfirm">
+        	<p>确认</p>
+        </div>
+    </div>
+
+    <div class="dateInfo">
+    	<div class="dateTitle">
+    		<img src="images/common/round_down_blue.png">
+    		<p>选择预约时间</p>
+    	</div>
+    	<div class="dateContent">
+	        <script id="icenter_appointServer_time_list" type="text/html">
+				{{each list as t index}}
+				<div class="item">
+					<span class="date">{{t}}</span>
+					<span class="am {{if index == 0}}selected{{/if}}" data-date="{{t}}" data-time="9:00-12:00">9:00-12:00</span>
+					<span class="pm" data-date="{{t}}" data-time="14:00-18:00">14:00-18:00</span>
+				</div>
+				{{/each}}
+			</script>
+    	</div>
+        <div class="dateConfirm">
+        	<p>确认</p>
+        </div>
+    </div>
+</div>

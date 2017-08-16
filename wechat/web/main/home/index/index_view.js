@@ -88,6 +88,11 @@ $(function(){
         $$.redirect('home/product.html?pid=7');
     });
 
+    // recomened
+    $page.on('click', 'div.recommend >div[data-type="qrcodeMoveCar"]', function() {
+        layer.msg('<!--  -->');
+    });
+
     // 点击商品查看详情
     $page.on('click', 'div.products img, div.products p', function() {
         var pid = $(this).parent().attr('data-id');

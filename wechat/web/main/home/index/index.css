@@ -175,12 +175,31 @@
     box-sizing: border-box;
     padding: 10px 15px;
     float: left;
+    position: relative;
 }
 #home_index div.recommend >div >img {
     width: 100%;
 }
 #home_index div.recommend >div:first-child {
     border-right: 1px solid #EFEFF4;
+}
+#home_index div.recommend div.items {
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    height: 65%;
+    box-sizing: border-box;
+    padding-bottom: 8px;
+    padding-top: 5px;
+}
+#home_index div.recommend div.item {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+#home_index div.recommend div.item >img {
+    max-width: 100%;
+    max-height: 100%;
 }
 /* recommend end*/
 /* products start */

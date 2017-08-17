@@ -5,29 +5,51 @@ $(function() {
 
     var token = $$.getToken();
 
-    $$.post("CSL/Service/QueryMyService", {}, function(txt) {
-        if (txt.Data.Count != 0) {
-            $page.find(".notAppoint").html(
-                template('icenter_appointmentList_notAppoint', {
-                    notAppointData: txt.Data.Rows,
-                    serverAddr: $$.serverAddr
-                })
-            );
+    $$.post("CSL/Service/QueryMyService", { Status: -1 }, function(txt) {
+        var notAppoint = [],
+            hadComplite = [];
 
-            $page.off("click", ".appointFoot .appointBtn").on("click", ".appointFoot .appointBtn", function() {
-                var sid = $(this).attr("data-id");
-                $$.redirect("icenter/appointServer.html?sid=" + sid);
-            });
+        var list = txt.Data.Rows;
 
-            $page.off("click", ".appointFoot .makeCode").on("click", ".appointFoot .makeCode", function() {
-                makeCode($(this).attr("data-id"));
-            });
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].Status == 0) {
+            	notAppoint.push(list[i]);
+            }else if(list[i].Status == 1){
+            	hadComplite.push(list[i]);
+            }
         }
+
+        $page.find(".notAppoint").html(
+            template('icenter_appointmentList_notAppoint', {
+                notAppointData: notAppoint,
+                serverAddr: $$.serverAddr
+            })
+        );
+
+        $page.find(".hadComplite").html(
+            template('icenter_appointmentList_hadComplite', {
+                hadCompliteData: hadComplite,
+                serverAddr: $$.serverAddr
+            })
+        );
+
+        $page.off("click", ".appointFoot .appointBtn").on("click", ".appointFoot .appointBtn", function() {
+            var sid = $(this).attr("data-id");
+            $$.redirect("icenter/appointServer.html?sid=" + sid);
+        });
+
+        $page.off("click", ".appointFoot .makeCode").on("click", ".appointFoot .makeCode", function() {
+            makeCode($(this).attr("data-id"));
+        });
+
+        $page.off("click", ".appointFoot .commit").on("click", ".appointFoot .commit", function() {
+            $$.redirect("icenter/commitList.html");
+        });
     });
 
-    $$.post("");
+    $$.post("CSL/Service/QueryMyServiceAppointList", {}, function(txt) {
 
-
+    });
 
     //未预约
     function makeCode(id) {

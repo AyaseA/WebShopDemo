@@ -129,7 +129,7 @@
 	margin-left: 2vw;
 }
 
-#icenter_appointmentList .content .appointBtn,#icenter_appointmentList .content .checkAppoint{
+#icenter_appointmentList .content .appointBtn,#icenter_appointmentList .content .checkAppoint,#icenter_appointmentList .content .commit{
 	color: #F60;
 	border:1px solid #F60;
 }

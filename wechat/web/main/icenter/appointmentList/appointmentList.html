@@ -18,7 +18,12 @@
 					<div class="oneAppoint">
 						<div class="appointHeader">
 							<span>服务订单编号：<span>{{notAppoint.OrderID}}</span></span>
-							<span class="appointStatus">已成功付款</span>
+							{{if notAppoint.IsAppoint == 0}}
+							<span class="appointStatus">未预约</span>
+							{{/if}}
+							{{if notAppoint.IsAppoint != 0}}
+							<span class="appointStatus">已成功预约</span>
+							{{/if}}
 						</div>
 
 						<div class="appointContent">
@@ -46,7 +51,13 @@
 						</div>
 
 						<div class="appointFoot">
-							<button class="appointBtn" data-id={{notAppoint.ID}}>预约服务</button>
+							{{if notAppoint.IsAppoint == 0}}
+								<button class="makeCode" data-id={{notAppoint.ID}}>生成二维码</button>
+								<button class="appointBtn" data-id={{notAppoint.ID}}>预约服务</button>
+							{{/if}}
+							{{if notAppoint.IsAppoint != 0}}
+								<button class="checkAppoint" data-id={{notAppoint.ID}}>查看预约</button>
+							{{/if}}
 						</div>
 					</div>
 				{{/each}}	

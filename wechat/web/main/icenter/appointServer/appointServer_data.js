@@ -4,12 +4,14 @@ $(function() {
     var contentHeight = window.innerHeight - $page.find(".header").height();
     $page.find(".content").height(contentHeight);
 
-    var pid = $$.getQueryString("pid");
+    var sid = $$.getQueryString("sid");
 
+    //可以上传照片数量
+    window.photoNum = 3;
     //配置微信签名
     var WXsign = $$.getWeChatSign(1);
     wx.config({
-        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: $$.config.wxAppID, // 必填，公众号的唯一标识
         timestamp: WXsign.timestamp, // 必填，生成签名的时间戳
         nonceStr: WXsign.noncestr, // 必填，生成签名的随机串
@@ -25,7 +27,7 @@ $(function() {
 
     //店面出现事件
     $page.off("click", ".selectStore .selectDetail").on("click", ".selectStore .selectDetail", function() {
-        $page.find(".storeInfo").animate({ top: "-139vw" }, 500);
+        $page.find(".storeInfo").animate({ top: "-124vw" }, 500);
     });
 
     //点击店面隐藏事件
@@ -35,12 +37,12 @@ $(function() {
 
     //时间出现事件
     $page.off("click", ".selectDate .selectDetail").on("click", ".selectDate .selectDetail", function() {
-        $page.find(".dateInfo").animate({ top: "-241vw" }, 500);
+        $page.find(".dateInfo").animate({ top: "-226vw" }, 500);
     });
 
     //点击时间隐藏事件
     $page.off("click", ".dateTitle img").on("click", ".dateTitle img", function() {
-        $page.find(".dateInfo").animate({ top: "-137vw" }, 500);
+        $page.find(".dateInfo").animate({ top: "-122vw" }, 500);
     });
 
     // 选择店面
@@ -74,33 +76,80 @@ $(function() {
         var selectDate = $($page.find(".dateContent .item .selected")[0]).attr("data-date");
         var selectTime = $($page.find(".dateContent .item .selected")[0]).attr("data-time");
         $page.find(".selectDate .selectDetail span").text(selectDate + "  " + selectTime);
-        $page.find(".dateInfo").animate({ top: "0vw" }, 500);
+        $page.find(".selectDate .selectDetail span").attr("data-date",selectDate);
+        $page.find(".dateInfo").animate({ top: "-122vw" }, 500);
     });
 
     //选择照片/拍照
     $page.off("click", ".photo").on("click", ".photo", function(e) {
-        wx.chooseImage({
-            count: 3, // 默认9
-            sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function(res) {
-                $page.imgList = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
-                for (var i = 0; i < $page.imgList.length; i++) {
-                    var oneItem = "<img src='" + $page.imgList[i] + "' data-index='" + i + "' class='reserve'><div class='close'><img src='images/common/round_close.png' data-index='" + i + "'></div>";
-                    $page.find(".camera").append(oneItem);
+        if( window.photoNum != 0){
+            wx.chooseImage({
+                count: window.photoNum, // 默认9
+                sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function(res) {
+                    $page.imgList = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
+                    for (var i = 0; i < $page.imgList.length; i++) {
+                        var oneItem = "<div class='photolist'><img src='" + $page.imgList[i] + "' data-index='" + i + "' class='reserve'><div class='close'><img src='images/common/round_close.png' data-index='" + i + "'></div></div>";
+                        $page.find(".camera").append(oneItem);
+                    }
+                    window.photoNum -= $page.imgList.length;
+                    //删除照片              
                 }
-                window.photoNum -= $page.imgList.length;
-                //删除照片              
-            }
-        });
+            });
+        }else{
+            layer.msg("最多上传3张图片");
+        }
 
+    });
+
+    //查看删除照片
+    $page.off("click", ".close img").on("click", ".close img", function() {
+        var _this = $(this);
+        layer.confirm("确定要删除此照片吗", function(index) {
+            _this.parent().parent().remove();
+            window.photoNum += 1;
+            layer.close(index);
+        });
+    });
+
+    //提交预约信息
+    $page.off("click",".sumbit").on("click",".sumbit",function(){
+        if(!$page.find(".selectStore .selectDetail span").attr("data-store-id")){
+            layer.msg("请选择预约门店");
+        }else if(!$page.find(".selectDate .selectDetail span").attr("data-date")){
+            layer.msg("请选择预约时间");
+        }else{
+            $$.post("CSL/Appointment/AddAppoint",
+                {
+                   ServiceID:sid,
+                   Platform:10,
+                   Descri:$page.find(".serverDetail textarea").val(),
+                   AppointDate:$$.get10Time($page.find(".selectDate .selectDetail span").attr("data-date"))
+                },
+                function(){
+                    $$.post("CSL/Service/UpdateMyServiceStoreID",
+                    {
+                        ID:sid,
+                        StoreID:$page.find(".selectStore .selectDetail span").attr("data-store-id")
+                    },
+                    function(txt){
+                        if(txt.Status==0){
+                            layer.msg("服务预约成功");
+                            $$.redirect("icenter/appointmentList.html");
+                        }
+                    }
+                );
+                }
+            );
+        }
     });
 
     //获取有此服务的店面
     $$.post("Product/StoreService/QueryMapByProductServiceID", {
         N: 1,
         Rows: 9999,
-        ProductServiceID: pid
+        ProductServiceID: sid
     }, function(txt) {
         if (txt.Status == 0) {
             var d = txt.Data.Rows;

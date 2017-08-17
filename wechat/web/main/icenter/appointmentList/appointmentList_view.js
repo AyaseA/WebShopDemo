@@ -8,5 +8,8 @@ $(function(){
 		$page.find(".content ."+$(this).attr("data-pane")).show();
 	});
 
+	$page.find(".header a").click(function(){
+		$$.goBack();
+	});
 	
 });

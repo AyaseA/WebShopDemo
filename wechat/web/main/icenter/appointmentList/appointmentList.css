@@ -120,12 +120,25 @@
 
 #icenter_appointmentList .content .oneAppoint .appointFoot button{
 	width:30vw;
-	border:1px solid #F60;
 	background:none;
 	outline:none;
 	height:8vw;
 	border-radius:6vw;
 	float:right;
 	margin-top:1vw;
+	margin-left: 2vw;
+}
+
+#icenter_appointmentList .content .appointBtn,#icenter_appointmentList .content .checkAppoint{
 	color: #F60;
+	border:1px solid #F60;
+}
+
+#icenter_appointmentList .content .makeCode{
+	color: #8B8888;
+    border: 1px solid #8B8888;
+}
+
+.layui-layer-dialog{
+	z-index: 9999999999999999 !important;;
 }

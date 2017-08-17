@@ -42,13 +42,42 @@ $(function() {
             makeCode($(this).attr("data-id"));
         });
 
+        $page.off("click", ".appointFoot .checkAppoint").on("click", ".appointFoot .checkAppoint", function() {
+            $$.redirect("icenter/appointDetail.html?aid="+$(this).attr("data-id")+"&status=0");
+        });
+
         $page.off("click", ".appointFoot .commit").on("click", ".appointFoot .commit", function() {
             $$.redirect("icenter/commitList.html");
         });
     });
 
-    $$.post("CSL/Service/QueryMyServiceAppointList", {}, function(txt) {
+    $$.post("CSL/Appointment/QueryAppointList", {}, function(txt) {
+    	var hadAppoint = [],
+            notVerify = [];
 
+        var slist = txt.Data.Rows;
+
+        for (var i = 0; i < slist.length; i++) {
+            if (slist[i].Status == 0) {
+            	hadAppoint.push(slist[i]);
+            }else if(slist[i].Status == 1){
+            	notVerify.push(slist[i]);
+            }
+        }
+
+    	$page.find(".hadAppoint").html(
+            template('icenter_appointmentList_hadAppoint', {
+                hadAppointData: hadAppoint,
+                serverAddr: $$.serverAddr
+            })
+        );
+
+        $page.find(".notVerify").html(
+            template('icenter_appointmentList_notVerify', {
+                hadCompliteData: notVerify,
+                serverAddr: $$.serverAddr
+            })
+        );
     });
 
     //未预约

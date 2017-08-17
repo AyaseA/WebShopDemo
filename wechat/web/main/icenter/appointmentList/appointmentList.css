@@ -55,11 +55,11 @@
 	overflow-y: auto;
 }
 
-#icenter_appointmentList .notAppoint,#icenter_appointmentList .hadAppoint,#icenter_appointmentList .notVerify,#icenter_appointmentList .hadComplite}{
+#icenter_appointmentList .notAppoint,#icenter_appointmentList .hadAppoint,#icenter_appointmentList .notVerify,#icenter_appointmentList .hadComplite{
 	display: none;
 }
 
-#icenter_appointmentList .content active{
+#icenter_appointmentList .content .active{
 	display: block;
 }
 

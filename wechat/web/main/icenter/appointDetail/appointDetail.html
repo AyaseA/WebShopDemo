@@ -1,0 +1,74 @@
+<div>
+    <div class="header">
+        <a href="javascript:void(0)" class="goBack"></a>
+        <span>订单详情</span>
+    </div>
+    <div class="main"></div>
+    <div class="footer"></div>
+    <div class="confirm">
+        <div>
+            <h4>帮助客服</h4>
+            <p>0531-85523333<br />工作时间：9:30-17:30</p>
+            <button class="cancel">取消</button>
+            <a class="confirm" href="tel:0531-85523333">呼叫</a>
+        </div>
+    </div>
+    <script id="icenter_appointDetail_detail" type="text/html">
+        <div class="title">
+            <div>
+                <i class="right"></i>
+                {{if appointStatus == 0}}
+                <span>预约成功</span>
+                {{else if appointStatus == 1}}
+                <span>已消费</span>
+                {{/if}}
+            </div>
+        </div>
+        <div class="timeline">
+            <i class="status0 on"></i>
+            <hr class="line1 {{if appointStatus == 0 || appointStatus == 1}}on{{/if}}">
+            <i class="status1 {{if appointStatus == 0 || appointStatus == 1}}on{{/if}}"></i>
+            <hr class="line2 {{if appointStatus == 1}}on{{/if}}">
+            <i class="status2 {{if appointStatus == 1}}on{{/if}}"></i>
+            <span class="txt0">预约成功</span>
+            <span class="txt1">商家确认</span>
+            <span class="txt2">已消费</span>
+        </div>
+        <div class="product">
+            <div>
+                <p><i></i>{{data.StoreName}}<a href="javascript:void(0)" class="contactService">联系客服</a></p>
+                <div class="clear">
+                    <img src="{{serverAddr}}Img/{{data.StoreImg | imgFilter}}">
+                    <p>{{data.ProductName}}<span>￥{{data.AllMoney}}</span></p>
+                    <p><span>x1</span></p>
+                </div>
+                <p>共1件商品</p>
+            </div>
+        </div>
+        <div class="order">
+            <div>
+                <p>订单编号：{{data.OrderID}}</p>
+                <p>下单时间：{{data.AddTime | timeFilter}}</p>
+            </div>
+            <div style="border-top:1px solid #EEE">
+                <p>预约店面：{{data.StoreName}}</p>
+                <p>预约时间：{{appointTime}}</p>
+            </div>
+        </div>
+        <div class="money">
+            <div>
+                <p>商品金额<span>￥{{data.AllMoney}}</span></p>
+                <p>优惠<span>-￥{{discount}}</span></p>
+                <p class="clear">
+                    <span>￥{{data.OrderOutPocket}}</span>
+                    <span style="color: #000">实付款：</span>
+                </p>
+            </div>
+        </div>
+    </script>
+    <script id="icenter_appointDetail_footer" type="text/html">
+        {{if appointStatus == 0}}
+        <a href="javascript:void(0)">生成二维码</a>
+        {{/if}}
+    </script>
+</div>

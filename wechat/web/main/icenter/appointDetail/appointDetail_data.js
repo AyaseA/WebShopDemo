@@ -135,7 +135,7 @@ $(function () {
                 if (txt.Status == 0) {
                     layer.msg("二维码已被成功扫描");
                     clearInterval(time);
-                    $$.redirect("icenter/c.heckSucc.html");
+                    $$.redirect("icenter/checkSucc.html");
                 }
             }
         );

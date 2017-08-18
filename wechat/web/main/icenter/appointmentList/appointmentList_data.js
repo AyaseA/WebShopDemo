@@ -22,6 +22,7 @@ $(function() {
         $page.find(".notAppoint").html(
             template('icenter_appointmentList_notAppoint', {
                 notAppointData: notAppoint,
+                notAppointLength : notAppoint.length,
                 serverAddr: $$.serverAddr
             })
         );
@@ -29,13 +30,16 @@ $(function() {
         $page.find(".hadComplite").html(
             template('icenter_appointmentList_hadComplite', {
                 hadCompliteData: hadComplite,
+                hadCompliteLength : hadComplite.length,
                 serverAddr: $$.serverAddr
             })
         );
 
         $page.off("click", ".appointFoot .appointBtn").on("click", ".appointFoot .appointBtn", function() {
-            var sid = $(this).attr("data-id");
-            $$.redirect("icenter/appointServer.html?sid=" + sid);
+            var sid = $(this).attr("data-id"),
+            pid = $(this).attr("data-pid"),
+            storeid = $(this).attr("data-storeid");
+            $$.redirect("icenter/appointServer.html?sid=" + sid+"&pid="+pid+"&storeid="+storeid);
         });
 
         $page.off("click", ".appointFoot .makeCode").on("click", ".appointFoot .makeCode", function() {
@@ -68,6 +72,7 @@ $(function() {
     	$page.find(".hadAppoint").html(
             template('icenter_appointmentList_hadAppoint', {
                 hadAppointData: hadAppoint,
+                hadAppointLength : hadAppoint.length,
                 serverAddr: $$.serverAddr
             })
         );
@@ -75,6 +80,7 @@ $(function() {
         $page.find(".notVerify").html(
             template('icenter_appointmentList_notVerify', {
                 hadCompliteData: notVerify,
+                notVerifyLength : notVerify.length,
                 serverAddr: $$.serverAddr
             })
         );
@@ -123,7 +129,6 @@ $(function() {
         confirmService(id);
     }
 
-
     function checkServiceCode(sid) {
         $$.post("CSL/Service/ConfirmMyService", {
                 ID: sid
@@ -136,4 +141,5 @@ $(function() {
             }
         );
     }
+
 });

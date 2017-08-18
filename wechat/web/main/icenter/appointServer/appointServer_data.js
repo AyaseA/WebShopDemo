@@ -4,7 +4,19 @@ $(function() {
     var contentHeight = window.innerHeight - $page.find(".header").height();
     $page.find(".content").height(contentHeight);
 
-    var sid = $$.getQueryString("sid");
+    $page.find(".selectStore .selectDetail").html('<img src="images/common/right.png"><span>请选择服务门店</span>');
+    $page.find(".selectDate .selectDetail").html('<img src="images/common/right.png"><span>请选择服务时间</span>');
+
+    var sid = $$.getQueryString("sid"),
+        pid = $$.getQueryString("pid"),
+        storeid = $$.getQueryString("storeid");
+
+    //购买服务选择店面
+    if (storeid != 0) {
+        $page.find(".selectStore").hide();
+    } else {
+        $page.find(".selectStore").show();
+    }
 
     //可以上传照片数量
     window.photoNum = 3;
@@ -76,13 +88,13 @@ $(function() {
         var selectDate = $($page.find(".dateContent .item .selected")[0]).attr("data-date");
         var selectTime = $($page.find(".dateContent .item .selected")[0]).attr("data-time");
         $page.find(".selectDate .selectDetail span").text(selectDate + "  " + selectTime);
-        $page.find(".selectDate .selectDetail span").attr("data-date",selectDate);
+        $page.find(".selectDate .selectDetail span").attr("data-date", selectDate);
         $page.find(".dateInfo").animate({ top: "-122vw" }, 500);
     });
 
     //选择照片/拍照
     $page.off("click", ".photo").on("click", ".photo", function(e) {
-        if( window.photoNum != 0){
+        if (window.photoNum != 0) {
             wx.chooseImage({
                 count: window.photoNum, // 默认9
                 sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -97,7 +109,7 @@ $(function() {
                     //删除照片              
                 }
             });
-        }else{
+        } else {
             layer.msg("最多上传3张图片");
         }
 
@@ -114,21 +126,30 @@ $(function() {
     });
 
     //提交预约信息
-    $page.off("click",".sumbit").on("click",".sumbit",function(){
-        if(!$page.find(".selectStore .selectDetail span").attr("data-store-id")){
+    $page.off("click", ".sumbit").on("click", ".sumbit", function() {
+        if (needChooseStore()) {
             layer.msg("请选择预约门店");
-        }else if(!$page.find(".selectDate .selectDetail span").attr("data-date")){
+        } else if (!$page.find(".selectDate .selectDetail span").attr("data-date")) {
             layer.msg("请选择预约时间");
-        }else{
-            $$.post("CSL/Appointment/AddAppoint",
-                {
-                   ServiceID:sid,
-                   Platform:10,
-                   Descri:$page.find(".serverDetail textarea").val(),
-                   AppointDate:$$.get10Time($page.find(".selectDate .selectDetail span").attr("data-date"))
+        } else {
+            var appointSid;
+            if (storeid != 0) {
+                appointSid = storeid;
+            } else {
+                appointSid = $page.find(".selectStore .selectDetail span").attr("data-store-id");
+            }
+
+            $$.post("CSL/Appointment/AddAppoint", {
+                    ServiceID: sid,
+                    Platform: 10,
+                    Descri: $page.find(".serverDetail textarea").val(),
+                    AppointDate: $$.get10Time($page.find(".selectDate .selectDetail span").attr("data-date")),
+                    StoreID: appointSid
                 },
-                function(){
-                    $$.post("CSL/Service/UpdateMyServiceStoreID",
+                function() {
+                    layer.msg("服务预约成功");
+                    $$.redirect("icenter/appointmentList.html");
+                    /*$$.post("CSL/Service/UpdateMyServiceStoreID",
                     {
                         ID:sid,
                         StoreID:$page.find(".selectStore .selectDetail span").attr("data-store-id")
@@ -139,7 +160,7 @@ $(function() {
                             $$.redirect("icenter/appointmentList.html");
                         }
                     }
-                );
+                );*/
                 }
             );
         }
@@ -149,7 +170,7 @@ $(function() {
     $$.post("Product/StoreService/QueryMapByProductServiceID", {
         N: 1,
         Rows: 9999,
-        ProductServiceID: sid
+        ProductServiceID: pid
     }, function(txt) {
         if (txt.Status == 0) {
             var d = txt.Data.Rows;
@@ -185,5 +206,17 @@ $(function() {
         var month = (curDate.getMonth() + 1) < 10 ? "0" + (curDate.getMonth() + 1) : (curDate.getMonth() + 1);
         var day = curDate.getDate() < 10 ? "0" + curDate.getDate() : curDate.getDate();
         return year + "-" + month + "-" + day;
+    }
+
+    function needChooseStore() {
+        if (storeid != 0) {
+            return false;
+        } else {
+            if($page.find(".selectStore .selectDetail span").attr("data-store-id")){
+                return false;
+            }else{
+                return true;
+            }
+        }
     }
 });

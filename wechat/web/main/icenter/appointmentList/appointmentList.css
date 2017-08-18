@@ -142,3 +142,25 @@
 .layui-layer-dialog{
 	z-index: 9999999999999999 !important;;
 }
+
+
+#icenter_appointmentList .noOrders{
+	width: 55vw;
+	height: 80vw;
+	text-align: center;
+	position: absolute;
+	top: 40vw;
+	left: 23vw;
+
+}
+
+#icenter_appointmentList .noOrders img{
+	width: 55vw;
+}
+
+#icenter_appointmentList .noOrders p{
+	color: #898787;
+	margin-top:3vw;
+	margin-bottom: 3vw;
+	font-size: 6vw;
+}

@@ -47,7 +47,7 @@ $(function() {
                 var noReviceNode = "";
                 for (var i = 0; i < productList.length; i++) {
                     noReviceNode += '<div class="onePiece">' +
-                        '<img src="'+$$.serverAddr+'Img/'+productList[i].ProductImg+'">' +
+                        '<img src="'+$$.serverAddr+'Img/'+(productList[i].ProductImg||"1.png")+'">' +
                         '<div class="prodInfo">' +
                         '<p><b>'+productList[i].ProductName+'</b></p>' +
                         '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
@@ -74,7 +74,7 @@ $(function() {
                 }
                 for (var i = 0; i < productList.length; i++) {
                     hadReviceNode += '<div class="onePiece">' +
-                        '<img src="'+$$.serverAddr+'Img/'+productList[i].ProductImg+'">' +
+                        '<img src="'+$$.serverAddr+'Img/'+(productList[i].ProductImg||"1.png")+'">' +
                         '<div class="prodInfo">' +
                         '<p><b>'+productList[i].ProductName+'</b></p>' +
                         '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
@@ -92,7 +92,9 @@ $(function() {
 
     function showJsonDescri(json){
         json = JSON.parse(json);
-        return Base64.decode(unescape(json.text));
+        if(json.text){
+            return Base64.decode(unescape(json.text)); 
+        }
     }
 
     function bottomToLoad(){

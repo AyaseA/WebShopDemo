@@ -127,7 +127,6 @@
 }
 #home_prodservice div.product div.comments {
     margin-top: 10px;
-    background-color: #fff;
     padding-bottom: 30px;
 }
 #home_prodservice div.product div.comments >p {
@@ -136,6 +135,10 @@
 	line-height: 40px;
 	padding: 0 15px;
 	border-bottom: 1px solid #E7E7E7;
+    background-color: #fff;
+}
+#home_prodservice div.product div.comments >div.commentList {
+    background-color: #fff;
 }
 #home_prodservice div.product div.comments >p >i {
 	font-style: normal;

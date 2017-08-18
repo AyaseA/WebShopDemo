@@ -4,7 +4,8 @@ $(function () {
         pageStr = 'icenter_appointDetail',
         headerHeight = $page.find('>div.header').height(),
         appointId = $$.getQueryString('aid'),
-        appointStatus;
+        appointStatus,
+        serviceNum;
 
     $page.off('click', 'div.product a.contactService').on('click','div.product a.contactService', function() {
         $page.find('div.confirm').show();
@@ -46,6 +47,7 @@ $(function () {
                 if (res.Data) {
                 	var d = res.Data;
                     appointStatus = d.Status;
+                    serviceNum = d.ServiceNum;
                 	var hours = $$.timeToStr(d.AppointTimeS, 'HH'),
                         amOrPm;
 
@@ -129,10 +131,12 @@ $(function () {
 
     function checkServiceCode(sid) {
         $$.post("CSL/Service/ConfirmMyService", {
-                ID: sid
+                ID: sid,
+                ServiceNum: serviceNum
             },
             function(txt) {
                 if (txt.Status == 0) {
+
                     layer.msg("二维码已被成功扫描");
                     clearInterval(time);
                     $$.redirect("icenter/checkSucc.html");

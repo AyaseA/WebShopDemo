@@ -160,7 +160,7 @@ $(function() {
         $page.find("."+area).addClass("active");
         for (var i = 0; i < $page.find(".nav ul li").length; i++) {
             if($($page.find(".nav ul li")[i]).attr("data-pane") == area){
-                $(this).addClass("active");
+                $($page.find(".nav ul li")[i]).addClass("active");
             }
         }
     }

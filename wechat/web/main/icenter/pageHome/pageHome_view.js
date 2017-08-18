@@ -93,16 +93,16 @@
         $$.redirect("icenter/appointmentList.html");
     });
     $('#order_img_span_6').off('click').on('click', function() {
-        layer.msg('预约-代付款');
+        $$.redirect("icenter/appointmentList.html?type=commission");
     });
     $('#order_img_span_7').off('click').on('click', function() {
-        layer.msg('预约-已预约');
+        $$.redirect("icenter/appointmentList.html?type=appointed");
     });
     $('#order_img_span_8').off('click').on('click', function() {
-        layer.msg('预约-已验证');
+        $$.redirect("icenter/appointmentList.html?type=confirm");
     });
     $('#order_img_span_9').off('click').on('click', function() {
-        layer.msg('预约-已完成');
+        $$.redirect("icenter/appointmentList.html?type=complete");
     });
     
     // footer 事件

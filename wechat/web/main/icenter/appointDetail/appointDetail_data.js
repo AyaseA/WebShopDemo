@@ -4,7 +4,7 @@ $(function () {
         pageStr = 'icenter_appointDetail',
         headerHeight = $page.find('>div.header').height(),
         appointId = $$.getQueryString('aid'),
-        appointStatus = $$.getQueryString('status') || 0;
+        appointStatus;
 
     $page.off('click', 'div.product a.contactService').on('click','div.product a.contactService', function() {
         $page.find('div.confirm').show();
@@ -25,6 +25,12 @@ $(function () {
     $page.off('click', '>div.footer >a').on('click', '>div.footer >a', function() {
         makeCode();
     });
+    $page.off('click', '>div.footer >button').on('click', '>div.footer >button', function() {
+        layer.confirm('取消预约？', { icon: 3, title: '提示' }, function(index) {
+            cancelAppoint();
+            layer.close(index);
+        });
+    });
     // 获取订单详情
 	getAppointDetail();
 	function getAppointDetail() {
@@ -39,6 +45,7 @@ $(function () {
                 }
                 if (res.Data) {
                 	var d = res.Data;
+                    appointStatus = d.Status;
                 	var hours = $$.timeToStr(d.AppointTimeS, 'HH'),
                         amOrPm;
 
@@ -63,6 +70,20 @@ $(function () {
 			}
 		);
 	}
+    function cancelAppoint() {
+        $$.post(
+            'CSL/Appointment/CancelAppoint',
+            {
+                ID: appointId
+            },
+            function(res) {
+                if (res.Status == 0) {
+                    layer.msg('预约取消成功');
+
+                }
+            }
+        );
+    }
     //未预约
     function makeCode() {
         var imgurl = $$.serverAddr + "CSL/Service/QueryMyServiceImgByAID?ID=" + appointId + "&WToken=" + $$.getToken();
@@ -114,6 +135,7 @@ $(function () {
                 if (txt.Status == 0) {
                     layer.msg("二维码已被成功扫描");
                     clearInterval(time);
+                    $$.redirect("icenter/c.heckSucc.html");
                 }
             }
         );

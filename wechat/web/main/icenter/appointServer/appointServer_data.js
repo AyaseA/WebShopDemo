@@ -6,10 +6,13 @@ $(function() {
 
     $page.find(".selectStore .selectDetail").html('<img src="images/common/right.png"><span>请选择服务门店</span>');
     $page.find(".selectDate .selectDetail").html('<img src="images/common/right.png"><span>请选择服务时间</span>');
+    $page.find(".storeInfo").css("top","0vw");
+    $page.find(".dateInfo").css("top","-122vw");
 
     var sid = $$.getQueryString("sid"),
         pid = $$.getQueryString("pid"),
-        storeid = $$.getQueryString("storeid");
+        storeid = $$.getQueryString("storeid"),
+        stype = $$.getQueryString("stype");
 
     //购买服务选择店面
     if (storeid != 0) {
@@ -167,18 +170,31 @@ $(function() {
     });
 
     //获取有此服务的店面
-    $$.post("Product/StoreService/QueryMapByProductServiceID", {
-        N: 1,
-        Rows: 9999,
-        ProductServiceID: pid
-    }, function(txt) {
-        if (txt.Status == 0) {
-            var d = txt.Data.Rows;
-            $page.find('.storeContent').html(template('icenter_appointServer_store_items', {
-                stores: d
-            }));
-        }
-    });
+    if(stype == 1){
+        $$.post("Product/StoreService/QueryMapByProductServiceID", {
+            N: 1,
+            Rows: 9999,
+            ProductServiceID: pid
+        }, function(txt) {
+            if (txt.Status == 0) {
+                var d = txt.Data.Rows;
+                $page.find('.storeContent').html(template('icenter_appointServer_store_items', {
+                    stores: d,
+                    isService:1
+                }));
+            }
+        });
+    }else{
+        $$.post("Product/Store/QueryStoreList",{},function(txt){
+            if (txt.Status == 0) {
+                var d = txt.Data.Rows;
+                $page.find('.storeContent').html(template('icenter_appointServer_store_items', {
+                    stores: d,
+                    isService:0
+                }));
+            }
+        });
+    }
 
 
     //获取时间信息

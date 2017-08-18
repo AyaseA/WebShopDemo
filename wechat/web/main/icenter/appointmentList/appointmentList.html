@@ -54,13 +54,13 @@
                     </div>
                     <div class="appointFoot">
                         {{if !notAppoint.AppointID}}
-                        <button class="makeCode" data-id={{notAppoint.ID}}>生成二维码</button>
+                        <button class="makeCode" data-id={{notAppoint.ID} data-num={{notAppoint.ServiceNum}}}>生成二维码</button>
                         	{{if notAppoint.StoreID}}
-	                        <button class="appointBtn" data-id={{notAppoint.ID}} data-pid={{notAppoint.ProductID}} data-storeid={{notAppoint.StoreID}}>
+	                        <button class="appointBtn" data-id={{notAppoint.ID}} data-pid={{notAppoint.ProductID}} data-storeid={{notAppoint.StoreID}} data-stype={{notAppoint.ServiceType}}>
 	                        预约服务</button>
                         	{{/if}}
                         	{{if !notAppoint.StoreID}}
-                        	<button class="appointBtn" data-id={{notAppoint.ID}} data-pid={{notAppoint.ProductID}} data-storeid="0">
+                        	<button class="appointBtn" data-id={{notAppoint.ID}} data-pid={{notAppoint.ProductID}} data-storeid="0" data-stype={{notAppoint.ServiceType}}>
 	                        预约服务</button>
                         	{{/if}}
                         {{/if}} 

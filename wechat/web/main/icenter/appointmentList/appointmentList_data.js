@@ -49,12 +49,14 @@ $(function() {
         $page.off("click", ".appointFoot .appointBtn").on("click", ".appointFoot .appointBtn", function() {
             var sid = $(this).attr("data-id"),
                 pid = $(this).attr("data-pid"),
-                storeid = $(this).attr("data-storeid");
-            $$.redirect("icenter/appointServer.html?sid=" + sid + "&pid=" + pid + "&storeid=" + storeid);
+                storeid = $(this).attr("data-storeid"),
+                serviceType = $(this).attr("data-stype");
+
+            $$.redirect("icenter/appointServer.html?sid=" + sid + "&pid=" + pid + "&storeid=" + storeid+"&stype="+serviceType);
         });
 
         $page.off("click", ".appointFoot .makeCode").on("click", ".appointFoot .makeCode", function() {
-            makeCode($(this).attr("data-id"));
+            makeCode($(this).attr("data-id"),$(this).attr("data-num"));
         });
 
         $page.off("click", ".appointFoot .checkAppoint").on("click", ".appointFoot .checkAppoint", function() {
@@ -98,7 +100,7 @@ $(function() {
     });
 
     //未预约
-    function makeCode(id) {
+    function makeCode(id,num) {
         var imgurl = $$.serverAddr + "CSL/Service/QueryMyServiceImgBySID?ID=" + id + "&WToken=" + token;
         var codeTime = 120;
         var checkTime = 0;
@@ -137,12 +139,13 @@ $(function() {
                 clearInterval(time);
             }
         });
-        confirmService(id);
+        confirmService(id,num);
     }
 
-    function checkServiceCode(sid) {
+    function checkServiceCode(sid,num) {
         $$.post("CSL/Service/ConfirmMyService", {
-                ID: sid
+                ID: sid,
+                ServiceNum: num
             },
             function(txt) {
                 if (txt.Status == 0) {

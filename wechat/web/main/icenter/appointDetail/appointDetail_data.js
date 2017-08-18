@@ -79,7 +79,7 @@ $(function () {
             function(res) {
                 if (res.Status == 0) {
                     layer.msg('预约取消成功');
-                    $$.redirect("icenter/appointmentList.html?type=appointed");
+                    $$.redirect("icenter/appointmentList.html?type=commission");
                 }
             }
         );

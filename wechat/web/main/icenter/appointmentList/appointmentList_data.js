@@ -4,6 +4,17 @@ $(function() {
     $page.find(".content").height(contentHeight);
 
     var token = $$.getToken();
+    var type = $$.getQueryString("type");
+
+    if (type == "commission") {
+        showArea("notAppoint");
+    } else if (type == "appointed") {
+        showArea("hadAppoint");
+    } else if (type == "confirm") {
+        showArea("notVerify");
+    } else if (type == "complete") {
+        showArea("hadComplite");
+    }
 
     $$.post("CSL/Service/QueryMyService", { Status: -1 }, function(txt) {
         var notAppoint = [],
@@ -13,16 +24,16 @@ $(function() {
 
         for (var i = 0; i < list.length; i++) {
             if (list[i].Status == 0) {
-            	notAppoint.push(list[i]);
-            }else if(list[i].Status == 1){
-            	hadComplite.push(list[i]);
+                notAppoint.push(list[i]);
+            } else if (list[i].Status == 1) {
+                hadComplite.push(list[i]);
             }
         }
 
         $page.find(".notAppoint").html(
             template('icenter_appointmentList_notAppoint', {
                 notAppointData: notAppoint,
-                notAppointLength : notAppoint.length,
+                notAppointLength: notAppoint.length,
                 serverAddr: $$.serverAddr
             })
         );
@@ -30,16 +41,16 @@ $(function() {
         $page.find(".hadComplite").html(
             template('icenter_appointmentList_hadComplite', {
                 hadCompliteData: hadComplite,
-                hadCompliteLength : hadComplite.length,
+                hadCompliteLength: hadComplite.length,
                 serverAddr: $$.serverAddr
             })
         );
 
         $page.off("click", ".appointFoot .appointBtn").on("click", ".appointFoot .appointBtn", function() {
             var sid = $(this).attr("data-id"),
-            pid = $(this).attr("data-pid"),
-            storeid = $(this).attr("data-storeid");
-            $$.redirect("icenter/appointServer.html?sid=" + sid+"&pid="+pid+"&storeid="+storeid);
+                pid = $(this).attr("data-pid"),
+                storeid = $(this).attr("data-storeid");
+            $$.redirect("icenter/appointServer.html?sid=" + sid + "&pid=" + pid + "&storeid=" + storeid);
         });
 
         $page.off("click", ".appointFoot .makeCode").on("click", ".appointFoot .makeCode", function() {
@@ -47,7 +58,7 @@ $(function() {
         });
 
         $page.off("click", ".appointFoot .checkAppoint").on("click", ".appointFoot .checkAppoint", function() {
-            $$.redirect("icenter/appointDetail.html?aid="+$(this).attr("data-id")+"&status=0");
+            $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id") + "&status=0");
         });
 
         $page.off("click", ".appointFoot .commit").on("click", ".appointFoot .commit", function() {
@@ -56,23 +67,23 @@ $(function() {
     });
 
     $$.post("CSL/Appointment/QueryAppointList", {}, function(txt) {
-    	var hadAppoint = [],
+        var hadAppoint = [],
             notVerify = [];
 
         var slist = txt.Data.Rows;
 
         for (var i = 0; i < slist.length; i++) {
             if (slist[i].Status == 0) {
-            	hadAppoint.push(slist[i]);
-            }else if(slist[i].Status == 1){
-            	notVerify.push(slist[i]);
+                hadAppoint.push(slist[i]);
+            } else if (slist[i].Status == 1) {
+                notVerify.push(slist[i]);
             }
         }
 
-    	$page.find(".hadAppoint").html(
+        $page.find(".hadAppoint").html(
             template('icenter_appointmentList_hadAppoint', {
                 hadAppointData: hadAppoint,
-                hadAppointLength : hadAppoint.length,
+                hadAppointLength: hadAppoint.length,
                 serverAddr: $$.serverAddr
             })
         );
@@ -80,7 +91,7 @@ $(function() {
         $page.find(".notVerify").html(
             template('icenter_appointmentList_notVerify', {
                 hadCompliteData: notVerify,
-                notVerifyLength : notVerify.length,
+                notVerifyLength: notVerify.length,
                 serverAddr: $$.serverAddr
             })
         );
@@ -137,9 +148,21 @@ $(function() {
                 if (txt.Status == 0) {
                     layer.msg("二维码已被成功扫描");
                     clearInterval(time);
+                    $$.redirect("icenter/checkSucc.html");
                 }
             }
         );
+    }
+
+    function showArea(area) {
+        $page.find(".content").children().removeClass("active");
+        $page.find(".nav ul li").removeClass("active");
+        $page.find("."+area).addClass("active");
+        for (var i = 0; i < $page.find(".nav ul li").length; i++) {
+            if($($page.find(".nav ul li")[i]).attr("data-pane") == area){
+                $(this).addClass("active");
+            }
+        }
     }
 
 });

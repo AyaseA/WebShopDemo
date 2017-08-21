@@ -9,7 +9,7 @@ $(function(){
 	});
 
 	$page.find(".header a").click(function(){
-		$$.goBack();
+		$$.redirect("icenter/pageHome.html");
 	});
 	
 });

@@ -14,9 +14,11 @@ $(function() {
         showArea("notVerify");
     } else if (type == "complete") {
         showArea("hadComplite");
+    }else{
+        showArea("notAppoint");
     }
 
-    $$.post("CSL/Service/QueryMyService", { Status: -1 }, function(txt) {
+    $$.post("CSL/Service/QueryMyService", { Status: -1 ,Rows: 20}, function(txt) {
         var notAppoint = [],
             hadComplite = [];
 
@@ -68,7 +70,7 @@ $(function() {
         });
     });
 
-    $$.post("CSL/Appointment/QueryAppointList", {}, function(txt) {
+    $$.post("CSL/Appointment/QueryAppointList", {Status:-1,Rows:20}, function(txt) {
         var hadAppoint = [],
             notVerify = [];
 
@@ -77,7 +79,7 @@ $(function() {
         for (var i = 0; i < slist.length; i++) {
             if (slist[i].Status == 0) {
                 hadAppoint.push(slist[i]);
-            } else if (slist[i].Status == 1) {
+            } else if (slist[i].Status == 4) {
                 notVerify.push(slist[i]);
             }
         }
@@ -92,7 +94,7 @@ $(function() {
 
         $page.find(".notVerify").html(
             template('icenter_appointmentList_notVerify', {
-                hadCompliteData: notVerify,
+                notVerifyData: notVerify,
                 notVerifyLength: notVerify.length,
                 serverAddr: $$.serverAddr
             })
@@ -109,18 +111,18 @@ $(function() {
             checkTime += 1;
 
             if (checkTime < 15) {
-                checkServiceCode(id);
+                checkServiceCode(id,num);
             } else if (checkTime > 15 && checkTime < 30) {
                 if (checkTime % 2 == 0) {
-                    checkServiceCode(id);
+                    checkServiceCode(id,num);
                 }
             } else if (checkTime > 30 && checkTime < 60) {
                 if (checkTime % 3 == 0) {
-                    checkServiceCode(id);
+                    checkServiceCode(id,num);
                 }
             } else {
                 if (checkTime % 4 == 0) {
-                    checkServiceCode(id);
+                    checkServiceCode(id,num);
                 }
             }
 

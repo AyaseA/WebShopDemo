@@ -5,7 +5,10 @@ $(function () {
         headerHeight = $page.find('>div.header').height(),
         appointId = $$.getQueryString('aid'),
         appointStatus,
-        serviceNum;
+        serviceNum,
+        serviceId;
+
+    var token = $$.getToken();
 
     $page.off('click', 'div.product a.contactService').on('click','div.product a.contactService', function() {
         $page.find('div.confirm').show();
@@ -48,6 +51,7 @@ $(function () {
                 	var d = res.Data;
                     appointStatus = d.Status;
                     serviceNum = d.ServiceNum;
+                    serviceId = d.ServiceID;
                 	var hours = $$.timeToStr(d.AppointTimeS, 'HH'),
                         amOrPm;
 
@@ -88,7 +92,7 @@ $(function () {
     }
     //未预约
     function makeCode() {
-        var imgurl = $$.serverAddr + "CSL/Service/QueryMyServiceImgByAID?ID=" + appointId + "&WToken=" + $$.getToken();
+        var imgurl = $$.serverAddr + "CSL/Service/QueryMyServiceImgByAID?ID=" + appointId + "&WToken=" + $$.getToken()+ "&t=" + Math.random();
         console.log(imgurl)
         var codeTime = 120;
         var checkTime = 0;
@@ -97,18 +101,18 @@ $(function () {
             checkTime += 1;
 
             if (checkTime < 15) {
-                checkServiceCode(appointId);
+                checkServiceCode(serviceId);
             } else if (checkTime > 15 && checkTime < 30) {
                 if (checkTime % 2 == 0) {
-                    checkServiceCode(appointId);
+                    checkServiceCode(serviceId);
                 }
             } else if (checkTime > 30 && checkTime < 60) {
                 if (checkTime % 3 == 0) {
-                    checkServiceCode(appointId);
+                    checkServiceCode(serviceId);
                 }
             } else {
                 if (checkTime % 4 == 0) {
-                    checkServiceCode(appointId);
+                    checkServiceCode(serviceId);
                 }
             }
 

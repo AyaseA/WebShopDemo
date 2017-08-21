@@ -70,6 +70,10 @@
 	font-size: 3.8vw;
 }
 
+#icenter_appointmentList .content .oneAppoint b{
+	color: #000;
+}
+
 #icenter_appointmentList .content .oneAppoint .appointHeader{
 	height: 10vw;
 	padding: 0 5vw;
@@ -140,9 +144,8 @@
 }
 
 .layui-layer-dialog{
-	z-index: 9999999999999999 !important;;
+	z-index: 9999999999999999 !important;
 }
-
 
 #icenter_appointmentList .noOrders{
 	width: 55vw;
@@ -151,7 +154,6 @@
 	position: absolute;
 	top: 40vw;
 	left: 23vw;
-
 }
 
 #icenter_appointmentList .noOrders img{

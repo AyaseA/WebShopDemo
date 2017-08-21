@@ -25,7 +25,7 @@
                     <div class="appointHeader">
                         <span>服务编号：<span>{{notAppoint.ID}}</span></span>
                         {{if !notAppoint.AppointID}}
-                        <span class="appointStatus">未预约</span> 
+                        <span class="appointStatus">未预约,剩余服务数量:<b>{{notAppoint.ServiceNum}}</b></span> 
                         {{/if}} 
                         {{if notAppoint.AppointID}}
                         <span class="appointStatus">已成功预约</span> 
@@ -54,7 +54,7 @@
                     </div>
                     <div class="appointFoot">
                         {{if !notAppoint.AppointID}}
-                        <button class="makeCode" data-id={{notAppoint.ID} data-num={{notAppoint.ServiceNum}}}>生成二维码</button>
+                        <button class="makeCode" data-id={{notAppoint.ID}} data-num={{notAppoint.ServiceNum}}>生成二维码</button>
                         	{{if notAppoint.StoreID}}
 	                        <button class="appointBtn" data-id={{notAppoint.ID}} data-pid={{notAppoint.ProductID}} data-storeid={{notAppoint.StoreID}} data-stype={{notAppoint.ServiceType}}>
 	                        预约服务</button>

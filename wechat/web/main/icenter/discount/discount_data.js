@@ -7,7 +7,7 @@ $(function() {
     	例：$('#文件夹名_文件名 button.button')
 
     */
-    $$.post("CSL/User/QueryValueVoucherJson", {},
+    $$.post("CSL/ValueVoucher/QueryValueVoucherJson", {},
         function(txt) {
             if (txt.Status == 0) {
                 $page.find(".canUse").empty();

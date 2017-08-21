@@ -3,6 +3,7 @@
 	background-color: #EFEFF4;
 	position: relative;
 	overflow:hidden;
+	height: 100%;
 }
 
 #icenter_appointmentList .header{

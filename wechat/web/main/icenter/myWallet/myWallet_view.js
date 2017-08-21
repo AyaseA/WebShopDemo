@@ -26,12 +26,15 @@ $(function() {
     });
 
     $.ajax({
-        type: "GET",
-        url: url+"Product/Prod/QueryList",
+        type: "POST",
+        data:{
+            ProductType:5
+        },
+        url: url+"Product/Prod/QueryProdList",
         success: function(txt) {
             txt = $$.eval(txt);
             if(txt.Status != 0){
-            	alert("接口错误");
+            	layer.msg("网络错误");
             }else{
             	var list=txt.Data.Rows;
             	

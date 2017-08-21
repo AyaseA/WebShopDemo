@@ -2,7 +2,13 @@ $(function() {
     var $page = $('#icenter_storefront'),
         pageStr = 'icenter_storefront';
 
-    var type = $$.getQueryString("type");
+    var type = $$.getQueryString("type"),
+    loadComplete,node,data,storeNode,storeData;
+
+    $page.find(".productContent").empty();
+    $page.find(".storeContent").empty();
+    loadProduct({N:1});
+    loadStore();
 
     $page.off("click", ".price button").on("click", ".price button", function(e) {
         var tid = $(this).attr("data-tid");
@@ -27,14 +33,11 @@ $(function() {
     });
 
     if (type == "product") {
-        loadProduct();
         $page.find(".header span").removeClass("on");
         $page.find(".header span:first").addClass("on");
         $page.find(".productContent").show();
         $page.find(".storeContent").hide();
-
     } else {
-        loadStore();
         $page.find(".header span").removeClass("on");
         $page.find(".header span:last").addClass("on");
         $page.find(".productContent").hide();
@@ -61,21 +64,19 @@ $(function() {
         $(".storeContent,.productContent").hide();
         $("." + $(this).attr("data-content")).show();
         if ($(this).attr("data-content") == "productContent") {
-            loadProduct();
         } else {
-            loadStore();
         }
     });
 
 
-    function loadProduct() {
-        $$.post("CSL/Wish/QueryWishList", {},
+    function loadProduct(pdata) {
+        $$.post("CSL/Wish/QueryWishList", pdata,
             function(txt) {
                 if (txt.Status == 0) {
-                    $page.find(".productContent").empty();
-                    var node = "";
-                    var data = txt.Data.Rows;
-                    if (data.length == 0) {
+                	loadComplete = true;
+                    node = "";
+                    data = txt.Data.Rows;
+                    if (data.length == 0 && pdata.N == 1) {
                         node = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p></div>";
                         $page.find(".productContent").append(node);
                     } else {
@@ -93,6 +94,8 @@ $(function() {
                         $page.find(".productContent").append(node);
                     }
                 }
+                pdata.N += 1; 
+                isProdBottom("#icenter_storefront .productContent",pdata);
             }
         );
     }
@@ -102,8 +105,8 @@ $(function() {
             function(txt) {
                 if (txt.Status == 0) {
                     $page.find(".storeContent").empty();
-                    var storeNode = "";
-                    var storeData = txt.Data.Rows;
+                    storeNode = "";
+                    storeData = txt.Data.Rows;
                     if (storeData.length == 0) {
                         storeNode = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p></div>";
                         $page.find(".storeContent").append(storeNode);
@@ -123,6 +126,18 @@ $(function() {
                 }
             }
         );
+    }
+
+    function isProdBottom(area,ldata) {
+        $(area).scroll(function() {
+            var scrollTop = $(area).scrollTop() + $(area).height();
+            var scrollHeight = $(area)[0].scrollHeight;
+            if (scrollHeight - scrollTop < 10 && loadComplete) {
+                loadComplete = false;
+                loadProduct(ldata);
+                alert(1);
+            }
+        });
     }
 
 });

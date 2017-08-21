@@ -140,9 +140,8 @@ $(function () {
             },
             function(txt) {
                 if (txt.Status == 0) {
-
-                    layer.msg("二维码已被成功扫描");
                     clearInterval(time);
+                    layer.msg("二维码已被成功扫描");
                     $$.redirect("icenter/checkSucc.html");
                 }
             }

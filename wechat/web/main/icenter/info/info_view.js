@@ -24,4 +24,8 @@ $(function() {
         $page.find('a.option2').text('女').attr('data-id', '0').attr('data-type', 'sex');
     });
 
+    $page.on('click', 'div.address', function() {
+        $$.redirect('home/address.html');
+    });
+
 });

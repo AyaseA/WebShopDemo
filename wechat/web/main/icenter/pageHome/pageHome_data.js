@@ -25,9 +25,13 @@
 						d.MyAppoint.forEach(function(item) {
 							d['MyAppoint' + item.Status] = item.Count;
 						});
+						d.NotReviewCount.forEach(function(item) {
+							d['NotReviewCount' + item.IsService] = item.Count;
+						});
 						$("#icenter_pageHome").find('article').html(
 							template('icenter_pageHome_infos', {
-								d: res.Data
+								d: res.Data,
+								rewardBalance: $$.isLogin() ? +$$.getUserInfo().RewardPoint : 0
 							})
 						);
 					}

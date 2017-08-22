@@ -30,7 +30,7 @@
 	<article>
 		<div class="order_content" style="margin-top:42.4vw;">
 			<div class="content_wrap_food" id="">
-				<span class="content_wrap_food_1" id="reward">0.00</span>
+				<span class="content_wrap_food_1" id="reward">0</span>
 				<span class="content_wrap_food_2">我的积分</span>
 			</div>
 			<div class="content_wrap_food" id="content_account_wrap">
@@ -154,7 +154,7 @@
 	<script id="icenter_pageHome_infos" type="text/html">
 		<div class="order_content" style="margin-top:42.4vw;">
 			<div class="content_wrap_food" id="">
-				<span class="content_wrap_food_1" id="reward">{{d.RewardBalance}}</span>
+				<span class="content_wrap_food_1" id="reward">{{rewardBalance}}</span>
 				<span class="content_wrap_food_2">我的积分</span>
 			</div>
 			<div class="content_wrap_food" id="content_account_wrap">
@@ -199,8 +199,8 @@
 				<span class="order_business">待收货</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_4">
-				{{if d.NotReviewCount && d.NotReviewCount > 0}}
-				<div class="order_top_tips" id="assessment">{{d.NotReviewCount}}</div>
+				{{if d.NotReviewCount0 && d.NotReviewCount0 > 0}}
+				<div class="order_top_tips" id="assessment">{{d.NotReviewCount0}}</div>
 				{{/if}}
 				<img src="./images/center/round_check.png" alt="" class="order_control">
 				<span class="order_business">已完成</span>
@@ -233,8 +233,8 @@
 				<span class="order_business">已验证</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_9">
-				{{if d.MyService1 && d.MyService0 > 1}}
-				<div class="order_top_tips" id="assessment">{{d.MyService1}}</div>
+				{{if d.NotReviewCount1 && d.NotReviewCount1 > 1}}
+				<div class="order_top_tips" id="assessment">{{d.NotReviewCount1}}</div>
 				{{/if}}
 				<img src="./images/center/round_check.png" alt="" class="order_control">
 				<span class="order_business">已完成</span>

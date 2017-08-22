@@ -76,6 +76,9 @@
 #icenter_info >div.main >div.sex >p::before {
     background-image: url(../../images/center/friend_favor_blue.png);
 }
+#icenter_info >div.main >div.address >p::before {
+    background-image: url(../../images/center/note_pic.png);
+}
 #icenter_info >div.main >div:not(.account) >p::after {
     content: '';
     display: block;

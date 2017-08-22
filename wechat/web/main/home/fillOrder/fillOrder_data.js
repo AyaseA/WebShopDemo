@@ -13,7 +13,8 @@ $(function() {
         campaignNum = 0,
         detailUrl = 'Product/Prod/QueryDetail?ID=',
         serviceDate = '',
-        serviceTime = '';
+        serviceTime = '',
+        needDelivery = false;
 
     // 判断是否登录
     if ($$.isLogin(true)) {
@@ -35,11 +36,16 @@ $(function() {
         $page.find('>div.appointmentModal').hide().find('div.warp').css({
             'top': bodyHeight
         });
+        $page.find('>div.deliveryModal').hide().find('div.warp').css({
+            'top': bodyHeight
+        });
 
         // 优惠券积分
         setCoupon();
 		// 获取商品详情
         getProductDetail();
+        // 地址
+        getAddressList();
 
         getAppointTime(function(timeArr) {
             $page.find('div.appointmentModal div.timeList >div').html(template(pageStr + '_appointment_time_list', {
@@ -47,7 +53,17 @@ $(function() {
             }));
         });
 
-        // 确认
+        // 确认地址
+        $page.off('click', '>div.appointmentModal div.select')
+             .on('click', '>div.appointmentModal div.select', function() {
+            serviceDate = $page.find('>div.appointmentModal span.selected').attr('data-date');
+            serviceTime = $page.find('>div.appointmentModal span.selected').attr('data-time');
+            setServiceOption();
+            $page.find('>div.appointmentModal').find('div.warp').animate({
+                'top': bodyHeight
+            }, 200).end().fadeOut(200);
+        });
+        // 确认预约
         $page.off('click', '>div.appointmentModal div.select')
              .on('click', '>div.appointmentModal div.select', function() {
             serviceDate = $page.find('>div.appointmentModal span.selected').attr('data-date');
@@ -148,6 +164,13 @@ $(function() {
                     setMoney();
                     $page.find('>div.footer >button.order').removeClass('disabled');
                     getValueVoucher();
+
+                    needDelivery = d.NeedDelivery != null ? (d.NeedDelivery == 1 ? true : false) : false
+                    $page.find('div.delivery').html(template(pageStr + '_delivery', {
+                        needDelivery: needDelivery
+                    })).find('>div').width(
+                        boxWidth - 30 - 8 - 10
+                    );
                 }
             }
         );
@@ -214,12 +237,20 @@ $(function() {
     }
     // 添加订单
     function addOrder(calback) {
+        var addressID = $page.find('div.main div.delivery >div').attr('data-id') || '';
+        if (needDelivery && addressID == '') {
+            $page.find('>div.deliveryModal div.warp').animate({
+                'top': bodyHeight * 0.2
+            }, 200).parent().fadeIn(200);
+            return false;
+        }
         $$.post(
             'CSL/Order/AddOrder', {
                 'ProdList': productId + '_' + productNum,
                 'OrderType': orderType,
                 'ValueVoucherID': couponID,
-                'ValueVoucherNum': coupon
+                'ValueVoucherNum': coupon,
+                'AddressID': addressID
             },
             function(res) {
                 if (res.Status != 0) {
@@ -305,4 +336,16 @@ $(function() {
         var day = curDate.getDate() < 10 ? "0" + curDate.getDate() : curDate.getDate();
         return year + "-" + month + "-" + day;
     };
+    function getAddressList() {
+        $$.post('CSL/UserInfo/QueryAddressList', {
+            Rows: 9999
+        }, function(res) {
+            if (res.Status == 0 && res.Data.Rows) {
+                $page.find('div.addressData').html(template(pageStr + '_addrList', {
+                    list: res.Data.Rows,
+                    userAddressID: $$.getUserInfo().UserAddressID
+                }));
+            }
+        });
+    }
 });

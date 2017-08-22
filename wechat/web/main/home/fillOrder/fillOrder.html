@@ -7,6 +7,7 @@
 		<div class="productInfo"></div>
 		<div class="coupon"></div>
 		<div class="proMoney"></div>
+		<div class="delivery"></div>
 		<div class="appointment"></div>
 	</div>
 	<div class="footer">
@@ -29,6 +30,17 @@
 			</div>
 		</div>
 	</div>
+	<div class="deliveryModal">
+		<div class="warp">
+			<div class="title">
+				<a href="javascript:void(0)" class="closeModal"></a>
+				<span>填写收货地址</span>
+				<a href="javascript:$$.redirect('home/address.html')" class="manage">管理收货地址</a>
+			</div>
+			<div class="addressData"></div>
+			<div class="select">确认</div>
+		</div>
+	</div>
 	<div class="appointmentModal">
 		<div class="warp">
 			<div class="title">
@@ -41,6 +53,30 @@
 			<div class="select">确认</div>
 		</div>
 	</div>
+	<script id="home_fillOrder_addrList" type="text/html">
+        {{each list as addr}}
+	        {{set data = $imports.jsonParseFilter(addr.DataField)}}
+	        <div class="item {{addr.ID == userAddressID ? 'default' : ''}}" data-id="{{addr.ID}}" data-addr="{{data.province}}{{data.city}}{{data.county}}{{addr.AddressDetail}}">
+	            <div>
+	                <h4>{{addr.Name}}</h4>
+	                <p>{{if addr.Mobile != '0'}}{{addr.Mobile}}{{/if}}{{if addr.Mobile != '0' && addr.Tel != '0'}} / {{/if}}{{if addr.Tel != '0'}}{{addr.Tel}}{{/if}}</p>
+	                <p>{{data.province}}{{data.city}}{{data.county}}{{addr.AddressDetail}}</p>
+	                {{if addr.PostCode != ''}}
+	                <p>{{addr.PostCode}}</p>
+	                {{/if}}
+	            </div>
+	        </div>
+	    {{/each}}
+	</script>
+	<script id="home_fillOrder_delivery" type="text/html">
+		{{if needDelivery}}
+		<div data-id="{{id}}">
+			<p>收货地址</p>
+			<span>{{addr}}</span>
+		</div>
+		<i></i>
+		{{/if}}
+	</script>
 	<script id="home_fillOrder_appointment_time" type="text/html">
 		<div data-time="{{time}}">
 			<p>预约时间</p>

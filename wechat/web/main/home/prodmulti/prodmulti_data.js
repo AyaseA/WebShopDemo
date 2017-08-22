@@ -80,9 +80,11 @@ $(function() {
 	}
     // 根据商品id获取评论
     function getComments(productName) {
-        $$.get(
-            'Product/Review/ProductReviewList?ProductID=' + pid + '&ProductType=5',
-            function(res) {
+        $.ajax({
+            url: $$.config.serverAddr + 'Product/Review/QueryProductServiceReviewList?ProductID=' + pid,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
                 if (res.Status != 0) {
                     return false;
                 }
@@ -152,7 +154,7 @@ $(function() {
                     }));
                 }
             }
-        );
+        });
     }
     // 获取收藏列表存入cookie
     function getWishList() {

@@ -1,0 +1,145 @@
+#home_addAddr {
+    background-color: #EFEFF4;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#home_addAddr >div.header {
+    height: 44px;
+    background-color: #fff;
+    border-bottom: 1px solid #F6F6F7;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 12;
+    box-sizing: border-box;
+}
+#home_addAddr >div.header >a.goBack {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 44px;
+    width: 44px;
+    background: url(../../images/common/round_left_blue.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+    padding-left: 15px;
+}
+#home_addAddr >div.header >span {
+    margin: 0 auto;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    width: 60%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 11.5px 0;
+}
+#home_addAddr >div.header >a.addNew{
+    font-size: 14px;
+    padding: 12.5px;
+    position: absolute;
+    bottom: 0;
+    right: 3px;
+}
+#home_addAddr >div.main {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#home_addAddr div.addressData {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #EFEFF4;
+}
+#home_addAddr div.addressData >div.warp {
+    background-color: #FFF;
+    margin-top: 10px;
+}
+#home_addAddr div.addressData >div.warp >div {
+    padding: 9px 0 7px;
+    border-bottom: 1px solid #F6F6F6;
+}
+#home_addAddr div.addressData label {
+    display: block;
+    width: 100%;
+}
+#home_addAddr div.addressData span {
+    color: #646872;
+    width: 26%;
+    display: inline-block;
+    text-indent: 15px;
+}
+#home_addAddr div.addressData input {
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 5px;
+    width: 55%;
+}
+#home_addAddr div.addressData i {
+    background: url(../../images/common/right.png) no-repeat;
+    background-size: contain;
+    display: inline-block;
+    float: right;
+    width: 14px;
+    height: 14px;
+    margin-right: 15px;
+    margin-top: 6px;
+}
+#home_addAddr div.addressData textarea {
+    width: 100%;
+    height: 80px;
+    border: 0;
+    resize: none;
+    outline: none;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+#home_addAddr div.addressData div.setDefault {
+    padding: 3.5px 0 4.5px;
+}
+#home_addAddr div.addressData div.setDefault >span {
+    width: 50%;
+}
+#home_addAddr div.addressData div.setDefault i {
+    background-image: url(../../images/common/check.png);
+    margin: 6px 22px;
+    display: none;
+}
+#home_addAddr div.addressData div.setDefault.default i {
+    display: block;
+}
+#home_addAddr div.addressData button {
+    display: block;
+    background-color: #EA5514;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    margin: 15px auto;
+    padding: 10px 0;
+    width: 90%;
+    font-size: 16px;
+}
+#home_addAddr div.select{
+    height: 46px;
+    line-height: 46px;
+    width: 100%;
+    background-color: #EA5514;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: #FFF;
+    font-size: 16px;
+}

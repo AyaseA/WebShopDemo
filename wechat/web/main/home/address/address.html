@@ -1,0 +1,38 @@
+<div>
+    <div class="header">
+        <a href="javascript:void(0)" class="goBack"></a>
+        <span>管理收货地址</span>
+        <a href="home/addAddr.html" class="addNew">添加新地址</a>
+    </div>
+    <div class="main">
+        <div class="addrList"></div>
+    </div>
+    <div class="confirm">
+        <div>
+            <h4>提示</h4>
+            <p></p>
+            <button class="confirm" style="color: #EA5514;border-right: 1px solid #D6D6DB;">确认</button>
+            <button class="cancel">取消</button>
+        </div>
+    </div>
+    <script id="home_address_addrList" type="text/html">
+        {{each list as addr}}
+            {{set data = $imports.jsonParseFilter(addr.DataField)}}
+            <div class="item {{addr.ID == userAddressID ? 'default' : ''}}">
+                <div>
+                    <h4>{{addr.Name}}</h4>
+                    <p>{{if addr.Mobile != '0'}}{{addr.Mobile}}{{/if}}{{if addr.Mobile != '0' && addr.Tel != '0'}} / {{/if}}{{if addr.Tel != '0'}}{{addr.Tel}}{{/if}}</p>
+                    <p>{{data.province}}{{data.city}}{{data.county}}{{addr.AddressDetail}}</p>
+                    {{if addr.PostCode != ''}}
+                    <p>{{addr.PostCode}}</p>
+                    {{/if}}
+                </div>
+                <i data-id="{{addr.ID}}">设为默认</i>
+                <span>
+                    <a href="home/addAddr.html?aid={{addr.ID}}" class="modify">修改</a>
+                    <a href="javascript:void(0)" class="delete" data-id="{{addr.ID}}">删除</a>
+                </span>
+            </div>
+        {{/each}}
+    </script>
+</div>

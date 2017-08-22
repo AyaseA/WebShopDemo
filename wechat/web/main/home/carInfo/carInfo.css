@@ -81,7 +81,7 @@
 	margin-bottom: 6px;
 }
 #home_carInfo >div.main div.carDetail >div >div {
-	padding: 9px 0;
+	padding: 9px 0 7px;
     border-bottom: 1px solid #F6F6F6;
 }
 #home_carInfo >div.main div.carDetail >div >div:last-child {

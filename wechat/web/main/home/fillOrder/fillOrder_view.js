@@ -3,42 +3,45 @@ $(function() {
 		$page = $('#home_fillOrder'),
     	pageStr = 'home_fillOrder',
 	    boxWidth = $page.find('>div.header').width(),
-	    headerHeight = $page.find('>div.header').height(),
 	    footerHeight = $page.find('>div.footer').height();
-
-	$page.find('>div.couponModal').css({
-		'top': bodyHeight
-	}).find('>div.content').css({
-		'height': bodyHeight - headerHeight * 2 - 1,
-		'width': boxWidth
-	}).find('>div.warp').css({
-		'height': bodyHeight - headerHeight * 2 - 1,
-		'width': boxWidth * 2
-	}).find('>div').css({
-		'height': bodyHeight - headerHeight * 2 - 1,
-		'width': boxWidth
-	});
 
 	if ($$.config.isCompatibleIOSTop && navigator.userAgent.indexOf('csl-ios') != -1) {
         $page.find('>div.main').css({
         	'top': '64px'
-        }).end().find('>div.header').height(64).find('a, span').css({
-            'bottom': 0
-        });
+        }).end().find('>div.header').height(64);
         $page.find('>div.couponModal').find('div.title').height(64)
-        	.end().find('>ul').css({
-        		'top': '65px'
-        	})
-        	.end().find('>div.content').css({
-        		'top': '110px',
-        		'height': bodyHeight - 110
-        	});
+            .end().find('>ul').css({
+                'top': '65px'
+            })
+            .end().find('>div.content').css({
+                'top': '110px',
+                'height': bodyHeight - 110
+            });
     }
+
+    var headerHeight = $page.find('>div.header').height();
+
+    $page.find('>div.couponModal').css({
+        'top': bodyHeight
+    }).find('>div.content').css({
+        'height': bodyHeight - headerHeight - 44 - 1,
+        'width': boxWidth
+    }).find('>div.warp').css({
+        'height': bodyHeight - headerHeight - 44 - 1,
+        'width': boxWidth * 2
+    }).find('>div').css({
+        'height': bodyHeight - headerHeight - 44 - 1,
+        'width': boxWidth
+    });
 
 	// 设置各种高度
 	$page.find('>div.main').css({
 		'height': bodyHeight - headerHeight - footerHeight,
 	});
+
+    $page.find('>div.deliveryModal div.addressData').css({
+        'height': bodyHeight * 0.8 - 40 - 46
+    });
 
 	$page.find('>div.appointmentModal div.timeList').css({
 		'height': bodyHeight * 0.8 - 40 - 46
@@ -46,6 +49,38 @@ $(function() {
 
 	// 设置返回页面
 	$$.setGoBack($page.find('>div.header >a.goBack'));
+
+    // 关闭modal
+    $page.on('click', '>div.deliveryModal, >div.deliveryModal a.closeModal', function() {
+        $page.find('>div.deliveryModal').find('div.warp').animate({
+            'top': bodyHeight
+        }, 200).end().fadeOut(200);
+    }).on('click', 'div.warp', function(e) {
+        e.stopPropagation();
+    });
+    // 打开
+    $page.on('click', 'div.delivery', function() {
+        $page.find('>div.deliveryModal div.warp').animate({
+            'top': bodyHeight * 0.2
+        }, 200).parent().fadeIn(200);
+    });
+    // 选择地址
+    $page.on('click', 'div.deliveryModal div.item', function() {
+        var id = $(this).attr('data-id'),
+            addr = $(this).attr('data-addr');
+
+        $page.find('div.delivery').html(template(pageStr + '_delivery', {
+            needDelivery: true,
+            id: id,
+            addr: addr
+        })).find('>div').width(
+            boxWidth - 30 - 8 - 10
+        );
+        
+        $page.find('>div.deliveryModal').find('div.warp').animate({
+            'top': bodyHeight
+        }, 200).end().fadeOut(200);
+    });
 
 	// 关闭modal
     $page.on('click', '>div.appointmentModal, >div.appointmentModal a.closeModal', function() {

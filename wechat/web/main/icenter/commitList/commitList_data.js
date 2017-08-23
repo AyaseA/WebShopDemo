@@ -3,6 +3,7 @@ $(function() {
     var noData = "<div class='noData'><img src='images/orders/no_orders.png'><p>暂无记录</p></div>";
 
     var contentHeight=window.innerHeight-$page.find(".header").height()-$page.find(".nav").height()-$page.find(".empty").height();
+    var loadComplete;
     $page.find(".content").height(contentHeight);
 
     $page.off("click",".revice").on("click",".revice",function(){
@@ -17,7 +18,7 @@ $(function() {
         $$.redirect("icenter/checkCommit.html?oid=" + $(this).attr("data-oid") + "&pid=" + $(this).attr("data-pid") + "&type="+$(this).attr("data-type"));
     });
 
-
+    
     $$.post($$.serverAddr + "CSL/Review/QueryMyProductReviewList", {
             IsReview: 0
         },
@@ -141,7 +142,13 @@ $(function() {
         }
     }
 
-    function bottomToLoad(){
-        
+    function isBottom(area) {
+        $(area).scroll(function() {
+            var scrollTop = $(area).scrollTop() + $(area).height();
+            var scrollHeight = $(area)[0].scrollHeight;
+            if (scrollHeight - scrollTop < 10 && loadComplete) {
+                loadComplete = false;
+            }
+        });
     }
 });

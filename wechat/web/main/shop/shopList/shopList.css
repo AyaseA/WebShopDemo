@@ -7,65 +7,73 @@
     position: relative;
 }
 #shop_shopList >div.header {
-	background-color: #EA5514;
+	background-color: #fff;
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 10;
 	height: 44px;
+	border-bottom: 1px solid #d6d6db;
+	text-align: center;
+    line-height: 44px;
 }
 @media screen and (min-width: 410px) {
 	#shop_shopList >div.header {
 		height: 48px;
+		line-height: 48px;
 	}
 }
 @media screen and (max-width: 350px) {
 	#shop_shopList >div.header {
 		height: 40px;
+		line-height: 40px;
 	}
 }
-#shop_shopList >div.header >a.location {
-    font-size: 14px;
-    color: #fff;
-    text-align: center;
-    display: inline-block;
-    height: 100%;
-    line-height: 45px;
-    width: 22%;
+
+#shop_shopList >div.header >a.location >span{
+	position: absolute;
+	left: 15px;
 }
-#shop_shopList >div.header >a.location span {
-	overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 86%;
-    display: inline-block;
-    padding-left: 4px;
-}
+
 #shop_shopList >div.header >a.location >span:before {
 	content: '';
-	background-image: url(../../images/common/location.png);
+	background-image: url(../../images/common/location1.png);
 	background-repeat: no-repeat;
 	background-size: contain;
     display: inline-block;
-	height: 19px;
-    width: 14px;
+	height: 23px;
+    width: 23px;
     position: relative;
     top: 5px;
     left: -2px;
+    font-size: 16px;
 }
-#shop_shopList >div.header >a.search {
-    background: url(../../images/common/search.png) no-repeat;
-    background-size: 100% 60%;
-    background-position-y: center;
-    display: inline-block;
-    position: absolute;
-    margin: 0 auto 0;
-    left: 10px;
-    right: 0;
-    width: 208px;
-    height: 100%;
-    top: 0;
+
+#shop_shopList .header .title{
+	font-size: 4.4vw;
+    font-weight: bold;
 }
+
+#shop_shopList .header .search{
+	position: absolute;
+    right: 4vw;
+    top: 1.8vw;
+}
+
+#shop_shopList .header .search img{
+	width: 6.5vw;
+}
+
+#shop_shopList .header .map{
+	position: absolute;
+    right: 15vw;
+    top: 1.8vw;
+}
+
+#shop_shopList .header .map img{
+	width: 6.5vw;
+}
+
 @media screen and (min-width: 410px) {
 	#shop_shopList >div.header >a.location {
 	    width: 25%;
@@ -85,10 +93,6 @@
 	    width: 12px;
 	    height: 16px;
 	    top: 4px;
-	}
-	#shop_shopList >div.header >a.search {
-		width: 175px;
-        background-size: 100% 64%;
 	}
 }
 
@@ -299,15 +303,39 @@
 #shop_shopList .shopInfo{
 	width:73%;
 	display:inline-block;
-	position:relative;
 }
 
 #shop_shopList .shopInfo h2{
-	width: 65vw;
+	width: 50vw;
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+#shop_shopList .shopInfo .shopType{
+	border-radius: 5vw;
+	font-size: 3.7vw;
+	width: 15vw;
+    display: inline-block;
+    text-align: center;
+    padding: 0.1vw;
+    margin-right: 1vw;
+}
+
+#shop_shopList .shopInfo .t1Shop{
+	background: #feefe8;
+	color: #ea5514;
+}
+
+#shop_shopList .shopInfo .t2Shop{
+	background: #fff8eb;
+	color: #f8b62d;
+}
+
+#shop_shopList .shopInfo .t3Shop{
+	background: #e9eefa;
+	color: #2d50a7;
 }
 
 #shop_shopList .shopInfo ul{
@@ -334,11 +362,6 @@
 
 #shop_shopList .msgRight{
 	width:15%;
-}
-
-#shop_shopList .shopInfo p{
-	font-size:smaller;
-	color:#666;
 }
 
 #shop_shopList .price{
@@ -556,20 +579,21 @@
 
 #shop_shopList .shopInfo{
 	position: absolute;
-	top:1.5vw;
+	top:3vw;
 	left: 30vw;
 }
 
 #shop_shopList .shopInfo h2{
 	font-weight: 700;
-	font-size: 4.44vw;
+	font-size: 4.1vw;
+	vertical-align: middle;
 }
 
 #shop_shopList .shopInfo p{
 	font-size: 3.3vw;
 	width: 67vw;
 	color: #9D9B9B;
-	margin-top: 2vw;
+	margin-top: 1vw;
 }
 
 #shop_shopList .fr{

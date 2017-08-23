@@ -36,10 +36,6 @@ $(function() {
         $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id") + "&status=0");
     });
 
-    $page.off("click", ".appointFoot .commit").on("click", ".appointFoot .commit", function() {
-        $$.redirect("icenter/commitList.html");
-    });
-
     $$.post("CSL/Service/QueryMyService", { Status: 0, N: 1, Rows: 30 }, function(txt){
         $page.find(".notAppoint").html(
             template('icenter_appointmentList_notAppoint', {

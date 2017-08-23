@@ -155,7 +155,7 @@ $(function() {
                     var shoplist = "";
                     for (var i = 0; i < data.length; i++) {
                         var distance = getGreatCircleDistance(locationInfo ? locationInfo.latitude : 36.6875642852, locationInfo ? locationInfo.longitude : 117.1330654621, data[i].Latitude, data[i].Longitude);
-                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo"><h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span><span class="fr">' + (data[i].Phone || "无") + '</span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo">'+showStoreType(data[i].Type)+'<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span><span class="fr">' + (data[i].Phone || "无") + '</span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 
@@ -185,7 +185,7 @@ $(function() {
         });
     }
 
-    loadStore({ N: 1, CityID: 370100 }, "#shop_shopList .shopList");
+    loadStore({ N: 1, CityID: 370100,Type:-1 }, "#shop_shopList .shopList");
     //3级联动筛选
     //点击区域
     $("#shopList_positionS").on("click", "li", function() {
@@ -375,6 +375,17 @@ $(function() {
             removeMirror();
         });
     }
+
+    function showStoreType(type){
+        if(type == 0){
+            return "<span class='shopType t1Shop'>旗舰店</span>";
+        }else if(type == 1){
+            return "<span class='shopType t2Shop'>综合店</span>";
+        }else if(type == 2){
+            return "<span class='shopType t3Shop'>专营店</span>";
+        }
+    }
+
     loadEvent();
 
 });

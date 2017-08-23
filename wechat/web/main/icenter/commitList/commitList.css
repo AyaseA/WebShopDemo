@@ -65,7 +65,7 @@
 	box-sizing: border-box;
 }
 
-#icenter_commitList .content .waitRevice,#icenter_commitList .content .hadRevice,#icenter_commitList .content .serverRevice{
+#icenter_commitList .content .waitRevice,#icenter_commitList .content .hadRevice,#icenter_commitList .content .serverRevice,#icenter_commitList .content .serverReviced{
 	display: none;
 }
 

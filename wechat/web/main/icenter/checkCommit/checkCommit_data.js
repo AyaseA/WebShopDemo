@@ -6,15 +6,19 @@ $(function() {
 
     var orderID = $$.getQueryString("oid");
     var productID = $$.getQueryString("pid");
+    var type = $$.getQueryString("type"),typeServer;
 
     function changeDetailTime(time) {
         return new Date(time * 1000).pattern('yyyy-MM-dd HH:mm:ss');
     }
 
-    $$.post($$.serverAddr + "CSL/Review/QueryReviewListDetail", {
-            OrderID: orderID,
-            ProductID: productID
-        },
+    if(type == 0){
+        typeServer = "QueryServiceReviewList";
+    }else{
+        typeServer = "QueryProductReviewList";
+    }
+
+    $$.get($$.serverAddr + "Product/Review/"+typeServer+"?OrderID="+orderID+"&ProductID="+productID+"&IsReview=1&WToken="+$$.getToken(), 
         function(txt) {
             if (txt.Status == 0) {
                 $page.find(".conmmitContent img").remove();

@@ -8,7 +8,7 @@ $(function() {
     $page.find(".productContent").empty();
     $page.find(".storeContent").empty();
     loadProduct({N:1});
-    loadStore();
+    loadStore({N:1});
 
     $page.off("click", ".price button").on("click", ".price button", function(e) {
         var tid = $(this).attr("data-tid");
@@ -57,7 +57,6 @@ $(function() {
         }
     }
 
-
     $page.off("click", ".header span").on("click", ".header span", function() {
         $page.find(".header span").removeClass("on");
         $(this).addClass("on");
@@ -100,14 +99,14 @@ $(function() {
         );
     }
 
-    function loadStore() {
-        $$.post("CSL/StoreFollow/QueryFollowList", {},
+    function loadStore(sdata) {
+        $$.post("CSL/StoreFollow/QueryFollowList", sdata,
             function(txt) {
                 if (txt.Status == 0) {
-                    $page.find(".storeContent").empty();
+                	loadStoreComplete = true;
                     storeNode = "";
                     storeData = txt.Data.Rows;
-                    if (storeData.length == 0) {
+                    if (storeData.length == 0 && sdata.N == 1) {
                         storeNode = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p></div>";
                         $page.find(".storeContent").append(storeNode);
                     } else {
@@ -123,6 +122,8 @@ $(function() {
                         }
                         $page.find(".storeContent").append(storeNode);
                     }
+                    sdata += 1;
+                    isSotreBottom("#icenter_storefront .storeContent",sdata);
                 }
             }
         );
@@ -135,9 +136,18 @@ $(function() {
             if (scrollHeight - scrollTop < 10 && loadComplete) {
                 loadComplete = false;
                 loadProduct(ldata);
-                alert(1);
             }
         });
     }
 
+    function isSotreBottom(area,sdata) {
+        $(area).scroll(function() {
+            var scrollTop = $(area).scrollTop() + $(area).height();
+            var scrollHeight = $(area)[0].scrollHeight;
+            if (scrollHeight - scrollTop < 10 && loadComplete) {
+                loadStoreComplete = false;
+                loadStore(sdata);
+            }
+        });
+    }
 });

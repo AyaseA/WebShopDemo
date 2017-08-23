@@ -150,7 +150,7 @@
                         </div>
                     </div>
                     <div class="appointFoot">
-                        <button class="checkAppoint" data-id={{notVerify.ID}}>查看预约</button>
+                        <span>完成时间：{{timeFilter(notVerify.TimeLine}}</span><button class="checkAppoint" data-id={{notVerify.ID}}>查看预约</button>
                     </div>
                 </div>
                 {{/each}}
@@ -192,7 +192,7 @@
                         </div>
                     </div>
                     <div class="appointFoot">
-                        <span>服务完成时间：{{timeFilter(hadComplite.AddTime)}}</span>
+                        <span>服务完成时间：{{timeFilter(hadComplite.TimeLine)}}</span>
                     </div>
                 </div>
                 {{/each}}

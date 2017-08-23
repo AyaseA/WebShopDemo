@@ -96,7 +96,7 @@ $(function() {
                             '<p><b>'+productList[i].ProductName+'</b></p>' +
                             '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                             '<p class="rewardPoint">评价最多可得20积分</p>' +
-                            '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'">评价</button>' +
+                            '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ServiceID+'">评价</button>' +
                             '</div>' +
                             '</div>';
                     }
@@ -124,7 +124,7 @@ $(function() {
                             '<p><b>'+productList[i].ProductName+'</b></p>' +
                             '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                             '<p class="rewardPoint">评价最多可得20积分</p>' +
-                            '<button class="checkRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'" data-type="0">查看评价</button>'+
+                            '<button class="checkRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ServiceID+'" data-type="0">查看评价</button>'+
                             '<button class="addRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'">追加评价</button>' +
                             '</div>' +
                             '</div>';

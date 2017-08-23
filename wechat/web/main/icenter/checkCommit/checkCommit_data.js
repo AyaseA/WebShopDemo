@@ -13,12 +13,12 @@ $(function() {
     }
 
     if(type == 0){
-        typeServer = "QueryServiceReviewList";
+        typeServer = "QueryServiceReviewList"+"?OrderID="+orderID+"&ServiceID="+productID+"&WToken="+$$.getToken()+"&HasImg=-1";
     }else{
-        typeServer = "QueryProductReviewList";
+        typeServer = "QueryProductReviewList"+"?OrderID="+orderID+"&ProductID="+productID+"&WToken="+$$.getToken()+"&HasImg=-1";
     }
 
-    $$.get($$.serverAddr + "Product/Review/"+typeServer+"?OrderID="+orderID+"&ProductID="+productID+"&IsReview=1&WToken="+$$.getToken(), 
+    $$.get($$.serverAddr + "Product/Review/"+typeServer, 
         function(txt) {
             if (txt.Status == 0) {
                 $page.find(".conmmitContent img").remove();

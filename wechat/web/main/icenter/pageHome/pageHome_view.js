@@ -123,7 +123,7 @@
             } break;
             case 'activity': {
                 // 活动
-                $$.redirect('home/product.html?pid=7');
+                $$.redirect('home/product.html?pid=48');
             } break;
             case 'center': {
                 // 个人中心

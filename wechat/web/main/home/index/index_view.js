@@ -90,7 +90,7 @@ $(function(){
 
     // recomened
     $page.on('click', 'div.recommend >div[data-type="qrcodeMoveCar"]', function() {
-        layer.msg('<!--  -->');
+        $$.redirect('home/product.html?pid=48');
     });
 
     // 点击商品查看详情
@@ -113,7 +113,7 @@ $(function(){
             } break;
             case 'activity': {
                 // 活动
-                $$.redirect('home/prodservice.html?pid=7');
+                $$.redirect('home/product.html?pid=48');
             } break;
             case 'center': {
                 // 个人中心

@@ -8,9 +8,13 @@
     );
 
     //个人信息
-    $('.personal_info').on('click', function() {
-        $$.redirect('icenter/info.html');
-    });    
+    $('.personal_info').off('click').on('click', function() {
+        if ($(this).find('.user_name').attr('data-islogin') == 1) {
+            $$.redirect('icenter/info.html');
+        } else {
+            $$.isLogin(true);
+        }
+    });      
     //邀请有礼
     $('#head_active_1').on('click', function() {
         $$.redirect('home/recommend.html');

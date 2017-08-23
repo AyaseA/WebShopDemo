@@ -1,7 +1,8 @@
 !(function(){
+	$('.user_name').text('登录/注册').attr('data-islogin', 0);
 	if ($$.isLogin()) {
 		var token = $$.getToken();
-		$('.user_name').html($$.getUserMobile());
+		$('.user_name').text($$.getUserMobile()).attr('data-islogin', 1);
 		var $page = $('#icenter_pageHome'),
 	        pageStr = 'icenter_pageHome';
 		var resImg = $$.getUserInfo().Img;//获取头像
@@ -42,7 +43,11 @@
 		function bindEvent() {
 			//个人信息
 		    $('.personal_info').off('click').on('click', function() {
-		        $$.redirect('icenter/info.html');
+		    	if ($(this).find('.user_name').attr('data-islogin') == 1) {
+			        $$.redirect('icenter/info.html');
+		    	} else {
+		    		$$.isLogin(true);
+		    	}
 		    });    
 		    //邀请有礼
 		    $('#head_active_1').off('click').on('click', function() {

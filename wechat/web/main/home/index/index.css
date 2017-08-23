@@ -339,11 +339,17 @@
 #home_index >div.footer nav >li:nth-child(2).active::before {
     background-image: url(../../images/index/carCrvOn.png);
 }
-#home_index >div.footer nav >li:nth-child(3)::before {
+/* #home_index >div.footer nav >li:nth-child(3)::before {
     background-image: url(../../images/index/presentOff.png);
 }
 #home_index >div.footer nav >li:nth-child(3).active::before {
-	background-image: url(../../images/index/presentOn.png);
+    background-image: url(../../images/index/presentOn.png);
+} */
+#home_index >div.footer nav >li:nth-child(3)::before {
+    background-image: url(../../images/index/qr_code.png);
+}
+#home_index >div.footer nav >li:nth-child(3).active::before {
+	background-image: url(../../images/index/qr_code_ck.png);
 }
 #home_index >div.footer nav >li:nth-child(4)::before {
     background-image: url(../../images/index/centerOff.png);

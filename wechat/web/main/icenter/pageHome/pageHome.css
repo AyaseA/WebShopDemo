@@ -305,11 +305,17 @@
 #icenter_pageHome >div.footer nav >li:nth-child(2).active:before {
  background-image: url(../../images/index/carCrvOn.png);
 }
-#icenter_pageHome >div.footer nav >li:nth-child(3):before {
- background-image: url(../../images/index/presentOff.png);
+/* #icenter_pageHome >div.footer nav >li:nth-child(3)::before {
+    background-image: url(../../images/index/presentOff.png);
 }
-#icenter_pageHome >div.footer nav >li:nth-child(3).active:before {
-	background-image: url(../../images/index/presentOn.png);
+#icenter_pageHome >div.footer nav >li:nth-child(3).active::before {
+    background-image: url(../../images/index/presentOn.png);
+} */
+#icenter_pageHome >div.footer nav >li:nth-child(3)::before {
+    background-image: url(../../images/index/qr_code.png);
+}
+#icenter_pageHome >div.footer nav >li:nth-child(3).active::before {
+    background-image: url(../../images/index/qr_code_ck.png);
 }
 #icenter_pageHome >div.footer nav >li:nth-child(4):before {
  background-image: url(../../images/index/centerOff.png);

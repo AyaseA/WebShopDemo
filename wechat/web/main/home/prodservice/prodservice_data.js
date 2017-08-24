@@ -91,6 +91,11 @@ $(function() {
                     productName = d.Name;
                     // 获取评论
                     getComments(laszyParam.product);
+                    getComments(laszyParam.all);
+                    getComments(laszyParam.good);
+                    getComments(laszyParam.middle);
+                    getComments(laszyParam.bad);
+                    getComments(laszyParam.haveImg);
                     var descriTxt = '',
                         descriTitle = '',
                         descriImgs = [];
@@ -274,7 +279,14 @@ $(function() {
                         $proBox.removeClass('loaded');
                     }
                     data.loadComplate = true;
+                } else {
+                    $proBox.html(template(pageStr + '_product_no_comment', {}));
                 }
+                var commonTitle = $page.find('>div.main div.comments >p');
+                commonTitle.find('>i').text(laszyParam.good.allCount);
+                commonTitle.find('span').text(parseFloat(
+                    (laszyParam.good.allCount / laszyParam.all.allCount || 1) * 100
+                ).toFixed(0) + '%');
             }
         });
     }

@@ -579,3 +579,18 @@
 #home_prodservice >div.storeModal div.selectAndBuy.disable {
     background-color: #CCC;
 }
+#home_prodservice div.no_comment {
+    text-align: center;
+    padding: 30px 0 !important;
+}
+#home_prodservice div.commentList div.no_comment {
+    background-color: #EFEFF4;
+}
+#home_prodservice div.no_comment >img {
+    width: 50%;
+}
+#home_prodservice div.no_comment >p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #9a9a9a;
+}

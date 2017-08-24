@@ -2,6 +2,7 @@ $(function() {
     var $page = $('#home_prodmulti'),
 	    pageStr = 'home_prodmulti',
 	    pid = $$.getQueryString('pid'),
+        productName = '',
         pNum = 1;
     
     // 页面重新显示的一些初始化
@@ -36,8 +37,14 @@ $(function() {
                 }
                 if (res.Data) {
                     var d = res.Data;
+                    productName = d.Name;
                     // 获取评论
-                    getComments(d.Name);
+                    getComments(laszyParam.product);
+                    getComments(laszyParam.all);
+                    getComments(laszyParam.good);
+                    getComments(laszyParam.middle);
+                    getComments(laszyParam.bad);
+                    getComments(laszyParam.haveImg);
                     var descriTxt = '',
                         descriTitle = '',
                         descriImgs = [];
@@ -78,81 +85,157 @@ $(function() {
             }
         );
 	}
+    // 懒加载
+    var laszyParam = {
+        product: {
+            loadComplate: true,
+            N: 1,
+            allCount: 0,
+            Rows: 2,
+            HasImg: -1,
+            SRating: 0,
+            ERating: 100,
+            target: $page.find('>div.main div.commentList')
+        },
+        all: {
+            loadComplate: true,
+            N: 1,
+            allCount: 0,
+            Rows: 10,
+            HasImg: -1,
+            SRating: 0,
+            ERating: 100,
+            target: $page.find('>div.main div.evaluate div.all'),
+            isFirst: true
+        },
+        good: {
+            loadComplate: true,
+            N: 1,
+            allCount: 0,
+            Rows: 10,
+            HasImg: -1,
+            SRating: 67,
+            ERating: 100,
+            target: $page.find('>div.main div.evaluate div.good'),
+            isFirst: true
+        },
+        middle: {
+            loadComplate: true,
+            N: 1,
+            allCount: 0,
+            Rows: 10,
+            HasImg: -1,
+            SRating: 34,
+            ERating: 66,
+            target: $page.find('>div.main div.evaluate div.middle'),
+            isFirst: true
+        },
+        bad: {
+            loadComplate: true,
+            N: 1,
+            allCount: 0,
+            Rows: 10,
+            HasImg: -1,
+            SRating: 0,
+            ERating: 33,
+            target: $page.find('>div.main div.evaluate div.bad'),
+            isFirst: true
+        },
+        haveImg: {
+            loadComplate: true,
+            N: 1,
+            allCount: 0,
+            Rows: 2,
+            HasImg: 1,
+            SRating: 0,
+            ERating: 100,
+            target: $page.find('>div.main div.evaluate div.haveImg'),
+            isFirst: true
+        }
+    };
+    $page.find('>div.main div.product, >div.main div.reviews div.warp >div').scrollTop(0).scroll(function(e) {
+        var $target = $(e.target),
+            target = 'product';
+        if ($target.hasClass('all')) {
+            target = 'all';
+        } else if ($target.hasClass('good')) {
+            target = 'good';
+        } else if ($target.hasClass('middle')) {
+            target = 'middle';
+        } else if ($target.hasClass('bad')) {
+            target = 'bad';
+        } else if ($target.hasClass('haveImg')) {
+            target = 'haveImg';
+        }
+        if (laszyParam[target].loadComplate) {
+            if (laszyParam[target].N * laszyParam[target].Rows < laszyParam[target].allCount) {
+                var proBox,
+                    maxScroll = $target[0].scrollHeight - $target.height();
+                if ($target.hasClass('product')) {
+                    proBox = $target.find('div.commentList').removeClass('loaded');
+                    /*maxScroll = */
+                } else {
+                    proBox = $target.removeClass('loaded');
+                }
+                if ($target.scrollTop() == maxScroll) {
+                    proBox.addClass('loading');
+                    laszyParam[target].N++;
+                    getComments(laszyParam[target]);
+                    $target.scrollTop($target.scrollTop() - 10);
+                    laszyParam[target].loadComplate = false;
+                }
+            }
+        } else {
+            return false;
+        }
+    });
     // 根据商品id获取评论
-    function getComments(productName) {
+    function getComments(data) {
+        var $proBox = $(data.target);
         $.ajax({
-            url: $$.config.serverAddr + 'Product/Review/QueryProductServiceReviewList?ProductID=' + pid,
+            url: $$.config.serverAddr + 'Product/Review/QueryProductServiceReviewList',
+            data: {
+                ProductID: pid,
+                HasImg: data.HasImg || -1,
+                SRating: data.SRating || 0,
+                ERating: data.ERating || 100,
+                N: data.N || 1,
+                Rows: data.Rows || 10
+            },
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if (res.Status != 0) {
                     return false;
                 }
-                if (res.Data && res.Data.Rows) {
-                    var d = res.Data.Rows,
-                        i = 0,
-                        tmp,
-                        goodComments = [],
-                        midComments = [],
-                        badCommons = [],
-                        haveImgComments = [];
-                    for (i; i < d.length; i++) {
-                        tmp = d[i].Rating;
-                        if (tmp >= 0 && tmp <= 33) {
-                            badCommons.push(d[i]);
-                        } else if (tmp > 33 && tmp <= 66) {
-                            midComments.push(d[i]);
-                        } else if (tmp > 66 && tmp <= 100) {
-                            goodComments.push(d[i]);
-                        }
-                        if (d[i].ImgList) {
-                            haveImgComments.push(d[i]);
-                        }
+                if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {
+                    if (data.N == 1) {
+                       $proBox.empty();
+                        data.allCount = parseInt(res.Data.Count);
                     }
-                    var commonTitle = $page.find('>div.main div.comments >p');
-                    commonTitle.find('>i').text(d.length);
-                    commonTitle.find('span').text(parseFloat(
-                        (goodComments.length / d.length || 1) * 100
-                    ).toFixed(0) + '%');
-
-                    var allComments = template(pageStr + '_product_comment', {
-                        serverAddr: $$.config.serverAddr,
-                        commentList: d,
-                        productName: productName
-                    });
-                    // tab1中下面的评论
-                    $page.find('>div.main div.product div.commentList').html(allComments);
-                    // 评论-全部
-                    $page.find('>div.main div.evaluate div.all').html(allComments);
-                    // 评论-好评
-                    $page.find('>div.main div.evaluate div.good').html(
+                    var d = res.Data.Rows;
+                    // 
+                    $proBox.append(
                         template(pageStr + '_product_comment', {
                             serverAddr: $$.config.serverAddr,
-                            commentList: goodComments,
+                            commentList: d,
                             productName: productName
                     }));
-                    // 评论-中评
-                    $page.find('>div.main div.evaluate div.middle').html(
-                        template(pageStr + '_product_comment', {
-                            serverAddr: $$.config.serverAddr,
-                            commentList: midComments,
-                            productName: productName
-                    }));
-                    // 评论-差评
-                    $page.find('>div.main div.evaluate div.bad').html(
-                        template(pageStr + '_product_comment', {
-                            serverAddr: $$.config.serverAddr,
-                            commentList: badCommons,
-                            productName: productName
-                    }));
-                    // 评论-有图
-                    $page.find('>div.main div.evaluate div.haveImg').html(
-                        template(pageStr + '_product_comment', {
-                            serverAddr: $$.config.serverAddr,
-                            commentList: haveImgComments,
-                            productName: productName
-                    }));
+                    $proBox.removeClass('loading');
+                    if (data.N * data.Rows >= data.allCount) {
+                        $proBox.addClass('loaded');
+                    } else {
+                        $proBox.removeClass('loaded');
+                    }
+                    data.loadComplate = true;
+                } else {
+                    $proBox.html(template(pageStr + '_product_no_comment', {}));
                 }
+                var commonTitle = $page.find('>div.main div.comments >p');
+                commonTitle.find('>i').text(laszyParam.good.allCount);
+                commonTitle.find('span').text(parseFloat(
+                    (laszyParam.good.allCount / laszyParam.all.allCount || 1) * 100
+                ).toFixed(0) + '%');
             }
         });
     }

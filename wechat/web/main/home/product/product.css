@@ -140,6 +140,18 @@
 #home_product div.product div.comments >div.commentList {
     background-color: #fff;
 }
+#home_product div.product div.comments >div.commentList.loading::after {
+    content: '加载中···';
+    padding-bottom: 5px;
+    display: block;
+    text-align: center;
+}
+#home_product div.product div.comments >div.commentList.loaded::after {
+    content: '已加载全部';
+    padding-bottom: 5px;
+    display: block;
+    text-align: center;
+}
 #home_product div.product div.comments >p >i {
 	font-style: normal;
 }
@@ -216,12 +228,21 @@
     height: 23vw;
 }
 #home_product div.product div.comment p.proInfo {
-	color: #B6B6B6;
-	margin: 2px 0;
+    color: #B6B6B6;
+    margin: 2px 0;
+    position: relative;
+    font-size: 13px;
 }
 #home_product div.product div.comment p.proInfo >small {
-	float: right;
-	font-size: 14px;
+    float: right;
+    font-size: 13px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    height: 18px;
 }
 #home_product div.proDetail {
     font-size: 0;
@@ -262,6 +283,17 @@
 	float: left;
     overflow-x: hidden;
     overflow-y: auto;
+}
+#home_product div.reviews >div.warp >div.loaded::after {
+    content: '已加载全部';
+    padding-bottom: 5px;
+    display: block;
+    text-align: center;
+}
+#home_product div.evaluate div.comment {
+    padding: 5px 15px;
+    border-bottom: 1px solid #E7E7E7;
+    background-color: #fff;
 }
 #home_product div.evaluate div.comment {
 	padding: 5px 15px;
@@ -319,12 +351,21 @@
     height: 23vw;
 }
 #home_product div.evaluate div.comment p.proInfo {
-	color: #B6B6B6;
-	margin: 2px 0;
+    color: #B6B6B6;
+    margin: 2px 0;
+    position: relative;
+    font-size: 13px;
 }
 #home_product div.evaluate div.comment p.proInfo >small {
-	float: right;
-	font-size: 14px;
+    float: right;
+    font-size: 13px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    height: 18px;
 }
 #home_product >div.footer {
 	position: fixed;
@@ -355,4 +396,19 @@
 	font-size: 16px;
 	color: #fff;
 	line-height: 50px;
+}
+#home_product div.no_comment {
+    text-align: center;
+    padding: 30px 0 !important;
+}
+#home_product div.commentList div.no_comment {
+    background-color: #EFEFF4;
+}
+#home_product div.no_comment >img {
+    width: 50%;
+}
+#home_product div.no_comment >p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #9a9a9a;
 }

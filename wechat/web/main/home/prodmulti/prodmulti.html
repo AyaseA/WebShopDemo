@@ -12,13 +12,23 @@
 			<div class="product" data-index="0">
 				<div class="detail"></div>
 				<div class="comments">
-					<p>评价（<i></i>）
-						<a href="javascript:void(0)">好评率<span></span></a>
+					<p>评价（<i>0</i>）
+						<a href="javascript:void(0)">好评率<span>100%</span></a>
 					</p>
-					<div class="commentList"></div>
+					<div class="commentList">
+						<div class="no_comment">
+							<img src="./images/product/no_comment.png">
+							<p>没有相关评论~</p>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="proDetail" data-index="1"></div>
+			<div class="proDetail" data-index="1">
+				<div class="no_comment">
+					<img src="./images/product/no_comment.png">
+					<p>没有相关内容~</p>
+				</div>
+			</div>
 			<div class="evaluate" data-index="2">
 				<ul class="clear">
 					<li data-type="all" data-index="0" class="active">全部</li>
@@ -29,11 +39,36 @@
 				</ul>
 				<div class="reviews">
 					<div class="warp clear">
-						<div class="all" data-index="0"></div>
-						<div class="good" data-index="1"></div>
-						<div class="middle" data-index="2"></div>
-						<div class="bad" data-index="3"></div>
-						<div class="haveImg" data-index="4"></div>
+						<div class="all" data-index="0">
+							<div class="no_comment">
+								<img src="./images/product/no_comment.png">
+								<p>没有相关评论~</p>
+							</div>
+						</div>
+						<div class="good" data-index="1">
+							<div class="no_comment">
+								<img src="./images/product/no_comment.png">
+								<p>没有相关评论~</p>
+							</div>
+						</div>
+						<div class="middle" data-index="2">
+							<div class="no_comment">
+								<img src="./images/product/no_comment.png">
+								<p>没有相关评论~</p>
+							</div>
+						</div>
+						<div class="bad" data-index="3">
+							<div class="no_comment">
+								<img src="./images/product/no_comment.png">
+								<p>没有相关评论~</p>
+							</div>
+						</div>
+						<div class="haveImg" data-index="4">
+							<div class="no_comment">
+								<img src="./images/product/no_comment.png">
+								<p>没有相关评论~</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -66,6 +101,12 @@
 			<img src="{{serverAddr}}Img/{{img | imgFilter}}">
 		{{/each}}
 		<div>{{descriTxt}}</div>
+	</script>
+	<script id="home_prodmulti_product_no_comment" type="text/html">
+		<div class="no_comment">
+			<img src="./images/product/no_comment.png">
+			<p>没有相关评论~</p>
+		</div>
 	</script>
 	<script id="home_prodmulti_product_comment" type="text/html">
 	{{each commentList as comment}}

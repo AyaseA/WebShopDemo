@@ -11,8 +11,9 @@ $(function(){
         $$.getLocationInfo().name
     );
     $page.find('>div.header').removeClass('on');
+
     // 懒加载
-    $page.find('>div.main').scrollTop(0).scroll(function() {
+/*    $page.find('>div.main').scrollTop(0).scroll(function() {
         if ($(this).scrollTop() > $('#home_index_banner_top').height()) {
             $page.find('>div.header').addClass('on');
         } else {
@@ -32,43 +33,106 @@ $(function(){
         } else {
             return false;
         }
-    });
+    });*/
     
     // 获取商品
-    getProductsList(pageNum, pageSize);
+    //getProductsList(pageNum, pageSize);
     
     // 加载商品列表
     function getProductsList(pn, ps) {
         var $proBox = $page.find('>div.main >div.content >div.products');
         $$.get(
-            'Product/Prod/QueryList?N=' + pn + '&Rows=' + ps,
+            'Product/Prod/QueryProdList?N=' + pn + '&Rows=' + ps,
             function(res) {
                 if (res.Status != 0) {
                     console.log('获取商品信息失败');
                     return false;
                 }
                 if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {
-                    if (pn == 1) {
+                    /*if (pn == 1) {
                         $proBox.empty();
                         allCount = parseInt(res.Data.Count);
-                    }
+                    }*/
                     var d = res.Data.Rows;
                     $proBox.append(template(pageStr + '_products', {
                         list: d,
                         length: d.length,
                         serverAddr: $$.config.serverAddr
                     }));
-                    $proBox.removeClass('loading');
+                    /*$proBox.removeClass('loading');
                     if (pageNum * pageSize >= allCount) {
                         $proBox.addClass('loaded');
                     } else {
                         $proBox.removeClass('loaded');
                     }
-                    loadComplate = true;
+                    loadComplate = true;*/
+
+
+                    getServiceProducts();
                 }
             }
         );
     }
+
+    // 临时
+    $page.find('>div.main >div.content >div.products').empty();
+    getMultiProducts();
+    function getMultiProducts() {
+        var $proBox = $page.find('>div.main >div.content >div.products');
+        $$.get(
+            'Product/ProdMulti/QueryList?N=' + 1 + '&Rows=' + 9999,
+            function(res) {
+                if (res.Status != 0) {
+                    console.log('获取商品信息失败');
+                    return false;
+                }
+                if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {
+                    var d = res.Data.Rows;
+                    $proBox.append(template(pageStr + '_products', {
+                        list: d,
+                        length: d.length,
+                        serverAddr: $$.config.serverAddr
+                    }));
+                    /*$proBox.removeClass('loading');
+                    if (pageNum * pageSize >= allCount) {
+                        $proBox.addClass('loaded');
+                    } else {
+                        $proBox.removeClass('loaded');
+                    }
+                    loadComplate = true;*/
+                    getProductsList(1, 9999);
+                }
+            }
+        );
+    }
+    function getServiceProducts() {
+        var $proBox = $page.find('>div.main >div.content >div.products');
+        $$.get(
+            'Product/StoreService/QueryProductServiceList?N=' + 1 + '&Rows=' + 9999,
+            function(res) {
+                if (res.Status != 0) {
+                    console.log('获取商品信息失败');
+                    return false;
+                }
+                if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {
+                    var d = res.Data.Rows;
+                    $proBox.append(template(pageStr + '_products', {
+                        list: d,
+                        length: d.length,
+                        serverAddr: $$.config.serverAddr
+                    }));
+                    /*$proBox.removeClass('loading');
+                    if (pageNum * pageSize >= allCount) {
+                        $proBox.addClass('loaded');
+                    } else {
+                        $proBox.removeClass('loaded');
+                    }
+                    loadComplate = true;*/
+                }
+            }
+        );
+    }
+
 
     $page.off('click', 'div.header a.scan').on('click', 'div.header a.scan', function() {
         if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {

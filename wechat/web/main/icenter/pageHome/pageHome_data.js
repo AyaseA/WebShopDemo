@@ -1,8 +1,4 @@
-!(function(){
-	var $page=$("#icenter_pageHome");
-	var contentHeight=window.innerHeight-$page.find("header").height()-$page.find(".footer").height();
-	$page.find("article").height(contentHeight);
-	
+!(function(){	
 	$('.user_name').text('登录/注册').attr('data-islogin', 0);
 	var $page=$("#icenter_pageHome");
 	var contentHeight=window.innerHeight-$page.find("header").height()-$page.find(".footer").height();

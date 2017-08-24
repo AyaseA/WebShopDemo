@@ -28,13 +28,13 @@
 #shop_shopDetail .content{
 	width: 100%;
 	padding: 0 4vw 0 4vw;
-	border-bottom:1px solid #d6d6db;
+	border-bottom:0.5pt solid #F3F3F4;
 	background: #fff;
 	position: relative;
 }
 
 #shop_shopDetail .title{
-	border-bottom:1px solid #d6d6db;
+	border-bottom:0.5pt solid #F3F3F4;
 }
 
 #shop_shopDetail .title h2{
@@ -85,13 +85,13 @@
 #shop_shopDetail .info{
 	width: 100%;
 	padding: 0 4vw 0 4vw;
-	border-bottom:1px solid #d6d6db;
+	border-bottom:0.5pt solid #F3F3F4;
 	margin-top: 3vw;
 	background: #fff;
 }
 
 #shop_shopDetail .info h3{
-	border-bottom:1px solid #d6d6db;
+	border-bottom:0.5pt solid #F3F3F4;
 	font-weight: 600;
 	font-size: 4.44vw;
 	padding:2vw 0 2vw 0;
@@ -176,7 +176,7 @@
 
 #shop_shopDetail .serviceContent .oneService{
 	margin-left: 4vw;
-	border-bottom: 1px solid #F3F3F4;
+	border-bottom: 0.5pt solid #F3F3F4;
 	padding: 3vw 2vw 2vw 0;
 }
 
@@ -204,6 +204,7 @@
 	border-radius: 3vw;
 	border:none;
 	outline: none;
+	padding: 0 3vw;
 }
 
 #shop_shopDetail .adv{

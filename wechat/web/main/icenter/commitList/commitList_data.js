@@ -188,7 +188,9 @@ $(function() {
     function showJsonDescri(json){
         json = JSON.parse(json);
         if(json.text){
-            return Base64.decode(unescape(json.text)); 
+            return Base64.decode(unescape(json.text));
+        }else{
+            return "暂无描述";
         }
     }
 

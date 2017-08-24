@@ -54,13 +54,17 @@ $(function() {
             data = data.Children;
             for (var i = 0; i < data.length; i++) {
                 if (data[i].Name == name) {
-                    return data[i].Value;
+                    if(data[i].Value){
+                        return "";
+                    }else{
+                        return data[i].Value;
+                    }
                 } else {
-
+                    return "";
                 }
             }
         } else {
-
+            return "";
         }
     }
 
@@ -94,7 +98,6 @@ $(function() {
                     }
                 }
                 bannerSlide();
-
                 $page.off("click", ".map").on("click", ".map", function() {
                     wx.openLocation({
                         latitude: txt.Data.Latitude, // 纬度，浮点数，范围为90 ~ -90

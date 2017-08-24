@@ -75,26 +75,31 @@ $(function() {
                 	loadComplete = true;
                     node = "";
                     data = txt.Data.Rows;
-                    if (data.length == 0 && pdata.N == 1) {
+                    if (txt.Data.Count == 0 && pdata.N == 1) {
                         node = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p></div>";
                         $page.find(".productContent").append(node);
                     } else {
-                        for (var i = 0; i < data.length; i++) {
-                            node += '<div class="productInfo" data-tid="'+data[i].ProductType+'" data-id="' + data[i].ID + '">' +
-                                '<img src="' + $$.config.serverAddr + 'Img/' + noImg(data[i].Img) + '">' +
-                                '<div class="info">' +
-                                '<p class="name"><b>' + data[i].Name + '</b></p>' +
-                                '<p class="descri">' + getDesCri(data[i].Descri) + '</p>' +
-                                '<p class="time">关注时间:' + $$.timeToStr(data[i].WishAddTime) + '</p>' +
-                                '<p class="price">￥' + data[i].Price + '<button data-id="' + data[i].ID + '" data-tid="'+data[i].ProductType+'">立即购买</button></p>' +
-                                '</div>' +
-                                '</div>';
+                        if(data.length == 0){
+                            node = '<div class="loadMsg">加载全部数据</div>';
+                            $page.find(".productContent").unbind("scroll");
+                        }else{    
+                            for (var i = 0; i < data.length; i++) {
+                                node += '<div class="productInfo" data-tid="'+data[i].ProductType+'" data-id="' + data[i].ID + '">' +
+                                    '<img src="' + $$.config.serverAddr + 'Img/' + noImg(data[i].Img) + '">' +
+                                    '<div class="info">' +
+                                    '<p class="name"><b>' + data[i].Name + '</b></p>' +
+                                    '<p class="descri">' + getDesCri(data[i].Descri) + '</p>' +
+                                    '<p class="time">关注时间:' + $$.timeToStr(data[i].WishAddTime) + '</p>' +
+                                    '<p class="price">￥' + data[i].Price + '<button data-id="' + data[i].ID + '" data-tid="'+data[i].ProductType+'">立即购买</button></p>' +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                            pdata.N += 1; 
+                            isProdBottom("#icenter_storefront .productContent",pdata);
                         }
                         $page.find(".productContent").append(node);
                     }
                 }
-                pdata.N += 1; 
-                isProdBottom("#icenter_storefront .productContent",pdata);
             }
         );
     }
@@ -106,24 +111,29 @@ $(function() {
                 	loadStoreComplete = true;
                     storeNode = "";
                     storeData = txt.Data.Rows;
-                    if (storeData.length == 0 && sdata.N == 1) {
+                    if (txt.Data.Count == 0 && sdata.N == 1) {
                         storeNode = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p></div>";
                         $page.find(".storeContent").append(storeNode);
                     } else {
-                        for (var i = 0; i < storeData.length; i++) {
-                            storeNode += '<div class="storeInfo" data-id="' + storeData[i].ID + '">' +
-                                '<img src="' + $$.config.serverAddr + 'Img/' + noImg(storeData[i].Img) + '">' +
-                                '<div class="detail">' +
-                                '<p>' + storeData[i].Name + '</p>' +
-                                '<p>共' + storeData[i].FollowCount + '人关注</p>' +
-                                '</div>' +
-                                '</div>';
+                        if(storeData.length == 0){
+                            storeNode = '<div class="loadMsg">加载全部数据</div>';
+                            $page.find(".storeContent").unbind("scroll");
+                        }else{           
+                            for (var i = 0; i < storeData.length; i++) {
+                                storeNode += '<div class="storeInfo" data-id="' + storeData[i].ID + '">' +
+                                    '<img src="' + $$.config.serverAddr + 'Img/' + noImg(storeData[i].Img) + '">' +
+                                    '<div class="detail">' +
+                                    '<p>' + storeData[i].Name + '</p>' +
+                                    '<p>共' + storeData[i].FollowCount + '人关注</p>' +
+                                    '</div>' +
+                                    '</div>';
 
+                            }
+                            sdata.N += 1;
+                            isSotreBottom("#icenter_storefront .storeContent",sdata);
                         }
-                        $page.find(".storeContent").append(storeNode);
                     }
-                    sdata += 1;
-                    isSotreBottom("#icenter_storefront .storeContent",sdata);
+                    $page.find(".storeContent").append(storeNode);
                 }
             }
         );
@@ -144,9 +154,10 @@ $(function() {
         $(area).scroll(function() {
             var scrollTop = $(area).scrollTop() + $(area).height();
             var scrollHeight = $(area)[0].scrollHeight;
-            if (scrollHeight - scrollTop < 10 && loadComplete) {
+            if (scrollHeight - scrollTop < 10 && loadStoreComplete) {
                 loadStoreComplete = false;
                 loadStore(sdata);
+                console.log(1);
             }
         });
     }

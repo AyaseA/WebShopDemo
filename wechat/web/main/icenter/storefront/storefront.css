@@ -121,11 +121,12 @@
 #icenter_storefront .storeInfo img{
 	width: 25vw;
     padding: 1vw 0 0 1vw;
+    height: 20vw;
 }
 
 #icenter_storefront .detail{
 	position: absolute;
-	left: 30vw;
+	left: 35vw;
 	top: 5vw;
 	width: 70vw;
 }
@@ -154,4 +155,9 @@
 	font-size: 4vw;
 	margin-top:3vw;
 	margin-bottom: 3vw;
+}
+
+#icenter_storefront .loadMsg{
+	text-align: center;
+	color: #f60;
 }

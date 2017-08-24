@@ -53,7 +53,24 @@ $(function() {
         if ($$.getQueryString('redirecturl')) {
             goBackUrl = unescape($$.getQueryString('redirecturl'));
         }
-        location.href = wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, goBackUrl);
+        $.ajax({
+            url: $$.config.serverAddr + 'Product/Info/TestVerifiedCode',
+            type: 'POST',
+            data: {
+                Mobile: phonenumber,
+                Type: 8,
+                PType: 0,
+                VC: verify
+            },
+            dataType: 'json',
+            success: function(res) {
+                if (res.Status == 0) {
+                    location.href = wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, goBackUrl);
+                } else {
+                    layer.msg('验证码无效！');
+                }
+            }
+        });
     }
     // 微信授权url
     function wechatAuthUrl(phonenumber, verify, RegisterFrom, RegisterCont, url) {

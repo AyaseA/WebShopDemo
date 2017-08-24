@@ -740,31 +740,22 @@ Date.prototype.pattern = function(fmt) {
                 $$.delUserCookies();
             } else if (code == '2') {
                 // 微信内部链接错误
-
             } else if (code == '3') {
                 // 登陆失败
-
             } else if (code == '4') {
                 // 此手机号已授权
-
             } else if (code == '5') {
                 // 验证码错误
-
             } else if (code == '6') {
                 // 上传图片成功
-
             } else if (code == '7') {
                 // 上传图片错误
-
             } else if (code == '8') {
                 // 获取UserInfo失败
-
             } else if (code == '9') {
                 // 用户没有关联
-
             } else {
                 // 网络的锅
-
             }
         };
 

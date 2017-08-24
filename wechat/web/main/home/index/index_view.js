@@ -85,7 +85,7 @@ $(function(){
     
     // news
     $page.on('click', 'div.news >img', function() {
-        $$.redirect('home/product.html?pid=7');
+        $$.redirect('home/prodservice.html?pid=7');
     });
 
     // recomened

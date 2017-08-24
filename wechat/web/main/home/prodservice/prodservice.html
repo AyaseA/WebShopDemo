@@ -107,7 +107,7 @@
 		<div class="comment">
 			<p class="uInfo">
 				<img src="./images/product/uimg.png" />
-				<small>{{comment.Mobile}}</small>
+				<small>{{comment.UserMobile}}</small>
 				{{if comment.Rating >= 0 && comment.Rating <= 20}}
 					{{set star = 1}}
 				{{else if comment.Rating > 20 && comment.Rating <= 40}}
@@ -129,7 +129,7 @@
 			{{/each}}
 			{{/if}}
 			<p class="proInfo">
-				{{productName}}
+				{{comment.StoreName}}<br>{{productName}}
 				<small>{{comment.AddTime | timeFilter}}</small>
 			</p>
 		</div>

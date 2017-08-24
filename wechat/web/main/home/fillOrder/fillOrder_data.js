@@ -11,7 +11,7 @@ $(function() {
         point = 0,
         couponID = '',
         campaignNum = 0,
-        detailUrl = 'Product/Prod/QueryDetail?ID=',
+        detailUrl = 'Product/Prod/QueryProdDetail?ID=',
         serviceDate = '',
         serviceTime = '',
         needDelivery = false;

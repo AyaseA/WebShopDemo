@@ -1,4 +1,8 @@
 !(function(){
+	var $page=$("#icenter_pageHome");
+	var contentHeight=window.innerHeight-$page.find("header").height()-$page.find(".footer").height();
+	$page.find("article").height(contentHeight);
+	
 	$('.user_name').text('登录/注册').attr('data-islogin', 0);
 	if ($$.isLogin()) {
 		var token = $$.getToken();
@@ -37,6 +41,34 @@
 						);
 					}
 					bindEvent();
+					$$.post(
+						'CSL/User/QueryICenterInfoAgain',
+						{},
+						function(res) {
+							if (res.Status == 0) {
+								var d = res.Data;
+								d.OrderStatus.forEach(function(item) {
+									d['OrderStatus' + item.StatusID] = item.Count;
+								});
+								d.MyService.forEach(function(item) {
+									d['MyService' + item.Status] = item.Count;
+								});
+								d.MyAppoint.forEach(function(item) {
+									d['MyAppoint' + item.Status] = item.Count;
+								});
+								d.NotReviewCount.forEach(function(item) {
+									d['NotReviewCount' + item.IsService] = item.Count;
+								});
+								$("#icenter_pageHome").find('article').html(
+									template('icenter_pageHome_infos', {
+										d: res.Data,
+										rewardBalance: $$.isLogin() ? +$$.getUserInfo().RewardPoint : 0
+									})
+								);
+							}
+							bindEvent();
+						}
+					);
 				}
 			);
 		}

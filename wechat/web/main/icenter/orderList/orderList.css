@@ -127,11 +127,8 @@
 }
 
 #icenter_orderList .loadMsg{
-	height:8vw;
-	font-size:2vw;
+	color: #f60;
 	text-align:center;
-	width:100%;	
-	line-height:8vw;
 }
 
 #icenter_orderList .all,#icenter_orderList .waitPay,#icenter_orderList .waitPost,#icenter_orderList .waitGet,#icenter_orderList .waitRevice{

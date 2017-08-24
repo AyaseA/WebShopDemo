@@ -136,6 +136,7 @@
 	display: inline-block;
 	background: #EFEFF4;
 	box-sizing: border-box;
+	vertical-align: top;
 }
 
 #shop_shopDetail .serviceNav ul{
@@ -162,6 +163,7 @@
 	display: inline-block;
 	background: #fff;
 	box-sizing: border-box;
+	vertical-align: top;
 }
 
 #shop_shopDetail .serviceContent .item{

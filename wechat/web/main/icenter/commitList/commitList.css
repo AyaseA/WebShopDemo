@@ -60,13 +60,15 @@
 }
 
 #icenter_commitList .content{
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: hidden;
 	box-sizing: border-box;
 }
 
 #icenter_commitList .content .waitRevice,#icenter_commitList .content .hadRevice,#icenter_commitList .content .serverRevice,#icenter_commitList .content .serverReviced{
 	display: none;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100%;
 }
 
 #icenter_commitList .content .onePiece{
@@ -138,6 +140,11 @@
 
 #icenter_commitList .noData img{
 	width: 70vw;
+}
+
+#icenter_commitList .loadAll{
+	text-align: center;
+    color: #f60;
 }
 
 

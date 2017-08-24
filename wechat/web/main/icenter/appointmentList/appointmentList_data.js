@@ -36,7 +36,7 @@ $(function() {
         $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id") + "&status=0");
     });
 
-    $$.post("CSL/Service/QueryMyService", { Status: 0, N: 1, Rows: 30 }, function(txt){
+    $$.post("CSL/Service/QueryMyServiceList", { Status: 0, N: 1, Rows: 30 }, function(txt){
         $page.find(".notAppoint").html(
             template('icenter_appointmentList_notAppoint', {
                 notAppointData: txt.Data.Rows,
@@ -46,7 +46,7 @@ $(function() {
         );
     });
 
-    $$.post("CSL/Service/QueryMyService", { Status: 1, N: 1, Rows: 30 }, function(txt){
+    $$.post("CSL/Service/QueryMyServiceList", { Status: 1, N: 1, Rows: 30 }, function(txt){
         $page.find(".hadComplite").html(
             template('icenter_appointmentList_hadComplite', {
                 hadCompliteData: txt.Data.Rows,

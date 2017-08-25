@@ -35,8 +35,7 @@ $(function() {
     function loadWaitRevice(data){       
         $$.post($$.serverAddr + "CSL/Review/QueryMyProductReviewList",data,
             function(txt) {
-                if (txt.Status == 0) {
-                    
+                if (txt.Status == 0) {               
                     if(txt.Data.Count == 0){
                         $page.find(".waitRevice").append(noData);
                     }else{
@@ -62,7 +61,7 @@ $(function() {
                                     '</div>' +
                                     '</div>';
                             }
-                            loadWaitRevice("#icenter_commitList .waitRevice",data,1);
+                            isBottom("#icenter_commitList .waitRevice",data,1);
                         }
                         $page.find(".waitRevice").append(noReviceNode);
                     }

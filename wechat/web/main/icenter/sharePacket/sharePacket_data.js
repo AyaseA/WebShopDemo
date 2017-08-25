@@ -18,12 +18,18 @@ $(function() {
         		});
         } else {
             var token = $$.getToken();
-            $$.post("CSL/User/TestToken",{WToken: token},function(txt){
-                if(txt.Status == 100){
-                    showPacket();
-                }else if(txt.Status == -1){
-                    $$.refresh();
-                    showPacket();
+            $.ajax({
+                type:"POST",
+                url:$$.serverAddr+"CSL/User/TestToken",
+                data:{WToken: token},
+                dataType:"json",
+                success:function(txt){
+                    if(txt.Status == 100){
+                        showPacket();
+                    }else if(txt.Status == -1){
+                        $$.refresh();
+                        showPacket();
+                    }
                 }
             });   
         }

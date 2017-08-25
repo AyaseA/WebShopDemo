@@ -70,16 +70,7 @@
     <script type="text/javascript">
         if (!navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             /* ios + android */
-            $.getScript("../common/csl-webview-bridge.js").done(function() {
-                wx.modifyUserAgent({
-                    success: function() {
-                        Object.defineProperty(navigator, 'userAgent', {
-                            value: 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1csl-ios'
-                        });
-                        alert(navigator.userAgent);
-                    }
-                });
-            });
+            $.getScript("../common/csl-webview-bridge.js");
         } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             /* wechat */
             $.getScript("http://res.wx.qq.com/open/js/jweixin-1.2.0.js");

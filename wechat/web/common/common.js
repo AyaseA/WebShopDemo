@@ -754,6 +754,7 @@ Date.prototype.pattern = function(fmt) {
                 // 获取UserInfo失败
             } else if (code == '9') {
                 // 用户没有关联
+                $$.delUserCookies();
             } else {
                 // 网络的锅
             }

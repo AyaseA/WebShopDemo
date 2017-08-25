@@ -11,14 +11,27 @@ $(function() {
 
     $page.off("click", ".redPacket img").on("click", ".redPacket img", function() {
         var _this = $(this);
-
         if (!$$.getCookie('__TOKEN__')) {
         	$$.authConfirm(function(){},
         		function(){
         			$$.redirect("home/wechatLogin.html?redirecturl="+escape("icenter/sharePacket.html?pid="+packageId));
         		});
         } else {
-            $$.post("CSL/RedPocket/AddRedPocketRec", {
+            var token = $$.getToken();
+            $$.post("CSL/User/TestToken",{WToken: token},function(txt){
+                if(txt.Status == 100){
+                    showPacket();
+                }else if(txt.Status == -1){
+                    $$.refresh();
+                    showPacket();
+                }
+            });   
+        }
+    });
+
+
+    function showPacket(){
+        $$.post("CSL/RedPocket/AddRedPocketRec", {
                     RedPocketID: packageId
                 },
                 function(txt) {
@@ -43,11 +56,5 @@ $(function() {
                     }
                 }
             );
-        }
-        /*else {
-                   layer.confirm("您还为登录,是否刷新登录页面", function(index) {
-                       $$.refresh("http://api.cheshili.com.cn/wechat/www/web/main/index.html?R="+escape("icenter/sharePacket.html?pid="+url), 0);
-                   });
-               }*/
-    });
+    }
 });

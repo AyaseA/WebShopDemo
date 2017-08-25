@@ -71,12 +71,6 @@
                 csl.jumpToUrl(url);
                 return;
             }
-            if (data.messageType == 'modifyUserAgent') {
-                Object.defineProperty(navigator, 'userAgent', {
-                    value: 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1csl-ios'
-                })
-                return;
-            }
 
             //处理移动端给的传参
             if (csl.recieveMessageFromPhone) {

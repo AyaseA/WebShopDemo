@@ -776,9 +776,9 @@ Date.prototype.pattern = function(fmt) {
     // ajax 全局设置，增加加载动画
     $(document).ajaxStart(function() {
         //layer.closeAll('loading');
-        layer.load();
+        //layer.load();
     }).ajaxStop(function() {
-        layer.closeAll('loading');
+        //layer.closeAll('loading');
     });
     /* 全局菜单相关 start */
     !(function(win, $, undefined) {

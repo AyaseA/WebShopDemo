@@ -67,6 +67,69 @@ $(function(){
         });
     }
 
+    // 懒加载
+    var pageNum = 1,
+        pageSize = 6,
+        allCount = 0,
+        loadComplate = true
+    $page.find('>div.main').scrollTop(0).scroll(function() {
+        if ($(this).scrollTop() > $('#home_index_banner_top').height()) {
+            $page.find('>div.header').addClass('on');
+        } else {
+            $page.find('>div.header').removeClass('on');
+        }
+        if (loadComplate) {
+            if (pageNum * pageSize < allCount) {
+                var proBox = $(this).find('>div.content >div.products'),
+                    maxScroll = $(this).find('div.content').height() - $(this).height();
+                if ($(this).scrollTop() == maxScroll) {
+                    proBox.addClass('loading');
+                    getProductsList(++pageNum, pageSize);
+                    $(this).scrollTop($(this).scrollTop() - 10);
+                    loadComplate = false;
+                }
+            }
+        } else {
+            return false;
+        }
+    });
+    
+    // 获取商品
+    getProductsList(pageNum, pageSize);
+    
+    // 加载商品列表
+    function getProductsList(pn, ps) {
+        var $proBox = $page.find('>div.main >div.content >div.products');
+        $$.get(
+            'Product/Prod/QueryProdList?N=' + pn + '&Rows=' + ps + '&ProductType=-1',
+            function(res) {
+                if (res.Status != 0) {
+                    console.log('获取商品信息失败');
+                    return false;
+                }
+                if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {
+                    if (pn == 1) {
+                        $proBox.empty();
+                        allCount = parseInt(res.Data.Count);
+                    }
+                    var d = res.Data.Rows;
+                    $proBox.append(template(pageStr + '_products', {
+                        list: d,
+                        length: d.length,
+                        serverAddr: $$.config.serverAddr
+                    }));
+                    $proBox.removeClass('loading');
+                    if (pageNum * pageSize >= allCount) {
+                        $proBox.addClass('loaded');
+                    } else {
+                        $proBox.removeClass('loaded');
+                    }
+                    loadComplate = true;
+                }
+            }
+        );
+    }
+
     // 主页模块快捷入口按钮点击事件（洗车、做保养、邀请有礼）
     $page.on('click', 'div.entrance >div', function() {
         var type = $(this).attr('data-type');

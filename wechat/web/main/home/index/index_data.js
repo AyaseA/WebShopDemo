@@ -1,19 +1,20 @@
 $(function(){
     var $page = $('#home_index'),
-        pageStr = 'home_index',
+        pageStr = 'home_index'/*,
         pageNum = 1,
         pageSize = 6,
         allCount = 0,
-        loadComplate = true;
+        loadComplate = true*/;
 
     // 获取位置
     $page.find('>div.header >a.location >span').text(
         $$.getLocationInfo().name
     );
     $page.find('>div.header').removeClass('on');
+    $page.find('>div.main').scrollTop(0);
 
     // 懒加载
-    $page.find('>div.main').scrollTop(0).scroll(function() {
+    /*$page.find('>div.main').scrollTop(0).scroll(function() {
         if ($(this).scrollTop() > $('#home_index_banner_top').height()) {
             $page.find('>div.header').addClass('on');
         } else {
@@ -33,13 +34,13 @@ $(function(){
         } else {
             return false;
         }
-    });
+    });*/
     
     // 获取商品
-    getProductsList(pageNum, pageSize);
+    /*getProductsList(pageNum, pageSize);*/
     
     // 加载商品列表
-    function getProductsList(pn, ps) {
+    /*function getProductsList(pn, ps) {
         var $proBox = $page.find('>div.main >div.content >div.products');
         $$.get(
             'Product/Prod/QueryProdList?N=' + pn + '&Rows=' + ps + '&ProductType=-1',
@@ -69,7 +70,7 @@ $(function(){
                 }
             }
         );
-    }
+    }*/
 
     $page.off('click', 'div.header a.scan').on('click', 'div.header a.scan', function() {
         if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {

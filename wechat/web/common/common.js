@@ -697,7 +697,7 @@ Date.prototype.pattern = function(fmt) {
     }
 
     // 是否授权
-    !(function() {
+    ;(function() {
         /*********** 相关方法定义 ************/
         // url替换处理
         var urlHandle = function(url) {
@@ -728,9 +728,6 @@ Date.prototype.pattern = function(fmt) {
             var code = $$.getQueryString('code', url),
                 str = $$.getQueryString('str', url);
 
-            // url替换处理
-            urlHandle(currentUrl);
-
             if (code == '0') {
                 // 已关联且成功登陆
                 // 保存token
@@ -758,6 +755,9 @@ Date.prototype.pattern = function(fmt) {
             } else {
                 // 网络的锅
             }
+
+            // url替换处理
+            urlHandle(currentUrl);
         };
 
         /********* 开始处理 *********/
@@ -1101,12 +1101,48 @@ Date.prototype.pattern = function(fmt) {
         });
         //通过ready接口处理成功验证
         wx.ready(function() {
-            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-
         });
         wx.error(function(res) {
+        });
+        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        wx.onMenuShareTimeline({
+            title: '车势力1111', // 分享标题
+            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+            success: function() {
+            }
+        });
 
-            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        wx.onMenuShareAppMessage({
+            title: '车势力2222', // 分享标题
+            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+            success: function() {
+            }
+        });
+
+        wx.onMenuShareQQ({
+            title: '车势力3333', // 分享标题
+            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+            success: function() {
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: '车势力4444', // 分享标题
+            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+            success: function() {
+            }
+        });
+
+        wx.onMenuShareQZone({
+            title: '车势力5555', // 分享标题
+            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+            success: function() {
+            }
         });
     }
 

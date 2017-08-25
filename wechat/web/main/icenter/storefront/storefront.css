@@ -5,13 +5,14 @@
 }
 
 #icenter_storefront .header{
-	height:10vw;
+	height:12vw;
 	width: 100%;
 	position: relative;
 	text-align: center;
 	line-height: 10vw;
 	border-bottom: 1px solid #E4E4E7;
 	background: #fff;
+	font-weight:bold;
 }
 
 #icenter_storefront .header span{
@@ -27,8 +28,9 @@
 
 #icenter_storefront .header a{
 	position: absolute;
-	top:2.2vw;
+	top:3vw;
 	left: 3vw;
+
 }
 
 #icenter_storefront .header a img{

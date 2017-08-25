@@ -12,9 +12,9 @@ $(function() {
             function(txt){
                 if(txt.Status==0){
                     var info=txt.Data;
-                    $page.find(".myReward").html(info.RewardBalance);
-                    $page.find(".myVoucher").html(info.VoucherCount);
-                    $page.find(".myMoney").html(info.Balance);
+                    $page.find(".myReward").html(info.RewardBalance||0);
+                    $page.find(".myVoucher").html(info.VoucherCount||0);
+                    $page.find(".myMoney").html(info.Balance||0);
                 }
             }
         );

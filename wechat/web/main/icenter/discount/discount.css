@@ -7,7 +7,7 @@
 
 #icenter_discount .header{
 	width:100%;
-	height:10vw;
+	height:12vw;
 	border-bottom:#d6d6db 1px  solid;
 	font-size:4.33vw;
 	line-height:10vw;
@@ -19,9 +19,9 @@
 
 #icenter_discount .back img{
 	position:absolute;
-	top:1.5vw;
-	left:5vw;
-	width:7vw;
+	top:3vw;
+	left:3vw;
+	width:6vw;
 }
 
 #icenter_discount .nav{

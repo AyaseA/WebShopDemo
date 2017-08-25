@@ -86,10 +86,16 @@
 	</script>
 	<script id="home_index_products" type="text/html">
 		{{each list as val i}}
-		<div class="item" data-id="{{val.ID}}">
+		<div class="item" data-id="{{val.ID}}" data-type="{{val.ProductType}}">
 			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
 			<p>{{val.Name}}</p>
-			<a href="home/fillOrder.html?pid={{val.ID}}&&type={{val.ProductType}}">立即购买</a>
+            {{if val.ProductType == 0}}
+            <a href="home/fillOrder.html?pid={{val.ID}}&&type={{val.ProductType}}">立即购买</a>
+            {{else if val.ProductType == 1}}
+            <a href="home/prodservice.html?pid={{val.ID}}">立即购买</a>
+            {{else if val.ProductType == 5}}
+            <a href="home/prodmulti.html?pid={{val.ID}}">立即购买</a>
+            {{/if}}
 		</div>
 		{{/each}}
 	</script>

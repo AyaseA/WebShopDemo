@@ -158,8 +158,16 @@ $(function(){
 
     // 点击商品查看详情
     $page.on('click', 'div.products img, div.products p', function() {
-        var pid = $(this).parent().attr('data-id');
-        $$.redirect('home/product.html?pid=' + pid);
+        var pid = $(this).parent().attr('data-id'),
+            type = $(this).parent().attr('data-type');
+        if (type == 0) {
+            type = 'product';
+        } else if (type == 1) {
+            type = 'prodservice';
+        } else if (type == 5) {
+            type = 'prodmulti';
+        }
+        $$.redirect('home/' + type + '.html?pid=' + pid);
     });
     
     // footer 事件

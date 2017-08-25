@@ -232,7 +232,7 @@ $(function() {
                     $proBox.html(template(pageStr + '_product_no_comment', {}));
                 }
                 var commonTitle = $page.find('>div.main div.comments >p');
-                commonTitle.find('>i').text(laszyParam.good.allCount);
+                commonTitle.find('>i').text(laszyParam.all.allCount);
                 commonTitle.find('span').text(parseFloat(
                     (laszyParam.good.allCount / laszyParam.all.allCount || 1) * 100
                 ).toFixed(0) + '%');

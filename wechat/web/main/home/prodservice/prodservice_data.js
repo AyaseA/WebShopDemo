@@ -293,10 +293,14 @@ $(function() {
     // 获取收藏列表存入cookie
     function getWishList() {
         if ($$.isLogin()) {
-            $$.post(
-                'CSL/Wish/QueryWishList',
-                {},
-                function(res) {
+            $.ajax({
+                url: $$.config.serverAddr + 'CSL/Wish/QueryWishList',
+                type: 'POST',
+                data: {
+                    WToken: $$.getToken()
+                },
+                dataType: 'json',
+                success: function(res) {
                     if (res.Status != 0) {
                         return false;
                     }
@@ -306,7 +310,7 @@ $(function() {
                         for (var i = 0; i < d.length; i++) {
                             wishArr.push(d[i].ID);
                         }
-                        var isWish = $.inArray(serviceId, wishArr) != -1;
+                        var isWish = $.inArray(pid, wishArr) != -1;
                         $page.find('>div.footer >a.collect').text(
                             isWish ? '已加入收藏' : '加入收藏'
                         ).addClass(
@@ -315,7 +319,7 @@ $(function() {
                         $$.setCookie('__WISHLIST__', wishArr.join(','));
                     }
                 }
-            );
+            });
         } else if ($$.getCookie('__WISHLIST__')) {
             var wishCookie = $$.getCookie('__WISHLIST__') || '',
                 wishArr = wishCookie.split(','),

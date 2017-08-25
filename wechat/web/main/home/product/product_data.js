@@ -243,10 +243,14 @@ $(function() {
     // 获取收藏列表存入cookie
     function getWishList() {
         if ($$.isLogin()) {
-            $$.post(
-                'CSL/Wish/QueryWishList',
-                {},
-                function(res) {
+            $.ajax({
+                url: $$.config.serverAddr + 'CSL/Wish/QueryWishList',
+                type: 'POST',
+                data: {
+                    WToken: $$.getToken()
+                },
+                dataType: 'json',
+                success: function(res) {
                     if (res.Status != 0) {
                         return false;
                     }
@@ -265,7 +269,7 @@ $(function() {
                         $$.setCookie('__WISHLIST__', wishArr.join(','));
                     }
                 }
-            );
+            });
         } else if ($$.getCookie('__WISHLIST__')) {
             var wishCookie = $$.getCookie('__WISHLIST__') || '',
                 wishArr = wishCookie.split(','),

@@ -70,7 +70,9 @@
     <script type="text/javascript">
         if (!navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             /* ios + android */
-            $.getScript("../common/csl-webview-bridge.js");
+            $.getScript("../common/csl-webview-bridge.js").done(function() {
+                wx.modifyUserAgent();
+            });
         } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             /* wechat */
             $.getScript("http://res.wx.qq.com/open/js/jweixin-1.2.0.js");

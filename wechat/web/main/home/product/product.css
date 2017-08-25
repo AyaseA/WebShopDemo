@@ -200,6 +200,7 @@
     background-repeat: no-repeat;
     margin: 7px 3px 0 0;
     background-image: url(../../images/common/stars/star_5.png);
+    background-size: 100%;
 }
 #home_product div.product div.comment span.stars.start_0 {
 	background-image: url(../../images/common/stars/star_0.png);

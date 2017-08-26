@@ -98,8 +98,11 @@ $(function() {
     });
     // 选择日期
     $page.on('click dbclick', '>div.appointmentModal span.am, >div.appointmentModal span.pm', function() {
+        var isSelected = $(this).hasClass('selected');
         $page.find('>div.appointmentModal span.am, >div.appointmentModal span.pm').removeClass('selected');
-        $(this).addClass('selected');
+        if (!isSelected) {
+            $(this).addClass('selected');
+        }
     });
 	
 	// 点击优惠券按钮弹出优惠券框

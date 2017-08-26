@@ -312,7 +312,7 @@ $(function() {
 
     function setServiceOption() {
         $page.find('div.appointment').html(template(pageStr + '_appointment_time', {
-            time: serviceDate + ' ' + serviceTime
+            time: serviceDate && serviceTime ? (serviceDate + ' ' + serviceTime) : ''
         }));
         $page.find('div.appointment >div').width(
             boxWidth - 30 - 8 - 10

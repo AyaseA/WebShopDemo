@@ -32,7 +32,9 @@ $(function () {
                         $$.goBack();
                     });
                 } else {
-                    $$.goBack();
+                    setDefaultAddr('', function() {
+                        $$.goBack();
+                    });
                 }
             }
         });

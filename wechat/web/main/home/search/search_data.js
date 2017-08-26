@@ -36,11 +36,18 @@ $(function() {
         searchParams.Keys = keyWord;
         searchProducts(pageNum, pageSize);
     });
+    $page.off('click dbclick', 'div.search-title span')
+         .on('click dbclick', 'div.search-title span', function() {
+            var keyWord = $(this).text();
+            $page.find('div.searchInput >input').val(keyWord);
+            searchParams.Keys = keyWord;
+            searchProducts(pageNum, pageSize);
+         });
     $page.off('input propertychange', 'div.searchInput >input')
          .on('input propertychange', 'div.searchInput >input', function() {
         var val = $(this).val();
         if (val && val != '') {
-            $(this).siblings('i').show();
+            $(this).siblings('i.clearCnt').css('display', 'block');
         } else {
             resSearch();
         }
@@ -71,10 +78,10 @@ $(function() {
                     console.log('获取商品信息失败');
                     return false;
                 }
+                $page.find('>div.header').removeClass('search').addClass('result');
+                $page.find('div.search-cnt').removeClass('on');
+                $page.find('div.result-cnt').addClass('on');
                 if (res.Data && res.Data.Rows && res.Data.Rows.length > 0) {
-                    $page.find('>div.header').removeClass('search').addClass('result');
-                    $page.find('div.search-cnt').removeClass('on');
-                    $page.find('div.result-cnt').addClass('on');
                     if (pn == 1) {
                         $proBox.empty();
                         allCount = parseInt(res.Data.Count);
@@ -100,6 +107,9 @@ $(function() {
                         $proBox.removeClass('loaded');
                     }
                     loadComplate = true;
+                } else {
+                    $proBox.append(template(pageStr + '_no_products', {}));
+
                 }
             }
         });

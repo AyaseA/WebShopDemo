@@ -86,6 +86,8 @@ $(function() {
         saveCar(function(cid, cname, isdft) {
             if (isdft == 1) {
                 $$.setUserInfo('UserCarID', cid);
+            } else {
+                $$.setUserInfo('UserCarID', '');
             }
             $$.redirect('home/maintain.html?cid=' + cid + '&cname=' + cname, {
                 backUrl: 'home/myCars.html'
@@ -344,36 +346,36 @@ $(function() {
     function validation() {
         var $carDetail = $page.find('>div.main >div.carDetail');
         if (!$carDetail.find('input[name="carType"]').val()) {
-            win.App.common.tip("车型不能为空！");
+            layer.msg("车型不能为空！");
             return false;
         }
         if (!$carDetail.find('input[name="timeBuy"]').val()) {
-            win.App.common.tip("购买时间不能为空！");
+            layer.msg("购买时间不能为空！");
             return false;
         }
         if (!$carDetail.find('input[name="dirveRange"]').val()) {
-            win.App.common.tip("行驶里程不能为空！");
+            layer.msg("行驶里程不能为空！");
             return false;
         } else if (!/^[0-9]+.?[0-9]*$/.test($carDetail.find('input[name="dirveRange"]').val())) {
-            win.App.common.tip("请输入有效的行驶里程！");
+            layer.msg("请输入有效的行驶里程！");
             $carDetail.find('input[name="dirveRange"]').focus();
             return false;
         }
         if ($carDetail.find('input[name="plateNumber"]').val() && 
             !/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/.test($carDetail.find('input[name="plateNumber"]').val())) {
-            win.App.common.tip("车牌号格式错误！");
+            layer.msg("车牌号格式错误！");
             $carDetail.find('input[name="plateNumber"]').focus();
             return false;
         }
         if ($carDetail.find('input[name="frameNumber"]').val() && 
             !/[a-zA-Z0-9]{17}/.test($carDetail.find('input[name="frameNumber"]').val())) {
-            win.App.common.tip("车架号格式错误！");
+            layer.msg("车架号格式错误！");
             $carDetail.find('input[name="frameNumber"]').focus();
             return false;
         }
         if ($carDetail.find('input[name="engineNumber"]').val() && 
             !/[a-zA-Z0-9]+/.test($carDetail.find('input[name="engineNumber"]').val())) {
-            win.App.common.tip("发动机号格式错误！");
+            layer.msg("发动机号格式错误！");
             $carDetail.find('input[name="engineNumber"]').focus();
             return false;
         }

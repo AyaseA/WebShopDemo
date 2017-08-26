@@ -27,25 +27,25 @@ $(function() {
     $$.setGoBack($page.find('>div.header >a.goBack'));
     
 	// tab页点击
-	$page.on('click', 'div.header li', function() {
+	$page.on('click dbclick', 'div.header li', function() {
 		if ($(this).hasClass('active')) {
 			return false;
 		}
 		changeTab($(this));
 	});
 	// 评价点击进入评价tab
-	$page.on('click', 'div.product >div.comments >p >a', function() {
+	$page.on('click dbclick', 'div.product >div.comments >p >a', function() {
 		changeTab($page.find('div.header li[data-type="evaluate"]'));
 	});
 	// 评价tab页
-	$page.on('click', 'div.evaluate li', function() {
+	$page.on('click dbclick', 'div.evaluate li', function() {
 		if ($(this).hasClass('active')) {
 			return false;
 		}
 		changeCommentsTab($(this));
 	});
 	// 点击图片放大
-	$page.on('click', 'div.comment >img', function() {
+	$page.on('click dbclick', 'div.comment >img', function() {
 		var url = $(this).attr('src');
 		var img = new Image();
 		img.src = url;
@@ -76,7 +76,7 @@ $(function() {
 		}
 	});
 	// 收藏
-	$page.on('click', '>div.footer >a.collect', function() {
+	$page.on('click dbclick', '>div.footer >a.collect', function() {
 		var $this = $(this),
 			pid = $this.attr('data-id');
 		if ($$.isLogin(true, null)) {

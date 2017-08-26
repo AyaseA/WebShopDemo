@@ -54,8 +54,8 @@ $(function() {
         });
 
         // 确认地址
-        $page.off('click', '>div.appointmentModal div.select')
-             .on('click', '>div.appointmentModal div.select', function() {
+        $page.off('click dbclick', '>div.appointmentModal div.select')
+             .on('click dbclick', '>div.appointmentModal div.select', function() {
             serviceDate = $page.find('>div.appointmentModal span.selected').attr('data-date');
             serviceTime = $page.find('>div.appointmentModal span.selected').attr('data-time');
             setServiceOption();
@@ -64,8 +64,8 @@ $(function() {
             }, 200).end().fadeOut(200);
         });
         // 确认预约
-        $page.off('click', '>div.appointmentModal div.select')
-             .on('click', '>div.appointmentModal div.select', function() {
+        $page.off('click dbclick', '>div.appointmentModal div.select')
+             .on('click dbclick', '>div.appointmentModal div.select', function() {
             serviceDate = $page.find('>div.appointmentModal span.selected').attr('data-date');
             serviceTime = $page.find('>div.appointmentModal span.selected').attr('data-time');
             setServiceOption();
@@ -75,8 +75,8 @@ $(function() {
         });
 
         // 点击确定选择优惠券
-        $page.off('click', '>div.couponModal button.selectTicket')
-            .on('click', '>div.couponModal button.selectTicket', function() {
+        $page.off('click dbclick', '>div.couponModal button.selectTicket')
+            .on('click dbclick', '>div.couponModal button.selectTicket', function() {
             var $ticket = $page.find('>div.couponModal div.usable div.ticket.checked');
 	        coupon = parseFloat($ticket.attr('data-coupon'));
             couponID = $ticket.attr('data-id');
@@ -87,7 +87,7 @@ $(function() {
             }, 300).fadeOut(400);
         });
         // 立即支付
-        $page.off('click', '>div.footer >button.order').on('click', '>div.footer >button.order', function() {
+        $page.off('click dbclick', '>div.footer >button.order').on('click dbclick', '>div.footer >button.order', function() {
             if ($(this).hasClass('disabled')) {
                 return false;
             }

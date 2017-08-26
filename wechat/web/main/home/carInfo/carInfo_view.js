@@ -41,7 +41,7 @@ $(function() {
         'type': 'date'
     });
     // 设置默认车辆点击事件
-    $page.on('click', 'div.carDetail div.setDefault', function() {
+    $page.on('click dbclick', 'div.carDetail div.setDefault', function() {
         var $this = $(this);
         if ($this.hasClass('default')) {
             $this.removeClass('default');
@@ -50,7 +50,7 @@ $(function() {
         }
     });
     // 点击品牌事件
-    $page.on('click', '>div.brandsModal div.brand', function() {
+    $page.on('click dbclick', '>div.brandsModal div.brand', function() {
         var bid = $(this).attr('data-id'),
             bName = $(this).attr('data-name'),
             bids = $(this).attr('data-ids'),
@@ -59,7 +59,7 @@ $(function() {
         openSeries();
     });
     // 点击series事件
-    $page.on('click', '>div.seriesModal div.series', function() {
+    $page.on('click dbclick', '>div.seriesModal div.series', function() {
         var sid = $(this).attr('data-id'),
             sName = $(this).attr('data-name'),
             pid = $(this).attr('data-pid'),
@@ -79,7 +79,7 @@ $(function() {
         closeBrands();
     });
     // 点击保存
-    $page.on('click', 'div.carDetail >button', function() {
+    $page.on('click dbclick', 'div.carDetail >button', function() {
         if (!validation()) {
             return false;
         }
@@ -93,7 +93,7 @@ $(function() {
         });
     });
     // 点击Car事件
-    $page.on('click', '>div.carsModal >div.carsBox >p.car', function() {
+    $page.on('click dbclick', '>div.carsModal >div.carsBox >p.car', function() {
         var cid = $(this).attr('data-id'),
             cName = $(this).text();
         $page.find('div.carDetail input[name="carType"]')
@@ -102,7 +102,7 @@ $(function() {
         closeCars();
     });
     // 点击字母锚点事件
-    $page.on('click', '>div.brandsModal ul.letter >li', function() {
+    $page.on('click dbclick', '>div.brandsModal ul.letter >li', function() {
         var letter = $(this).attr('data-letter'),
             $title = $page.find('>div.brandsModal div.brands')
                           .find('>h5[data-letter=' + letter + ']'),
@@ -112,12 +112,12 @@ $(function() {
         }, 200);
     });
     // 打开弹出层brands
-    $page.on('click', 'div.carDetail input[name="carBrand"]', function() {
+    $page.on('click dbclick', 'div.carDetail input[name="carBrand"]', function() {
         $(this).blur();
         openBrands();
     });
     // 打开弹出层Cars
-    $page.on('click', 'div.carDetail input[name="carType"]', function() {
+    $page.on('click dbclick', 'div.carDetail input[name="carType"]', function() {
         $(this).blur();
         var sid = $page.find('div.carDetail input[name="carBrand"]').attr('data-sid');
         if (!sid) {
@@ -128,19 +128,19 @@ $(function() {
         openCars();
     });
     // 阻止事件冒泡
-    $page.on('click', '>div.seriesModal >h5, >div.seriesModal >div.seriesBox', function(e) {
+    $page.on('click dbclick', '>div.seriesModal >h5, >div.seriesModal >div.seriesBox', function(e) {
         e.stopPropagation();
     });
     // 关闭弹出框brands
-    $page.on('click', '>div.brandsModal a.closeModal', function() {
+    $page.on('click dbclick', '>div.brandsModal a.closeModal', function() {
         closeBrands();
     });
     // 关闭弹出层Series
-    $page.on('click', '>div.seriesModal', function() {
+    $page.on('click dbclick', '>div.seriesModal', function() {
         closeSeries();
     });
     // 关闭弹出框Cars
-    $page.on('click', '>div.carsModal a.closeModal', function() {
+    $page.on('click dbclick', '>div.carsModal a.closeModal', function() {
         closeCars();
     });
     // 车牌号，发动机号，车架号失去焦点自动将内容转大写

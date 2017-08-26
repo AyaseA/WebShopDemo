@@ -1,12 +1,69 @@
 <div>
-    <div class="header">
-        <a href="javascript:void(0)" class="goBack"></a>
-        <span class="title">我的推荐码</span>
-        <span class="share">分享</span>
-    </div>
-    <div class="main">
-        <div class="content">
-            
+    <div class="header search">
+        <div class="mask"></div>
+        <div class="header-cnt">
+            <a href="javascript:void(0)" class="goback"></a>
+            <form autocomplete="off">
+                <div class="searchInput">
+                    <input type="text" placeholder="商品 / 服务 / 套餐">
+                    <i class="clearCnt"></i>
+                </div>
+            </form>
+            <a href="javascript:void(0)" class="cancel">取消</a>
+            <ul class="tabs clear">
+                <li class="on" data-index="0">全部</li>
+                <li data-index="1">商品</li>
+                <li data-index="2">服务</li>
+            </ul>
+            <ul class="filter clear">
+                <li class="on">
+                    <p>
+                        <span>综合排序</span>
+                    </p>
+                    <ul>
+                        <li>综合排序</li>
+                        <li>好评优先</li>
+                        <li>价格由低到高</li>
+                        <li>价格由高到低</li>
+                    </ul>
+                </li>
+                <li>销量有限</li>
+            </ul>
         </div>
     </div>
+    <div class="main">
+        <div class="search-cnt on">
+            <div class="all">
+                <p>1111111111111111111111</p>
+            </div>
+            <div class="product">
+                <p>22222222222222222222</p>
+            </div>
+            <div class="service">
+                <p>3333333333333333333333333</p>
+            </div>
+        </div>
+        <div class="result-cnt">
+            <div class="products"></div>
+        </div>
+    </div>
+    <script id="home_search_products" type="text/html">
+        {{each list as val i}}
+        <div class="item" data-id="{{val.ID}}" data-type="{{val.ProductType}}">
+            <img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
+            <div>
+                <h3>{{val.Name}}</h3>
+                <h5>{{val.desc}}</h5>
+                <p>抢购价:<span>￥{{val.Price}}</span></p>
+                {{if val.ProductType == 0}}
+                <a href="home/fillOrder.html?pid={{val.ID}}&&type={{val.ProductType}}">立即购买</a>
+                {{else if val.ProductType == 1}}
+                <a href="home/prodservice.html?pid={{val.ID}}">立即购买</a>
+                {{else if val.ProductType == 5}}
+                <a href="home/prodmulti.html?pid={{val.ID}}">立即购买</a>
+                {{/if}}
+            </div>
+        </div>
+    {{/each}}
+    </script>
 </div>

@@ -41,7 +41,7 @@ $(function() {
     });
 
     // 选择店面
-    $page.off('click', '>div.storeModal div.item').on('click', '>div.storeModal div.item', function() {
+    $page.off('click dbclick', '>div.storeModal div.item').on('click dbclick', '>div.storeModal div.item', function() {
         if (!$(this).hasClass('checked')) {
             $(this).addClass('checked').siblings().removeClass('checked');
             serviceId = $(this).attr('data-id');
@@ -65,8 +65,8 @@ $(function() {
 
     // 设置底部按钮的pid
     $page.find('>div.footer >a.collect').hide();
-    $page.off('click', '>div.footer >a.buyNow, div.selectAndBuy')
-         .on('click', '>div.footer >a.buyNow, div.selectAndBuy', function() {
+    $page.off('click dbclick', '>div.footer >a.buyNow, div.selectAndBuy')
+         .on('click dbclick', '>div.footer >a.buyNow, div.selectAndBuy', function() {
         if (serviceId != '') {
             $$.redirect('home/fillOrder.html?pid=' + serviceId + '&num=' + pNum + '&type=1');
         } else {

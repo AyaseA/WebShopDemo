@@ -20,7 +20,7 @@ $(function() {
 
     // 设置底部按钮的pid
     $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');
-    $page.off('click', '>div.footer >a.buyNow').on('click', '>div.footer >a.buyNow', function() {
+    $page.off('click dbclick', '>div.footer >a.buyNow').on('click dbclick', '>div.footer >a.buyNow', function() {
         $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum + '&type=0');
     });
     // 获取商品信息

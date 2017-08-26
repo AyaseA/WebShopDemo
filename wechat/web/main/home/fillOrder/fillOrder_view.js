@@ -51,21 +51,21 @@ $(function() {
 	$$.setGoBack($page.find('>div.header >a.goBack'));
 
     // 关闭modal
-    $page.on('click', '>div.deliveryModal, >div.deliveryModal a.closeModal', function() {
+    $page.on('click dbclick', '>div.deliveryModal, >div.deliveryModal a.closeModal', function() {
         $page.find('>div.deliveryModal').find('div.warp').animate({
             'top': bodyHeight
         }, 200).end().fadeOut(200);
-    }).on('click', 'div.warp', function(e) {
+    }).on('click dbclick', 'div.warp', function(e) {
         e.stopPropagation();
     });
     // 打开
-    $page.on('click', 'div.delivery', function() {
+    $page.on('click dbclick', 'div.delivery', function() {
         $page.find('>div.deliveryModal div.warp').animate({
             'top': bodyHeight * 0.2
         }, 200).parent().fadeIn(200);
     });
     // 选择地址
-    $page.on('click', 'div.deliveryModal div.item', function() {
+    $page.on('click dbclick', 'div.deliveryModal div.item', function() {
         var id = $(this).attr('data-id'),
             addr = $(this).attr('data-addr');
 
@@ -83,46 +83,46 @@ $(function() {
     });
 
 	// 关闭modal
-    $page.on('click', '>div.appointmentModal, >div.appointmentModal a.closeModal', function() {
+    $page.on('click dbclick', '>div.appointmentModal, >div.appointmentModal a.closeModal', function() {
     	$page.find('>div.appointmentModal').find('div.warp').animate({
     		'top': bodyHeight
     	}, 200).end().fadeOut(200);
-    }).on('click', 'div.warp', function(e) {
+    }).on('click dbclick', 'div.warp', function(e) {
     	e.stopPropagation();
     });
     // 打开
-    $page.on('click', 'div.appointment', function() {
+    $page.on('click dbclick', 'div.appointment', function() {
     	$page.find('>div.appointmentModal div.warp').animate({
     		'top': bodyHeight * 0.2
     	}, 200).parent().fadeIn(200);
     });
     // 选择日期
-    $page.on('click', '>div.appointmentModal span.am, >div.appointmentModal span.pm', function() {
+    $page.on('click dbclick', '>div.appointmentModal span.am, >div.appointmentModal span.pm', function() {
         $page.find('>div.appointmentModal span.am, >div.appointmentModal span.pm').removeClass('selected');
         $(this).addClass('selected');
     });
 	
 	// 点击优惠券按钮弹出优惠券框
-	$page.on('click', 'div.coupon button', function() {
+	$page.on('click dbclick', 'div.coupon button', function() {
 		$page.find('>div.couponModal').show().animate({
 			'top': 0
 		}, 300);
 	});
 	// 关闭弹框
-	$page.on('click', '>div.couponModal a.closeModal', function() {
+	$page.on('click dbclick', '>div.couponModal a.closeModal', function() {
 		$page.find('>div.couponModal').animate({
 			'top': bodyHeight
 		}, 300).fadeOut(400);
 	});
 	// tab切换
-	$page.on('click', '>div.couponModal li', function() {
+	$page.on('click dbclick', '>div.couponModal li', function() {
 		if ($(this).hasClass('active')) {
 			return false;
 		}
 		changeTab($(this));
 	});
 	// 选择优惠券事件
-	$page.on('click', '>div.couponModal div.usable div.ticket', function() {
+	$page.on('click dbclick', '>div.couponModal div.usable div.ticket', function() {
 		if ($(this).hasClass('checked')) {
 			$(this).removeClass('checked');
 		} else {

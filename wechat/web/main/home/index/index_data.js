@@ -72,7 +72,7 @@ $(function(){
         );
     }*/
 
-    $page.off('click', 'div.header a.scan').on('click', 'div.header a.scan', function() {
+    $page.off('click dbclick', 'div.header a.scan').on('click dbclick', 'div.header a.scan', function() {
         if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             wx.scanQRCode({
                 needResult: 1,
@@ -139,10 +139,10 @@ $(function(){
                     'border-radius': '8px'
                 });
                 modal.find('.layui-layer-btn').remove();
-                modal.find('button.cancel').off('click').on('click', function() {
+                modal.find('button.cancel').off('click dbclick').on('click dbclick', function() {
                     layer.closeAll();
                 });
-                modal.find('button.change').off('click').on('click', function() {
+                modal.find('button.change').off('click dbclick').on('click dbclick', function() {
                     if (callback) {
                         callback();
                     }

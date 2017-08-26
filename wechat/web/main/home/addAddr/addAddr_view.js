@@ -19,16 +19,16 @@ $(function () {
     $$.setGoBack($page.find('>div.header >a.goBack'));
 
     // 点击label也能触发input的touchstart事件
-    $page.on('click', '#home_addAddr_trlinkall', function(e) {
+    $page.on('click dbclick', '#home_addAddr_trlinkall', function(e) {
         e.stopPropagation();
     });
-    $page.on('click', 'label.trlinkall_label', function() {
+    $page.on('click dbclick', 'label.trlinkall_label', function() {
         var event = document.createEvent('Events');
         event.initEvent('touchstart', true, true); 
         $('#home_addAddr_trlinkall')[0].dispatchEvent(event);
     })
     // 设置默认
-    $page.on('click', 'div.setDefault', function() {
+    $page.on('click dbclick', 'div.setDefault', function() {
         if ($(this).hasClass('default')) {
             $(this).removeClass('default');
         } else {

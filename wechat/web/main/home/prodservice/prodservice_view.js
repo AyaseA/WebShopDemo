@@ -31,46 +31,46 @@ $(function() {
     $$.setGoBack($page.find('>div.header >a.goBack'));
     
     // 关闭modal
-    $page.on('click', '>div.storeModal, >div.storeModal a.closeModal', function() {
+    $page.on('click dbclick', '>div.storeModal, >div.storeModal a.closeModal', function() {
     	$page.find('>div.storeModal').find('div.warp').animate({
     		'top': bodyHeight
     	}, 200).end().fadeOut(200);
-    }).on('click', 'div.warp', function(e) {
+    }).on('click dbclick', 'div.warp', function(e) {
     	e.stopPropagation();
     });
     // 打开
-    $page.on('click', 'div.appointment', function() {
+    $page.on('click dbclick', 'div.appointment', function() {
     	$page.find('>div.storeModal div.warp').animate({
     		'top': bodyHeight * 0.2
     	}, 200).parent().fadeIn(200);
     });
     // 详情
-    $page.on('click', '>div.storeModal div.item >a', function(e) {
+    $page.on('click dbclick', '>div.storeModal div.item >a', function(e) {
     	e.stopPropagation();
     	e.preventDefault();
     	$$.redirect($(this).attr('href'));
     });
 
 	// tab页点击
-	$page.on('click', 'div.header li', function() {
+	$page.on('click dbclick', 'div.header li', function() {
 		if ($(this).hasClass('active')) {
 			return false;
 		}
 		changeTab($(this));
 	});
 	// 评价点击进入评价tab
-	$page.on('click', 'div.product >div.comments >p >a', function() {
+	$page.on('click dbclick', 'div.product >div.comments >p >a', function() {
 		changeTab($page.find('div.header li[data-type="evaluate"]'));
 	});
 	// 评价tab页
-	$page.on('click', 'div.evaluate li', function() {
+	$page.on('click dbclick', 'div.evaluate li', function() {
 		if ($(this).hasClass('active')) {
 			return false;
 		}
 		changeCommentsTab($(this));
 	});
 	// 点击图片放大
-	$page.on('click', 'div.comment >img', function() {
+	$page.on('click dbclick', 'div.comment >img', function() {
 		var url = $(this).attr('src');
 		var img = new Image();
 		img.src = url;
@@ -101,7 +101,7 @@ $(function() {
 		}
 	});
 	// 收藏
-	$page.on('click', '>div.footer >a.collect', function() {
+	$page.on('click dbclick', '>div.footer >a.collect', function() {
 		var $this = $(this),
 			pid = $this.attr('data-id');
 		if ($$.isLogin(true, null)) {

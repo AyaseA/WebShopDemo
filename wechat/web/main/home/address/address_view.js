@@ -20,14 +20,14 @@ $(function () {
     $$.setGoBack($page.find('>div.header >a.goBack'));
 
     // 设置默认地址
-    $page.on('click', '>div.main div.item >i', function() {
+    $page.on('click dbclick', '>div.main div.item >i', function() {
         var $this = $(this);
         setDefaultAddr($this.attr('data-id'), function() {
             $this.parent().addClass('default').siblings().removeClass('default');
         });
     });
     // 删除地址
-    $page.on('click', '>div.main div.item a.delete', function() {
+    $page.on('click dbclick', '>div.main div.item a.delete', function() {
         if ($page.find('div.confirm').is(':visible')) {
             return false;
         }
@@ -37,18 +37,18 @@ $(function () {
         $page.find('div.confirm button.confirm').attr('data-id', $(this).attr('data-id'));
     });
     // 删除前确认相关
-    $page.on('click', 'div.confirm button.confirm', function() {
+    $page.on('click dbclick', 'div.confirm button.confirm', function() {
         deleteAddr($(this).attr('data-id'), function() {
             $page.find('div.confirm').hide();
             getAddrList();
         });
     });
     // 删除前确认相关
-    $page.on('click', 'div.confirm, div.confirm button.cancel', function() {
+    $page.on('click dbclick', 'div.confirm, div.confirm button.cancel', function() {
         $page.find('div.confirm').hide();
     });
     // 删除前确认相关
-    $page.on('click', 'div.confirm >div', function(e) {
+    $page.on('click dbclick', 'div.confirm >div', function(e) {
         e.stopPropagation();
     });
 

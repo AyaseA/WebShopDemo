@@ -19,20 +19,20 @@ $(function() {
     $page.find('a.addNew').attr('href', 'home/carInfo.html');
 
     // 设置默认车辆
-    $page.on('click', '>div.main div.car >i', function() {
+    $page.on('click dbclick', '>div.main div.car >i', function() {
         var $this = $(this);
         setDefaultCar($this.attr('data-id'), function() {
             $this.parent().addClass('default').siblings().removeClass('default');
         });
     });
     // 点击车辆进入推荐保养
-    $page.on('click', '>div.main div.car >div', function() {
+    $page.on('click dbclick', '>div.main div.car >div', function() {
         var cid = $(this).attr('data-id'),
             cname = $(this).attr('data-name');
         $$.redirect('home/maintain.html?cid=' + cid + '&cname=' + cname);
     });
     // 删除车辆
-    $page.on('click', '>div.main div.car a.delete', function() {
+    $page.on('click dbclick', '>div.main div.car a.delete', function() {
         if ($page.find('div.confirm').is(':visible')) {
             return false;
         }
@@ -42,18 +42,18 @@ $(function() {
         $page.find('div.confirm button.confirm').attr('data-id', $(this).attr('data-id'));
     });
     // 删除前确认相关
-    $page.on('click', 'div.confirm button.confirm', function() {
+    $page.on('click dbclick', 'div.confirm button.confirm', function() {
         deleteCar($(this).attr('data-id'), function() {
             $page.find('div.confirm').hide();
             getMyCars();
         });
     });
     // 删除前确认相关
-    $page.on('click', 'div.confirm, div.confirm button.cancel', function() {
+    $page.on('click dbclick', 'div.confirm, div.confirm button.cancel', function() {
         $page.find('div.confirm').hide();
     });
     // 删除前确认相关
-    $page.on('click', 'div.confirm >div', function(e) {
+    $page.on('click dbclick', 'div.confirm >div', function(e) {
         e.stopPropagation();
     });
     // 设置默认车辆

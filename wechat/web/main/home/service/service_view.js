@@ -59,13 +59,13 @@ $(function(){
     }
 
     // 点击商品查看详情
-    $page.on('click', 'div.products div.item', function() {
+    $page.on('click dbclick', 'div.products div.item', function() {
         var pid = $(this).attr('data-id');
         $$.redirect('home/prodservice.html?pid=' + pid);
     });
 
     // 立即购买
-    $page.on('click', 'div.products div.item >a', function(e) {
+    $page.on('click dbclick', 'div.products div.item >a', function(e) {
         e.stopPropagation();
         e.preventDefault();
         var url = $(this).attr('href');

@@ -131,7 +131,7 @@ $(function(){
     }
 
     // 主页模块快捷入口按钮点击事件（洗车、做保养、邀请有礼）
-    $page.on('click', 'div.entrance >div', function() {
+    $page.on('click dbclick', 'div.entrance >div', function() {
         var type = $(this).attr('data-type');
         switch(type) {
             case 'package': {
@@ -147,17 +147,17 @@ $(function(){
     });
     
     // news
-    $page.on('click', 'div.news >img', function() {
+    $page.on('click dbclick', 'div.news >img', function() {
         $$.redirect('home/prodservice.html?pid=7');
     });
 
     // recomened
-    $page.on('click', 'div.recommend >div[data-type="qrcodeMoveCar"]', function() {
+    $page.on('click dbclick', 'div.recommend >div[data-type="qrcodeMoveCar"]', function() {
         $$.redirect('home/product.html?pid=48');
     });
 
     // 点击商品查看详情
-    $page.on('click', 'div.products img, div.products p', function() {
+    $page.on('click dbclick', 'div.products img, div.products p', function() {
         var pid = $(this).parent().attr('data-id'),
             type = $(this).parent().attr('data-type');
         if (type == 0) {
@@ -171,7 +171,7 @@ $(function(){
     });
     
     // footer 事件
-    $page.on('click', 'div.footer li', function() {
+    $page.on('click dbclick', 'div.footer li', function() {
         var type = $(this).attr('data-tab');
         switch(type) {
             case 'index': {

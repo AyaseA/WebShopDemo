@@ -27,7 +27,7 @@ $(function() {
     });
     // 点击车辆进入推荐保养
     $page.on('click dbclick', '>div.main div.car >div', function() {
-        var cid = $(this).attr('data-id'),
+        var cid = $(this).attr('data-carid'),
             cname = $(this).attr('data-name');
         $$.redirect('home/maintain.html?cid=' + cid + '&cname=' + cname);
     });

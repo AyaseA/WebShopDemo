@@ -52,14 +52,17 @@
     top: 44px;
 }
 #home_myCars >div.main >div.cars {
-	padding: 15px 15px 30px;
+	padding: 0 15px;
 }
 #home_myCars >div.main >div.cars >div.car {
 	border: 1px solid #fff;
 	background-color: #fff;
 	position: relative;
 	border-radius: 5px;
-	margin-bottom: 15px;
+	margin-top: 15px;
+}
+#home_myCars >div.main >div.cars >div.car:last-child {
+    margin-bottom: 15px;
 }
 #home_myCars >div.main >div.cars >div.car::after {
 	content: "";

@@ -43,6 +43,7 @@ $(function() {
     //店面出现事件
     $page.off("click", ".selectStore .selectDetail").on("click", ".selectStore .selectDetail", function() {
         $page.find(".storeInfo").animate({ top: "-124vw" }, 500);
+        $page.find(".dateInfo").css( top, "-122vw" );
     });
 
     //点击店面隐藏事件
@@ -53,6 +54,7 @@ $(function() {
     //时间出现事件
     $page.off("click", ".selectDate .selectDetail").on("click", ".selectDate .selectDetail", function() {
         $page.find(".dateInfo").animate({ top: "-226vw" }, 500);
+        $page.find(".storeInfo").css( top, "0vw");
     });
 
     //点击时间隐藏事件
@@ -152,18 +154,6 @@ $(function() {
                 function() {
                     layer.msg("服务预约成功");
                     $$.redirect("icenter/appointmentList.html");
-                    /*$$.post("CSL/Service/UpdateMyServiceStoreID",
-                    {
-                        ID:sid,
-                        StoreID:$page.find(".selectStore .selectDetail span").attr("data-store-id")
-                    },
-                    function(txt){
-                        if(txt.Status==0){
-                            layer.msg("服务预约成功");
-                            $$.redirect("icenter/appointmentList.html");
-                        }
-                    }
-                );*/
                 }
             );
         }

@@ -43,28 +43,24 @@ $(function() {
             }
         });
 
-        //查看删除照片
+        //删除照片
         $page.off("click", ".close img").on("click", ".close img", function() {
             var _this = $(this);
             layer.confirm("确定要删除此照片吗", function(index) {
                 _this.parent().parent().remove();
-                window.photoNum += 1;
+                $page.photoNum += 1;
+                //数组中删除此照片
+                var imgIndex = $.inArray($(this).attr("src"),$page.photoList);
+                $page.photoList.splice(imgIndex,1); 
                 layer.close(index);
             });
         });
 
         $page.off("click", ".reserve").on("click", ".reserve", function() {
             var j = $(this).attr("data-index");
-            var _this = $(this);
             wx.previewImage({
-                current: $(this).attr("src"), // 当前显示图片的http链接
-                urls: function() {
-                    var showList = new Array();
-                    for (var i = 0; i < $page.find(".reserve").length; i++) {
-                        showList.push($($page.find(".reserve")[i]).attr("src"));
-                    }
-                    return showList; // 需要预览的图片http链接列表
-                }
+                current: $page.photoList[j], // 当前显示图片的http链接
+                urls: $page.photoList
             });
         });
 
@@ -74,26 +70,6 @@ $(function() {
 
         // 获取订单详情
         getOrderDetail();
-
-        function getOrderDetail() {
-            $$.post(
-                'CSL/Order/QueryOrderDetail', {
-                    'ID': orderId
-                },
-                function(res) {
-                    if (res.Status != 0) {
-                        return false;
-                    }
-                    if (res.Data) {
-                        var d = res.Data;
-                        $page.find('>div.main >div.product').html(template(pageStr + '_product', {
-                            cProList: JSON.parse(d.Data),
-                            serverAddr: $$.config.serverAddr
-                        }));
-                    }
-                }
-            );
-        }
 
         //微信配置
         var WXsign = $$.getWeChatSign(1);
@@ -108,27 +84,29 @@ $(function() {
 
 
         //通过ready接口处理成功验证
-        wx.ready(function() {
-        });
+        wx.ready(function() {});
 
         wx.error(function(res) {});
 
-        window.photoNum = 3;
-
+        $page.photoNum = 3;
+        $page.photoList =[];
 
         $page.off("click", ".camera").on("click", ".camera", function(e) {
-            if (window.photoNum != 0) {
+            if ($page.photoNum != 0) {
                 wx.chooseImage({
-                    count: window.photoNum, // 默认9
+                    count: $page.photoNum, // 默认9
                     sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
                     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                     success: function(res) {
-                        $page.imgList = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
+
+                        $page.imgList = res.localIds;
+                         // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
                         for (var i = 0; i < $page.imgList.length; i++) {
                             var oneItem = "<div><img src='" + $page.imgList[i] + "' data-index='" + i + "' class='reserve'><div class='close'><img src='images/common/round_close.png' data-index='" + i + "'></div></div>";
                             $page.find(".pictures").prepend(oneItem);
+                            $page.photoList.push($page.imgList[i]);
                         }
-                        window.photoNum -= $page.imgList.length;
+                        $page.photoNum -= $page.imgList.length;
                         //删除照片              
                     }
                 });
@@ -141,54 +119,76 @@ $(function() {
             upLoad();
         });
 
-        //添加评论
-        function upLoad() {
-            var rating = $page.find('>div.main >div.stars >i.star').length;
-            $$.post(
-                'CSL/Review/AddReview', {
-                    OrderID: orderId,
-                    ProductID: productId,
-                    Cont: $page.find("textarea").val(),
-                    Rating: rating * 20
-                },
-                function(txt) {
-                    txt = $$.eval(txt);
-                    $page.ReviewID = txt.Data.ID;
-                    if (window.photoNum < 3) {
-                        upImg();
-                    } else {
-                        layer.alert("评论成功", function(index) {
-                            $$.redirect("icenter/commitList.html");
-                            layer.close(index);
-                        });
-                    }
+
+    }
+
+    function getOrderDetail() {
+        $$.post(
+            'CSL/Order/QueryOrderDetail', {
+                'ID': orderId
+            },
+            function(res) {
+                if (res.Status != 0) {
+                    return false;
                 }
-            );
-        }
-
-        function upImg() {
-            for (var i = 0; i < $page.imgList.length; i++) {
-                wx.uploadImage({
-                    localId: $page.imgList[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                    isShowProgressTips: 1, // 默认为1，显示进度提示
-                    success: function(res) {
-                        var serverId = res.serverId;
-                        $$.post("CSL/Review/AddReviewImg", {
-                            ProductReviewID: $page.ReviewID,
-                            Img: serverId,
-                            Platform: 10
-                        }, function(txt) {
-                            if (i == $page.imgList.length) {
-                                layer.alert("评论成功", function(index) {
-                                    $$.redirect("icenter/commitList.html?type=waitRevice");
-                                    layer.close(index);
-                                });
-                            }
-                        });
-                    }
-                });
+                if (res.Data) {
+                    var d = res.Data;
+                    $page.find('>div.main >div.product').html(template(pageStr + '_product', {
+                        cProList: JSON.parse(d.Data),
+                        serverAddr: $$.config.serverAddr
+                    }));
+                }
             }
+        );
+    }
 
+    //添加评论
+    function upLoad() {
+        var rating = $page.find('>div.main >div.stars >i.star').length;
+        $$.post(
+            'CSL/Review/AddReview', {
+                OrderID: orderId,
+                ProductID: productId,
+                Cont: $page.find("textarea").val(),
+                Rating: rating * 20
+            },
+            function(txt) {
+                txt = $$.eval(txt);
+                $page.ReviewID = txt.Data.ID;
+                if ($page.photoNum < 3) {
+                    upImg();
+                } else {
+                    layer.alert("评论成功", function(index) {
+                        $$.redirect("icenter/commitList.html");
+                        layer.close(index);
+                    });
+                }
+            }
+        );
+    }
+
+    function upImg() {
+        for (var i = 0; i < $page.photoList.length; i++) {
+            wx.uploadImage({
+                localId: $page.photoList[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                isShowProgressTips: 1, // 默认为1，显示进度提示
+                success: function(res) {
+                    var serverId = res.serverId;
+                    $$.post("CSL/Review/AddReviewImg", {
+                        ProductReviewID: $page.ReviewID,
+                        Img: serverId,
+                        Platform: 10
+                    }, function(txt) {
+                        if (i == $page.imgList.length) {
+                            layer.alert("评论成功", function(index) {
+                                $$.redirect("icenter/commitList.html?type=waitRevice");
+                                layer.close(index);
+                            });
+                        }
+                    });
+                }
+            });
         }
+
     }
 });

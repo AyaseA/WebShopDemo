@@ -135,9 +135,9 @@ $(function() {
     }
 
     function showArea(area) {
-        $page.find(".content").children().removeClass("active");
+        $page.find(".content").children().css("display","none");
         $page.find(".nav ul li").removeClass("active");
-        $page.find("." + area).addClass("active");
+        $page.find("." + area).css("display","block");
         for (var i = 0; i < $page.find(".nav ul li").length; i++) {
             if ($($page.find(".nav ul li")[i]).attr("data-pane") == area) {
                 $($page.find(".nav ul li")[i]).addClass("active");

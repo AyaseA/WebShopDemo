@@ -12,10 +12,16 @@ $(function() {
 
     $page.off("click", ".price button").on("click", ".price button", function(e) {
         var tid = $(this).attr("data-tid");
-        $$.redirect("home/fillOrder.html?pid=" + $(this).attr("data-id") + "&num=1&type="+tid);
+        var pid = $(this).attr("data-id");
+        if(tid == 1){
+            $$.redirect("home/prodservice.html?pid=" + pid);
+        }else{
+            $$.redirect("home/fillOrder.html?pid=" + pid + "&num=1&type="+tid);
+        }
         e.preventDefault();
         e.stopPropagation();
     });
+    
     $page.off("click", ".productInfo").on("click", ".productInfo", function() {
         var pid = $(this).attr("data-id");
         var tid = $(this).attr("data-tid");

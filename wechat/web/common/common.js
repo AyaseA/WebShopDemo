@@ -117,13 +117,10 @@ Date.prototype.pattern = function(fmt) {
                     $.inArray(backUrl, stackArr) == -1 &&
                     !fromGoBack &&
                     !isReload) {
-                    isReload = false;
                     stackArr.push(backUrl || url);
                     set(stackArr);
                 }
-                if (isReload) {
-                    isReload = false;
-                }
+                isReload = false;
             };
             var isEmpty = function() {
                 var stackStr = get();
@@ -374,6 +371,7 @@ Date.prototype.pattern = function(fmt) {
                     tmpUrl.indexOf('shop/shopList.html') != -1 ||
                     tmpUrl.indexOf('icenter/pageHome.html') != -1) {
                     $$.stack.clear();
+                    isReload = false;
                 } else {
                     $$.stack.push($$.getUrl(), backUrl, fromGoBack);
                 }

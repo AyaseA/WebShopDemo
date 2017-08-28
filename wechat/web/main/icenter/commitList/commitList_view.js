@@ -2,7 +2,7 @@ $(function(){
 	var $page=$("#icenter_commitList");
 	
 	$page.find(".header a").click(function(){
-        $$.goBack();
+        $$.redirect("icenter/pageHome.html");
     });
 
 	$page.on("click",".nav ul li",function(){

@@ -39,6 +39,8 @@ $(function() {
         Rows: 9999,
         ProductServiceID: pid
     });
+    
+    $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');
 
     // 选择店面
     $page.off('click dbclick', '>div.storeModal div.item').on('click dbclick', '>div.storeModal div.item', function() {
@@ -56,7 +58,7 @@ $(function() {
             $page.find('div.product >div.detail >div.info >h1').html('<small>￥</small>' + price);
             
             // 修改立即购买按钮的商品id
-            $page.find('>div.footer >a.collect').attr('data-id', serviceId).removeClass('collected').show();
+            //$page.find('>div.footer >a.collect').attr('data-id', serviceId).removeClass('collected').show();
             getWishList();
 
             $page.find('div.selectAndBuy').removeClass('disable');
@@ -64,7 +66,7 @@ $(function() {
     });
 
     // 设置底部按钮的pid
-    $page.find('>div.footer >a.collect').hide();
+    /*$page.find('>div.footer >a.collect').hide();*/
     $page.off('click dbclick', '>div.footer >a.buyNow, div.selectAndBuy')
          .on('click dbclick', '>div.footer >a.buyNow, div.selectAndBuy', function() {
         if (serviceId != '') {

@@ -11,7 +11,7 @@ $(function() {
     }
 
     // 返回按钮
-    $$.setGoBack($page.find('>div.header a.goback'));
+    /*$$.setGoBack($page.find('>div.header a.goback'));*/
 
     $page.find('div.search-cnt').width(boxWidth * 3)
          .find('>div').width(boxWidth).height(mainHeight);

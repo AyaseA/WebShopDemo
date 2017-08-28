@@ -11,7 +11,7 @@ $(function(){
         $$.getLocationInfo().name
     );
     $page.find('>div.header').removeClass('on');
-    $page.find('>div.main').scrollTop(0);
+    /*$page.find('>div.main').scrollTop(0);*/
 
     // 懒加载
     /*$page.find('>div.main').scrollTop(0).scroll(function() {

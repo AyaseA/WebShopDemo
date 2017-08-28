@@ -1,6 +1,7 @@
 $(function() {
     var $page = $('#home_search'),
         pageStr = 'home_search',
+        isReset = $$.getQueryString('reset') == '1' ? true : false,
         pageNum = 1,
         pageSize = 10,
         allCount = 0,
@@ -29,6 +30,10 @@ $(function() {
         }
     });
 
+    if (isReset) {
+        resSearch();
+    }
+
     $page.find('div.searchInput >input').focus();
     $page.off('submit', 'form').on('submit', 'form', function(e) {
         e.preventDefault();
@@ -56,10 +61,10 @@ $(function() {
          .on('click dbclick', 'i.clearCnt', function() {
         resSearch();
     });
-    $page.off('click dbclick', '>div.header a.cancel')
+    /*$page.off('click dbclick', '>div.header a.cancel')
          .on('click dbclick', '>div.header a.cancel', function(){
         resSearch();
-    });
+    });*/
 
     function searchProducts(pn, ps) {
         var $proBox = $page.find('>div.main div.products');

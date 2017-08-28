@@ -82,7 +82,6 @@ $(function() {
             jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone', 'startRecord', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'translateVoice', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         });
 
-
         //通过ready接口处理成功验证
         wx.ready(function() {});
 
@@ -118,8 +117,6 @@ $(function() {
         $page.off("click", ".commit").on("click", ".commit", function() {
             upLoad();
         });
-
-
     }
 
     function getOrderDetail() {
@@ -179,9 +176,9 @@ $(function() {
                         Img: serverId,
                         Platform: 10
                     }, function(txt) {
-                        if (i == $page.imgList.length) {
+                        if (i == $page.photoList.length) {
                             layer.alert("评论成功", function(index) {
-                                $$.redirect("icenter/commitList.html?type=waitRevice");
+                                $$.redirect("icenter/commitList.html");
                                 layer.close(index);
                             });
                         }

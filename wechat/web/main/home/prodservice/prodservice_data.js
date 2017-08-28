@@ -134,6 +134,8 @@ $(function() {
                         });
                     }
                     addHistoryFoot();
+
+                    $page.find('div.evaluate, div.comments').show();
                 }
             }
         );

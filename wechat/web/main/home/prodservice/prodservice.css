@@ -128,6 +128,7 @@
 #home_prodservice div.product div.comments {
     margin-top: 10px;
     padding-bottom: 30px;
+    display: none;
 }
 #home_prodservice div.product div.comments >p {
 	font-size: 16px;
@@ -254,6 +255,9 @@
 #home_prodservice div.proDetail >div {
 	padding: 5px 10px;
     font-size: 14px;
+}
+#home_prodservice div.evaluate {
+    display: none;
 }
 #home_prodservice div.evaluate >ul {
 	width: 100%;

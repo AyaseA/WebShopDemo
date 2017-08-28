@@ -284,8 +284,8 @@ $(function() {
 		$page.find('div.content').animate({
 			'margin-left': - boxWidth * index
 		}, 300);
-		moveObj.targetIndex = index;
-		moveObj.isSub = (index == 2);
+		/*moveObj.targetIndex = index;
+		moveObj.isSub = (index == 2);*/
 	}
 	// 评价tab页切换
 	function changeCommentsTab(item, type) {
@@ -294,7 +294,7 @@ $(function() {
 		$page.find('div.reviews >div.warp').animate({
 			'margin-left': - boxWidth * index
 		}, 300);
-		moveReviewObj.targetIndex = index;
+		/*moveReviewObj.targetIndex = index;*/
 	}
 	// 添加收藏
 	function addWish(pid, item) {

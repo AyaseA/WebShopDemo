@@ -91,7 +91,7 @@ $(function() {
 		}
 	});
 	/************** 左右滑动相关 start **************/
-	var moveBannerObj = {
+	/*var moveBannerObj = {
 		x: 0,
 		y: 0,
 		xDis: 0,
@@ -275,7 +275,7 @@ $(function() {
 				targetIndex: moveReviewObj.targetIndex
 			};
 		}
-	});
+	});*/
 	/************** 左右滑动相关 end **************/
 	// tab页切换
 	function changeTab(item) {

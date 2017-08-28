@@ -38,7 +38,8 @@ $(function() {
         /* 按钮选择器，用于触发弹出插件 */
         'trigger': '#home_carInfo div.carDetail input[name=timeBuy]',
         /* 模式：date日期；datetime日期时间；time时间；ym年月；*/
-        'type': 'date'
+        'type': 'date',
+        'maxDate': new Date().pattern('yyyy-MM-dd') /*最大日期*/
     });
     // 设置默认车辆点击事件
     $page.on('click dbclick', 'div.carDetail div.setDefault', function() {

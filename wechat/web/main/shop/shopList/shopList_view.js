@@ -164,7 +164,7 @@ $(function() {
                         $(scrollArea).append(shoplist);
                     }
 
-                    if (parseInt(txt.Data.Count) < 10) {
+                    if (parseInt(txt.Data.Rows.length) < 10) {
                         $(scrollArea).append("<div class='notice'>没有更多数据了</div>");
                         _this.loadfoot = true;
                     } else {
@@ -184,6 +184,7 @@ $(function() {
                 } else {
                     if (!_this.loadfoot) {
                         $(scrollArea).append("<div class='notice'>没有更多数据了</div>");
+                        _this.loadfoot = true;
                     }
                 }
             }

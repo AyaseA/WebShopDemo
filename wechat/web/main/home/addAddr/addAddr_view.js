@@ -16,7 +16,7 @@ $(function () {
         bodyHeight - headerHeight
     );
     // 返回按钮
-    $$.setGoBack($page.find('>div.header >a.goBack'));
+    /*$$.setGoBack($page.find('>div.header >a.goBack'));*/
 
     // 点击label也能触发input的touchstart事件
     $page.on('click dbclick', '#home_addAddr_trlinkall', function(e) {
@@ -35,6 +35,30 @@ $(function () {
             $(this).addClass('default');
         }
     });
+
+    // validite
+    $page.on('input propertychange', 'div.addressData input[name="thePhone"]', function() {
+        var inputNum = $(this).val();
+        if (inputNum.length > 11 || !/^[1]{1}[0-9]{10}*$/.test(inputNum)) {
+            inputNum = inputNum.substring(0, inputNum.length - 1);
+        }
+        $(this).val(inputNum);
+    });
+    $page.on('input propertychange', 'div.addressData input[name="tel"]', function() {
+        var inputNum = $(this).val();
+        if (!/^[1-9]{1}[0-9]*$/.test(inputNum)) {
+            inputNum = inputNum.substring(0, inputNum.length - 1);
+        }
+        $(this).val(inputNum);
+    });
+    $page.on('input propertychange', 'div.addressData input[name="postCode"]', function() {
+        var inputNum = $(this).val();
+        if (inputNum.length > 6 || !/^[1-9]{1}[0-9]{5}*$/.test(inputNum)) {
+            inputNum = inputNum.substring(0, inputNum.length - 1);
+        }
+        $(this).val(inputNum);
+    });
+
     // 省市县
     ;(function() {
         $$.get('Product/Info/TriLinkAll', function(res) {

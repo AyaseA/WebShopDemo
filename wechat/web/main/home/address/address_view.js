@@ -17,7 +17,7 @@ $(function () {
         bodyHeight - headerHeight
     );
     // 返回按钮
-    $$.setGoBack($page.find('>div.header >a.goBack'));
+    /*$$.setGoBack($page.find('>div.header >a.goBack'));*/
 
     // 设置默认地址
     $page.on('click dbclick', '>div.main div.item >i', function() {

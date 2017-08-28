@@ -28,7 +28,7 @@ $(function() {
 	});
 
     // 返回按钮
-    $$.setGoBack($page.find('>div.header >a.goBack'));
+    /*$$.setGoBack($page.find('>div.header >a.goBack'));*/
     
     // 关闭modal
     $page.on('click dbclick', '>div.storeModal, >div.storeModal a.closeModal', function() {

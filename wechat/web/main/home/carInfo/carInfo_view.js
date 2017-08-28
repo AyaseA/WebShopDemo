@@ -159,6 +159,15 @@ $(function() {
         $page.find('div.carDetail').scrollTop(scrollTop);
     });
 
+    // validite
+    $page.on('input propertychange', 'div.carDetail input[name="dirveRange"]', function() {
+        var inputNum = $(this).val();
+        if (!/^[0-9]+.?[0-9]*$/.test(inputNum)) {
+            inputNum = inputNum.substring(0, inputNum.length - 1);
+        }
+        $(this).val(inputNum);
+    });
+
     getBrands();
     // 获取品牌信息
     function getBrands() {

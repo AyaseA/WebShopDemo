@@ -24,7 +24,7 @@ $(function() {
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight * 2 - footerHeight - 2);
     
     // 返回按钮
-    $$.setGoBack($page.find('>div.header >a.goBack'));
+    /*$$.setGoBack($page.find('>div.header >a.goBack'));*/
     
 	// tab页点击
 	$page.on('click dbclick', 'div.header li', function() {

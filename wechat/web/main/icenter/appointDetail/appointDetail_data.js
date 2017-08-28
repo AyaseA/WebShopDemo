@@ -60,7 +60,9 @@ $(function () {
                     } else {
                         amOrPm = '上午';
                     }
-
+                    $page.find('>div.confirm')
+                         .find('p >span').text(d.StoreTel || d.StorePhone)
+                         .end().find('a.confirm').attr('href', 'tel:' + (d.StoreTel || d.StorePhone));
                     $page.find('>div.main').html(template(pageStr + '_detail', {
                         serverAddr: $$.config.serverAddr,
                         data: d,

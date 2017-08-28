@@ -127,7 +127,7 @@ $(function () {
         layer.open({
             title: "商家扫描二维码",
             content: "<img style='width:59vw;' class='appointment_strCode' src='" + imgurl + "'>",
-            area: ["50vw", "80vw"],
+            area: ["50vw", "90vw"],
             btn: [],
             cancel: function() {
                 clearInterval(time);

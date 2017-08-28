@@ -267,14 +267,21 @@
     z-index: 98;
 }
 #home_prodservice div.evaluate >ul >li {
-	float: left;
-	display: block;
-	width: 20%;
-	height: 42px;
-	border-bottom: 2px solid #fff;
-	line-height: 45px;
-	font-size: 14px;
-	text-align: center;
+    float: left;
+    display: block;
+    width: 20%;
+    height: 42px;
+    border-bottom: 2px solid #fff;
+    font-size: 14px;
+    text-align: center;
+}
+#home_prodservice div.evaluate >ul >li >span {
+    display: block;
+    margin-top: 5px;
+}
+#home_prodservice div.evaluate >ul >li >small {
+    margin-top: -1px;
+    display: block;
 }
 #home_prodservice div.evaluate >ul >li.active {
 	border-color: #EA5514;

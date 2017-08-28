@@ -246,7 +246,8 @@ $(function() {
     });
     // 根据商品id获取评论
     function getComments(data) {
-        var $proBox = $(data.target);
+        var $proBox = $(data.target),
+            type = $proBox.attr('class');
         $.ajax({
             url: $$.config.serverAddr + 'Product/Review/QueryProductServiceReviewList',
             data: {
@@ -267,6 +268,9 @@ $(function() {
                     if (data.N == 1) {
                        $proBox.empty();
                         data.allCount = parseInt(res.Data.Count);
+                    }
+                    if (type != 'commentList') {
+                        $page.find('div.evaluate li[data-type="' + type + '"] small').text(res.Data.Count);
                     }
                     var d = res.Data.Rows;
                     // 

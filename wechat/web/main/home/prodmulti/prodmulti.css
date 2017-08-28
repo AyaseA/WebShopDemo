@@ -272,9 +272,16 @@
 	width: 20%;
 	height: 42px;
 	border-bottom: 2px solid #fff;
-	line-height: 45px;
 	font-size: 14px;
 	text-align: center;
+}
+#home_prodmulti div.evaluate >ul >li >span {
+    display: block;
+    margin-top: 5px;
+}
+#home_prodmulti div.evaluate >ul >li >small {
+    margin-top: -1px;
+    display: block;
 }
 #home_prodmulti div.evaluate >ul >li.active {
 	border-color: #EA5514;

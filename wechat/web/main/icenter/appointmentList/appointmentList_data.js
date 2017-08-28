@@ -66,7 +66,7 @@ $(function() {
         );
     });
 
-    $$.post("CSL/Appointment/QueryAppointList", { Status: 0, N: 1, Rows: 30 }, function(txt) {
+    $$.post("CSL/Appointment/QueryAppointList", { Status: 4, N: 1, Rows: 30 }, function(txt) {
         $page.find(".notVerify").html(
             template('icenter_appointmentList_notVerify', {
                 notVerifyData: txt.Data.Rows,
@@ -110,7 +110,7 @@ $(function() {
         layer.open({
             title: "商家扫描二维码",
             content: "<img style='width:59vw;' class='appointment_strCode' src='" + imgurl + "'>",
-            area: ["50vw", "80vw"],
+            area: ["50vw", "90vw"],
             btn: [],
             cancel: function() {
                 clearInterval(time);

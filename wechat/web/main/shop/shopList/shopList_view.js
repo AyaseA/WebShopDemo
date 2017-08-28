@@ -2,6 +2,7 @@
 $(function() {
     var bodyH = window.innerHeight || document.body.clientHeight,
         $page = $('#shop_shopList'),
+        page = document.getElementById("shop_shopList");
         pageStr = 'shop_shopList',
         headerH = $page.find(">div.header").height(),
         selectorH = 47, //$page.find('>div.selectShop').height(),
@@ -270,13 +271,13 @@ $(function() {
             bodyMirror.style.height = "100%";
             bodyMirror.style.opacity = "0.50";
             bodyMirror.style.zIndex = 9;
-            document.body.appendChild(bodyMirror);
+            $page.append(bodyMirror);
         }
 
         //删除滤镜层
         function removeMirror() {
             setTimeout(function() {
-                document.body.removeChild(bodyMirror);
+                page.removeChild(bodyMirror);
             }, 300);
         }
 

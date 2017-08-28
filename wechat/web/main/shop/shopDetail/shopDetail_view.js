@@ -3,11 +3,6 @@ $(function() {
         pageStr = 'shop_shopDetail';
 
     var id = $$.getQueryString("ID");
-
-    $page.find(".back").click(function() {
-        $$.goBack();
-    });
-
     $page.on("click",".serviceNav ul li",function(){
         $page.find(".serviceNav ul li").removeClass("active");
         $(this).addClass("active");

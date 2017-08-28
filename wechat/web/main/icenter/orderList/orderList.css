@@ -104,6 +104,7 @@
 	float:right;
 	margin-top:1vw;
 	color: #F60;
+	font-size: 3.5vw;
 }
 
 #icenter_orderList .pInfo{
@@ -123,7 +124,7 @@
 
 #icenter_orderList .sum{
 	font-weight:bold;
-	color:#F00;
+	color:#ea5514;
 }
 
 #icenter_orderList .loadMsg{

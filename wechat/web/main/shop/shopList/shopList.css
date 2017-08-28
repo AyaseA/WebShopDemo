@@ -239,6 +239,7 @@
     line-height: 47px;
     box-sizing: border-box;
     background-color: #fff;
+    text-align: center;
 }
 
 #shop_shopList .selectShop ul li{
@@ -378,7 +379,7 @@
 /*下拉选择框开始*/
 #shop_shopList #shopList_selectModal{
 	position:absolute;
-	top:0px;
+	top:45px;
 	left:0px;
 	width:100%;
 	background:#FFF;

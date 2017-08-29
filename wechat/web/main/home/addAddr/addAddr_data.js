@@ -138,19 +138,22 @@ $(function () {
         if (!mobile) {
             layer.msg('请填写手机号！');
             return false;
-        }
-        /*if (!tel) {
-            layer.msg('请填写固定电话！');
+        } else if (!/^[1]{1}[0-9]{10}$/.test(mobile)) {
+            layer.msg('请填写正确的手机号！');
             return false;
-        }*/
+        }
+        if (tel && !/^[0-9]*$/.test(tel)) {
+            layer.msg('请填写正确的固定电话！');
+            return false;
+        }
         if (!area) {
             layer.msg('请选择所在地区！');
             return false;
         }
-        /*if (!post) {
-            layer.msg('请填写邮政编码！');
+        if (post && !/^[0-9]{6}$/.test(post)) {
+            layer.msg('请填写正确的邮政编码！');
             return false;
-        }*/
+        }
         if (!detail) {
             layer.msg('请填写详细地址！');
             return false;

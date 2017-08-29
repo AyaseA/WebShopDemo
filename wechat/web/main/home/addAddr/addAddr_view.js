@@ -21,11 +21,12 @@ $(function () {
     // 点击label也能触发input的touchstart事件
     $page.on('click dbclick', '#home_addAddr_trlinkall', function(e) {
         e.stopPropagation();
+        $(this).blur();
     });
     $page.on('click dbclick', 'label.trlinkall_label', function() {
         var event = document.createEvent('Events');
         event.initEvent('touchstart', true, true); 
-        $('#home_addAddr_trlinkall')[0].dispatchEvent(event);
+        $('#home_addAddr_trlinkall').blur()[0].dispatchEvent(event);
     })
     // 设置默认
     $page.on('click dbclick', 'div.setDefault', function() {
@@ -34,29 +35,6 @@ $(function () {
         } else {
             $(this).addClass('default');
         }
-    });
-
-    // validite
-    $page.on('input propertychange', 'div.addressData input[name="thePhone"]', function() {
-        var inputNum = $(this).val();
-        if (inputNum.length > 11 || !/^[1]{1}[0-9]{10}*$/.test(inputNum)) {
-            inputNum = inputNum.substring(0, inputNum.length - 1);
-        }
-        $(this).val(inputNum);
-    });
-    $page.on('input propertychange', 'div.addressData input[name="tel"]', function() {
-        var inputNum = $(this).val();
-        if (!/^[1-9]{1}[0-9]*$/.test(inputNum)) {
-            inputNum = inputNum.substring(0, inputNum.length - 1);
-        }
-        $(this).val(inputNum);
-    });
-    $page.on('input propertychange', 'div.addressData input[name="postCode"]', function() {
-        var inputNum = $(this).val();
-        if (inputNum.length > 6 || !/^[1-9]{1}[0-9]{5}*$/.test(inputNum)) {
-            inputNum = inputNum.substring(0, inputNum.length - 1);
-        }
-        $(this).val(inputNum);
     });
 
     // 省市县

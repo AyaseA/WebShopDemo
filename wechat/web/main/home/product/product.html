@@ -95,6 +95,10 @@
 			<span>{{descriTxt}}</span>
 			<h1><small>￥</small>{{data.Price}}</h1>
 		</div>
+		<div class="process">
+			<p>购物流程</p>
+			<img src="./images/product/product_process.png">
+		</div>
 	</script>
 	<script id="home_product_product_detail" type="text/html">
 		{{each descriImgs as img}}
@@ -113,7 +117,7 @@
 		<div class="comment">
 			<p class="uInfo">
 				<img src="./images/product/uimg.png" />
-				<small>{{comment.Mobile}}</small>
+				<small>{{comment.UserMobile}}</small>
 				{{if comment.Rating >= 0 && comment.Rating <= 20}}
 					{{set star = 1}}
 				{{else if comment.Rating > 20 && comment.Rating <= 40}}

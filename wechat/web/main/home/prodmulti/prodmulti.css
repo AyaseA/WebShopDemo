@@ -125,6 +125,17 @@
 	color: #EA5514;
 	padding: 5px 0 10px 15px;
 }
+#home_prodmulti div.product div.process {
+    background-color: #fff;
+    margin-top: 10px;
+}
+#home_prodmulti div.product div.process p {
+    padding: 10px 0 10px 15px;
+    font-size: 18px;
+}
+#home_prodmulti div.product div.process img {
+    width: 100%;
+}
 #home_prodmulti div.product div.comments {
     margin-top: 10px;
     padding-bottom: 30px;

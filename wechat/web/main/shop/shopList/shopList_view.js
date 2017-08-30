@@ -192,7 +192,7 @@ $(function() {
         });
     }
 
-    loadStore({ N: 1, CityID: 370100,Type:-1 }, "#shop_shopList .shopList");
+    loadStore({ N: 1, CityID: 370100,Type:-1 , LL: locationLngLat}, "#shop_shopList .shopList");
     //3级联动筛选
     //点击区域
     $("#shopList_positionS").on("click", "li", function() {

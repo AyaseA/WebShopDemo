@@ -38,6 +38,7 @@ $(function() {
         var serviceID=$(this).attr("data-id");
         $$.redirect("home/prodStore.html?sid="+serviceID);
     });
+    
     //微信配置
     var WXsign = $$.getWeChatSign(1);
     wx.config({
@@ -98,7 +99,7 @@ $(function() {
                     }
                 }
                 bannerSlide();
-                $page.off("click", ".map").on("click", ".map", function() {
+                $page.off("click", ".map").on("click", ".map, .storeAddr", function() {
                     wx.openLocation({
                         latitude: txt.Data.Latitude, // 纬度，浮点数，范围为90 ~ -90
                         longitude: txt.Data.Longitude, // 经度，浮点数，范围为180 ~ -180。
@@ -176,6 +177,4 @@ $(function() {
             }
         }
     );
-
-
 });

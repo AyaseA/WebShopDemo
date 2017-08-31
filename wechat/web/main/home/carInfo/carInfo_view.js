@@ -270,8 +270,8 @@ $(function() {
                         carInfo.CarID
                     );
                 }
+                $page.find('div.carDetail >button').removeClass('disabled');
             },
-            $page.find('div.carDetail >button').removeClass('disabled');
             function(e) {
                 $page.find('div.carDetail >button').removeClass('disabled');
             }

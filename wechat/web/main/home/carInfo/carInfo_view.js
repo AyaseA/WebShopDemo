@@ -81,9 +81,13 @@ $(function() {
     });
     // 点击保存
     $page.on('click dbclick', 'div.carDetail >button', function() {
+        if ($(this).hasClass('disabled')) {
+            return false;
+        }
         if (!validation()) {
             return false;
         }
+        $(this).addClass('disabled');
         saveCar(function(cid, cname, isdft, carid) {
             if (isdft == 1) {
                 $$.setUserInfo('UserCarID', cid);
@@ -267,8 +271,9 @@ $(function() {
                     );
                 }
             },
+            $page.find('div.carDetail >button').removeClass('disabled');
             function(e) {
-                tip('保存车辆信息失败！');
+                $page.find('div.carDetail >button').removeClass('disabled');
             }
         );
     }

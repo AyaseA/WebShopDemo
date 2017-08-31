@@ -12,10 +12,15 @@ $(function () {
         }
         $page.off('click', 'div.addressData >button')
              .on('click', 'div.addressData >button', function() {
+            if ($(this).hasClass('disabled')) {
+                return false;
+            }
             if (validate()) {
+                $(this).addClass('disabled');
                 saveAddr();
             }
         });
+        $page.find('div.addressData button.disabled').removeClass('disabled');
     }
     function saveAddr() {
         var data = getAddr(),
@@ -37,6 +42,9 @@ $(function () {
                     });
                 }
             }
+            $page.find('div.addressData button.disabled').removeClass('disabled');
+        }, function() {
+            $page.find('div.addressData button.disabled').removeClass('disabled');
         });
     }
     function setDefaultAddr(id, calback) {

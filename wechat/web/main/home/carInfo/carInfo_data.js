@@ -23,6 +23,8 @@ $(function() {
     $page.find('>div.carsModal').css({
     	'top': bodyHeight
     }).hide();
+
+    $page.find('div.carDetail >button').removeClass('disabled');
     
     // 如果 参数carId不为空，获取车辆信息，此次操作为修改，否则清空表单
     getCarInfoByCid();

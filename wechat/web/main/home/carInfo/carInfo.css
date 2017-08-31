@@ -141,6 +141,9 @@
     width: 90%;
     font-size: 16px;
 }
+#home_carInfo >div.main div.carDetail button.disabled {
+    background-color: #CCC;
+}
 @media screen and (max-width: 350px) {
 	#home_carInfo >div.main div.carDetail, #home_carInfo >div.main div.carDetail button, #home_carInfo >div.main div.carDetail small {
 		font-size: 14px;

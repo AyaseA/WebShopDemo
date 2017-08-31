@@ -328,3 +328,10 @@ body>div.common-none {
     border-left: 1px solid #DCDADD;
     color: #2FB823;
 }
+
+.layui-layer-loading .layui-layer-content {
+    background: url(../main/images/loading.gif) !important;
+    width: 150px !important;
+    height: 150px !important;
+    background-size: 100% !important;
+}

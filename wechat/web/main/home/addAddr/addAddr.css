@@ -131,6 +131,9 @@
     width: 90%;
     font-size: 16px;
 }
+#home_addAddr div.addressData button.disabled {
+    background-color: #CCC;
+}
 #home_addAddr div.select{
     height: 46px;
     line-height: 46px;

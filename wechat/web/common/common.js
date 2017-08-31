@@ -775,9 +775,9 @@ Date.prototype.pattern = function(fmt) {
     // ajax 全局设置，增加加载动画
     $(document).ajaxStart(function() {
         //layer.closeAll('loading');
-        $('head #loading').remove();
+        /*$('head #loading').remove();
         var img = 'url(../main/images/loading' + Math.floor(Math.random()*10) + '.gif) !important';
-        $('head').append('<style id="loading">.layui-layer-loading .layui-layer-content{background: ' + img + ';width: 150px !important;height: 150px !important;background-size: 100% !important;}</style>');
+        $('head').append('<style id="loading">.layui-layer-loading .layui-layer-content{background: ' + img + ';width: 150px !important;height: 150px !important;background-size: 100% !important;}</style>');*/
         layer.load();
     }).ajaxStop(function() {
         layer.closeAll('loading');

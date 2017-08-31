@@ -329,9 +329,9 @@ body>div.common-none {
     color: #2FB823;
 }
 
-/* .layui-layer-loading .layui-layer-content {
-    background: url(../main/images/loading9.gif) !important;
-    width: 150px !important;
-    height: 150px !important;
+.layui-layer-loading .layui-layer-content {
+    background: url(../main/images/loading.gif) !important;
+    width: 128px !important;
+    height: 128px !important;
     background-size: 100% !important;
-} */
+}

@@ -84,13 +84,13 @@ $(function() {
         if (!validation()) {
             return false;
         }
-        saveCar(function(cid, cname, isdft) {
+        saveCar(function(cid, cname, isdft, carid) {
             if (isdft == 1) {
                 $$.setUserInfo('UserCarID', cid);
             } else {
                 $$.setUserInfo('UserCarID', '');
             }
-            $$.redirect('home/maintain.html?cid=' + cid + '&cname=' + cname, {
+            $$.redirect('home/maintain.html?cid=' + carid + '&cname=' + cname, {
                 backUrl: 'home/myCars.html'
             });
         });
@@ -262,7 +262,8 @@ $(function() {
                     calback(
                         carId || res.Data.ID,
                         carInfo.CarBrandName + ' ' + carInfo.CarSeriesName + ' ' + carInfo.CarCarName,
-                        carInfo.IsDefault
+                        carInfo.IsDefault,
+                        carInfo.CarID
                     );
                 }
             },

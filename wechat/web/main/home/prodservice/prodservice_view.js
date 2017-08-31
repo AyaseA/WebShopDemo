@@ -98,7 +98,7 @@ $(function() {
         	    'margin-bottom', '-4px'
 	        );
 	        $('#' + divID).html(img);
-		}
+		};
 	});
 	// 收藏
 	$page.on('click dbclick', '>div.footer >a.collect', function() {

@@ -74,7 +74,7 @@ $(function() {
             } else if ($(this).html() == "确定收货") {
                 $$.redirect("icenter/commit.html?oid=" + orderId);
             } else if ($(this).html() == "前往评价") {
-                $$.redirect("icenter/commitList.html");
+                $$.redirect("icenter/orderCommit.html?oid=" + orderId + "&pid" + pId);
             } else if ($(this).html() == "重新购买") {
                 if (tid == 0) {
                     $$.redirect("home/product.html?pid=" + pId);

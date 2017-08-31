@@ -13,7 +13,7 @@ $(function() {
         }
         var carsBox = $page.find('>div.main >div.cars');
         $$.post(
-        	'CSL/UserInfo/QueryCarList',
+        	'CSL/UserInfo/QueryCarList?N=1&Rows=9999',
         	{},
         	function(res) {
         		if (res.Status != 0) {

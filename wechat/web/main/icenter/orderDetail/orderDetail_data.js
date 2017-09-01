@@ -4,7 +4,8 @@ $(function () {
         pageStr = 'icenter_orderDetail',
         headerHeight = $page.find('>div.header').height(),
         orderId = $$.getQueryString('oid'),
-        orderType = $$.getQueryString('type');
+        orderTabType = $$.getQueryString('type'),
+        orderType = $$.getQueryString('otype') || 0;
 
     $page.off('click', 'div.product a.contactService').on('click','div.product a.contactService', function() {
         var tel = $(this).attr('data-tel') || '0531-85523333';
@@ -29,7 +30,7 @@ $(function () {
     // 设置返回按钮可用
     $page.off('click', '>div.header >a.goBack')
          .on('click', '>div.header >a.goBack', function() {
-        $$.redirect('icenter/orderList.html?type=' + orderType, {
+        $$.redirect('icenter/orderList.html?type=' + orderTabType, {
             fromGoBack: true
         });
     });
@@ -39,7 +40,8 @@ $(function () {
 		$$.post(
 			'CSL/Order/QueryOrderDetail',
 			{
-				'ID': orderId
+				'ID': orderId,
+                'OrderType': orderType
 			},
 			function(res) {
 				if (res.Status != 0) {

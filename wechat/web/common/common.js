@@ -36,6 +36,7 @@ Date.prototype.pattern = function(fmt) {
 /**************************************************常用工具**************************************** */
 // JavaScript Document
 !(function(win, $, undefined) {
+
     //js 默认记载数值
     win.GLOBAL_includejs = Array();
 

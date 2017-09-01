@@ -63,7 +63,7 @@
                     <%totalCount = totalCount + $imports.intFilter(pData.ProductCount || 1)%>
                     {{/each}}
                 {{else}}
-                    <p><i></i>{{proList[0].StoreName}}<a href="javascript:void(0)" class="contactService" data-tel="1111111111">联系客服</a></p>
+                    <p><i></i>{{proList[0].StoreName}}<a href="javascript:void(0)" class="contactService" data-tel="{{oData.StoreTel || oData.StorePhone}}">联系客服</a></p>
                     {{each proList as pData}}
                     <div class="clear">
                         <img src="{{serverAddr}}Img/{{pData.ProductImg | imgFilter}}">

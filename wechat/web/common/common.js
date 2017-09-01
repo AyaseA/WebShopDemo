@@ -1106,50 +1106,51 @@ Date.prototype.pattern = function(fmt) {
             jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone', 'startRecord', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'translateVoice', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         });
         //通过ready接口处理成功验证
-        wx.ready(function() {
+        wx.ready(function(res) {
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            wx.onMenuShareTimeline({
+                title: '车势力', // 分享标题
+                link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+                imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+                success: function(res) {
+                    
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: '车势力', // 分享标题
+                link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+                imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+                success: function(res) {
+                    
+                }
+            });
+            wx.onMenuShareQQ({
+                title: '车势力', // 分享标题
+                link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+                imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+                success: function(res) {
+                    
+                }
+            });
+            wx.onMenuShareWeibo({
+                title: '车势力', // 分享标题
+                link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+                imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+                success: function(res) {
+                    
+                }
+            });
+            wx.onMenuShareQZone({
+                title: '车势力', // 分享标题
+                link: $$.config.hostAddr + "wechat/www/web/main/index.html",
+                imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
+                success: function(res) {
+                    
+                }
+            });
         });
         wx.error(function(res) {
-        });
-        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-        wx.onMenuShareTimeline({
-            title: '车势力1111', // 分享标题
-            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
-            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
-            success: function() {
-            }
-        });
-
-        wx.onMenuShareAppMessage({
-            title: '车势力2222', // 分享标题
-            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
-            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
-            success: function() {
-            }
-        });
-
-        wx.onMenuShareQQ({
-            title: '车势力3333', // 分享标题
-            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
-            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
-            success: function() {
-            }
-        });
-
-        wx.onMenuShareWeibo({
-            title: '车势力4444', // 分享标题
-            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
-            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
-            success: function() {
-            }
-        });
-
-        wx.onMenuShareQZone({
-            title: '车势力5555', // 分享标题
-            link: $$.config.hostAddr + "wechat/www/web/main/index.html",
-            imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
-            success: function() {
-            }
+            
         });
     }
-
 }(window, jQuery));

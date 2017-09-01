@@ -605,7 +605,10 @@
 
 #shop_shopList .fr{
 	float: right;
+}
 
+#shop_shopList .fl{
+	float: left;
 }
 
 #shop_shopList .red{

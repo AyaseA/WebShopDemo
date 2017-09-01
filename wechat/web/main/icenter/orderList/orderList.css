@@ -167,6 +167,7 @@
 	color: #898787;
 	margin-top:3vw;
 	margin-bottom: 3vw;
+	font-size: 3.8vw;
 }
 
 #icenter_orderList .noOrders button{
@@ -177,4 +178,5 @@
 	height:8vw;
 	border-radius:6vw;
 	color: #F60;
+	font-size: 3.8vw; 
 }

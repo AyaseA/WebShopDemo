@@ -46,11 +46,11 @@ $(function() {
                     var descriTxt = '',
                         descriTitle = '',
                         descriImgs = [];
-                    if (d.Descri) {
-                        d.Descri = JSON.parse(d.Descri);
-                        descriTitle = d.Descri.title;
-                        descriTxt = d.Descri.text ? Base64.decode(unescape(d.Descri.text)) : '';
-                        descriImgs = d.Descri.imgs ? d.Descri.imgs.split(',') : '';
+                    if (d.ProductDescri) {
+                        d.ProductDescri = JSON.parse(d.ProductDescri);
+                        descriTitle = d.ProductDescri.title;
+                        descriTxt = d.ProductDescri.text ? Base64.decode(unescape(d.ProductDescri.text)) : '';
+                        descriImgs = d.ProductDescri.imgs ? d.ProductDescri.imgs.split(',') : '';
                     }
                     $page.find('>div.main div.product >div.detail').html(
                         template(pageStr + '_product_info', {

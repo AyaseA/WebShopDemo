@@ -3,10 +3,14 @@ $(function () {
         $page = $('#icenter_orderDetail'),
         pageStr = 'icenter_orderDetail',
         headerHeight = $page.find('>div.header').height(),
-        orderId = $$.getQueryString('oid');
+        orderId = $$.getQueryString('oid'),
+        orderType = $$.getQueryString('type');
 
     $page.off('click', 'div.product a.contactService').on('click','div.product a.contactService', function() {
-        $page.find('div.confirm').show();
+        var tel = $(this).attr('data-tel') || '0531-85523333';
+        $page.find('div.confirm').show()
+             .find('p').text(tel)
+             .end().find('a.confirm').attr('href', 'tel:' + tel);
     });
     $page.off('click', 'div.confirm, div.confirm button.cancel')
         .on('click', 'div.confirm, div.confirm button.cancel', function() {
@@ -19,6 +23,14 @@ $(function () {
         layer.confirm('确认取消订单？', { icon: 3, title: '提示' }, function(index) {
             cancelOrder();
             layer.close(index);
+        });
+    });
+
+    // 设置返回按钮可用
+    $page.off('click', '>div.header >a.goBack')
+         .on('click', '>div.header >a.goBack', function() {
+        $$.redirect('icenter/orderList.html?type=' + orderType, {
+            fromGoBack: true
         });
     });
     // 获取订单详情
@@ -52,11 +64,11 @@ $(function () {
                         canReBuy = $.inArray(d.StatusID, ['5']) != -1;
                     // 设置底部按钮
                     $page.find('>div.footer').html(template(pageStr + '_footer', {
-                        orderId: orderId,
                         oData: d,
                         canPay: canPay,
                         canCancel: canCancel,
                         canReBuy: canReBuy,
+                        d: d,
                         productInfo: productInfo
                     }));
                 }

@@ -8,7 +8,7 @@
     <div class="confirm">
         <div>
             <h4>帮助客服</h4>
-            <p>0531-85523333<br />工作时间：9:30-17:30</p>
+            <p>0531-85523333</p>
             <button class="cancel">取消</button>
             <a class="confirm" href="tel:0531-85523333">呼叫</a>
         </div>
@@ -51,16 +51,28 @@
         </div>
         <div class="product">
             <div>
-                <p><i></i>车势力<a href="javascript:void(0)" class="contactService">联系客服</a></p>
                 {{set totalCount = 0}}
-                {{each proList as pData}}
-                <div class="clear">
-                    <img src="{{serverAddr}}Img/{{pData.Img | imgFilter}}">
-                    <p>{{pData.Name}}<span>￥{{pData.Price}}</span></p>
-                    <p>{{pData.Descri || pData.Name}}<span>x{{$imports.intFilter(pData.ProductCount || 1)}}</span></p>
-                </div>
-                <%totalCount = totalCount + $imports.intFilter(pData.ProductCount || 1)%>
-                {{/each}}
+                {{if oData.OrderType != '1'}}
+                    <p><i></i>车势力<a href="javascript:void(0)" class="contactService" data-tel="">联系客服</a></p>
+                    {{each proList as pData}}
+                    <div class="clear">
+                        <img src="{{serverAddr}}Img/{{pData.Img | imgFilter}}">
+                        <p>{{pData.Name}}<span>￥{{pData.Price}}</span></p>
+                        <p>{{pData.Descri || pData.Name}}<span>x{{$imports.intFilter(pData.ProductCount || 1)}}</span></p>
+                    </div>
+                    <%totalCount = totalCount + $imports.intFilter(pData.ProductCount || 1)%>
+                    {{/each}}
+                {{else}}
+                    <p><i></i>{{proList[0].StoreName}}<a href="javascript:void(0)" class="contactService" data-tel="1111111111">联系客服</a></p>
+                    {{each proList as pData}}
+                    <div class="clear">
+                        <img src="{{serverAddr}}Img/{{pData.ProductImg | imgFilter}}">
+                        <p>{{pData.ProductName}}<span>￥{{pData.NewPrice}}</span></p>
+                        <p>{{pData.Descri}}<span>x{{$imports.intFilter(pData.ProductCount || 1)}}</span></p>
+                    </div>
+                    <%totalCount = totalCount + $imports.intFilter(pData.ProductCount || 1)%>
+                    {{/each}}
+                {{/if}}
                 <p>共{{totalCount}}件商品</p>
             </div>
         </div>
@@ -89,13 +101,17 @@
     </script>
     <script id="icenter_orderDetail_footer" type="text/html">
         {{if canPay}}
-        <a href="home/payCenter.html?oid={{orderId}}">去支付</a>
+        <a href="home/payCenter.html?oid={{d.orderId}}">去支付</a>
         {{/if}}
         {{if canCancel}}
-        <button class="cancelOrder" data-id="{{orderId}}">取消订单</button>
+        <button class="cancelOrder" data-id="{{d.orderId}}">取消订单</button>
         {{/if}}
-        {{if canReBuy}}
-        <a href="home/product.html?pid={{productInfo[0].ID}}">重新购买</a>
+        {{if canReBuy && d.OrderType == '0'}}
+        <a href="home/fillOrder.html?pid={{productInfo[0].ID}}&&type={{productInfo[0].OrderType}}">重新购买</a>
+        {{else if canReBuy && d.OrderType == '1'}}
+        <a href="home/prodservice.html?pid={{productInfo[0].ProductID}}">重新购买</a>
+        {{else if canReBuy && d.OrderType == '5'}}
+        <a href="home/prodmulti.html?pid={{productInfo[0].ID}}">重新购买</a>
         {{/if}}
     </script>
 </div>

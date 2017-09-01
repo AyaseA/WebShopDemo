@@ -97,6 +97,10 @@
 	display: inline-block;
 	text-align: center;
 }
+#home_carInfo >div.main div.carDetail span.required::after {
+    content: '*';
+    color: red;
+}
 #home_carInfo >div.main div.carDetail input {
     display: inline-block;
 	border: none;

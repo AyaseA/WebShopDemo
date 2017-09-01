@@ -8,11 +8,5 @@ $(function () {
     $page.find('>div.main').height(
         bodyHeight - headerHeight - footerHeight - 1
     );
-    // 设置返回按钮可用
-    $page.on('click', '>div.header >a.goBack', function() {
-        $$.redirect('icenter/orderList.html', {
-            fromGoBack: true
-        });
-    });
 
 });

@@ -91,8 +91,6 @@ $(function() {
         saveCar(function(cid, cname, isdft, carid) {
             if (isdft == 1) {
                 $$.setUserInfo('UserCarID', cid);
-            } else {
-                $$.setUserInfo('UserCarID', '');
             }
             $$.redirect('home/maintain.html?cid=' + carid + '&cname=' + cname, {
                 backUrl: 'home/myCars.html'

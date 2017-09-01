@@ -25,27 +25,27 @@ $(function() {
                 dataType:"json",
                 success:function(txt){
                     if(txt.Status == 100){
-                        showPacket();
+                        showPacket(_this);
                     }else if(txt.Status == -1){
                         $$.refresh();
-                        showPacket();
+                        showPacket(_this);
                     }
                 }
             });   
         }
     });
 
-
-    function showPacket(){
+    function showPacket(index){
         $$.post("CSL/RedPocket/AddRedPocketRec", {
                     RedPocketID: packageId
                 },
                 function(txt) {
                     if (txt.Data[0] == 0) {
                         $page.find(".money span").html(txt.Data[1]);
-                        _this.attr("src", "images/sharePacket/hongbao_open.png");
+                        index.attr("src", "images/sharePacket/hongbao_open.png");
+                        alert(1);
                         setTimeout(function() {
-                            _this.hide();
+                            index.hide();
                             $page.find(".packetInfo").fadeIn(800);
                         }, 1000);
                         setTimeout(function() {

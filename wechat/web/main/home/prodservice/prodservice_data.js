@@ -33,11 +33,17 @@ $(function() {
         boxWidth - 30 - 8 - 8
     );
 
-
+    var longitude = $$.getLocationInfo().longitude,
+        latitude = $$.getLocationInfo().latitude,
+        ll = '';
+    if (longitude && latitude) {
+        ll = longitude + ',' + latitude;
+    }
     getStoresByService({
         N: 1,
         Rows: 9999,
-        ProductServiceID: pid
+        ProductServiceID: pid,
+        LL: ll
     });
     
     $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');

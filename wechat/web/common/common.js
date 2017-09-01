@@ -222,13 +222,13 @@ Date.prototype.pattern = function(fmt) {
             } else {
                 ltInfo = {
                     // 地区
-                    name: '',
+                    name: '历下区',
                     // 经度
-                    longitude: '',
+                    longitude: 117.10956,
                     // 纬度
-                    latitude: '',
+                    latitude: 36.68165,
                     // 地区id
-                    id: ''
+                    id: 370102
                 };
                 $$.setCookie('__LOCATION__', JSON.stringify(ltInfo));
             }

@@ -113,8 +113,7 @@ $(function() {
                     }
                     loadComplate = true;
                 } else {
-                    $proBox.append(template(pageStr + '_no_products', {}));
-
+                    $proBox.html(template(pageStr + '_no_products', {}));
                 }
             }
         });

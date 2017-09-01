@@ -13,6 +13,8 @@ $(function() {
         pid = $$.getQueryString("pid"),
         storeid = $$.getQueryString("storeid"),
         stype = $$.getQueryString("stype");
+        
+    var locationInfo = $$.getLocationInfo();
 
     //购买服务选择店面
     if (storeid != 0) {
@@ -164,7 +166,8 @@ $(function() {
         $$.post("Product/StoreService/QueryMapByProductServiceID", {
             N: 1,
             Rows: 9999,
-            ProductServiceID: pid
+            ProductServiceID: pid,
+            LL:""+(locationInfo ? locationInfo.longitude : 117.1330654621) +","+ (locationInfo ? locationInfo.latitude : 36.6875642852) 
         }, function(txt) {
             if (txt.Status == 0) {
                 var d = txt.Data.Rows;

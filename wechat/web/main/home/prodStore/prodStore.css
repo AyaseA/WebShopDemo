@@ -14,7 +14,8 @@
 }
 #home_prodStore >div.header a.goBack {
 	display: block;
-	float: left;
+	position: absolute;
+    bottom: 0;
 	height: 44px;
 	width: 44px;
 	background: url(../../images/common/round_left_blue.png) no-repeat;
@@ -25,7 +26,6 @@
 #home_prodStore >div.main {
 	width: 100%;
 	position: absolute;
-	top: 44px;
     overflow: hidden;
 }
 #home_prodStore div.content {
@@ -40,6 +40,10 @@
 	width: 50%;
 	margin: 0 auto;
 	text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 #home_prodStore >div.header li {
 	float: left;
@@ -121,10 +125,21 @@
 	color: #EA5514;
 	padding: 5px 0 10px 15px;
 }
+#home_prodStore div.product div.process {
+    background-color: #fff;
+    margin-top: 10px;
+}
+#home_prodStore div.product div.process p {
+    padding: 10px 0 10px 15px;
+    font-size: 16px;
+}
+#home_prodStore div.product div.process img {
+    width: 100%;
+}
 #home_prodStore div.product div.comments {
     margin-top: 10px;
-    background-color: #fff;
     padding-bottom: 30px;
+    display: none;
 }
 #home_prodStore div.product div.comments >p {
 	font-size: 16px;
@@ -132,6 +147,22 @@
 	line-height: 40px;
 	padding: 0 15px;
 	border-bottom: 1px solid #E7E7E7;
+    background-color: #fff;
+}
+#home_prodStore div.product div.comments >div.commentList {
+    background-color: #fff;
+}
+#home_prodStore div.product div.comments >div.commentList.loading::after {
+    content: '加载中···';
+    padding-bottom: 5px;
+    display: block;
+    text-align: center;
+}
+#home_prodStore div.product div.comments >div.commentList.loaded::after {
+    content: '已加载全部';
+    padding-bottom: 5px;
+    display: block;
+    text-align: center;
 }
 #home_prodStore div.product div.comments >p >i {
 	font-style: normal;
@@ -181,6 +212,7 @@
     background-repeat: no-repeat;
     margin: 7px 3px 0 0;
     background-image: url(../../images/common/stars/star_5.png);
+    background-size: 100%;
 }
 #home_prodStore div.product div.comment span.stars.start_0 {
 	background-image: url(../../images/common/stars/star_0.png);
@@ -209,12 +241,21 @@
     height: 23vw;
 }
 #home_prodStore div.product div.comment p.proInfo {
-	color: #B6B6B6;
-	margin: 2px 0;
+    color: #B6B6B6;
+    margin: 2px 0;
+    position: relative;
+    font-size: 13px;
 }
 #home_prodStore div.product div.comment p.proInfo >small {
-	float: right;
-	font-size: 14px;
+    float: right;
+    font-size: 13px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    height: 18px;
 }
 #home_prodStore div.proDetail {
     font-size: 0;
@@ -226,6 +267,9 @@
 	padding: 5px 10px;
     font-size: 14px;
 }
+#home_prodStore div.evaluate {
+    display: none;
+}
 #home_prodStore div.evaluate >ul {
 	width: 100%;
 	position: absolute;
@@ -234,14 +278,21 @@
     z-index: 98;
 }
 #home_prodStore div.evaluate >ul >li {
-	float: left;
-	display: block;
-	width: 20%;
-	height: 42px;
-	border-bottom: 2px solid #fff;
-	line-height: 45px;
-	font-size: 14px;
-	text-align: center;
+    float: left;
+    display: block;
+    width: 20%;
+    height: 42px;
+    border-bottom: 2px solid #fff;
+    font-size: 14px;
+    text-align: center;
+}
+#home_prodStore div.evaluate >ul >li >span {
+    display: block;
+    margin-top: 5px;
+}
+#home_prodStore div.evaluate >ul >li >small {
+    margin-top: -1px;
+    display: block;
 }
 #home_prodStore div.evaluate >ul >li.active {
 	border-color: #EA5514;
@@ -255,6 +306,17 @@
 	float: left;
     overflow-x: hidden;
     overflow-y: auto;
+}
+#home_prodStore div.reviews >div.warp >div.loaded::after {
+    content: '已加载全部';
+    padding-bottom: 5px;
+    display: block;
+    text-align: center;
+}
+#home_prodStore div.evaluate div.comment {
+    padding: 5px 15px;
+    border-bottom: 1px solid #E7E7E7;
+    background-color: #fff;
 }
 #home_prodStore div.evaluate div.comment {
 	padding: 5px 15px;
@@ -284,6 +346,7 @@
     background-repeat: no-repeat;
     margin: 7px 3px 0 0;
     background-image: url(../../images/common/stars/star_5.png);
+    background-size: 100%;
 }
 #home_prodStore div.evaluate div.comment span.stars.start_0 {
 	background-image: url(../../images/common/stars/star_0.png);
@@ -312,12 +375,21 @@
     height: 23vw;
 }
 #home_prodStore div.evaluate div.comment p.proInfo {
-	color: #B6B6B6;
-	margin: 2px 0;
+    color: #B6B6B6;
+    margin: 2px 0;
+    position: relative;
+    font-size: 13px;
 }
 #home_prodStore div.evaluate div.comment p.proInfo >small {
-	float: right;
-	font-size: 14px;
+    float: right;
+    font-size: 13px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    height: 18px;
 }
 #home_prodStore >div.footer {
 	position: fixed;
@@ -348,4 +420,19 @@
 	font-size: 16px;
 	color: #fff;
 	line-height: 50px;
+}
+#home_prodStore div.no_comment {
+    text-align: center;
+    padding: 30px 0 !important;
+}
+#home_prodStore div.commentList div.no_comment {
+    background-color: #EFEFF4;
+}
+#home_prodStore div.no_comment >img {
+    width: 50%;
+}
+#home_prodStore div.no_comment >p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #9a9a9a;
 }

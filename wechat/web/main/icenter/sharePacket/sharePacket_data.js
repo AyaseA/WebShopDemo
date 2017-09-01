@@ -43,7 +43,6 @@ $(function() {
                     if (txt.Data[0] == 0) {
                         $page.find(".money span").html(txt.Data[1]);
                         index.attr("src", "images/sharePacket/hongbao_open.png");
-                        alert(1);
                         setTimeout(function() {
                             index.hide();
                             $page.find(".packetInfo").fadeIn(800);

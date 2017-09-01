@@ -161,7 +161,7 @@ $(function() {
                         }else{
                             distance = getGreatCircleDistance(locationInfo ? locationInfo.latitude : 36.6875642852, locationInfo ? locationInfo.longitude : 117.1330654621, data[i].Latitude, data[i].Longitude);
                         }
-                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo">'+showStoreType(data[i].Type)+'<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p>服务数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span><span class="fr">' + (data[i].Phone || "无") + '</span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo">'+showStoreType(data[i].Type)+'<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p>交易数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span><span class="fr">' + (data[i].Phone || "无") + '</span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 

@@ -8,36 +8,44 @@ $(function() {
 	    boxWidth = $page.find('>div.header').width(),
 	    headerHeight = $page.find('>div.header').height(),
 	    footerHeight = $page.find('>div.footer').height();
+
+    if ($$.config.isCompatibleIOSTop && navigator.userAgent.indexOf('csl-ios') != -1) {
+        $page.find('>div.header').height(64);
+    }
+
 	// 设置各个div的宽高
-	$page.find('>div.main').height(bodyHeight - headerHeight - footerHeight - 1)
+	$page.find('>div.main').css({
+			'height': bodyHeight - headerHeight - footerHeight - 1,
+			'top': headerHeight
+		})
 		 .find('>div.content').width(boxWidth * 3)
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight - footerHeight - 1);
 	$page.find('div.reviews >div.warp').width(boxWidth * 5)
 		 .find('>div').width(boxWidth).height(bodyHeight - headerHeight * 2 - footerHeight - 2);
-	
+    
     // 返回按钮
-    $$.setGoBack($page.find('>div.header >a.goBack'));
+    /*$$.setGoBack($page.find('>div.header >a.goBack'));*/
     
 	// tab页点击
-	$page.on('click', 'div.header li', function() {
+	$page.on('click dbclick', 'div.header li', function() {
 		if ($(this).hasClass('active')) {
 			return false;
 		}
 		changeTab($(this));
 	});
 	// 评价点击进入评价tab
-	$page.on('click', 'div.product >div.comments >p >a', function() {
+	$page.on('click dbclick', 'div.product >div.comments >p >a', function() {
 		changeTab($page.find('div.header li[data-type="evaluate"]'));
 	});
 	// 评价tab页
-	$page.on('click', 'div.evaluate li', function() {
+	$page.on('click dbclick', 'div.evaluate li', function() {
 		if ($(this).hasClass('active')) {
 			return false;
 		}
 		changeCommentsTab($(this));
 	});
 	// 点击图片放大
-	$page.on('click', 'div.comment >img', function() {
+	$page.on('click dbclick', 'div.comment >img', function() {
 		var url = $(this).attr('src');
 		var img = new Image();
 		img.src = url;
@@ -68,7 +76,7 @@ $(function() {
 		}
 	});
 	// 收藏
-	/*$page.on('click', '>div.footer >a.collect', function() {
+	$page.on('click dbclick', '>div.footer >a.collect', function() {
 		var $this = $(this),
 			pid = $this.attr('data-id');
 		if ($$.isLogin(true, null)) {
@@ -81,21 +89,21 @@ $(function() {
 		        addWish(pid, $this);
 		    }
 		}
-	});*/
+	});
 	/************** 左右滑动相关 start **************/
-	var moveBannerObj = {
+	/*var moveBannerObj = {
 		x: 0,
 		y: 0,
 		xDis: 0,
 		yDis: 0
 	};
-	$page.on('touchstart', '#home_product_banner', function(e) {
+	$page.on('touchstart', '#home_prodStore_banner', function(e) {
 		var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
             _x = _touch.pageX,
             _y = _touch.pageY;
         moveBannerObj.x = _x;
         moveBannerObj.y = _y;
-	}).on('touchmove', '#home_product_banner', function(e) {
+	}).on('touchmove', '#home_prodStore_banner', function(e) {
 		var _touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0],
             _x = _touch.pageX,
             _y = _touch.pageY,
@@ -267,7 +275,7 @@ $(function() {
 				targetIndex: moveReviewObj.targetIndex
 			};
 		}
-	});
+	});*/
 	/************** 左右滑动相关 end **************/
 	// tab页切换
 	function changeTab(item) {
@@ -276,8 +284,8 @@ $(function() {
 		$page.find('div.content').animate({
 			'margin-left': - boxWidth * index
 		}, 300);
-		moveObj.targetIndex = index;
-		moveObj.isSub = (index == 2);
+		/*moveObj.targetIndex = index;
+		moveObj.isSub = (index == 2);*/
 	}
 	// 评价tab页切换
 	function changeCommentsTab(item, type) {
@@ -286,9 +294,9 @@ $(function() {
 		$page.find('div.reviews >div.warp').animate({
 			'margin-left': - boxWidth * index
 		}, 300);
-		moveReviewObj.targetIndex = index;
+		/*moveReviewObj.targetIndex = index;*/
 	}
-	/*// 添加收藏
+	// 添加收藏
 	function addWish(pid, item) {
 		$$.isLogin(true, null);
 		$$.post(
@@ -325,5 +333,5 @@ $(function() {
 				}
 			}
 		);
-	}*/
+	}
 });

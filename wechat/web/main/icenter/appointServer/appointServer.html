@@ -58,7 +58,7 @@
                         <h3>{{d.Name}}</h3>
                         <p>服务数量：{{d.ServiceCount}}</p>
                         <p>地址：{{d.Address}}</p>
-                        <small>0.031Km <span>{{if index == 0}}最近{{/if}}</span></small>
+                        <small>{{d.Distance}}<span>{{if index == 0}}最近{{/if}}</span></small>
                     </div>
                     <a href="shop/shopDetail.html?ID={{d.ID}}"></a>
                 </div>

@@ -84,7 +84,7 @@ $(function() {
             name = $selectedAddr.attr('data-name') || '',
             phone = $selectedAddr.attr('data-phone') || '',
             fullAddr = name + ' ' + phone + ' ' + addr,
-            len = Math.ceil(boxWidth * 0.09);
+            len = Math.ceil(boxWidth * 0.096);
 
         $page.find('div.delivery').html(template(pageStr + '_delivery', {
             needDelivery: true,

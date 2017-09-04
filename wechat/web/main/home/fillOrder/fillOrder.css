@@ -157,13 +157,13 @@
 }
 #home_fillOrder div.delivery p {
     font-size: 15px;
-    width: 30%;
+    width: 28%;
     display: inline-block;
     vertical-align: middle;
 }
 #home_fillOrder div.delivery span {
     font-size: 14px;
-    width: 65%;
+    width: 70%;
     display: inline-block;
     vertical-align: middle;
     word-break: break-all;

@@ -35,6 +35,12 @@ $(function() {
     }
 
     $page.find('div.searchInput >input').focus();
+    $page.off('click dbclick', 'a.letsearch').on('click dbclick', 'a.letsearch', function(e) {
+        e.preventDefault();
+        var keyWord = $.trim($(this).find('input').val());
+        searchParams.Keys = keyWord;
+        searchProducts(pageNum, pageSize);
+    });
     $page.off('submit', 'form').on('submit', 'form', function(e) {
         e.preventDefault();
         var keyWord = $.trim($(this).find('input').val());

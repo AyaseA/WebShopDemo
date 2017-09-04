@@ -40,7 +40,7 @@ $(function() {
 	});
 
     $page.find('>div.deliveryModal div.addressData').css({
-        'height': bodyHeight * 0.8 - 40 - 46
+        'height': bodyHeight * 0.8 - 40
     });
 
 	$page.find('>div.appointmentModal div.timeList').css({
@@ -66,13 +66,29 @@ $(function() {
     });
     // 选择地址
     $page.on('click dbclick', 'div.deliveryModal div.item', function() {
-        var id = $(this).attr('data-id'),
-            addr = $(this).attr('data-addr');
+        if ($(this).hasClass('checked')) {
+            $(this).removeClass('checked').siblings().removeClass('checked');
+        } else {
+            $(this).addClass('checked').siblings().removeClass('checked');
+        }
+    });
+    $page.on('click dbclick', 'div.deliveryModal div.item a.edit', function(e) {
+        e.stopPropagation();
+        $$.redirect('home/addAddr.html?aid=' + $(this).attr('data-id'));
+    });
+    // 确认
+    $page.on('click dbclick', 'div.deliveryModal div.select', function() {
+        var $selectedAddr = $page.find('div.deliveryModal div.item.checked'),
+            id = $selectedAddr.attr('data-id') || '',
+            addr = $selectedAddr.attr('data-addr') || '',
+            name = $selectedAddr.attr('data-name') || '',
+            phone = $selectedAddr.attr('data-phone') || '',
+            fullAddr = name + ' ' + phone + ' ' + addr;
 
         $page.find('div.delivery').html(template(pageStr + '_delivery', {
             needDelivery: true,
             id: id,
-            addr: addr
+            addr: fullAddr.substring(0, 30) + (fullAddr.length > 30 ? "..." : '')
         })).find('>div').width(
             boxWidth - 30 - 8 - 10
         );

@@ -12,7 +12,26 @@
         if ($(this).find('.user_name').attr('data-islogin') == 1) {
             $$.redirect('icenter/info.html');
         } else {
-            $$.isLogin(true);
+            if (navigator.userAgent.indexOf('csl-ios') != -1) {
+                var fullUrl = location.href;
+                    fullUrl = fullUrl.indexOf('?') != -1 ? fullUrl.split('?')[0] + '?R=' : fullUrl + '?R=',
+                    page = fullUrl + escape($$.getUrl()),
+                    prevPage = fullUrl + escape($$.stack.getLast() || 'home/index.html');
+                wx.showLoginPage({
+                    'page': page,
+                    'prevPage': prevPage,
+                    'noConfirm': true
+                });
+            } else if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+                $$.redirect('home/wechatLogin.html');
+            } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+                wx.showLoginPage({
+                    'page': page,
+                    'prevPage': prevPage
+                });
+            } else {
+                $$.redirect('icenter/login.html');
+            }
         }
     });      
     //邀请有礼

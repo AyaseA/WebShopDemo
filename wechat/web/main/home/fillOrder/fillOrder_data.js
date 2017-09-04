@@ -165,7 +165,7 @@ $(function() {
                     $page.find('>div.footer >button.order').removeClass('disabled');
                     getValueVoucher();
 
-                    needDelivery = d.NeedDelivery != null ? (d.NeedDelivery == 1 ? true : true) : false
+                    needDelivery = d.NeedDelivery != null ? (d.NeedDelivery == 1 ? true : false) : false
                     $page.find('div.delivery').html(template(pageStr + '_delivery', {
                         needDelivery: needDelivery
                     })).find('>div').width(

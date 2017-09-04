@@ -83,12 +83,13 @@ $(function() {
             addr = $selectedAddr.attr('data-addr') || '',
             name = $selectedAddr.attr('data-name') || '',
             phone = $selectedAddr.attr('data-phone') || '',
-            fullAddr = name + ' ' + phone + ' ' + addr;
+            fullAddr = name + ' ' + phone + ' ' + addr,
+            len = Math.ceil(boxWidth * 0.09);
 
         $page.find('div.delivery').html(template(pageStr + '_delivery', {
             needDelivery: true,
             id: id,
-            addr: fullAddr.substring(0, 30) + (fullAddr.length > 30 ? "..." : '')
+            addr: fullAddr.substring(0, len) + (fullAddr.length > len ? "..." : '')
         })).find('>div').width(
             boxWidth - 30 - 8 - 10
         );

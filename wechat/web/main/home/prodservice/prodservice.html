@@ -108,7 +108,7 @@
 				<p>服务数量：{{s.ServiceCount}}</p>
 				<p>地址：{{s.Address}}</p>
 				{{if s.Distance}}
-				<small>{{$imports.floatFilter(s.Distance, 3)}}Km <span>{{if index == 0}}最近{{/if}}</span></small>
+				<small>{{$imports.floatFilter(s.Distance)}}Km <span>{{if index == 0}}最近{{/if}}</span></small>
 				{{/if}}
 			</div>
 			<a href="shop/shopDetail.html?ID={{s.StoreID}}"></a>

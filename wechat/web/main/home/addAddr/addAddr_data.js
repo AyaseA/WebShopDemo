@@ -36,6 +36,8 @@ $(function () {
                     setDefaultAddr(res.Data.ID || addrId, function() {
                         $$.goBack();
                     });
+                } else {
+                    $$.goBack();
                 }
             }
             $page.find('div.addressData button.disabled').removeClass('disabled');

@@ -1087,9 +1087,9 @@ Date.prototype.pattern = function(fmt) {
         }
     };
     // string to float
-    template.defaults.imports.floatFilter = function(str) {
+    template.defaults.imports.floatFilter = function(str, fiexed) {
         if (str) {
-            return (parseFloat(str) || 0).toFixed(2);
+            return (parseFloat(str) || 0).toFixed(fiexed || 2);
         }
     };
     /* artTemplate 相关过滤器 start */

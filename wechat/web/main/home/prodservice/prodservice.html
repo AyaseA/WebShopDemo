@@ -107,7 +107,9 @@
 				<h5>本店价格：￥{{s.NewPrice}}</h5>
 				<p>服务数量：{{s.ServiceCount}}</p>
 				<p>地址：{{s.Address}}</p>
-				<small>0.031Km <span>{{if index == 0}}最近{{/if}}</span></small>
+				{{if s.Distance}}
+				<small>{{$imports.floatFilter(s.Distance, 3)}}Km <span>{{if index == 0}}最近{{/if}}</span></small>
+				{{/if}}
 			</div>
 			<a href="shop/shopDetail.html?ID={{s.StoreID}}"></a>
 		</div>

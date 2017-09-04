@@ -299,7 +299,7 @@
 }
 
 #shop_shopList .shopImg{
-	width:25%;	
+	width:25%;
 	display:inline-block;
 }
 
@@ -343,6 +343,11 @@
 #shop_shopList .shopInfo .t3Shop{
 	background: #e9eefa;
 	color: #2d50a7;
+}
+
+#shop_shopList .shopInfo .t4Shop{
+	background: #0e9f65;
+	color:##e4f9f1;
 }
 
 #shop_shopList .shopInfo ul{
@@ -514,57 +519,57 @@
 	#shop_shopList p{
 		font-size:16px;
 	}
-	
+
 	#shop_shopList h3{
 		font-size:20px;
 	}
-	
+
     #shop_shopList .selectShop ul li{
 		font-size:16px;
 	}
-	
+
 	#shop_shopList #shopList_area li{
 		font-size:16px;
 	}
-	
+
 	#shop_shopList .carNav ul li{
 		font-size:16px;
 	}
-	
+
 	#shop_shopList #shopList_serviceList ul li{
 		font-size:16px;
 	}
-	
+
 	#shop_shopList #shopList_selectModal .nav li{
 		font-size:16px;
 	}
-		
+
 }
 #shop_shopList @media screen and (max-width: 350px) {
 	#shop_shopList p{
 		font-size:10px;
 	}
-	
+
 	#shop_shopList h3{
 		font-size:14px;
 	}
-    
+
 	#shop_shopList .selectShop ul li{
 		font-size:12px;
 	}
-	
+
 	#shop_shopList #shopList_area li{
 		font-size:12px;
 	}
-	
+
 	#shop_shopList .carNav ul li{
 		font-size:12px;
 	}
-	
+
 	#shop_shopList #shopList_serviceList ul li{
 		font-size:12px;
 	}
-	
+
 	#shop_shopList #shopList_selectModal .nav li{
 		font-size:12px;
 	}

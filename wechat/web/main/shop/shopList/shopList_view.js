@@ -2,13 +2,13 @@
 $(function() {
     var bodyH = window.innerHeight || document.body.clientHeight,
         $page = $('#shop_shopList'),
-        page = document.getElementById("shop_shopList");
+        page = document.getElementById("shop_shopList"),
         pageStr = 'shop_shopList',
         headerH = $page.find(">div.header").height(),
         selectorH = 47, //$page.find('>div.selectShop').height(),
         footerH = $page.find(">div.footer").height();
 
-    //设置内容高度    
+    //设置内容高度
     $page.find(">div.shopList").css({
         'height': bodyH - headerH - selectorH - footerH - 1,
     });
@@ -161,7 +161,7 @@ $(function() {
                         }else{
                             distance = getGreatCircleDistance(locationInfo ? locationInfo.latitude : 36.6875642852, locationInfo ? locationInfo.longitude : 117.1330654621, data[i].Latitude, data[i].Longitude);
                         }
-                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo">'+showStoreType(data[i].Type)+'<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p class="clear"><span class="fl">服务数量:<span class="red">' + (data[i].WDeviceNum || 0) + '</span></span><span class="fr">交易数量:<span class="red">' + (data[i].TransCount || 0) + '</span></span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo">'+showStoreType(data[i].Type)+'<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p class="clear"><span class="fl">服务数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span></span><span class="fr">交易数量:<span class="red">' + (data[i].TransCount || 0) + '</span></span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 
@@ -191,7 +191,6 @@ $(function() {
             }
         });
     }
-
     loadStore({ N: 1, CityID: 370100,Type:-1 , LL: locationLngLat}, "#shop_shopList .shopList");
     //3级联动筛选
     //点击区域
@@ -259,7 +258,7 @@ $(function() {
     });
 
     //点击弹出模态窗口
-    //弹出滤镜层    
+    //弹出滤镜层
     function loadEvent() {
         function makeMirror() {
             bodyMirror = document.createElement("div");
@@ -281,7 +280,6 @@ $(function() {
             }, 300);
         }
 
-
         //点击此单进入相应的选项
         function onNav(x, y) {
             var navTitle = document.getElementById("shopList_navTitle");
@@ -299,7 +297,7 @@ $(function() {
         }
 
 
-        //关闭模态窗口方法  
+        //关闭模态窗口方法
         function colse() {
             bodyMirror.onclick = function() {
                 $page.find("#shopList_selectModal").fadeOut(300);
@@ -350,7 +348,7 @@ $(function() {
             };
         }
 
-        //列表选项点击事件  
+        //列表选项点击事件
         $page.find("#shopList_area li").click(function() {
             $page.find("#shopList_area li").removeClass("positionOn");
             $(this).addClass("positionOn");
@@ -385,14 +383,15 @@ $(function() {
 
     function showStoreType(type){
         if(type == 0){
-            return "<span class='shopType t1Shop'>旗舰店</span>";
+            return "<span class='shopType t1Shop'>一站式</span>";
         }else if(type == 1){
-            return "<span class='shopType t2Shop'>综合店</span>";
+            return "<span class='shopType t2Shop'>汽修厂</span>";
         }else if(type == 2){
             return "<span class='shopType t3Shop'>专营店</span>";
+        }else if(tyoe == 3){
+            return "<span class='shopType t4shop'>轮胎</span>";
         }
     }
 
     loadEvent();
-
 });

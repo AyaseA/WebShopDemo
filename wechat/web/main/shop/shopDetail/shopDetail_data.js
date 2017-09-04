@@ -38,7 +38,7 @@ $(function() {
         var serviceID=$(this).attr("data-id");
         $$.redirect("home/prodStore.html?sid="+serviceID);
     });
-    
+
     //微信配置
     var WXsign = $$.getWeChatSign(1);
     wx.config({
@@ -80,7 +80,9 @@ $(function() {
         success: function(txt) {
             if (txt.Status == 0) {
                 $page.find(".storeName").html(txt.Data.Name);
-                $page.find(".storeNum").html(txt.Data.WDeviceNum || 0);
+                $page.find(".storeNum").html(txt.Data.ServiceCount || 0);
+                $page.find(".reseveNum").html(getReseveNum(txt.Data.ReviewCount));
+                $page.find(".countNum").html(getCount(txt.Data.ReviewCount));
                 $page.find(".storeAddr").html(txt.Data.Address);
                 $page.find(".call").attr("href", "tel:" + txt.Data.Phone);
                 $page.find(".storePhone").html(txt.Data.Phone);
@@ -160,9 +162,26 @@ $(function() {
             effect: "left",
             autoPlay: true, //自动播放
             autoPage: true, //自动分页
-            switchLoad: "_src", //切换加载，真实图片路径为"_src" 
+            switchLoad: "_src", //切换加载，真实图片路径为"_src"
             interTime: 3000 // 切换间隔时间，毫秒
         });
+    }
+
+    //获取商店评论分数
+    function getCount(num){
+        if(Number(num) == 0){
+            return 100;
+        }else {
+            return Number(Number(num.split(",")[0])/Number(num.split(",")[1]));
+        }
+    }
+
+    function getReseveNum(num){
+        if(Number(num) == 0){
+            return 0;
+        }else {
+            return num.split(",")[1];
+        }
     }
 
     //获取是否关注

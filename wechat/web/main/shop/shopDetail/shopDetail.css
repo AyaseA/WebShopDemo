@@ -45,9 +45,23 @@
 	width: 80vw;
 }
 
-#shop_shopDetail .title p{
+#shop_shopDetail .title ul{
 	margin:2vw 0 2vw 0;
-	font-size: 3.33vw;
+	font-size: 3.5vw;
+	width: 92vw;
+}
+
+#shop_shopDetail .title ul li{
+	display: inline-block;
+	width: 33%;
+}
+
+#shop_shopDetail .textCenter{
+	text-align: center;
+}
+
+#shop_shopDetail .textRight{
+	text-align: right;
 }
 
 #shop_shopDetail .title span{
@@ -266,7 +280,7 @@
 #shop_shopDetail .shopbanner .bd li img {
     width: 100%;
     height: 55vw;/* 有待实际验证 */
-    background-color: #fff; 
+    background-color: #fff;
 }
 #shop_shopDetail .shopbanner .bd li a {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

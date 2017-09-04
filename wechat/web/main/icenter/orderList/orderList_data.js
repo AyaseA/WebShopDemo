@@ -3,7 +3,6 @@ $(function() {
         pageStr = 'icenter_orderList';
 
     if ($$.isLogin(true)) {
-
         var contentHeight = window.innerHeight - $page.find(".nav").height() - $page.find(".header").height();
         $page.find(".content").height(contentHeight);
         $page.find(".all").height(contentHeight);
@@ -42,15 +41,6 @@ $(function() {
 
         var type = $$.getQueryString("type") || "all";
 
-        function showContent(area, nav, load) {
-            $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
-            $page.find(".content").children().hide();
-            $page.find(area).fadeIn(500);
-            $page.find(".nav ul li").removeClass("on");
-            $page.find(nav).addClass("on");
-            load;
-        }
-
         if (type == "all") {
             showContent(".all", ".allNav", loadList({ "WToken": Token, "N": n, OrderType: -1 }, ".all", "all"));
         } else if (type == "waitPay") {
@@ -63,7 +53,7 @@ $(function() {
             showContent(".waitRevice", ".waitReviceNav", loadList({ "WToken": Token, "N": n, "StatusID": 6, OrderType: -1 }, ".waitRevice", "waitRevice"));
         }
 
-        //点击支付按钮事件  
+        //点击支付按钮事件
         $page.off("click", ".PayBtn").on("click", ".PayBtn", function() {
             var orderId = $(this).attr("data-oid");
             var tId = $(this).attr("data-tid");
@@ -128,7 +118,7 @@ $(function() {
                                     var contentNodeList = "",
                                         onePiece = '';
                                     if (listData.length == 1) {
-                                        if (list[i].OrderType != 1) {
+                                        if (list[i].OrderType == 0) {
                                             if (listData[0].Img == "") {
                                                 listData[0].Img = "NoImg/" + Math.random() + ".jpg";
                                             }
@@ -177,7 +167,7 @@ $(function() {
                                                 } else {
                                                     buttonNode = "前往评价";
                                                 }
-                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p>< style='width:20vw;display:inline-block;float:right;color:#ea5514'p><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + listData[0].ProductType + "'>" + buttonNode + "</button></span></div></div>";
+                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + listData[0].ProductType + "'>" + buttonNode + "</button></span></div></div>";
                                                 $page.find("" + area).append(onePiece);
                                             }
                                         }
@@ -201,10 +191,10 @@ $(function() {
                                             onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'>" + contentNodeList + "<div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><button class='PayBtn'>确定收货</button></div></div>";
                                             $page.find("" + area).append(onePiece);
                                         } else if (list[i].StatusID == 5) {
-                                            onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].Img + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p>< style='width:20vw;display:inline-block;float:right;color:#ea5514'p><span>" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "''>重新购买</button></span></div></div>";
+                                            onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].Img + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "''>重新购买</button></span></div></div>";
                                             $page.find("" + area).append(onePiece);
                                         } else if (list[i].StatusID == 6) {
-                                            onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].Img + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p>< style='width:20vw;display:inline-block;float:right;color:#ea5514'p><span>" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "''>前往评价</button></span></div></div>";
+                                            onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].Img + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "''>前往评价</button></span></div></div>";
                                             $page.find("" + area).append(onePiece);
                                         }
                                     }
@@ -223,11 +213,9 @@ $(function() {
                             thisLoaded.waitGet = 1;
                         }
 
-
                         $("#icenter_orderList ." + scrollArea).scroll(function() {
                             var scrollTop = $page.find("." + scrollArea).scrollTop() + $("." + scrollArea).height();
                             var scrollHeight = $page.find("." + scrollArea)[0].scrollHeight;
-
 
                             if (noDate == 0) {
                                 if (scrollHeight - scrollTop <= 10 && loadComplete) {
@@ -246,7 +234,7 @@ $(function() {
                                                     var contentNodeList = "";
                                                     var onePiece = "";
                                                     if (listData.length == 1) {
-                                                        if (list[i].OrderType != 1) {
+                                                        if (list[i].OrderType != 0) {
                                                             if (listData[0].Img == "") {
                                                                 listData[0].Img = "NoImg/" + Math.random() + ".jpg";
                                                             }
@@ -295,7 +283,7 @@ $(function() {
                                                                 } else {
                                                                     buttonNode = "前往评价";
                                                                 }
-                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p>< style='width:20vw;display:inline-block;float:right;color:#ea5514'p><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + listData[0].ProductType + "'>" + buttonNode + "</button></span></div></div>";
+                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + listData[0].ProductType + "'>" + buttonNode + "</button></span></div></div>";
                                                                 $page.find("" + area).append(onePiece);
                                                             }
                                                         }
@@ -448,29 +436,38 @@ $(function() {
 
         });
 
-        function showStatus(data) {
-            if (data == 1) {
-                return "等待买家付款";
-            } else if (data == 2) {
-                return "等待发货";
-            } else if (data == 3) {
-                return "买家已付款";
-            } else if (data == 4) {
-                return "卖家已发货";
-            } else if (data == 5) {
-                return "交易关闭";
-            } else if (data == 6) {
-                return "交易成功";
-            } else if (data == 7) {
-                return "退款中的订单";
-            } else if (data == 8) {
-                return "定金已付";
-            } else if (data == 9) {
-                return "异常订单";
-            } else if (data == 10) {
-                return "付款确认中";
-            }
-        }
+    }
+    function showContent(area, nav, load) {
+        $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
+        $page.find(".content").children().hide();
+        $page.find(area).fadeIn(500);
+        $page.find(".nav ul li").removeClass("on");
+        $page.find(nav).addClass("on");
+        load;
+    }
+
+    function showStatus(data) {
+      if (data == 1) {
+        return "等待买家付款";
+      } else if (data == 2) {
+        return "等待发货";
+      } else if (data == 3) {
+        return "买家已付款";
+      } else if (data == 4) {
+        return "卖家已发货";
+      } else if (data == 5) {
+        return "交易关闭";
+      } else if (data == 6) {
+        return "交易成功";
+      } else if (data == 7) {
+        return "退款中的订单";
+      } else if (data == 8) {
+        return "定金已付";
+      } else if (data == 9) {
+        return "异常订单";
+      } else if (data == 10) {
+        return "付款确认中";
+      }
     }
 
 });

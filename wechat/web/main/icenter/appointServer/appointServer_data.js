@@ -13,7 +13,7 @@ $(function() {
         pid = $$.getQueryString("pid"),
         storeid = $$.getQueryString("storeid"),
         stype = $$.getQueryString("stype");
-        
+
     var locationInfo = $$.getLocationInfo();
 
     //购买服务选择店面
@@ -113,7 +113,7 @@ $(function() {
                         $page.find(".camera").append(oneItem);
                     }
                     window.photoNum -= $page.imgList.length;
-                    //删除照片              
+                    //删除照片
                 }
             });
         } else {
@@ -167,7 +167,7 @@ $(function() {
             N: 1,
             Rows: 9999,
             ProductServiceID: pid,
-            LL:""+(locationInfo ? locationInfo.longitude : 117.1330654621) +","+ (locationInfo ? locationInfo.latitude : 36.6875642852) 
+            LL:""+(locationInfo ? locationInfo.longitude : 117.1330654621) +","+ (locationInfo ? locationInfo.latitude : 36.6875642852)
         }, function(txt) {
             if (txt.Status == 0) {
                 var d = txt.Data.Rows;
@@ -178,7 +178,9 @@ $(function() {
             }
         });
     }else{
-        $$.post("Product/Store/QueryStoreList",{},function(txt){
+        $$.post("Product/Store/QueryStoreList",{
+            LL:""+(locationInfo ? locationInfo.longitude : 117.1330654621) +","+ (locationInfo ? locationInfo.latitude : 36.6875642852)
+        },function(txt){
             if (txt.Status == 0) {
                 var d = txt.Data.Rows;
                 $page.find('.storeContent').html(template('icenter_appointServer_store_items', {
@@ -188,7 +190,6 @@ $(function() {
             }
         });
     }
-
 
     //获取时间信息
     getAppointTime(function(timeArr) {

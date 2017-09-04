@@ -39,17 +39,17 @@
     	<div class="storeContent">
 	        <script id="icenter_appointServer_store_items" type="text/html">
                 {{if isService == 1}}
-	            {{each stores as d index}}
-	            <div class="item"  data-store-id="{{d.ID}}" data-name="{{d.StoreName}}">
-	                <div>
-	                    <h3>{{d.StoreName}}</h3>
-	                    <p>服务数量：{{d.ServiceCount}}</p>
-	                    <p>地址：{{d.Address}}</p>
-	                    <small>0.031Km <span>{{if index == 0}}最近{{/if}}</span></small>
-	                </div>
-	                <a href="shop/shopDetail.html?ID={{d.StoreID}}"></a>
-	            </div>
-	            {{/each}}
+  	            {{each stores as d index}}
+  	            <div class="item"  data-store-id="{{d.ID}}" data-name="{{d.StoreName}}">
+  	                <div>
+  	                    <h3>{{d.StoreName}}</h3>
+  	                    <p>服务数量：{{d.ServiceCount}}</p>
+  	                    <p>地址：{{d.Address}}</p>
+  	                    <small>{{floatFilter(d.Distance)+"km"}}<span>{{if index == 0}}最近{{/if}}</span></small>
+  	                </div>
+  	                <a href="shop/shopDetail.html?ID={{d.StoreID}}"></a>
+  	            </div>
+  	            {{/each}}
                 {{/if}}
                 {{if isService == 0}}
                 {{each stores as d index}}
@@ -58,7 +58,7 @@
                         <h3>{{d.Name}}</h3>
                         <p>服务数量：{{d.ServiceCount}}</p>
                         <p>地址：{{d.Address}}</p>
-                        <small>{{d.Distance}}<span>{{if index == 0}}最近{{/if}}</span></small>
+                        <small>{{floatFilter(d.Distance)+"km"}}<span>{{if index == 0}}最近{{/if}}</span></small>
                     </div>
                     <a href="shop/shopDetail.html?ID={{d.ID}}"></a>
                 </div>

@@ -144,10 +144,6 @@
     border: 1px solid #8B8888;
 }
 
-.layui-layer-dialog{
-	z-index: 9999999999999999 !important;
-}
-
 #icenter_appointmentList .noOrders{
 	width: 55vw;
 	height: 80vw;
@@ -174,4 +170,9 @@
 
 .layui-layer-content{
 	text-align: center;
+	overflow-y: hidden !important;
+}
+
+.layui-layer-dialog{
+	z-index: 9999999999999999 !important;
 }

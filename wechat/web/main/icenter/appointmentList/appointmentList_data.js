@@ -108,8 +108,9 @@ $(function() {
         }, 1000);
         layer.open({
             title: "<img src='images/code/qr_code.png' style='width: 6vw;position: absolute;top: 2.8vw;'><span style='margin-left: 8vw;color:#f60'>商家扫描二维码</span>",
-            content: "<p style='text-align:center;font-size:3.3vw;color:##8e8c8c'>请向商家出示二维码，扫一扫，即可验证</p><img style='width:50vw;' class='appointment_strCode' src='" + imgurl + "'>",
-            area: ["75vw", "90vw"],
+            content: "<p style='text-align:center;font-size:3.3vw;color:#8e8c8c;margin-bottom: 2vw;'>请向商家出示二维码，扫一扫，即可验证</p><img style='width:70vw;' class='appointment_strCode' src='" + imgurl + "'>"+
+            "<p style='margin-top:2vw'><img src='images/code/logo.png' style='width:25vw;'></p>",
+            area: ["80vw", "115vw"],
             btn: [],
             cancel: function() {
                 clearInterval(time);

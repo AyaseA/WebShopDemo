@@ -342,6 +342,14 @@
     float: right;
     line-height: 39px;
 }
+.layui-layer-title{
+    background:#EFEFF4;
+}
+.layui-layer-content{
+    text-align: center;
+    overflow-y: hidden !important;
+}
+
 .layui-layer-dialog{
     z-index: 9999999999999999 !important;
 }

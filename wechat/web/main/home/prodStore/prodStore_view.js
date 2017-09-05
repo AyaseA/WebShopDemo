@@ -46,6 +46,7 @@ $(function() {
 	});
 	// 点击图片放大
 	$page.on('click dbclick', 'div.comment >img', function() {
+		layer.closeAll('page');
 		var url = $(this).attr('src');
 		var img = new Image();
 		img.src = url;

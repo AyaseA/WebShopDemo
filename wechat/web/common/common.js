@@ -52,7 +52,7 @@ Date.prototype.pattern = function(fmt) {
             // 接口地址--各种请求地址
             serverAddr: 'http://api.cheshili.com.cn:8000/',
             // host
-            hostAddr: 'https://www.cheshili.cn/',
+            hostAddr: 'http://api.cheshili.com.cn/',
             // 悬浮菜单刷新是否可用
             canRefresh: true,
             // 隐藏悬浮菜单

@@ -19,17 +19,17 @@
                 <i class="right"></i>
                 {{if appointStatus == 0}}
                 <span>预约成功</span>
-                {{else if appointStatus == 1}}
+                {{else if appointStatus == 4}}
                 <span>已消费</span>
                 {{/if}}
             </div>
         </div>
         <div class="timeline">
             <i class="status0 on"></i>
-            <hr class="line1 {{if appointStatus == 0 || appointStatus == 1}}on{{/if}}">
-            <i class="status1 {{if appointStatus == 0 || appointStatus == 1}}on{{/if}}"></i>
-            <hr class="line2 {{if appointStatus == 1}}on{{/if}}">
-            <i class="status2 {{if appointStatus == 1}}on{{/if}}"></i>
+            <hr class="line1 {{if appointStatus == 0 || appointStatus == 4}}on{{/if}}">
+            <i class="status1 {{if appointStatus == 0 || appointStatus == 4}}on{{/if}}"></i>
+            <hr class="line2 {{if appointStatus == 4}}on{{/if}}">
+            <i class="status2 {{if appointStatus == 4}}on{{/if}}"></i>
             <span class="txt0">预约成功</span>
             <span class="txt1">商家确认</span>
             <span class="txt2">已消费</span>

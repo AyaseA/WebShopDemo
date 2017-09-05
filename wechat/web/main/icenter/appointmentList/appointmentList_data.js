@@ -6,7 +6,7 @@ $(function() {
     var token = $$.getToken(),
     type = $$.getQueryString("type"),
     loadComplete;
-    
+
     if (type == "commission") {
         showArea("notAppoint");
     } else if (type == "appointed") {
@@ -24,7 +24,6 @@ $(function() {
             pid = $(this).attr("data-pid"),
             storeid = $(this).attr("data-storeid"),
             serviceType = $(this).attr("data-stype");
-
         $$.redirect("icenter/appointServer.html?sid=" + sid + "&pid=" + pid + "&storeid=" + storeid + "&stype=" + serviceType);
     });
 
@@ -34,6 +33,10 @@ $(function() {
 
     $page.off("click", ".appointFoot .checkAppoint").on("click", ".appointFoot .checkAppoint", function() {
         $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id") + "&status=0");
+    });
+
+    $page.off("click", ".notVerify .checkAppoint").on("click", ".notVerify .checkAppoint", function() {
+        $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id"));
     });
 
     $$.post("CSL/Service/QueryMyServiceList", { Status: 0, N: 1, Rows: 30 }, function(txt){
@@ -133,7 +136,7 @@ $(function() {
             }
         );
     }
-
+  
     function showArea(area) {
         $page.find(".content").children().css("display","none");
         $page.find(".nav ul li").removeClass("active");

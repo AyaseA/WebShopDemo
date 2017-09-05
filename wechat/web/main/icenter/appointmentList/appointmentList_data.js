@@ -32,10 +32,6 @@ $(function() {
     });
 
     $page.off("click", ".appointFoot .checkAppoint").on("click", ".appointFoot .checkAppoint", function() {
-        $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id") + "&status=0");
-    });
-
-    $page.off("click", ".notVerify .checkAppoint").on("click", ".notVerify .checkAppoint", function() {
         $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id"));
     });
 

@@ -45,7 +45,7 @@ $(function() {
     //店面出现事件
     $page.off("click", ".selectStore .selectDetail").on("click", ".selectStore .selectDetail", function() {
         $page.find(".storeInfo").animate({ top: "-124vw" }, 500);
-        $page.find(".dateInfo").css( top, "-122vw" );
+        $page.find(".dateInfo").css( "top", "-122vw" );
     });
 
     //点击店面隐藏事件
@@ -56,7 +56,7 @@ $(function() {
     //时间出现事件
     $page.off("click", ".selectDate .selectDetail").on("click", ".selectDate .selectDetail", function() {
         $page.find(".dateInfo").animate({ top: "-226vw" }, 500);
-        $page.find(".storeInfo").css( top, "0vw");
+        $page.find(".storeInfo").css( "top", "0vw");
     });
 
     //点击时间隐藏事件

@@ -130,10 +130,10 @@ $(function() {
                                 noReviceNode += '<div class="onePiece">' +
                                     '<img src="'+$$.serverAddr+'Img/'+(productList[i].ProductImg||"1.png")+'">' +
                                     '<div class="prodInfo">' +
-                                    '<p><b>'+productList[i].ProductName+'</b></p>' +
+                                    '<p><b>'+productList[i].ProductName+'</b>(第<b>'+productList[i].ServiceNum+'</b>次服务)</p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                                     '<p class="rewardPoint">评价最多可得20积分</p>' +
-                                    '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ServiceID+'" data-type="1">评价</button>' +
+                                    '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ID+'" data-type="1">评价</button>' +
                                     '</div>' +
                                     '</div>';
                             }
@@ -167,7 +167,7 @@ $(function() {
                                 hadReviceNode += '<div class="onePiece">' +
                                     '<img src="'+$$.serverAddr+'Img/'+(productList[i].ProductImg||"1.png")+'">' +
                                     '<div class="prodInfo">' +
-                                    '<p><b>'+productList[i].ProductName+'</b></p>' +
+                                    '<p><b>'+productList[i].ProductName+'</b>(第'+productList[i].ServiceNum+'次服务)</p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                                     '<p class="rewardPoint">评价最多可得20积分</p>' +
                                     '<button class="checkRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ServiceID+'" data-type="0">查看评价</button>'+

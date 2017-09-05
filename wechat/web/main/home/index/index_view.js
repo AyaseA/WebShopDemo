@@ -184,7 +184,7 @@ $(function(){
             } break;
             case 'activity': {
                 // 活动
-                $$.redirect('home/product.html?pid=48');
+                location.href=$$.config.hostAddr+'Utilities/qr_ad/removeCar.html';
             } break;
             case 'center': {
                 // 个人中心

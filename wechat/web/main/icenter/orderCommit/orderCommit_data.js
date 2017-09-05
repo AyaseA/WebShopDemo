@@ -64,9 +64,10 @@ $(function() {
             });
         });
 
-        url = $$.getUrl();
-        orderId = $$.getQueryString("oid");
-        productId = $$.getQueryString("pid");
+        var url = $$.getUrl();
+        var orderId = $$.getQueryString("oid");
+        var productId = $$.getQueryString("pid");
+        var stype = $$.getQueryString("stype");
 
         // 获取订单详情
         getOrderDetail();
@@ -142,23 +143,41 @@ $(function() {
     //添加评论
     function upLoad() {
         var rating = $page.find('>div.main >div.stars >i.star').length;
-        $$.post(
-            'CSL/Review/AddReview', {
+        if(stype == 1){
+            data = {
                 OrderID: orderId,
                 ProductID: productId,
                 Cont: $page.find("textarea").val(),
-                Rating: rating * 20
-            },
+                Rating: rating * 20,
+                IsService:1
+            };
+        }else{
+            data = {
+                OrderID: orderId,
+                ProductID: productId,
+                Cont: $page.find("textarea").val(),
+                Rating: rating * 20,
+                IsService:0
+            };
+        }
+        $$.post(
+            'CSL/Review/AddReview', data,
             function(txt) {
                 txt = $$.eval(txt);
                 $page.ReviewID = txt.Data.ID;
                 if ($page.photoNum < 3) {
                     upImg();
                 } else {
-                    layer.alert("评论成功", function(index) {
-                        $$.redirect("icenter/commitList.html");
-                        layer.close(index);
-                    });
+                    if(txt.Status == 0){
+                        layer.alert("评论成功", function(index) {
+                            $$.redirect("icenter/commitList.html");
+                            layer.close(index);
+                        });
+                    }else{
+                        layer.alert("评论失败", function(index) {
+                            layer.close(index);
+                        });
+                    }
                 }
             }
         );

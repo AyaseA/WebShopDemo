@@ -167,3 +167,11 @@
 	margin-bottom: 3vw;
 	font-size: 3.8vw;
 }
+
+.layui-layer-title{
+	background:#EFEFF4;
+}
+
+.layui-layer-content{
+	text-align: center;
+}

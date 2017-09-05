@@ -11,7 +11,7 @@ $(function() {
     $page.find(".serverReviced").empty();
 
     $page.off("click",".revice").on("click",".revice",function(){
-        $$.redirect("icenter/orderCommit.html?oid=" + $(this).attr("data-oid") + "&pid=" + $(this).attr("data-pid"));
+        $$.redirect("icenter/orderCommit.html?oid=" + $(this).attr("data-oid") + "&pid=" + $(this).attr("data-pid") + "&stype=" + $(this).attr("data-type"));
     });
 
     $page.off("click",".addRevice").on("click",".addRevice",function(){
@@ -57,7 +57,7 @@ $(function() {
                                     '<p><b>'+productList[i].ProductName+'</b></p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                                     '<p class="rewardPoint">评价最多可得20积分</p>' +
-                                    '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'">评价</button>' +
+                                    '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'" data-type="0">评价</button>' +
                                     '</div>' +
                                     '</div>';
                             }
@@ -133,7 +133,7 @@ $(function() {
                                     '<p><b>'+productList[i].ProductName+'</b></p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                                     '<p class="rewardPoint">评价最多可得20积分</p>' +
-                                    '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ServiceID+'">评价</button>' +
+                                    '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ServiceID+'" data-type="1">评价</button>' +
                                     '</div>' +
                                     '</div>';
                             }

@@ -6,10 +6,5 @@ $(function(){
 		$(this).addClass("active");
 		$page.find(".content").children().hide();
 		$page.find(".content ."+$(this).attr("data-pane")).show();
-	});
-
-	$page.find(".header a").click(function(){
-		$$.redirect("icenter/pageHome.html");
-	});
-	
+	});	
 });

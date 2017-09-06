@@ -6,6 +6,7 @@ $(function() {
         productId = $$.getQueryString('pid'),
         productNum = $$.getQueryString('num') || 1,
         orderType = $$.getQueryString('type') || 0,
+        callCode = $$.getQueryString('callcode'),
         total = 0,
         coupon = 0,
         point = 0,
@@ -165,7 +166,12 @@ $(function() {
                     $page.find('>div.footer >button.order').removeClass('disabled');
                     getValueVoucher();
 
-                    needDelivery = d.NeedDelivery != null ? (d.NeedDelivery == 1 ? true : false) : false
+                    if (callCode) {
+                        needDelivery = false;
+                    } else {
+                        needDelivery = d.NeedDelivery != null ? (d.NeedDelivery == 1 ? true : false) : false
+                    }
+
                     $page.find('div.delivery').html(template(pageStr + '_delivery', {
                         needDelivery: needDelivery
                     })).find('>div').width(
@@ -250,7 +256,8 @@ $(function() {
                 'OrderType': orderType,
                 'ValueVoucherID': couponID,
                 'ValueVoucherNum': coupon,
-                'AddressID': addressID
+                'AddressID': callCode ? '' : addressID,
+                'Data': callCode ? ('{QRID: ' + callCode + '}') : ''
             },
             function(res) {
                 if (res.Status != 0) {

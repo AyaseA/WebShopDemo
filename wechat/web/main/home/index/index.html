@@ -90,7 +90,7 @@
 			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
 			<p>{{val.Name}}</p>
             {{if val.ProductType == 0}}
-            <a href="home/fillOrder.html?pid={{val.ID}}&&type={{val.ProductType}}">立即购买</a>
+            <a href="home/fillOrder.html?pid={{val.ID}}&type={{val.ProductType}}">立即购买</a>
             {{else if val.ProductType == 1}}
             <a href="home/prodservice.html?pid={{val.ID}}">立即购买</a>
             {{else if val.ProductType == 5}}

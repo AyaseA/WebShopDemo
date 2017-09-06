@@ -43,6 +43,39 @@
     background: url(../../images/center/contact_bg.png) #F49E7A;
     background-repeat: no-repeat;
     background-size: 100%;
+    display: none;
+}
+#icenter_contact >div.check {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: url(../../images/contact/bg.png) #FEEBE3;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: none;
+}
+#icenter_contact >div.check p {
+    font-size: 16px;
+    font-weight: bolder;
+    text-align: center;
+    color: #7DA8C7;
+    margin-top: 40px;
+}
+#icenter_contact >div.check p span {
+    color: #EA5514;
+}
+#icenter_contact >div.check a {
+    display: block;
+    position: absolute;
+    left: 5%;
+    bottom: 5vw;
+    height: 13vw;
+    width: 90%;
+    background: url(../../images/contact/btn.png);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 #icenter_contact div.content {
     position: absolute;

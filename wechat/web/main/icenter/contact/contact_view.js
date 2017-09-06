@@ -4,7 +4,7 @@ $(function () {
         pageStr = 'icenter_contact',
         headerHeight = $page.find('>div.header').height();
     // 设置界面高度
-    $page.find('>div.main').height(
+    $page.find('>div.main, div.check').height(
         bodyHeight - headerHeight - 1
     );
     $page.find('a.button').removeClass('active');

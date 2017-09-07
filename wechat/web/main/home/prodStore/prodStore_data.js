@@ -2,6 +2,7 @@ $(function() {
     var $page = $('#home_prodStore'),
         pageStr = 'home_prodStore',
         pid = $$.getQueryString('sid'),
+        gid = $$.getQueryString('pid'),
         productName = '',
         pNum = 1;
 
@@ -18,8 +19,9 @@ $(function() {
         'margin-left': 0
     });
 
+    getWishList();
     // 设置底部按钮的pid
-    $page.find('>div.footer >a.collect').attr('data-id', pid).removeClass('collected');
+    $page.find('>div.footer >a.collect').attr('data-id', gid).removeClass('collected');
     $page.off('click dbclick', '>div.footer >a.buyNow').on('click dbclick', '>div.footer >a.buyNow', function() {
         $$.redirect('home/fillOrder.html?pid=' + pid + '&num=' + pNum + '&type=1');
     });
@@ -264,7 +266,7 @@ $(function() {
                         for (var i = 0; i < d.length; i++) {
                             wishArr.push(d[i].ID);
                         }
-                        var isWish = $.inArray(pid, wishArr) != -1;
+                        var isWish = $.inArray(gid, wishArr) != -1;
                         $page.find('>div.footer >a.collect').text(
                             isWish ? '已加入收藏' : '加入收藏'
                         ).addClass(

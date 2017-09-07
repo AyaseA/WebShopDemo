@@ -47,19 +47,19 @@ $(function() {
         $page.off("click", ".close img").on("click", ".close img", function() {
             var _this = $(this);
             layer.confirm("确定要删除此照片吗", function(index) {
-                _this.parent().parent().remove();
                 $page.photoNum += 1;
                 //数组中删除此照片
-                var imgIndex = $.inArray($(this).attr("src"),$page.photoList);
+                var imgIndex = $.inArray(_this.parent().siblings("img").attr("src"),$page.photoList);
                 $page.photoList.splice(imgIndex,1); 
+                _this.parent().parent().remove();
                 layer.close(index);
             });
         });
 
         $page.off("click", ".reserve").on("click", ".reserve", function() {
-            var j = $(this).attr("data-index");
+            var imgIndex = $.inArray($(this).attr("src"),$page.photoList);
             wx.previewImage({
-                current: $page.photoList[j], // 当前显示图片的http链接
+                current: $page.photoList[imgIndex], // 当前显示图片的http链接
                 urls: $page.photoList
             });
         });
@@ -102,7 +102,7 @@ $(function() {
                         $page.imgList = res.localIds;
                          // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片;
                         for (var i = 0; i < $page.imgList.length; i++) {
-                            var oneItem = "<div><img src='" + $page.imgList[i] + "' data-index='" + i + "' class='reserve'><div class='close'><img src='images/common/round_close.png' data-index='" + i + "'></div></div>";
+                            var oneItem = "<div><img src='" + $page.imgList[i] + "' class='reserve'><div class='close'><img src='images/common/round_close.png' data-index='" + i + "'></div></div>";
                             $page.find(".pictures").prepend(oneItem);
                             $page.photoList.push($page.imgList[i]);
                         }

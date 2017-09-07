@@ -2,6 +2,6 @@ $(function(){
 	$page=$("#icenter_checkCommit");
 
 	$page.find(".header a").click(function(){
-        $$.goBack();
+        $$.redirect("icenter/commitList.html");
     });
 });

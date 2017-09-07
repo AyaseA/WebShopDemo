@@ -59,7 +59,12 @@
 
 #icenter_appointServer .content .selectDetail span{
 	font-size: 3.8vw;
-	float: right;
+    float: right;
+    width: 45vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
 }
 
 #icenter_appointServer .chooseDetail{

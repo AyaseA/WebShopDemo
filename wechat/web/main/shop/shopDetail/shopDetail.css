@@ -208,6 +208,11 @@
 	margin-bottom: 1vw;
 }
 
+#shop_shopDetail .serviceContent .price{
+	height: 6vw;
+    line-height: 6vw;
+} 
+
 #shop_shopDetail .serviceContent .price span{
 	font-size: 3.8vw;
 	color: #f60;

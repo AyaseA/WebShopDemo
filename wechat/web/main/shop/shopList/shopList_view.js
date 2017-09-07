@@ -51,6 +51,10 @@ $(function() {
         $$.redirect("shop/shopDetail.html?ID=" + $(this).attr("data-ID"));
     });
 
+    $page.on("click", ".map", function() {
+        $$.redirect("shop/shopMap.html");
+    });
+
     // layer
     function loactionConfirm(name, callback) {
         layer.open({
@@ -135,13 +139,14 @@ $(function() {
     }
 
     window.n = 1;
-    var locationLngLat=""+(locationInfo ? locationInfo.longitude : 117.1330654621) +","+ (locationInfo ? locationInfo.latitude : 36.6875642852) ;
+    var locationLngLat = "" + (locationInfo ? locationInfo.longitude : 117.1330654621) + "," + (locationInfo ? locationInfo.latitude : 36.6875642852);
 
     function reSetAttr() {
         $page.find(".shopList").empty();
         n = 1;
     }
     //加载商户信息
+    var loadfoot = false;
     function loadStore(Data, scrollArea) {
         var _this = this;
         _this.Data = Data;
@@ -154,20 +159,21 @@ $(function() {
             success: function(txt) {
                 if (txt.Status == 0 && parseInt(txt.Data.Count) > $(".onepiece").length) {
                     var data = txt.Data.Rows;
-                    var shoplist = "",distance;
+                    var shoplist = "",
+                        distance;
                     for (var i = 0; i < data.length; i++) {
-                        if(data[i].Distance){
-                            distance = Number(data[i].Distance).toFixed(2)+"km";
-                        }else{
+                        if (data[i].Distance) {
+                            distance = Number(data[i].Distance).toFixed(2) + "km";
+                        } else {
                             distance = getGreatCircleDistance(locationInfo ? locationInfo.latitude : 36.6875642852, locationInfo ? locationInfo.longitude : 117.1330654621, data[i].Latitude, data[i].Longitude);
                         }
-                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo">'+showStoreType(data[i].Type)+'<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p class="clear"><span class="fl">服务数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span></span><span class="fr">交易数量:<span class="red">' + (data[i].TransCount || 0) + '</span></span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo">' + showStoreType(data[i].Type) + '<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p class="clear"><span class="fl">服务数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span></span><span class="fr">交易数量:<span class="red">' + (data[i].TransCount || 0) + '</span></span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 
                     if (parseInt(txt.Data.Rows.length) < 10) {
                         $(scrollArea).append("<div class='notice'>没有更多数据了</div>");
-                        _this.loadfoot = true;
+                        loadfoot = true;
                     } else {
                         _this.Data.N += 1;
                         loadComplete = true;
@@ -183,7 +189,7 @@ $(function() {
                     }
 
                 } else {
-                    if (!_this.loadfoot) {
+                    if (!loadfoot) {
                         $(scrollArea).append("<div class='notice'>没有更多数据了</div>");
                         _this.loadfoot = true;
                     }
@@ -191,25 +197,25 @@ $(function() {
             }
         });
     }
-    loadStore({ N: 1, CityID: 370100,Type:-1 , LL: locationLngLat}, "#shop_shopList .shopList");
+    loadStore({ N: 1, CityID: 370100, Type: -1, SortType: 0, LL: locationLngLat }, "#shop_shopList .shopList");
     //3级联动筛选
     //点击区域
     $("#shopList_positionS").on("click", "li", function() {
         if ($(this).attr("data-type") == 0) {
-            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 0) {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat, CityID: 370100 }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat, CityID: 370100 ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CityID: 370100 }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CityID: 370100, SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
             }
         } else {
-            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 0) {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"), LL: locationLngLat }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"), LL: locationLngLat ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
             }
         }
     });
@@ -220,39 +226,39 @@ $(function() {
         if ($("#shopList_area .positionOn").attr("data-type") == 0) {
             if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, LL: locationLngLat , CityID: 370100}, "#shop_shopList .shopList");
+                loadStore({ Type: $(this).attr("data-type"), N: n, LL: locationLngLat, CityID: 370100 ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n , CityID: 370100}, "#shop_shopList .shopList");
+                loadStore({ Type: $(this).attr("data-type"), N: n, CityID: 370100, SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
             }
         } else {
-            if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
+            if ($("#shopList_orderBy .orderOn").attr("data-type") == 0) {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type"), LL: locationLngLat }, "#shop_shopList .shopList");
+                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type"), LL: locationLngLat ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
             }
         }
     });
 
     //点击距离排序
     $("#shopList_orderBy").on("click", "li", function() {
-        if ($(this).attr("data-type") == 31) {
+        if ($(this).attr("data-type") == 0) {
             if ($("#shopList_area .positionOn").attr("data-type") == 0) {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat , CityID: 370100}, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat, CityID: 370100 ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat , CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") ,SortType:0}, "#shop_shopList .shopList");
             }
-        } else if ($(this).attr("data-type") == 30) {
+        } else {
             if ($("#shopList_area .positionOn").attr("data-type") == 0) {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n , CityID: 370100}, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CityID: 370100 ,SortType:$(this).attr("data-type")}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") ,SortType:$(this).attr("data-type")}, "#shop_shopList .shopList");
             }
         }
     });
@@ -381,14 +387,14 @@ $(function() {
         });
     }
 
-    function showStoreType(type){
-        if(type == 0){
+    function showStoreType(type) {
+        if (type == 0) {
             return "<span class='shopType t1Shop'>一站式</span>";
-        }else if(type == 1){
+        } else if (type == 1) {
             return "<span class='shopType t2Shop'>汽修厂</span>";
-        }else if(type == 2){
-            return "<span class='shopType t3Shop'>专营店</span>";
-        }else if(tyoe == 3){
+        } else if (type == 2) {
+            return "<span class='shopType t3Shop'>美容店</span>";
+        } else if (tyoe == 3) {
             return "<span class='shopType t4shop'>轮胎</span>";
         }
     }

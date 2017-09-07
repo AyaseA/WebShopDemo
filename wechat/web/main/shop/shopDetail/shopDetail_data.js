@@ -36,7 +36,8 @@ $(function() {
     //购买服务
     $page.off("click",".oneService button").on("click",".oneService button",function(){
         var serviceID=$(this).attr("data-id");
-        $$.redirect("home/prodStore.html?sid="+serviceID);
+        var productID=$(this).attr("data-pid");
+        $$.redirect("home/prodStore.html?sid="+serviceID + "&pid=" + productID);
     });
 
     //微信配置
@@ -50,7 +51,7 @@ $(function() {
         jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone', 'startRecord', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'translateVoice', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
 
-    function checkInfo(data, name) {
+/*    function checkInfo(data, name) {
         if (data.hasOwnProperty("Children")) {
             data = data.Children;
             for (var i = 0; i < data.length; i++) {
@@ -67,7 +68,7 @@ $(function() {
         } else {
             return "";
         }
-    }
+    }*/
 
     //获取门店基本信息
     $.ajax({
@@ -86,13 +87,15 @@ $(function() {
                 $page.find(".storeAddr").html(txt.Data.Address);
                 $page.find(".call").attr("href", "tel:" + txt.Data.Phone);
                 $page.find(".storePhone").html(txt.Data.Phone);
-                if (txt.Data.Params) {
+                $page.find(".saleTime span").html(txt.Data.OpenTime);
+                $page.find(".storeArea span").html(txt.Data.OpenArea);
+/*                if (txt.Data.Params) {
                     $page.find(".saleTime span").html(checkInfo(JSON.parse(txt.Data.Params)[0], "营业开始时间") + "-" + checkInfo(JSON.parse(txt.Data.Params)["0"].Children, "营业结束时间"));
                     $page.find(".storeArea span").html(checkInfo(JSON.parse(txt.Data.Params)[0], "店铺面积") + "平方米");
                 } else {
                     $page.find(".saleTime span").html("暂未获取");
                     $page.find(".storeArea span").html("暂未获取");
-                }
+                }*/
 
                 if (txt.Data.ImgList) {
                     var imgList = txt.Data.ImgList.split(",");
@@ -142,7 +145,7 @@ $(function() {
                     serviceNode = '<div class="oneService">' +
                         '<p class="serviceTitle">' + serviceList[i].Children[j].ProductName + '</p>' +
                         '<p class="serviceDesci">' + serviceList[i].Children[j].Descri + '</p>' +
-                        '<p class="price"><span>¥' + serviceList[i].Children[j].NewPrice + '</span><button data-id="'+serviceList[i].Children[j].ID+'">购买</button></p>' +
+                        '<p class="price"><span>¥' + serviceList[i].Children[j].NewPrice + '</span><button data-id="'+serviceList[i].Children[j].ID+'" data-pid="'+serviceList[i].Children[j].ProductID+'">购买</button></p>' +
                         '</div>';
                     $page.find(".service" + i).append(serviceNode);
                 }

@@ -1,0 +1,118 @@
+#shop_shopMap{
+	width:100%;
+	height: 100%;
+}
+
+#shop_shopMap #container{
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top:7%;
+	height: 93%;
+}
+
+#shop_shopMap .header{
+	height:7%;
+	width:100%;
+	border-bottom:1px solid #CCC;
+	line-height:12vw;
+	text-align:center;
+	box-sizing: border-box;
+}
+
+#shop_shopMap .header img{
+	width:6vw;
+	position:absolute;
+	left:3vw;
+	top:3vw;
+}
+
+#shop_shopMap .header p{
+	font-size:4.5vw;
+	font-weight:bold;
+}
+
+#shop_shopMap .search{
+	position: fixed;
+    top: 15vw;
+    left: 15vw;
+    z-index: 100;
+}
+
+#shop_shopMap .search input{
+	outline: none;
+    border: 1px solid #ccc;
+    width: 64vw;
+    height: 7vw;
+    border-radius: 8vw;
+    padding-left: 6vw;
+    color: #000;
+    font-size: 3.8vw;
+}
+
+#shop_shopMap .search button{
+	position: absolute;
+    top: 0.7vw;
+    left: 56vw;
+    border: none;
+    background: none;
+    color: #f60;
+    font-size: 4vw;
+    outline: none;
+}
+
+#shop_shopMap .shopInfo{
+	background: #fff;
+    border: 1px solid #ccc;
+    width: 70vw;
+    height: 26vw;
+    border-radius: 1.5vw;
+}
+
+#shop_shopMap .title{
+	background: #f1f1f1;
+    height: 7vw;
+    font-size: 3.8vw;
+    line-height: 7vw;
+    text-align: center;
+}
+
+#shop_shopMap .title img{
+	position: absolute;
+    top: 1.5vw;
+    left: 65vw;
+    width: 4vw;
+}
+
+#shop_shopMap .content{
+	position: relative;
+}
+
+#shop_shopMap .content img{
+	width: 20vw;
+    height: 15vw;
+    margin-left: 3vw;
+    margin-top: 1.5vw;
+}
+
+#shop_shopMap .content .shopAddress{
+	position: absolute;
+    top: 1vw;
+    left: 25vw;
+    font-size: 3.3vw;
+    width: 42vw;
+    height: 17vw;
+}
+
+#shop_shopMap .content .shopAddress img{
+	position: absolute;
+    top: 16.5vw;
+    left: 3vw;
+    width: 8vw;
+    height: 6vw;
+}
+
+#shop_shopMap .content .checkShop{
+	color: #6363fb;
+    text-decoration: underline;
+}

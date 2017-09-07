@@ -13,7 +13,7 @@ $(function() {
     }
 
     if(type == 0){
-        typeServer = "QueryServiceReviewList"+"?OrderID="+orderID+"&ServiceID="+productID+"&WToken="+$$.getToken()+"&HasImg=-1";
+        typeServer = "QueryServiceReviewList"+"?OrderID="+orderID+"&UserServiceID="+productID+"&WToken="+$$.getToken()+"&HasImg=-1";
     }else{
         typeServer = "QueryProductReviewList"+"?OrderID="+orderID+"&ProductID="+productID+"&WToken="+$$.getToken()+"&HasImg=-1";
     }

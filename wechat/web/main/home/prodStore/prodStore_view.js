@@ -33,10 +33,12 @@ $(function() {
 		}
 		changeTab($(this));
 	});
+	
 	// 评价点击进入评价tab
 	$page.on('click dbclick', 'div.product >div.comments >p >a', function() {
 		changeTab($page.find('div.header li[data-type="evaluate"]'));
 	});
+
 	// 评价tab页
 	$page.on('click dbclick', 'div.evaluate li', function() {
 		if ($(this).hasClass('active')) {
@@ -44,6 +46,7 @@ $(function() {
 		}
 		changeCommentsTab($(this));
 	});
+
 	// 点击图片放大
 	$page.on('click dbclick', 'div.comment >img', function() {
 		layer.closeAll('page');
@@ -60,7 +63,7 @@ $(function() {
 	        }
 	        if (h > bodyHeight *0.9) {
 	        	w = bodyHeight *0.9 / h * w;
-	        	h = bodyHeight *0.9
+	        	h = bodyHeight *0.9;
 	        }
             layer.open({
 	            type: 1,
@@ -74,8 +77,9 @@ $(function() {
         	    'margin-bottom', '-4px'
 	        );
 	        $('#' + divID).html(img);
-		}
+		};
 	});
+
 	// 收藏
 	$page.on('click dbclick', '>div.footer >a.collect', function() {
 		var $this = $(this),

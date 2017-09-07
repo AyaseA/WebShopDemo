@@ -789,7 +789,7 @@ Date.prototype.pattern = function(fmt) {
         closeTimer = setTimeout(function() {
             if ($('body').find('div.layui-layer-loading').length > 0) {
                 layer.closeAll('loading');
-                WeixinJSBridge.call('closeWindow');
+                layer.msg("网络请求失败,请稍后重试");
             }
         }, 10000);
     }).ajaxStop(function() {

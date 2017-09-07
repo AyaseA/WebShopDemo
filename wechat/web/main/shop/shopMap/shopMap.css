@@ -61,6 +61,21 @@
     outline: none;
 }
 
+#shop_shopMap .searchContent{
+    width: 70vw;
+    height: 40vw;
+    box-sizing: border-box;
+    position: fixed;
+    top:1vw;
+    left: 15vw;
+    z-index: 99;
+    background: #fff;
+    border: 1px solid #ccc;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+}
+
 #shop_shopMap .shopInfo{
 	background: #fff;
     border: 1px solid #ccc;

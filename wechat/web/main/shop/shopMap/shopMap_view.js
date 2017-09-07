@@ -16,6 +16,10 @@ $(function() {
     	closeInfowindow();
     });
 
+    $page.find("focus",".search input",function(){
+        $page.find(".searchContent").show();
+    });
+
     var map = new AMap.Map('container', {
         resizeEnable: true,
         zoom: 14,
@@ -58,4 +62,5 @@ $(function() {
     function closeInfowindow(){
     	map.clearInfoWindow();
     }
+
 });

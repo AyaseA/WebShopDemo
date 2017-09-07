@@ -774,18 +774,27 @@ Date.prototype.pattern = function(fmt) {
         }
     });
     // ajax 全局设置，增加加载动画
-    var timer;
+    var timer,
+        closeTimer;
     $(document).ajaxStart(function() {
         //layer.closeAll('loading');
         /*$('head #loading').remove();
         var img = 'url(../main/images/loading' + Math.floor(Math.random()*10) + '.gif) !important';
         $('head').append('<style id="loading">.layui-layer-loading .layui-layer-content{background: ' + img + ';width: 150px !important;height: 150px !important;background-size: 100% !important;}</style>');*/
         clearTimeout(timer);
+        clearTimeout(closeTimer);
         timer = setTimeout(function() {
             layer.load();
         }, 1000);
+        closeTimer = setTimeout(function() {
+            if ($('body').find('div.layui-layer-loading').length > 0) {
+                layer.closeAll('loading');
+                WeixinJSBridge.call('closeWindow');
+            }
+        }, 10000);
     }).ajaxStop(function() {
         clearTimeout(timer);
+        clearTimeout(closeTimer);
         layer.closeAll('loading');
     });
     /* 全局菜单相关 start */

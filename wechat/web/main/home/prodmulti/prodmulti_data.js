@@ -196,7 +196,7 @@ $(function() {
         var $proBox = $(data.target),
             type = $proBox.attr('class');
         $.ajax({
-            url: $$.config.serverAddr + 'Product/Review/QueryProductServiceReviewList',
+            url: $$.config.serverAddr + 'Product/Review/QueryServiceReviewList',
             data: {
                 ProductID: pid,
                 HasImg: data.HasImg || -1,

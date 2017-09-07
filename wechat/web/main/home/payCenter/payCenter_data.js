@@ -4,7 +4,7 @@ $(function() {
 	    orderId = $$.getQueryString('oid'),
 	    orderDesc = '车势力-订单编号：' + orderId,
 	    total = 0,
-	    isWx = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i) != null;
+	    isWx = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i);
 
 	$page.find('div.confirm').hide();
 

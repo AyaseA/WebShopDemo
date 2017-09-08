@@ -1,6 +1,7 @@
 $(function() {
     var $page = $('#home_recommend'),
-        pageStr = 'home_recommend';
+        pageStr = 'home_recommend',
+        w = $page.width();
 
     if ($$.isLogin(true)) {
         var qrCode = $$.getCookie('__RECOMMENDQR__'),
@@ -11,14 +12,14 @@ $(function() {
         $page.find('>div.main >div.content >span').text(mobile);
         $('#home_recommend_qrcode').empty();
         new QRCode($('#home_recommend_qrcode')[0], {
-            width: 224,
-            height: 224
+            width: w * 0.681,
+            height: w * 0.681
         }).makeCode(shareLink);
     }
 
     //配置微信
 
-    var WXsign = $$.getWeChatSign(1);
+    /*var WXsign = $$.getWeChatSign(1);
     wx.config({
         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: $$.config.wxAppID, // 必填，公众号的唯一标识
@@ -99,5 +100,5 @@ $(function() {
                 });
             }
         });
-    }
+    }*/
 });

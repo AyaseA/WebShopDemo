@@ -55,11 +55,20 @@
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    background: linear-gradient(-60deg, #F47E4D 15%, #F49E79 0, #F49E79 50%, #F47E4D 0, #F47E4D 70%, #F49E79 0);
-    background-size: 9px 15.57px;
+    /* background: linear-gradient(-60deg, #F47E4D 15%, #F49E79 0, #F49E79 50%, #F47E4D 0, #F47E4D 70%, #F49E79 0);
+    background-size: 9px 15.57px; */
+    font-size: 0;
 }
 
-#home_recommend>div.main>div.content {
+#home_recommend>div.main >img.bg {
+    width: 100%;
+}
+
+#home_recommend>div.main >.qrcode {
+    position: absolute;
+}
+
+/* #home_recommend>div.main>div.content {
     width: 280px;
     height: 360px;
     background-color: #fff;
@@ -122,7 +131,7 @@
     width: 100%;
     position: absolute;
     bottom: 15px;
-}
+} */
 
 #home_recommend .mirror {
     width: 100%;

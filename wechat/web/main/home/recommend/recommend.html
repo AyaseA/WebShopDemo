@@ -1,15 +1,25 @@
 <div>
     <div class="header">
         <a href="javascript:void(0)" class="goBack"></a>
-        <span class="title">我的推荐码</span>
-        <span class="share">分享</span>
+        <span class="title">邀请有礼</span>
+        <!-- <span class="share">分享</span> -->
     </div>
     <div class="main">
-        <div class="content">
+        <img class="bg" src="./images/recommend/recommend.jpg" usemap="#home_recommend_map">
+        <map name="home_recommend_map"></map>
+        <div id="home_recommend_qrcode" class="qrcode"></div>
+        <!-- <div class="content">
             <i><img src="./images/icon.png"></i>
             <span class="clear"></span>
             <div id="home_recommend_qrcode"></div>
             <p>扫一扫上面的推荐码，有惊喜</p>
-        </div>
+        </div> -->
     </div>
+    <script id="home_recommend_map_area" type="text/html">
+        <area shape="rect" coords="{{btn1Coords}}" onclick="recommend.invite()">
+        <area shape="rect" coords="{{btn2Coords}}" onclick="recommend.invite()">
+        <area shape="rect" coords="{{btn3Coords}}" onclick="recommend.wash()">
+        <area shape="rect" coords="{{btn4Coords}}" onclick="recommend.index()">
+        <area shape="rect" coords="{{btn5Coords}}" onclick="recommend.invite()">
+    </script>
 </div>

@@ -207,7 +207,7 @@ $(function() {
                 loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat, CityID: 370100 ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CityID: 370100, SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CityID: 370100, SortType: $("#shopList_orderBy .orderOn").attr("data-type") ,LL: locationLngLat}, "#shop_shopList .shopList");
             }
         } else {
             if ($("#shopList_orderBy .orderOn").attr("data-type") == 0) {
@@ -215,7 +215,7 @@ $(function() {
                 loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"), LL: locationLngLat ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type") ,LL: locationLngLat}, "#shop_shopList .shopList");
             }
         }
     });
@@ -229,7 +229,7 @@ $(function() {
                 loadStore({ Type: $(this).attr("data-type"), N: n, LL: locationLngLat, CityID: 370100 ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, CityID: 370100, SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $(this).attr("data-type"), N: n,LL: locationLngLat, CityID: 370100, SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
             }
         } else {
             if ($("#shopList_orderBy .orderOn").attr("data-type") == 0) {
@@ -237,7 +237,7 @@ $(function() {
                 loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type"), LL: locationLngLat ,SortType:0}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $(this).attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type") ,LL: locationLngLat}, "#shop_shopList .shopList");
             }
         }
     });
@@ -255,10 +255,10 @@ $(function() {
         } else {
             if ($("#shopList_area .positionOn").attr("data-type") == 0) {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CityID: 370100 ,SortType:$(this).attr("data-type")}, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CityID: 370100 ,SortType:$(this).attr("data-type"),LL: locationLngLat}, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") ,SortType:$(this).attr("data-type")}, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $("#shopList_positionS ul .positionOn").attr("data-type") ,SortType:$(this).attr("data-type"),LL: locationLngLat}, "#shop_shopList .shopList");
             }
         }
     });

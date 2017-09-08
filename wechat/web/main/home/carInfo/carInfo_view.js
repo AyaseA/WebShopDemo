@@ -171,6 +171,77 @@ $(function() {
         $(this).val(inputNum);
     });
 
+
+    $page.on('click', 'div.upload', function() {
+        $page.find('div.mask').fadeIn(200).find('>div').animate({
+            'height': 160
+        }, 200);
+        $page.find('a.option1').text('拍照').attr('data-id', '1').attr('data-type', 'icon');
+        $page.find('a.option2').text('相册').attr('data-id', '0').attr('data-type', 'icon');
+    });
+    $page.off('click', 'div.mask').on('click', 'div.mask', function() {
+        maskFadeOut();
+    }).off('click', 'div.btn-group').on('click', 'div.btn-group', function(e) {
+        var option = $(e.target);
+        if (option.attr('data-type') == 'sex') {
+            $page.find('div.sex span').text(option.text());
+        } else if (option.attr('data-type') == 'icon') {
+            if (option.attr('data-id') == 0) {
+                upLoadImg('album');
+            } else if (option.attr('data-id') == 1) {
+                upLoadImg('camera');
+            }
+        }
+        maskFadeOut();
+        e.stopPropagation();
+        e.preventDefault();
+    });
+
+    function maskFadeOut(item) {
+        $page.find('div.mask').fadeOut(200).find('>div').animate({
+            'height': '0'
+        }, 200);
+    }
+    function upLoadImg(type) {
+        var sourceType = [],
+            from = 0;
+        if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+            from = 1;
+        } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
+            from = 2;
+        } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+            from = 3;
+        }
+        if (type == 'camera') {
+            sourceType.push('camera');
+        } else {
+            sourceType.push('album');
+        }
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['compressed'],
+            sourceType: sourceType,
+            success: function (res) {
+                var localIds = res.localIds;
+                wx.getLocalImgData({
+                    localId: localIds[0],
+                    success: function (res) {
+                        var localData = res.localData;
+                        $page.find('div.upload').addClass('hasImg').find('img').attr('src', localData);
+                    }
+                });
+                wx.uploadImage({
+                    localId: localIds[0],
+                    isShowProgressTips: 1,
+                    success: function (res) {
+                        $page.find('div.upload').attr('data-sid', res.serverId)
+                                                .attr('data-frm', from);
+                    }
+                });
+            }
+        });
+    }
+
     getBrands();
     // 获取品牌信息
     function getBrands() {
@@ -247,10 +318,18 @@ $(function() {
     function saveCar(calback) {
         var url = 'CSL/UserInfo/AddCar',
             carId = $$.getQueryString('cid'),
-            carInfo = getCarInfo();
+            carInfo = getCarInfo(),
+            imgServiceId = '',
+            imgFrom = '';
         if (carId) {
             url = 'CSL/UserInfo/UpdateCar';
             carInfo.ID = carId;
+        }
+        imgServiceId = $page.find('div.upload').attr('data-sid');
+        imgFrom = $page.find('div.upload').attr('data-frm');
+        if (imgServiceId && imgFrom) {
+            carInfo.CerImg = imgServiceId;
+            carInfo.CerImgFrom = imgFrom;
         }
         $$.post(
             url,

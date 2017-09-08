@@ -125,6 +125,9 @@
     margin-top: 3px;
     font-size: 16px;
 }
+#home_carInfo >div.main div.carDetail div.setDefault {
+    padding: 10px 0;
+}
 #home_carInfo >div.main div.carDetail div.setDefault i {
     background-image: url(../../images/common/check.png);
     margin: 6px 22px;
@@ -377,4 +380,70 @@
     padding: 6px 14px;
     border-radius: 50px;
     font-size: 12px;
+}
+
+#home_carInfo div.upload {
+    padding: 10px 0 !important;
+}
+#home_carInfo div.upload >span {
+    margin-top: 0;
+}
+#home_carInfo div.upload >img {
+    display: none;
+}
+#home_carInfo div.upload >i {
+    margin-top: 3px !important;
+}
+#home_carInfo div.upload.hasImg >span {
+    margin-top: 11px;
+}
+#home_carInfo div.upload.hasImg >img {
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin-right: 20px;
+    display: inline-block;
+}
+#home_carInfo div.upload.hasImg >i {
+    margin-top: 14px !important;
+}
+#home_carInfo div.mask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .35);
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    padding: 0;
+    display: none;
+}
+#home_carInfo div.mask >div {
+    z-index: 11;
+    width: 90%;
+    padding: 10px 5%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0;
+}
+#home_carInfo div.mask >div >div {
+    background-color: #FFF;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+#home_carInfo div.mask a {
+    display: block;
+    height: 46px;
+    text-align: center;
+    line-height: 46px;
+    color: #EA5514;
+    border-top: 1px solid #ECECEE;
+}
+#home_carInfo div.mask a.option1 {
+    border: 0;
+}
+#home_carInfo div.mask div.cancel {
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
 }

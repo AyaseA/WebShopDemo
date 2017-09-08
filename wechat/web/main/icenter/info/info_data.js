@@ -19,7 +19,7 @@ $(function() {
 
     $page.off('click', 'div.mask').on('click', 'div.mask', function() {
         maskFadeOut();
-    }).off('click', 'div.button-group').on('click', 'div.button-group', function(e) {
+    }).off('click', 'div.btn-group').on('click', 'div.btn-group', function(e) {
         var option = $(e.target);
         if (option.attr('data-type') == 'sex') {
             $page.find('div.sex span').text(option.text());
@@ -42,7 +42,15 @@ $(function() {
     }
 
     function upLoadImg(type) {
-        var sourceType = [];
+        var sourceType = [],
+            from = 0;
+        if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+            from = 1;
+        } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
+            from = 2;
+        } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+            from = 3;
+        }
         if (type == 'camera') {
             sourceType.push('camera');
         } else {
@@ -63,7 +71,7 @@ $(function() {
                             'CSL/User/UpdateImg',
                             {
                                 Img: serverId,
-                                From: 1
+                                From: from
                             },
                             function(res) {
                                 if (res.Status == 0) {

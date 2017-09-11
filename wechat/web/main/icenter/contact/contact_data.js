@@ -15,7 +15,7 @@ $(function () {
         },
         dataType: 'json',
         success: function(res) {
-            if (res.Status == 0) {
+            if (res.Status == 100) {
                 $.ajax({
                     url: $$.config.serverAddr + 'CSL/P_Msg/TriCall',
                     type: 'POST',
@@ -49,7 +49,7 @@ $(function () {
                         }
                     }
                 });
-            } else {
+            } else if (res.Status == -1) {
                 var fullUrl = location.href;
                     fullUrl = fullUrl.indexOf('?') != -1 ? fullUrl.split('?')[0] + '?R=' : fullUrl + '?R=',
                     page = fullUrl + escape($$.getUrl()),

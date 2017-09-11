@@ -53,13 +53,21 @@ $(function() {
         if (!$(this).hasClass('sending')) {
             var phone = $.trim($page.find('input[name=phone]').val());
             if (phone.length == 11 && /^1[3|4|5|7|8]\d{9}$/.test(phone)) {
-                isRegister(phone, function() {
+                if (type == 0) {
+                    isRegister(phone, function() {
+                        sendingVCode({
+                            Mobile: phone,
+                            Type: type,
+                            PType: 0
+                        });
+                    });
+                } else if (type == 1) {
                     sendingVCode({
                         Mobile: phone,
                         Type: type,
                         PType: 0
                     });
-                });
+                }
             } else {
                 layer.msg('请输入正确的手机号');
             }
@@ -111,17 +119,34 @@ $(function() {
     }
     function forget(phone, pwd, vcode) {
         $.ajax({
-            url: $$.config.serverAddr + 'CSL/Login/ResetPwdByPhone',
+            url: $$.config.serverAddr + 'Product/Info/TestVerifiedCode',
             type: 'POST',
             data: {
                 Mobile: phone,
-                NewPwd: pwd,
+                Type: 1,
+                PType: 0,
                 VC: vcode
             },
             dataType: 'json',
             success: function(res) {
-                if (res.Status == 0 && res.Data == 'Succ') {
-                    login(phone, pwd, '密码找回并登录成功');
+                if (res.Status == 0) {
+                    $.ajax({
+                        url: $$.config.serverAddr + 'CSL/Login/ResetPwdByPhone',
+                        type: 'POST',
+                        data: {
+                            Mobile: phone,
+                            NewPwd: pwd,
+                            VC: vcode
+                        },
+                        dataType: 'json',
+                        success: function(res) {
+                            if (res.Status == 0 && res.Data == 'Succ') {
+                                login(phone, pwd, '密码找回并登录成功');
+                            }
+                        }
+                    });
+                } else {
+                    layer.msg('验证码错误');
                 }
             }
         });
@@ -135,25 +160,42 @@ $(function() {
             }
         }
         $.ajax({
-            url: $$.config.serverAddr + 'CSL/Login/RegisterUser',
+            url: $$.config.serverAddr + 'Product/Info/TestVerifiedCode',
             type: 'POST',
             data: {
                 Mobile: phone,
-                Password: pwd,
-                Platform: 13,
-                RegisterFrom: registerFrom,
-                RegisterCont: registerCont,
+                Type: 0,
+                PType: 0,
                 VC: vcode
             },
             dataType: 'json',
             success: function(res) {
                 if (res.Status == 0) {
-                    if (res.Data.WToken) {
-                        $$.setToken(res.Data.WToken);
-                        layer.msg('登录成功');
-                        $$.goBack();
-                        resetForm();
-                    }
+                    $.ajax({
+                        url: $$.config.serverAddr + 'CSL/Login/RegisterUser',
+                        type: 'POST',
+                        data: {
+                            Mobile: phone,
+                            Password: pwd,
+                            Platform: 13,
+                            RegisterFrom: registerFrom,
+                            RegisterCont: registerCont,
+                            VC: vcode
+                        },
+                        dataType: 'json',
+                        success: function(res) {
+                            if (res.Status == 0) {
+                                if (res.Data.WToken) {
+                                    $$.setToken(res.Data.WToken);
+                                    layer.msg('登录成功');
+                                    $$.goBack();
+                                    resetForm();
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    layer.msg('验证码错误');
                 }
             }
         });

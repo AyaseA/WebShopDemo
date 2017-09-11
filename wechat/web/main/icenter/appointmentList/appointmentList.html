@@ -63,9 +63,14 @@
                         	<button class="appointBtn" data-id={{notAppoint.ID}} data-pid={{notAppoint.ProductID}} data-storeid="0" data-stype={{notAppoint.ServiceType}}>
 	                        预约服务</button>
                         	{{/if}}
-                            {{if notAppoint.ProductNeedDelivery == 1 && !notAppoint.DeliveryTime}}
-                            <button class="appointBtn">邮寄商品</button>
+                            <!-- {{if notAppoint.ProductNeedDelivery == 1 && !notAppoint.DeliveryTime}}
+                                <button class="appointBtn">邮寄商品</button>
                             {{/if}}
+                            {{if notAppoint.ProductNeedDelivery == 1 && notAppoint.DeliveryTime}}
+                                {{if today - DeliveryTime > 2592000}}
+                                <button class="appointBtn">邮寄商品</button>
+                                {{/if}}
+                            {{/if}} -->
                         {{/if}} 
                         {{if notAppoint.AppointID}}
                         <button class="checkAppoint" data-id={{notAppoint.AppointID}}>查看预约</button>

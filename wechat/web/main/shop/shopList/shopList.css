@@ -52,7 +52,7 @@
 #shop_shopList .header .title{
 	font-size: 4.4vw;
     font-weight: bold;
-    padding-left: 10.5vw;
+/*     padding-left: 10.5vw; */
 }
 
 #shop_shopList .header .search{

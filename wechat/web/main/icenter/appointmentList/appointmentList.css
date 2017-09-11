@@ -124,13 +124,13 @@
 }
 
 #icenter_appointmentList .content .oneAppoint .appointFoot button{
-	width:30vw;
+	width:25vw;
 	background:none;
 	outline:none;
-	height:8vw;
+	height:7vw;
 	border-radius:6vw;
 	float:right;
-	margin-top:1vw;
+	margin-top:2vw;
 	margin-left: 2vw;
 }
 

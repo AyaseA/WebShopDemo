@@ -36,11 +36,13 @@ $(function() {
     });
 
     $$.post("CSL/Service/QueryMyServiceList", { Status: 0, N: 1, Rows: 30 }, function(txt){
+        var today = $$.get10Time(new Date());
         $page.find(".notAppoint").html(
             template('icenter_appointmentList_notAppoint', {
                 notAppointData: txt.Data.Rows,
                 notAppointLength: txt.Data.Rows.length,
-                serverAddr: $$.serverAddr
+                serverAddr: $$.serverAddr,
+                today:today
             })
         );
     });

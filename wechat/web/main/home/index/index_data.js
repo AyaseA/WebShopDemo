@@ -71,7 +71,42 @@ $(function(){
             }
         );
     }*/
-
+    // banner
+    getBanners(function() {
+        TouchSlide({
+            slideCell: "#home_index_banner_top",
+            titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+            mainCell: ".bd ul",
+            effect: "left",
+            autoPlay: true, //自动播放
+            autoPage: true, //自动分页
+            switchLoad: "_src", //切换加载，真实图片路径为"_src" 
+            interTime: 3000 // 切换间隔时间，毫秒
+        });
+    });
+    // 获取banner相关
+    function getBanners(calback) {
+        var $banner = $('#home_index_banner_top >div.bd >ul');
+        $.ajax({
+            url: $$.serverAddr + 'Product/Banner/QueryBannerList',
+            type: 'POST',
+            data: {
+                BannerTypeID: 1
+            },
+            dataType: 'json',
+            success: function(res) {
+                if (res.Status == 0 && res.Data && res.Data.Rows) {
+                    $banner.html(template(pageStr + '_banner_list', {
+                        list: res.Data.Rows,
+                        serverAddr: $$.config.serverAddr
+                    }));
+                    if (calback) {
+                        calback();
+                    }
+                }
+            }
+        });
+    }
     $page.off('click dbclick', 'div.header a.scan').on('click dbclick', 'div.header a.scan', function() {
         if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
             wx.scanQRCode({
@@ -175,14 +210,4 @@ $(function(){
             }
         });
     }
-    TouchSlide({
-        slideCell: "#home_index_banner_top",
-        titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
-        mainCell: ".bd ul",
-        effect: "left",
-        autoPlay: true, //自动播放
-        autoPage: true, //自动分页
-        switchLoad: "_src", //切换加载，真实图片路径为"_src" 
-        interTime: 3000 // 切换间隔时间，毫秒
-    });
 });

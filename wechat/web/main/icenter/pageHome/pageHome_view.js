@@ -12,11 +12,11 @@
         if ($(this).find('.user_name').attr('data-islogin') == 1) {
             $$.redirect('icenter/info.html');
         } else {
+            var fullUrl = location.href;
+                fullUrl = fullUrl.indexOf('?') != -1 ? fullUrl.split('?')[0] + '?R=' : fullUrl + '?R=',
+                page = fullUrl + escape($$.getUrl()),
+                prevPage = fullUrl + escape($$.stack.getLast() || 'home/index.html');
             if (navigator.userAgent.indexOf('csl-ios') != -1) {
-                var fullUrl = location.href;
-                    fullUrl = fullUrl.indexOf('?') != -1 ? fullUrl.split('?')[0] + '?R=' : fullUrl + '?R=',
-                    page = fullUrl + escape($$.getUrl()),
-                    prevPage = fullUrl + escape($$.stack.getLast() || 'home/index.html');
                 wx.showLoginPage({
                     'page': page,
                     'prevPage': prevPage,

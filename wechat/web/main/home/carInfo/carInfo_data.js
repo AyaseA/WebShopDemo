@@ -84,7 +84,7 @@ $(function() {
             return car.ID == dftCar ? 'default' : '';
         });
         if (car.CerImg) {
-            $page.find('div.upload').addClass('hasImg').find('img').attr('src', car.CerImg);
+            $page.find('div.upload').addClass('hasImg').find('img').attr('src', $$.imgFilter(car.CerImg));
         }
     }
     // 重置车辆信息

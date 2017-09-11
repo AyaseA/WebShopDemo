@@ -47,25 +47,27 @@
 
 #shop_shopDetail .title ul{
 	margin:2vw 0 2vw 0;
-	font-size: 3.5vw;
+	font-size: 3.8vw;
 	width: 92vw;
 }
 
 #shop_shopDetail .title ul li{
 	display: inline-block;
-	width: 33%;
+	width: 30%;
+	color: #a9a9a9;
 }
 
-#shop_shopDetail .textCenter{
+/* #shop_shopDetail .textCenter{
 	text-align: center;
 }
 
 #shop_shopDetail .textRight{
 	text-align: right;
-}
+} */
 
 #shop_shopDetail .title span{
 	color: #f60;
+	margin-left: 3vw;
 }
 
 #shop_shopDetail .address{
@@ -114,9 +116,13 @@
 }
 
 #shop_shopDetail .info p{
-	font-size: 3.5vw;
-	margin:1vw 0 2vw 0;
-	color: #797878;
+	font-size: 3.8vw;
+    margin: 1vw 0 2vw 0;
+    color: #a9a9a9;
+}
+
+#shop_shopDetail .info span{
+	margin-left: 2vw;
 }
 
 #shop_shopDetail .btn{
@@ -204,7 +210,7 @@
 
 #shop_shopDetail .serviceContent .serviceDesci{
 	font-size: 3.5vw;
-	color: #8D8D8D;
+	color: #a9a9a9;
 	margin-bottom: 1vw;
 }
 

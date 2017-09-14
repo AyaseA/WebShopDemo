@@ -505,6 +505,7 @@ Date.prototype.pattern = function(fmt) {
                             if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                                 $$.refreshConfirm();
                             } else {
+                                
                                 authConfirm();
                             }
                         } else if (succfunc) {

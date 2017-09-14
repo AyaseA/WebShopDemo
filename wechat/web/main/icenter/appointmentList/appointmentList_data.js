@@ -4,8 +4,8 @@ $(function() {
     $page.find(".content").height(contentHeight);
 
     var token = $$.getToken(),
-    type = $$.getQueryString("type"),
-    loadComplete;
+        type = $$.getQueryString("type"),
+        loadComplete;
 
     if (type == "commission") {
         showArea("notAppoint");
@@ -35,19 +35,24 @@ $(function() {
         $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id"));
     });
 
-    $$.post("CSL/Service/QueryMyServiceList", { Status: 0, N: 1, Rows: 30 }, function(txt){
+    $page.off("click", ".appointFoot .postBtn").on("click", ".appointFoot .postBtn", function() {
+        var sid = $(this).attr("data-id");
+        $$.redirect("icenter/delivery.html?sid=" + sid);
+    });
+
+    $$.post("CSL/Service/QueryMyServiceList", { Status: 0, N: 1, Rows: 30 }, function(txt) {
         var today = $$.get10Time(new Date());
         $page.find(".notAppoint").html(
             template('icenter_appointmentList_notAppoint', {
                 notAppointData: txt.Data.Rows,
                 notAppointLength: txt.Data.Rows.length,
                 serverAddr: $$.serverAddr,
-                today:today
+                today: today
             })
         );
     });
 
-    $$.post("CSL/Service/QueryMyServiceList", { Status: 1, N: 1, Rows: 30 }, function(txt){
+    $$.post("CSL/Service/QueryMyServiceList", { Status: 1, N: 1, Rows: 30 }, function(txt) {
         $page.find(".hadComplite").html(
             template('icenter_appointmentList_hadComplite', {
                 hadCompliteData: txt.Data.Rows,
@@ -85,7 +90,6 @@ $(function() {
         time = setInterval(function() {
             codeTime -= 1;
             checkTime += 1;
-
             if (checkTime < 15) {
                 checkServiceCode(id, num);
             } else if (checkTime > 15 && checkTime < 30) {
@@ -110,8 +114,8 @@ $(function() {
         }, 1000);
         layer.open({
             title: "<img src='images/code/qr_code.png' style='width: 6vw;position: absolute;top: 2.8vw;'><span style='margin-left: 8vw;color:#f60'>商家扫描二维码</span>",
-            content: "<p style='text-align:center;font-size:3.3vw;color:#8e8c8c;margin-bottom: 2vw;'>请向商家出示二维码，扫一扫，即可验证</p><img style='width:70vw;' class='appointment_strCode' src='" + imgurl + "'>"+
-            "<p style='margin-top:2vw'><img src='images/code/logo.png' style='width:25vw;'></p>",
+            content: "<p style='text-align:center;font-size:3.3vw;color:#8e8c8c;margin-bottom: 2vw;'>请向商家出示二维码，扫一扫，即可验证</p><img style='width:70vw;' class='appointment_strCode' src='" + imgurl + "'>" +
+                "<p style='margin-top:2vw'><img src='images/code/logo.png' style='width:25vw;'></p>",
             area: ["80vw", "115vw"],
             btn: [],
             cancel: function() {
@@ -121,24 +125,32 @@ $(function() {
     }
 
     function checkServiceCode(sid, num) {
-        $$.post("CSL/Service/ConfirmMyService", {
+        $.ajax({
+            url: $$.serverAddr + "CSL/Service/ConfirmMyService",
+            type: "POST",
+            data: {
+                WToken: $$.getToken(),
                 ID: sid,
                 ServiceNum: num
             },
-            function(txt) {
+            dataType: "json",
+            success: function(txt) {
                 if (txt.Status == 0) {
                     layer.msg("二维码已被成功扫描");
                     clearInterval(time);
                     $$.redirect("icenter/checkSucc.html");
+                } else if (txt.Status == -1) {
+                    clearInterval(time);
+                    $$.authConfirm();       
                 }
             }
-        );
+        });
     }
-  
+
     function showArea(area) {
-        $page.find(".content").children().css("display","none");
+        $page.find(".content").children().css("display", "none");
         $page.find(".nav ul li").removeClass("active");
-        $page.find("." + area).css("display","block");
+        $page.find("." + area).css("display", "block");
         for (var i = 0; i < $page.find(".nav ul li").length; i++) {
             if ($($page.find(".nav ul li")[i]).attr("data-pane") == area) {
                 $($page.find(".nav ul li")[i]).addClass("active");

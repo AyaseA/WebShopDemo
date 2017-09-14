@@ -137,18 +137,25 @@ $(function () {
     }
 
     function checkServiceCode(sid) {
-        $$.post("CSL/Service/ConfirmMyService", {
+        $.ajax({
+            url: $$.serverAddr + "CSL/Service/ConfirmMyService",
+            type: "POST",
+            data: {
+                WToken: $$.getToken(),
                 ID: sid,
                 ServiceNum: serviceNum
             },
-            function(txt) {
+            dataType: "json",
+            success: function(txt) {
                 if (txt.Status == 0) {
-
                     layer.msg("二维码已被成功扫描");
                     clearInterval(time);
                     $$.redirect("icenter/checkSucc.html");
+                } else if (txt.Status == -1) {
+                    clearInterval(time);
+                    $$.authConfirm();       
                 }
             }
-        );
+        });
     }
 });

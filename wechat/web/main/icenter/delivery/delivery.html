@@ -1,0 +1,61 @@
+<div>
+	<div class="header">
+		<a href="javascript:void(0)"><img src="images/common/round_left_blue.png"></a>
+		<p>选择邮寄信息</p>
+	</div>
+	<div class="content">
+		<div class="addressInfo">
+			<script type="text/html" id="icenter_delivery_addressInfo">
+				<span class="icon">
+					<img src="images/common/location1.png">
+				</span>
+				<span class="userInfo">
+				{{if type == 1}}
+					<p>{{data.Name}} {{data.Mobile}} <span>默认</span></p>
+					<p class="myAddress">{{city.province + city.city + city.county + data.AddressDetail}}</p>
+				{{/if}}
+				{{if type == 0}}
+					<p>请添加收货地址</p>
+				{{/if}}
+				</span>
+				<span class="moreAddress">
+				{{if type == 1}}
+					<img class="moreImg" src="images/common/right.png">
+				{{/if}}
+				{{if type == 0}}
+					<img class="addImg" src="images/common/round_add.png">
+				{{/if}}
+				</span>
+			</script>
+		</div>
+		<div class="border"></div>
+
+		<div class="carInfo">
+			<script type="text/html" id="icenter_delivery_carInfo">
+				<span class="carTitle">
+					选择车辆
+				</span>
+				<span class="myCar">
+				{{if type == 1}}
+					{{data.CarBrandName}}
+					{{data.CarSeriesName}}
+					{{data.CarCarName}}
+				{{/if}}
+				{{if type == 0}}
+					请选择车辆
+				{{/if}}
+				</span>
+				<span class="moreCar">
+				{{if type == 1}}
+					<img class="moreImg" src="images/common/right.png">
+				{{/if}}
+				{{if type == 0}}
+					<img class="addImg" src="images/common/round_add.png">
+				{{/if}}
+				</span>
+			</script>
+		</div>
+	</div>
+
+	<button class="confirmBtn">确 定</button>
+</div>

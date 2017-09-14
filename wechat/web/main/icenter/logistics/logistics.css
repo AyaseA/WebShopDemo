@@ -1,0 +1,137 @@
+#icenter_logistics {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #EFEFF4;
+}
+
+#icenter_logistics .header {
+    height: 12vw;
+    width: 100%;
+    border-bottom: 1px solid #D6D6DB;
+    line-height: 12vw;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#icenter_logistics .header img {
+    width: 6vw;
+    position: absolute;
+    left: 3vw;
+    top: 3vw;
+}
+
+#icenter_logistics .header p {
+    font-size: 4.5vw;
+    font-weight: bold;
+}
+
+#icenter_logistics .productInfo {
+    width: 100%;
+    height: 30vw;
+    background: #fff;
+}
+
+#icenter_logistics .productInfo img {
+    width: 30vw;
+    height: 30vw;
+}
+
+#icenter_logistics .productInfo .info {
+    display: inline-block;
+    vertical-align: top;
+    padding: 4vw 4vw 0 4vw;
+}
+
+#icenter_logistics .productInfo h2 {
+    font-size: 5.5vw;
+    margin-bottom: 2vw;
+    color: #f60;
+    font-weight: 300;
+}
+
+#icenter_logistics .productInfo .info .name {
+    font-size: 3.8vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#icenter_logistics .productInfo .info .number {
+    font-size: 3.8vw;
+}
+
+#icenter_logistics .logisticsInfo{
+    background: #fff;
+    padding-top: 5vw;
+    margin-top: 5vw;
+}
+
+#icenter_logistics .logisticsInfo .address{
+	padding-left: 18px;
+}
+
+#icenter_logistics .logisticsInfo img{
+	width: 4vw;
+    vertical-align: top;
+}
+
+#icenter_logistics .logisticsInfo span{
+    margin-left: 2vw;
+}
+
+#icenter_logistics .times {
+    display: block;
+    margin: 15px 0;
+}
+
+#icenter_logistics .times ul {
+    margin-left: 25px;
+    border-left: 2px solid #ddd;
+}
+
+#icenter_logistics .times ul li {
+    width: 100%;
+    margin-left: -12px;
+    line-height: 20px;
+    font-weight: narmal;
+}
+
+#icenter_logistics .times ul li b {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border: 2px solid #555;
+    margin: 5px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    overflow: hidden;
+    display: inline-block;
+    float: left;
+}
+
+#icenter_logistics .times ul li span {
+    padding-left: 7px;
+    line-height: 20px;
+    color: #555;
+    font-weight: bold;
+    font-size: 4vw;
+}
+
+#icenter_logistics .times ul li:hover b {
+    border: 2px solid #ff6600;
+}
+
+#icenter_logistics .times ul li:hover span {
+    color: #ff6600;
+}
+
+#icenter_logistics .times ul li p {
+    padding-left: 15px;
+    font-size: 3.8vw;
+    line-height: 25px;
+}
+

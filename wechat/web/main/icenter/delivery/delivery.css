@@ -1,0 +1,153 @@
+#icenter_delivery{
+	font-size: 0;
+	background-color: #EFEFF4;
+	position: relative;
+	overflow:hidden;
+	height: 100%;
+}
+
+#icenter_delivery .header{
+	width: 100%;
+	height: 12vw;
+	line-height: 12vw;
+	border-bottom: 1px solid #CCCCCC;
+	text-align: center;
+	background: #fff;
+}
+
+#icenter_delivery .header img{
+	width: 6vw;
+    position: absolute;
+    left: 3vw;
+    top: 3vw;
+}
+
+#icenter_delivery .header p{
+	font-size: 4.5vw;
+	font-weight: bold;
+}
+
+#icenter_delivery .addressInfo{
+	width:100%;
+	height: 25vw;
+	padding: 0 4vw;
+	display: table;
+	background: #fff;
+}
+
+#icenter_delivery .addressInfo .icon{
+	width:10vw;
+	height: 100%;
+	display: table-cell;
+	vertical-align:middle;
+}
+
+#icenter_delivery .addressInfo .icon img{
+	width: 6.5vw;
+}
+
+#icenter_delivery .addressInfo .userInfo{
+	width:67vw;
+	height: 100%;
+	vertical-align:middle;
+	font-size: 3.8vw;
+	display: table-cell;
+}
+
+#icenter_delivery .addressInfo .userInfo span{
+	width: 11vw;
+    display: inline-block;
+    text-align: center;
+    border-radius: 15vw;
+    color: #f60;
+    border: 1px solid #f60;
+    margin-left: 4vw;
+    font-size: 3vw;
+}
+
+#icenter_delivery .addressInfo .userInfo .myAddress{
+	color: #a9a9a9;
+    font-size: 3.5vw;
+}
+
+#icenter_delivery .addressInfo .moreAddress{
+	width:15vw;
+	height: 100%;
+	display: table-cell;
+	vertical-align:middle;
+}
+
+#icenter_delivery .addressInfo .moreAddress .moreImg{
+	width: 3vw;
+	margin-left: 5vw;
+}
+
+#icenter_delivery .addressInfo .moreAddress .addImg{
+	width: 6vw;
+    margin-left: 2vw;
+}
+
+#icenter_delivery .border{
+	width: 100%;
+	height: 2px;
+	background: url("../../images/common/cor.png");
+	background-size: 100%;
+}
+
+#icenter_delivery .carInfo{
+	width: 100%;
+	height: 12vw;
+	background: #fff;
+	margin-top: 5vw;
+	padding: 0 4vw;
+	line-height: 12vw;
+} 
+
+#icenter_delivery .carInfo .carTitle{
+	font-size: 4vw;
+	width: 20vw;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#icenter_delivery .carInfo .myCar{
+	font-size: 3.8vw;
+	width: 60vw;
+	height: 100%;
+	display: inline-block;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#icenter_delivery .carInfo .moreCar{
+	width: 12vw;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+    text-align: right;
+}
+
+#icenter_delivery .carInfo .moreImg{
+	width: 3vw;
+    margin-top: 3vw;
+}
+
+#icenter_delivery .moreCar .addImg{
+	width: 6vw;
+    margin-top: 3vw;
+}
+
+#icenter_delivery .confirmBtn{
+	width: 90vw;
+	height: 10vw;
+	color: #fff;
+	background: #f60;
+	border: none;
+	outline: none;
+	border-radius: 10vw;
+	font-size: 4vw;
+	margin: 100vw 0 0 5vw;
+}
+

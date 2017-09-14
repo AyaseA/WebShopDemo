@@ -393,6 +393,17 @@
 	display:none;
 }
 
+@media screen and (min-width: 410px) {
+	#shop_shopList #shopList_selectModal {
+		top: 49px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#shop_shopList #shopList_selectModal {
+		top: 41px;
+	}
+}
+
 #shop_shopList #shopList_selectModal .nav{
 	border-bottom:1px solid #d6d6db;
 	height:10.5vw;
@@ -437,6 +448,9 @@
 /*地点标签CSS*/
 #shop_shopList #shopList_positionS{
 	padding:0 3vw;
+	height: 100vw;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 #shop_shopList #shopList_area li{
@@ -445,10 +459,31 @@
 	font-size:14px;
 }
 
-#shop_shopList .positionOn{
+#shop_shopList #shopList_area li ul{
+	display: none;
+}
+
+#shop_shopList .positionOn p{
 	color:#F60;
 }
 
+#shop_shopList .countyOn{
+	color:#F60;
+}
+
+#shop_shopList .positionMore{
+	display: inline-block;
+    width: 20vw;
+    height: 9vw;
+    float: right;
+    margin-top: -2vw;
+    text-align: right;
+}
+
+#shop_shopList .positionMore img{
+	width: 3vw;
+    margin-top: 2vw;
+}
 /*服务标签CSS*/
 
 #shop_shopList #shopList_carT{
@@ -460,9 +495,6 @@
 	padding:10px;
 	font-size:14px;
 }
-
-
-
 
 /*汽车服务样式*/
 #shop_shopList #shopList_serviceList{

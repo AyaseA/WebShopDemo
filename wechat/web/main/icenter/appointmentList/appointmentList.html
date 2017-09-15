@@ -7,8 +7,8 @@
         <ul>
             <li class="active" data-pane="notAppoint">可用服务</li>
             <li data-pane="hadAppoint">已预约</li>
-            <li data-pane="notVerify">已验证</li>
-            <li data-pane="hadComplite">已完成</li>
+            <li data-pane="notVerify">预约已完成</li>
+            <li data-pane="hadComplite">服务已完成</li>
         </ul>
     </div>
     <div class="content">
@@ -184,7 +184,7 @@
                 <div class="oneAppoint">
                     <div class="appointHeader">
                         <span>订单编号：<span>{{hadComplite.OrderID}}</span></span>
-                        <span class="appointStatus">服务已完成</span>
+                        <span class="appointStatus">已完成第{{hadComplite.ServiceNum}}次服务</span>
                     </div>
                     <div class="appointContent">
                         <img src="{{serverAddr}}Img/{{hadComplite.ProductImg| imgFilter}}">

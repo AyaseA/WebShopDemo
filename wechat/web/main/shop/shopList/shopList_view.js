@@ -394,27 +394,24 @@ $(function() {
             if ($(this).attr("data-open") == 0) {
                 $("#shopList_area li p span").attr("data-open", "0");
 
-                $("#shopList_area li p span").children("img").attr("src", "images/common/right.png");
+                $("#shopList_area li p span").children("img").attr("src", "images/common/triangle_right.png");
                 $("#shopList_area li p span").children("img").css({
-                    "width": "3vw",
-                    "margin-top": "2vw"
+                    "width": "1.5vw",
                 });
                 $("#shopList_area li p span").parent().siblings("ul").hide(500);
 
                 $(this).attr("data-open", "1");
-                $(this).children("img").attr("src", "images/common/down.png");
+                $(this).children("img").attr("src", "images/common/triangle_down.png");
                 $(this).children("img").css({
-                    "width": "6vw",
-                    "margin-top": "3vw"
+                    "width": "2.5vw",
                 });
                 $(this).parent().siblings("ul").show(500);
             } else {
                 $(this).attr("data-open", "0");
 
-                $(this).children("img").attr("src", "images/common/right.png");
+                $(this).children("img").attr("src", "images/common/triangle_right.png");
                 $(this).children("img").css({
-                    "width": "3vw",
-                    "margin-top": "2vw"
+                    "width": "1.5vw",
                 });
                 $(this).parent().siblings("ul").hide(500);
             }

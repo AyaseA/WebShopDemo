@@ -550,6 +550,7 @@
     border-radius: 5px;
     margin-bottom: 15px;
     display: table;
+    width: 100%;
 }
 #home_fillOrder >div.deliveryModal div.item::after {
     content: "";

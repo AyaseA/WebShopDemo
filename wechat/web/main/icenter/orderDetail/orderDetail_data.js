@@ -30,9 +30,7 @@ $(function () {
     // 设置返回按钮可用
     $page.off('click', '>div.header >a.goBack')
          .on('click', '>div.header >a.goBack', function() {
-        $$.redirect('icenter/orderList.html?type=' + orderTabType, {
-            fromGoBack: true
-        });
+        $$.redirect('icenter/orderList.html');
     });
     // 获取订单详情
 	getOrderDetail();

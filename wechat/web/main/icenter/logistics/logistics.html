@@ -3,31 +3,36 @@
         <a href="javascript:void(0)"><img src="images/common/round_left_blue.png"></a>
         <p>查看物流</p>
     </div>
-    <div class="productInfo">
-        <img src="http://api.cheshili.com.cn:8000/Img/P/Prod/P/C-Io2uJR3hEh5DPn.jpg">
-        <span class="info">
-			<h2>运输中</h2>
-			<p class="name">商品名称</p>
-			<p class="number">物流编号</p>
-		</span>
-    </div>
-    <div class="logisticsInfo">
-    	<div class="address">
-    		<img src="images/common/location_small_blue.png">
-    		<span>[收货地址]11111111111111111111111111111111111111111dsadasaddas</span>
-    	</div>
-        <div class="times">
-            <ul>
-                <li><b></b><span>2010-01-01</span>
-                    <p>开始发货了了了了了了了来了了了了来了了了了了</p>
-                </li>
-                <li><b></b><span>2010-01-01</span>
-                    <p>开始发货了了了了了了了来了了了了来了了了了了</p>
-                </li>
-                <li><b></b><span>2010-01-01</span>
-                    <p>开始发货了了了了了了了来了了了了来了了了了了</p>
-                </li>
-            </ul>
-        </div>
+    <div class="content">
+        <script type="text/html" id="icenter_logistics_status">
+            <div class="productInfo">
+                <img src={{serverAddr+"Img/"+product.ProductImg}}>
+                <span class="info">
+                <h2>{{postType}}-{{postStatus}}</h2>
+                <p class="name">商品名称:{{product.ProductName}}</p>
+                <p class="number">物流编号:{{postNo}}</p>
+            </span>
+            </div>
+            <div class="logisticsInfo">
+                <div class="address">
+                    <img src="images/common/location_small_blue.png">
+                    <span>[收货地址]{{address}}</span>
+                </div>
+                <div class="times">
+                    <ul>
+                        {{each tracesData as data index}} {{if index != tracesData.length - 1}}
+                        <li><b></b><span>{{data.AcceptTime}}</span>
+                            <p>{{data.AcceptStation}}</p>
+                        </li>
+                        {{/if}} {{if index == tracesData.length - 1}}
+                        <li class="last"><b style="border: #f60 2px solid"></b><span style="color: #f60">{{data.AcceptTime}}</span>
+                            <p>{{data.AcceptStation}}</p>
+                        </li>
+                        {{/if}} {{/each}}
+                    </ul>
+                </div>
+                <button class="call"><a href="tel:0531-85523333">联系客服</a></button>
+            </div>
+        </script>
     </div>
 </div>

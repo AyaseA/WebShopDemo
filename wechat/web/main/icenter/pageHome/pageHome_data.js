@@ -5,7 +5,8 @@
 	$page.find("article").height(contentHeight);
 	if ($$.isLogin()) {
 		var token = $$.getToken();
-		$('.user_name').text($$.getUserMobile()).attr('data-islogin', 1);
+		var mobile = $$.getUserMobile();
+		$('.user_name').text(mobile.substring(0,3)+"****"+mobile.substring(7,11)).attr('data-islogin', 1);
 		var $page = $('#icenter_pageHome'),
 	        pageStr = 'icenter_pageHome';
 		var resImg = $$.getUserInfo().Img;//获取头像

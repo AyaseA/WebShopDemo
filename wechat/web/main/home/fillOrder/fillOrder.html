@@ -56,6 +56,26 @@
 		{{if list.length > 0}}
 	        {{each list as addr}}
 		        {{set data = $imports.jsonParseFilter(addr.DataField)}}
+		        {{if addr.ID == userAddressID}}
+		        <div class="item {{addr.ID == userAddressID ? 'default' : ''}} checked" data-id="{{addr.ID}}" data-addr="{{data.province}}{{data.city}}{{data.county}}{{addr.AddressDetail}}" data-name="{{addr.Name}}" data-phone="{{addr.Mobile}}">
+		            <div>
+			        	<span>
+			        		<img src="./images/common/default_check.png">
+			        	</span>
+		                <div class="cnt">
+		                	<h4>
+		                		{{addr.Name}}
+		                		{{addr.Mobile}}
+		                			<small>默认</small>
+		                	</h4>
+			                <p>{{data.province}}{{data.city}}{{data.county}}{{addr.AddressDetail}}</p>
+		                </div>
+			            <a class="edit" href="javascript:;" data-id="{{addr.ID}}"><img src="./images/common/edit_2.png"></a>
+		            </div>
+		        </div>
+				{{/if}}
+
+				{{if addr.ID != userAddressID}}
 		        <div class="item {{addr.ID == userAddressID ? 'default' : ''}}" data-id="{{addr.ID}}" data-addr="{{data.province}}{{data.city}}{{data.county}}{{addr.AddressDetail}}" data-name="{{addr.Name}}" data-phone="{{addr.Mobile}}">
 		            <div>
 			        	<span>
@@ -74,6 +94,7 @@
 			            <a class="edit" href="javascript:;" data-id="{{addr.ID}}"><img src="./images/common/edit_2.png"></a>
 		            </div>
 		        </div>
+		        {{/if}}
 		    {{/each}}
 			<div class="select">确认</div>
 		{{else}}

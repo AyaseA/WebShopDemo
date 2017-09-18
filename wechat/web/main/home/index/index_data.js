@@ -6,6 +6,7 @@ $(function(){
         allCount = 0,
         loadComplate = true*/;
 
+        //alert($$.getCookie('__TOKEN__'));
     // 获取位置
     $page.find('>div.header >a.location >span').text(
         $$.getLocationInfo().name

@@ -55,7 +55,7 @@
 	
 #icenter_orderList .onePiece{
 	width:100%;
-	height:50vw;
+	height:55vw;
 	background:#FFF;
 	margin-top:3vw;
 }
@@ -97,11 +97,12 @@
 #icenter_orderList .piecePay p{
 	float: right;
     color: #a9a9a9;
-    width: 90%;
-    height: 7vw;
+    width: 100%;
+    height: 10vw;
     text-align: right;
-    line-height: 7vw;
     font-size: 3.5vw;
+    line-height: 10vw;
+    border-bottom: 1px solid #D6D6DB;
 }
 
 #icenter_orderList .piecePay button{
@@ -112,7 +113,7 @@
 	height:7vw;
 	border-radius:6vw;
 	float:right;
-	margin-top:1vw;
+	margin-top:2.5vw;
 	color: #F60;
 	font-size: 3.5vw;
 	margin-left: 2vw;

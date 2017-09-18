@@ -35,8 +35,15 @@ $(function() {
 
     if (UserAddressID != 0) {
         $$.post("CSL/UserInfo/QueryAddressDetail", { ID: UserAddressID }, function(txt) {
-            var addressInfo = txt.Data,
+            var addressInfo,
+            city;
+            if(txt.Status == 0){
+                addressInfo = txt.Data;
                 city = JSON.parse(txt.Data.DataField);
+            } else  {
+                addressInfo = "";
+                city = "";
+            }
             $page.find(".addressInfo").html(
                 template("icenter_delivery_addressInfo", {
                     data: addressInfo,

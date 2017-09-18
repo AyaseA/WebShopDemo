@@ -12,8 +12,10 @@ $(function() {
     $page.find(">div.shopList").css({
         'height': bodyH - headerH - selectorH - footerH - 1,
     });
-
     var locationInfo = $$.getLocationInfo();
+    var cityID = String(locationInfo.id).substring(0,4)+"00",
+    cityName = showCityName(cityID);
+
 
     //底部导航时间
     $page.on('click', 'div.footer li', function() {
@@ -146,12 +148,12 @@ $(function() {
         n = 1;
     }
     //加载商户信息
-    var loadfoot = false;
+    
 
     function loadStore(Data, scrollArea) {
         var _this = this;
+        var loadfoot = false;
         _this.Data = Data;
-        _this.loadfoot = false;
         $.ajax({
             type: "POST",
             url: $$.config.serverAddr + "Product/Store/QueryStoreList",
@@ -198,7 +200,9 @@ $(function() {
             }
         });
     }
-    loadStore({ N: 1, CityID: 370100, Type: -1, SortType: 0, LL: locationLngLat }, "#shop_shopList .shopList");
+    loadStore({ N: 1, CityID: parseInt(cityID), Type: -1, SortType: 0, LL: locationLngLat }, "#shop_shopList .shopList");
+
+    $page.find("#shopList_mainPMsg").text(cityName);
     //3级联动筛选
     //点击区域
     /*$("#shopList_positionS").on("click", "li", function() {
@@ -487,6 +491,42 @@ $(function() {
             return "<span class='shopType t3Shop'>美容店</span>";
         } else if (tyoe == 3) {
             return "<span class='shopType t4shop'>轮胎</span>";
+        }
+    }
+
+    function showCityName(id){
+        if(id == 370100){
+            return "济南市";
+        } else if(id == 370900){
+            return "泰安市";
+        } else if(id == 371600){
+            return "滨州市";
+        } else if(id == 371500){
+            return "聊城市";
+        } else if(id == 371400){
+            return "德州市";
+        } else if(id == 371300){
+            return "临沂市";
+        } else if(id == 371200){
+            return "莱芜市";
+        } else if(id == 371100){
+            return "日照市";
+        } else if(id == 371000){
+            return "威海市";
+        } else if(id == 370800){
+            return "济宁市";
+        } else if(id == 370700){
+            return "潍坊市";
+        } else if(id == 370600){
+            return "烟台市";
+        } else if(id == 370500){
+            return "东营市";
+        } else if(id == 370400){
+            return "枣庄市";
+        } else if(id == 370300){
+            return "淄博市";
+        } else if(id == 370200){
+            return "青岛市";
         }
     }
 

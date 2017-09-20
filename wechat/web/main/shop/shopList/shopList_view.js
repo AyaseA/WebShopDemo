@@ -368,10 +368,10 @@ $(function() {
             $("#shopList_area").attr("data-type", "1");
             if ($("#shopList_orderBy .orderOn").attr("data-type") == 31) {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, LL: locationLngLat, CityID: $(this).parent().attr("data-type"), SortType: 0 }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat, CityID: $(this).parent().attr("data-type"), SortType: 0 }, "#shop_shopList .shopList");
             } else {
                 reSetAttr();
-                loadStore({ Type: $(this).attr("data-type"), N: n, LL: locationLngLat, CityID: $(this).parent().attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
+                loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, LL: locationLngLat, CityID: $(this).parent().attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type") }, "#shop_shopList .shopList");
             }
         });
 
@@ -391,6 +391,7 @@ $(function() {
             } else {
                 reSetAttr();
                 loadStore({ Type: $("#shopList_carT ul .cccOn").attr("data-type"), N: n, CountyID: $(this).attr("data-type"), SortType: $("#shopList_orderBy .orderOn").attr("data-type"), LL: locationLngLat }, "#shop_shopList .shopList");
+
             }
         });
 

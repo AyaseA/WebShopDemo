@@ -186,7 +186,6 @@
         //获取地理位置接口
         getLocation: function(data, callback) {
             sendMessageToPhone('getLocation', data, callback);
-
         },
         //打电话-发邮件-发短信
         openTelSMSandEmail: function(data, callback) {

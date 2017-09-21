@@ -166,7 +166,9 @@
     width: 70%;
     display: inline-block;
     vertical-align: middle;
-    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 #home_fillOrder div.delivery p >small {
     font-size: 12px;

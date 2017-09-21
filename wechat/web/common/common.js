@@ -39,7 +39,7 @@ Date.prototype.pattern = function(fmt) {
 
     //js 默认记载数值
     win.GLOBAL_includejs = Array();
-    
+
     // 微信签名
     var weChatSign = {},
         isReload = true;
@@ -309,17 +309,43 @@ Date.prototype.pattern = function(fmt) {
                     backUrl = option.backUrl;
                     fromGoBack = option.fromGoBack;
                 }
-
                 var load = function(url, newid, trans) {
-                    if( navigator.userAgent.indexOf('csl-android') != -1 || navigator.userAgent.indexOf('csl-ios') != -1){
+                    /*if (navigator.userAgent.indexOf('csl-android') != -1 || navigator.userAgent.indexOf('csl-ios') != -1) {
                         wx.getNetworkType({
-                            success:function(txt){
-                                if (txt.networkType == "notReachable"){
-                                    $("#noNet").css("display","block");
+                            success: function(txt) {
+                                if (txt.networkType == "notReachable") {
+                                    $("#div_list").children().css("display", "none");
+                                    $("#noNet").css("display", "block");
+                                } else {
+                                    var url_arr = url.split('?');
+                                    var dir = url_arr[0].substring(0, url_arr[0].length - 5);
+                                    loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
+                                    $.ajax({
+                                        url: url_arr[0] + '?v=' + Math.random(), // 这里是静态页的地址
+                                        type: "get", // 静态页用get方法，否则服务器会抛出405错误
+                                        cache: false,
+                                        dataType: 'text',
+                                        beforeSend: function(xmlHttp) {
+                                            xmlHttp.setRequestHeader("If-Modified-Since", "0");
+                                            xmlHttp.setRequestHeader("Cache-Control", "no-cache");
+                                        },
+                                        success: function(data) {
+                                            var result = $(data);
+                                            $("#div_list").children().css({
+                                                "display": "none"
+                                            });
+                                            $("#div_list").append($(result).attr({ id: newid }).hide());
+                                            var filedata = dir + '_data.js';
+                                            var fileview = dir + '_view.js';
+                                            loadJs(fileview, dir.replace(/\//g, "_") + "_view");
+                                            transition(trans, newid);
+                                            loadJs(filedata, dir.replace(/\//g, "_") + "_data");
+                                        }
+                                    });
                                 }
                             }
                         });
-                    } else {
+                    } else {*/
                         var url_arr = url.split('?');
                         var dir = url_arr[0].substring(0, url_arr[0].length - 5);
                         loadCss(dir + ".css", dir.replace(/\//g, "_") + "_css");
@@ -345,7 +371,7 @@ Date.prototype.pattern = function(fmt) {
                                 loadJs(filedata, dir.replace(/\//g, "_") + "_data");
                             }
                         });
-                    }
+                    //}
                 };
                 // 页面已加载，加载数据
                 var loadData = function() {
@@ -515,7 +541,7 @@ Date.prototype.pattern = function(fmt) {
                             if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                                 $$.refreshConfirm();
                             } else {
-                                
+
                                 authConfirm();
                             }
                         } else if (succfunc) {
@@ -703,11 +729,18 @@ Date.prototype.pattern = function(fmt) {
         $$.redirect(unescape(rdtUrl));
     } else {
         // 默认加载首页
-        $$.redirect('home/index.html');
+        /*if(navigator.userAgent.indexOf('csl-android') != -1){
+            setTimeout(function(){
+                $$.redirect('home/index.html');
+            },1000);
+        }else{
+            $$.redirect('home/index.html');
+        }*/
+        $$.redirect('home/index.html')
     }
 
     // 是否授权
-    ;(function() {
+    (function() {
         /*********** 相关方法定义 ************/
         // url替换处理
         var urlHandle = function(url) {
@@ -1134,7 +1167,7 @@ Date.prototype.pattern = function(fmt) {
                 link: $$.config.hostAddr + "wechat/www/web/main/index.html",
                 imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
                 success: function(res) {
-                    
+
                 }
             });
             wx.onMenuShareAppMessage({
@@ -1142,7 +1175,7 @@ Date.prototype.pattern = function(fmt) {
                 link: $$.config.hostAddr + "wechat/www/web/main/index.html",
                 imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
                 success: function(res) {
-                    
+
                 }
             });
             wx.onMenuShareQQ({
@@ -1150,7 +1183,7 @@ Date.prototype.pattern = function(fmt) {
                 link: $$.config.hostAddr + "wechat/www/web/main/index.html",
                 imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
                 success: function(res) {
-                    
+
                 }
             });
             wx.onMenuShareWeibo({
@@ -1158,7 +1191,7 @@ Date.prototype.pattern = function(fmt) {
                 link: $$.config.hostAddr + "wechat/www/web/main/index.html",
                 imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
                 success: function(res) {
-                    
+
                 }
             });
             wx.onMenuShareQZone({
@@ -1166,12 +1199,12 @@ Date.prototype.pattern = function(fmt) {
                 link: $$.config.hostAddr + "wechat/www/web/main/index.html",
                 imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png',
                 success: function(res) {
-                    
+
                 }
             });
         });
         wx.error(function(res) {
-            
+
         });
     }
 }(window, jQuery));

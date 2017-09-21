@@ -148,6 +148,8 @@
 	outline: none;
 	border-radius: 10vw;
 	font-size: 4vw;
-	margin: 100vw 0 0 5vw;
+	position: absolute;
+    bottom: 10vw;
+    left: 5vw;
 }
 

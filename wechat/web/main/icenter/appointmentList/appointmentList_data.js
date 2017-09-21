@@ -36,8 +36,27 @@ $(function() {
     });
 
     $page.off("click", ".appointFoot .postBtn").on("click", ".appointFoot .postBtn", function() {
+        var deliveryTime = $(this).attr("data-DeliveryTime");
         var sid = $(this).attr("data-id");
-        $$.redirect("icenter/delivery.html?sid=" + sid);
+        var ProductNeedDelivery = $(this).attr("data-NeedDelivery");
+        var today = $$.get10Time(new Date());
+        if(ProductNeedDelivery != 1){
+            layer.msg("此商品不需要邮寄");
+            $(this).css({
+                background:"#ccc",
+                border:"#ccc",
+                color:"#000"
+            });
+        } else if (deliveryTime && today - deliveryTime < 2592000){
+            layer.msg("您上次邮寄的时间是"+$$.timeToStr(deliveryTime)+",两次邮寄间隔不能少于一个月！");
+            $(this).css({
+                background:"#ccc",
+                border:"#ccc",
+                color:"#000"
+            });
+        }else{    
+            $$.redirect("icenter/delivery.html?sid=" + sid);
+        }
     });
 
     $$.post("CSL/Service/QueryMyServiceList", { Status: 0, N: 1, Rows: 30 }, function(txt) {

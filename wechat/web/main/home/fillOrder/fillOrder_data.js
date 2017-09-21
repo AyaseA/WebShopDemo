@@ -349,6 +349,7 @@ $(function() {
         var day = curDate.getDate() < 10 ? "0" + curDate.getDate() : curDate.getDate();
         return year + "-" + month + "-" + day;
     }
+
     function getAddressList() {
         $$.post('CSL/UserInfo/QueryAddressList', {
             Rows: 9999
@@ -356,7 +357,7 @@ $(function() {
             for (var i = 0 ; i<res.Data.Rows.length; i++){
                 if (userInfo.UserAddressID == res.Data.Rows[i].ID){
                     var area = JSON.parse(res.Data.Rows[i].DataField);
-                    $page.find(".delivery span").html(area.province + area.city + area.county+res.Data.Rows[i].AddressDetail);
+                    $page.find(".delivery span").html(res.Data.Rows[i].Name+" "+res.Data.Rows[i].Mobile+" "+area.province + area.city + area.county+res.Data.Rows[i].AddressDetail);
                     $page.find(".delivery div").attr("data-id",res.Data.Rows[i].ID);
                 }
             }

@@ -42,7 +42,6 @@
     overflow-y: auto;
 }
 #icenter_orderDetail >div.main >div {
-    padding-bottom: 10px;
 }
 #icenter_orderDetail >div.main >div >div {
     background-color: #fff;
@@ -92,6 +91,7 @@
 }
 #icenter_orderDetail >div.main >div.product >div {
     padding: 15px;
+    margin-top: 10px;
 }
 #icenter_orderDetail >div.main >div.product >div a.contactService {
     display: block;
@@ -162,7 +162,7 @@
     padding: 15px 0;
 }
 #icenter_orderDetail >div.main >div.money {
-    padding-bottom: 100px;
+    padding-bottom: 10px;
 }
 #icenter_orderDetail >div.main >div.money >div {
     background-color: #fff;
@@ -274,4 +274,129 @@
     text-align: center;
     float: right;
     line-height: 39px;
+}
+
+#icenter_orderDetail .deliverAddr{
+    margin-top: 10px;
+    background: #fff;
+    padding: 10px 15px;
+    display: table;
+    width: 100%;
+}
+
+#icenter_orderDetail .deliverAddr span{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    width: 12%;
+}
+
+#icenter_orderDetail .deliverAddr img{
+    width: 15px;
+}
+
+#icenter_orderDetail .deliverInfo{
+    display: table-cell;
+    margin-left: 25px;
+    width: 80%;
+}
+
+#icenter_orderDetail .address{
+    font-size: 12px;
+    color: #c9c9c9;
+    width: 85%;
+}
+
+#icenter_orderDetail .parentOrder p{
+    padding: 10px 15px;
+    background: #fff;
+    color: #a2a1a1;
+}
+
+#icenter_orderDetail .parentOrder p img{
+    width: 10px;
+    float: right;
+    margin-top: 1px;
+}
+
+#icenter_orderDetail .childOrder{
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+#icenter_orderDetail .childOrder .chlidHead{
+    padding: 0 15px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+#icenter_orderDetail .childOrder .chlidHead img{
+    float: right;
+    width: 20px;
+    margin-top: 12px;
+}
+
+#icenter_orderDetail .childOrder .content{
+    height: 0px;
+    overflow:hidden;
+}
+
+#icenter_orderDetail .childOrder .childInfo{
+    padding: 0 15px;
+    background: #FAFAFA;
+    height: 105px;
+    border-bottom: 2px solid #fff;
+}
+
+#icenter_orderDetail .childOrder .childInfo .childHeader{
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+}
+
+#icenter_orderDetail .childOrder .childInfo .childHeader span{
+    float: right;
+    color: #f60;
+}
+
+#icenter_orderDetail .childOrder .childInfo .childContent{
+    position: relative;
+}
+
+#icenter_orderDetail .childOrder .childInfo .childContent img{
+    width: 19vw;
+}
+
+#icenter_orderDetail .childOrder .childInfo .childContent .info{
+    position: absolute;
+    top: 0vw;
+    left: 27vw;
+    width: 64vw;
+    font-size: 12px;
+    color: #A9A9A9;
+}
+
+#icenter_orderDetail .childOrder .childInfo .childContent .info .right{
+    float: right;
+}
+
+#icenter_orderDetail .childOrder .childInfo .childContent .info button{
+    font-size: 12px;
+    width: 20vw;
+    height: 6vw;
+    float: right;
+    background: none;
+    border: 1px solid #f60;
+    color: #f60;
+    border-radius: 10vw;
+    margin-top: 3vw;
+}
+
+#icenter_orderDetail .childOrder .childFoot{
+    padding: 0 15px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: right;
 }

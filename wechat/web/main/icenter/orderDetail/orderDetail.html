@@ -49,10 +49,21 @@
             {{/if}}
             </div>
         </div>
+
+        {{if oData.StatusID == 2 || oData.StatusID == 4}}
+            <div class="deliverAddr">
+                <span><img src="images/common/location_small_blue.png"></span>
+                <div class="deliverInfo">
+                    <p class="name">{{name}} {{mobile}}</p>
+                    <p class="address">{{address}}</p>
+                </div>
+            </div>
+        {{/if}}
+
         <div class="product">
             <div>
                 {{set totalCount = 0}}
-                {{if oData.OrderType != '1'}}
+                {{if oData.OrderType == '0'}}
                     <p><i></i>车势力<a href="javascript:void(0)" class="contactService" data-tel="">联系客服</a></p>
                     {{each proList as pData}}
                     <div class="clear">
@@ -76,6 +87,11 @@
                 <p>共{{totalCount}}件商品</p>
             </div>
         </div>
+        {{if oData.ParentID && oData.ParentID != 0}}
+        <div class="parentOrder" data-id={{oData.ParentID}} data-otype={{oData.OrderType}}>
+            <p>注:此订单属于{{oData.ParentID}}订单,查看主订单<img src="images/common/right.png"></p>
+        </div>
+        {{/if}}
         <div class="order">
             <div>
                 <p>订单编号：{{oData.ID}}</p>
@@ -98,6 +114,47 @@
                 {{/if}}
             </div>
         </div>
+        
+        <div class="childOrder">    
+        {{if childNum != 0 }}
+            <div class="chlidHead" data-open="1">
+                <p>查看子订单列表 <img src="images/common/down.png"></p>
+            </div>
+        {{/if}}
+        <div class="content">
+            {{each childList as child}}
+                <div class="childInfo">
+                    <div class="childHeader">
+                        <p>订单编号:{{child.ID}}
+                        {{if child.StatusID == 2}}
+                            <span>待发货</span>
+                        {{/if}}
+                        {{if child.StatusID == 4}}
+                            <span>已发货</span>
+                        {{/if}}
+                        {{if child.StatusID == 6}}
+                            <span>已完成</span>
+                        {{/if}}
+                        </p>
+                    </div>
+                    <div class="childContent">
+                        <img src="{{serverAddr}}Img/{{$imports.jsonParseFilter(child.Data)[0].ProductImg}}">
+                        <div class="info">
+                            <p>{{$imports.jsonParseFilter(child.Data)[0].ProductName}}<span class="right">{{child.OutPocket}}</span></p>
+                            <p style="text-align: right;"><span>x1</span></p>
+                            <p><button data-id={{child.ID}} data-otype={{child.OrderType}}>查看订单</button></p>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        {{if childNum != 0 }}
+            <div class="childFoot">
+                <span>共{{childNum}}个子订单</span>
+            </div>
+        {{/if}}
+        </div>
+    </script>
     </script>
     <script id="icenter_orderDetail_footer" type="text/html">
         {{if canPay}}
@@ -113,5 +170,16 @@
         {{else if canReBuy && d.OrderType == '5'}}
         <a href="home/prodmulti.html?pid={{productInfo[0].ID}}">重新购买</a>
         {{/if}}
+        {{if d.StatusID == 2}}
+        <a href="javascript:void(0)">等待卖家发货</a>
+        {{/if}}
+        {{if d.StatusID == 4}}
+        <a href="home/prodmulti.html?oid={{d.ID}}&postID={{d.DeliveryNO}}&{{d.OrderType}}">查看物流</a>
+        {{/if}}
+        {{if d.StatusID == 6}}
+        <a href="javascript:void(0)">订单已完成</a>
+        {{/if}}
     </script>
+
+    
 </div>

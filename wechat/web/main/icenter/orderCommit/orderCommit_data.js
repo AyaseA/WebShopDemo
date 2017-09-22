@@ -1,7 +1,17 @@
 $(function() {
     var $page = $('#icenter_orderCommit'),
-        pageStr = 'icenter_orderCommit';
+        pageStr = 'icenter_orderCommit',
+        From;
 
+    if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
+            From = 1;
+        } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
+            From = 2;
+        } else if (navigator.userAgent.indexOf('csl-android') != -1) {
+            From = 3;
+        }else {
+            From = 0;
+        }
     if ($$.isLogin(true)) {
         var bodyHeight = window.innerHeight || document.body.clientHeight,
             $page = $('#icenter_orderCommit'),
@@ -193,7 +203,7 @@ $(function() {
                     $$.post("CSL/Review/AddReviewImg", {
                         ProductReviewID: $page.ReviewID,
                         Img: serverId,
-                        Platform: 10
+                        From: From
                     }, function(txt) {
                         if (i == $page.photoList.length) {
                             layer.alert("评论成功", function(index) {

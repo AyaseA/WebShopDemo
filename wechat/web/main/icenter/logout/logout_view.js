@@ -22,6 +22,11 @@
             if (isLogout) {
                 layer.msg('您已退出登录！');
                 $$.delUserCookies();
+                if(navigator.userAgent.indexOf('csl-android') != -1){
+                    wx.exit({
+                        data:"ture"
+                    });
+                }
                 location.href = $$.config.serverAddr + 'wechat/www/web/main/index.html?R=home%2Findex.html';
             } else {
                 layer.msg('您已解除绑定！');

@@ -490,7 +490,7 @@ $(function() {
             return "<span class='shopType t2Shop'>汽修厂</span>";
         } else if (type == 2) {
             return "<span class='shopType t3Shop'>美容店</span>";
-        } else if (tyoe == 3) {
+        } else if (type == 3) {
             return "<span class='shopType t4shop'>轮胎</span>";
         }
     }

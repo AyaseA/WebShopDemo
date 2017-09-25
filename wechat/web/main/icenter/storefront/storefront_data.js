@@ -91,7 +91,7 @@ $(function() {
                         }else{    
                             for (var i = 0; i < data.length; i++) {
                                 node += '<div class="productInfo" data-tid="'+data[i].ProductType+'" data-id="' + data[i].ID + '">' +
-                                    '<img src="' + $$.config.serverAddr + 'Img/' + noImg(data[i].Img) + '">' +
+                                    '<img src="' + $$.config.serverAddr + 'Img/' + $$.smallImg(noImg(data[i].Img)) + '">' +
                                     '<div class="info">' +
                                     '<p class="name"><b>' + data[i].Name + '</b></p>' +
                                     '<p class="descri">' + getDesCri(data[i].Descri) + '</p>' +
@@ -127,7 +127,7 @@ $(function() {
                         }else{           
                             for (var i = 0; i < storeData.length; i++) {
                                 storeNode += '<div class="storeInfo" data-id="' + storeData[i].ID + '">' +
-                                    '<img src="' + $$.config.serverAddr + 'Img/' + noImg(storeData[i].Img) + '">' +
+                                    '<img src="' + $$.config.serverAddr + 'Img/' + $$.smallImg(noImg(storeData[i].Img)) + '">' +
                                     '<div class="detail">' +
                                     '<p>' + storeData[i].Name + '</p>' +
                                     '<p>共' + storeData[i].FollowCount + '人关注</p>' +

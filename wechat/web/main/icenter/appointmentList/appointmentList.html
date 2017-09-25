@@ -23,32 +23,28 @@
                 {{each notAppointData as notAppoint}}
                 <div class="oneAppoint">
                     <div class="appointHeader">
-                        <span>服务编号：<span>{{notAppoint.ID}}</span></span>
-                        {{if !notAppoint.AppointID}}
-                        <span class="appointStatus">未预约,剩余服务数量:<b>{{notAppoint.ServiceNum}}</b></span> 
-                        {{/if}} 
-                        {{if notAppoint.AppointID}}
-                        <span class="appointStatus">已成功预约第 <span style="color: #000;font-weight: bold;">{{notAppoint.ServiceCount - notAppoint.ServiceNum + 1}}</span> 次服务</span> 
-                        {{/if}}
+                        <p class="orderID">
+                            <span>订单编号：<span>{{notAppoint.OrderID}}</span></span>
+                            {{if !notAppoint.AppointID}}
+                            <span class="appointStatus">未预约,剩余服务数量:<b>{{notAppoint.ServiceNum}}</b></span> 
+                            {{/if}} 
+                            {{if notAppoint.AppointID}}
+                            <span class="appointStatus">已成功预约第 <span style="color: #000;font-weight: bold;">{{notAppoint.ServiceCount - notAppoint.ServiceNum + 1}}</span> 次服务</span> 
+                            {{/if}}
+                        </p>
+                        <p class="buytime">服务编号:{{notAppoint.ID}}
+                            <span>服务购买时间:{{timeFilter(notAppoint.AddTime)}}</span>
+                        </p>
                     </div>
                     <div class="appointContent">
-                        <img src="{{serverAddr}}Img/{{notAppoint.ProductImg| imgFilter}}">
+                        <img src="{{serverAddr}}Img/{{$imports.smallSize(notAppoint.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>
                                 服务名称:
                                 <span>{{notAppoint.ProductName}}</span>
                             </p>
-                            <p>
-                                服务价格:
-                                <span>{{notAppoint.ProductPrice}}</span>
-                            </p>
-                            <p>
-                                服务购买时间:
-                                <span>{{timeFilter(notAppoint.AddTime)}}</span>
-                            </p>
-                            <p>
-                                实付价格:
-                                <span>{{notAppoint.NewPrice}}</span>
+                            <p style="color: #c1c1c1;">
+                                {{jsonParseFilter(notAppoint.ProductDescri).title}}
                             </p>
                         </div>
                     </div>
@@ -85,27 +81,23 @@
                 {{each hadAppointData as hadAppoint}}
                 <div class="oneAppoint">
                     <div class="appointHeader">
-                        <span>预约编号：<span>{{hadAppoint.ID}}</span></span>
-                        <span class="appointStatus">已成功预约</span>
+                        <p class="orderID">
+                            <span>订单编号：<span>{{hadAppoint.OrderID}}</span></span>
+                            <span class="appointStatus">已成功预约</span>
+                        </p>
+                        <p class="buytime">预约编号:{{hadAppoint.ID}}
+                            <span>服务购买时间:{{timeFilter(hadAppoint.AddTime)}}</span>
+                        </p>
                     </div>
                     <div class="appointContent">
-                        <img src="{{serverAddr}}Img/{{hadAppoint.ProductImg| imgFilter}}">
+                        <img src="{{serverAddr}}Img/{{$imports.smallSize(hadAppoint.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>
                                 服务名称:
                                 <span>{{hadAppoint.ProductName}}</span>
                             </p>
-                            <p>
-                                服务价格:
-                                <span>{{hadAppoint.AllMoney}}</span>
-                            </p>
-                            <p>
-                                服务购买时间:
-                                <span>{{timeFilter(hadAppoint.AddTime)}}</span>
-                            </p>
-                            <p>
-                                实付价格:
-                                <span>{{hadAppoint.OrderOutPocket}}</span>
+                            <p style="color: #c1c1c1;">
+                                {{jsonParseFilter(hadAppoint.ProductDescri).title}}
                             </p>
                         </div>
                     </div>
@@ -127,27 +119,23 @@
             	{{each notVerifyData as notVerify}}
                 <div class="oneAppoint">
                     <div class="appointHeader">
-                        <span>预约编号：<span>{{notVerify.ID}}</span></span>
-                        <span class="appointStatus">商家已扫码</span>
+                        <p class="orderID">
+                            <span>订单编号：<span>{{notVerify.OrderID}}</span></span>
+                            <span class="appointStatus">商家已扫码</span>
+                        </p>
+                        <p class="buytime">预约编号:{{notVerify.ID}}
+                            <span>服务购买时间:{{timeFilter(notVerify.AddTime)}}</span>
+                        </p>
                     </div>
                     <div class="appointContent">
-                        <img src="{{serverAddr}}Img/{{notVerify.ProductImg| imgFilter}}">
+                        <img src="{{serverAddr}}Img/{{$imports.smallSize(notVerify.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>
                                 服务名称:
                                 <span>{{notVerify.ProductName}}</span>
                             </p>
-                            <p>
-                                服务价格:
-                                <span>{{notVerify.AllMoney}}</span>
-                            </p>
-                            <p>
-                                服务购买时间:
-                                <span>{{timeFilter(notVerify.AddTime)}}</span>
-                            </p>
-                            <p>
-                                实付价格:
-                                <span>{{notVerify.OrderOutPocket}}</span>
+                            <p style="color: #c1c1c1;">
+                                {{jsonParseFilter(notVerify.ProductDescri).title}}
                             </p>
                         </div>
                     </div>
@@ -169,27 +157,23 @@
                 {{each hadCompliteData as hadComplite}}
                 <div class="oneAppoint">
                     <div class="appointHeader">
-                        <span>订单编号：<span>{{hadComplite.OrderID}}</span></span>
-                        <span class="appointStatus">已完成第{{hadComplite.ServiceNum}}次服务</span>
+                        <p class="orderID">
+                            <span>订单编号：<span>{{hadComplite.OrderID}}</span></span>
+                            <span class="appointStatus">已完成第{{hadComplite.ServiceNum}}次服务</span>
+                        </p>
+                        <p class="buytime">服务编号:{{hadComplite.ID}}
+                            <span>服务购买时间:{{timeFilter(hadComplite.AddTime)}}</span>
+                        </p>
                     </div>
                     <div class="appointContent">
-                        <img src="{{serverAddr}}Img/{{hadComplite.ProductImg| imgFilter}}">
+                        <img src="{{serverAddr}}Img/{{$imports.smallSize(hadComplite.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>
                                 服务名称:
                                 <span>{{hadComplite.ProductName}}</span>
                             </p>
-                            <p>
-                                服务价格:
-                                <span>{{hadComplite.ProductPrice}}</span>
-                            </p>
-                            <p>
-                                服务购买时间:
-                                <span>{{timeFilter(hadComplite.AddTime)}}</span>
-                            </p>
-                            <p>
-                                实付价格:
-                                <span>{{hadComplite.OrderOutPocket}}</span>
+                            <p style="color: #c1c1c1;">
+                                {{jsonParseFilter(hadComplite.ProductDescri).title}}
                             </p>
                         </div>
                     </div>

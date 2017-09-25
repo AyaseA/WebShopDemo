@@ -66,9 +66,10 @@
 
 #icenter_appointmentList .content .oneAppoint{
 	width: 100%;
-	background: #fff;
-	margin-top: 3vw;
-	font-size: 3.8vw;
+    background: #fff;
+    margin-top: 2vw;
+    font-size: 3.8vw;
+    margin-bottom: 2vw;
 }
 
 #icenter_appointmentList .content .oneAppoint b{
@@ -76,10 +77,23 @@
 }
 
 #icenter_appointmentList .content .oneAppoint .appointHeader{
-	height: 10vw;
+	height: 15vw;
 	padding: 0 5vw;
 	box-sizing: border-box;
-	line-height: 10vw;
+}
+
+#icenter_appointmentList .content .oneAppoint .appointHeader .orderID{
+	padding-top: 2.5vw;
+}
+
+#icenter_appointmentList .content .oneAppoint .appointHeader .buytime{
+	font-size: 3.5vw;
+    color: #c1c1c1;
+    margin-top: 1vw;
+}
+
+#icenter_appointmentList .content .oneAppoint .appointHeader .buytime span{
+	float: right;
 }
 
 #icenter_appointmentList .content .oneAppoint .appointStatus{
@@ -88,19 +102,19 @@
 }
 
 #icenter_appointmentList .content .oneAppoint .appointContent{
-	height: 30vw;
+	height: 25vw;
 	background: #FAFAFA;
 	padding: 0 5vw;
 	box-sizing: border-box;
 }
 
 #icenter_appointmentList .content .oneAppoint .appointContent img{
-	width: 27vw;
+	width: 22vw;
 	margin-top: 2vw;
 }
 
 #icenter_appointmentList .content .oneAppoint .appointContent .appointInfo{
-	width: 60vw;
+	width: 65vw;
     display: inline-block;
     vertical-align: top;
     margin-top: 3vw;

@@ -73,6 +73,9 @@
 #icenter_info >div.main >div.account >p::before {
     background-image: url(../../images/center/people.png);
 }
+#icenter_info >div.main >div.name >p::before {
+    background-image: url(../../images/common/emoji.png);
+}
 #icenter_info >div.main >div.sex >p::before {
     background-image: url(../../images/center/friend_favor_blue.png);
 }
@@ -145,4 +148,13 @@
     height: 46px;
     line-height: 46px;
     text-align: center;
+}
+
+#icenter_info .nameform{
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    padding: 5px 0 5px 10px;
+    border-radius: 15px;
+    width: 150px;
 }

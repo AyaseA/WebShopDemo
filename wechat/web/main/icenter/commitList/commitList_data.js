@@ -52,7 +52,7 @@ $(function() {
                         }else{
                             for (var i = 0; i < productList.length; i++) {
                                 noReviceNode += '<div class="onePiece">' +
-                                    '<img src="'+$$.serverAddr+'Img/'+(productList[i].ProductImg||"1.png")+'">' +
+                                    '<img src="'+$$.serverAddr+'Img/'+ $$.smallImg(productList[i].ProductImg||"1.png")+'">' +
                                     '<div class="prodInfo">' +
                                     '<p><b>'+productList[i].ProductName+'</b></p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
@@ -90,13 +90,13 @@ $(function() {
                         }else{
                             for (var i = 0; i < productList.length; i++) {
                                 hadReviceNode += '<div class="onePiece">' +
-                                    '<img src="'+$$.serverAddr+'Img/'+(productList[i].ProductImg||"1.png")+'">' +
+                                    '<img src="'+$$.serverAddr+'Img/'+$$.smallImg(productList[i].ProductImg||"1.png")+'">' +
                                     '<div class="prodInfo">' +
                                     '<p><b>'+productList[i].ProductName+'</b></p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                                     '<p class="rewardPoint">评价最多可得20积分</p>' +
                                     '<button class="checkRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'" data-type="1">查看评价</button>'+
-                                    '<button class="addRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'" >追加评价</button>' +
+                                    /*'<button class="addRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'" >追加评价</button>' +*/
                                     '</div>' +
                                     '</div>';
                             }
@@ -128,7 +128,7 @@ $(function() {
                         }else{ 
                             for (var i = 0; i < productList.length; i++) {
                                 noReviceNode += '<div class="onePiece">' +
-                                    '<img src="'+$$.serverAddr+'Img/'+(productList[i].ProductImg||"1.png")+'">' +
+                                    '<img src="'+$$.serverAddr+'Img/'+$$.smallImg(productList[i].ProductImg||"1.png")+'">' +
                                     '<div class="prodInfo">' +
                                     '<p><b>'+productList[i].ProductName+'</b>(第<b>'+productList[i].ServiceNum+'</b>次服务)</p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
@@ -165,13 +165,13 @@ $(function() {
                         }else{
                             for (var i = 0; i < productList.length; i++) {
                                 hadReviceNode += '<div class="onePiece">' +
-                                    '<img src="'+$$.serverAddr+'Img/'+(productList[i].ProductImg||"1.png")+'">' +
+                                    '<img src="'+$$.serverAddr+'Img/'+$$.smallImg(productList[i].ProductImg||"1.png")+'">' +
                                     '<div class="prodInfo">' +
                                     '<p><b>'+productList[i].ProductName+'</b>(第'+productList[i].ServiceNum+'次服务)</p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                                     '<p class="rewardPoint">评价最多可得20积分</p>' +
                                     '<button class="checkRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ID+'" data-type="0">查看评价</button>'+
-                                    '<button class="addRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'">追加评价</button>' +
+                                    /*'<button class="addRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'">追加评价</button>' +*/
                                     '</div>' +
                                     '</div>';
                             }

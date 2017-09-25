@@ -719,7 +719,11 @@ Date.prototype.pattern = function(fmt) {
             $$.delCookie('__TOKEN__');
             $$.delCookie('__UINFO__');
             $$.delCookie('__WISHLIST__');
-        }
+        },
+        smallImg : function(url) {
+            url = url.split(".");
+            return url[0] + ".M." + url[1];
+        },
     });
 
     // 处理刷新后显示当前页面
@@ -1143,6 +1147,14 @@ Date.prototype.pattern = function(fmt) {
     template.defaults.imports.floatFilter = function(str, fiexed) {
         if (str) {
             return (parseFloat(str) || 0).toFixed(fiexed || 2);
+        }
+    };
+
+    // small size
+    template.defaults.imports.smallSize = function (str){
+        if (str){
+            str = str.split(".");
+            return str[0] + ".M." + str[1];
         }
     };
     /* artTemplate 相关过滤器 start */

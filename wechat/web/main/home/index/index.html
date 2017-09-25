@@ -87,7 +87,7 @@
 	<script id="home_index_products" type="text/html">
 		{{each list as val i}}
 		<div class="item" data-id="{{val.ID}}" data-type="{{val.ProductType}}">
-			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
+			<img src="{{serverAddr}}Img/{{$imports.smallSize(val.Img) | imgFilter}}">
 			<p>{{val.Name}}</p>
             {{if val.ProductType == 0}}
             <a href="home/fillOrder.html?pid={{val.ID}}&type={{val.ProductType}}">立即购买</a>

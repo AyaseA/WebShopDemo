@@ -48,7 +48,7 @@ $(function() {
                                     content = Base64.decode(unescape(descri.text));
                                 }
                                 list[i].Img = list[i].Img || "1.png";
-                                var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + list[i].Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + list[i].Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + list[i].Price + "<span><button data-tid='" + list[i].ProductType + "' data-id='" + list[i].ID + "'>点击购买</button><p></div></div></div>";
+                                var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + $$.smallImg(list[i].Img) + "'></div><div class='contentContain'><div class='productInfo'><p>" + list[i].Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + list[i].Price + "<span><button data-tid='" + list[i].ProductType + "' data-id='" + list[i].ID + "'>点击购买</button><p></div></div></div>";
                                 $page.find(".content").append(onePiece);
                             } else {
                                 fisrtDate = list[i].Date;
@@ -61,7 +61,7 @@ $(function() {
                                     content = Base64.decode(unescape(descri.text));
                                 }
                                 list[i].Img = list[i].Img || "1.png";
-                                var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + list[i].Img + "'></div><div class='contentContain'><div class='productInfo'><p>" + list[i].Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + list[i].Price + "<span><button data-tid='" + list[i].ProductType + "' data-id='" + list[i].ID + "'>点击购买</button><p></div></div></div>";
+                                var onePiece = "<div class='oneProduct'><div class='imgContain'><img src='" + url + "Img/" + $$.smallImg(list[i].Img) + "'></div><div class='contentContain'><div class='productInfo'><p>" + list[i].Name + "</p><p class='descri'>" + content + "</p><p><span class='price'>￥" + list[i].Price + "<span><button data-tid='" + list[i].ProductType + "' data-id='" + list[i].ID + "'>点击购买</button><p></div></div></div>";
                                 $page.find(".content").append(onePiece);
 
                             }

@@ -15,7 +15,13 @@
     	$$.goBack();
     });
     $('.photo_updata').click(function() {
-    	layer.msg('已是最新版本！');
+        if (navigator.userAgent.indexOf('csl-ios') != -1 || navigator.userAgent.indexOf('csl-android') != -1) {
+            wx.updateVersion({
+                data:true
+            });
+        } else {
+            layer.msg("已经是最新版本了");
+        }
     });
     $('.logout_but').off('click').on('click', function() {
         layer.confirm(isLogout ? '确认退出登录？' : '确认解除绑定？', { icon: 3, title: '提示' }, function(index) {

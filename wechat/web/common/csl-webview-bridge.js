@@ -112,6 +112,9 @@
             this.readyFun();
         },
         error: function(data) {},
+        exit: function(data){
+            sendMessageToPhone("exit",data);
+        },
         //检测接口是否能用
         checkJsApi: function(data, callback) {
             sendMessageToPhone('checkJsApi', data, callback);
@@ -190,6 +193,10 @@
         //打电话-发邮件-发短信
         openTelSMSandEmail: function(data, callback) {
             sendMessageToPhone('openTelSMSandEmail', data, callback);
+        },
+        //检查更新
+        updateVersion: function(data, callback) {
+            sendMessageToPhone('updateVersion', data, callback);
         },
         //获取通讯录
         getAddresBook: function(data, callback) {

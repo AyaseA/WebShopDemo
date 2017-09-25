@@ -170,7 +170,7 @@ $(function() {
                         } else {
                             distance = getGreatCircleDistance(locationInfo ? locationInfo.latitude : 36.6875642852, locationInfo ? locationInfo.longitude : 117.1330654621, data[i].Latitude, data[i].Longitude);
                         }
-                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + (data[i].Img || "0.png") + '"><div class="shopInfo">' + showStoreType(data[i].Type) + '<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p class="clear"><span class="fl">服务数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span></span><span class="fr">交易数量:<span class="red">' + (data[i].TransCount || 0) + '</span></span></p></div></div>';
+                        shoplist = '<div class="onepiece" data-ID="' + data[i].ID + '"><img src="' + $$.config.serverAddr + 'Img/' + ($$.smallImg(data[i].Img) || "0.png") + '"><div class="shopInfo">' + showStoreType(data[i].Type) + '<h2>' + data[i].Name + '</h2><p>' + overText(data[i].Address, 10) + '<span class="fr">' + distance + '</span></p><p class="clear"><span class="fl">服务数量:<span class="red">' + (data[i].ServiceCount || 0) + '</span></span><span class="fr">交易数量:<span class="red">' + (data[i].TransCount || 0) + '</span></span></p></div></div>';
                         $(scrollArea).append(shoplist);
                     }
 
@@ -491,7 +491,7 @@ $(function() {
         } else if (type == 2) {
             return "<span class='shopType t3Shop'>美容店</span>";
         } else if (type == 3) {
-            return "<span class='shopType t4shop'>轮胎</span>";
+            return "<span class='shopType t4Shop'>轮胎</span>";
         }
     }
 

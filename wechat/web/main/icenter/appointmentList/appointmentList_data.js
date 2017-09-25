@@ -7,6 +7,8 @@ $(function() {
         type = $$.getQueryString("type"),
         loadComplete;
 
+    var hadChicked = true;
+
     if (type == "commission") {
         showArea("notAppoint");
     } else if (type == "appointed") {
@@ -154,9 +156,10 @@ $(function() {
             },
             dataType: "json",
             success: function(txt) {
-                if (txt.Status == 0) {
+                if (txt.Status == 0 && hadChicked) {
                     layer.msg("二维码已被成功扫描");
                     clearInterval(time);
+                    hadChicked = false;
                     $$.redirect("icenter/checkSucc.html");
                 } else if (txt.Status == -1) {
                     clearInterval(time);

@@ -180,7 +180,8 @@ $(function() {
     }else{
         $$.post("Product/Store/QueryStoreList",{
             LL:""+(locationInfo ? locationInfo.longitude : 117.1330654621) +","+ (locationInfo ? locationInfo.latitude : 36.6875642852),
-            Rows:100
+            Rows:100,
+            Type:-1,
         },function(txt){
             if (txt.Status == 0) {
                 var d = txt.Data.Rows;

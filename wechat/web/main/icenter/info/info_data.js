@@ -5,7 +5,13 @@ $(function() {
 	
     initUInfo();
 
+    var userInfo;
+    $$.post("CSL/User/GetInfoByToken", {}, function(txt) {
+        userInfo = JSON.parse(Base64.decode(unescape(txt.Data.Info)));
+    }, function() {}, 1);
     
+    $page.find(".name span").html(userInfo.RealName);
+
     //微信配置
     var WXsign = $$.getWeChatSign(1);
     wx.config({
@@ -33,6 +39,18 @@ $(function() {
         maskFadeOut();
         e.stopPropagation();
         e.preventDefault();
+    });
+
+    $page.off('click', 'div.header-icon').on('click', 'div.header-icon', function() {
+        if (navigator.userAgent.indexOf('csl-ios') != -1 || navigator.userAgent.indexOf('csl-android') != -1) {
+            upLoadImg("camera");
+        } else{
+            $page.find('div.mask').fadeIn(200).find('>div').animate({
+            'height': 160
+            }, 200);
+            $page.find('a.option1').text('拍照').attr('data-id', '1').attr('data-type', 'icon');
+            $page.find('a.option2').text('相册').attr('data-id', '0').attr('data-type', 'icon');
+        }
     });
 
     function maskFadeOut(item) {

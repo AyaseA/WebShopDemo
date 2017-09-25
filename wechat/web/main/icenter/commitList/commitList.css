@@ -95,6 +95,15 @@
     height: 27vw; 
 }
 
+#icenter_commitList .onePiece .prodInfo b{
+	width: 41vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: top;
+}
+
 #icenter_commitList .onePiece .descri{
 	height: 7vw;
     text-overflow: ellipsis;

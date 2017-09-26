@@ -2,14 +2,14 @@
 //日期
 Date.prototype.pattern = function(fmt) {
     var o = {
-        "M+": this.getMonth() + 1, //月份           
-        "d+": this.getDate(), //日           
-        "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时           
-        "H+": this.getHours(), //小时           
-        "m+": this.getMinutes(), //分           
-        "s+": this.getSeconds(), //秒           
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度           
-        "S": this.getMilliseconds() //毫秒           
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
+        "H+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
     };
     var week = {
         "0": "/u65e5",
@@ -286,7 +286,7 @@ Date.prototype.pattern = function(fmt) {
         // 页面跳转 核心方法
         redirect: function(url, option) {
             if (url) {
-                // 设置   
+                // 设置
                 var a_url = url.split('.html');
                 var v_url = a_url[0].split("/"),
                     tmpUrl = url;
@@ -426,7 +426,7 @@ Date.prototype.pattern = function(fmt) {
 
                 // 判断要显示的页面是否存在
                 if ($("div#div_list>div#" + newid).length == 0) {
-                    // 不存在，加载页面，css, js 
+                    // 不存在，加载页面，css, js
                     load(url, newid, trans);
                 } else {
                     // 显示
@@ -581,7 +581,7 @@ Date.prototype.pattern = function(fmt) {
         // showConfirm传，callback为function，执行function
         // showConfirm传，callback为null，隐藏弹框
         getToken: function(showConfirm, callback) {
-            // 判断cookies 
+            // 判断cookies
             var token = $$.getCookie('__TOKEN__');
             if (token) {
                 return token;
@@ -1147,6 +1147,8 @@ Date.prototype.pattern = function(fmt) {
     template.defaults.imports.floatFilter = function(str, fiexed) {
         if (str) {
             return (parseFloat(str) || 0).toFixed(fiexed || 2);
+        }else{
+            return "0.00";
         }
     };
 

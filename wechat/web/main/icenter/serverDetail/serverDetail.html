@@ -1,0 +1,42 @@
+<div>
+    <div class="header">
+        <img src="images/common/round_left_blue.png">
+        <p>服务详情</p>
+    </div>
+    <div class="orderStatus">
+        <span class="statusImg"><img src="images/common/finish.png"></span>
+        <span>交易成功</span>
+    </div>
+    <div class="content">
+    </div>
+    <script type="text/html" id="icenter_serverDetail_content">
+        <div class="orderinfo">
+            <div class="infoHeader">
+                <p class="orderNum">订单号:{{data.OrderID}}<span>剩余服务次数:{{data.ServiceNum}}</span></p>
+                <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
+            </div>
+            <div class="infoContent">
+                <img src="{{serverAddr + 'Img/' + $imports.smallSize(data.ProductImg)}}">
+                <div class="productInfo">
+                    <p><span>商品名称:{{data.ProductName}}</span></p>
+                    <p class="productDescri">商品描述:{{$imports.jsonParseFilter(data.ProductDescri).title}}</p>
+                </div>
+            </div>
+            <div class="infoFoot">
+                <span>商品单价:￥{{data.ProductPrice}}</span>
+            </div>
+        </div>
+        <div class="time">
+            <p>服务编号: {{orderID}}</p>
+            <p>过期时间: {{$imports.timeFilter(data.Expired)}}</p>
+        </div>
+        <div class="count">
+            <p>剩余邮寄商品次数:{{3}}</p>
+        </div>
+        <div class="price">
+            <p><span>商品金额</span><span class="money">￥{{data.ProductPrice}}</span></p>
+            <p><span>优惠金额</span><span class="money">￥{{(data.AllMoney - data.OrderOutPocket) | floatFilter}}</span></p>
+        </div>
+        <div class="outPocket">实付款: <span style="color:#f60;"> ￥{{data.OrderOutPocket}}</span></div>
+    </script>
+</div>

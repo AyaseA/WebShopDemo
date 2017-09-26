@@ -37,6 +37,11 @@ $(function() {
         $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id"));
     });
 
+    $page.off("click",".oneAppoint .appointContent").on("click",".oneAppoint .appointContent",function(){
+        var orderId = $(this).attr("data-id");
+        $$.redirect("icenter/serverDetail.html?oid=" + orderId);
+    });
+
     $page.off("click", ".appointFoot .postBtn").on("click", ".appointFoot .postBtn", function() {
         var deliveryTime = $(this).attr("data-DeliveryTime");
         var sid = $(this).attr("data-id");
@@ -56,7 +61,7 @@ $(function() {
                 border:"#ccc",
                 color:"#000"
             });
-        }else{    
+        }else{
             $$.redirect("icenter/delivery.html?sid=" + sid);
         }
     });
@@ -163,7 +168,7 @@ $(function() {
                     $$.redirect("icenter/checkSucc.html");
                 } else if (txt.Status == -1) {
                     clearInterval(time);
-                    $$.authConfirm();       
+                    $$.authConfirm();
                 }
             }
         });

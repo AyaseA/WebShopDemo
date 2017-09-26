@@ -26,17 +26,17 @@
                         <p class="orderID">
                             <span>订单编号：<span>{{notAppoint.OrderID}}</span></span>
                             {{if !notAppoint.AppointID}}
-                            <span class="appointStatus">未预约,剩余服务数量:<b>{{notAppoint.ServiceNum}}</b></span> 
-                            {{/if}} 
+                            <span class="appointStatus">未预约,剩余服务数量:<b>{{notAppoint.ServiceNum}}</b></span>
+                            {{/if}}
                             {{if notAppoint.AppointID}}
-                            <span class="appointStatus">已成功预约第 <span style="color: #000;font-weight: bold;">{{notAppoint.ServiceCount - notAppoint.ServiceNum + 1}}</span> 次服务</span> 
+                            <span class="appointStatus">已成功预约第 <span style="color: #000;font-weight: bold;">{{notAppoint.ServiceCount - notAppoint.ServiceNum + 1}}</span> 次服务</span>
                             {{/if}}
                         </p>
                         <p class="buytime">服务编号:{{notAppoint.ID}}
                             <span>服务购买时间:{{timeFilter(notAppoint.AddTime)}}</span>
                         </p>
                     </div>
-                    <div class="appointContent">
+                    <div class="appointContent" data-id="{{notAppoint.ID}}">
                         <img src="{{serverAddr}}Img/{{$imports.smallSize(notAppoint.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>
@@ -60,7 +60,7 @@
 	                        预约服务</button>
                         	{{/if}}
                             <button class="postBtn" data-id={{notAppoint.ID}} data-NeedDelivery={{notAppoint.ProductNeedDelivery}} data-DeliveryTime={{notAppoint.DeliveryTime}}>邮寄商品</button>
-                        {{/if}} 
+                        {{/if}}
                         {{if notAppoint.AppointID}}
                         <button class="checkAppoint" data-id={{notAppoint.AppointID}}>查看预约</button>
                             <button class="postBtn" data-id={{notAppoint.ID}} data-NeedDelivery={{notAppoint.ProductNeedDelivery}} data-DeliveryTime={{notAppoint.DeliveryTime}}>邮寄商品</button>
@@ -89,7 +89,7 @@
                             <span>服务购买时间:{{timeFilter(hadAppoint.AddTime)}}</span>
                         </p>
                     </div>
-                    <div class="appointContent">
+                    <div class="appointContent" data-id="{{hadAppoint.ServiceID}}">
                         <img src="{{serverAddr}}Img/{{$imports.smallSize(hadAppoint.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>
@@ -127,7 +127,7 @@
                             <span>服务购买时间:{{timeFilter(notVerify.AddTime)}}</span>
                         </p>
                     </div>
-                    <div class="appointContent">
+                    <div class="appointContent" data-id="{{notVerify.ServiceID}}">
                         <img src="{{serverAddr}}Img/{{$imports.smallSize(notVerify.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>
@@ -165,7 +165,7 @@
                             <span>服务购买时间:{{timeFilter(hadComplite.AddTime)}}</span>
                         </p>
                     </div>
-                    <div class="appointContent">
+                    <div class="appointContent" data-id="{{hadComplite.ID}}">
                         <img src="{{serverAddr}}Img/{{$imports.smallSize(hadComplite.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>

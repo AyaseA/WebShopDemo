@@ -12,7 +12,7 @@ $(function(){
         var   typeID=JSON.parse(TDetailsData.Data);
         switch(TDetailsData.AccountType) {
             case "0": {
-                return "订单交易( 红包交易编号 "+typeID.OrderID+")";
+                return "订单交易( 订单交易编号 "+typeID.OrderID+")";
             } break;
             case "1": {
                 return "红包交易( 红包交易编号 "+typeID.RedPocketID+")";
@@ -24,7 +24,7 @@ $(function(){
                 return "银行卡交易( 红包交易编号 "+typeID.OrderID+")";
             } break;
             case "4": {
-                return "佣金交易( 红包交易编号 "+typeID.OrderID+")";
+                return "佣金交易( 佣金交易编号 "+typeID.OrderID+")";
             } break;
             case "5": {
                 return "服务收入";
@@ -35,6 +35,8 @@ $(function(){
             case '7': {
                 return "评价";
             } break;
+            default:
+               return "订单交易";
         }
     };
 })

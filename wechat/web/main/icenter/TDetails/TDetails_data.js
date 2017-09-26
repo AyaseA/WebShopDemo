@@ -15,7 +15,7 @@ $(function(){
             type:"POST",
             url: $$.config.serverAddr+"CSL/Account/QueryAccountList",
             data: {
-                WToken:"f752165e48182cf7d02f217c694c618f13",
+                WToken:$$.getToken(),
                 N:pn,
                 Rows:ps
             },

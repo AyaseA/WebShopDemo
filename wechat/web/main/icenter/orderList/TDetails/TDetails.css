@@ -1,0 +1,90 @@
+/*公共样式*/
+#home_TDetails .rt{
+    float:right;
+}
+#home_TDetails .clear:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+/*公共样式end*/
+#home_TDetails{
+    width:100%;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    padding-top: 12vw;
+}
+#home_TDetails div.header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index:10;
+    height:12vw;
+    text-align: center;
+    line-height: 12vw;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D6D6DB;
+}
+#home_TDetails div.header span.title{
+    font-size: 4.5vw;
+}
+#home_TDetails div.header a.goBack{
+    position: absolute;
+    left: 3vw;
+    top:2vw;
+}
+#home_TDetails div.header a.goBack img{
+    width: 6vw;
+}
+/*页面主体*/
+#home_TDetails div.main{
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+#home_TDetails div.main>div.content{
+    width: 100%;
+}
+#home_TDetails div.main>div.content ul>li {
+    padding: 2vw;
+    height: 16vw;
+    box-sizing: border-box;
+    margin-bottom: 1vw;
+    border-bottom: 1px solid #D6D6DB;
+}
+#home_TDetails div.main>div.content ul>li>div.rt{
+    height: 12vw;
+    line-height: 12vw;
+    font-size: 5vw;
+}
+#home_TDetails div.main>div.content ul>li>div.rt.addColor{
+    color:#F14F5F ;
+}
+#home_TDetails div.main>div.content ul>li>div.rt.cutColor{
+    color: #676767;
+}
+#home_TDetails div.main>div.content ul>li div.titleDetails p:first-child{
+    font-size: 4vw;
+    color: #272727;
+    margin-bottom: 1vw;
+}
+#home_TDetails div.main>div.content ul>li div.titleDetails p:nth-child(2){
+    color: #676767;
+    font-size: 3.5vw;
+}
+#home_TDetails div.main>div.content div.load{
+    width: 100%;
+    text-align: center;
+}
+#home_TDetails div.main>div.content div.load.loading::after{
+    content:"加载中···";
+    padding: 5vw;
+}
+
+#home_TDetails div.main>div.content div.load.loaded::after{
+    content:"已加载全部";
+    padding: 5vw;
+}

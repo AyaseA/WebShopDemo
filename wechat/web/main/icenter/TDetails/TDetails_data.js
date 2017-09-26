@@ -1,13 +1,8 @@
 $(function(){
     var bodyHeight = window.innerHeight || document.body.clientHeight,
-        $page=$("#home_TDetails"),
-        pageStr="home_TDetails",
-        headerHeight=$page.find("div.header").height(),
+        $page=$("#icenter_TDetails"),
+        pageStr="icenter_TDetails",
         loadBox=$page.find("div.main>div.content>div.load");
-    //点击返回按钮
-    $$.setGoBack($page.find("div.header >a.goBack"));
-    //定义div.main 的高度
-    $page.find("div.main").height(bodyHeight-headerHeight);
     //获取数据列表的参数
     var pageNum = 1,
         pageSize = 12,
@@ -26,7 +21,6 @@ $(function(){
             },
             success:function(res){
                 res=JSON.parse(res);
-                console.log(res);
                 if (res.Status != 0) {
                     console.log('获取商品信息失败');
                     return false;
@@ -46,8 +40,9 @@ $(function(){
                         loadBox.addClass('loaded');
                     } else {
                         loadBox.removeClass('loaded');
+                        loadComplate = true;
                     }
-                    loadComplate = true;
+
                 }
             }
         })
@@ -58,7 +53,6 @@ $(function(){
         var top=$(this).scrollTop(),
             mainHeight=$page.find("div.main").height(),
             contentHeight=$page.find("div.content").height();
-        console.log(top,mainHeight,contentHeight);
         if (loadComplate) {
             if (pageNum * pageSize < allCount) {
                 if(contentHeight-mainHeight-top<30){
@@ -71,34 +65,4 @@ $(function(){
             return false;
         }
     });
-    
-    template.defaults.imports.TDetailsTitle = function(TDetailsData){
-        var   typeID=JSON.parse(TDetailsData.Data);
-        switch(TDetailsData.AccountType) {
-            case "0": {
-                return "订单交易( 红包交易编号 "+typeID.OrderID+")";
-            } break;
-            case "1": {
-                return "红包交易( 红包交易编号 "+typeID.RedPocketID+")";
-            } break;
-            case "2": {
-                return "充值交易";
-            } break;
-            case "3": {
-                return "银行卡交易( 红包交易编号 "+typeID.OrderID+")";
-            } break;
-            case "4": {
-                return "佣金交易( 红包交易编号 "+typeID.OrderID+")";
-            } break;
-            case "5": {
-                return "服务收入";
-            } break;
-            case '6': {
-                return "优惠券";
-            } break;
-            case '7': {
-                return "评价";
-            } break;
-        }
-    };
 })

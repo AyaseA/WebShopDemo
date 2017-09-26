@@ -21,10 +21,10 @@ $(function(){
                 return "充值交易";
             } break;
             case "3": {
-                return "银行卡交易( 红包交易编号 "+typeID.OrderID+")";
+                return "银行卡交易";
             } break;
             case "4": {
-                return "佣金交易( 佣金交易编号 "+typeID.OrderID+")";
+                return "佣金交易";
             } break;
             case "5": {
                 return "服务收入";

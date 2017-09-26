@@ -1,0 +1,35 @@
+<div>
+    <div class="header">
+        <a href="javascript:void(0)" class="goBack">
+            <img src="images/common/round_left_blue.png"/>
+        </a>
+        <span class="title">交易明细</span>
+    </div>
+    <div class="main">
+        <div class="content">
+            <ul></ul>
+            <div class="load"></div>
+        </div>
+    </div>
+    <script id="home_TDetails_listTem" type="text/html" >
+        {{each list as val}}
+        <li>
+            {{if val.InOrOut == 0}}
+            <div class="rt addColor">
+                <span>+</span>
+                {{val.Amount}}
+            </div>
+            {{else if val.InOrOut == 1}}
+            <div class="rt cutColor">
+                <span>-</span>
+                {{val.Amount}}
+            </div>
+            {{/if}}
+            <div class="titleDetails">
+                <p>{{ val | TDetailsTitle}}</p>
+                <p>{{val.AddTime | timeFilter}}</p>
+            </div>
+        </li>
+        {{/each}}
+    </script>
+</div>

@@ -83,6 +83,7 @@
     content:"加载中···";
     padding: 5vw;
 }
+
 #home_TDetails div.main>div.content div.load.loaded::after{
     content:"已加载全部";
     padding: 5vw;

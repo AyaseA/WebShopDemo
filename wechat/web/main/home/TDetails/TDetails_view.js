@@ -71,6 +71,7 @@ $(function(){
             return false;
         }
     });
+    
     template.defaults.imports.TDetailsTitle = function(TDetailsData){
         var   typeID=JSON.parse(TDetailsData.Data);
         switch(TDetailsData.AccountType) {

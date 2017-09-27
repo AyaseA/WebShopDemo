@@ -10,7 +10,7 @@ $(function(){
     $page.find("div.main").height(bodyHeight-headerHeight);
     template.defaults.imports.TDetailsTitle = function(TDetailsData){
         var   typeID=JSON.parse(TDetailsData.Data);
-        switch(TDetailsData.AccountType) {
+        switch(typeID.AccountTransType) {
             case "0": {
                 return "订单交易( 订单交易编号 "+typeID.OrderID+")";
             } break;

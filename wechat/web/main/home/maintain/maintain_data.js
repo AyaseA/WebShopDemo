@@ -7,7 +7,6 @@ $(function() {
         pageSize = 9,
         allCount = 0,
         loadComplate = true;
-
 	$page.find('>div.header >span.edit').text(carName);
 
     // 懒加载
@@ -49,20 +48,30 @@ $(function() {
                         allCount = parseInt(res.Data.Count);
                     }*/
 					var d = res.Data/*.Rows*/;
-					
-					d.forEach(function(item) {
-						var descri = '';
-	                    if (item.Descri) {
-	                        item.Descri = JSON.parse(item.Descri);
-	                        descri = item.Descri.text ? Base64.decode(unescape(item.Descri.text)) : '';
-	                    }
-						item.desc = descri;
-					});
-					$proBox.html(template(pageStr + '_products', {
-						maintainProList: d,
-            			maintainProListLength:d.length,
-						serverAddr: $$.config.serverAddr
-					}));
+                    //修改
+					if(d.length < 4){
+						QueryPackageList(d);
+					}else{
+						addHtml(d)
+					}
+
+                    //修改end
+                    //
+                    //d.forEach(function(item) {
+						//var descri = '';
+	                 //   if (item.Descri) {
+	                 //       item.Descri = JSON.parse(item.Descri);
+	                 //       descri = item.Descri.text ? Base64.decode(unescape(item.Descri.text)) : '';
+	                 //   }
+						//item.desc = descri;
+                    //});
+                    //$proBox.html(template(pageStr + '_products', {
+						//maintainProList: d,
+            			//maintainProListLength:d.length,
+						//serverAddr: $$.config.serverAddr
+                    //}));
+
+
 					/*$proBox.removeClass('loading');
 					if (pageNum * pageSize >= allCount) {
                         $proBox.addClass('loaded');
@@ -73,5 +82,49 @@ $(function() {
 				}
 			}
 		);
+	}
+	//修改
+	function QueryPackageList(pcarData){
+		console.log(pcarData);
+        $$.get(
+			"Product/Info/QueryPackageList",
+			function(res){
+				if (res.Status != 0) {
+					return false;
+				}
+				var  DataList=res.Data;
+				if(res.Data){
+					pcarData=pcarData.concat(DataList);
+					console.log(pcarData);
+					for (var i = 0; i < pcarData.length; i++) {
+						for (var j =i+1; j <pcarData.length; ) {
+							if (pcarData[i].ID == pcarData[j].ID ) {//通过id属性进行匹配；
+								pcarData.splice(j, 1);//去除重复的对象；
+							}else {
+								j++;
+							}
+						}
+					}
+					addHtml(pcarData)
+				}
+			}
+		);
+	}
+    function addHtml(addData){
+		var $proBox = $page.find('div.products');
+		addData.forEach(function(item) {
+			var descri = '';
+			if (item.Descri) {
+				item.Descri = JSON.parse(item.Descri);
+				descri = item.Descri.text ? Base64.decode(unescape(item.Descri.text)) : '';
+			}
+			item.desc = descri;
+		});
+		$proBox.html(template(pageStr + '_products', {
+			maintainProList: addData,
+			maintainProListLength:addData.length,
+			serverAddr: $$.config.serverAddr
+		}));
+
 	}
 });

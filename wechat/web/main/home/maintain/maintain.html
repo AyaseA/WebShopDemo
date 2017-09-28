@@ -12,7 +12,7 @@
 	</div>
 	<script id="home_maintain_products" type="text/html">
     {{each maintainProList as mpl i}}
-		{{if maintainProListLength == 1}}
+		<!--{{if maintainProListLength == 1}}
 		<div class="item" data-id="{{mpl.ID}}" data-type="{{mpl.ProductType}}">
 		<img src="{{serverAddr}}Img/{{mpl.Img | imgFilter}}">
         <div>
@@ -44,7 +44,7 @@
             {{/if}}
         </div>
 		</div>
-		{{/if}}
+		{{/if}}-->
     	<div class="item" data-id="{{mpl.ID}}" data-type="{{mpl.ProductType}}">
 			<img src="{{serverAddr}}Img/{{mpl.Img | imgFilter}}">
             <div>

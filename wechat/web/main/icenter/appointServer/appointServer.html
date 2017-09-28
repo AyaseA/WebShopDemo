@@ -66,9 +66,9 @@
                 {{/if}}
 	        </script>
     	</div>
-        <div class="storeConfirm">
-        	<p>确认</p>
-        </div>
+          <div class="storeConfirm">
+          	<p>确认</p>
+          </div>
     </div>
 
     <div class="dateInfo">
@@ -80,9 +80,9 @@
 	        <script id="icenter_appointServer_time_list" type="text/html">
 				{{each list as t index}}
 				<div class="item">
-					<span class="date">{{t}}</span>
-					<span class="am {{if index == 0}}selected{{/if}}" data-date="{{t}}" data-time="9:00-12:00">9:00-12:00</span>
-					<span class="pm" data-date="{{t}}" data-time="14:00-18:00">14:00-18:00</span>
+					<span class="date">{{t.weekdate}}</span>
+					<span class="am {{if index == 0}}selected{{/if}}" data-date="{{t.date}}" data-time="9:00-12:00">9:00-12:00</span>
+					<span class="pm" data-date="{{t.date}}" data-time="14:00-18:00">14:00-18:00</span>
 				</div>
 				{{/each}}
 			</script>

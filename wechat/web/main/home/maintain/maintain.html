@@ -12,6 +12,39 @@
 	</div>
 	<script id="home_maintain_products" type="text/html">
     {{each maintainProList as mpl i}}
+		{{if maintainProListLength == 1}}
+		<div class="item" data-id="{{mpl.ID}}" data-type="{{mpl.ProductType}}">
+		<img src="{{serverAddr}}Img/{{mpl.Img | imgFilter}}">
+        <div>
+            <h3>{{mpl.Name}}</h3>
+            <h5>{{mpl.desc}}</h5>
+            <p>抢购价:<span>￥{{mpl.Price}}</span></p>
+            {{if mpl.ProductType == 0}}
+            <a href="home/fillOrder.html?pid={{mpl.ID}}&&type={{mpl.ProductType}}">立即购买</a>
+            {{else if mpl.ProductType == 1}}
+            <a href="home/prodservice.html?pid={{mpl.ID}}">立即购买</a>
+            {{else if mpl.ProductType == 5}}
+            <a href="home/prodmulti.html?pid={{mpl.ID}}">立即购买</a>
+            {{/if}}
+        </div>
+		</div>
+
+		<div class="item" data-id="{{mpl.ID}}" data-type="{{mpl.ProductType}}">
+		<img src="{{serverAddr}}Img/{{mpl.Img | imgFilter}}">
+        <div>
+            <h3>{{mpl.Name}}</h3>
+            <h5>{{mpl.desc}}</h5>
+            <p>抢购价:<span>￥{{mpl.Price}}</span></p>
+            {{if mpl.ProductType == 0}}
+            <a href="home/fillOrder.html?pid={{mpl.ID}}&&type={{mpl.ProductType}}">立即购买</a>
+            {{else if mpl.ProductType == 1}}
+            <a href="home/prodservice.html?pid={{mpl.ID}}">立即购买</a>
+            {{else if mpl.ProductType == 5}}
+            <a href="home/prodmulti.html?pid={{mpl.ID}}">立即购买</a>
+            {{/if}}
+        </div>
+		</div>
+		{{/if}}
     	<div class="item" data-id="{{mpl.ID}}" data-type="{{mpl.ProductType}}">
 			<img src="{{serverAddr}}Img/{{mpl.Img | imgFilter}}">
             <div>

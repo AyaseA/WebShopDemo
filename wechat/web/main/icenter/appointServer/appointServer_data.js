@@ -1,5 +1,6 @@
 $(function() {
-    var $page = $("#icenter_appointServer");
+    var $page = $("#icenter_appointServer"),
+    getUrl;
 
     var contentHeight = window.innerHeight - $page.find(".header").height();
     $page.find(".content").height(contentHeight);
@@ -12,7 +13,9 @@ $(function() {
     var sid = $$.getQueryString("sid"),
         pid = $$.getQueryString("pid"),
         storeid = $$.getQueryString("storeid"),
-        stype = $$.getQueryString("stype");
+        stype = $$.getQueryString("stype"),
+        atype = $$.getQueryString("atype"),
+        acont = $$.getQueryString("acont");
 
     var locationInfo = $$.getLocationInfo();
 
@@ -193,32 +196,52 @@ $(function() {
         });
     }
 
-    //获取时间信息
-    getAppointTime(function(timeArr) {
+    if(atype != 6){
+        geturl = "Product/Info/QueryCalendarList?type=" + atype;
+    } else {
+        geturl = "Product/Info/QueryCalendarList?type=" + atype + "&date=" + acont;
+    }
+
+    $$.get(geturl,function(txt){
+        var timeArr = new Array();
+        $.each(txt.Data,function(i,data){
+            timeArr.push(
+              {
+                  date:data.date,
+                  weekdate:data.date.split("-")[1] + "-" + data.date.split("-")[2] +"(周" + data.week + ")"
+              });
+        });
         $page.find('.dateContent').html(template('icenter_appointServer_time_list', {
             list: timeArr
         }));
     });
 
-    // 计算预约时间
-    function getAppointTime(callback) {
-        var timeArr = [];
-        for (var i = 1; i <= 30; i++) {
-            timeArr.push(
-                getDateFromCurrentDate(i)
-            );
-        }
-        callback(timeArr);
-    }
+    //获取时间信息
+    // getAppointTime(function(timeArr) {
+    //     $page.find('.dateContent').html(template('icenter_appointServer_time_list', {
+    //         list: timeArr
+    //     }));
+    // });
 
-    function getDateFromCurrentDate(dayInterval) {
-        var curDate = new Date();
-        curDate.setDate(curDate.getDate() + dayInterval);
-        var year = curDate.getFullYear();
-        var month = (curDate.getMonth() + 1) < 10 ? "0" + (curDate.getMonth() + 1) : (curDate.getMonth() + 1);
-        var day = curDate.getDate() < 10 ? "0" + curDate.getDate() : curDate.getDate();
-        return year + "-" + month + "-" + day;
-    }
+    // 计算预约时间
+    // function getAppointTime(callback) {
+    //     var timeArr = [];
+    //     for (var i = 1; i <= 30; i++) {
+    //         timeArr.push(
+    //             getDateFromCurrentDate(i)
+    //         );
+    //     }
+    //     callback(timeArr);
+    // }
+    //
+    // function getDateFromCurrentDate(dayInterval) {
+    //     var curDate = new Date();
+    //     curDate.setDate(curDate.getDate() + dayInterval);
+    //     var year = curDate.getFullYear();
+    //     var month = (curDate.getMonth() + 1) < 10 ? "0" + (curDate.getMonth() + 1) : (curDate.getMonth() + 1);
+    //     var day = curDate.getDate() < 10 ? "0" + curDate.getDate() : curDate.getDate();
+    //     return year + "-" + month + "-" + day;
+    // }
 
     function needChooseStore() {
         if (storeid != 0) {

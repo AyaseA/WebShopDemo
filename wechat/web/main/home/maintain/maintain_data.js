@@ -7,7 +7,7 @@ $(function() {
         pageSize = 9,
         allCount = 0,
         loadComplate = true;
-	
+
 	$page.find('>div.header >span.edit').text(carName);
 
     // 懒加载
@@ -49,6 +49,7 @@ $(function() {
                         allCount = parseInt(res.Data.Count);
                     }*/
 					var d = res.Data/*.Rows*/;
+					
 					d.forEach(function(item) {
 						var descri = '';
 	                    if (item.Descri) {
@@ -59,6 +60,7 @@ $(function() {
 					});
 					$proBox.html(template(pageStr + '_products', {
 						maintainProList: d,
+            			maintainProListLength:d.length,
 						serverAddr: $$.config.serverAddr
 					}));
 					/*$proBox.removeClass('loading');

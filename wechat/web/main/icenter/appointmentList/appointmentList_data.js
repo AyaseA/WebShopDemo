@@ -25,8 +25,10 @@ $(function() {
         var sid = $(this).attr("data-id"),
             pid = $(this).attr("data-pid"),
             storeid = $(this).attr("data-storeid"),
-            serviceType = $(this).attr("data-stype");
-        $$.redirect("icenter/appointServer.html?sid=" + sid + "&pid=" + pid + "&storeid=" + storeid + "&stype=" + serviceType);
+            serviceType = $(this).attr("data-stype"),
+            appointType = $(this).attr("data-atype"),
+            appointCont = $(this).attr("data-acont");
+        $$.redirect("icenter/appointServer.html?sid=" + sid + "&pid=" + pid + "&storeid=" + storeid + "&stype=" + serviceType + "&atype=" + appointType +"&acont=" + appointCont);
     });
 
     $page.off("click", ".appointFoot .makeCode").on("click", ".appointFoot .makeCode", function() {

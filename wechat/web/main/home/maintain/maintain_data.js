@@ -85,7 +85,7 @@ $(function() {
 	}
 	//修改
 	function QueryPackageList(pcarData){
-		console.log(pcarData);
+		var pcarArry=pcarData;
         $$.get(
 			"Product/Info/QueryPackageList",
 			function(res){
@@ -95,7 +95,7 @@ $(function() {
 				var  DataList=res.Data;
 				if(res.Data){
 					pcarData=pcarData.concat(DataList);
-					console.log(pcarData);
+					console.log(pcarData.length);
 					for (var i = 0; i < pcarData.length; i++) {
 						for (var j =i+1; j <pcarData.length; ) {
 							if (pcarData[i].ID == pcarData[j].ID ) {//通过id属性进行匹配；
@@ -105,7 +105,16 @@ $(function() {
 							}
 						}
 					}
-					addHtml(pcarData)
+					for (var b = 0; b < pcarData.length; b++) {
+						 var bPrice = parseInt(  pcarData[b].Price);
+						for (var a = 0; a < pcarArry.length; a++) {
+							var aPrice = parseInt(pcarArry[a].Price);
+							if(aPrice < bPrice ){
+								pcarArry.push(pcarData[b])
+							}
+						}
+					}
+					addHtml(pcarArry)
 				}
 			}
 		);

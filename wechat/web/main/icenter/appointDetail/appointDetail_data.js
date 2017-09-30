@@ -54,7 +54,6 @@ $(function () {
                     serviceId = d.ServiceID;
                 	var hours = $$.timeToStr(d.AppointTimeS, 'HH'),
                         amOrPm;
-
                     if (hours > 12) {
                         amOrPm = '下午';
                     } else {

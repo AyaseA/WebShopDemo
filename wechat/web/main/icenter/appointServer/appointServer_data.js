@@ -99,7 +99,7 @@ $(function() {
         var selectTime = $($page.find(".dateContent .item .selected")[0]).attr("data-time");
         $page.find(".selectDate .selectDetail span").text(selectDate + "  " + selectTime);
         //修改
-        var APtime=(selectTime.split(":")[0]*60*60)+$$.get10Time(selectDate);
+        var APtime=((selectTime.split(":")[0]-8)*60*60)+$$.get10Time(selectDate);
         $page.find(".selectDate .selectDetail span").attr("data-time",APtime);
         //修改end
         $page.find(".selectDate .selectDetail span").attr("data-date", selectDate);

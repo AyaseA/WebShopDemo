@@ -98,6 +98,10 @@ $(function() {
         var selectDate = $($page.find(".dateContent .item .selected")[0]).attr("data-date");
         var selectTime = $($page.find(".dateContent .item .selected")[0]).attr("data-time");
         $page.find(".selectDate .selectDetail span").text(selectDate + "  " + selectTime);
+        //修改
+        var APtime=(selectTime.split(":")[0]*60*60)+$$.get10Time(selectDate);
+        $page.find(".selectDate .selectDetail span").attr("data-time",APtime);
+        //修改end
         $page.find(".selectDate .selectDetail span").attr("data-date", selectDate);
         $page.find(".dateInfo").animate({ top: "-122vw" }, 500);
     });
@@ -154,7 +158,8 @@ $(function() {
                     Platform: 10,
                     Descri: $page.find(".serverDetail textarea").val(),
                     AppointDate: $$.get10Time($page.find(".selectDate .selectDetail span").attr("data-date")),
-                    StoreID: appointSid
+                    StoreID: appointSid,
+                    AppointTimeS:$page.find(".selectDate .selectDetail span").attr("data-time")
                 },
                 function() {
                     layer.msg("服务预约成功");
@@ -163,7 +168,9 @@ $(function() {
             );
         }
     });
+    function amOrPm(){
 
+    }
     //获取有此服务的店面
     if(stype == 1){
         $$.post("Product/StoreService/QueryMapByProductServiceID", {

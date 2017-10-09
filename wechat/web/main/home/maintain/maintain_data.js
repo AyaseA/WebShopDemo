@@ -32,7 +32,7 @@ $(function() {
 
 	// 加载商品列表
 	function getProductsList(pn, ps) {
-		var $proBox = $page.find('div.products');
+		var $proBox = $page.find('div.warp>div.products');
 		$$.post(
 			'CSL/UserInfo/QueryProductsByCar',
             {
@@ -50,9 +50,11 @@ $(function() {
 					var d = res.Data/*.Rows*/;
                     //修改
 					if(d.length < 4){
+						addHtml(d,$proBox);
 						QueryPackageList(d);
 					}else{
-						addHtml(d)
+						addHtml(d,$proBox);
+						$page.find('div.pro_more').hide();
 					}
 
                     //修改end
@@ -85,7 +87,10 @@ $(function() {
 	}
 	//修改
 	function QueryPackageList(pcarData){
-		var pcarArry=pcarData;
+		$page.find('div.pro_more').show();
+		var proMore = $page.find('div.pro_more>div.proMoreContainer');
+		var newArry=[];
+		var maxPrice=0;
         $$.get(
 			"Product/Info/QueryPackageList",
 			function(res){
@@ -94,33 +99,24 @@ $(function() {
 				}
 				var  DataList=res.Data;
 				if(res.Data){
-					pcarData=pcarData.concat(DataList);
-					console.log(pcarData.length);
-					for (var i = 0; i < pcarData.length; i++) {
-						for (var j =i+1; j <pcarData.length; ) {
-							if (pcarData[i].ID == pcarData[j].ID ) {//通过id属性进行匹配；
-								pcarData.splice(j, 1);//去除重复的对象；
-							}else {
-								j++;
-							}
+                   for(var i = 0;i < pcarData.length;i ++){
+					   var pI = parseInt( pcarData[i].Price);
+					   if(pI > maxPrice){
+						   maxPrice=pI;
+					   }
+				   }
+					for(var j = 0;j < DataList.length;j ++){
+						var dJ = parseInt(DataList[j].Price) ;
+						if(dJ > maxPrice){
+							newArry.push(DataList[j]);
 						}
 					}
-					for (var b = 0; b < pcarData.length; b++) {
-						 var bPrice = parseInt(  pcarData[b].Price);
-						for (var a = 0; a < pcarArry.length; a++) {
-							var aPrice = parseInt(pcarArry[a].Price);
-							if(aPrice < bPrice ){
-								pcarArry.push(pcarData[b])
-							}
-						}
-					}
-					addHtml(pcarArry)
+					addHtml(newArry,proMore);
 				}
 			}
 		);
 	}
-    function addHtml(addData){
-		var $proBox = $page.find('div.products');
+    function addHtml(addData,addDOM){
 		addData.forEach(function(item) {
 			var descri = '';
 			if (item.Descri) {
@@ -129,7 +125,7 @@ $(function() {
 			}
 			item.desc = descri;
 		});
-		$proBox.html(template(pageStr + '_products', {
+		addDOM.html(template(pageStr + '_products', {
 			maintainProList: addData,
 			maintainProListLength:addData.length,
 			serverAddr: $$.config.serverAddr

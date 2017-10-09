@@ -1,4 +1,9 @@
 $(function() {
+    //qq分享
+    if((navigator.userAgent.indexOf("QQ") !=-1)){
+        $$.redirect("icenter/login.html");
+    }
+    //测试qqq分享--end;
     var bodyHeight = window.innerHeight || document.body.clientHeight,
         $page = $('#home_wechatLogin'),
         pageStr = 'home_wechatLogin',

@@ -5,6 +5,13 @@
 	</div>
 	<div class="main">
 		<div class="productInfo"></div>
+		<div class="purseNum">
+			<p>购买数量
+				<span class="add">+</span>
+				<input type="number"/>
+				<span class="reduce">-</span>
+			</p>
+		</div>
 		<div class="coupon"></div>
 		<div class="proMoney"></div>
 		<div class="delivery"></div>
@@ -157,6 +164,7 @@
 			{{if ticket > 0}}
 			<button class="selected">
 				-￥{{ticket}}
+			</button>
 			{{else}}
 			<button>
 				选择优惠券

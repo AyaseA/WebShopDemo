@@ -95,12 +95,38 @@
 	margin-top: 10px;
 	padding-bottom: 15px;
 }
+#home_fillOrder >div.main >div.purseNum {
+	background-color: #fff;
+	padding: 0 15px;
+	margin-bottom: 0;
+}
+#home_fillOrder div.purseNum >p {
+	font-size: 15px;
+	border-top: 1px solid #E5E5E5;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+#home_fillOrder div.purseNum >p input {
+	float: right;
+	width: 12vw;
+	height: 6.5vw;
+	margin:0 1vw;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+#home_fillOrder div.purseNum >p span {
+	float: right;
+	font-size: 14px;
+	border: 1px solid #E5E5E5;
+	padding:1vw 2vw;
+}
 #home_fillOrder div.coupon label {
     font-size: 15px;
     display: block;
     height: 32px;
     padding-top: 15px;
     padding-bottom: 5px;
+	border-top: 1px solid #E5E5E5;
 }
 #home_fillOrder div.coupon button {
 	border: none;

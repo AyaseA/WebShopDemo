@@ -17,7 +17,7 @@ $(function() {
         serviceTime = '',
         needDelivery = false;
 
-    var userInfo;
+    var userInfo,inputVal;
     $$.post("CSL/User/GetInfoByToken", {}, function(txt) {
         userInfo = JSON.parse(Base64.decode(unescape(txt.Data.Info)));
     }, function() {}, 1);
@@ -45,7 +45,12 @@ $(function() {
         $page.find('>div.deliveryModal').hide().find('div.warp').css({
             'top': bodyHeight
         });
-
+        //当商品为普通商品时，购买数量显示，其余情况不显示
+        if(orderType == 0){
+            $page.find('div.purseNum').show();
+        }else {
+            $page.find('div.purseNum').hide();
+        }
         // 优惠券积分
         setCoupon();
 		// 获取商品详情
@@ -79,7 +84,32 @@ $(function() {
                 'top': bodyHeight
             }, 200).end().fadeOut(200);
         });
-
+        //点击购买数量按钮
+        $page.off('click','div.purseNum p span')
+            .on('click','div.purseNum p span', function(){
+                var input = $page.find('div.purseNum input');
+                inputVal = input.val();
+                if(this.innerHTML == "+"){
+                    inputVal ++;
+                }else if(inputVal > 1){
+                    inputVal--;
+                }
+                input.val(inputVal);
+                productNum = inputVal;
+                var span1 = $page.find('div.productInfo > div > p:nth-child(3) > span');
+                var span2 = $page.find('div.productInfo > p:nth-child(3)');
+                span1.html("x"+inputVal);
+                span2.html("共"+inputVal+"件商品");
+            });
+        //手动输入数量
+        $page.on('input','div.purseNum > p > input[type="number"]',function(){
+            var text = $page.find('div.purseNum > p > input[type="number"]').val();
+            productNum = text;
+            var span1 = $page.find('div.productInfo > div > p:nth-child(3) > span');
+            var span2 = $page.find('div.productInfo > p:nth-child(3)');
+            span1.html("x"+text);
+            span2.html("共"+text+"件商品");
+        });
         // 点击确定选择优惠券
         $page.off('click dbclick', '>div.couponModal button.selectTicket')
             .on('click dbclick', '>div.couponModal button.selectTicket', function() {
@@ -138,6 +168,7 @@ $(function() {
                     return false;
                 }
                 if (res.Data) {
+                    console.log(res.Data);
                     var d = res.Data,
                         descri = '';
                     if (orderType == 1) {
@@ -154,6 +185,8 @@ $(function() {
                             }));
                     } else {
                         total = parseFloat(d.Price);
+                        var $input = $page.find('div.purseNum input');
+                        $input.val(productNum);
                         if (d.Descri) {
                             d.Descri = JSON.parse(d.Descri);
                             descri = d.Descri.text ? Base64.decode(unescape(d.Descri.text)) : '';

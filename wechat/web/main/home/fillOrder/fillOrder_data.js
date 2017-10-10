@@ -98,6 +98,11 @@ $(function() {
                 productNum = inputVal;
                 var span1 = $page.find('div.productInfo > div > p:nth-child(3) > span');
                 var span2 = $page.find('div.productInfo > p:nth-child(3)');
+                var money = $page.find('div.proMoney > p:nth-child(1) > span');
+                var pay = $page.find('div.footer > span');
+                var moneyVal = parseFloat(inputVal*total).toFixed(2);
+                money.html("￥"+moneyVal);
+                pay.html(moneyVal);
                 span1.html("x"+inputVal);
                 span2.html("共"+inputVal+"件商品");
             });
@@ -107,6 +112,11 @@ $(function() {
             productNum = text;
             var span1 = $page.find('div.productInfo > div > p:nth-child(3) > span');
             var span2 = $page.find('div.productInfo > p:nth-child(3)');
+            var money = $page.find('div.proMoney > p:nth-child(1) > span');
+            var pay = $page.find('div.footer > span');
+            var moneyVal = parseFloat(total*text).toFixed(2);
+            money.html("￥"+moneyVal);
+            pay.html(moneyVal);
             span1.html("x"+text);
             span2.html("共"+text+"件商品");
         });
@@ -168,7 +178,6 @@ $(function() {
                     return false;
                 }
                 if (res.Data) {
-                    console.log(res.Data);
                     var d = res.Data,
                         descri = '';
                     if (orderType == 1) {

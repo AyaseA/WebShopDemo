@@ -219,7 +219,8 @@
 	height: 10vw;
 	width: 94%;
 	line-height:10vw;
-	text-align: center;
+	text-align: left;
+	padding: 1vw;
 	background: #fff;
 	margin:0 3vw ;
 	border-radius: 2vw;

@@ -28,7 +28,7 @@ $(function() {
                 waitPay: 0,
                 waitPost: 0,
                 waitGet: 0,
-                waitRevice: 0
+                waitRevice: 0,
             },
 
             haveLoad = {
@@ -169,7 +169,7 @@ $(function() {
                                                 onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'>"+parentNode+"<span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>确定收货</button><button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button></span></div></div>";
                                                 $page.find("" + area).append(onePiece);
                                             } else if (list[i].StatusID == 5) {
-                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>重新购买</button></span></div></div>";
+                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>重新购买</button></span></div></div>";
                                                 $page.find("" + area).append(onePiece);
                                             } else if (list[i].StatusID == 6) {
                                                 if (list[i].ShowReview == 0) {
@@ -186,7 +186,7 @@ $(function() {
                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";
                                                 }
 
-                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
+                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
                                                 $page.find("" + area).append(onePiece);
                                             }
                                         } else {
@@ -213,7 +213,7 @@ $(function() {
                                                 onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'>"+parentNode+"<span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>确定收货</button><button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button></span></div></div>";
                                                 $page.find("" + area).append(onePiece);
                                             } else if (list[i].StatusID == 5) {
-                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>重新购买</button></span></div></div>";
+                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>重新购买</button></span></div></div>";
                                                 $page.find("" + area).append(onePiece);
                                             } else if (list[i].StatusID == 6) {
 
@@ -231,7 +231,7 @@ $(function() {
                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";
                                                 }
 
-                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
+                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
                                                 $page.find("" + area).append(onePiece);
                                             }
                                         }
@@ -276,7 +276,7 @@ $(function() {
                         } else if (scrollArea == "waitGet") {
                             thisLoaded.waitGet = 1;
                         }
-
+//***************************************懒加载********************************************************************/
                         $("#icenter_orderList ." + scrollArea).scroll(function() {
                             var scrollTop = $page.find("." + scrollArea).scrollTop() + $("." + scrollArea).height();
                             var scrollHeight = $page.find("." + scrollArea)[0].scrollHeight;
@@ -327,7 +327,7 @@ $(function() {
                                                                 onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>确定收货</button><button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button></span></div></div>";
                                                                 $page.find("" + area).append(onePiece);
                                                             } else if (list[i].StatusID == 5) {
-                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>重新购买</button></span></div></div>";
+                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>重新购买</button></span></div></div>";
                                                                 $page.find("" + area).append(onePiece);
                                                             } else if (list[i].StatusID == 6) {
                                                                 if (list[i].ShowReview == 0) {
@@ -344,7 +344,7 @@ $(function() {
                                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";
                                                                 }
 
-                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
+                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
                                                                 $page.find("" + area).append(onePiece);
                                                             }
                                                         } else {
@@ -373,7 +373,7 @@ $(function() {
                                                                 onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>确定收货</button><button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button></span></div></div>";
                                                                 $page.find("" + area).append(onePiece);
                                                             } else if (list[i].StatusID == 5) {
-                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>重新购买</button></span></div></div>";
+                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>重新购买</button></span></div></div>";
                                                                 $page.find("" + area).append(onePiece);
                                                             } else if (list[i].StatusID == 6) {
                                                                 if (list[i].ShowReview == 0) {
@@ -390,7 +390,7 @@ $(function() {
                                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";
                                                                 }
 
-                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
+                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
                                                                 $page.find("" + area).append(onePiece);
                                                             }
                                                         }
@@ -417,7 +417,7 @@ $(function() {
                                                             onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'>" + contentNodeList + "<div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><button class='PayBtn'>订单完成</button></div></div>";
                                                             $page.find("" + area).append(onePiece);
                                                         } else if (list[i].StatusID == 5) {
-                                                            onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'>" + contentNodeList + "<div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><button class='PayBtn'>重新购买</button></div></div>";
+                                                            onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'>" + contentNodeList + "<div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><button class='PayBtn'>重新购买</button></div></div>";
                                                             $page.find("" + area).append(onePiece);
                                                         }
                                                     }
@@ -454,6 +454,26 @@ $(function() {
                 }
             });
         }
+
+
+
+        //删除订单
+        $page.off("click", "p.rt").on("click", "p.rt", function(){
+            var orderID=$(this).siblings("span").text();
+            var _this=this;
+                layer.confirm("您确定要删除"+orderID+"这条订单？",function(){
+                    $$.post("CSL/Order/DelOrder",{OrderID:orderID},function(data){
+                        if(data.Status==0){
+                            layer.msg("删除成功");
+                            $(_this).parents("div.onePiece").remove();
+                        }else{
+                            layer.msg("删除失败");
+                        }
+                    });
+                    layer.close();
+                })
+        });
+
 
         //点击全部事件
         $page.off("click", ".allNav").on("click", ".allNav", function() {

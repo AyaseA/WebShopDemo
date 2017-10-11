@@ -182,3 +182,11 @@
 	color: #F60;
 	font-size: 3.8vw; 
 }
+#icenter_orderList p.rt{
+	float:right;
+	height: 100%;
+	width: 5vw;
+	margin-left: 3vw;
+	background: url("../../images/orderLsit/del.png") no-repeat 0vw 2vw;
+	background-size: 100%;
+}

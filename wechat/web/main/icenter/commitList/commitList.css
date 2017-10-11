@@ -89,14 +89,13 @@
 	display:inline-block;
 	position: absolute;
 	top:2vw;
-	left: 35vw;
+	left: 34vw;
 	width: 65vw;
 	border-bottom: 1px solid #D6D6DB;
     height: 27vw; 
 }
 
 #icenter_commitList .onePiece .prodInfo b{
-	width: 41vw;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -29,7 +29,7 @@ $(function() {
                     var registerCont = $$.getUserInfo().InviteCode;
                     if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
                         wx.onMenuShareTimeline({
-                            title: '车势力推荐注册有礼', // 分享标题
+                            title: '我说过我喜欢你，撩我，扫我，只要你来！', // 分享标题
                             link:$$.config.hostAddr+ "wechat/www/web/main/index.html?R=" + escape("icenter/codeRegister.html?RegisterFrom=1&RegisterCont=" + registerCont), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png', // 分享图标
                             success: function() {
@@ -41,8 +41,8 @@ $(function() {
                         });
 
                         wx.onMenuShareAppMessage({
-                            title: '车势力推荐注册有礼', // 分享标题
-                            desc: '扫码注册车势利，钜惠豪礼抢不停', // 分享描述
+                            title: '我说过我喜欢你，撩我，扫我，只要你来！', // 分享标题
+                            desc: '600元代金券和我，从了你。', // 分享描述
                             link: $$.config.hostAddr + "wechat/www/web/main/index.html?R=" + escape("icenter/codeRegister.html?RegisterFrom=1&RegisterCont=" + registerCont), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png', // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
@@ -64,10 +64,10 @@ $(function() {
                         }, 8000);
                     } else if (navigator.userAgent.indexOf('csl-ios') != -1) {
                         wx.onMenuShowShareView({
-                            title: '车势力推荐注册有礼', // 分享标题
+                            title: '我说过我喜欢你，撩我，扫我，只要你来！', // 分享标题
                             link: $$.config.hostAddr + "wechat/www/web/main/index.html?R=" + escape("icenter/codeRegister.html?RegisterFrom=1&RegisterCont=" + registerCont), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png', // 分享图标
-                            desc: '扫码注册车势利，钜惠豪礼抢不停！', // 分享描述
+                            desc: ' 600元代金券和我，从了你。', // 分享描述
                             success: function() {
                                 // 用户确认分享后执行的回调函数
                             },
@@ -78,10 +78,10 @@ $(function() {
 
                     } else if (navigator.userAgent.indexOf('csl-android') != -1) {
                         wx.onMenuShowShareView({
-                            title: '车势力推荐注册有礼', // 分享标题
+                            title: '我说过我喜欢你，撩我，扫我，只要你来！', // 分享标题
                             link: $$.config.hostAddr + "wechat/www/web/main/index.html?R=" + escape("icenter/codeRegister.html?RegisterFrom=1&RegisterCont=" + registerCont), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: $$.config.hostAddr + 'wechat/www/web/main/images/icon.png', // 分享图标
-                            desc: '扫码注册车势利，钜惠豪礼抢不停！', // 分享描述
+                            desc: '600元代金券和我，从了你。', // 分享描述
                             success: function() {
                                 // 用户确认分享后执行的回调函数
                             },

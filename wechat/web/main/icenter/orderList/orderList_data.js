@@ -28,7 +28,7 @@ $(function() {
                 waitPay: 0,
                 waitPost: 0,
                 waitGet: 0,
-                waitRevice: 0,
+                waitRevice: 0
             },
 
             haveLoad = {

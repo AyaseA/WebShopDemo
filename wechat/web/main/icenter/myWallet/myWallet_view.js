@@ -92,33 +92,37 @@ $(function() {
     }
     template.defaults.imports.titleFilter = function(list) {
         var  typeID=JSON.parse(list.Data);
+        if(typeof(typeID.Text)==="undefined")
+        {
+            typeID.Text="";
+        }
         switch(typeID.AccountTransType) {
-            case '0' : {
-                return "订单交易( 订单交易编号 "+typeID.OrderID+")";
+            case "0": {
+                return "订单交易("+typeID.Text+")";
             } break;
             case "1": {
-                return "红包交易( 红包交易编号 "+typeID.RedPocketID+")";
+                return "红包交易("+typeID.Text+")";
             } break;
             case "2": {
-                return "充值交易";
+                return "充值交易("+typeID.Text+")";
             } break;
             case "3": {
-                return "银行卡交易";
+                return "银行卡交易("+typeID.Text+")";
             } break;
             case "4": {
-                return "佣金交易";
+                return "佣金交易("+typeID.Text+")";
             } break;
             case "5": {
-                return "服务收入";
+                return "服务收入("+typeID.Text+")";
             } break;
             case '6': {
-                return "优惠券";
+                return "优惠券("+typeID.Text+")";
             } break;
             case '7': {
-                return "评价";
+                return "评价("+typeID.Text+")";
             } break;
             default:
-                return "订单交易";
+                return "订单交易("+typeID.Text+")";
 
         }
     };

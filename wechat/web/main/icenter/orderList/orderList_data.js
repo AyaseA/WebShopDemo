@@ -86,10 +86,12 @@ $(function() {
                 $$.post("CSL/Order/PressOrder", { ID: orderId }, function(txt) {
                     if (txt.Status == 0) {
                         layer.msg("已提醒商家发货");
+                    }else if(txt.Status == 90){
+                        layer.msg("您已提醒商家发货，请稍候再试");
                     }
                 });
-                $(this).css("background", "#ccc");
-                $(this).attr("disabled", true);
+                //$(this).css("background", "#ccc");
+                //$(this).attr("disabled", true);
             } else if ($(this).html() == "查看物流") {
                 var postID = $(this).attr("data-postID"),
                     dtype = $(this).attr("data-dType");

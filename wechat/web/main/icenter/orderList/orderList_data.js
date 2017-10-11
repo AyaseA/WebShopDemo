@@ -83,7 +83,11 @@ $(function() {
             } else if ($(this).html() == "前往预约") {
                 $$.redirect("icenter/appointmentList.html");
             } else if ($(this).html() == "提醒商家") {
-                layer.msg("已提醒商家发货");
+                $$.post("CSL/Order/PressOrder", { ID: orderId }, function(txt) {
+                    if (txt.Status == 0) {
+                        layer.msg("已提醒商家发货");
+                    }
+                });
                 $(this).css("background", "#ccc");
                 $(this).attr("disabled", true);
             } else if ($(this).html() == "查看物流") {

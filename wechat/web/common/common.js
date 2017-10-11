@@ -46,13 +46,13 @@ Date.prototype.pattern = function(fmt) {
     // 对外暴露对象
     var $$ = $.extend({}, {
         // 接口地址--各种请求地址
-        serverAddr: 'http://api.cheshili.com.cn/',
+        serverAddr: 'http://api.cheshili.com.cn:8000/',
         // 相关配置
         config: {
             // 接口地址--各种请求地址
-            serverAddr: 'http://api.cheshili.com.cn/',
+            serverAddr: 'http://api.cheshili.com.cn:8000/',
             // host
-            hostAddr: 'http://api.cheshili.com.cn/',
+            hostAddr: 'http://api.cheshili.com.cn:8000/',
             // 悬浮菜单刷新是否可用
             canRefresh: true,
             // 隐藏悬浮菜单
@@ -63,9 +63,9 @@ Date.prototype.pattern = function(fmt) {
             isCompatibleIOSTop: false,
             // 微信appid
             // 开发版appid
-            // wxAppID: 'wx20efd36312d69bc6'
+             wxAppID: 'wx20efd36312d69bc6'
             // 正式版appid
-            wxAppID: 'wx2c53034422e377cc'
+            //wxAppID: 'wx2c53034422e377cc'
         },
         // 存放浏览记录
         stack: (function() {

@@ -80,7 +80,7 @@
 	position: absolute;
 	top:6vw;
 	left: 5vw;
-	font-size:8vw;
+	font-size:7vw;
 	color:#fff;
 }
 #icenter_discount .discountAbove{
@@ -99,9 +99,9 @@
 #icenter_discount .discountTime{
 	position: absolute;
 	top:22vw;
-	left: 43vw;
+	left: 40vw;
 	color:#A5A5A5;
-	font-size:3.33vw;
+	font-size:3.5vw;
 }
 
 #icenter_discount .navContent{

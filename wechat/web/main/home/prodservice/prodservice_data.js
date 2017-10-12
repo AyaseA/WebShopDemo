@@ -150,7 +150,6 @@ $(function() {
 	}
     //productType为 1时，添加最低服务价格
     function addLowerServicePrice(){
-        var $proPrice = $page.find('>div.main div.product >div.detail');
         $.ajax({
             url: $$.config.serverAddr + 'CSL/Service/QueryServicePriceRange',
             type: 'POST',

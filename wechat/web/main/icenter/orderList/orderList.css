@@ -183,6 +183,7 @@
 	font-size: 3.8vw; 
 }
 #icenter_orderList p.rt{
+	display: none;
 	float:right;
 	height: 100%;
 	width: 5vw;

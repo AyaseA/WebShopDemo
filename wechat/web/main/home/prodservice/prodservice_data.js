@@ -7,7 +7,7 @@ $(function() {
         productName = '',
         pNum = 1,
         serviceId = '';
-    
+        var minPrice;
     // 页面重新显示的一些初始化
     $page.find('>div.header li[data-type=product]') 
          .addClass('active').siblings()
@@ -104,6 +104,8 @@ $(function() {
                     getComments(laszyParam.middle);
                     getComments(laszyParam.bad);
                     getComments(laszyParam.haveImg);
+                    //productType为 1时，添加最低服务价格
+                    addLowerServicePrice();
                     var descriTxt = '',
                         descriTitle = '',
                         descriImgs = [];
@@ -117,6 +119,7 @@ $(function() {
                         template(pageStr + '_product_info', {
                             serverAddr: $$.config.serverAddr,
                             data: d,
+                            minPrice: minPrice,
                             descriTitle: descriTitle,
                             descriTxt: descriTxt
                     }));
@@ -140,12 +143,31 @@ $(function() {
                         });
                     }
                     addHistoryFoot();
-
                     $page.find('div.evaluate, div.comments').show();
                 }
             }
         );
 	}
+    //productType为 1时，添加最低服务价格
+    function addLowerServicePrice(){
+        var $proPrice = $page.find('>div.main div.product >div.detail');
+        $.ajax({
+            url: $$.config.serverAddr + 'CSL/Service/QueryServicePriceRange',
+            type: 'POST',
+            async: false,
+            data: {
+                WToken: $$.getToken(),
+                ID: pid
+            },
+            dataType: 'json',
+            success: function(res){
+                if(res.Status == 0){
+                    minPrice = res.Data.min;
+                }
+            }
+        });
+        return minPrice;
+    }
     // 懒加载
     var laszyParam = {
         product: {

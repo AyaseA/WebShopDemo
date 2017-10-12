@@ -44,7 +44,7 @@
                                 <span>{{notAppoint.ProductName}}</span>
                             </p>
                             <p style="color: #c1c1c1;">
-                                {{jsonParseFilter(notAppoint.ProductDescri).title}}
+                                {{typeof(notAppoint.ProductDescri)==="string"?jsonParseFilter(notAppoint.ProductDescri).title:""}}
                             </p>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                                 <span>{{hadAppoint.ProductName}}</span>
                             </p>
                             <p style="color: #c1c1c1;">
-                                {{jsonParseFilter(hadAppoint.ProductDescri).title}}
+                                {{typeof(hadAppoint.ProductDescri)==="string"?jsonParseFilter(hadAppoint.ProductDescri).title:""}}
                             </p>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                                 <span>{{notVerify.ProductName}}</span>
                             </p>
                             <p style="color: #c1c1c1;">
-                                {{jsonParseFilter(notVerify.ProductDescri).title}}
+                                {{typeof(notVerify.ProductDescri)==="string"?jsonParseFilter(notVerify.ProductDescri).title:""}}
                             </p>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                                 <span>{{hadComplite.ProductName}}</span>
                             </p>
                             <p style="color: #c1c1c1;">
-                                {{jsonParseFilter(hadComplite.ProductDescri).title}}
+                                {{typeof(hadComplite.ProductDescri)==="string"?jsonParseFilter(hadComplite.ProductDescri).title:""}}
                             </p>
                         </div>
                     </div>

@@ -130,7 +130,11 @@
 		<div class="info">
 			<p>{{data.Name}}</p>
 			<span>{{descriTxt}}</span>
+			{{if data.ProductType == 1}}
+			<h1><small>￥</small>{{data.Price}}<span>从{{minPrice}}元起</span></h1>
+			{{else}}
 			<h1><small>￥</small>{{data.Price}}</h1>
+			{{/if}}
 		</div>
 		<div class="process">
 			<p>购物流程</p>

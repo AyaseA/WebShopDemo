@@ -4,6 +4,10 @@ $(function() {
 	    pid = $$.getQueryString('pid'),
         productName = '',
         pNum = 1;
+
+    //修改
+    $page.find("div.evaluate li small").html("0");
+    //修改end
     
     // 页面重新显示的一些初始化
     $page.find('>div.header li[data-type=product]') 

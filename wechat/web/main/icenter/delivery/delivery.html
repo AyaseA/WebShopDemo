@@ -12,7 +12,8 @@
 				<span class="userInfo">
 				{{if type == 1}}
 					<p>{{data.Name}} {{data.Mobile}} <span>默认</span></p>
-					<p class="myAddress">{{city.province + city.city + city.county + data.AddressDetail}}</p>
+					<!--修改添加了||“”-->
+					<p class="myAddress">{{(city.province + city.city + city.county + data.AddressDetail)||""}}</p>
 				{{/if}}
 				{{if type == 0}}
 					<p>请添加收货地址</p>

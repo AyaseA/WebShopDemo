@@ -19,6 +19,14 @@ $(function () {
     // 返回按钮
     /*$$.setGoBack($page.find('>div.header >a.goBack'));*/
 
+    //多个地址切换
+    $page.off('click','div.addrList >div')
+        .on('click','div.addrList >div',function(){
+            $(this).addClass('default').siblings().removeClass('default');
+            setDefaultAddr($(this).attr('data-id'), function() {
+                $(this).addClass('default').siblings().removeClass('default');
+            });
+        });
     // 设置默认地址
     $page.on('click dbclick', '>div.main div.item >i', function() {
         var $this = $(this);

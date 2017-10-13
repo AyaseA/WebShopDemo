@@ -101,7 +101,7 @@
     left: 8px;
 }
 #home_address >div.main div.item.default >i {
-    display: none;
+    /*display: none;*/
 }
 #home_address >div.main div.item >span a {
     display: inline-block;

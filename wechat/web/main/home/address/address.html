@@ -19,7 +19,7 @@
         {{if list.length > 0}}
             {{each list as addr}}
                 {{set data = $imports.jsonParseFilter(addr.DataField)}}
-                <div class="item {{addr.ID == userAddressID ? 'default' : ''}}">
+                <div class="item {{addr.ID == userAddressID ? 'default' : ''}}" data-id="{{addr.ID}}">
                     <div>
                         <h4>{{addr.Name}}</h4>
                         <p>{{if addr.Mobile != '0'}}{{addr.Mobile}}{{/if}}{{if addr.Mobile != '0' && addr.Tel != '0'}} / {{/if}}{{if addr.Tel != '0'}}{{addr.Tel}}{{/if}}</p>

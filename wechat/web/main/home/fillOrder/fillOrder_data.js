@@ -218,7 +218,6 @@ $(function() {
                     } else {
                         needDelivery = d.NeedDelivery != null ? (d.NeedDelivery == 1 && d.ProductType == 0 ? true : false) : false
                     }
-
                     $page.find('div.delivery').html(template(pageStr + '_delivery', {
                         needDelivery: needDelivery
                     })).find('>div').width(

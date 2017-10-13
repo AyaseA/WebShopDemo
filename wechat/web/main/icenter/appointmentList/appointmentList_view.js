@@ -10,5 +10,11 @@ $(function(){
 		$(this).addClass("active");
 		$page.find(".content").children().hide();
 		$page.find(".content ."+$(this).attr("data-pane")).show();
-	});	
+		setActiveTab(this);
+	});
+	//ÐÞ¸Ä
+	function setActiveTab(thisD){
+		var _thisTag=$(thisD).attr("data-pane");
+		sessionStorage.setItem("pageTab",_thisTag );
+	}
 });

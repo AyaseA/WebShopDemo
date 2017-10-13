@@ -196,5 +196,9 @@ $(function() {
             }
         });
     }
-
+   //修改
+    var pageTab=sessionStorage.getItem("pageTab");
+    console.log(pageTab);
+    $(" li[data-pane='"+pageTab+"']").addClass("active").siblings("li").removeClass("active");
 });
+

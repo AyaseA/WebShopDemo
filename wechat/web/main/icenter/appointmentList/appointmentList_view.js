@@ -3,6 +3,7 @@ $(function(){
 
 	$page.find(".header a").click(function(){
 		$$.goBack();
+		sessionStorage.setItem("pageTab","");//ÐÞ¸Ä
 	});
 
 	$page.find(".nav ul li").click(function(){

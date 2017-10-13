@@ -36,10 +36,10 @@
         </div>
         <div class="product">
             <div>
-                <p><i></i>{{data.StoreName}}<a href="javascript:void(0)" class="contactService">联系客服</a></p>
+                <p><i></i>{{jsonParseFilter(data.Data).StoreName }}<a href="javascript:void(0)" class="contactService">联系客服</a></p>
                 <div class="clear">
-                    <img src="{{serverAddr}}Img/{{data.StoreImg | imgFilter}}">
-                    <p>{{data.ProductName}}<span>￥{{data.AllMoney}}</span></p>
+                    <img src="{{serverAddr}}Img/{{jsonParseFilter(data.Data).StoreImg | imgFilter }}">
+                    <p>{{jsonParseFilter(data.Data).ProductName }}<span>￥{{jsonParseFilter(data.Data).AllMoney }}</span></p>
                     <p><span>x1</span></p>
                 </div>
                 <p>共1件商品</p>
@@ -47,20 +47,20 @@
         </div>
         <div class="order">
             <div>
-                <p>订单编号：{{data.OrderID}}</p>
-                <p>下单时间：{{data.AddTime | timeFilter}}</p>
+                <p>订单编号：{{jsonParseFilter(data.Data).OrderID }}</p>
+                <p>下单时间：{{data.AddTime }}</p>
             </div>
             <div style="border-top:1px solid #EEE">
-                <p>预约店面：{{data.StoreName}}</p>
+                <p>预约店面：{{jsonParseFilter(data.Data).StoreName }}</p>
                 <p>预约时间：{{appointTime}}</p>
             </div>
         </div>
         <div class="money">
             <div>
-                <p>商品金额<span>￥{{data.AllMoney}}</span></p>
-                <p>优惠<span>-￥{{discount}}</span></p>
+                <p>商品金额<span>￥{{jsonParseFilter(data.Data).AllMoney}}</span></p>
+                <p>优惠<span>-￥{{jsonParseFilter(data.Data).discount}}</span></p>
                 <p class="clear">
-                    <span>￥{{data.OrderOutPocket}}</span>
+                    <span>￥{{jsonParseFilter(data.Data).OrderOutPocket}}</span>
                     <span style="color: #000">实付款：</span>
                 </p>
             </div>
@@ -69,7 +69,7 @@
     <script id="icenter_appointDetail_footer" type="text/html">
         {{if appointStatus == 0}}
         <a href="javascript:void(0)">生成二维码</a>
-        <button>取消预约</buttona>
+        <button>取消预约</button>
         {{/if}}
     </script>
 </div>

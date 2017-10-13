@@ -40,9 +40,9 @@
 			<p>{{val | titleFilter}}</p>
 			<p class="time">{{val.AddTime | timeFilter}}</p>
 			{{if val.InOrOut == 0}}
-			<h3>+{{val.Amount}}</h3>
-			{{else if val.InOrOut == 1}}
 			<h3>-{{val.Amount}}</h3>
+			{{else if val.InOrOut == 1}}
+			<h3>+{{val.Amount}}</h3>
 			{{/if}}
 		</li>
 		{{/each}}

@@ -463,24 +463,6 @@ $(function() {
 
 
 
-        //删除订单
-        $page.off("click", "p.rt").on("click", "p.rt", function(){
-            var orderID=$(this).siblings("span").text();
-            var _this=this;
-                layer.confirm("您确定要删除"+orderID+"这条订单？",function(){
-                    $$.post("CSL/Order/DelOrder",{OrderID:orderID},function(data){
-                        if(data.Status==0){
-                            layer.msg("删除成功");
-                            $(_this).parents("div.onePiece").remove();
-                        }else{
-                            layer.msg("删除失败");
-                        }
-                    });
-                    layer.close();
-                })
-        });
-
-
         //点击全部事件
         $page.off("click", ".allNav").on("click", ".allNav", function() {
             //重置参数
@@ -495,7 +477,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, OrderType: -1 }, ".all", "all");
             }
-
+            setActiveTab(this);
         });
 
         //点击待付款事件
@@ -512,6 +494,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 1, OrderType: -1 }, ".waitPay", "waitPay");
             }
+            setActiveTab(this);
         });
 
         //点击待发货事件
@@ -528,7 +511,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 2, OrderType: -1 }, ".waitPost", "waitPost");
             }
-
+            setActiveTab(this);
         });
 
         //点击待收货
@@ -545,7 +528,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 4, OrderType: -1 }, ".waitGet", "waitGet");
             }
-
+            setActiveTab(this);
         });
 
         //点击待评价
@@ -561,7 +544,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 6, OrderType: -1 }, ".waitRevice", "waitRevice");
             }
-
+            setActiveTab(this);
         });
 
     }
@@ -599,4 +582,30 @@ $(function() {
         }
     }
 
+//修改
+    //删除订单
+    $page.off("click", "p.rt").on("click", "p.rt", function(){
+        var orderID=$(this).siblings("span").text();
+        var _this=this;
+        layer.confirm("您确定要删除"+orderID+"这条订单？",function(){
+            $$.post("CSL/Order/DelOrder",{OrderID:orderID},function(data){
+                if(data.Status==0){
+                    layer.msg("删除成功");
+                    $(_this).parents("div.onePiece").remove();
+                }else{
+                    layer.msg("删除失败");
+                }
+            });
+            layer.close();
+        })
+    });
+
+    function setActiveTab(thisD){
+        var _thisTag=$(thisD).attr("data-toggle");
+        sessionStorage.setItem("OpageTab",_thisTag );
+    }
+
+//修改
+    var pageTab=sessionStorage.getItem("OpageTab");
+    $(" li[data-toggle='"+pageTab+"']").addClass("on").siblings("li").removeClass("on");
 });

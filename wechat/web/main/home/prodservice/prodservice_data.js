@@ -153,11 +153,10 @@ $(function() {
     //productType为 1时，添加最低服务价格
     function addLowerServicePrice(){
         $.ajax({
-            url: $$.config.serverAddr + 'CSL/Service/QueryServicePriceRange',
+            url: $$.config.serverAddr + 'Product/StoreService/QueryServicePriceRange',
             type: 'POST',
             async: false,
             data: {
-                WToken: $$.getToken(),
                 ID: pid
             },
             dataType: 'json',

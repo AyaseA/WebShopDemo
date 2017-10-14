@@ -48,7 +48,7 @@
         <div class="order">
             <div>
                 <p>订单编号：{{jsonParseFilter(data.Data).OrderID }}</p>
-                <p>下单时间：{{data.AddTime }}</p>
+                <p>下单时间：{{data.AddTime |timeFilter}}</p>
             </div>
             <div style="border-top:1px solid #EEE">
                 <p>预约店面：{{jsonParseFilter(data.Data).StoreName }}</p>

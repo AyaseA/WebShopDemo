@@ -7,7 +7,7 @@ $(function() {
         productName = '',
         pNum = 1,
         serviceId = '';
-        var minPrice;
+        var minPrice,Price;
     // 页面重新显示的一些初始化
     $page.find('>div.header li[data-type=product]') 
          .addClass('active').siblings()
@@ -115,11 +115,13 @@ $(function() {
                         descriTxt = d.Descri.text ? Base64.decode(unescape(d.Descri.text)) : '';
                         descriImgs = d.Descri.imgs ? d.Descri.imgs.split(',') : '';
                     }
+                    Price = (parseInt(parseInt(parseFloat(d.Price)*100)+parseInt(parseFloat(minPrice)*100))/100).toFixed(2);
                     $page.find('>div.main div.product >div.detail').html(
                         template(pageStr + '_product_info', {
                             serverAddr: $$.config.serverAddr,
                             data: d,
                             minPrice: minPrice,
+                            Price: Price,
                             descriTitle: descriTitle,
                             descriTxt: descriTxt
                     }));

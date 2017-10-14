@@ -109,16 +109,21 @@
 	height: 100%;
 	display: inline-block;
 	vertical-align: top;
+	margin-left: 10vw;
+
 }
 
 #icenter_delivery .carInfo .myCar{
 	font-size: 3.8vw;
-	width: 60vw;
+	/*width: 60vw;*/
 	height: 100%;
 	display: inline-block;
 	text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+	/*ÐÞ¸Ä*/
+	width: 79vw;
+
 }
 
 #icenter_delivery .carInfo .moreCar{

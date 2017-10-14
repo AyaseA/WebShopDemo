@@ -33,7 +33,7 @@ $(function() {
         }
     });
 
-    if (UserAddressID != 0) {
+    if (UserAddressID) {
         $$.post("CSL/UserInfo/QueryAddressDetail", { ID: UserAddressID }, function(txt) {
             var addressInfo,
             city;
@@ -62,7 +62,7 @@ $(function() {
           $page.find(".moreAddress src").attr("src", "images/common/round_add.png");*/
     }
 
-    if (carID != 0) {
+    if (carID) {
         $$.post("CSL/UserInfo/QueryCarDetail", { ID: carID }, function(txt) {
             var carinfo = JSON.parse(txt.Data.Data);
             $page.find(".carInfo").html(

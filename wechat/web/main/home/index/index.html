@@ -90,11 +90,11 @@
 			<img src="{{serverAddr}}Img/{{$imports.smallSize(val.Img) | imgFilter}}">
 			<p>{{val.Name}}</p>
             {{if val.ProductType == 0}}
-            <a href="home/fillOrder.html?pid={{val.ID}}&type={{val.ProductType}}">立即购买</a>
+            <a href="home/fillOrder.html?pid={{val.ID}}&num=1&type=0">立即购买</a>
             {{else if val.ProductType == 1}}
-            <a href="home/prodservice.html?pid={{val.ID}}">立即购买</a>
+            <a href="home/prodservice.html?pid={{val.ID}}&num=1&type=1">立即购买</a>
             {{else if val.ProductType == 5}}
-            <a href="home/fillOrder.html?pid={{val.ID}}">立即购买</a>
+            <a href="home/fillOrder.html?pid={{val.ID}}&num=1&type=5">立即购买</a>
             {{/if}}
 		</div>
 		{{/each}}

@@ -16,7 +16,7 @@ $(function() {
         serviceDate = '',
         serviceTime = '',
         needDelivery = false;
-
+    
     var userInfo,inputVal;
     $$.post("CSL/User/GetInfoByToken", {}, function(txt) {
         userInfo = JSON.parse(Base64.decode(unescape(txt.Data.Info)));

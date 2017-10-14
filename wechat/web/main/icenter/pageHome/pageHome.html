@@ -200,9 +200,9 @@
 				<span class="order_business">待收货</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_4">
-				{{if d.NotReviewCount0 && d.NotReviewCount0 > 0}}
-				<div class="order_top_tips" id="assessment">{{d.NotReviewCount0}}</div>
-				{{/if}}
+				<!--{{if d.NotReviewCount0 && d.NotReviewCount0 > 0}}-->
+				<!--<div class="order_top_tips" id="assessment">{{d.NotReviewCount0}}</div>-->
+				<!--{{/if}}-->
 				<img src="./images/center/round_check.png" alt="" class="order_control">
 				<span class="order_business">已完成</span>
 			</div>
@@ -220,9 +220,9 @@
 				<span class="order_business">可用服务</span>
 			</div>
 			<div class="order_img_span" id="order_img_span_7">
-				<!--{{if d.MyAppoint0 && d.MyAppoint0 > 0}}-->
-				<!--<div class="order_top_tips" id="deliverGoods">{{d.MyAppoint0}}</div>-->
-				<!--{{/if}}-->
+				{{if d.MyAppoint0 && d.MyAppoint0 > 0}}
+				<div class="order_top_tips" id="deliverGoods">{{d.MyAppoint0}}</div>
+				{{/if}}
 				<img src="./images/center/remind.png" alt="" class="order_control">
 				<span class="order_business">已预约</span>
 			</div>

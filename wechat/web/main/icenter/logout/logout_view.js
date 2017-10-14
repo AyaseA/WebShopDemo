@@ -1,6 +1,7 @@
 !(function() {
     var url = $$.config.serverAddr,
-        isLogout = true;
+        isLogout = true,
+        token=$$.getToken();
     if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {
         isLogout = false;
         $('.logout_but').text('解除绑定');
@@ -22,6 +23,22 @@
         } else {
             layer.msg("已经是最新版本了");
         }
+    });
+    //清空缓存
+    $('.clearCache').click(function(){
+        $.ajax({
+            type: "POST",
+            data:{
+                WToken: token
+            },
+            url: url+"CSL/User/FlushRedisByUserID",
+            success: function(res) {
+                var txt = JSON.parse(res);
+                if(txt.Status == 0){
+                    layer.msg("已清空缓存");
+                }
+            }
+        })
     });
     $('.logout_but').off('click').on('click', function() {
         layer.confirm(isLogout ? '确认退出登录？' : '确认解除绑定？', { icon: 3, title: '提示' }, function(index) {

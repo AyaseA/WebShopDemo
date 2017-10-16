@@ -18,7 +18,6 @@ $(function() {
         acont = $$.getQueryString("acont");
 
     var locationInfo = $$.getLocationInfo();
-
     //购买服务选择店面
     if (storeid != 0) {
         $page.find(".selectStore").hide();
@@ -202,7 +201,6 @@ $(function() {
             }
         });
     }
-
     if(atype != 6){
         geturl = "Product/Info/QueryCalendarList?type=" + atype;
     } else {

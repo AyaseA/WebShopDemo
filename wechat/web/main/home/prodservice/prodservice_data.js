@@ -162,6 +162,9 @@ $(function() {
             dataType: 'json',
             success: function(res){
                 if(res.Status == 0){
+                    if(res.Data.min===null){
+                        res.Data.min = 0.00;
+                    }
                     minPrice = res.Data.min;
                 }
             }

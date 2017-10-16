@@ -7,7 +7,8 @@ $(function() {
     }, function() {}, 1);
 
     var carID = userInfo.UserCarID,
-        UserAddressID = userInfo.UserAddressID;
+        //UserAddressID = userInfo.UserAddressID;
+         UserAddressID = $$.getUserInfo().UserAddressID;//修改
     $page.find(".addressInfo").attr("data-id", UserAddressID);
     $page.find(".carInfo").attr("data-id", carID);
 

@@ -52,11 +52,11 @@
                         {{if !notAppoint.AppointID}}
                         <button class="makeCode" data-id={{notAppoint.ID}} data-num={{notAppoint.ServiceNum}}>生成二维码</button>
                         	{{if notAppoint.StoreID}}
-	                        <button class="appointBtn" data-id={{notAppoint.ID}}  data-num={{notAppoint.ServiceNum}} data-pid={{(notAppoint.ProductID)}} data-storeid={{notAppoint.StoreID}} data-stype={{notAppoint.ServiceType}} data-atype={{notAppoint.AppointType}} data-acont={{notAppoint.AppointCont}}>
+	                        <button class="appointBtn" data-id="{{notAppoint.ID}}"  data-num="{{notAppoint.ServiceNum}}" data-pid="{{(notAppoint.ProductID)}}" data-storeid="{{notAppoint.StoreID}}" data-stype="{{notAppoint.ServiceType}}" data-atype="{{notAppoint.AppointType}}" data-acont="{{notAppoint.AppointCont}}">
 	                        预约服务</button>
                         	{{/if}}
                         	{{if !notAppoint.StoreID}}
-                        	<button class="appointBtn" data-id={{notAppoint.ID}} data-num={{notAppoint.ServiceNum}} data-pid={{notAppoint.ProductID}} data-storeid="0" data-stype={{notAppoint.ServiceType}} data-atype={{notAppoint.AppointType}} data-acont={{notAppoint.AppointCont}}>
+                        	<button class="appointBtn" data-id="{{notAppoint.ID}}" data-num="{{notAppoint.ServiceNum}}" data-pid="{{notAppoint.ProductID}}" data-storeid="0" data-stype="{{notAppoint.ServiceType}}" data-atype="{{notAppoint.AppointType}}" data-acont="{{notAppoint.AppointCont}}">
 	                        预约服务</button>
                         	{{/if}}
                             <button class="postBtn" data-id={{notAppoint.ID}}  data-num={{notAppoint.ServiceNum}} data-NeedDelivery={{notAppoint.ProductNeedDelivery}} data-DeliveryTime={{notAppoint.DeliveryTime}}>邮寄商品</button>

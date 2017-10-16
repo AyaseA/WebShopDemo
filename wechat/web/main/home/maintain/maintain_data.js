@@ -88,9 +88,9 @@ $(function() {
 	//修改
 	function QueryPackageList(pcarData){
 		$page.find('div.pro_more').show();
-		var proMore = $page.find('div.pro_more>div.proMoreContainer');
-		var newArry=[];
-		var maxPrice=0;
+		var proMore = $page.find('div.pro_more>div.proMoreContainer'),
+		    newArry=[],
+			maxPrice= 0;
         $$.get(
 			"Product/Info/QueryPackageList",
 			function(res){
@@ -99,23 +99,46 @@ $(function() {
 				}
 				var  DataList=res.Data;
 				if(res.Data){
+					//取配的最大价格
                    for(var i = 0;i < pcarData.length;i ++){
 					   var pI = parseInt( pcarData[i].Price);
 					   if(pI > maxPrice){
 						   maxPrice=pI;
 					   }
 				   }
+
+					//取所有套餐中价格大于最大价格的
 					for(var j = 0;j < DataList.length;j ++){
 						var dJ = parseInt(DataList[j].Price) ;
 						if(dJ > maxPrice){
 							newArry.push(DataList[j]);
 						}
 					}
-					addHtml(newArry,proMore);
+					//取所有中价格最低的
+					if(newArry.length == 1){
+						$page.find("div.pro_more>h4 ").show();
+						addHtml(newArry,proMore);
+					}else if(newArry.length == 0){
+						$page.find("div.pro_more>h4 ").hide();
+						addHtml(newArry,proMore);
+					} else{
+						$page.find("div.pro_more>h4 ").show();
+						var tjArry;
+						var tuijian=parseInt(newArry[0].Price);
+						for(var k = 1; k < newArry.length; k++){
+							if( parseInt(newArry[k].Price) < parseInt(newArry[0].Price) ){
+								tuijian=newArry[k].Price;
+								tjArry=newArry[k]
+							}
+						}
+						addHtml([tjArry],proMore);
+					}
+
 				}
 			}
 		);
 	}
+
     function addHtml(addData,addDOM){
 		addData.forEach(function(item) {
 			var descri = '';

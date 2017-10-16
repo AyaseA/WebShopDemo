@@ -65,7 +65,7 @@ $(function(){
     function getProductsList(pn, ps) {
         var $proBox = $page.find('>div.main >div.content >div.products');
         $$.get(
-            'Product/Prod/QueryProdList?N=' + pn + '&Rows=' + ps + '&ProductType=-1&Enable=1',
+            'Product/Prod/QueryProdList?N=' + pn + '&Rows=' + ps + '&ProductType=5&Enable=1',
             function(res) {
                 if (res.Status != 0) {
                     console.log('获取商品信息失败');

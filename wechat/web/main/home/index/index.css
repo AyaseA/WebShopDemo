@@ -415,3 +415,10 @@
     border-left: 1px solid #DCDADD;
     color: #2FB823;
 }
+/*修改*/
+#home_index >div.main >div.content .products div.item p{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

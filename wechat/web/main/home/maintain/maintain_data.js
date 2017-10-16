@@ -106,7 +106,6 @@ $(function() {
 						   maxPrice=pI;
 					   }
 				   }
-
 					//取所有套餐中价格大于最大价格的
 					for(var j = 0;j < DataList.length;j ++){
 						var dJ = parseInt(DataList[j].Price) ;

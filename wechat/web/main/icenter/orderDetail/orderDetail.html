@@ -155,10 +155,10 @@
         {{/if}}
         </div>
     </script>
-    </script>
+
     <script id="icenter_orderDetail_footer" type="text/html">
         {{if canPay}}
-        <a href="home/payCenter.html?oid={{d.orderId}}">去支付</a>
+        <a href="home/payCenter.html?oid={{d.ID}}">去支付</a>
         {{/if}}
         {{if canCancel}}
         <button class="cancelOrder" data-id="{{d.orderId}}">取消订单</button>

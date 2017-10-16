@@ -21,7 +21,7 @@
             	</div>
             	{{/if}}
                 {{each notAppointData as notAppoint}}
-                <div class="oneAppoint">
+                <div class="oneAppoint" data-id={{notAppoint.ID}} data-num={{notAppoint.ServiceNum}}>
                     <div class="appointHeader">
                         <p class="orderID">
                             <span>订单编号：<span>{{notAppoint.OrderID}}</span></span>

@@ -217,16 +217,18 @@ $(function() {
     $(" li[data-pane='"+pageTab+"']").addClass("active").siblings("li").removeClass("active");
     //订单是否确认的ajax
     function confrimOrderAjax(orderId,num){
+        alert(123);
         $.ajax({
             url: $$.serverAddr + "CSL/Service/ConfirmMyService",
             type: "POST",
             data: {
                 WToken: $$.getToken(),
-                ID: sid,
+                ID: orderId,
                 ServiceNum: num
             },
             dataType: "json",
             success: function(txt) {
+                alert(txt);
             }
         });
     }

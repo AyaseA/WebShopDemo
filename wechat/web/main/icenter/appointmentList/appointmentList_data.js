@@ -21,7 +21,7 @@ $(function() {
         showArea("notAppoint");
     }
 
-    $page.off("click", ".appointFoot .appointBtn").on("click", ".appointFoot .appointBtn", function() {
+    $page.off("click", ".appointFoot .appointBtn").on("click", ".appointFoot .appointBtn", function(e) {
         var sid = $(this).attr("data-id"),
             pid = $(this).attr("data-pid"),
             storeid = $(this).attr("data-storeid"),
@@ -29,22 +29,35 @@ $(function() {
             appointType = $(this).attr("data-atype"),
             appointCont = $(this).attr("data-acont");
         $$.redirect("icenter/appointServer.html?sid=" + sid + "&pid=" + pid + "&storeid=" + storeid + "&stype=" + serviceType + "&atype=" + appointType +"&acont=" + appointCont);
+        confrimOrderAjax($(this).attr("data-id"), $(this).attr("data-num"));//修改
+        e.preventDefault();
+        e.stopPropagation();
     });
 
-    $page.off("click", ".appointFoot .makeCode").on("click", ".appointFoot .makeCode", function() {
+    $page.off("click", ".appointFoot .makeCode").on("click", ".appointFoot .makeCode", function(e) {
         makeCode($(this).attr("data-id"), $(this).attr("data-num"));
+        confrimOrderAjax($(this).attr("data-id"), $(this).attr("data-num"));//修改
+        e.preventDefault();
+        e.stopPropagation();
     });
 
-    $page.off("click", ".appointFoot .checkAppoint").on("click", ".appointFoot .checkAppoint", function() {
+    $page.off("click", ".appointFoot .checkAppoint").on("click", ".appointFoot .checkAppoint", function(e) {
         $$.redirect("icenter/appointDetail.html?aid=" + $(this).attr("data-id"));
+        confrimOrderAjax($(this).attr("data-id"), $(this).attr("data-num"));//修改
+        e.preventDefault();
+        e.stopPropagation();
+
     });
 
-    $page.off("click",".oneAppoint .appointContent").on("click",".oneAppoint .appointContent",function(){
+    $page.off("click",".oneAppoint .appointContent").on("click",".oneAppoint .appointContent",function(e){
         var orderId = $(this).attr("data-id");
         $$.redirect("icenter/serverDetail.html?oid=" + orderId);
+        confrimOrderAjax($(this).attr("data-id"), $(this).attr("data-num"));//修改
+        e.preventDefault();
+        e.stopPropagation();
     });
 
-    $page.off("click", ".appointFoot .postBtn").on("click", ".appointFoot .postBtn", function() {
+    $page.off("click", ".appointFoot .postBtn").on("click", ".appointFoot .postBtn", function(e) {
         var deliveryTime = $(this).attr("data-DeliveryTime");
         var sid = $(this).attr("data-id");
         var ProductNeedDelivery = $(this).attr("data-NeedDelivery");
@@ -66,6 +79,9 @@ $(function() {
         }else{
             $$.redirect("icenter/delivery.html?sid=" + sid);
         }
+        confrimOrderAjax($(this).attr("data-id"), $(this).attr("data-num"));//修改
+        e.preventDefault();
+        e.stopPropagation();
     });
 
     $$.post("CSL/Service/QueryMyServiceList", { Status: 0, N: 1, Rows: 30 }, function(txt) {
@@ -199,5 +215,20 @@ $(function() {
    //修改
     var pageTab=sessionStorage.getItem("pageTab");
     $(" li[data-pane='"+pageTab+"']").addClass("active").siblings("li").removeClass("active");
+    //订单是否确认的ajax
+    function confrimOrderAjax(orderId,num){
+        $.ajax({
+            url: $$.serverAddr + "CSL/Service/ConfirmMyService",
+            type: "POST",
+            data: {
+                WToken: $$.getToken(),
+                ID: sid,
+                ServiceNum: num
+            },
+            dataType: "json",
+            success: function(txt) {
+            }
+        });
+    }
 });
 

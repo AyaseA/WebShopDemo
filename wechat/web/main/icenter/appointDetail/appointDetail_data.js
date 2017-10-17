@@ -44,7 +44,6 @@ $(function () {
 				'ID': appointId
 			},
 			function(res) {
-                console.log(res);
 				if (res.Status != 0) {
                     return false;
                 }

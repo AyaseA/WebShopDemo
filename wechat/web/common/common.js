@@ -1159,6 +1159,16 @@ Date.prototype.pattern = function(fmt) {
             return str[0] + ".M." + str[1];
         }
     };
+    //字符串过滤器
+    //template.defaults.imports.stringFilter = function(key) {
+    //    console.log(11111);
+    //    if(typeof (key) ==="undefined"||typeof (key) ==="object"||typeof (key) !=="string"||key.length==0){
+    //        console.log(222);
+    //        return "";
+    //    }
+    //    else
+    //        return key;
+    //};
     /* artTemplate 相关过滤器 start */
     win.$$ = $$;
 

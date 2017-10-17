@@ -184,6 +184,7 @@ $(function() {
                     clearInterval(time);
                     hadChicked = false;
                     $$.redirect("icenter/checkSucc.html");
+                    sessionStorage.setItem("OpageTab","");//修改
                 } else if (txt.Status == -1) {
                     clearInterval(time);
                     $$.authConfirm();

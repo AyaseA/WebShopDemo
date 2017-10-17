@@ -259,6 +259,5 @@ $(function() {
             }
         }
     }
-    //修改
-    $page.find("div.content div.selectStore").show();
+  
 });

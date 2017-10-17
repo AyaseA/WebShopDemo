@@ -94,10 +94,10 @@
                         <div class="appointInfo">
                             <p>
                                 服务名称:
-                                <span>{{hadAppoint.ProductName}}</span>
+                                <span>{{hadAppoint.Data.ProductName}}</span>
                             </p>
                             <p style="color: #c1c1c1;">
-                                {{typeof(hadAppoint.ProductDescri)==="string"?jsonParseFilter(hadAppoint.ProductDescri).title:""}}
+                                {{typeof(hadAppoint.Data.ProductDescri)==="string"?jsonParseFilter(hadAppoint.Data.ProductDescri).title:""}}
                             </p>
                         </div>
                     </div>
@@ -132,10 +132,10 @@
                         <div class="appointInfo">
                             <p>
                                 服务名称:
-                                <span>{{notVerify.ProductName}}</span>
+                                <span>{{notVerify.Data.ProductName}}</span>
                             </p>
                             <p style="color: #c1c1c1;">
-                                {{typeof(notVerify.ProductDescri)==="string"?jsonParseFilter(notVerify.ProductDescri).title:""}}
+                                {{typeof(notVerify.Data.ProductDescri)==="string"?jsonParseFilter(notVerify.Data.ProductDescri).title:""}}
                             </p>
                         </div>
                     </div>

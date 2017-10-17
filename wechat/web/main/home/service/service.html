@@ -36,7 +36,7 @@
     <script id="home_service_products" type="text/html">
 		{{each list as val i}}
 		<div class="item" data-id="{{val.ID}}">
-			<img src="{{serverAddr}}Img/{{val.Img | imgFilter}}">
+			<img src="{{serverAddr}}Img/{{val.Img |smallImg| imgFilter}}">
 			<p>{{val.Name}}<small>{{val.desc}}</small></p>
             <span>￥{{val.Price}}</span>
 			<a href="home/prodservice.html?pid={{val.ID}}">立即购买</a>

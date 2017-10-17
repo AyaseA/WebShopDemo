@@ -66,4 +66,12 @@ $(function(){
             }
         );
     }
+    template.defaults.imports.smallImg = function(url) {
+         url=url.split(".");
+        if(url.length<2){
+            return "";
+        }else {
+            return url[0] + ".M." + url[1];
+        }
+    };
 });

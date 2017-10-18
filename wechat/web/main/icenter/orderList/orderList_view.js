@@ -4,6 +4,6 @@ $(function() {
         
 	$page.find('div.header >a').click(function(){
 		$$.redirect("icenter/pageHome.html");
-		sessionStorage.setItem("OpageTab","");//ÐÞ¸Ä
+		sessionStorage.setItem("pageTab","");//ÐÞ¸Ä
 	});
 });

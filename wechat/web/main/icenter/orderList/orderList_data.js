@@ -624,6 +624,6 @@ $(function() {
     }
 
 //修改
-    var pageTab=sessionStorage.getItem("OpageTab");
+    var pageTab=sessionStorage.getItem("pageTab");
     $(" li[data-toggle='"+pageTab+"']").addClass("on").siblings("li").removeClass("on");
 });

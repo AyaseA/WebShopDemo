@@ -19,7 +19,9 @@
                 <img src="{{serverAddr + 'Img/' + $imports.smallSize(data.ProductImg)}}">
                 <div class="productInfo">
                     <p><span>商品名称:{{data.ProductName}}</span></p>
-                    <p class="productDescri">商品描述:{{$imports.jsonParseFilter(data.ProductDescri).title}}</p>
+                    <p class="productDescri">商品描述:
+                        {{data.ProductDescri | ProductDescriFilter}}
+                    </p>
                 </div>
             </div>
             <div class="infoFoot">

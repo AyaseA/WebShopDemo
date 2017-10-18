@@ -7,6 +7,7 @@ $(function(){
     var oid = $$.getQueryString("oid");
 
     $$.post("CSL/Service/QueryUserServiceDetail",{ ID:oid },function (txt){
+        console.log(txt);
         if(txt.Status == 0){
             $page.find(".content").html(
                 template("icenter_serverDetail_content",{
@@ -23,4 +24,16 @@ $(function(){
             );
         }
     });
+    template.defaults.imports.ProductDescriFilter=function(val){
+        if(typeof(val)==="string" ){
+            var ProDescri=$$.eval(val);
+            if(typeof(ProDescri)==="string" ){
+                return $$.eval(ProDescri).title;
+            }else{
+                return "";
+            }
+        }else{
+            return "";
+        }
+    }
 });

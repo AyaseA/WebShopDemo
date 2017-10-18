@@ -3,6 +3,7 @@ $(function(){
 	
 	$page.find(".header a").click(function(){
         $$.redirect("icenter/pageHome.html");
+		sessionStorage.setItem("pageTab","");
     });
 
 	$page.on("click",".nav ul li",function(){

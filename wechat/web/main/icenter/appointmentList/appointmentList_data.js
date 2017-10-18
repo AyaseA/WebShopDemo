@@ -97,6 +97,7 @@ $(function() {
     });
 
     $$.post("CSL/Service/QueryMyServiceList", { Status: 1, N: 1, Rows: 30 }, function(txt) {
+        console.log(txt);
         $page.find(".hadComplite").html(
             template('icenter_appointmentList_hadComplite', {
                 hadCompliteData: txt.Data.Rows,

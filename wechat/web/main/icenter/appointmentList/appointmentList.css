@@ -132,7 +132,7 @@
 
 #icenter_appointmentList .content .oneAppoint .appointFoot{
 	height: 10vw;
-	padding: 0 5vw;
+	padding: 0 3vw;
 	box-sizing: border-box;
 	line-height: 10vw;
 }
@@ -199,7 +199,6 @@
 	border-radius: 6vw;
 	float: right;
 	margin-top: 2vw;
-	margin-left: 2vw;
 	color: #F60;
 	border: 1px solid #F60;
 }

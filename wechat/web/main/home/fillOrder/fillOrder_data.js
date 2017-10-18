@@ -363,7 +363,6 @@ $(function() {
                 'Data': callCode ? ('{QRID: ' + callCode + '}') : ''
             },
             function(res) {
-                console.log(res);
                 if (res.Status != 0) {
                     return false;
                 }
@@ -379,7 +378,6 @@ $(function() {
             }
         );
     }
-
     function appointment(sid, calback) {
         var platform = 13;
         if (navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i)) {

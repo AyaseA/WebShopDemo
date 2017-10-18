@@ -4,7 +4,7 @@ $(function() {
         pageStr = 'home_recommend',
         headerHeight = $page.find('>div.header').height(),
         w = $page.width();
-        console.log(w);
+
     // 设置界面高度
     $page.find('>div.main').height(
         bodyHeight - headerHeight - 1

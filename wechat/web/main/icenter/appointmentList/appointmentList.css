@@ -190,3 +190,16 @@
 .layui-layer-dialog{
 	z-index: 9999999999999999 !important;
 }
+/*ÐÞ¸Ä*/
+#icenter_appointmentList div.hadComplite button.PingJiaBtn{
+	width: 25vw;
+	background: none;
+	outline: none;
+	height: 7vw;
+	border-radius: 6vw;
+	float: right;
+	margin-top: 2vw;
+	margin-left: 2vw;
+	color: #F60;
+	border: 1px solid #F60;
+}

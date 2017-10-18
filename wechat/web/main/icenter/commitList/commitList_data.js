@@ -211,5 +211,7 @@ $(function() {
             }
         });
     }
-
+    //修改
+    var comUrl =$$.getQueryString("tab");
+    $page.find("li[data-content="+comUrl+"]").addClass("active").siblings().removeClass("active");
 });

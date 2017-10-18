@@ -18,4 +18,7 @@ $(function(){
 		var _thisTag=$(thisD).attr("data-pane");
 		sessionStorage.setItem("pageTab",_thisTag );
 	}
+	$page.off("click","div.hadComplite button.PingJiaBtn").on("click ","div.hadComplite button.PingJiaBtn",function(){
+		$$.redirect("icenter/commitList.html?tab=serverRevice ");
+	})
 });

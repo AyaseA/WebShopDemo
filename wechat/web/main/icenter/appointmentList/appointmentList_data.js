@@ -107,6 +107,7 @@ $(function() {
     });
 
     $$.post("CSL/Appointment/QueryAppointList", { Status: 0, N: 1, Rows: 30 }, function(txt) {
+        console.log(txt);
         $page.find(".hadAppoint").html(
             template('icenter_appointmentList_hadAppoint', {
                 hadAppointData: txt.Data.Rows,
@@ -230,6 +231,18 @@ $(function() {
             success: function(txt) {
             }
         });
+    }
+    template.defaults.imports.ProductDescriFilter=function(val){
+        if(typeof(val)==="string" ){
+           var ProDescri=$$.eval(val).ProductDescri;
+            if(typeof(ProDescri)==="string" ){
+              return $$.eval(ProDescri).title;
+            }else{
+                return "";
+            }
+        }else{
+            return "";
+        }
     }
 });
 

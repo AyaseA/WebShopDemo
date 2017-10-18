@@ -7,19 +7,18 @@ $(function(){
     var oid = $$.getQueryString("oid");
 
     $$.post("CSL/Service/QueryUserServiceDetail",{ ID:oid },function (txt){
-        console.log(txt);
         if(txt.Status == 0){
             $page.find(".content").html(
                 template("icenter_serverDetail_content",{
                     data: txt.Data,
                     serverAddr : $$.serverAddr,
-                    orderID : oid,
+                    orderID : oid
                 })
             );
 
             $page.find(".foot").html(
                 template("icenter_serverDetail_content",{
-                    data:txt.Data,
+                    data:txt.Data
                 })
             );
         }

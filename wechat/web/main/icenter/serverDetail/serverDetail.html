@@ -12,7 +12,7 @@
     <script type="text/html" id="icenter_serverDetail_content">
         <div class="orderinfo">
             <div class="infoHeader">
-                <p class="orderNum">订单号:{{data.OrderID}}<span>剩余服务次数:{{data.ServiceNum}}</span></p>
+                <p class="orderNum">订单号:{{data.OrderID}}<span>已完成第{{data.ServiceNum}}次服务</span></p>
                 <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
             </div>
             <div class="infoContent">
@@ -32,10 +32,9 @@
             <p>服务编号: {{orderID}}</p>
             <p>过期时间: {{$imports.timeFilter(data.Expired)}}</p>
         </div>
-        <div class="count">
-            
-            <p>剩余邮寄商品次数:{{data.LeftDeliveryNum}}</p>
-        </div>
+        <!--<div class="count">-->
+            <!--<p>剩余邮寄商品次数:{{data.LeftDeliveryNum}}</p>-->
+        <!--</div>-->
         <div class="price">
             <p><span>商品金额</span><span class="money">￥{{data.ProductPrice}}</span></p>
             <p><span>优惠金额</span><span class="money">￥{{(data.AllMoney - data.OrderOutPocket) | floatFilter}}</span></p>

@@ -135,7 +135,8 @@
                                 <span>{{typeof(notVerify.Data)==="string"?jsonParseFilter(notVerify.Data).ProductName:""}}</span>
                             </p>
                             <p style="color: #c1c1c1;">
-                                {{typeof(notVerify.Data)==="string"?jsonParseFilter(notVerify.Data).ProductDescri.title:""}}
+                                {{notVerify.Data |ProductDescriFilter}}
+
                             </p>
                         </div>
                     </div>

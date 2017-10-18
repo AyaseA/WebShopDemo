@@ -16,7 +16,7 @@ $(function() {
         serviceDate = '',
         serviceTime = '',
         needDelivery = false;
-    var userInfo,inputVal;
+    var userInfo,inputVal,actualPrice,pType;
     $$.post("CSL/User/GetInfoByToken", {}, function(txt) {
         userInfo = JSON.parse(Base64.decode(unescape(txt.Data.Info)));
     }, function() {}, 1);
@@ -179,6 +179,8 @@ $(function() {
                 if (res.Data) {
                     var d = res.Data,
                         descri = '';
+                    actualPrice = res.Data.Price;
+                    pType = res.Data.ProductType;
                     if (orderType == 1) {
                         total = parseFloat(d.NewPrice);
                         if (d.StoreDescri) {
@@ -228,14 +230,13 @@ $(function() {
     }
     // 优惠券
     function getValueVoucher() {
-        $$.post(
-            'CSL/ValueVoucher/QueryValueVoucherJson',
-            {},
-            function(res) {
+        $$.post('CSL/ValueVoucher/QueryTestValueVouche',
+            {Price:actualPrice, ProductType:pType, ProductIDs:productId + '_' + productNum},
+            function(res){
                 if (res.Status != 0) {
                     return false;
                 }
-                if (res.Data) {
+                if(res.Data){
                     var usableCoupons = [],
                         disabledCoupons = [],
                         nowTime = new Date().pattern('yyyy-MM-dd');
@@ -283,8 +284,64 @@ $(function() {
                         })
                     );
                 }
-            }
-        );
+            });
+        //$$.post(
+        //    'CSL/ValueVoucher/QueryValueVoucherJson',
+        //    {},
+        //    function(res) {
+        //        if (res.Status != 0) {
+        //            return false;
+        //        }
+        //        if (res.Data) {
+        //            var usableCoupons = [],
+        //                disabledCoupons = [],
+        //                nowTime = new Date().pattern('yyyy-MM-dd');
+        //            res.Data.Status0.forEach(function(item) {
+        //                item = JSON.parse(item.DataVoucherData);
+        //                var coupon = {
+        //                    ID: item.ID,
+        //                    Name: item.Name,
+        //                    Descri: item.Descri,
+        //                    AboveNum: item.AboveNum,
+        //                    Discount: item.Discount,
+        //                    TimeStart: $$.timeToStr(item.TimeStart),
+        //                    TimeEnd: $$.timeToStr(item.TimeEnd)
+        //                };
+        //                if (coupon.AboveNum <= total &&
+        //                    nowTime >= coupon.TimeStart &&
+        //                    nowTime <= coupon.TimeEnd) {
+        //                    usableCoupons.push(coupon);
+        //                } else {
+        //                    disabledCoupons.push(coupon);
+        //                }
+        //            });
+        //            res.Data.Status1.forEach(function(item) {
+        //                item = JSON.parse(item.DataVoucherData);
+        //                disabledCoupons.push({
+        //                    ID: item.ID,
+        //                    Name: item.Name,
+        //                    Descri: item.Descri,
+        //                    AboveNum: item.AboveNum,
+        //                    Discount: item.Discount,
+        //                    TimeStart: $$.timeToStr(item.TimeStart),
+        //                    TimeEnd: $$.timeToStr(item.TimeEnd)
+        //                });
+        //            });
+        //            $page.find('div.couponModal div.usable').html(
+        //                template(pageStr + '_coupon_item', {
+        //                    list: usableCoupons,
+        //                    enable: true
+        //                })
+        //            );
+        //            $page.find('div.couponModal div.disabled').html(
+        //                template(pageStr + '_coupon_item', {
+        //                    list: disabledCoupons,
+        //                    enable: false
+        //                })
+        //            );
+        //        }
+        //    }
+        //);
     }
     // 添加订单
     function addOrder(calback) {

@@ -94,7 +94,6 @@ $(function () {
     //未预约
     function makeCode() {
         var imgurl = $$.serverAddr + "CSL/Service/QueryMyServiceImgByAID?ID=" + appointId + "&WToken=" + $$.getToken()+ "&t=" + Math.random();
-        console.log(imgurl)
         var codeTime = 120;
         var checkTime = 0;
         time = setInterval(function() {

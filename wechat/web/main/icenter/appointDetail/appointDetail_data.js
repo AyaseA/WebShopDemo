@@ -101,18 +101,18 @@ $(function () {
             checkTime += 1;
 
             if (checkTime < 15) {
-                checkServiceCode(serviceId);
+                checkServiceCode(serviceId,serviceNum);
             } else if (checkTime > 15 && checkTime < 30) {
                 if (checkTime % 2 == 0) {
-                    checkServiceCode(serviceId);
+                    checkServiceCode(serviceId,serviceNum);
                 }
             } else if (checkTime > 30 && checkTime < 60) {
                 if (checkTime % 3 == 0) {
-                    checkServiceCode(serviceId);
+                    checkServiceCode(serviceId,serviceNum);
                 }
             } else {
                 if (checkTime % 4 == 0) {
-                    checkServiceCode(serviceId);
+                    checkServiceCode(serviceId,serviceNum);
                 }
             }
 
@@ -134,7 +134,7 @@ $(function () {
         });
     }
 
-    function checkServiceCode(sid) {
+    function checkServiceCode(sid,num) {
         $.ajax({
             url: $$.serverAddr + "CSL/Service/ConfirmMyService",
             type: "POST",

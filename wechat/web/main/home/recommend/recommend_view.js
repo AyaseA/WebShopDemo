@@ -4,6 +4,7 @@ $(function() {
         pageStr = 'home_recommend',
         headerHeight = $page.find('>div.header').height(),
         w = $page.width();
+        console.log(w);
     // 设置界面高度
     $page.find('>div.main').height(
         bodyHeight - headerHeight - 1
@@ -104,9 +105,12 @@ $(function() {
     $page.find('map').html(template(pageStr + '_map_area', {
         btn1Coords: w * 0.04 + ',' + w * 1.267 + ',' + w * 0.96 + ',' + w * 1.389,
         btn2Coords: w * 0.48 + ',' + w * 1.693 + ',' + w * 0.827 + ',' + w * 1.747,
-        btn3Coords: w * 0.467 + ',' + w * 4.312 + ',' + w * 0.72 + ',' + w * 4.36,
-        btn4Coords: w * 0.467 + ',' + w * 4.544 + ',' + w * 0.747 + ',' + w * 4.587,
-        btn5Coords: w * 0.04 + ',' + w * 4.741 + ',' + w * 0.96 + ',' + w * 4.859
+        //btn3Coords: w * 0.467 + ',' + w * 4.312 + ',' + w * 0.72 + ',' + w * 4.36,
+        //btn4Coords: w * 0.467 + ',' + w * 4.544 + ',' + w * 0.747 + ',' + w * 4.587,
+        //btn5Coords: w * 0.04 + ',' + w * 4.741 + ',' + w * 0.96 + ',' + w * 4.859
+        btn3Coords: w * 0.467 + ',' + w * 4.573 + ',' + w * 0.72 + ',' + w * 4.62,
+        btn4Coords: w * 0.467 + ',' + w * 4.8 + ',' + w * 0.747 + ',' + w * 4.846,
+        btn5Coords: w * 0.04 + ',' + w * 5.652 + ',' + w * 0.96 + ',' + w * 5.7666
     }));
     $('#home_recommend_qrcode').css({
         width: w * 0.681,

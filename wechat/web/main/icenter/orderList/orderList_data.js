@@ -186,7 +186,10 @@ $(function() {
 
                                                 if (list[i].ParentID == 0 || !list[i].ParentID) {
                                                     parentNode = "<p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p>";
-                                                    btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
+                                                    if(list[i].OrderType == 0){//修改
+                                                        btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
+                                                    }
+                                                    //btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
                                                 } else {
                                                     parentNode = "<p style='text-align:left' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ParentID + "'>注:本订单属于订单号为" + list[i].ParentID + "的订单,查看主订单<img src='images/common/right.png' style='float:right;width:2.5vw;margin-top:3vw'></p>";
                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";
@@ -231,7 +234,10 @@ $(function() {
 
                                                 if (list[i].ParentID == 0 || !list[i].ParentID) {
                                                     parentNode = "<p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p>";
-                                                    btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
+                                                    if(list[i].OrderType == 0){//修改
+                                                        btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
+                                                    }
+                                                    //btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
                                                 } else {
                                                     parentNode = "<p style='text-align:left' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ParentID + "'>注:本订单属于订单号为" + list[i].ParentID + "的订单,查看主订单<img src='images/common/right.png' style='float:right;width:2.5vw;margin-top:3vw'></p>";
                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";
@@ -264,7 +270,13 @@ $(function() {
                                             onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "''>重新购买</button></span></div></div>";
                                             $page.find("" + area).append(onePiece);
                                         } else if (list[i].StatusID == 6) {
-                                            onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "''>前往评价</button></span></div></div>";
+                                            //onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span><button class='PayBtn' data-id='" + listData[0].ID + "''>前往评价</button></span></div></div>";
+                                            onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + $$.smallImg(listData[0].Img) + "'><div class='pInfo'><p><span>" + listData[0].Name + "</span></p><p style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].Price + "</span></p></div></div></div><div class='piecePay'><p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p><span>";
+                                            if(list[i].OrderType == 0){//修改
+                                                "<button class='PayBtn' data-id='" + listData[0].ID + "''>前往评价</button></span></div></div>";
+                                            }else{
+                                               "</span></div></div>"
+                                            }
                                             $page.find("" + area).append(onePiece);
                                         }
                                     }
@@ -344,7 +356,10 @@ $(function() {
 
                                                                 if (list[i].ParentID == 0 || !list[i].ParentID) {
                                                                     parentNode = "<p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p>";
-                                                                    btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
+                                                                   if(list[i].OrderType==0){//修改
+                                                                       btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
+                                                                   }//修改
+                                                                    //btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
                                                                 } else {
                                                                     parentNode = "<p style='text-align:left' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ParentID + "'>注:本订单属于订单号为" + list[i].ParentID + "的订单,查看主订单<img src='images/common/right.png' style='float:right;width:2.5vw;margin-top:3vw'></p>";
                                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";
@@ -390,7 +405,10 @@ $(function() {
 
                                                                 if (list[i].ParentID == 0 || !list[i].ParentID) {
                                                                     parentNode = "<p style='float:right;color:#a9a9a9'>实付金额:<span class='sum'>" + list[i].OutPocket + "</span></p>";
-                                                                    btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
+                                                                    if(list[i].OrderType==0){//修改
+                                                                        btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
+                                                                    }
+                                                                    //btnNode = "<button class='PayBtn' data-id='" + listData[0].ID + "' data-oid='" + list[i].ID + "' data-tid='" + list[i].OrderType + "'>" + buttonNode + "</button>";
                                                                 } else {
                                                                     parentNode = "<p style='text-align:left' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ParentID + "'>注:本订单属于订单号为" + list[i].ParentID + "的订单,查看主订单<img src='images/common/right.png' style='float:right;width:2.5vw;margin-top:3vw'></p>";
                                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";

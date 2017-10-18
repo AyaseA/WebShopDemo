@@ -94,7 +94,7 @@ $(function() {
                                     '<div class="prodInfo">' +
                                     '<p><b>'+productList[i].ProductName+'</b></p>' +
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
-                                    '<p class="rewardPoint">评价最多可得20积分</p>' +
+                                    '<p class="rewardPoint">'+productList[i].ReviewCont+'</p>' +
                                     '<button class="checkRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'" data-type="1">查看评价</button>'+
                                     /*'<button class="addRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'" >追加评价</button>' +*/
                                     '</div>' +
@@ -171,7 +171,7 @@ $(function() {
                                     '<p class="ToverFlow" ><b>'+productList[i].ProductName+'</b></p>' +
                                     '<b class="Bcolor">第'+productList[i].ServiceNum+'次服务</b>'+
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
-                                    '<p class="rewardPoint">评价最多可得20积分</p>' +
+                                    '<p class="rewardPoint">'+productList[i].ReviewCont+'</p>' +
                                     '<button class="checkRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ID+'" data-type="0">查看评价</button>'+
                                     /*'<button class="addRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'">追加评价</button>' +*/
                                     '</div>' +

@@ -243,6 +243,18 @@ $(function() {
         }else{
             return "";
         }
+    };
+    template.defaults.imports.imgStringFilter = function(val){
+        if(typeof(val)==="string"){
+            var productImg = $$.eval(val).ProductImg;
+            if(typeof(productImg)==="string"){
+                return $$.smallImg(productImg);
+            }else {
+                return "";
+            }
+        }else {
+            return "";
+        }
     }
 
 });

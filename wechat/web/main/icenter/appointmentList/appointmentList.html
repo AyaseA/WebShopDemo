@@ -90,7 +90,8 @@
                         </p>
                     </div>
                     <div class="appointContent" data-id="{{hadAppoint.ServiceID}}">
-                        <img src="{{serverAddr}}Img/{{$imports.smallSize(hadAppoint.ProductImg)| imgFilter}}">
+                        <!--<img src="{{serverAddr}}Img/{{$imports.smallSize(hadAppoint.ProductImg)| imgFilter}}">-->
+                        <img src="{{serverAddr}}Img/{{hadAppoint.Data| imgStringFilter| imgFilter}}">
                         <div class="appointInfo">
                             <p>
                                 服务名称:
@@ -128,7 +129,8 @@
                         </p>
                     </div>
                     <div class="appointContent" data-id="{{notVerify.ServiceID}}">
-                        <img src="{{serverAddr}}Img/{{$imports.smallSize(notVerify.ProductImg)| imgFilter}}">
+                        <!--<img src="{{serverAddr}}Img/{{$imports.smallSize(notVerify.ProductImg)| imgFilter}}">-->
+                        <img src="{{serverAddr}}Img/{{notVerify.Data| imgStringFilter | imgFilter}}">
                         <div class="appointInfo">
                             <p>
                                 服务名称:

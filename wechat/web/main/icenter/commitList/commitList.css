@@ -155,5 +155,14 @@
 	text-align: center;
     color: #f60;
 }
-
-
+/*ÐÞ¸Ä*/
+#icenter_commitList div.serverReviced p.ToverFlow{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:1;
+}
+#icenter_commitList div.serverReviced div.onePiece div.prodInfo b.Bcolor{
+   color: #E93900;
+}

@@ -676,10 +676,6 @@ Date.prototype.pattern = function(fmt) {
                     'fromGoBack': true
                 });
             }
-            if(sessionStorage.getItem("pageTab")){//修改
-                sessionStorage.setItem("pageTab","");//修改
-            }
-
         },
         // 设置返回
         setGoBack: function(selector) {
@@ -689,9 +685,6 @@ Date.prototype.pattern = function(fmt) {
                 selector.off('click').on('click', function() {
                     $$.goBack();
                 });
-            }
-            if(sessionStorage.getItem("pageTab")){//修改
-                sessionStorage.setItem("pageTab","");//修改
             }
         },
         // 提示用户刷新

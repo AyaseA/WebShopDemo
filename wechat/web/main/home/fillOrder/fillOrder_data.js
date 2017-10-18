@@ -16,7 +16,7 @@ $(function() {
         serviceDate = '',
         serviceTime = '',
         needDelivery = false;
-    var userInfo,inputVal,actualPrice,pType;
+    var userInfo,inputVal,actualPrice,pType,storeID;
     $$.post("CSL/User/GetInfoByToken", {}, function(txt) {
         userInfo = JSON.parse(Base64.decode(unescape(txt.Data.Info)));
     }, function() {}, 1);
@@ -181,6 +181,7 @@ $(function() {
                         descri = '';
                     actualPrice = res.Data.Price;
                     pType = res.Data.ProductType;
+                    storeID = res.Data.StoreID;
                     if (orderType == 1) {
                         total = parseFloat(d.NewPrice);
                         if (d.StoreDescri) {
@@ -362,6 +363,7 @@ $(function() {
                 'Data': callCode ? ('{QRID: ' + callCode + '}') : ''
             },
             function(res) {
+                console.log(res);
                 if (res.Status != 0) {
                     return false;
                 }
@@ -394,7 +396,8 @@ $(function() {
                 Platform: platform,
                 AppointDate: $$.get10Time(serviceDate),
                 AppointTimeS: $$.get10Time(serviceDate + ' ' + serviceTime.split('-')[0]),
-                AppointTimeE: $$.get10Time(serviceDate + ' ' + serviceTime.split('-')[1])
+                AppointTimeE: $$.get10Time(serviceDate + ' ' + serviceTime.split('-')[1]),
+                StoreID: storeID
             },
             function(res) {
                 if (res.Status == 0) {

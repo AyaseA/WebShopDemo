@@ -111,6 +111,7 @@ $(function() {
 
     function loadServerRevice(data){
         $$.post($$.serverAddr + "CSL/Review/QueryMyServiceReviewList", data,function(txt){
+                console.log(txt)
                 if(txt.Status == 0){
                     if(txt.Data.Count == 0){
                         $page.find(".serverRevice").append(noData);
@@ -134,7 +135,7 @@ $(function() {
                                     '<b class="Bcolor">第'+productList[i].ServiceNum+'次服务</b>'+
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                                     '<p class="rewardPoint">评价最多可得20积分</p>' +
-                                    '<button class="revice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ID+'" data-type="1">评价</button>' +
+                                    '<button class="revice" data-oid="'+productList[i].ServiceID+'" data-pid="'+productList[i].ID+'" data-type="1">评价</button>' +
                                     '</div>' +
                                     '</div>';
                             }
@@ -172,7 +173,7 @@ $(function() {
                                     '<b class="Bcolor">第'+productList[i].ServiceNum+'次服务</b>'+
                                     '<p class="descri">'+showJsonDescri(productList[i].ProductDescri)+'</p>' +
                                     '<p class="rewardPoint ToverFlow">'+productList[i].ReviewCont+'</p>' +
-                                    '<button class="checkRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ID+'" data-type="0">查看评价</button>'+
+                                    '<button class="checkRevice" data-oid="'+productList[i].ServiceID+'" data-pid="'+productList[i].ID+'" data-type="0">查看评价</button>'+
                                     /*'<button class="addRevice" data-oid="'+productList[i].OrderID+'" data-pid="'+productList[i].ProductID+'">追加评价</button>' +*/
                                     '</div>' +
                                     '</div>';

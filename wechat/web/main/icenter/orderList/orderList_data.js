@@ -495,7 +495,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, OrderType: -1 }, ".all", "all");
             }
-            setActiveTab(this);
+            //setActiveTab(this);
         });
 
         //点击待付款事件
@@ -512,7 +512,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 1, OrderType: -1 }, ".waitPay", "waitPay");
             }
-            setActiveTab(this);
+            //setActiveTab(this);
         });
 
         //点击待发货事件
@@ -529,7 +529,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 2, OrderType: -1 }, ".waitPost", "waitPost");
             }
-            setActiveTab(this);
+            //setActiveTab(this);
         });
 
         //点击待收货
@@ -546,7 +546,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 4, OrderType: -1 }, ".waitGet", "waitGet");
             }
-            setActiveTab(this);
+            //setActiveTab(this);
         });
 
         //点击待评价
@@ -562,7 +562,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 6, OrderType: -1 }, ".waitRevice", "waitRevice");
             }
-            setActiveTab(this);
+            //setActiveTab(this);
         });
 
     }
@@ -617,14 +617,11 @@ $(function() {
             layer.close();
         })
     });
-
-    function setActiveTab(thisD){
-        var _thisTag=$(thisD).attr("data-toggle");
-        sessionStorage.setItem("pageTab",_thisTag );
-    }
-
+    //function setActiveTab(thisD){
+    //    var _thisTag=$(thisD).attr("data-toggle");
+    //    sessionStorage.setItem("pageTab",_thisTag );
+    //}
 //修改
-    var pageTab=sessionStorage.getItem("pageTab");
-    $(" li[data-toggle='"+pageTab+"']").addClass("on").siblings("li").removeClass("on");
-
+//    var pageTab=sessionStorage.getItem("pageTab");
+//    $(" li[data-toggle='"+pageTab+"']").addClass("on").siblings("li").removeClass("on");
 });

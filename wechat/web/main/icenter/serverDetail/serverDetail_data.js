@@ -10,6 +10,10 @@ $(function(){
         $('span.headStatus').html('预约成功');
     }else if(pane == "notVerify"){
         $('span.headStatus').html('预约完成');
+    }else if(pane == "notAppoint"){
+        $('span.headStatus').html('交易成功');
+    }else if(pane == "hadComplite"){
+        $('span.headStatus').html('服务完成');
     }
     $$.post("CSL/Service/QueryUserServiceDetail",{ ID:oid },function (txt){
         if(txt.Status == 0){

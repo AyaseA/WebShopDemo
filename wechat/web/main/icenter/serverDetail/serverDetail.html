@@ -21,6 +21,11 @@
                 <p class="orderNum">订单号:{{data.OrderID}}<span>已完成第{{data.ServiceNum}}次服务</span></p>
                 <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
             </div>
+            {{else if(pane == "notAppoint")}}
+            <div class="infoHeader">
+                <p class="orderNum">订单号:{{data.OrderID}}<span>剩余服务数量:{{data.ServiceNum}}</span></p>
+                <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
+            </div>
             {{else}}
             <div class="infoHeader">
                 <p class="orderNum">订单号:{{data.OrderID}}<span>已完成第{{data.ServiceNum}}次服务</span></p>

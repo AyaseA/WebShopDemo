@@ -36,7 +36,7 @@
                             <span>服务购买时间:{{timeFilter(notAppoint.AddTime)}}</span>
                         </p>
                     </div>
-                    <div class="appointContent" data-id="{{notAppoint.ID}}">
+                    <div class="appointContent" data-id="{{notAppoint.ID}}" data-pane="notAppoint">
                         <img src="{{serverAddr}}Img/{{$imports.smallSize(notAppoint.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>
@@ -168,7 +168,7 @@
                             <span>服务购买时间:{{timeFilter(hadComplite.AddTime)}}</span>
                         </p>
                     </div>
-                    <div class="appointContent" data-id="{{hadComplite.ID}}">
+                    <div class="appointContent" data-id="{{hadComplite.ID}}" data-pane="hadComplite">
                         <img src="{{serverAddr}}Img/{{$imports.smallSize(hadComplite.ProductImg)| imgFilter}}">
                         <div class="appointInfo">
                             <p>

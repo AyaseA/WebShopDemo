@@ -310,7 +310,7 @@ $(function() {
                                             success: function(data) {
                                                 var buttonNode,
                                                     parentNode,
-                                                    btnNode;
+                                                    btnNode="";
                                                 data = $$.eval(data);
                                                 var list = $$.eval(data).Data.Rows;
                                                 $page.listNum = list.length;

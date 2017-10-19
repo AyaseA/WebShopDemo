@@ -95,15 +95,7 @@
                 dataType: "script",
                 async:false
             });
-            if (navigator.userAgent.indexOf('csl-android') != -1){
-                wx.getAndroidWtoken({
-                            success:function (res) {
-                                var token = res.token;
-                                alert(token);
-                            }
-                }
-                )
-            }
+
         }
     </script>
     <!-- Base64 encode/decode -->

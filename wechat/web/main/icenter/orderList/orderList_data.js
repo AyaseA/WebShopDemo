@@ -138,7 +138,7 @@ $(function() {
                             var list = data.Data.Rows;
                             var buttonNode,
                                 parentNode,
-                                btnNode;
+                                btnNode="";
                             $page.listNum = list.length;
                             if ($page.listNum == 0) {
                                 var noOrders = "<div class='noOrders'><img src='images/orders/no_orders.png'><p>暂无记录</p><button>最新优惠</button></div>";

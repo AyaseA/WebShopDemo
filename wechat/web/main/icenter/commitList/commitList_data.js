@@ -217,5 +217,6 @@ $(function() {
     var comUrl =$$.getQueryString("tab");
     $page.find("li[data-content="+comUrl+"]").addClass("active").siblings().removeClass("active");
     var pageTab=sessionStorage.getItem("pageTab");
-    $(" li[data-content='"+pageTab+"']").addClass("active").siblings("li").removeClass("active");
+    $page.find(" li[data-content='"+pageTab+"']").addClass("active").siblings("li").removeClass("active");
+    $page.find("div."+pageTab+"").addClass("active").siblings("div").removeClass("active");
 });

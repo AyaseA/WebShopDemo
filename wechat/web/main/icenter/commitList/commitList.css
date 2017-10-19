@@ -73,7 +73,7 @@
 
 #icenter_commitList .content .onePiece{
 	background: #fff;
-	height: 28.3vw;
+	height: 33.3vw;
 	position: relative;
 	padding-top: 1vw;
 }
@@ -92,7 +92,7 @@
 	left: 34vw;
 	width: 65vw;
 	border-bottom: 1px solid #D6D6DB;
-    height: 27vw; 
+    height: 31vw;
 }
 
 #icenter_commitList .onePiece .prodInfo b{
@@ -156,13 +156,13 @@
     color: #f60;
 }
 /*ÐÞ¸Ä*/
-#icenter_commitList div.serverReviced p.ToverFlow{
+.ToverFlow{
+	width:100%;
 	overflow:hidden;
 	text-overflow:ellipsis;
-	display:-webkit-box;
 	-webkit-box-orient:vertical;
 	-webkit-line-clamp:1;
 }
-#icenter_commitList div.serverReviced div.onePiece div.prodInfo b.Bcolor{
-   color: #E93900;
+.Bcolor{
+   color:  #f60;
 }

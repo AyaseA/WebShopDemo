@@ -198,6 +198,9 @@
         updateVersion: function(data, callback) {
             sendMessageToPhone('updateVersion', data, callback);
         },
+        getAndroidWtoken: function(data, callback) {
+        sendMessageToPhone('getAndroidWtoken', data, callback);
+    },
         //获取通讯录
         getAddresBook: function(data, callback) {
             sendMessageToPhone('getAddresBook', data, callback);
@@ -228,6 +231,7 @@
              }
             location.href = url;
         },
+
         //处理图片信息
         handlerImages: function(imagArr) {
             $(imagArr).each(function(index, element) {

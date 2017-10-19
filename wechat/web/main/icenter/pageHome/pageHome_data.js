@@ -201,4 +201,5 @@
 		    });
 		}
 	}
+	console.log($$.getToken());
 }());

@@ -217,7 +217,10 @@ $(function() {
    //修改
     var pageTab=sessionStorage.getItem("pageTab");
     $(" li[data-pane='"+pageTab+"']").addClass("active").siblings("li").removeClass("active");
-    $page.find("." + pageTab).show().siblings("div").hide();
+    if(pageTab){
+        $page.find("." + pageTab).show().siblings("div").hide();
+    }
+
     //订单是否确认的ajax
     function confrimOrderAjax(orderId,num){
         $.ajax({

@@ -5,18 +5,31 @@
     </div>
     <div class="orderStatus">
         <span class="statusImg"><img src="images/common/finish.png"></span>
-        <span>交易成功</span>
+        <span class="headStatus">交易成功</span>
     </div>
     <div class="content">
     </div>
     <script type="text/html" id="icenter_serverDetail_content">
         <div class="orderinfo">
+            {{if(pane == "hadAppoint")}}
+            <div class="infoHeader">
+                <p class="orderNum">订单号:{{data.OrderID}}<span>已预约第{{data.ServiceNum}}次服务</span></p>
+                <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
+            </div>
+            {{else if(pane == "notVerify")}}
             <div class="infoHeader">
                 <p class="orderNum">订单号:{{data.OrderID}}<span>已完成第{{data.ServiceNum}}次服务</span></p>
                 <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
             </div>
+            {{else}}
+            <div class="infoHeader">
+                <p class="orderNum">订单号:{{data.OrderID}}<span>已完成第{{data.ServiceNum}}次服务</span></p>
+                <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
+            </div>
+            {{/if}}
             <div class="infoContent">
-                <img src="{{serverAddr + 'Img/' + $imports.smallSize(data.ProductImg)}}">
+                <!--<img src="{{serverAddr + 'Img/' + $imports.smallSize(data.ProductImg)}}">-->
+                <img src="{{serverAddr}}Img/{{$imports.smallSize(data.ProductImg)| imgFilter}}">
                 <div class="productInfo">
                     <p><span>商品名称:{{data.ProductName}}</span></p>
                     <p class="productDescri">商品描述:

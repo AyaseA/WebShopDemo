@@ -27,7 +27,7 @@ $(function () {
         });
     });
     $page.off('click', '>div.footer >a').on('click', '>div.footer >a', function() {
-        makeCode();
+        makeCode($(this).attr("data-sid"),$(this).attr("data-num"));
     });
     $page.off('click', '>div.footer >button').on('click', '>div.footer >button', function() {
         layer.confirm('取消预约？', { icon: 3, title: '提示' }, function(index) {
@@ -50,7 +50,7 @@ $(function () {
                 if (res.Data) {
                 	var d = res.Data;
                     appointStatus = d.Status;
-                    serviceNum = d.ServiceNum;
+                    serviceNum = $$.eval(d.Data).ServiceNum;
                     serviceId = d.ServiceID;
                 	var hours = $$.timeToStr(d.AppointTimeS, 'HH'),
                         amOrPm;
@@ -71,7 +71,9 @@ $(function () {
                     }));
 
                     $page.find('>div.footer').html(template(pageStr + '_footer', {
-                        appointStatus: appointStatus
+                        appointStatus: appointStatus,
+                        serviceNum:serviceNum,
+                        serviceId:serviceId
                     }));
                 }
 			}
@@ -92,7 +94,7 @@ $(function () {
         );
     }
     //未预约
-    function makeCode() {
+    function makeCode(sid,num) {
         var imgurl = $$.serverAddr + "CSL/Service/QueryMyServiceImgByAID?ID=" + appointId + "&WToken=" + $$.getToken()+ "&t=" + Math.random();
         var codeTime = 120;
         var checkTime = 0;
@@ -101,18 +103,18 @@ $(function () {
             checkTime += 1;
 
             if (checkTime < 15) {
-                checkServiceCode(serviceId,serviceNum);
+                checkServiceCode(sid,num);
             } else if (checkTime > 15 && checkTime < 30) {
                 if (checkTime % 2 == 0) {
-                    checkServiceCode(serviceId,serviceNum);
+                    checkServiceCode(sid,num);
                 }
             } else if (checkTime > 30 && checkTime < 60) {
                 if (checkTime % 3 == 0) {
-                    checkServiceCode(serviceId,serviceNum);
+                    checkServiceCode(sid,num);
                 }
             } else {
                 if (checkTime % 4 == 0) {
-                    checkServiceCode(serviceId,serviceNum);
+                    checkServiceCode(sid,num);
                 }
             }
 

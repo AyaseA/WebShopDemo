@@ -68,7 +68,7 @@
     </script>
     <script id="icenter_appointDetail_footer" type="text/html">
         {{if appointStatus == 0}}
-        <a href="javascript:void(0)">生成二维码</a>
+        <a href="javascript:void(0)" data-sid="{{serviceId}}" data-num="{{serviceNum}}">生成二维码</a>
         <button>取消预约</button>
         {{/if}}
     </script>

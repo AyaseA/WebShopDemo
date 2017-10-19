@@ -6,11 +6,11 @@ $(function(){
 
     var oid = $$.getQueryString("oid"),
         pane = $$.getQueryString("pane");
-    //if(pane == "hadAppoint"){
-    //    $('span.headStatus').html('预约成功');
-    //}else if(pane == "notVerify"){
-    //    $('span.headStatus').html('预约完成');
-    //}
+    if(pane == "hadAppoint"){
+        $('span.headStatus').html('棰勭害鎴愬姛');
+    }else if(pane == "notVerify"){
+        $('span.headStatus').html('棰勭害瀹屾垚');
+    }
     $$.post("CSL/Service/QueryUserServiceDetail",{ ID:oid },function (txt){
         if(txt.Status == 0){
             $page.find(".content").html(

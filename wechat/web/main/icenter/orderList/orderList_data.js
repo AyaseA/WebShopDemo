@@ -487,7 +487,7 @@ $(function() {
             $page.find(".nav ul li").removeClass("on");
             $(this).addClass("on");
             $page.find(".content").children().hide();
-            $page.find(".all").fadeIn(500);
+            $page.find(".all").show();
             if (haveLoad.all == 0) {
                 n = 1;
                 isLoad = 0;
@@ -495,7 +495,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, OrderType: -1 }, ".all", "all");
             }
-            //setActiveTab(this);
+            setActiveTab(this,"");
         });
 
         //点击待付款事件
@@ -503,7 +503,7 @@ $(function() {
             $page.find(".nav ul li").removeClass("on");
             $(this).addClass("on");
             $page.find(".content").children().hide();
-            $page.find(".waitPay").fadeIn(500);
+            $page.find(".waitPay").show();
             //重置参数
             if (haveLoad.waitPay == 0) {
                 n = 1;
@@ -512,7 +512,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 1, OrderType: -1 }, ".waitPay", "waitPay");
             }
-            //setActiveTab(this);
+            setActiveTab(this,1);
         });
 
         //点击待发货事件
@@ -521,7 +521,7 @@ $(function() {
             $page.find(".nav ul li").removeClass("on");
             $(this).addClass("on");
             $page.find(".content").children().hide();
-            $page.find(".waitPost").fadeIn(500);
+            $page.find(".waitPost").show();
             if (haveLoad.waitPost == 0) {
                 n = 1;
                 isLoad = 0;
@@ -529,7 +529,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 2, OrderType: -1 }, ".waitPost", "waitPost");
             }
-            //setActiveTab(this);
+            setActiveTab(this,2);
         });
 
         //点击待收货
@@ -538,7 +538,7 @@ $(function() {
             $page.find(".nav ul li").removeClass("on");
             $(this).addClass("on");
             $page.find(".content").children().hide();
-            $page.find(".waitGet").fadeIn(500);
+            $page.find(".waitGet").show();
             if (haveLoad.waitGet == 0) {
                 n = 1;
                 isLoad = 0;
@@ -546,7 +546,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 4, OrderType: -1 }, ".waitGet", "waitGet");
             }
-            //setActiveTab(this);
+            setActiveTab(this,4);
         });
 
         //点击待评价
@@ -554,7 +554,7 @@ $(function() {
             $page.find(".nav ul li").removeClass("on");
             $(this).addClass("on");
             $page.find(".content").children().hide();
-            $page.find(".waitRevice").fadeIn(500);
+            $page.find(".waitRevice").show();
             if (haveLoad.waitRevice == 0) {
                 n = 1;
                 isLoad = 0;
@@ -562,7 +562,7 @@ $(function() {
                 loadComplete = true;
                 loadList({ "WToken": Token, "N": n, "StatusID": 6, OrderType: -1 }, ".waitRevice", "waitRevice");
             }
-            //setActiveTab(this);
+            setActiveTab(this,6);
         });
 
     }
@@ -570,7 +570,7 @@ $(function() {
     function showContent(area, nav, load) {
         $page.find(".all, .waitPost, .waitGet, .waitRevice, .waitPay").empty();
         $page.find(".content").children().hide();
-        $page.find(area).fadeIn(500);
+        $page.find(area).show();
         $page.find(".nav ul li").removeClass("on");
         $page.find(nav).addClass("on");
         load;
@@ -617,11 +617,19 @@ $(function() {
             layer.close();
         })
     });
-    //function setActiveTab(thisD){
-    //    var _thisTag=$(thisD).attr("data-toggle");
-    //    sessionStorage.setItem("pageTab",_thisTag );
-    //}
+
 //修改
-//    var pageTab=sessionStorage.getItem("pageTab");
-//    $(" li[data-toggle='"+pageTab+"']").addClass("on").siblings("li").removeClass("on");
+    function setActiveTab(thisD,num){
+        var _thisTag=$(thisD).attr("data-toggle");
+        sessionStorage.setItem("pageTab",_thisTag );
+        sessionStorage.setItem("StatusID",num );
+    }
+    var pageTab=sessionStorage.getItem("pageTab"),
+        tabNum=sessionStorage.getItem("StatusID");
+    $(" li[data-toggle='"+pageTab+"']").addClass("on").siblings("li").removeClass("on");
+    if(pageTab){
+        $page.find("div."+pageTab).css("display","block");
+        $page.find("div."+pageTab).siblings().hide();
+        loadList({ "WToken": Token, "N": n,"StatusID": tabNum, OrderType: -1 },( "."+pageTab),pageTab );
+    }
 });

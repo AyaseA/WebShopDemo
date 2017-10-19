@@ -3,7 +3,7 @@ $(function() {
         pageStr = 'icenter_orderList';
         
 	$page.find('div.header >a').click(function(){
-		$$.redirect("icenter/pageHome.html");
+		$$.goBack();
 		sessionStorage.setItem("pageTab","");
 	});
 });

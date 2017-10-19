@@ -626,5 +626,5 @@ $(function() {
 //修改
     var pageTab=sessionStorage.getItem("pageTab");
     $(" li[data-toggle='"+pageTab+"']").addClass("on").siblings("li").removeClass("on");
-    $page.find("." + pageTab).show().siblings("div").hide();
+
 });

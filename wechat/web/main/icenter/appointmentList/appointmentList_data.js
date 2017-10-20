@@ -6,7 +6,11 @@ $(function() {
     var token = $$.getToken(),
         type = $$.getQueryString("type"),
         loadComplete;
-
+        if(type){//修改
+            sessionStorage.setItem("pageTab",type);
+        }else{
+            sessionStorage.setItem("pageTab","notAppoint");
+        }//修改end
     var hadChicked = true;
 
     if (type == "commission") {

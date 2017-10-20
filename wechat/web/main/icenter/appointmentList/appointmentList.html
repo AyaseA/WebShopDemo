@@ -90,7 +90,7 @@
                             <span>服务购买时间:{{timeFilter(hadAppoint.AddTime)}}</span>
                         </p>
                     </div>
-                    <div class="appointContent" data-id="{{hadAppoint.ServiceID}}" data-pane="hadAppoint">
+                    <div class="appointContent" data-id="{{hadAppoint.ServiceID}}" data-pane="hadAppoint" data-aid="{{hadAppoint.ID}}">
                         <!--<img src="{{serverAddr}}Img/{{$imports.smallSize(hadAppoint.ProductImg)| imgFilter}}">-->
                         <img src="{{serverAddr}}Img/{{hadAppoint.Data| imgStringFilter| imgFilter}}">
                         <div class="appointInfo">
@@ -129,7 +129,7 @@
                             <span>服务购买时间:{{timeFilter(notVerify.AddTime)}}</span>
                         </p>
                     </div>
-                    <div class="appointContent" data-id="{{notVerify.ServiceID}}" data-pane="notVerify">
+                    <div class="appointContent" data-id="{{notVerify.ServiceID}}" data-pane="notVerify" data-aid="{{notVerify.ID}}">
                         <!--<img src="{{serverAddr}}Img/{{$imports.smallSize(notVerify.ProductImg)| imgFilter}}">-->
                         <img src="{{serverAddr}}Img/{{notVerify.Data| imgStringFilter | imgFilter}}">
                         <div class="appointInfo">

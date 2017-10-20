@@ -6,6 +6,7 @@ $(function(){
 
     var oid = $$.getQueryString("oid"),
         pane = $$.getQueryString("pane");
+        appointId = $$.getQueryString("aid");
     if(pane == "hadAppoint"){
         $('span.headStatus').html('预约成功');
     }else if(pane == "notVerify"){
@@ -22,7 +23,8 @@ $(function(){
                     data: txt.Data,
                     pane: pane,
                     serverAddr : $$.serverAddr,
-                    orderID : oid
+                    orderID : oid,
+                    appointId: appointId
                 })
             );
 

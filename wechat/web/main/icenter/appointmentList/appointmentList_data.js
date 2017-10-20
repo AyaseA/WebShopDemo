@@ -56,7 +56,8 @@ $(function() {
     $page.off("click",".oneAppoint .appointContent").on("click",".oneAppoint .appointContent",function(e){
         var orderId = $(this).attr("data-id");
         var pane = $(this).attr("data-pane");
-        $$.redirect("icenter/serverDetail.html?oid=" + orderId+"&pane="+pane);
+        var appointId = $(this).attr("data-aid");
+        $$.redirect("icenter/serverDetail.html?oid=" + orderId+"&pane="+pane+"&aid="+appointId);
         confrimOrderAjax($(this).attr("data-id"), $(this).attr("data-num"));//修改
         e.preventDefault();
         e.stopPropagation();

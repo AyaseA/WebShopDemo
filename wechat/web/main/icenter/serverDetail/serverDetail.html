@@ -13,12 +13,16 @@
         <div class="orderinfo">
             {{if(pane == "hadAppoint")}}
             <div class="infoHeader">
-                <p class="orderNum">订单号:{{data.OrderID}}<span>已预约第{{data.ServiceNum}}次服务</span></p>
+                <p class="orderNum">订单号:{{data.OrderID}}
+                    <!--<span>已预约第{{data.ServiceNum}}次服务</span> -->
+                </p>
                 <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
             </div>
             {{else if(pane == "notVerify")}}
             <div class="infoHeader">
-                <p class="orderNum">订单号:{{data.OrderID}}<span>已完成第{{data.ServiceNum}}次服务</span></p>
+                <p class="orderNum">订单号:{{data.OrderID}}
+                    <!--<span>已完成第{{data.ServiceNum}}次服务</span>-->
+                </p>
                 <p class="buyTime">购买时间:{{$imports.timeFilter(data.AddTime)}}</p>
             </div>
             {{else if(pane == "notAppoint")}}
@@ -48,7 +52,7 @@
         </div>
         {{if(pane == "hadAppoint" || pane == "notVerify")}}
         <div class="time">
-            <p>预约编号: {{typeof(data.AppointID)==="string"?data.AppointID:""}}</p>
+            <p>预约编号: {{appointId}}</p>
             <p>过期时间: {{$imports.timeFilter(data.Expired)}}</p>
         </div>
         {{else if(pane == "notAppoint")}}

@@ -219,6 +219,6 @@ $(function() {
     var pageTab=sessionStorage.getItem("pageTab");
     $page.find(" li[data-content='"+pageTab+"']").addClass("active").siblings("li").removeClass("active");
     if(pageTab){
-        $page.find("." + pageTab).show().siblings("div").hide();
+        $page.find("." + pageTab).addClass("active").siblings().removeClass("active");
     }
 });

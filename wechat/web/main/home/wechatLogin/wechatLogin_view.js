@@ -3,6 +3,25 @@ $(function() {
     if((navigator.userAgent.indexOf("QQ") !=-1)&&(navigator.userAgent.indexOf("MicroMessenger") ==-1)){
         $$.redirect("icenter/login.html");
     }
+    //if((navigator.userAgent.indexOf("MicroMessenger") !=-1)){
+    //    alert($$.getCookie('__TOKEN__'));
+    //    if($$.getCookie('__TOKEN__')){
+    //        $.ajax({
+    //           type:"post",
+    //            data:$$.getCookie('__TOKEN__'),
+    //            url:$$.serverAddr+"CSL/User/GetInfoByToken",
+    //            async:false,
+    //            success:function(res){
+    //                if(res.Status == 0){
+    //                    $$.redirect("home/index.html");
+    //                }
+    //            }
+    //        })
+    //    }
+    //}else{
+    //    $$.redirect("icenter/login.html");
+    //}
+
     //测试qqq分享--end;
     var bodyHeight = window.innerHeight || document.body.clientHeight,
         $page = $('#home_wechatLogin'),

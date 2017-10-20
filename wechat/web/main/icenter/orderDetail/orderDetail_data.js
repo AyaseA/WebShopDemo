@@ -64,14 +64,14 @@ $(function() {
     });
 
     // 设置返回按钮可用
-    $page.off('click', '>div.header >a.goBack')
-        .on('click', '>div.header >a.goBack', function() {
-            if ($$.stack.getLast().indexOf("icenter/orderDetail.html") == -1) {
-                $$.redirect("icenter/orderList.html");
-            } else {
-                $$.goBack();
-            }
-        });
+    //$page.off('click', '>div.header >a.goBack')
+    //    .on('click', '>div.header >a.goBack', function() {
+    //        if ($$.stack.getLast().indexOf("icenter/orderDetail.html") == -1) {
+    //            $$.redirect("icenter/orderList.html");
+    //        } else {
+    //            $$.goBack();
+    //        }
+    //    });
     // 获取订单详情
     getOrderDetail();
 

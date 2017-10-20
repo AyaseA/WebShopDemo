@@ -54,8 +54,8 @@
             <!--<p>剩余邮寄商品次数:{{data.LeftDeliveryNum}}</p>-->
         <!--</div>-->
         <div class="price">
-            <p><span>商品金额</span><span class="money">￥{{data.ProductPrice}}</span></p>
-            <p><span>优惠金额</span><span class="money">￥{{(data.AllMoney - data.OrderOutPocket) | floatFilter}}</span></p>
+            <p><span>商品金额：</span><span class="money">￥{{data.ProductPrice}}</span></p>
+            <p><span>优惠金额：</span><span class="money">-￥{{(data.AllMoney - data.OrderOutPocket) | floatFilter}}</span></p>
         </div>
         <div class="outPocket">实付款: <span style="color:#f60;"> ￥{{data.OrderOutPocket}}</span></div>
     </script>

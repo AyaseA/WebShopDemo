@@ -173,7 +173,7 @@
 }
 #icenter_orderDetail >div.main >div.money >div >p >span {
     color: #EA5514;
-    float: right;
+    /*float: right;*/
 }
 #icenter_orderDetail >div.footer {
     position: fixed;

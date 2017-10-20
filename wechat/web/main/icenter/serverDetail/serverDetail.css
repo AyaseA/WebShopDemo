@@ -147,7 +147,7 @@
 }
 
 #icenter_serverDetail .content .price .money{
-  float: right;
+  /*float: right;*/
   color: #f60;
 }
 
@@ -156,6 +156,6 @@
   line-height: 10vw;
   padding: 0 4vw;
   background: #fff;
-  text-align: right;
+  /*text-align: right;*/
   border-top: 1px solid #EEEEEE;
 }

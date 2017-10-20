@@ -100,16 +100,16 @@
         </div>
         <div class="money">
             <div>
-                <p>商品金额<span>￥{{oData.AllMoney}}</span></p>
+                <p>商品金额：<span>￥{{oData.AllMoney}}</span></p>
                 {{if oData.StatusID != '5'}}
-                <p>优惠<span>-￥{{discountMoney}}</span></p>
+                <p>优惠：<span>-￥{{discountMoney}}</span></p>
                 <p class="clear">
-                    <span>￥{{oData.OutPocket}}</span>
                     {{if isPayed}}
                     <span style="color: #000">实际付款：</span>
                     {{else}}
                     <span style="color: #000">需付款：</span>
                     {{/if}}
+                    <span>￥{{oData.OutPocket}}</span>
                 </p>
                 {{/if}}
             </div>

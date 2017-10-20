@@ -418,7 +418,7 @@ $(function() {
                                                                     btnNode = "<button class='PayBtn' data-postID='" + list[i].DeliveryNO + "' data-oid='" + list[i].ID + "' data-dType='" + list[i].DeliveryType + "'>查看物流</button>";
                                                                 }
 
-                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
+                                                                onePiece = "<div class='onePiece'><div class='pieceHeader'><span class='orderID'>订单号：<span>" + list[i].ID + "</span><p class='rt'></p><p class='pieceStatus'>" + showStatus(list[i].StatusID) + "</p></div><div class='pieceContent' data-tid='" + list[i].OrderType + "' data-oid='" + list[i].ID + "'><div><img src='" + url + "Img/" + listData[0].ProductImg + "'><div class='pInfo'><p><span>" + listData[0].ProductName + "</span></p><p  style='width:20vw;display:inline-block;float:right;color:#ea5514'><span>¥" + listData[0].NewPrice + "</span></p></div></div></div><div class='piecePay'>" + parentNode + "<span>" + btnNode + "</span></div></div>";
                                                                 $page.find("" + area).append(onePiece);
                                                             }
                                                         }
@@ -625,8 +625,11 @@ $(function() {
 //修改
     function setActiveTab(thisD,num){
         var _thisTag=$(thisD).attr("data-toggle");
-        sessionStorage.setItem("pageTab",_thisTag );
+        setSessionStorage(_thisTag);
         sessionStorage.setItem("StatusID",num );
+    }
+    function setSessionStorage(val){
+        sessionStorage.setItem("pageTab",val );
     }
     var pageTab=sessionStorage.getItem("pageTab"),
         tabNum=sessionStorage.getItem("StatusID");

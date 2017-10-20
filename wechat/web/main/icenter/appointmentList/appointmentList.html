@@ -32,7 +32,8 @@
                             <span class="appointStatus">已成功预约第 <span style="color: #000;font-weight: bold;">{{notAppoint.ServiceCount - notAppoint.ServiceNum + 1}}</span> 次服务</span>
                             {{/if}}
                         </p>
-                        <p class="buytime">服务编号:{{notAppoint.ID}}
+                        <p class="buytime">
+                            <!--服务编号:{{notAppoint.ID}}-->
                             <span>服务购买时间:{{timeFilter(notAppoint.AddTime)}}</span>
                         </p>
                     </div>

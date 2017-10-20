@@ -46,10 +46,21 @@
                 <span>商品单价:￥{{data.ProductPrice}}</span>
             </div>
         </div>
+        {{if(pane == "hadAppoint" || pane == "notVerify")}}
+        <div class="time">
+            <p>预约编号: {{typeof(data.AppointID)==="string"?data.AppointID:""}}</p>
+            <p>过期时间: {{$imports.timeFilter(data.Expired)}}</p>
+        </div>
+        {{else if(pane == "notAppoint")}}
+        <div class="time" style="height: 12vw">
+            <p>过期时间: {{$imports.timeFilter(data.Expired)}}</p>
+        </div>
+        {{else if(pane == "hadComplite")}}
         <div class="time">
             <p>服务编号: {{orderID}}</p>
             <p>过期时间: {{$imports.timeFilter(data.Expired)}}</p>
         </div>
+        {{/if}}
         <!--<div class="count">-->
             <!--<p>剩余邮寄商品次数:{{data.LeftDeliveryNum}}</p>-->
         <!--</div>-->

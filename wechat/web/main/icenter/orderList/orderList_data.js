@@ -39,7 +39,11 @@ $(function() {
                 waitRevice: 0
             };
 
-        var type = $$.getQueryString("type") || "all";
+        var type = $$.getQueryString("type");
+        if(type){//修改
+            setSessionStorage(type)
+        }//修改end
+
 
         if (type == "all") {
             showContent(".all", ".allNav", loadList({ "WToken": Token, "N": n, OrderType: -1 }, ".all", "all"));

@@ -25,9 +25,11 @@ $(function() {
     if ($$.isLogin(true)) {
         if (orderType == 1) {
             detailUrl = 'Product/StoreService/QueryServiceDetail?ID=';
+            $page.find('div.appointment').show();
             setServiceOption();
         } else if (orderType == 5) {
             detailUrl = 'Product/ProdMulti/QueryDetail?ID=';
+            $page.find('div.appointment').hide();
         }
         // 页面重新显示的一些初始化
         $page.find('>div.couponModal').css({
@@ -78,6 +80,7 @@ $(function() {
              .on('click dbclick', '>div.appointmentModal div.select', function() {
             serviceDate = $page.find('>div.appointmentModal span.selected').attr('data-date');
             serviceTime = $page.find('>div.appointmentModal span.selected').attr('data-time');
+
             setServiceOption();
             $page.find('>div.appointmentModal').find('div.warp').animate({
                 'top': bodyHeight
@@ -423,7 +426,7 @@ $(function() {
 
     function setServiceOption() {
         $page.find('div.appointment').html(template(pageStr + '_appointment_time', {
-            time: serviceDate && serviceTime ? (serviceDate + ' ' + serviceTime) : ''
+            time: serviceDate && serviceTime ? (serviceDate + ' ' + serviceTime) : '',
         }));
         $page.find('div.appointment >div').width(
             boxWidth - 30 - 8 - 10

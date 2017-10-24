@@ -1,0 +1,31 @@
+#activity_PproductList{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+    background: #EFEFF4;
+    position: relative;
+}
+#activity_PproductList div.header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index:10;
+    height:12vw;
+    text-align: center;
+    line-height: 12vw;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D6D6DB;
+    background: #FFF;
+}
+#activity_PproductList div.header h4.title{
+    font-size: 4.5vw;
+}
+#activity_PproductList div.header a.goBack{
+    position: absolute;
+    left: 3vw;
+    top:2vw;
+}
+#activity_PproductList div.header a.goBack img{
+    width: 6vw;
+}

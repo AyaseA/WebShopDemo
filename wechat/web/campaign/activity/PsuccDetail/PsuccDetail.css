@@ -1,0 +1,261 @@
+/*公共样式*/
+#icenter_PsuccDetail .rt{
+    float:right;
+}
+#icenter_PsuccDetail .lt{
+    float:left;
+}
+#icenter_PsuccDetail .clear:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+#activity_PsuccDetail .flexbetween{
+    display: flex;
+    justify-content: space-between;
+}
+#activity_PsuccDetail .color{
+    color:#E77449;
+}
+
+/*主页header部分*/
+#activity_PsuccDetail{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+    background: #EFEFF4;
+    position: relative;
+}
+#activity_PsuccDetail div.header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index:10;
+    height:12vw;
+    text-align: center;
+    line-height: 12vw;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D6D6DB;
+    background: #FFF;
+}
+#activity_PsuccDetail div.header h4.title{
+    font-size: 4.5vw;
+}
+#activity_PsuccDetail div.header a.goBack{
+    position: absolute;
+    left: 3vw;
+    top:2vw;
+}
+#activity_PsuccDetail div.header a.goBack img{
+    width: 6vw;
+}
+/*主页MAIN部分*/
+#activity_PsuccDetail div.main{
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+#activity_PsuccDetail div.main{  margin-top:12vw;  }
+#activity_PsuccDetail div.main>div{
+    margin-bottom:2vw ;
+    background: #fff;
+}
+/*拼单成功*/
+#activity_PsuccDetail div.main div.PIsSucc{
+    width: 100%;
+    height: 18vw;
+    background: linear-gradient(#EA5514,#F47F4C);
+    background-size: 100%;
+    line-height: 18vw;
+    color: #fff;
+    font-size: 4vw;
+    padding: 0 4vw;
+    box-sizing: border-box;
+}
+#activity_PsuccDetail div.main div.PIsSucc img{
+    width: 4vw;
+}
+/*用户详情*/
+#activity_PsuccDetail div.main div.PuserInfo{
+    background: #fff;
+    display:flex;
+    justify-content: flex-start;
+    padding:0 4vw;
+    height:14vw;
+}
+#activity_PsuccDetail div.main div.PuserInfo p{
+    text-align: left;
+}
+#activity_PsuccDetail div.main div.PuserInfo img{
+    width: 4vw;
+}
+#activity_PsuccDetail div.main div.PuserInfo>div:first-child{
+    margin-right: 5vw;
+    height:14vw ;
+    line-height: 14vw;
+}
+#activity_PsuccDetail div.main div.PuserInfo>div:nth-child(2){
+    height:14vw ;
+    padding: 2vw 0;
+}
+#activity_PsuccDetail div.main div.PuserInfo>div:nth-child(2) p.text{
+   color:#D5D5D5;
+}
+/*拼单成功*/
+#activity_PsuccDetail div.main div.Pmember{
+    padding:2vw 0;
+}
+#activity_PsuccDetail div.main div.Pmember> p.title{
+    padding :1vw 4vw;
+    height:7vw;
+    box-sizing: border-box;
+    margin-bottom: 4vw;
+    font-size:4.2vw;
+}
+
+#activity_PsuccDetail div.main div.Pmember> p.title img{
+    width: 5vw;
+    vertical-align: bottom;
+    margin-right: 3vw;
+}
+#activity_PsuccDetail div.main div.Pmember>ul{
+    display: flex;
+    margin-left: 5vw;
+}
+#activity_PsuccDetail div.main div.Pmember>ul>li{
+    margin-right: 3vw;
+}
+#activity_PsuccDetail div.main div.Pmember>ul>li>img{
+    width: 15vw;
+}
+#activity_PsuccDetail div.main div.Pmember>ul>li:first-child{
+    position: relative;
+}
+#activity_PsuccDetail div.main div.Pmember>ul>li:first-child span{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+#activity_PsuccDetail div.main div.Pmember>ul>li:first-child span img{
+    width:9vw;
+}
+/*订单信息*/
+#activity_PsuccDetail div.main div.orderInfo{
+    padding:3vw 4vw 2vw 4vw ;
+}
+#activity_PsuccDetail div.main div.orderInfo>div:first-child{
+    margin-bottom: 3vw;
+}
+#activity_PsuccDetail div.main div.orderInfo>div:first-child p{
+    height:7vw;
+
+}
+#activity_PsuccDetail div.main div.orderInfo>div:first-child p img{
+    width:5vw;
+    vertical-align: bottom;
+}
+#activity_PsuccDetail div.main div.OInfoBody>{
+    margin-bottom: 3vw;
+}
+#activity_PsuccDetail div.main div.OInfoBody>div>div{
+    flex-grow:1;
+}
+#activity_PsuccDetail div.main div.OInfoBody>div.flexbetween>p>img{
+    border:1px solid #000;
+    margin-right: 2vw;
+}
+#activity_PsuccDetail div.main div.OInfoBody>div.flexbetween p.flexbetween{
+    height: 6vw;
+    line-height: 6vw;
+}
+#activity_PsuccDetail div.main div.OInfoBody>div.flexbetween p.flexbetween.text{
+    color:#D5D5D5;
+}
+#activity_PsuccDetail div.main div.OInfoBody>div.countPro{
+    color:#D5D5D5;
+    display: flex;
+    justify-content: flex-end;
+}
+/*<!--订单号和时间*/
+#activity_PsuccDetail div.main div.PorderTime{
+    padding: 2vw 4vw;
+}
+#activity_PsuccDetail div.main div.PorderTime p{
+    color:#7E7F80;
+    height: 8vw;
+    line-height: 8vw;
+    box-sizing: border-box;
+}
+/*商品金额*/
+#activity_PsuccDetail div.main div.Pmoney{
+    padding: 2vw 4vw;
+}
+#activity_PsuccDetail div.main div.Pmoney>div{
+    display: flex;
+    justify-content: flex-end;
+}
+#activity_PsuccDetail div.main div.Pmoney p{
+    height: 8vw;
+    line-height: 8vw;
+}
+#activity_PsuccDetail div.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 49px;
+    background-color: #fff;
+    border-top: 1px solid #d4d4d4;
+    display: flex;
+    justify-content: flex-end;
+
+}
+#activity_PsuccDetail div.footer button{
+    outline: none;
+    display: block;
+    width: 100px;
+    height: 32px;
+    float: right;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #E77449;
+    border-radius: 18px;
+    margin-right: 10px;
+    margin-top: 9px;
+    color:#E77449;
+}
+#activity_PsuccDetail div.Pmodel{
+    display:none;
+    position: fixed;
+    z-index: 1000;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+#activity_PsuccDetail div.Pmodel>div:first-child{
+   position: absolute;
+    top:6vw;
+    right: 8vw;
+}
+#activity_PsuccDetail div.Pmodel>div>img{
+    width: 15vw;
+}
+#activity_PsuccDetail div.Pmodel>div:nth-child(2){
+    width: 100%;
+    position: absolute;
+    top:72vw;
+    text-align: center;
+}
+
+#activity_PsuccDetail div.Pmodel>div:nth-child(2) p{
+    font-weight: bold;
+    height: 10vw;
+    font-size: 5vw;
+    color:#fff;
+}
+
+

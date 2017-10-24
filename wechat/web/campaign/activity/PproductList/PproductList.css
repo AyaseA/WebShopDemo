@@ -29,3 +29,14 @@
 #activity_PproductList div.header a.goBack img{
     width: 6vw;
 }
+/*Ò³ÃæÖ÷Ìâ*/
+#activity_PproductList div.main{
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin-top:12vw;
+}
+#activity_PproductList div.main img{
+    width: 100%;
+}

@@ -201,4 +201,20 @@
 		    });
 		}
 	}
+	//修改
+	function repeatMobile(){
+		var url = $$.config.serverAddr;
+		$.ajax({
+			type: "POST",
+			data:{
+				WToken: token
+			},
+			url: url+"CSL/User/FlushRedisByUserID",
+			success: function() {
+				var repeatMobile = $$.getUserMobile();
+				$('.user_name').text(repeatMobile.substring(0,3)+"****"+mobile.substring(7,11)).attr('data-islogin', 1);
+			}
+		})
+	}
+	repeatMobile();
 }());

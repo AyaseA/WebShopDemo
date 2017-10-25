@@ -1,0 +1,48 @@
+#activity_PsuccDetail{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+}
+#activity_receiveGlass div.main{
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+#activity_receiveGlass div.main div.bg img{
+    width:100%;
+}
+#activity_receiveGlass div.main div.inputInfo{
+    width:92vw;
+    height:60vw;
+    position: absolute;
+    top:83vw;
+    left: 4vw;
+}
+#activity_receiveGlass div.main div.inputInfo p{
+    text-align: center;
+    margin: 10vw 0;
+}
+#activity_receiveGlass div.main div.inputInfo p input{
+    width:90%;
+    height:15vw;
+    outline: none;
+    border:1px solid #fff;
+    background: #fff;
+    border-radius: 8vw;
+    font-size: 20px ;
+    padding-left: 5vw;
+    box-sizing: border-box;
+}
+#activity_receiveGlass div.main div.inputInfo p button{
+    width:90%;
+    height:15vw;
+    outline: none;
+    background: #F8B62C;
+    border-radius: 8vw;
+    color:#fff;
+    border:1px solid #F8B62C;
+    font-size: 25px ;
+    box-sizing: border-box;
+}

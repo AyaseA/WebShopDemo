@@ -1,0 +1,192 @@
+#activity_fightDetal{
+    background-color: #EFEFF4;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#activity_fightDetal .mirror {
+    width: 100%;
+    height: 100%;
+    background: #373636;
+    opacity: 0.9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 13;
+}
+.Popup{position: fixed;top: 0;right: 0; bottom: 0; left: 0;z-index: 1050;opacity: 1;color: #333;display: none;}
+
+.PopupShow{display: block;}
+.Popup-dialog{width: 75%;margin: 0 auto;position: fixed;top: -1000px;left: 0;right: 0;
+    /*left: 50%;或者这个加下面的margin也可以居中*/
+    /*margin-left: -300px;*/
+}
+
+.Popup-content{background-color:#fff;border-radius: 6px;border: 1px solid rgba(0,0,0,.2);box-shadow: 0 5px 15px rgba(0,0,0,.5);}
+.Popup-header{padding: 15px;border-bottom: 1px solid #e5e5e5;}
+.Popup-body{padding:  50px 35px 25px 35px; font-size: 4vw;}
+.Popup-footer{border-top: 1px solid #e5e5e5;text-align: right;}
+.Popup-backdrop{position: fixed;  top: 0;  right: 0;  bottom: 0;  left: 0;  z-index: 1040;  background-color: #000;opacity: .5;display: none;}
+.Popup_fade{display: none;}
+.Popup_in{opacity: 1;display: block;}
+.Popup_in2{opacity: .5;display: block;}
+.btn-primary {
+    width: 48%;
+    background: #fff;
+    font-size: 4.2vw;
+    border: none;
+    padding: 4vw;
+    outline: none;
+}
+.Popup-footer .btn:first-child{
+    border: 1px solid #eee;
+}
+img {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    vertical-align: bottom;
+}
+
+#activity_fightDetal>div.header {
+    height: 44px;
+    background-color: #fff;
+    border-bottom: 1px solid #F6F6F7;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 12;
+}
+
+#activity_fightDetal>div.header a.goBack {
+    display: block;
+    float: left;
+    height: 44px;
+    width: 15%;
+    background: url(../../images/common/round_left_blue.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+#activity_fightDetal>div.header>span {
+    margin: auto;
+    display: inline-block;
+    height: 44px;
+    text-align: center;
+    line-height: 45px;
+}
+
+#activity_fightDetal.title {
+    width: 70%;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#activity_fightDetal.share {
+    display: inline-block;
+    width: 15%;
+    float: right;
+    font-size: 14px;
+}
+
+#activity_fightDetal>div.main {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* background: linear-gradient(-60deg, #F47E4D 15%, #F49E79 0, #F49E79 50%, #F47E4D 0, #F47E4D 70%, #F49E79 0);
+    background-size: 9px 15.57px; */
+    margin: 0 auto;
+}
+#activity_fightDetal>div.main >div.imageText {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+/*图文图片*/
+#activity_fightDetal>div.main >div.imageText >div.leftContent {
+    width: 42%;
+}
+/*图片*/
+#activity_fightDetal>div.main >div.imageText >div.leftContent img {
+    width: 100%;
+    height: 100%;
+}
+/*图文混排--文字*/
+#activity_fightDetal>div.main >div.imageText >div.rightContent {
+    width: 62%;
+    color: #000;
+    background-color: #fff;
+    padding: 2vw 1vw 3vw 0;
+}
+#activity_fightDetal>div.main >div.imageText >div.rightContent h2 {
+    color: #ea5514;
+}
+#activity_fightDetal>div.main >div.imageText >div.rightContent p {
+    padding: 10px 0;
+    letter-spacing: 1px;
+}
+#activity_fightDetal>div.main >div.imageText >div.rightContent h2 span {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 16px;
+}
+#activity_fightDetal>div.main >div.imageText >div.rightContent h2 small {
+    color: #ea5514;
+}
+#activity_fightDetal>div.main img {
+    width: 100%;
+}
+/*参加拼单*/
+#activity_fightDetal>div.main > div.fight {
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    padding: 15px 0 5px 0;
+}
+#activity_fightDetal>div.main > div.fight >ul.soccer{
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin: 0 auto;
+}
+#activity_fightDetal>div.main > div.fight >ul.soccer>li>img {
+    width: 14vw;
+    height: 14vw;
+}
+#activity_fightDetal>div.main > div.fight >ul.soccer  li:first-child {
+    position: relative;
+}
+#activity_fightDetal>div.main > div.fight >ul.soccer  li:first-child span {
+    position: absolute;
+    top: -4px;
+    left: 7px;
+    width: 8vw;
+    height: 8vw;
+}
+#activity_fightDetal>div.main > div.fight > p {
+    font-size: 5vw;
+    margin: 15px 0;
+}
+#activity_fightDetal>div.main > div.fight .btn {
+    width: 86%;
+    height: 50px;
+    background-color: #ea5514;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+}
+#activity_fightDetal>div.main > div.text img{
+    width: 94%;
+    margin-left: 3%;
+    padding: 10px 0;
+    border-radius: 10px;
+}

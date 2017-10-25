@@ -1,0 +1,110 @@
+#activity_glassLogin{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+}
+/*Ö÷Ò³header²¿·Ö*/
+#activity_glassLogin{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+    background: #EFEFF4;
+    position: relative;
+}
+#activity_glassLogin div.header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index:10;
+    height:12vw;
+    text-align: center;
+    line-height: 12vw;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D6D6DB;
+    background: #FFF;
+}
+#activity_glassLogin div.header h4.title{
+    font-size: 4.5vw;
+}
+#activity_glassLogin div.header a.goBack{
+    position: absolute;
+    left: 3vw;
+    top:2vw;
+}
+#activity_glassLogin div.header a.goBack img{
+    width: 6vw;
+}
+#activity_glassLogin div.main{
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 12vw;
+}
+#activity_glassLogin div.main div.bg img{
+    width:100%;
+}
+#activity_glassLogin div.main div.inputInfo{
+    width:92vw;
+    height:60vw;
+    position: absolute;
+    top:83vw;
+    left: 4vw;
+}
+#activity_glassLogin div.main div.inputInfo p{
+    text-align: center;
+    margin-bottom: 4vw;
+    margin-top: 4vw;
+}
+#activity_glassLogin div.main div.inputInfo p>input{
+    width:90%;
+    height:12vw;
+    outline: none;
+    border:1px solid #fff;
+    background: #fff;
+    border-radius: 8vw;
+    font-size: 17px ;
+    padding-left: 5vw;
+    box-sizing: border-box;
+}
+#activity_glassLogin div.main div.inputInfo p>button{
+    width:90%;
+    height:12vw;
+    outline: none;
+    background: #F8B62C;
+    border-radius: 8vw;
+    color:#fff;
+    border:1px solid #F8B62C;
+    font-size: 25px ;
+    box-sizing: border-box;
+    margin-top: 3vw;
+}
+#activity_glassLogin div.main div.inputInfo div input{
+    -webkit-appearance:checkbox;
+    margin-left: 8vw;
+}
+#activity_glassLogin div.main div.inputInfo p.sendCode{
+    position: relative;
+}
+#activity_glassLogin div.main div.inputInfo p.sendCode button{
+    position:absolute ;
+    top:-1vw;
+    right: 7vw;
+    display: inline-block;
+    width: 25vw;
+    height: 8vw;
+    line-height: 8vw;
+    background: #F8B62C;
+    color:#fff;
+    text-align: center;
+    font-size: 15px;
+    padding: 0 2vw;
+    border-radius: 4vw;
+    border:1px solid #F8B62C;
+}
+#activity_glassLogin div.main div.inputInfo p.sendCode button.disable{
+    background: #DDDDDD;
+    border:1px solid #DDDDDD;
+}

@@ -1,0 +1,53 @@
+/*主页header部分*/
+#activity_glassQRCode{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+    background: #EFEFF4;
+    position: relative;
+}
+#activity_glassQRCode div.header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index:10;
+    height:12vw;
+    text-align: center;
+    line-height: 12vw;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D6D6DB;
+    background: #FFF;
+}
+#activity_glassQRCode div.header h4.title{
+    font-size: 4.5vw;
+}
+#activity_glassQRCode div.header a.goBack{
+    position: absolute;
+    left: 3vw;
+    top:2vw;
+}
+#activity_glassQRCode div.header a.goBack img{
+    width: 6vw;
+}
+/*主页MAIN部分*/
+#activity_glassQRCode div.main{
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin-top:12vw;
+    position: relative;
+}
+#activity_glassQRCode div.main>div>img{
+    width: 100%;
+}
+#activity_glassQRCode div.main>div.qrcode{
+    width: 73%;
+    height: 72vw;
+    position: absolute;
+    top:61vw;
+    left:13vw;
+    border:1px solid #000000;
+
+}
